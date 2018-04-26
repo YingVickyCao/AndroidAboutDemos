@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.hades.android.example.android_about_demos.R;
@@ -14,12 +13,11 @@ import com.hades.android.example.android_about_demos.R;
 
 /**
  * https://blog.csdn.net/liaoyi_/article/details/53542568
+ * https://blog.csdn.net/zenmela2011/article/details/42495263
  */
 public class SplashNotifyIconActivity extends Activity implements View.OnClickListener {
     ImageView image;
     View notifyContainer;
-    Button startSplashNotifyIcon;
-    Button stopSplashNotifyIcon;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,13 +25,10 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
 
         setContentView(R.layout.activity_splash_notify_icon_layout);
 
-        startSplashNotifyIcon = findViewById(R.id.startSplashNotifyIcon);
-        stopSplashNotifyIcon = findViewById(R.id.stopSplashNotifyIcon);
+        findViewById(R.id.startSplashNotifyIcon).setOnClickListener(this);
+        findViewById(R.id.stopSplashNotifyIcon).setOnClickListener(this);
         image = findViewById(R.id.image);
         notifyContainer = findViewById(R.id.notifyContainer);
-
-        startSplashNotifyIcon.setOnClickListener(this);
-        stopSplashNotifyIcon.setOnClickListener(this);
     }
 
     @Override
@@ -53,14 +48,12 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), getAnimationId());
         notifyContainer.setAnimation(animation);
         image.startAnimation(animation);
-//        startSplashNotifyIcon.setAnimation(animation);
-        animation.start();
+//        animation.start();
     }
 
     private void stopSplashNotifyIcon() {
         notifyContainer.clearAnimation();
         image.clearAnimation();
-//        startSplashNotifyIcon.clearAnimation();
     }
 
     private int getAnimationId() {
