@@ -14,17 +14,12 @@
 
     <LinearLayout
         android:id="@+id/notifyContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/splash_icon"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="ABC" />
+        android:background="@drawable/shape_red_oval"
+        android:gravity="center"
+        android:orientation="vertical">
 
     </LinearLayout>
 
