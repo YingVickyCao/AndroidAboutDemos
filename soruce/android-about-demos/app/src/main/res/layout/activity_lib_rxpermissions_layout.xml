@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sample_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hades.android.example.android_about_demos.runtime_permission.lib.RxPermissionsTestActivity">
+
+    <TextView
+        style="@style/topic_desc"
+        android:text="@string/rxPermissions_topic"/>
+
+    <Button
+        android:id="@+id/sendMessage"
+        style="@style/btn"
+        android:text="@string/send_message"/>
+
+    <Button
+        android:id="@+id/sendReceiveMessage"
+        style="@style/btn"
+        android:text="@string/send_receive_message"/>
+
+    <!--<Button-->
+    <!--android:id="@+id/permissionGroup"-->
+    <!--style="@style/btn"-->
+    <!--android:text="@string/request_permission_by_permission_group"/>-->
+
+</LinearLayout>

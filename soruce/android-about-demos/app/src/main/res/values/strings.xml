@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Android-About-Project</string>
+
+    <string name="runt_time_permission">Runtime Permission</string>
+    <string name="runt_time_permission_topic">通过发送和接收短信测试Runtime Permission</string>
+    <string name="rxPermissions_topic">RxPermissions lib demo</string>
+    <string name="send_message">Send message</string>
+    <string name="receive_message">Receive message</string>
+    <string name="send_receive_message">Send and receive message</string>
+    <string name="permission_rationale_4_send_message">Send message permission is needed to send message.</string>
+    <string name="permission_rationale_4_receive_message">Receive message permission is needed to receive message. </string>
+    <string name="permission_rationale_4_send_receive_message">Send and receive message are needed to use message. </string>
+    <string name="permission_rationale_4_permission_group_4_sms">SMS permission are needed to use message. </string>
+    <string name="permission_available_4_send_message">Send message permission has been granted. Message can be sent now.</string>
+    <string name="permission_available_4_receive_message">Receive message permission has been granted. Message can be received now. </string>
+    <string name="permission_available_4_send_receive_message">Send receive message permission has been granted. Message can be sent or received now. </string>
+    <string name="permission_available_4_permission_group_4_sms">SMS permissions have been granted. Message can be used now. </string>
+    <string name="permissions_not_granted">Permissions were not granted.</string>
+    <string name="request_permission_by_permission_group">Request SMS permission by permission_group</string>
+    <string name="min_api_4_group_permission">When use permission_group to request group permission, require API >= 23</string>
+    <string name="ok">OK</string>
+
+    <string name="screen">normal</string>
+    <string name="activity_disable_Rotate">Disable rotate</string>
+</resources>
