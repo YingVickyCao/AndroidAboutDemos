@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.hades.android.example.android_about_demos.R;
 
@@ -32,7 +31,7 @@ import com.hades.android.example.android_about_demos.R;
 public class SplashNotifyIconActivity extends Activity implements View.OnClickListener {
     private static final String TAG = SplashNotifyIconActivity.class.getSimpleName();
 
-    ImageView image;
+    //    ImageView image;
     View notifyContainer;
 
     @Override
@@ -42,8 +41,9 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
         setContentView(R.layout.activity_splash_notify_icon_layout);
 
         findViewById(R.id.startSplashNotifyIcon).setOnClickListener(this);
+        findViewById(R.id.changeViewVisibility).setOnClickListener(this);
         findViewById(R.id.stopSplashNotifyIcon).setOnClickListener(this);
-        image = findViewById(R.id.image);
+//        image = findViewById(R.id.image);
         notifyContainer = findViewById(R.id.notifyContainer);
     }
 
@@ -54,6 +54,10 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
                 startSplashNotifyIcon();
                 break;
 
+            case R.id.changeViewVisibility:
+                changeViewVisibility();
+                break;
+
             case R.id.stopSplashNotifyIcon:
                 stopSplashNotifyIcon();
                 break;
@@ -62,13 +66,22 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
 
     private void startSplashNotifyIcon() {
         Animation animation = getAnimation();
-        notifyContainer.setAnimation(animation);
-        image.startAnimation(animation);
+        /**
+         * ERROR：many times setAnimation， but only first time is work.
+         * Solution:
+         * setAnimation(animation)
+         * =>
+         * startAnimation(animation)
+         *
+         */
+        //
+        notifyContainer.startAnimation(animation);
+//        image.startAnimation(animation);
     }
 
     private void stopSplashNotifyIcon() {
         notifyContainer.clearAnimation();
-        image.clearAnimation();
+//        image.clearAnimation();
     }
 
     private int getAnimationId() {
@@ -87,6 +100,7 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
             @Override
             public void onAnimationEnd(Animation animation) {
                 Log.d(TAG, "onAnimationEnd: ");
+                stopSplashNotifyIcon();
 
             }
 
@@ -96,5 +110,22 @@ public class SplashNotifyIconActivity extends Activity implements View.OnClickLi
             }
         });
         return animation;
+    }
+
+    /**
+     * ERROR:setAnimation 后，setVisibility 没有效果
+     * 解决：
+     * 方案1：android:fillAfter="true" -> false
+     * 方案2：在setVisibility之前，设置View的mCurrentAnimation为null => onAnimationEnd(), invoke clearAnimation().
+     * <p>
+     * https://blog.csdn.net/liuhanhan512/article/details/42928669
+     * https://blog.csdn.net/u011060103/article/details/52876683
+     */
+    private void changeViewVisibility() {
+        if (View.GONE == notifyContainer.getVisibility()) {
+            notifyContainer.setVisibility(View.VISIBLE);
+        } else {
+            notifyContainer.setVisibility(View.GONE);
+        }
     }
 }
