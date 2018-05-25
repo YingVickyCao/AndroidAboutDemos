@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -15,9 +16,26 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+
+
+//configurations.all {
+//    resolutionStrategy.force 'com.android.support:support-annotations:26.0.2'
+//}
+//
+//allprojects {
+//    configurations {
+//        resolutionStrategy.force 'com.android.support:support-annotations:26.0.2'
+//    }
+//}
+
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:26.0.2'
 }
