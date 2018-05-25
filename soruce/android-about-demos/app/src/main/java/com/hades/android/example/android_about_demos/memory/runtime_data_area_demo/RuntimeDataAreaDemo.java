@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.memory;
+package com.hades.android.example.android_about_demos.memory.runtime_data_area_demo;
 
 public class RuntimeDataAreaDemo {
     public void test() {
