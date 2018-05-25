@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.3"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.hades.android.example.android_about_demos.dag_reorder_listview"
         minSdkVersion 21
@@ -25,9 +25,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.0.2'
+    implementation 'com.android.support:recyclerview-v7:26.0.2'
 
-    compile 'com.android.support:appcompat-v7:26.+'
     testImplementation 'junit:junit:4.12'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:26.0.2'
+    }
 }
