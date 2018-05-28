@@ -110,6 +110,7 @@ Java 语言中，在Java中，程序员基本不用去关心空间释放的问�
 - jvm虚拟机在完成类装载操作后，将class文件中的常量池载入到内存中，并保存在方法区中。  
 - 经常说的常量池，就是指方法区中的运行时常量池。     
 - 运行期间生成的。
+- 值是唯一的。
 
 ## 符号引用（Symbolic References）VS 直接引用  
 
@@ -131,6 +132,8 @@ javap -v RuntimeDataAreaDemo.class > RuntimeDataAreaDemo2.txt
 - 同一个符号引用在不同的虚拟机实例上翻译出来的直接引用一般不会相同。如果有了直接引用，那引用的目标必定已经被加载入内存中了。  
 
 ## RuntimeDataAreaDemo.java -> test()  
+- https://github.com/YingVickyCao/AndroidAboutDemos/blob/master/doc/java_memory.xlsx
+
 说明过程：
 1）编译期间，方法区中的静态常量池（.class文件中常量池）存储字面值和符号引用
 2）类装载后，拷贝静态常量池到运行时常量池  -> `4`
@@ -146,9 +149,15 @@ a的值是原始类型，从运行时常量池拷贝值到栈。
 
 5）s3 与 s1的不同： 
 1. 首先在Heap中new一块内存0x2005。 
-2. 检查“Helo“”是否在运行时常量池。如果在，则直接将Heap newed的地址0x2005指向运行时常量池中“Hello” 。如果不在，则先在运行时常量池写入“Hello”，然后将Heap创建的地址0x2005指向运行时常量池中“Hello” => 在运行时常量池。      
-3. 将Heap中newed的内存关联到 s3。 
+2. 检查“Helo“是否在运行时常量池。如果在，则直接入栈，出栈，传给构造方法。如果不在，则先在运行时常量池写入，然后再入栈，出栈，传给构造方法。    
+=> 在运行时常量池，入栈，出栈，传给构造方法（指向了运行时常量池）。     
+3. 执行string 构造方法。
+4. 将Heap中newed的内存关联到 s3。 
 
+## 总结： 
+- 基本类型的变量数据 放在栈里面。
+- 对象的引用 放在栈里面的。对象本身放在堆里面。
+- 显式的String常量放在常量池，String对象放在堆中。
 
 ## References:
 - JVM的内存区域划分 http://www.cnblogs.com/dolphin0520/p/3613043.html
