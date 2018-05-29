@@ -167,9 +167,15 @@ a的值是原始类型，从运行时常量池拷贝值到栈。
 - Java线程：线程栈模型与线程的变量 http://blog.51cto.com/lavasoft/99152
 - java -- JVM的符号引用和直接引用 https://www.cnblogs.com/shinubi/articles/6116993.html
 - 探秘Java中String、StringBuilder以及StringBuffer https://www.cnblogs.com/dolphin0520/p/3778589.html
+
 - java反汇编及JVM指令集 https://blog.csdn.net/sum_rain/article/details/39892219
-- JVM字节码之整型入栈指令(iconst、bipush、sipush、ldc)  https://www.cnblogs.com/luyanliang/p/5498584.html
-- Java虚拟机 ：Java字节码指令的执行 https://segmentfault.com/a/1190000003871183
-- 怎么理解JVM中的iload和istore指令 https://segmentfault.com/q/1010000008683475/a-1020000008688535
+- https://www.cnblogs.com/luyanliang/p/5498584.html
+- https://segmentfault.com/a/1190000003871183
+- https://segmentfault.com/q/1010000008683475/a-1020000008688535
+- http://tieba.baidu.com/p/2035063260  
+- http://kingj.iteye.com/blog/1451008
+- https://blog.csdn.net/chunyuan314/article/details/72857258
+- https://blog.csdn.net/sum_rain/article/details/39892219
+
 - 观察常量池：如何查看javap -v 类名
 - 指令 istore_1 , ldc

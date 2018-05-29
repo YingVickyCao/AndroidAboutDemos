@@ -186,8 +186,12 @@ TODO
 - Java杂谈4——Java中的字符串存储  https://www.cnblogs.com/yahokuma/p/3677576.html
 - Java中字符串内存位置浅析 https://www.cnblogs.com/holten/p/5782596.html
 - java中String和new String还有对象中的String字符串在内存中的存储   https://blog.csdn.net/penyoudi1/article/details/79163567
-- 指令码 助记符 说明  http://tieba.baidu.com/p/2035063260
-- 自制Java虚拟机（四）-对象、new、invokespecial  https://blog.csdn.net/chunyuan314/article/details/72857258
 - java clinit
-https://blog.csdn.net/u013309870/article/details/72975536
+https://blog.csdn.net/u013309870/article/details/72975536  
 https://www.cnblogs.com/diyunpeng/archive/2010/07/11/1775200.html
+- java class 文件常量区 https://blog.csdn.net/w3045872817/article/details/73251068  
+
+- 指令码 助记符 说明  http://tieba.baidu.com/p/2035063260  
+- http://kingj.iteye.com/blog/1451008
+- https://blog.csdn.net/chunyuan314/article/details/72857258
+- https://blog.csdn.net/sum_rain/article/details/39892219
