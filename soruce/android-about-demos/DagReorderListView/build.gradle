@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "com.hades.android.example.android_about_demos.dag_reorder_listview"
         minSdkVersion 21

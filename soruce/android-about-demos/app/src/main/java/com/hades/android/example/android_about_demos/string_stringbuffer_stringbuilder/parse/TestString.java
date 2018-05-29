@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.string_stringbuffer_stringbuilder;
+package com.hades.android.example.android_about_demos.string_stringbuffer_stringbuilder.parse;
 
 public class TestString {
     public void test() {

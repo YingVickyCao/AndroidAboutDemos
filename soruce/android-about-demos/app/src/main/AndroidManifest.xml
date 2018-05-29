@@ -20,10 +20,11 @@
         <!--<category android:name="android.intent.category.LAUNCHER"/>-->
         <!--</intent-filter>-->
         <!--</activity>-->
+
+        <activity android:name=".MainActivity"/>
       
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity"/>
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.lib.RxPermissionsTestActivity"/>
-
 
         <!-- Activity, start -->
 
