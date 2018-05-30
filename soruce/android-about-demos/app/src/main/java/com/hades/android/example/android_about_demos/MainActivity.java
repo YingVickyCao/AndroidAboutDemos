@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hades.android.example.android_about_demos.nested_scroll_view.NestedScrollViewHasRecycleViewFragment;
+import com.hades.android.example.android_about_demos.nested_scroll_view.ScrollViewAboveListViewFragment;
+import com.hades.android.example.android_about_demos.nested_scroll_view.ScrollViewHasListViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,18 +28,20 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.root, getTestFragment(), getTestFragmemtTag())
+                .replace(R.id.root, getTestFragment(), getTestFragmentTag())
                 .commit();
     }
 
     private Fragment getTestFragment() {
 //        return ScrollViewHasListViewFragment.newInstance();
         return NestedScrollViewHasRecycleViewFragment.newInstance();
+//        return ScrollViewAboveListViewFragment.newInstance();
     }
 
-    private String getTestFragmemtTag() {
+    private String getTestFragmentTag() {
 //        return ScrollViewHasListViewFragment.class.getSimpleName();
         return NestedScrollViewHasRecycleViewFragment.class.getSimpleName();
+//        return ScrollViewAboveListViewFragment.class.getSimpleName();
     }
 
 }
