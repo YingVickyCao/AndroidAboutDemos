@@ -1,10 +1,10 @@
 package com.hades.android.example.android_about_demos;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import com.hades.android.example.android_about_demos.string_stringbuffer_stringbuilder.test_append.TestAppend;
+import com.hades.android.example.android_about_demos.nested_scroll_view.NestedScrollViewHasRecycleViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,16 +13,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new TestAppend().test();
-                    }
-                }).start();
-            }
-        });
+//        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        new TestAppend().test();
+//                    }
+//                }).start();
+//            }
+//        });
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.root, getTestFragment(), getTestFragmemtTag())
+                .commit();
     }
+
+    private Fragment getTestFragment() {
+//        return ScrollViewHasListViewFragment.newInstance();
+        return NestedScrollViewHasRecycleViewFragment.newInstance();
+    }
+
+    private String getTestFragmemtTag() {
+//        return ScrollViewHasListViewFragment.class.getSimpleName();
+        return NestedScrollViewHasRecycleViewFragment.class.getSimpleName();
+    }
+
 }

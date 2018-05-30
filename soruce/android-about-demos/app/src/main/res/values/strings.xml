@@ -19,7 +19,31 @@
     <string name="request_permission_by_permission_group">Request SMS permission by permission_group</string>
     <string name="min_api_4_group_permission">When use permission_group to request group permission, require API >= 23</string>
     <string name="ok">OK</string>
-
     <string name="screen">normal</string>
     <string name="activity_disable_Rotate">Disable rotate</string>
+    <string name="big_size_view">Big size TextView</string>
+
+    <string-array name="list_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+    </string-array>
 </resources>
