@@ -187,6 +187,8 @@ a的值是原始类型，从运行时常量池拷贝值到栈。
 
 ## References:
 - JVM的内存区域划分 http://www.cnblogs.com/dolphin0520/p/3613043.html
+- https://www.cnblogs.com/xlyslr/p/5751039.html
+
 - Java常量池的大概理解  https://blog.csdn.net/qq_27093465/article/details/52033327
 - 深入讲解java中.class文件中的常量池 https://blog.csdn.net/w3045872817/article/details/73251068
 - Class文件中的常量池详解（上）https://blog.csdn.net/wangtaomtk/article/details/52267548
