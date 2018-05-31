@@ -123,15 +123,16 @@ Java 语言中，在Java中，程序员基本不用去关心空间释放的问�
 ## 符号引用（Symbolic References）VS 直接引用  
 
 ### 符号引用：
-- 指的是Class文件文件中的符号引用， 编译期
-`javac :编译`  
-`javap -c :反编译`   
-`javap -v :反编译， 观察常量池`
-``
+- 指的是Class文件文件中的符号引用， 编译期   
+- `javac :编译`  
+- `javap -c :反编译`   
+- `javap -v :反编译， 观察常量池`  
+
+```
 javac RuntimeDataAreaDemo.java
 javap -c RuntimeDataAreaDemo.class > RuntimeDataAreaDemo.txt
 javap -v RuntimeDataAreaDemo.class > RuntimeDataAreaDemo2.txt
-``
+```
 - 符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能够无歧义的定位到目标即可。
 - 各种虚拟机实现的内存布局可能有所不同，但是它们能接受的符号引用都是一致的，因为符号引用的字面量形式明确定义在Java虚拟机规范的Class文件格式中。
 
