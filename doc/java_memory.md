@@ -5,14 +5,31 @@
 - Java内存区域划分，事实上是指JVM内存区域划分。  
 - .class ：二进制字节码 ，可执行文件。
 
-![1](https://yingvickycao.github.io/img/java/java_application_process.jpg)
+![Java 程序执行过程](https://yingvickycao.github.io/img/java/java_application_process.jpg)
+
+![Java 程序执行过程](https://yingvickycao.github.io/img/java/java_application_process_2.png)
 
 如上图所示，首先Java源代码文件(.java后缀)会被Java编译器编译为字节码文件(.class后缀)，然后由JVM中的类加载器加载各个类的字节码文件，加载完毕之后，交由JVM执行引擎执行。    
 在整个程序执行过程中，JVM会用一段空间来存储程序执行期间需要用到的数据和相关信息，这段空间一般被称作为`Runtime Data Area（运行时数据区）`，也就是我们常说的JVM内存。      
 因此，在Java中常常说到的内存管理就是针对这段空间进行管理（如何分配和回收内存空间）。         
 
 总结：  
-`Runtime Data Area（运行时数据区）` = JVM内存  -> Java 内存管理     
+`Runtime Data Area（运行时数据区）` = JVM内存  -> Java 内存管理    
+
+### 类加载  
+![类加载](https://yingvickycao.github.io/img/java/class_load.png)
+
+- 顺序：类先初始化 -> 对象
+- 不是一次加载所有类，需要哪个类，再加载哪个类
+- 初始化触发时类加载的第一个阶段---加载阶段肯定已经完成了。  类初始化的触发时机定会触发整个类加载过程。
+
+#### 类初始化 VS 实例（对象）初始化
+类初始化 - 类加载过程,`init`
+实例初始化 - 创建实例时, `cliinit`
+
+### 五种情况将触发类初始化    - `new,getstatic,putstatic,invokestatic`   
+
+为了验证,先设置个基础类B，提供了一个静态字段，一个静态块。静态方法和静态块会在编译期汇集到`<clinit>`类初始化方法中，固可以用这个方法的运行结果引证类的初始化。   
 
 ## 线程与进程
 - 前提：讨论的是单进程。多进程更复杂，不讨论。  
