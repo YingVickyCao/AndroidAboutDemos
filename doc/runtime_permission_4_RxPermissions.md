@@ -4,7 +4,7 @@
 ## Add dependency
 `implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'`  
 
-## HUsage
+## Usage
 
 ```
 rxPermissions = new RxPermissions(this); // where this is an Activity instance
