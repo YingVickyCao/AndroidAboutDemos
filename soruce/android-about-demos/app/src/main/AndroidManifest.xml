@@ -58,6 +58,12 @@
         </receiver>
         <!-- END_RUNTIME_PERMISSION -->
 
+        <!-- APPLY_THEME_START -->
+        <activity android:name=".apply_theme.ThemeChoosePageAActivity" />
+        <activity android:name=".apply_theme.ThemeChoosePageBActivity" />
+
+        <!-- APPLY_THEME_END -->
+
     </application>
 
 </manifest>
