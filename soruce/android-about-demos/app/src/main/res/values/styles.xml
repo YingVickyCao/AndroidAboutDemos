@@ -29,6 +29,7 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+    <!-- APPLY_THEME_START -->
     <style name="AppTheme.Red">
         <item name="pageRootBg">@android:color/holo_red_dark</item>
     </style>
@@ -36,5 +37,6 @@
     <style name="AppTheme.Green">
         <item name="pageRootBg">@android:color/holo_green_dark</item>
     </style>
+    <!-- APPLY_THEME_END -->
 
 </resources>

@@ -15,8 +15,8 @@ public class ThemeChoosePageAActivity extends Activity {
         setTheme();
         setContentView(R.layout.theme_choose_page);
 
-        findViewById(R.id.setRedTheme).setOnClickListener(v -> setRedTheme());
-        findViewById(R.id.setGreenTheme).setOnClickListener(v -> setGreenTheme());
+        findViewById(R.id.setRedTheme).setOnClickListener(v -> doSetRedThemeBtnClick());
+        findViewById(R.id.setGreenTheme).setOnClickListener(v -> doSetGreenThemeBtnClick());
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
     }
 
@@ -25,7 +25,7 @@ public class ThemeChoosePageAActivity extends Activity {
         super.setContentView(layoutResID);
     }
 
-    protected void setRedTheme() {
+    protected void doSetRedThemeBtnClick() {
         boolean isRedTheme = SFMock.getInstance().isRedTheme();
         if (isRedTheme) {
             return;
@@ -35,7 +35,7 @@ public class ThemeChoosePageAActivity extends Activity {
         applyTheme();
     }
 
-    void setGreenTheme() {
+    void doSetGreenThemeBtnClick() {
         boolean isRedTheme = SFMock.getInstance().isRedTheme();
         if (!isRedTheme) {
             return;

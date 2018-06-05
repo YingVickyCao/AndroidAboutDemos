@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- APPLY_THEME_START -->
     <attr name="pageRootBg" format="reference" />
+    <!-- APPLY_THEME_END -->
 </resources>
