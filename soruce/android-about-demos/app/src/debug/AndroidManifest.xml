@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name=".runtime_permission.RxPermissionsTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

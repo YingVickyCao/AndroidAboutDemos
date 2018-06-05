@@ -1,18 +1,17 @@
-package com.hades.android.example.android_about_demos.runtime_permission.lib;
+package com.hades.android.example.android_about_demos.runtime_permission;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
-import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -67,7 +66,9 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
         rxPermissions.setLogging(true);
 
         findViewById(R.id.sendMessage).setOnClickListener(this);
+        findViewById(R.id.receiveMessage).setOnClickListener(this);
         findViewById(R.id.sendReceiveMessage).setOnClickListener(this);
+        findViewById(R.id.permissionGroup).setOnClickListener(this);
     }
 
     @Override
@@ -77,14 +78,93 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
                 sendMessage();
                 break;
 
+            case R.id.receiveMessage:
+                receiveMessage();
+                break;
+
             case R.id.sendReceiveMessage:
                 sendReceiveMessage();
+                break;
+
+            case R.id.permissionGroup:
+                permissionGroup();
                 break;
         }
     }
 
     private Activity getActivity() {
         return this;
+    }
+
+    private void showRequestPermissionRationale4PermissionGroup4SMS() {
+        Snackbar.make(mLayout, R.string.permission_rationale_4_permission_group_4_sms,
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.ok, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        requestGroupPermission4SMS();
+                    }
+                })
+                .show();
+    }
+
+    private void sendMessage() {
+        if (isLackSendMsgPermission()) {
+            requestSendMessagePermission();
+        } else {
+            doSendMessage();
+        }
+    }
+
+    private void receiveMessage() {
+        if (isLackReceiveMsgPermission()) {
+            requestReceiveMessagePermission();
+        }
+    }
+
+    private void permissionGroup() {
+        if (isLackSMSPermissionGroup()) {
+            requestSMSPermissionGroup();
+        }
+    }
+
+    private void requestSendMessagePermission() {
+        rxPermissions.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
+                if (shouldShowRequestPermissionRationale) {
+                    showRequestPermissionRationale4SendMessage();
+                } else {
+                    requestPermission4SendMessage();
+                }
+            }
+        });
+    }
+
+    private void requestReceiveMessagePermission() {
+        rxPermissions.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.RECEIVE_SMS).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
+                if (shouldShowRequestPermissionRationale) {
+                    showRequestPermissionRationale4ReceiveMessage();
+                } else {
+                    requestPermission4SendMessage();
+                }
+            }
+        });
+    }
+
+    private void requestSMSPermissionGroup() {
+        rxPermissions.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
+                if (shouldShowRequestPermissionRationale) {
+                    showRequestPermissionRationale4PermissionGroup4SMS();
+                } else {
+                    requestPermission4SendMessage();
+                }
+            }
+        });
     }
 
     private void showRequestPermissionRationale4SendMessage() {
@@ -111,22 +191,33 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
                 .show();
     }
 
-    private void sendMessage() {
-        Toast.makeText(this, "sendMessage", Toast.LENGTH_SHORT).show();
-        if (rxPermissions.isGranted(Manifest.permission.SEND_SMS)) {
-            return;
-        }
+    private void showRequestPermissionRationale4ReceiveMessage() {
+        Snackbar.make(mLayout, R.string.permission_rationale_4_receive_message,
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.ok, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        requestPermission4ReceiveMessage();
+                    }
+                })
+                .show();
+    }
 
-        rxPermissions.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
-                if (shouldShowRequestPermissionRationale) {
-                    showRequestPermissionRationale4SendMessage();
-                } else {
-                    requestPermission4SendMessage();
-                }
-            }
-        });
+    private boolean isLackSendMsgPermission() {
+        return !rxPermissions.isGranted(Manifest.permission.SEND_SMS);
+    }
+
+    private boolean isLackReceiveMsgPermission() {
+        return !rxPermissions.isGranted(Manifest.permission.RECEIVE_SMS);
+    }
+
+    private boolean isLackSMSPermissionGroup() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return !rxPermissions.isGranted(Manifest.permission_group.SMS);
+        } else {
+            Toast.makeText(this, R.string.min_api_4_group_permission, Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     private void sendReceiveMessage() {
@@ -135,7 +226,9 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
             return;
         }
 
-        rxPermissions.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS).subscribe(new Consumer<Boolean>() {
+        rxPermissions.shouldShowRequestPermissionRationale(getActivity()
+                , Manifest.permission.SEND_SMS
+                , Manifest.permission.RECEIVE_SMS).subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
                 if (shouldShowRequestPermissionRationale) {
@@ -175,8 +268,8 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
         });
     }
 
-    private void requestPermission4SendReceiveMessage() {
-        rxPermissions.request(Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS).subscribe(new Observer<Boolean>() {
+    private void requestPermission4ReceiveMessage() {
+        rxPermissions.request(Manifest.permission.SEND_SMS).subscribe(new Observer<Boolean>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
@@ -184,7 +277,8 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
             @Override
             public void onNext(Boolean granted) {
                 if (granted) {
-                    showPermissionAvailable4SendReceiveMessage();
+                    doSendMessage();
+                    showPermissionAvailable4ReceiveMessage();
                 } else {
                     showPermissionsNotGranted();
                 }
@@ -202,28 +296,81 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
         });
     }
 
-    private void requestPermission4SendReceiveMessage2() {
-        rxPermissions.requestEach(Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS)//权限名称，多个权限之间逗号分隔开
-                .subscribe(new Consumer<Permission>() {
+
+    private void requestPermission4SendReceiveMessage() {
+        rxPermissions.request(Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS)
+                .subscribe(new Observer<Boolean>() {
                     @Override
-                    public void accept(Permission permission) throws Exception {
-                        Log.e(TAG, "{accept}permission.name=" + permission.name);
-                        Log.e(TAG, "{accept}permission.granted=" + permission.granted);
-                        if (permission.name.equals(Manifest.permission.SEND_SMS) && permission.granted) {
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Boolean granted) {
+                        if (granted) {
                             showPermissionAvailable4SendReceiveMessage();
                         } else {
                             showPermissionsNotGranted();
                         }
                     }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
                 });
+    }
+
+    private void requestGroupPermission4SMS() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            rxPermissions.request(Manifest.permission_group.SMS)
+                    .subscribe(new Observer<Boolean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                        }
+
+                        @Override
+                        public void onNext(Boolean granted) {
+                            if (granted) {
+                                showPermissionAvailable4PermissionGroup4SMS();
+                            } else {
+                                showPermissionsNotGranted();
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        } else {
+            Toast.makeText(this, R.string.min_api_4_group_permission, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showPermissionAvailable4SendMessage() {
         Toast.makeText(this, R.string.permission_available_4_send_message, Toast.LENGTH_SHORT).show();
     }
 
+    private void showPermissionAvailable4ReceiveMessage() {
+        Toast.makeText(this, R.string.permission_available_4_receive_message, Toast.LENGTH_SHORT).show();
+    }
+
     private void showPermissionAvailable4SendReceiveMessage() {
         Toast.makeText(this, R.string.permission_available_4_send_receive_message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showPermissionAvailable4PermissionGroup4SMS() {
+        Toast.makeText(this, R.string.permission_available_4_permission_group_4_sms, Toast.LENGTH_SHORT).show();
     }
 
     private void showPermissionsNotGranted() {

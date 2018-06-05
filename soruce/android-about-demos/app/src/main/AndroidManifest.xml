@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hades.android.example.android_about_demos">
+    package="com.hades.android.example.android_about_demos">
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -21,10 +21,7 @@
         <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name=".MainActivity"/>
-      
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity"/>
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.lib.RxPermissionsTestActivity"/>
+        <activity android:name=".MainActivity" />
 
         <!-- Activity, start -->
 
@@ -34,29 +31,32 @@
 
         <activity
             android:name=".app_component.activity.lifecycle.A"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation" />
 
-        <activity android:name=".app_component.activity.lifecycle.B"/>
+        <activity android:name=".app_component.activity.lifecycle.B" />
 
         <activity
             android:name=".app_component.activity.lifecycle.TranslucentB"
-            android:theme="@android:style/Theme.Translucent"/>
+            android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name=".app_component.activity.lifecycle.FloatB"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
-        <activity android:name=".app_component.activity.lifecycle.C"/>
-        <activity android:name=".app_component.activity.lifecycle.DisableRotateActivity"/>
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".app_component.activity.lifecycle.C" />
+        <activity android:name=".app_component.activity.lifecycle.DisableRotateActivity" />
         <!-- Activity lifecycle, end -->
         <!-- Activity, end -->
 
-
+        <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
+        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
+        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
+
         <receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">
             <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+        <!-- END_RUNTIME_PERMISSION -->
 
     </application>
 

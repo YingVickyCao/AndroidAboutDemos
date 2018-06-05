@@ -15,6 +15,12 @@ buildscript {
 
 allprojects {
     repositories {
+        // 默认本地仓库
+        mavenLocal()
+
+        // 自定义本地仓库
+//        maven{url }
+
         jcenter()
         google()
     }
