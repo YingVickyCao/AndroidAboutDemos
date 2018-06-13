@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".widget.TestWidgetActivity">
+        <activity android:name=".widget.ViewSwitcherFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
