@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.widget.fragment.RatingBarFragment;
+import com.hades.android.example.android_about_demos.widget.fragment.ViewSwitcherFragment;
 
 public class TestWidgetActivity extends Activity implements View.OnClickListener {
     private ScrollView mScrollView;
@@ -20,12 +22,13 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
+        showBtns();
 
         findViewById(R.id.show).setOnClickListener(this);
         findViewById(R.id.hide).setOnClickListener(this);
 
         findViewById(R.id.jumpRatingBar).setOnClickListener(this);
-        showBtns();
+        findViewById(R.id.jumpViewSwitcher).setOnClickListener(this);
     }
 
     @Override
@@ -41,6 +44,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
             case R.id.jumpRatingBar:
                 jumpRatingBarFragment();
+                break;
+
+            case R.id.jumpViewSwitcher:
+                jumpViewSwitcherFragment();
                 break;
 
         }
@@ -63,5 +70,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void jumpRatingBarFragment() {
         showFragment(RatingBarFragment.newInstance(), RatingBarFragment.class.getSimpleName());
+    }
+
+    private void jumpViewSwitcherFragment() {
+        showFragment(ViewSwitcherFragment.newInstance(), ViewSwitcherFragment.class.getSimpleName());
     }
 }

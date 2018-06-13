@@ -60,4 +60,5 @@
     <string name="hide">Hide</string>
     <string name="prev">Prev</string>
     <string name="next">Next</string>
+    <string name="view_switcher">ViewSwitcher</string>
 </resources>

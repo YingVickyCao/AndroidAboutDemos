@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget;
+package com.hades.android.example.android_about_demos.widget.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;

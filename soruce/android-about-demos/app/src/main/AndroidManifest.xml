@@ -64,6 +64,8 @@
 
         <!-- APPLY_THEME_END -->
 
+        <activity android:name=".widget.TestWidgetActivity"/>
+
     </application>
 
 </manifest>
