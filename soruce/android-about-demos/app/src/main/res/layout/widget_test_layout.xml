@@ -50,6 +50,11 @@
                     android:id="@+id/jumpViewSwitcher"
                     style="@style/btn.small"
                     android:text="@string/view_switcher" />
+
+                <Button
+                android:id="@+id/jumpImageSwitcher"
+                style="@style/btn.small"
+                android:text="@string/image_switcher" />
             </LinearLayout>
         </ScrollView>
 

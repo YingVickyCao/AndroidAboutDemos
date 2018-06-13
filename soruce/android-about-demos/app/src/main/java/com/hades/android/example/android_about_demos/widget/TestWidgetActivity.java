@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.widget.fragment.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.fragment.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.fragment.ViewSwitcherFragment;
 
@@ -29,6 +30,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
         findViewById(R.id.jumpRatingBar).setOnClickListener(this);
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(this);
+        findViewById(R.id.jumpImageSwitcher).setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
             case R.id.jumpViewSwitcher:
                 jumpViewSwitcherFragment();
+                break;
+
+            case R.id.jumpImageSwitcher:
+                jumpImageSwitcherFragment();
                 break;
 
         }
@@ -74,5 +80,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void jumpViewSwitcherFragment() {
         showFragment(ViewSwitcherFragment.newInstance(), ViewSwitcherFragment.class.getSimpleName());
+    }
+
+    private void jumpImageSwitcherFragment() {
+        showFragment(ImageSwitcherFragment.newInstance(), ImageSwitcherFragment.class.getSimpleName());
     }
 }
