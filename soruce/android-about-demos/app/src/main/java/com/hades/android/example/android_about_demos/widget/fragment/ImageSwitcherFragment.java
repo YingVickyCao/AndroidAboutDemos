@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.ViewSwitcher.ViewFactory;
 
 import com.hades.android.example.android_about_demos.R;
 
@@ -18,7 +17,7 @@ import com.hades.android.example.android_about_demos.R;
  * ImageSwitcher
  * 一个左右滑动浏览图片的Demo
  */
-public class ImageSwitcherFragment extends Fragment implements ViewFactory {
+public class ImageSwitcherFragment extends Fragment {
 
     private ImageSwitcher imageSwicher;
 
@@ -39,18 +38,22 @@ public class ImageSwitcherFragment extends Fragment implements ViewFactory {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main, container, false);
+        View view = inflater.inflate(R.layout.widget_image_switcher, container, false);
 
-        imageSwicher = (ImageSwitcher) view.findViewById(R.id.imageSwicher);
-        // 为ImageSwicher设置Factory，用来为ImageSwicher制造ImageView
-        imageSwicher.setFactory(this);
-        // 设置ImageSwitcher左右滑动事件
+        imageSwicher = view.findViewById(R.id.imageSwicher);
+        /**
+         * ImageSwitcher 设置Factory，使用makeView（）返回 ImageView
+         */
+        imageSwicher.setFactory(this::makeView2);
+
+        /**
+         * 设置ImageSwitcher左右滑动事件
+         */
         imageSwicher.setOnTouchListener(this::onTouch2);
         return view;
     }
 
-    @Override
-    public View makeView() {
+    public View makeView2() {
         ImageView imageView = new ImageView(getActivity());
         imageView.setImageResource(arrayPictures[pictureIndex]);
         return imageView;
@@ -68,7 +71,10 @@ public class ImageSwitcherFragment extends Fragment implements ViewFactory {
             if (touchUpX - touchDownX > 100) {
                 // 取得当前要看的图片的index
                 pictureIndex = pictureIndex == 0 ? arrayPictures.length - 1 : pictureIndex - 1;
-                // 设置图片切换的动画
+
+                /**
+                 * 设置图片切换的动画
+                 */
                 imageSwicher.setInAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_in_left));
                 imageSwicher.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_out_right));
 
@@ -79,13 +85,17 @@ public class ImageSwitcherFragment extends Fragment implements ViewFactory {
             } else if (touchDownX - touchUpX > 100) {
                 // 取得当前要看的图片的index
                 pictureIndex = pictureIndex == arrayPictures.length - 1 ? 0 : pictureIndex + 1;
-                // 设置图片切换的动画
-                // 由于Android没有提供slide_out_left和slide_in_right，所以仿照slide_in_left和slide_out_right编写了slide_out_left和slide_in_right
-                imageSwicher.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_out_left));
-                imageSwicher.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
+                /**
+                     * 设置图片切换的动画
+                     * 由于Android没有提供slide_out_left和slide_in_right，所以仿照slide_in_left和slide_out_right编写了slide_out_left_2和slide_in_right_2
+                     */
+                    imageSwicher.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_out_left_2));
+                    imageSwicher.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right_2));
 
-                // 设置当前要看的图片
-                imageSwicher.setImageResource(arrayPictures[pictureIndex]);
+                    /**
+                     * 设置当前要看的图片
+                     */
+                    imageSwicher.setImageResource(arrayPictures[pictureIndex]);
 
             }
             return true;
