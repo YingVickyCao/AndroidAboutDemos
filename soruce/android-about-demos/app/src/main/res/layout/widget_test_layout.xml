@@ -52,9 +52,14 @@
                     android:text="@string/view_switcher" />
 
                 <Button
-                android:id="@+id/jumpImageSwitcher"
-                style="@style/btn.small"
-                android:text="@string/image_switcher" />
+                    android:id="@+id/jumpImageSwitcher"
+                    style="@style/btn.small"
+                    android:text="@string/image_switcher" />
+
+                <Button
+                    android:id="@+id/jumpTextSwitcher"
+                    style="@style/btn.small"
+                    android:text="@string/text_switcher" />
             </LinearLayout>
         </ScrollView>
 

@@ -55,3 +55,4 @@ imageSwicher.setImageResource(arrayPictures[pictureIndex]);
 ```
 ## References：
 - Android中ImageSwitcher详解 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0305/966.html
+- ViewAnimator https://github.com/YingVickyCao/AndroidAboutDemos/blob/master/doc/widget/ViewAnimator.md

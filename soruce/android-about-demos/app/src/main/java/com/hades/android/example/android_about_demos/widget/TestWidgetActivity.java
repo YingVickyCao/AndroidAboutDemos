@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.widget.fragment.ImageSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.fragment.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.fragment.RatingBarFragment;
-import com.hades.android.example.android_about_demos.widget.fragment.ViewSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.fragment.view_animator.TextSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.fragment.view_animator.ViewSwitcherFragment;
 
 public class TestWidgetActivity extends Activity implements View.OnClickListener {
     private ScrollView mScrollView;
@@ -31,6 +32,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.jumpRatingBar).setOnClickListener(this);
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(this);
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(this);
+        findViewById(R.id.jumpTextSwitcher).setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +56,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
             case R.id.jumpImageSwitcher:
                 jumpImageSwitcherFragment();
+                break;
+
+            case R.id.jumpTextSwitcher:
+                jumpTextSwitcher();
                 break;
 
         }
@@ -84,5 +90,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void jumpImageSwitcherFragment() {
         showFragment(ImageSwitcherFragment.newInstance(), ImageSwitcherFragment.class.getSimpleName());
+    }
+
+    private void jumpTextSwitcher() {
+        showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
     }
 }

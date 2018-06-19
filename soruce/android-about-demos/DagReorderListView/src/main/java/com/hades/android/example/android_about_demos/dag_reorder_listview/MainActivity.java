@@ -93,8 +93,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
 
             @Override
             public boolean isLongPressDragEnabled() {
-                //是否可拖拽
-                return false;
+                return true;
             }
 
             @Override

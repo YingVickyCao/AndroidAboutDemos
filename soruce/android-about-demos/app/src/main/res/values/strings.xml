@@ -62,4 +62,5 @@
     <string name="next">Next</string>
     <string name="view_switcher">ViewSwitcher</string>
     <string name="image_switcher">ImageSwitcher</string>
+    <string name="text_switcher">TextSwitcher</string>
 </resources>
