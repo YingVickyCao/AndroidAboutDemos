@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget.fragment;
+package com.hades.android.example.android_about_demos.widget.fragment.view_animator;
 
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;

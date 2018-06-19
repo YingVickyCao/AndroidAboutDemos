@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget.fragment;
+package com.hades.android.example.android_about_demos.widget.fragment.view_animator;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class ImageSwitcherFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_image_switcher, container, false);
+        View view = inflater.inflate(R.layout.widget_imageswitcher, container, false);
 
         imageSwicher = view.findViewById(R.id.imageSwicher);
         /**
