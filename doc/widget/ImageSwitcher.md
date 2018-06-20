@@ -1,19 +1,20 @@
 # ImageSwitcher
+使用动画切换 `ImageView`
 
 - `ImageSwitcherFragment.java`
 
 ## 说明
 - ImageSwitcher使用工厂模式创建需要的ImageView。
-- ImageSwitcher提供了一个ViewFactory，该ViewFactory生成的 View 组件必须是 ImageView。
-- 切换图片时，调用ImageSwitcher 的 setImageDrawable()/setImageResource()/setImageURI(Uri uri) 更换图片。
+- `ImageSwitcher` 提供了一个`ViewFactory`，该`ViewFactory`使用`makeView()`生成的 View 组件必须是 `ImageView`。
+- 切换图片时，调用`ImageSwitcher` 的 `setImageDrawable()/setImageResource()/setImageURI(Uri uri)` 更换图片。
 
 - ImageSwitcher VS ImageView：  
 相同点：均用于显示图片
-不同点：ImageSwitcher可指定切换图片时的动态效果，效果更炫。
+不同点：ImageSwitcher可指定切换图片时的动画效果，效果更炫。
 
 ## Common Funcs
 
-- `imageSwicher.setFactory()`  
+- `imageSwicher.setFactory()` // setFactory(ViewFactory factory)  
 - `imageSwicher.setOnTouchListener(this::onTouch2)`
 - `imageSwicher.setInAnimation()`
 - `imageSwicher.setOutAnimation()`
