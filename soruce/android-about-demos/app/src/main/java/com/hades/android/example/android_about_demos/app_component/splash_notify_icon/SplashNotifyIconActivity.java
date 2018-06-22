@@ -28,6 +28,12 @@ import com.hades.android.example.android_about_demos.R;
  * https://www.jianshu.com/p/ff634a3ce107
  * https://blog.csdn.net/shibin1990_/article/details/51602498
  */
+
+/**
+ * Splash 3 times
+ * Type 1 : = > Animation, alpha .
+ * 这种方式在有些手机上有问题，多次点击后，再点击就没有反映了。
+ */
 public class SplashNotifyIconActivity extends Activity implements View.OnClickListener {
     private static final String TAG = SplashNotifyIconActivity.class.getSimpleName();
 
