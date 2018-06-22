@@ -11,7 +11,7 @@
         <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name=".app_component.fragment.qa_swipe_whole_page.QA4WrongSwipeWhoPageInPageActivity">
+        <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

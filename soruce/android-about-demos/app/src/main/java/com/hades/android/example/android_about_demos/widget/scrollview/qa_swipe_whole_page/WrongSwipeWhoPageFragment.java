@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.fragment.qa_swipe_whole_page;
+package com.hades.android.example.android_about_demos.widget.scrollview.qa_swipe_whole_page;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 
 import com.hades.android.example.android_about_demos.R;
 
-public class QA4WrongSwipeWhoPageInPageFragment extends Fragment {
-    public static QA4WrongSwipeWhoPageInPageFragment newInstance() {
-        return new QA4WrongSwipeWhoPageInPageFragment();
+public class WrongSwipeWhoPageFragment extends Fragment {
+    public static WrongSwipeWhoPageFragment newInstance() {
+        return new WrongSwipeWhoPageFragment();
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_qa_swipe_whole_page_4_fragment_content, container, false);
+        return inflater.inflate(R.layout.widget_scrollview_qa_wrong_swipe_whole_page_4_fragment, container, false);
     }
 }

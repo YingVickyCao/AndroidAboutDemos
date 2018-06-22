@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.fragment.qa_swipe_whole_page;
+package com.hades.android.example.android_about_demos.widget.scrollview.qa_swipe_whole_page;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -8,15 +8,15 @@ import android.view.View;
 
 import com.hades.android.example.android_about_demos.R;
 
-public class QA4WrongSwipeWhoPageInPageActivity extends Activity implements View.OnClickListener {
+public class WrongSwipeWhoPageActivity extends Activity implements View.OnClickListener {
     View mContent;
     View mFragmentRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_qa_swipe_whole_page);
-        setContentView(R.layout.fragment_qa_swipe_whole_page_after);
+//        setContentView(R.layout.widget_scrollview_qa_wrong_swipe_whole_page);
+        setContentView(R.layout.widget_scrollview_qa_wrong_swipe_whole_page_after);
 
         mContent = findViewById(R.id.content);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
@@ -57,7 +57,7 @@ public class QA4WrongSwipeWhoPageInPageActivity extends Activity implements View
 
     private void openDetailFragment() {
         showDetailFragmentContainer();
-        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, QA4WrongSwipeWhoPageInPageFragment.newInstance(), QA4WrongSwipeWhoPageInPageFragment.class.getSimpleName()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, WrongSwipeWhoPageFragment.newInstance(), WrongSwipeWhoPageFragment.class.getSimpleName()).commit();
     }
 
     private void removeDetailFragment() {
