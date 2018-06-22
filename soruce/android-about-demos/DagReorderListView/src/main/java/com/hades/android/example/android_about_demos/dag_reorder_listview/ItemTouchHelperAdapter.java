@@ -38,23 +38,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.info.setText(bean.getInfo());
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
-//        holder.check.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
-//        holder.info.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
-
-        holder.check.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                updateCheckStatus(bean, position);
-            }
-            // when return back, no background action.
-            return false;
-        });
-
-//        holder.info.setOnTouchListener((v, event) -> {
-//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                Toast.makeText(v.getContext(), "[info]Click " + msg.getId(), Toast.LENGTH_SHORT).show();
-//            }
-//            return false;
-//        });
+        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
+        holder.root.setOnLongClickListener(v -> true);
 
         holder.drag.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -67,10 +52,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     }
 
-    private void updateCheckStatus(final Message bean, int position) {
+    private void updateCheckStatus(final Message bean) {
         bean.setChecked(!bean.isChecked());
         notifyDataSetChanged();
-//        notifyItemChanged(position);
     }
 
     @Override
@@ -105,15 +89,15 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             check = itemView.findViewById(R.id.check);
         }
 
-        //       QA: onItemSelected - show item view bg when drag dragBtn
+        // QA: onItemSelected - show item view bg when drag dragBtn
         @Override
         public void onItemSelected() {
-            root.setBackgroundResource(android.R.color.holo_green_dark);
+            root.setBackgroundResource(R.color.item_view_highlight_bg);
         }
 
         @Override
         public void onItemClear() {
-            root.setBackgroundResource(android.R.color.transparent);
+            root.setBackgroundResource(R.drawable.item_view_selected_status);
         }
     }
 
