@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="100"
+    android:fromAlpha="1.0"
+    android:fillBefore="false"
+    android:fillAfter="false"
+    android:repeatCount="2"
+    android:toAlpha="0" /><!-- android:repeatCount="2" -> 实际上会闪三下--><!--android:fillAfter="true"    -->
+
+    <!--android:fillBefore="true"-->

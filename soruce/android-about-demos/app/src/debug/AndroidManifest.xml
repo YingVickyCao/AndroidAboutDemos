@@ -3,15 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-
-        <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity">
+        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

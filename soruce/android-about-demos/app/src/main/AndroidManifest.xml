@@ -66,6 +66,10 @@
 
         <activity android:name=".widget.TestWidgetActivity" />
 
+        <!-- SPLASH_NOTIFY_ICON_START -->
+        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity" />
+        <!-- SPLASH_NOTIFY_ICON_END -->
+
         <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <!-- END_SCROLL_VIEW -->

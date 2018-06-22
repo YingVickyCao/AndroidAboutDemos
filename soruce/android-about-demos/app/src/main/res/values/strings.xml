@@ -21,6 +21,9 @@
     <string name="ok">OK</string>
     <string name="screen">normal</string>
     <string name="activity_disable_Rotate">Disable rotate</string>
+    <string name="change_view_visibility">Change view visibility</string>
+    <string name="start_splash_notify_icon">start splash notify icon</string>
+    <string name="stop_splash_notify_icon">stop splash notify icon</string>
     <string name="big_size_view">Big size TextView</string>
 
     <string-array name="list_data">
