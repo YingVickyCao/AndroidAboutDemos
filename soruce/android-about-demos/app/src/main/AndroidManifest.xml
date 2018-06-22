@@ -66,9 +66,9 @@
 
         <activity android:name=".widget.TestWidgetActivity" />
 
-        <!-- START_FRAGMENT -->
+        <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
-        <!-- END_FRAGMENT -->
+        <!-- END_SCROLL_VIEW -->
     </application>
 
 </manifest>
