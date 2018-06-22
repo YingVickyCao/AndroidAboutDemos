@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
     private void initData() {
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
-            list.add(new Message(String.valueOf(i + 1), String.valueOf(System.currentTimeMillis()), "Message of " + (i + 1), R.drawable.ic_launcher_round));
+            list.add(new Message(String.valueOf(i + 1), "Message of " + (i + 1), R.drawable.ic_launcher_round));
         }
     }
 
