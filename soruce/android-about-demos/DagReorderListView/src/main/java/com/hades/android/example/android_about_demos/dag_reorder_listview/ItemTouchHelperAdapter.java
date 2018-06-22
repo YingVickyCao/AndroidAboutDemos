@@ -69,7 +69,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     private void updateCheckStatus(final Message bean, int position) {
         bean.setChecked(!bean.isChecked());
-        notifyItemChanged(position);
+        notifyDataSetChanged();
+//        notifyItemChanged(position);
     }
 
     @Override
