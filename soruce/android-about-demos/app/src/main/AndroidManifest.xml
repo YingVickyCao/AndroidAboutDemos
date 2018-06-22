@@ -21,9 +21,7 @@
         <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.lib.RxPermissionsTestActivity" />
-
+        <activity android:name=".MainActivity" />
 
         <!-- Activity, start -->
 
@@ -48,18 +46,33 @@
         <!-- Activity lifecycle, end -->
         <!-- Activity, end -->
 
-
+        <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
+        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
+        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
+
         <receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">
             <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+        <!-- END_RUNTIME_PERMISSION -->
+
+        <!-- APPLY_THEME_START -->
+        <activity android:name=".apply_theme.ThemeChoosePageAActivity" />
+        <activity android:name=".apply_theme.ThemeChoosePageBActivity" />
+
+        <!-- APPLY_THEME_END -->
+
+        <activity android:name=".widget.TestWidgetActivity" />
 
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity" />
         <!-- SPLASH_NOTIFY_ICON_END -->
 
+        <!-- START_SCROLL_VIEW -->
+        <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
+        <!-- END_SCROLL_VIEW -->
     </application>
 
 </manifest>

@@ -21,8 +21,28 @@
         <item name="android:layout_marginTop">5dp</item>
     </style>
 
-    <style name="btn.red">
+    <style name="btn.small.red">
         <item name="android:background">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="btn.small">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <!-- APPLY_THEME_START -->
+    <style name="AppTheme.Red">
+        <item name="pageRootBg">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="AppTheme.Green">
+        <item name="pageRootBg">@android:color/holo_green_dark</item>
+    </style>
+    <!-- APPLY_THEME_END -->
+
+    <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:maxHeight">48dip</item>
     </style>
 
 </resources>

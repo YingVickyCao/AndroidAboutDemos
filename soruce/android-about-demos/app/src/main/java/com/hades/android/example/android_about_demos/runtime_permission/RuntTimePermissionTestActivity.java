@@ -243,9 +243,26 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
                 .show();
     }
 
+    private boolean shouldShowRequestPermissionRationale4SendMessage() {
+        return ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.SEND_SMS);
+    }
+
+    private boolean shouldShowRequestPermissionRationale4ReceiveMessage() {
+        return ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.RECEIVE_SMS);
+    }
+
+    private boolean shouldShowRequestPermissionRationale4SendReceiveMessage() {
+        return ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.SEND_SMS)
+                && ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.RECEIVE_SMS);
+    }
+
+    private boolean shouldShowRequestPermissionRationale4SMSGroup() {
+        return ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission_group.SMS);
+    }
+
     private void requestSendMessagePermission() {
         // Should we show an explanation?
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.SEND_SMS)) {
+        if (shouldShowRequestPermissionRationale4SendMessage()) {
             // Show an explanation to the user *asynchronously* -- don't block this thread waiting for the user's response!
             // After the user sees the explanation, try again to request the permission.
             Log.d(TAG, "Displaying sendMessage permission rationale to provide additional context.");
@@ -257,7 +274,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
     }
 
     private void requestReceiveMessagePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.RECEIVE_SMS)) {
+        if (shouldShowRequestPermissionRationale4ReceiveMessage()) {
             Log.d(TAG, "Displaying receiveMessage permission rationale to provide additional context.");
             showRequestPermissionRationale4ReceiveMessage();
         } else {
@@ -266,7 +283,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
     }
 
     private void requestSendReceiveMessagePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission_group.SMS)) {
+        if (shouldShowRequestPermissionRationale4SendReceiveMessage()) {
             Log.d(TAG, "Displaying send and receive message permission rationale to provide additional context.");
             showRequestPermissionRationale4SendReceiveMessage();
         } else {
@@ -275,7 +292,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
     }
 
     private void requestSMSPermissionGroup() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission_group.SMS)) {
+        if (shouldShowRequestPermissionRationale4SMSGroup()) {
             Log.d(TAG, "Displaying SMS permission rationale to provide additional context.");
             showRequestPermissionRationale4PermissionGroup4SMS();
         } else {
