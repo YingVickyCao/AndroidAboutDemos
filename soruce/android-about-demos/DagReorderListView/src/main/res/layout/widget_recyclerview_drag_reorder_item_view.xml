@@ -1,29 +1,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="false"
-    android:focusable="false"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical">
+
+    <!-- QA: no action -->
+    <!--android:background="?android:attr/selectableItemBackground"-->
+    <!--android:foreground="?android:attr/selectableItemBackground"-->
+
+    <!-- android:background="@drawable/item_view_selected_status_drawable" -->
+    <!-- android:foreground="@drawable/item_view_selected_status_drawable" -->
+    <!-- Let android:foreground  enable, must set android:clickable="true" , or has onClick event -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="false"
-        android:focusable="false"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/ic_launcher_round"
-            android:focusable="false" />
+            android:background="@drawable/ic_launcher_round" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:clickable="false"
-            android:focusable="false"
             android:orientation="horizontal">
 
             <TextView
@@ -31,16 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:clickable="false"
-                android:focusable="false"
                 android:gravity="center"
                 android:textColor="#000000" />
 
-            <!-- QA: Only drag btn can drag?
-            add other views below values:
-            android:clickable="false"
-            android:focusable="false"
-            -->
             <Button
                 android:id="@+id/drag"
                 android:layout_width="wrap_content"
@@ -55,6 +52,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/holo_green_light"
-        android:clickable="false" />
+        android:background="@android:color/holo_green_light" />
 </LinearLayout>

@@ -47,7 +47,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             }
             return false;
         });
-
     }
 
     @Override
@@ -69,12 +68,14 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
+        private View root;
         private TextView info;
         private Button drag;
         private ImageView icon;
 
         MyViewHolder(View itemView) {
             super(itemView);
+            root = itemView.findViewById(R.id.root);
             info = itemView.findViewById(R.id.info);
             drag = itemView.findViewById(R.id.drag);
             icon = itemView.findViewById(R.id.icon);
