@@ -1,29 +1,30 @@
 package com.hades.android.example.android_about_demos.dag_reorder_listview;
 
-public class Message { ;
+public class Message {
     private String info;
     private int id;
+    private boolean isChecked;
 
 
-    public Message(String info, int id) {
+    public Message(String info, int id, boolean isChecked) {
         this.info = info;
         this.id = id;
+        this.isChecked = isChecked;
     }
-
 
     public String getInfo() {
         return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }

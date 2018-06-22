@@ -8,12 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.MyViewHolder> implements IItemTouchHelperAdapter {
+public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemViewHolder> implements IItemTouchHelperAdapter {
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
     List<Message> list;
@@ -28,16 +27,34 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_drag_reorder_item_view, parent, false);
-        return new MyViewHolder(view);
+        return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Message msg = list.get(position);
-        holder.info.setText(msg.getInfo());
-        holder.icon.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
+    public void onBindViewHolder(final ItemViewHolder holder, int position) {
+        Message bean = list.get(position);
+        holder.info.setText(bean.getInfo());
+        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
+
+//        holder.check.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
+//        holder.info.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
+
+        holder.check.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                updateCheckStatus(bean, position);
+            }
+            // when return back, no background action.
+            return false;
+        });
+
+//        holder.info.setOnTouchListener((v, event) -> {
+//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                Toast.makeText(v.getContext(), "[info]Click " + msg.getId(), Toast.LENGTH_SHORT).show();
+//            }
+//            return false;
+//        });
 
         holder.drag.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -47,6 +64,12 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             }
             return false;
         });
+
+    }
+
+    private void updateCheckStatus(final Message bean, int position) {
+        bean.setChecked(!bean.isChecked());
+        notifyItemChanged(position);
     }
 
     @Override
@@ -67,18 +90,29 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         notifyItemRemoved(position);
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder {
+    static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
         private View root;
         private TextView info;
         private Button drag;
-        private ImageView icon;
+        private ImageView check;
 
-        MyViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.root);
             info = itemView.findViewById(R.id.info);
             drag = itemView.findViewById(R.id.drag);
-            icon = itemView.findViewById(R.id.icon);
+            check = itemView.findViewById(R.id.check);
+        }
+
+        //       QA: onItemSelected - show item view bg when drag dragBtn
+        @Override
+        public void onItemSelected() {
+            root.setBackgroundResource(android.R.color.holo_green_dark);
+        }
+
+        @Override
+        public void onItemClear() {
+            root.setBackgroundResource(android.R.color.transparent);
         }
     }
 

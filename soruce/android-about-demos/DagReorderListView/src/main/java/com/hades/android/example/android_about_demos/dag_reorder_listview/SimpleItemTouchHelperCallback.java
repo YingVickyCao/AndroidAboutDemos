@@ -84,4 +84,22 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public boolean isItemViewSwipeEnabled() {
         return false;
     }
+
+    @Override
+    public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+        super.onSelectedChanged(viewHolder, actionState);
+
+        if (viewHolder instanceof IItemTouchHelperViewHolder) {
+            ((IItemTouchHelperViewHolder) viewHolder).onItemSelected();
+        }
+    }
+
+    @Override
+    public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        super.clearView(recyclerView, viewHolder);
+
+        if (viewHolder instanceof IItemTouchHelperViewHolder) {
+            ((IItemTouchHelperViewHolder) viewHolder).onItemClear();
+        }
+    }
 }

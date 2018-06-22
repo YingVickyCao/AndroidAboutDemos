@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements StartDragListener
         initData();
 
         rv = findViewById(R.id.rv);
-//                rv.addItemDecoration(new MyDecoration(this, LinearLayoutManager.VERTICAL, R.drawable.divider));
+//                rv.addItemDecoration(new MyDecoration(this, LinearLayoutManager.VERTICAL, R.drawable.item_view_check_icon_drawable));
 //        rv.addItemDecoration(new MyDecoration(this, LinearLayoutManager.VERTICAL, 20, getResources().getColor(R.color.colorAccent)));
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ItemTouchHelperAdapter(list);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements StartDragListener
     private void initData() {
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
-            list.add(new Message(String.valueOf(i + 1), (i + 1)));
+            list.add(new Message(String.valueOf(i + 1), (i + 1), false));
         }
     }
 
