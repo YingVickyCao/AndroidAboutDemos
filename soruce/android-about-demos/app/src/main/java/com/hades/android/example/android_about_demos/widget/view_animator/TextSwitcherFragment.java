@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget.fragment.view_animator;
+package com.hades.android.example.android_about_demos.widget.view_animator;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import com.hades.android.example.android_about_demos.R;
 
@@ -42,40 +41,34 @@ public class TextSwitcherFragment extends Fragment {
         /**
          * setFactory(ViewFactory factory)
          */
-        mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                TextView textView = new TextView(getActivity());
-                textView.setTextSize(100);
-                textView.setLayoutParams(new TextSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                textView.setGravity(Gravity.CENTER);
-                textView.setText(mShowedTextArray[mShowedTextIndex]);
-                return textView;
-            }
+        mTextSwitcher.setFactory(() -> {
+            TextView textView = new TextView(getActivity());
+            textView.setTextSize(100);
+            textView.setLayoutParams(new TextSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            textView.setGravity(Gravity.CENTER);
+            textView.setText(mShowedTextArray[mShowedTextIndex]);
+            return textView;
         });
         // 设置TextSwitcher左右滑动事件
-        mTextSwitcher.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    // 取得左右滑动时手指按下的X坐标
-                    mCoordinateXWhenTouchDown = event.getX();
-                    return true;
+        mTextSwitcher.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                // 取得左右滑动时手指按下的X坐标
+                mCoordinateXWhenTouchDown = event.getX();
+                return true;
 
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 取得左右滑动时手指松开的X坐标
-                    mCoordinateXWhenTouchUp = event.getX();
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                // 取得左右滑动时手指松开的X坐标
+                mCoordinateXWhenTouchUp = event.getX();
 
-                    // 从左往右，看前一文本
-                    if (mCoordinateXWhenTouchUp - mCoordinateXWhenTouchDown > 100) {
-                        prev();
-                    } else if (mCoordinateXWhenTouchDown - mCoordinateXWhenTouchUp > 100) {
-                        next();
-                    }
-                    return true;
+                // 从左往右，看前一文本
+                if (mCoordinateXWhenTouchUp - mCoordinateXWhenTouchDown > 100) {
+                    prev();
+                } else if (mCoordinateXWhenTouchDown - mCoordinateXWhenTouchUp > 100) {
+                    next();
                 }
-                return false;
+                return true;
             }
+            return false;
         });
         return view;
     }

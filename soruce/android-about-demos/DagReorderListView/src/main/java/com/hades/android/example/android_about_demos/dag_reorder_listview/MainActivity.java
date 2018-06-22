@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
     private RecyclerView rv;
     private RecycleViewAdapter adapter;
     private List<Message> list;
-    private ItemTouchHelper helper;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.widget_recyclerview_drag_reorder);
 
         initData();
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
         rv.setAdapter(adapter);
 
         //为RecycleView绑定触摸事件
-        helper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
+        mItemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
             @Override
             public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
                 //首先回调的方法 返回int表示是否监听该方向
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
                 return super.interpolateOutOfBoundsScroll(recyclerView, viewSize, viewSizeOutOfBounds, totalSize, msSinceStartScroll);
             }
         });
-        helper.attachToRecyclerView(rv);
+        mItemTouchHelper.attachToRecyclerView(rv);
     }
 
     private void initData() {
@@ -130,6 +130,6 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
 
     @Override
     public void startDragItem(RecyclerView.ViewHolder viewHolder) {
-        helper.startDrag(viewHolder);
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }

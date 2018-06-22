@@ -2,15 +2,13 @@ package com.hades.android.example.android_about_demos.dag_reorder_listview;
 
 public class Message {
     private String username;
-    private String time;
     private String message;
-    private int img_id;
+    private int id;
 
-    public Message(String username, String time, String message, int img_id) {
+    public Message(String username, String message, int id) {
         this.username = username;
-        this.time = time;
         this.message = message;
-        this.img_id = img_id;
+        this.id = id;
     }
 
     public String getUsername() {
@@ -21,14 +19,6 @@ public class Message {
         this.username = username;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getMessage() {
         return message;
     }
@@ -37,11 +27,11 @@ public class Message {
         this.message = message;
     }
 
-    public int getImg_id() {
-        return img_id;
+    public int getId() {
+        return id;
     }
 
-    public void setImg_id(int img_id) {
-        this.img_id = img_id;
+    public void setId(int id) {
+        this.id = id;
     }
 }

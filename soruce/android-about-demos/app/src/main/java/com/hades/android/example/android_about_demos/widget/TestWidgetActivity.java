@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.widget.fragment.view_animator.ImageSwitcherFragment;
-import com.hades.android.example.android_about_demos.widget.fragment.RatingBarFragment;
-import com.hades.android.example.android_about_demos.widget.fragment.view_animator.TextSwitcherFragment;
-import com.hades.android.example.android_about_demos.widget.fragment.view_animator.ViewSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
+import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.view_animator.ViewSwitcherFragment;
 
 public class TestWidgetActivity extends Activity implements View.OnClickListener {
     private ScrollView mScrollView;

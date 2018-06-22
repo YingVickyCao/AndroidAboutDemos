@@ -26,7 +26,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_drag_reorder_item_view, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -34,9 +34,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Message msg = list.get(position);
         holder.tv_username.setText(msg.getUsername());
-        holder.tv_time.setText(msg.getTime());
-        holder.iv_icon.setBackgroundResource(msg.getImg_id());
-//        holder.tv_message.setOnTouchListener(new View.OnTouchListener() {
+        holder.iv_icon.setBackgroundResource(msg.getId());
+//        holder.drag.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
 //            public boolean onTouch(View v, MotionEvent event) {
 //                Log.d(TAG, "onTouch: " + event.getAction());
@@ -51,7 +50,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 //            }
 //        });
 
-        holder.tv_message.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.drag.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (null != startDragListener) {
@@ -69,15 +68,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_username, tv_time;
-        private Button tv_message;
+        private TextView tv_username;
+        private Button drag;
         private ImageView iv_icon;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tv_username = itemView.findViewById(R.id.tv_username);
-            tv_time = itemView.findViewById(R.id.tv_time);
-            tv_message = itemView.findViewById(R.id.tv_message);
+            drag = itemView.findViewById(R.id.drag);
             iv_icon = itemView.findViewById(R.id.iv_icon);
         }
     }
