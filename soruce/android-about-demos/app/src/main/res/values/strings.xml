@@ -65,4 +65,8 @@
     <string name="text_switcher">TextSwitcher</string>
 
     <string name="recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
+
+    <string name="title_bar">Title bar</string>
+    <string name="mock_some_items">Mock some items</string>
+    <string name="see_detail">See Detail</string>
 </resources>

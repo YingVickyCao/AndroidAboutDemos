@@ -64,8 +64,11 @@
 
         <!-- APPLY_THEME_END -->
 
-        <activity android:name=".widget.TestWidgetActivity"/>
+        <activity android:name=".widget.TestWidgetActivity" />
 
+        <!-- START_FRAGMENT -->
+        <activity android:name=".app_component.fragment.qa_swipe_whole_page.QA4WrongSwipeWhoPageInPageActivity" />
+        <!-- END_FRAGMENT -->
     </application>
 
 </manifest>

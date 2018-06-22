@@ -3,7 +3,15 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".widget.TestWidgetActivity">
+        <!--<activity android:name=".widget.TestWidgetActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <activity android:name=".app_component.fragment.qa_swipe_whole_page.QA4WrongSwipeWhoPageInPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
