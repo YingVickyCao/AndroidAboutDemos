@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.nested_scroll_view;
+package com.hades.android.example.android_about_demos.widget.scrollview.nested_scroll_view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

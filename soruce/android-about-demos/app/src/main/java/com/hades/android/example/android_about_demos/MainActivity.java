@@ -1,10 +1,9 @@
 package com.hades.android.example.android_about_demos;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hades.android.example.android_about_demos.nested_scroll_view.NestedScrollViewHasRecycleViewFragment;
+import com.hades.android.example.android_about_demos.widget.scrollview.nested_scroll_view.NestedScrollViewHasRecycleViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
