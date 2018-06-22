@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.dag_reorder_listview;
+package com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list;
 
 public class Message {
     private String info;

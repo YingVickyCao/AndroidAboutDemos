@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
@@ -33,6 +34,8 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(this);
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(this);
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(this);
+
+        findViewById(R.id.recyclerView4DragReorderList).setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +64,11 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.jumpTextSwitcher:
                 jumpTextSwitcher();
                 break;
+
+            case R.id.recyclerView4DragReorderList:
+                openRecyclerView4DragReorderListFragment();
+                break;
+
 
         }
     }
@@ -94,5 +102,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void jumpTextSwitcher() {
         showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
+    }
+
+    private void openRecyclerView4DragReorderListFragment() {
+        showFragment(DragReorderListFragment.newInstance(), DragReorderListFragment.class.getSimpleName());
     }
 }

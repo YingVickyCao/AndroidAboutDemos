@@ -1,1 +1,1 @@
-include ':app', ':DagReorderListView'
+include ':app'

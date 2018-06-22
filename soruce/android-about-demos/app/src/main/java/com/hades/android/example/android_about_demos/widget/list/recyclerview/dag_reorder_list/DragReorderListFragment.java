@@ -1,10 +1,16 @@
-package com.hades.android.example.android_about_demos.dag_reorder_listview;
+package com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.hades.android.example.android_about_demos.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +21,9 @@ import java.util.List;
  * https://blog.csdn.net/minwenping/article/details/69829704
  * https://www.jianshu.com/p/4eff036360da
  */
-public class MainActivity extends AppCompatActivity implements StartDragListener {
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class DragReorderListFragment extends Fragment implements StartDragListener {
+    private static final String TAG = DragReorderListFragment.class.getSimpleName();
+
     private final static int NUM = 5;
 
     private RecyclerView rv;
@@ -24,23 +31,27 @@ public class MainActivity extends AppCompatActivity implements StartDragListener
     private List<Message> list;
     private ItemTouchHelper mItemTouchHelper;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_recyclerview_drag_reorder);
+    public static DragReorderListFragment newInstance() {
+        return new DragReorderListFragment();
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list, container, false);
         initData();
 
-        rv = findViewById(R.id.rv);
+        rv = view.findViewById(R.id.rv);
 //                rv.addItemDecoration(new MyDecoration(this, LinearLayoutManager.VERTICAL, R.drawable.item_view_check_icon_drawable));
 //        rv.addItemDecoration(new MyDecoration(this, LinearLayoutManager.VERTICAL, 20, getResources().getColor(R.color.colorAccent)));
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
 
         mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
         mItemTouchHelper.attachToRecyclerView(rv);
+        return view;
     }
 
     private void initData() {

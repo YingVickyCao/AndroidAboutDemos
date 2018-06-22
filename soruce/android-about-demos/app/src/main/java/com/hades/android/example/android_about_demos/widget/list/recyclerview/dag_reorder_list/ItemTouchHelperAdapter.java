@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.dag_reorder_listview;
+package com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.hades.android.example.android_about_demos.R;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +30,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_drag_reorder_item_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view, parent, false);
         return new ItemViewHolder(view);
     }
 
