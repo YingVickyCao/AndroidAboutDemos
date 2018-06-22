@@ -1,13 +1,14 @@
 package com.hades.android.example.android_about_demos.dag_reorder_listview;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,14 +17,14 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
     List<Message> list;
-    private startDragListener startDragListener;
+    private StartDragListener mStartDragListener;
 
     public ItemTouchHelperAdapter(List<Message> list) {
         this.list = list;
     }
 
-    public void setStartDragListener(ItemTouchHelperAdapter.startDragListener startDragListener) {
-        this.startDragListener = startDragListener;
+    public void setStartDragListener(StartDragListener startDragListener) {
+        this.mStartDragListener = startDragListener;
     }
 
     @Override
@@ -35,25 +36,18 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Message msg = list.get(position);
-        holder.tv_username.setText(msg.getUsername());
-        holder.iv_icon.setBackgroundResource(msg.getId());
+        holder.info.setText(msg.getInfo());
+        holder.icon.setOnClickListener(v -> Toast.makeText(v.getContext(), "Click " + msg.getId(), Toast.LENGTH_SHORT).show());
+
         holder.drag.setOnTouchListener((v, event) -> {
-            Log.d(TAG, "onTouch: " + event.getAction());
-//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                if (null != startDragListener) {
-//                    startDragListener.startDrag(holder);
-//                    return true;
-//                }
-//            }
-            return false;
-        });
-        holder.drag.setOnLongClickListener(v -> {
-            if (null != startDragListener) {
-                startDragListener.startDrag(holder);
-                return true;
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (null != mStartDragListener) {
+                    mStartDragListener.startDrag(holder);
+                }
             }
             return false;
         });
+
     }
 
     @Override
@@ -75,21 +69,16 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_username;
+        private TextView info;
         private Button drag;
-        private ImageView iv_icon;
+        private ImageView icon;
 
         MyViewHolder(View itemView) {
             super(itemView);
-            tv_username = itemView.findViewById(R.id.tv_username);
+            info = itemView.findViewById(R.id.info);
             drag = itemView.findViewById(R.id.drag);
-            iv_icon = itemView.findViewById(R.id.iv_icon);
+            icon = itemView.findViewById(R.id.icon);
         }
     }
 
-    public interface startDragListener {
-        void startDrag(RecyclerView.ViewHolder viewHolder);
-
-        void startSwipe(RecyclerView.ViewHolder viewHolder);
-    }
 }

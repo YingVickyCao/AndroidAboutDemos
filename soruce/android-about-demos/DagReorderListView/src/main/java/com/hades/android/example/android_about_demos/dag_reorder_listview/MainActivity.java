@@ -15,7 +15,7 @@ import java.util.List;
  * https://blog.csdn.net/minwenping/article/details/69829704
  * https://www.jianshu.com/p/4eff036360da
  */
-public class MainActivity extends AppCompatActivity implements ItemTouchHelperAdapter.startDragListener {
+public class MainActivity extends AppCompatActivity implements StartDragListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static int NUM = 5;
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements ItemTouchHelperAd
     private void initData() {
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
-            list.add(new Message(String.valueOf(i + 1), "Message of " + (i + 1), R.drawable.ic_launcher_round));
+            list.add(new Message(String.valueOf(i + 1), (i + 1)));
         }
     }
 
