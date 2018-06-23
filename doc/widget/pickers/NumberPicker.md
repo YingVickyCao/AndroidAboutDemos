@@ -10,7 +10,7 @@
 ```
 np.setMinValue(1);
 np.setMaxValue(10);
-np.setValue(5); // init value
+np.setValue(5); // set current value
     
 ```
 ---
