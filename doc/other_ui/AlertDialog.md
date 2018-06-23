@@ -2,6 +2,7 @@
 
 `AlertDialogFragment.java`
 
+![AlertDialog](https://github.com/YingVickyCao/YingVickyCao.github.io/blob/master/img/android/other_ui/dialog/AlertDialog.png)
 ## XML 
 略
 
