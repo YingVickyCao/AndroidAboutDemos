@@ -90,6 +90,12 @@
                     android:text="@string/test_CalendarView"
                     android:visibility="gone" />
 
+                <Button
+                    android:id="@+id/testDatePickerAndTimePicker"
+                    style="@style/btn.small"
+                    android:text="@string/test_DatePicker_and_TimePicker"
+                    android:visibility="visible" />
+
             </LinearLayout>
         </ScrollView>
 

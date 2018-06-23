@@ -11,6 +11,7 @@ import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
+import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
@@ -41,6 +42,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.recyclerView4DragReorderList).setOnClickListener(this);
         findViewById(R.id.testViewFlipper).setOnClickListener(this);
         findViewById(R.id.testToast).setOnClickListener(this);
+        findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -87,6 +89,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testCalendarView:
                 testCalendarView();
                 break;
+            case R.id.testDatePickerAndTimePicker:
+                testDatePickerAndTimePicker();
+                break;
         }
     }
 
@@ -101,7 +106,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testCalendarView();
+        testDatePickerAndTimePicker();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -141,5 +146,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         showFragment(CalendarViewFragment.newInstance(), CalendarViewFragment.class.getSimpleName());
     }
 
-
+    private void testDatePickerAndTimePicker() {
+        showFragment(DateTimePickerFragment.newInstance(), DateTimePickerFragment.class.getSimpleName());
+    }
 }

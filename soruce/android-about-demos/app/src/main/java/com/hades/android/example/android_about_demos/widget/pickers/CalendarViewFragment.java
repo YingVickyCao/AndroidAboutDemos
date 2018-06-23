@@ -26,7 +26,7 @@ public class CalendarViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.wisget_calendarview, container, false);
+        View view = inflater.inflate(R.layout.widget_calendarview, container, false);
         ((CalendarView) view.findViewById(R.id.calendarView)).setOnDateChangeListener((view1, year, month, dayOfMonth)
                 -> Toast.makeText(getUsedContext(), "你生日是" + year + "年" + month + "月" + dayOfMonth + "日", Toast.LENGTH_SHORT).show());
         return view;
