@@ -45,6 +45,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.testToast).setOnClickListener(this);
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(this);
         findViewById(R.id.testNumberPicker).setOnClickListener(this);
+        findViewById(R.id.testSearchView).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -99,6 +100,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testNumberPicker:
                 testNumberPicker();
                 break;
+
+            case R.id.testSearchView:
+                testSearchView();
+                break;
         }
     }
 
@@ -113,12 +118,17 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testNumberPicker();
+        testSearchView();
     }
 
     private void showFragment(Fragment fragment, String tag) {
         hideBtns();
         getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, tag).commit();
+    }
+
+    private void showFragment(Fragment fragment) {
+        hideBtns();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
     }
 
     private void testRatingBar() {
@@ -159,5 +169,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testNumberPicker() {
         showFragment(NumberPickerFragment.newInstance(), NumberPickerFragment.class.getSimpleName());
+    }
+
+    private void testSearchView() {
+        showFragment(SearchViewFragment.newInstance());
     }
 }

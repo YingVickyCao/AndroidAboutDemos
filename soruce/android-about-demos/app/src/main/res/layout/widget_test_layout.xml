@@ -100,7 +100,14 @@
                     android:id="@+id/testNumberPicker"
                     style="@style/btn.small"
                     android:text="@string/test_NumberPicker"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/testSearchView"
+                    style="@style/btn.small"
+                    android:text="@string/test_SearchView"
                     android:visibility="visible" />
+
 
             </LinearLayout>
         </ScrollView>
