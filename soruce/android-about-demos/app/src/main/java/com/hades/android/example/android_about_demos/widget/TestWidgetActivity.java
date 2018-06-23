@@ -120,5 +120,6 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testViewFlipper() {
         showFragment(ViewFlipperFragment.newInstance(), ViewFlipperFragment.class.getSimpleName());
+//        showFragment(ViewFlipperWitchFlipSwipeFragment.newInstance(), ViewFlipperWitchFlipSwipeFragment.class.getSimpleName());
     }
 }

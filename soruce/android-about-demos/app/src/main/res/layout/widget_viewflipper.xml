@@ -6,34 +6,34 @@
     <com.hades.android.example.android_about_demos.widget.view_animator.CustomViewFlipper
         android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btns"
         android:flipInterval="1000">
 
-        <!--<TextView-->
-        <!--style="@style/tv"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@android:color/holo_red_dark"-->
-        <!--android:text="A" />-->
+        <TextView
+            style="@style/tv"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_dark"
+            android:text="A" />
 
-        <!--<TextView-->
-        <!--style="@style/tv"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@android:color/holo_green_dark"-->
-        <!--android:text="B" />-->
+        <TextView
+            style="@style/tv"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark"
+            android:text="B" />
 
-        <!--<TextView-->
-        <!--style="@style/tv"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@android:color/holo_blue_dark"-->
-        <!--android:text="C" />-->
+        <TextView
+            style="@style/tv"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_dark"
+            android:text="C" />
 
     </com.hades.android.example.android_about_demos.widget.view_animator.CustomViewFlipper>
 
     <LinearLayout
         android:id="@+id/btns"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:weightSum="4">

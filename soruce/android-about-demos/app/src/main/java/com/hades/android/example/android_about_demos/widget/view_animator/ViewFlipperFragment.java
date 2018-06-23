@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,13 +18,12 @@ import android.widget.ViewFlipper;
 
 import com.hades.android.example.android_about_demos.R;
 
-public class ViewFlipperFragment extends Fragment {
+public class ViewFlipperFragment extends Fragment implements View.OnTouchListener {
     private static final String TAG = ViewFlipperFragment.class.getSimpleName();
 
-    private String[] mShowedTextArray = {"1", "2", "3"};
-    private int mShowedTextIndex;
-
     private ViewFlipper viewFlipper;
+    private float mTouchDownX;
+    private float mTouchUpX;
 
     public static ViewFlipperFragment newInstance() {
         Bundle args = new Bundle();
@@ -42,19 +42,31 @@ public class ViewFlipperFragment extends Fragment {
         view.findViewById(R.id.auto).setOnClickListener(this::auto);
         view.findViewById(R.id.stopAuto).setOnClickListener(this::stopAuto);
 
+//        addViewBySource();
+
+        Log.d(TAG, "onCreateView: getChildCount=" + viewFlipper.getChildCount());
+        Log.d(TAG, "onCreateView: getDisplayedChild=" + viewFlipper.getDisplayedChild());
+
+        /**
+         * 滑动ViewFlipper，切换 View
+         */
+        viewFlipper.setOnTouchListener(this);
+        return view;
+    }
+
+    private void addViewBySource() {
+        String[] showedTextArray = {"1", "2", "3"};
+        int showedTextIndex;
+
         for (int i = 0; i < 3; i++) {
-            mShowedTextIndex = i;
+            showedTextIndex = i;
             TextView textView = new TextView(getUsedContext());
             textView.setTextSize(100);
             textView.setLayoutParams(new TextSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
             textView.setGravity(Gravity.CENTER);
-            textView.setText(mShowedTextArray[mShowedTextIndex]);
+            textView.setText(showedTextArray[showedTextIndex]);
             viewFlipper.addView(textView);
         }
-
-        Log.d(TAG, "onCreateView: getChildCount=" + viewFlipper.getChildCount());
-        Log.d(TAG, "onCreateView: getDisplayedChild=" + viewFlipper.getDisplayedChild());
-        return view;
     }
 
     private Context getUsedContext() {
@@ -71,8 +83,10 @@ public class ViewFlipperFragment extends Fragment {
         }
         Log.d(TAG, "prev: getChildCount=" + viewFlipper.getChildCount());
         Log.d(TAG, "prev: getDisplayedChild=" + viewFlipper.getDisplayedChild());
-        viewFlipper.setInAnimation(getUsedContext(), R.anim.slide_in_right);
-        viewFlipper.setOutAnimation(getUsedContext(), R.anim.slide_out_left);
+
+        viewFlipper.setInAnimation(getUsedContext(), android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(getUsedContext(), android.R.anim.slide_out_right);
+
         viewFlipper.showPrevious();
         viewFlipper.stopFlipping();
     }
@@ -88,8 +102,10 @@ public class ViewFlipperFragment extends Fragment {
             Toast.makeText(getUsedContext(), "Already last one", Toast.LENGTH_SHORT).show();
             return;
         }
-        viewFlipper.setInAnimation(getUsedContext(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getUsedContext(), android.R.anim.slide_out_right);
+
+        viewFlipper.setInAnimation(getUsedContext(), R.anim.slide_in_right);
+        viewFlipper.setOutAnimation(getUsedContext(), R.anim.slide_out_left);
+
         viewFlipper.showNext();
         viewFlipper.stopFlipping();
     }
@@ -103,12 +119,32 @@ public class ViewFlipperFragment extends Fragment {
     }
 
     public void auto(View source) {
-        viewFlipper.setInAnimation(getUsedContext(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getUsedContext(), android.R.anim.slide_out_right);
+
+        viewFlipper.setInAnimation(getUsedContext(), R.anim.slide_in_right);
+        viewFlipper.setOutAnimation(getUsedContext(), R.anim.slide_out_left);
+
         viewFlipper.startFlipping();
     }
 
     public void stopAuto(View source) {
         viewFlipper.stopFlipping();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            mTouchDownX = event.getX();
+            return true;
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            mTouchUpX = event.getX();
+            if (mTouchUpX - mTouchDownX > 100) {
+                prev(v);
+
+            } else if (mTouchDownX - mTouchUpX > 100) {
+                next(v);
+            }
+            return true;
+        }
+        return false;
     }
 }
