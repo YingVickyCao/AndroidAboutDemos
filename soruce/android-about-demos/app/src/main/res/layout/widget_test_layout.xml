@@ -106,8 +106,31 @@
                     android:id="@+id/testSearchView"
                     style="@style/btn.small"
                     android:text="@string/test_SearchView"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/testAlertDialog"
+                    style="@style/btn.small"
+                    android:text="@string/test_AlertDialog"
                     android:visibility="visible" />
 
+                <Button
+                    android:id="@+id/testProgressDialog"
+                    style="@style/btn.small"
+                    android:text="@string/test_ProgressDialog"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/testDatePickerDialog"
+                    style="@style/btn.small"
+                    android:text="@string/test_DatePickerDialog"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/testTimePickerDialog"
+                    style="@style/btn.small"
+                    android:text="@string/test_TimePickerDialog"
+                    android:visibility="visible" />
 
             </LinearLayout>
         </ScrollView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/simple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单对话框" />
+
+    <Button
+        android:id="@+id/simpleList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单列表项对话框" />
+
+    <Button
+        android:id="@+id/singleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="单选列表项对话框" />
+
+    <Button
+        android:id="@+id/multiChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多选列表项对话框" />
+
+
+    <Button
+        android:id="@+id/customList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义列表项对话框" />
+
+    <Button
+        android:id="@+id/customView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义View对话框" />
+</LinearLayout>
