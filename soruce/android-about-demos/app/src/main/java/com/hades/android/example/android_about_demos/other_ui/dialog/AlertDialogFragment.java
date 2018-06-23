@@ -45,6 +45,7 @@ public class AlertDialogFragment extends Fragment {
     public void simple(View source) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
                 .setTitle("简单对话框")
+//                .setCustomTitle()
                 .setIcon(R.drawable.tools)
                 .setMessage("对话框的测试内容\n第二行内容");
         setPositiveButton(builder);
@@ -125,12 +126,12 @@ public class AlertDialogFragment extends Fragment {
     }
 
     public void customView(View source) {
-        TableLayout loginForm = (TableLayout) LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_alertdialog_custom_view_login, null);
+        TableLayout customView = (TableLayout) LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_alertdialog_custom_view_login, null);
         new AlertDialog.Builder(getUsedContext())
                 .setIcon(R.drawable.tools)
                 .setTitle("自定义View对话框")
                 // 设置对话框显示的View对象
-                .setView(loginForm)
+                .setView(customView)
                 .setPositiveButton("登录", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
