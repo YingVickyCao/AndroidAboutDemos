@@ -69,7 +69,12 @@
                 <Button
                     android:id="@+id/recyclerView4DragReorderList"
                     style="@style/btn.small"
+                    android:visibility="gone"
                     android:text="@string/recyclerView_4_drag_reorder_list" />
+
+                <Button style="@style/btn.small"
+                    android:id="@+id/testViewFlipper"
+                    android:text="@string/test_view_flipper"/>
             </LinearLayout>
         </ScrollView>
 

@@ -68,6 +68,7 @@
 
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity" />
+        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity2" />
         <!-- SPLASH_NOTIFY_ICON_END -->
 
         <!-- START_SCROLL_VIEW -->

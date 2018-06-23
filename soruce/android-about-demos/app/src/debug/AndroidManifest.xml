@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity2">
+        <activity android:name=".widget.TestWidgetActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
