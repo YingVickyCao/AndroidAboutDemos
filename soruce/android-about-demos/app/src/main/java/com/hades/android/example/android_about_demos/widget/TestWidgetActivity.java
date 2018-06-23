@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
@@ -38,6 +39,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
         findViewById(R.id.recyclerView4DragReorderList).setOnClickListener(this);
         findViewById(R.id.testViewFlipper).setOnClickListener(this);
+        findViewById(R.id.testToast).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -54,27 +56,31 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
                 break;
 
             case R.id.jumpRatingBar:
-                jumpRatingBarFragment();
+                testRatingBar();
                 break;
 
             case R.id.jumpViewSwitcher:
-                jumpViewSwitcherFragment();
+                testViewSwitcher();
                 break;
 
             case R.id.jumpImageSwitcher:
-                jumpImageSwitcherFragment();
+                testImageSwitcher();
                 break;
 
             case R.id.jumpTextSwitcher:
-                jumpTextSwitcher();
+                testTextSwitcher();
                 break;
 
             case R.id.recyclerView4DragReorderList:
-                openRecyclerView4DragReorderListFragment();
+                testRecyclerView4DragReorderList();
                 break;
 
             case R.id.testViewFlipper:
                 testViewFlipper();
+                break;
+
+            case R.id.testToast:
+                testToast();
                 break;
         }
     }
@@ -90,7 +96,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testViewFlipper();
+        testToast();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -98,28 +104,32 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, tag).commit();
     }
 
-    private void jumpRatingBarFragment() {
+    private void testRatingBar() {
         showFragment(RatingBarFragment.newInstance(), RatingBarFragment.class.getSimpleName());
     }
 
-    private void jumpViewSwitcherFragment() {
+    private void testViewSwitcher() {
         showFragment(ViewSwitcherFragment.newInstance(), ViewSwitcherFragment.class.getSimpleName());
     }
 
-    private void jumpImageSwitcherFragment() {
+    private void testImageSwitcher() {
         showFragment(ImageSwitcherFragment.newInstance(), ImageSwitcherFragment.class.getSimpleName());
     }
 
-    private void jumpTextSwitcher() {
+    private void testTextSwitcher() {
         showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
     }
 
-    private void openRecyclerView4DragReorderListFragment() {
+    private void testRecyclerView4DragReorderList() {
         showFragment(DragReorderListFragment.newInstance(), DragReorderListFragment.class.getSimpleName());
     }
 
     private void testViewFlipper() {
         showFragment(ViewFlipperFragment.newInstance(), ViewFlipperFragment.class.getSimpleName());
-//        showFragment(ViewFlipperWitchFlipSwipeFragment.newInstance(), ViewFlipperWitchFlipSwipeFragment.class.getSimpleName());
     }
+
+    private void testToast() {
+        showFragment(ToastFragment.newInstance(), ToastFragment.class.getSimpleName());
+    }
+
 }

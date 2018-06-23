@@ -4,10 +4,10 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/show"
@@ -69,12 +69,20 @@
                 <Button
                     android:id="@+id/recyclerView4DragReorderList"
                     style="@style/btn.small"
-                    android:visibility="gone"
-                    android:text="@string/recyclerView_4_drag_reorder_list" />
+                    android:text="@string/recyclerView_4_drag_reorder_list"
+                    android:visibility="gone" />
 
-                <Button style="@style/btn.small"
+                <Button
                     android:id="@+id/testViewFlipper"
-                    android:text="@string/test_view_flipper"/>
+                    style="@style/btn.small"
+                    android:text="@string/test_view_flipper"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/testToast"
+                    style="@style/btn.small"
+                    android:text="@string/test_toast" />
+
             </LinearLayout>
         </ScrollView>
 
