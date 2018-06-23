@@ -113,7 +113,7 @@ public class AlertDialogFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
                 .setTitle("自定义列表项对话框")
                 .setIcon(R.drawable.tools)
-                .setAdapter(new ArrayAdapter<>(getUsedContext(), R.layout.other_ui_alertdialog_customList_itemview, items), new DialogInterface.OnClickListener() {
+                .setAdapter(new ArrayAdapter<>(getUsedContext(), R.layout.other_ui_alertdialog_customlist_itemview, items), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mShow.setText("Clicked " + items[which]);

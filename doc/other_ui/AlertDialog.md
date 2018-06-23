@@ -23,3 +23,12 @@ AlertDialog.Builder.setNegativeButton("取消", new DialogInterface.OnClickListe
 
 ## EVENT
 在METHOD。
+
+---
+## Dialog style Activity
+
+```
+    <activity
+        android:name=".other_ui.dialog.DialogStyleActivity"
+        android:theme="@android:style/Theme.Material.Dialog" />
+```

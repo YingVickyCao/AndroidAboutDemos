@@ -75,11 +75,12 @@
     <string name="test_CalendarView">test CalendarView</string>
     <string name="test_DatePicker_and_TimePicker">Test DatePicker and TimePicker</string>
     <string name="test_NumberPicker">Test NumberPicker</string>
-    <string name="test_SearchView">test SearchView</string>
-    <string name="test_AlertDialog">test AlertDialog</string>
-    <string name="test_ProgressDialog">test ProgressDialog</string>
-    <string name="test_DatePickerDialog">test DatePickerDialog</string>
-    <string name="test_TimePickerDialog">test TimePickerDialog</string>
+    <string name="test_SearchView">Test SearchView</string>
+    <string name="test_AlertDialog">Test AlertDialog</string>
+    <string name="test_dialog_style_activity">Test Dialog style activity</string>
+    <string name="test_ProgressDialog">Test ProgressDialog</string>
+    <string name="test_DatePickerDialog">Test DatePickerDialog</string>
+    <string name="test_TimePickerDialog">Test TimePickerDialog</string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>

@@ -115,6 +115,12 @@
                     android:visibility="visible" />
 
                 <Button
+                    android:id="@+id/testDialogStyleActivity"
+                    style="@style/btn.small"
+                    android:text="@string/test_dialog_style_activity"
+                    android:visibility="visible" />
+
+                <Button
                     android:id="@+id/testProgressDialog"
                     style="@style/btn.small"
                     android:text="@string/test_ProgressDialog"

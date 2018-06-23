@@ -2,6 +2,7 @@ package com.hades.android.example.android_about_demos.widget;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ScrollView;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;
+import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyleActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
@@ -48,6 +50,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.testNumberPicker).setOnClickListener(this);
         findViewById(R.id.testSearchView).setOnClickListener(this);
         findViewById(R.id.testAlertDialog).setOnClickListener(this);
+        findViewById(R.id.testDialogStyleActivity).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -110,6 +113,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testAlertDialog:
                 testAlertDialog();
                 break;
+
+            case R.id.testDialogStyleActivity:
+                testDialogStyleActivity();
+                break;
         }
     }
 
@@ -124,7 +131,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testAlertDialog();
+        testDialogStyleActivity();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -135,6 +142,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     private void showFragment(Fragment fragment) {
         hideBtns();
         getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
+    private void showActivity(Class<?> dest) {
+        startActivity(new Intent(this, dest));
     }
 
     private void testRatingBar() {
@@ -183,5 +194,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testAlertDialog() {
         showFragment(AlertDialogFragment.newInstance());
+    }
+
+    private void testDialogStyleActivity() {
+        showActivity(DialogStyleActivity.class);
     }
 }

@@ -66,6 +66,7 @@
 
         <activity android:name=".widget.TestWidgetActivity" />
 
+        <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity" />
         <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity2" />
@@ -74,6 +75,11 @@
         <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <!-- END_SCROLL_VIEW -->
+
+        <activity
+            android:name=".other_ui.dialog.DialogStyleActivity"
+            android:theme="@android:style/Theme.Material.Dialog" />
+        <!-- END_WIDGET -->
     </application>
 
 </manifest>
