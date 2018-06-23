@@ -81,7 +81,14 @@
                 <Button
                     android:id="@+id/testToast"
                     style="@style/btn.small"
-                    android:text="@string/test_toast" />
+                    android:text="@string/test_toast"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/testCalendarView"
+                    style="@style/btn.small"
+                    android:text="@string/test_CalendarView"
+                    android:visibility="gone" />
 
             </LinearLayout>
         </ScrollView>

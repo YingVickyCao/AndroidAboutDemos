@@ -72,6 +72,7 @@
     <string name="recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
     <string name="test_view_flipper">test ViewFlipper</string>
     <string name="test_toast">test Toast</string>
+    <string name="test_CalendarView">test CalendarView</string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>

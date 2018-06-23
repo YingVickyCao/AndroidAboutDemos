@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
+import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
@@ -82,6 +83,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testToast:
                 testToast();
                 break;
+
+            case R.id.testCalendarView:
+                testCalendarView();
+                break;
         }
     }
 
@@ -96,7 +101,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testToast();
+        testCalendarView();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -131,5 +136,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     private void testToast() {
         showFragment(ToastFragment.newInstance(), ToastFragment.class.getSimpleName());
     }
+
+    private void testCalendarView() {
+        showFragment(CalendarViewFragment.newInstance(), CalendarViewFragment.class.getSimpleName());
+    }
+
 
 }

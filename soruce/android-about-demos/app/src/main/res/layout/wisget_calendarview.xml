@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择您的生日：" />
+
+    <!-- TODO: 设置的属性 没有起作用。一般不设置，keep OS -->
+    <!-- 设置以星期二作为每周第一天
+    设置该组件总共显示4个星期
+    并对该组件的日期时间进行了定制 -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:firstDayOfWeek="3"
+        android:focusedMonthDateColor="#0f0"
+        android:selectedWeekBackgroundColor="#aff"
+        android:shownWeekCount="4"
+        android:unfocusedMonthDateColor="#f9f"
+        android:weekSeparatorLineColor="#ff0" />
+</LinearLayout>
