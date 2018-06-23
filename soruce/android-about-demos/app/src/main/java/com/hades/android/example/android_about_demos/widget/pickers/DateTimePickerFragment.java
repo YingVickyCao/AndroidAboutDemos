@@ -50,25 +50,19 @@ public class DateTimePickerFragment extends Fragment {
         mHour = c.get(Calendar.HOUR);
         mMinute = c.get(Calendar.MINUTE);
 
-        mDatePicker.init(mYear, mMonth, mDay, new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker arg0, int year, int month, int day) {
-                mYear = year;
-                mMonth = month;
-                mDay = day;
+        mDatePicker.init(mYear, mMonth, mDay, (arg0, year, month, day) -> {
+            mYear = year;
+            mMonth = month;
+            mDay = day;
 
-                showDate(mYear, mMonth, mDay, mHour, mMinute);
-            }
+            showDate(mYear, mMonth, mDay, mHour, mMinute);
         });
 
         timePicker.setEnabled(true);
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                mHour = hourOfDay;
-                mMinute = minute;
-                showDate(mYear, mMonth, mDay, mHour, mMinute);
-            }
+        timePicker.setOnTimeChangedListener((view1, hourOfDay, minute) -> {
+            mHour = hourOfDay;
+            mMinute = minute;
+            showDate(mYear, mMonth, mDay, mHour, mMinute);
         });
         return view;
     }
