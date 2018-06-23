@@ -13,6 +13,7 @@
 android:flipInterval="1000"|设置切换的间隔时间（ms）
 
 ## Common Funs
+
 常见函数|描述
 ---|---
 showPrevious()|显示上一个 view
@@ -21,6 +22,10 @@ startFlipping()|开始 auto
 stopFlipping()|停止 auto
 setInAnimation|设置进入动画
 setOutAnimation|设置移出动画
+addView(View child)|动态添加 view
+getDisplayedChild()|当前 Showed View 的 index
+viewFlipper.getChildCount()|Items 的总数
+
 
 ## `ViewFlipper` VS `AdapterViewFlipper`
 同：  
