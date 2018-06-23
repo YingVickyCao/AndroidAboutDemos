@@ -11,7 +11,9 @@ import android.widget.ScrollView;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;
+import com.hades.android.example.android_about_demos.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyleActivity;
+import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
@@ -51,6 +53,8 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.testSearchView).setOnClickListener(this);
         findViewById(R.id.testAlertDialog).setOnClickListener(this);
         findViewById(R.id.testDialogStyleActivity).setOnClickListener(this);
+        findViewById(R.id.testDatePickerDialog).setOnClickListener(this);
+        findViewById(R.id.testTimePickerDialog).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -117,6 +121,14 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testDialogStyleActivity:
                 testDialogStyleActivity();
                 break;
+
+            case R.id.testDatePickerDialog:
+                testDatePickerDialog();
+                break;
+
+            case R.id.testTimePickerDialog:
+                testTimePickerDialog();
+                break;
         }
     }
 
@@ -131,7 +143,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testDialogStyleActivity();
+        testTimePickerDialog();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -198,5 +210,13 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testDialogStyleActivity() {
         showActivity(DialogStyleActivity.class);
+    }
+
+    private void testDatePickerDialog() {
+        showFragment(DateTimePickerDialogFragment.newInstance());
+    }
+
+    private void testTimePickerDialog() {
+        showFragment(TimePickerDialogFragment.newInstance());
     }
 }
