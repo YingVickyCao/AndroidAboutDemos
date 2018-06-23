@@ -51,7 +51,6 @@ https://yingvickycao.github.io/img/android/tdd/NestedScrollview_has_RecycleView.
 
 ### ***问题2：RecyclerView获取了焦点***  
 
-
 ---
 ## QA: After add fragment nested ScrollView, fragment swipe whole page when having too many items?
 
