@@ -163,7 +163,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
     }
 
     private String get2SendMessage() {
-        return "This is a test for send message.timeStamp=" + System.currentTimeMillis();
+        return "This is a test for simpleNotify message.timeStamp=" + System.currentTimeMillis();
     }
 
     private String get2SendPhoneNum() {
@@ -284,7 +284,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
 
     private void requestSendReceiveMessagePermission() {
         if (shouldShowRequestPermissionRationale4SendReceiveMessage()) {
-            Log.d(TAG, "Displaying send and receive message permission rationale to provide additional context.");
+            Log.d(TAG, "Displaying simpleNotify and receive message permission rationale to provide additional context.");
             showRequestPermissionRationale4SendReceiveMessage();
         } else {
             requestPermission4SendReceiveMessage();
@@ -372,7 +372,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
             doSendMessage();
 
             // Send message permission has been granted, Message can be sent.
-            Log.i(TAG, "Send message permission has now been granted. Can send message.");
+            Log.i(TAG, "Send message permission has now been granted. Can simpleNotify message.");
             showPermissionAvailable4SendMessage();
 
         } else {

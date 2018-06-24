@@ -80,6 +80,10 @@
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <!-- END_WIDGET -->
+
+        <!-- START_OTHER_UI -->
+        <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
+        <!-- START_OTHER_UI -->
     </application>
 
 </manifest>

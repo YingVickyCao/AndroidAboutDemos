@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/simpleNotify"
+        style="@style/btn.small"
+        android:layout_gravity="center_horizontal"
+        android:text="发送Notification" />
+
+    <Button
+        android:id="@+id/del"
+        style="@style/btn.small"
+        android:layout_gravity="center_horizontal"
+        android:text="删除Notification" />
+
+    <Button
+        android:id="@+id/progressNotification"
+        style="@style/btn.small"
+        android:layout_gravity="center_horizontal"
+        android:text="Progress Notification" />
+
+</LinearLayout>

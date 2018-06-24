@@ -15,6 +15,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.DateTimePic
 import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyleActivity;
 import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
+import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
@@ -135,6 +136,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testTimePickerDialog:
                 testTimePickerDialog();
                 break;
+
+            case R.id.testNotification:
+                testNotification();
+                break;
         }
     }
 
@@ -149,7 +154,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testProgressDialog();
+        testNotification();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -228,5 +233,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testTimePickerDialog() {
         showFragment(TimePickerDialogFragment.newInstance());
+    }
+
+    private void testNotification() {
+        showFragment(new NotificationFragment());
     }
 }

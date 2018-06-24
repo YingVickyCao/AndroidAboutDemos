@@ -382,7 +382,7 @@ public class RxPermissionsTestActivity extends AppCompatActivity implements View
     }
 
     private String get2SendMessage() {
-        return "This is a test for send message.timeStamp=" + System.currentTimeMillis();
+        return "This is a test for simpleNotify message.timeStamp=" + System.currentTimeMillis();
     }
 
     private String get2SendPhoneNum() {
