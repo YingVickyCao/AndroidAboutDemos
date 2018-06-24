@@ -83,6 +83,7 @@
     <string name="test_TimePickerDialog">Test TimePickerDialog</string>
     <string name="test_Notification">Test Notification</string>
     <string name="test_PopupWindow">Test PopupWindow</string>
+    <string name="test_event_handler_base_on_listener">Test 基于监听的事件处理</string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>

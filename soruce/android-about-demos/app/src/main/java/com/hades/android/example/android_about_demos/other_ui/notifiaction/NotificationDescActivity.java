@@ -9,6 +9,6 @@ public class NotificationDescActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.other);
+        setContentView(R.layout.other_ui_notification_desc);
     }
 }

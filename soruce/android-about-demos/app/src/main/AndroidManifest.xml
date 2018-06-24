@@ -84,6 +84,11 @@
         <!-- START_OTHER_UI -->
         <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
         <!-- START_OTHER_UI -->
+
+        <!-- START_EVENT_HANDLER -->
+        <activity android:name=".event_handle.EventHandlerActivity" />
+        <!-- END_EVENT_HANDLER -->
+
     </application>
 
 </manifest>
