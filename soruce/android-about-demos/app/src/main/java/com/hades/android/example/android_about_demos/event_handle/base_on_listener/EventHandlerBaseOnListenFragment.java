@@ -22,7 +22,7 @@ public class EventHandlerBaseOnListenFragment extends Fragment {
         // 注册事件监听器
 //        view.findViewById(R.id.bn).setOnClickListener(new MyClickListener());
 
-        view.findViewById(R.id.bn).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTip();

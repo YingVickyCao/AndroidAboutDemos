@@ -20,7 +20,7 @@ public class ActivityItselfListenerActivity extends Activity implements View.OnC
 
         // 事件源 = 按钮
         // 注册事件监听器
-        findViewById(R.id.bn).setOnClickListener(this);
+        findViewById(R.id.btn).setOnClickListener(this);
     }
 
     @Override

@@ -3,9 +3,9 @@ package com.hades.android.example.android_about_demos.event_handle.base_on_callb
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
-import android.widget.Toast;
 
 @SuppressLint("AppCompatCustomView")
 public class MyButton extends Button {
@@ -18,26 +18,23 @@ public class MyButton extends Button {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Toast.makeText(getContext(), "ACTION_DOWN", Toast.LENGTH_SHORT).show();
-            return true;
+            Log.d(TAG, "onTouchEvent: ACTION_DOWN in MyButton");
 
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            Toast.makeText(getContext(), "ACTION_UP", Toast.LENGTH_SHORT).show();
-            return true;
+            Log.d(TAG, "onTouchEvent: ACTION_UP in MyButton");
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
 //        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            Toast.makeText(getContext(), "ACTION_DOWN", Toast.LENGTH_SHORT).show();
-//            return super.onTouchEvent(event);
+//            Log.d(TAG, "onTouchEvent: ACTION_DOWN in MyButton");
 //
 //        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-//            Toast.makeText(getContext(), "ACTION_UP", Toast.LENGTH_SHORT).show();
-//            return super.onTouchEvent(event);
+//            Log.d(TAG, "onTouchEvent: ACTION_UP in MyButton");
 //        }
-//        return super.onTouchEvent(event);
+//        // false，表示没有完全处理该事件，该事件依然向外扩散
+//        return false;
 //    }
 }

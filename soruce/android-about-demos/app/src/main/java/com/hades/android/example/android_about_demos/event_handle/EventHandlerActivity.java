@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackFragment;
+import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.EventHandlerBaseOnListenFragment;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.plane.PlaneViewActivity;
@@ -72,7 +72,8 @@ public class EventHandlerActivity extends Activity {
     }
 
     private void test_event_handler_base_on_callback() {
-        showFragment(new EventHandlerBaseOnCallbackFragment());
-    }
+//        showFragment(new EventHandlerBaseOnCallbackFragment());
+        showActivity(EventHandlerBaseOnCallbackActivity.class);
 
+    }
 }

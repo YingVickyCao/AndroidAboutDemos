@@ -27,13 +27,16 @@ public class EventHandlerBaseOnCallbackFragment extends Fragment {
          * 2 boolean onTouchEvent(MotionEvent event) return false, onTouchEvent调用后，setOnClickListener也有效。
          * 因为onTouchEvent 没处理完事件，会继续传递。
          */
-        view.findViewById(R.id.bn).setOnClickListener(new View.OnClickListener() {
+        View btn = view.findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTip();
             }
         });
+
         return view;
+
     }
 
     private void showTip() {

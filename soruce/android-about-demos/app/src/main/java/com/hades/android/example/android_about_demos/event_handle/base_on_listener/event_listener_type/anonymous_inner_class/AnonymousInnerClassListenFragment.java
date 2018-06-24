@@ -20,7 +20,7 @@ public class AnonymousInnerClassListenFragment extends Fragment {
         View view = inflater.inflate(R.layout.event_handler_base_on_listener, container, false);
         // 事件源 = 按钮
         // 注册事件监听器
-        view.findViewById(R.id.bn).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTip();
