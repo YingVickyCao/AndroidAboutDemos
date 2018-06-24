@@ -142,6 +142,12 @@
                     android:id="@+id/testNotification"
                     style="@style/btn.small"
                     android:text="@string/test_Notification"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/testPopupWindow"
+                    style="@style/btn.small"
+                    android:text="@string/test_PopupWindow"
                     android:visibility="visible" />
             </LinearLayout>
         </ScrollView>

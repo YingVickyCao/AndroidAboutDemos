@@ -82,6 +82,7 @@
     <string name="test_DatePickerDialog">Test DatePickerDialog</string>
     <string name="test_TimePickerDialog">Test TimePickerDialog</string>
     <string name="test_Notification">Test Notification</string>
+    <string name="test_PopupWindow">Test PopupWindow</string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>

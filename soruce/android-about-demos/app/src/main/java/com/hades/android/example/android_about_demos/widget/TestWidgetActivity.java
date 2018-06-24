@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.other_ui.PopupWindowFragment;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.DateTimePickerDialogFragment;
@@ -58,6 +59,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.testProgressDialog).setOnClickListener(this);
         findViewById(R.id.testDatePickerDialog).setOnClickListener(this);
         findViewById(R.id.testTimePickerDialog).setOnClickListener(this);
+        findViewById(R.id.testPopupWindow).setOnClickListener(this);
 
         showCurrentTest();
     }
@@ -140,6 +142,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
             case R.id.testNotification:
                 testNotification();
                 break;
+
+            case R.id.testPopupWindow:
+                testPopupWindow();
+                break;
         }
     }
 
@@ -154,7 +160,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testNotification();
+        testPopupWindow();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -237,5 +243,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testNotification() {
         showFragment(new NotificationFragment());
+    }
+
+    private void testPopupWindow() {
+        showFragment(new PopupWindowFragment());
     }
 }
