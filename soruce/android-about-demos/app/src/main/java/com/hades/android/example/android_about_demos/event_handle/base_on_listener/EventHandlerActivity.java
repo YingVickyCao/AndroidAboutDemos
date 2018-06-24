@@ -1,13 +1,15 @@
-package com.hades.android.example.android_about_demos.event_handle;
+package com.hades.android.example.android_about_demos.event_handle.base_on_listener;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.event_handle.base_on_listener.plane.PlaneViewActivity;
 
 public class EventHandlerActivity extends Activity {
     private ScrollView mScrollView;
@@ -22,6 +24,7 @@ public class EventHandlerActivity extends Activity {
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
         findViewById(R.id.testEventHandlerBaseOnListener).setOnClickListener(v -> testEventHandlerBaseOnListener());
+        findViewById(R.id.testEventHandlerBaseOnListener4Plane).setOnClickListener(v -> testEventHandlerBaseOnListener4Plane());
 
         hideBtns();
         showCurrentTest();
@@ -38,7 +41,7 @@ public class EventHandlerActivity extends Activity {
     }
 
     private void showCurrentTest() {
-        testEventHandlerBaseOnListener();
+        testEventHandlerBaseOnListener4Plane();
     }
 
     private void showFragment(Fragment fragment) {
@@ -46,8 +49,16 @@ public class EventHandlerActivity extends Activity {
         getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
     }
 
+    private void showActivity(Class<?> dest) {
+        startActivity(new Intent(this, dest));
+    }
 
     private void testEventHandlerBaseOnListener() {
         showFragment(new EventHandlerBaseOnListenFragment());
     }
+
+    private void testEventHandlerBaseOnListener4Plane() {
+        showActivity(PlaneViewActivity.class);
+    }
+
 }

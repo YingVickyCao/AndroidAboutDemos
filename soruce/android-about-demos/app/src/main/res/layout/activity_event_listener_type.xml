@@ -16,16 +16,29 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/testEventHandlerBaseOnListener"
+                android:id="@+id/test_listener_4_inner_class"
                 style="@style/btn.small"
-                android:text="@string/test_event_handler_base_on_listener"
-                android:visibility="gone" />
+                android:text="@string/test_listener_4_inner_class"
+                android:visibility="visible" />
 
             <Button
-                android:id="@+id/testEventHandlerBaseOnListener4Plane"
+                android:id="@+id/test_listener_4_outer_class"
                 style="@style/btn.small"
-                android:text="@string/test_event_handler_base_on_listener_4_plane"
+                android:text="@string/test_listener_4_outer_class"
                 android:visibility="visible" />
+
+            <Button
+                android:id="@+id/test_listener_4_activity_itself"
+                style="@style/btn.small"
+                android:text="@string/test_listener_4_activity_itself"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/test_listener_4_anonymous_inner_class"
+                style="@style/btn.small"
+                android:text="@string/test_listener_4_anonymous_inner_class"
+                android:visibility="visible" />
+
         </LinearLayout>
     </ScrollView>
 

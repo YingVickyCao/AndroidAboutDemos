@@ -84,6 +84,11 @@
     <string name="test_Notification">Test Notification</string>
     <string name="test_PopupWindow">Test PopupWindow</string>
     <string name="test_event_handler_base_on_listener">Test 基于监听的事件处理</string>
+    <string name="test_event_handler_base_on_listener_4_plane">Test 基于监听的事件处理 - Plane</string>
+    <string name="test_listener_4_inner_class">内部类 作为事件监听器</string>
+    <string name="test_listener_4_outer_class">外部类 作为事件监听器</string>
+    <string name="test_listener_4_activity_itself">Activity 本身作为事件监听器类 </string>
+    <string name="test_listener_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>

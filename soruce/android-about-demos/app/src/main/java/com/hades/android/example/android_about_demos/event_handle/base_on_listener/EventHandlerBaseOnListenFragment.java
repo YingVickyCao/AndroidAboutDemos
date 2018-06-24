@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.event_handle;
+package com.hades.android.example.android_about_demos.event_handle.base_on_listener;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class EventHandlerBaseOnListenFragment extends Fragment {
         });
         return view;
     }
-
+    
     // 事件监听器
     class MyClickListener implements View.OnClickListener {
         // 事件处理器
