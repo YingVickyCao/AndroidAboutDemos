@@ -13,6 +13,7 @@ import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyleActivity;
+import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
@@ -53,6 +54,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.testSearchView).setOnClickListener(this);
         findViewById(R.id.testAlertDialog).setOnClickListener(this);
         findViewById(R.id.testDialogStyleActivity).setOnClickListener(this);
+        findViewById(R.id.testProgressDialog).setOnClickListener(this);
         findViewById(R.id.testDatePickerDialog).setOnClickListener(this);
         findViewById(R.id.testTimePickerDialog).setOnClickListener(this);
 
@@ -122,6 +124,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
                 testDialogStyleActivity();
                 break;
 
+            case R.id.testProgressDialog:
+                testProgressDialog();
+                break;
+
             case R.id.testDatePickerDialog:
                 testDatePickerDialog();
                 break;
@@ -143,7 +149,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testTimePickerDialog();
+        testProgressDialog();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -210,6 +216,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testDialogStyleActivity() {
         showActivity(DialogStyleActivity.class);
+    }
+
+    private void testProgressDialog() {
+        showFragment(new ProgressDialogFragment());
     }
 
     private void testDatePickerDialog() {

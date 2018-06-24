@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/showCircleProgressDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="环形进度条" />
+
+    <Button
+        android:id="@+id/showIndeterminateBarProgressDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="不显示进度的进度条" />
+
+    <Button
+        android:id="@+id/showBarProgressDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示进度的进度条" />
+
+    <Button
+        android:id="@+id/showCircleProgressDialogWithBtns"
+        style="@style/btn.small.red"
+        android:layout_width="match_parent"
+        android:text="环形进度条, 带按钮" />
+
+    <Button
+        android:id="@+id/showIndeterminateBarProgressDialogWithBtns"
+        style="@style/btn.small.red"
+        android:layout_width="match_parent"
+        android:text="不显示进度的进度条, 带按钮" />
+
+    <Button
+        android:id="@+id/showBarProgressDialogWithBtns"
+        style="@style/btn.small.red"
+        android:layout_width="match_parent"
+        android:text="显示进度的进度条, 带按钮" />
+</LinearLayout>
