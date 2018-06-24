@@ -13,6 +13,7 @@ import com.hades.android.example.android_about_demos.event_handle.base_on_listen
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.anonymous_inner_class.AnonymousInnerClassListenFragment;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.inner_class.InnerClassListenFragment;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.outer_class.OuterClassListenFragment;
+import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity;
 
 public class EventListenerTypeActivity extends Activity {
     private ScrollView mScrollView;
@@ -21,7 +22,7 @@ public class EventListenerTypeActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_listener_type);
+        setContentView(R.layout.event_listener_type);
 
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
@@ -30,6 +31,7 @@ public class EventListenerTypeActivity extends Activity {
         findViewById(R.id.test_listener_4_outer_class).setOnClickListener(v -> test_listener_4_outer_class());
         findViewById(R.id.test_listener_4_activity_itself).setOnClickListener(v -> test_listener_4_activity_itself());
         findViewById(R.id.test_listener_4_anonymous_inner_class).setOnClickListener(v -> test_listener_4_anonymous_inner_class());
+        findViewById(R.id.test_listener_4_xml).setOnClickListener(v -> test_listener_4_xml());
 
 //        hideBtns();
         showBtns();
@@ -42,6 +44,8 @@ public class EventListenerTypeActivity extends Activity {
         if (isShowDetail()) {
             showBtns();
             removeDetailFragment();
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -91,5 +95,9 @@ public class EventListenerTypeActivity extends Activity {
 
     private void test_listener_4_anonymous_inner_class() {
         showFragment(new AnonymousInnerClassListenFragment());
+    }
+
+    private void test_listener_4_xml() {
+        showActivity(XmlListenerActivity.class);
     }
 }

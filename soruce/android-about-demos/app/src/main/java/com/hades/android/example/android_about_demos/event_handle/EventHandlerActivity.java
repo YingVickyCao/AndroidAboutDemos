@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.event_handle.base_on_listener;
+package com.hades.android.example.android_about_demos.event_handle;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackFragment;
+import com.hades.android.example.android_about_demos.event_handle.base_on_listener.EventHandlerBaseOnListenFragment;
+import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.plane.PlaneViewActivity;
 
 public class EventHandlerActivity extends Activity {
@@ -25,9 +28,12 @@ public class EventHandlerActivity extends Activity {
 
         findViewById(R.id.testEventHandlerBaseOnListener).setOnClickListener(v -> testEventHandlerBaseOnListener());
         findViewById(R.id.testEventHandlerBaseOnListener4Plane).setOnClickListener(v -> testEventHandlerBaseOnListener4Plane());
+        findViewById(R.id.test_event_handler_base_on_listener_types).setOnClickListener(v -> test_event_handler_base_on_listener_types());
+        findViewById(R.id.test_event_handler_base_on_callback).setOnClickListener(v -> test_event_handler_base_on_callback());
 
-        hideBtns();
-        showCurrentTest();
+//        hideBtns();
+        showBtns();
+//        showCurrentTest();
     }
 
     private void showBtns() {
@@ -41,7 +47,7 @@ public class EventHandlerActivity extends Activity {
     }
 
     private void showCurrentTest() {
-        testEventHandlerBaseOnListener4Plane();
+        test_event_handler_base_on_callback();
     }
 
     private void showFragment(Fragment fragment) {
@@ -59,6 +65,14 @@ public class EventHandlerActivity extends Activity {
 
     private void testEventHandlerBaseOnListener4Plane() {
         showActivity(PlaneViewActivity.class);
+    }
+
+    private void test_event_handler_base_on_listener_types() {
+        showActivity(EventListenerTypeActivity.class);
+    }
+
+    private void test_event_handler_base_on_callback() {
+        showFragment(new EventHandlerBaseOnCallbackFragment());
     }
 
 }

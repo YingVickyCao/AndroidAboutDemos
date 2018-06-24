@@ -86,10 +86,11 @@
         <!-- START_OTHER_UI -->
 
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".event_handle.base_on_listener.EventHandlerActivity" />
+        <activity android:name=".event_handle.EventHandlerActivity" />
         <activity android:name=".event_handle.base_on_listener.plane.PlaneViewActivity" />
         <activity android:name=".event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity"/>
+        <activity android:name=".event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
+        <activity android:name=".event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
         <!-- END_EVENT_HANDLER -->
 
     </application>

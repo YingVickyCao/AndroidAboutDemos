@@ -39,6 +39,12 @@
                 android:text="@string/test_listener_4_anonymous_inner_class"
                 android:visibility="visible" />
 
+            <Button
+                android:id="@+id/test_listener_4_xml"
+                style="@style/btn.small"
+                android:text="@string/test_listener_4_xml"
+                android:visibility="visible" />
+
         </LinearLayout>
     </ScrollView>
 
