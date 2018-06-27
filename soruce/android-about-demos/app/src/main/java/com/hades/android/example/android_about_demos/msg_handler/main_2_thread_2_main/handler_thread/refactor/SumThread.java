@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.refactor;
 
 import android.os.Handler;
 import android.os.HandlerThread;

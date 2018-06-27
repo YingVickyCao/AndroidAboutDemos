@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.refactor;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.mock.LogHelper;
 
-import static com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.SumThread.KEY_FINISH;
-import static com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.SumThread.KEY_SUM;
+import static com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
+import static com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_SUM;
 
 /**
  * main -> thread -> main
@@ -65,7 +65,6 @@ public class HandlerThreadFragment4Refactor extends Fragment implements Handler.
 
         mUIHandler = new Handler(this);
 
-        //创建异步HandlerThread
         mSumThread = new SumThread("heavyWork");
         mSumThread.setUIHandler(mUIHandler);
         mSumThread.setDownloadUrls(10, 1000, 10000);

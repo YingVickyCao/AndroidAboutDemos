@@ -13,10 +13,19 @@ import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 
 /**
  * main -> thread -> main
  */
+
+/*
+ log:
+ SumFragment: sum(),msg=1000,thread =1,main
+ SumFragment: SumThread -> handleMessage(),msg=1000,thread =4487,Thread-7
+ SumFragment: updateResult(),msg=499500,thread =1,main
+ */
+
 public class SumFragment extends Fragment {
     private static final String TAG = SumFragment.class.getSimpleName();
 
@@ -27,13 +36,6 @@ public class SumFragment extends Fragment {
     private TextView result;
 
     private final int HANDLER_MSG_KEY_1 = 1;
-
-    /**
-     * log:
-     * SumFragment: sum(),msg=1000,thread =1,main
-     * SumFragment: SumThread -> handleMessage(),msg=1000,thread =4487,Thread-7
-     * SumFragment: updateResult(),msg=499500,thread =1,main
-     */
 
     @Nullable
     @Override
@@ -50,6 +52,9 @@ public class SumFragment extends Fragment {
 
     public void sum(View source) {
         LogHelper.logThreadInfo(TAG, "sum()", String.valueOf(num));
+        /**
+         * main -> thread
+         */
         calThread.mHandler.sendMessage(createMessage());
     }
 
@@ -77,18 +82,20 @@ public class SumFragment extends Fragment {
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
                         LogHelper.logThreadInfo(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
+                        long sum = MockHeavyWork.sum(upper);
 
-                        long sum = 0;
-                        for (int i = 0; i < upper; i++) {
-                            sum += i;
-                        }
+                        /**
+                         * thread -> main
+                         */
                         updateResult(sum);
                     }
                 }
             };
+
             Looper.loop();
         }
     }
+
 
     private void updateResult(long sum) {
         getActivity().runOnUiThread(new Runnable() {

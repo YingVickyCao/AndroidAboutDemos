@@ -1,9 +1,10 @@
-package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -40,6 +41,9 @@ public class HandlerThreadFragment extends Fragment {
     private Handler mUIHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            /**
+             * main
+             */
             LogHelper.logThreadInfo(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
             String sum = (String) msg.obj;
             test.setText(sum);
@@ -57,11 +61,42 @@ public class HandlerThreadFragment extends Fragment {
         //必须先开启线程
         handlerThread.start();
 
+        LogHelper.logThreadInfo(TAG, "onCreateView,send msg", "what=" + uppers);
+
         //子线程Handler
-        Handler childHandler = new Handler(handlerThread.getLooper(), new ChildCallback());
-        childHandler.sendEmptyMessageDelayed(uppers, 1000);
-        LogHelper.logThreadInfo(TAG, "onCreate,send msg", "what=" + uppers);
+//        Handler threadHandler = new Handler(handlerThread.getLooper(), new ChildCallback());
+        Handler threadHandler = new ThreadHandler(handlerThread.getLooper());
+        /**
+         * main -> thread
+         */
+        threadHandler.sendEmptyMessageDelayed(uppers, 1000);
         return view;
+    }
+
+    class ThreadHandler extends Handler {
+        public ThreadHandler(Looper looper) {
+            super(looper);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            /**
+             * thread
+             */
+            LogHelper.logThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+
+            long sum = MockHeavyWork.sum(msg.what);
+            Message msg1 = new Message();
+            msg1.what = msg.what;
+            msg1.obj = String.valueOf(sum);
+
+            LogHelper.logThreadInfo(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
+
+            /**
+             * thread -> main
+             */
+            mUIHandler.sendMessage(msg1);
+        }
     }
 
     /**

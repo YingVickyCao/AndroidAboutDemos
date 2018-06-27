@@ -9,12 +9,10 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
-import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackFragment;
-import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.HandlerThreadFragment;
-import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.HandlerThreadFragment4Refactor;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.HandlerThreadFragment;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.handler_thread.refactor.HandlerThreadFragment4Refactor;
 import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.SumFragment;
-import com.hades.android.example.android_about_demos.msg_handler.thread_2_main.RecycleUpdateTextFragment;
+import com.hades.android.example.android_about_demos.msg_handler.thread_2_main.MsgThread2MainFragment;
 
 public class MessageHandlerActivity extends Activity {
     private ScrollView mScrollView;
@@ -49,7 +47,7 @@ public class MessageHandlerActivity extends Activity {
     }
 
     private void showCurrentTest() {
-        test_main_2_thread_2_main_Sum2();
+        test_thread_2_main_update_text();
     }
 
     private void showFragment(Fragment fragment) {
@@ -62,7 +60,7 @@ public class MessageHandlerActivity extends Activity {
     }
 
     private void test_thread_2_main_update_text() {
-        showFragment(new RecycleUpdateTextFragment());
+        showFragment(new MsgThread2MainFragment());
     }
 
     private void test_main_2_thread_sum() {

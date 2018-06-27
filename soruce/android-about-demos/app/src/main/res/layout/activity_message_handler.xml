@@ -32,13 +32,13 @@
                 android:id="@+id/test_main_2_thread_2_main_Sum"
                 style="@style/btn.small"
                 android:text="@string/test_msg_handler_main_2_thread_2_main_Sum"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/test_main_2_thread_2_main_Sum2"
                 style="@style/btn.small"
                 android:text="@string/test_msg_handler_main_2_thread_2_main_Sum"
-                android:visibility="visible" />
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 
