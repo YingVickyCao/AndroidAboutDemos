@@ -26,7 +26,7 @@ public class RatingBarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_ratingbar, container, false);
 
-        image = view.findViewById(R.id.image);
+        image = view.findViewById(R.id.text);
 
         RatingBar ratingBar = view.findViewById(R.id.rating);
         ratingBar.setOnRatingBarChangeListener((arg0, rating, fromUser) -> {

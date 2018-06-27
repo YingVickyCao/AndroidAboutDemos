@@ -9,6 +9,9 @@ import com.hades.android.example.android_about_demos.mock.LogHelper;
 import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 import com.hades.android.example.android_about_demos.temp.sundy.async.HandlerConceptActivity;
 
+/**
+ * https://blog.csdn.net/javazejian/article/details/52426353
+ */
 public class SubHandlerThread extends HandlerThread {
     private static final String TAG = SubHandlerThread.class.getSimpleName();
 

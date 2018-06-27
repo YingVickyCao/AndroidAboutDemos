@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.msg_handler;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class SumFragment extends Fragment {
     static final String UPPER_NUM = "upper";
     private final int num = 1000;
 
-    CalThread calThread;
+    SumThread calThread;
     private TextView result;
 
     private final int HANDLER_MSG_KEY_1 = 1;
@@ -31,7 +31,7 @@ public class SumFragment extends Fragment {
     /**
      * log:
      * SumFragment: sum(),msg=1000,thread =1,main
-     * SumFragment: CalThread -> handleMessage(),msg=1000,thread =4487,Thread-7
+     * SumFragment: SumThread -> handleMessage(),msg=1000,thread =4487,Thread-7
      * SumFragment: updateResult(),msg=499500,thread =1,main
      */
 
@@ -43,7 +43,7 @@ public class SumFragment extends Fragment {
         view.findViewById(R.id.sum).setOnClickListener(this::sum);
         result = view.findViewById(R.id.result);
 
-        calThread = new CalThread();
+        calThread = new SumThread();
         calThread.start();
         return view;
     }
@@ -62,7 +62,7 @@ public class SumFragment extends Fragment {
         return msg;
     }
 
-    class CalThread extends Thread {
+    class SumThread extends Thread {
         public Handler mHandler;
 
         public void run() {
@@ -71,9 +71,12 @@ public class SumFragment extends Fragment {
             mHandler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
+                    /**
+                     * 在子线程中执行
+                     */
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
-                        LogHelper.logThreadInfo(TAG, "CalThread -> handleMessage()", String.valueOf(upper));
+                        LogHelper.logThreadInfo(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
 
                         long sum = 0;
                         for (int i = 0; i < upper; i++) {

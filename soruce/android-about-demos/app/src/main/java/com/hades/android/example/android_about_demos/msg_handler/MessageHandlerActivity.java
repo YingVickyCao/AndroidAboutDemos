@@ -11,6 +11,8 @@ import android.widget.ScrollView;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
 import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread.SumFragment;
+import com.hades.android.example.android_about_demos.msg_handler.thread_2_main.RecycleUpdateTextFragment;
 
 public class MessageHandlerActivity extends Activity {
     private ScrollView mScrollView;

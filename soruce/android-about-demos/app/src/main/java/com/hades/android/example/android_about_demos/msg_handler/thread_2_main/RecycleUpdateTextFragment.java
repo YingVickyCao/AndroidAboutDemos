@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.msg_handler;
+package com.hades.android.example.android_about_demos.msg_handler.thread_2_main;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -36,6 +36,9 @@ public class RecycleUpdateTextFragment extends Fragment {
         final Handler myHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
+                /**
+                 * 在主线程中执行
+                 */
                 LogHelper.logThreadInfo(TAG, "Handler -> handleMessage()", String.valueOf(currentImageId));
 
                 if (msg.what == HANDLER_MSG_KEY_1) {
