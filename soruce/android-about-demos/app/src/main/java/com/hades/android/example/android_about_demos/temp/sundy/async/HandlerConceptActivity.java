@@ -153,8 +153,8 @@ public class HandlerConceptActivity extends Activity {
 
     private void handlerThread2itself() {
         //using HandlerThread to make handler (message queue) ,send message
-        // TODO: 27/06/2018 SubHandlerThread
-        SubHandlerThread subHandlerThread = new SubHandlerThread(HandlerConceptActivity.this, "SubHandlerThread");
+        // TODO: 27/06/2018 SumThread
+        SubHandlerThread subHandlerThread = new SubHandlerThread(HandlerConceptActivity.this, "SumThread");
         subHandlerThread.start();
     }
 

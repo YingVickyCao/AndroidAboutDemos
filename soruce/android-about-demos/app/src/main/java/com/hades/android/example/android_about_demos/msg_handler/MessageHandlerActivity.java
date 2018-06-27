@@ -10,8 +10,10 @@ import android.widget.ScrollView;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
-import com.hades.android.example.android_about_demos.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
-import com.hades.android.example.android_about_demos.msg_handler.main_2_thread.SumFragment;
+import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackFragment;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.HandlerThreadFragment;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.HandlerThreadFragment4Refactor;
+import com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main.SumFragment;
 import com.hades.android.example.android_about_demos.msg_handler.thread_2_main.RecycleUpdateTextFragment;
 
 public class MessageHandlerActivity extends Activity {
@@ -26,10 +28,10 @@ public class MessageHandlerActivity extends Activity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-        findViewById(R.id.thread_2_main_update_text).setOnClickListener(v -> thread_2_main_update_text());
-        findViewById(R.id.main_2_thread_sum).setOnClickListener(v -> main_2_thread_sum());
-        findViewById(R.id.test_event_handler_base_on_listener_types).setOnClickListener(v -> test_event_handler_base_on_listener_types());
-        findViewById(R.id.test_event_handler_base_on_callback).setOnClickListener(v -> test_event_handler_base_on_callback());
+        findViewById(R.id.test_thread_2_main_update_text).setOnClickListener(v -> test_thread_2_main_update_text());
+        findViewById(R.id.test_main_2_thread_sum).setOnClickListener(v -> test_main_2_thread_sum());
+        findViewById(R.id.test_main_2_thread_2_main_Sum).setOnClickListener(v -> test_main_2_thread_2_main_Sum());
+        findViewById(R.id.test_main_2_thread_2_main_Sum2).setOnClickListener(v -> test_main_2_thread_2_main_Sum2());
 
         hideBtns();
 //        showBtns();
@@ -47,7 +49,7 @@ public class MessageHandlerActivity extends Activity {
     }
 
     private void showCurrentTest() {
-        main_2_thread_sum();
+        test_main_2_thread_2_main_Sum2();
     }
 
     private void showFragment(Fragment fragment) {
@@ -59,21 +61,19 @@ public class MessageHandlerActivity extends Activity {
         startActivity(new Intent(this, dest));
     }
 
-    private void thread_2_main_update_text() {
+    private void test_thread_2_main_update_text() {
         showFragment(new RecycleUpdateTextFragment());
     }
 
-    private void main_2_thread_sum() {
+    private void test_main_2_thread_sum() {
         showFragment(new SumFragment());
     }
 
-    private void test_event_handler_base_on_listener_types() {
-        showActivity(EventListenerTypeActivity.class);
+    private void test_main_2_thread_2_main_Sum() {
+        showFragment(new HandlerThreadFragment());
     }
 
-    private void test_event_handler_base_on_callback() {
-//        showFragment(new EventHandlerBaseOnCallbackFragment());
-        showActivity(EventHandlerBaseOnCallbackActivity.class);
-
+    private void test_main_2_thread_2_main_Sum2() {
+        showFragment(new HandlerThreadFragment4Refactor());
     }
 }

@@ -1,10 +1,14 @@
-package com.hades.android.example.android_about_demos.msg_handler;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
@@ -13,28 +17,22 @@ import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 
 /**
  * main -> thread -> main
- * <p>
- * log
- * HandlerThreadActivity: onCreate,send msg,msg=what=1000000,thread =1,main
- * HandlerThreadActivity: ChildCallback,handleMessage,msg=what=1000000,thread =5063,heavyWork
- * HandlerThreadActivity: ChildCallback,sendMessage,msg=what=1000000,obj=499999500000,thread =5063,heavyWork
- * HandlerThreadActivity: mUIHandler,handleMessage,msg=what=1000000,obj=499999500000,thread =1,main
  */
 
-/**
- * log
- * HandlerThreadActivity: onCreate,send msg,msg=what=1000000,thread =1,main
- * HandlerThreadActivity: ChildCallback,handleMessage,msg=what=1000000,thread =5063,heavyWork
- * HandlerThreadActivity: ChildCallback,sendMessage,msg=what=1000000,obj=499999500000,thread =5063,heavyWork
- * HandlerThreadActivity: mUIHandler,handleMessage,msg=what=1000000,obj=499999500000,thread =1,main
+/*
+log:
+  HandlerThreadFragment: onCreate,send msg,msg=what=1000000,thread =1,main
+  HandlerThreadFragment: ChildCallback,handleMessage,msg=what=1000000,thread =5063,heavyWork
+  HandlerThreadFragment: ChildCallback,sendMessage,msg=what=1000000,obj=499999500000,thread =5063,heavyWork
+  HandlerThreadFragment: mUIHandler,handleMessage,msg=what=1000000,obj=499999500000,thread =1,main
  */
 
 /**
  * https://blog.csdn.net/u011240877/article/details/72905631
  * https://blog.csdn.net/javazejian/article/details/52426353
  */
-public class HandlerThreadActivity extends Activity {
-    private static final String TAG = HandlerThreadActivity.class.getSimpleName();
+public class HandlerThreadFragment extends Fragment {
+    private static final String TAG = HandlerThreadFragment.class.getSimpleName();
 
     private int uppers = 1000000;
 
@@ -48,12 +46,12 @@ public class HandlerThreadActivity extends Activity {
         }
     };
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handler_thread);
-        test = findViewById(R.id.text);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_handler_thread, container, false);
 
+        test = view.findViewById(R.id.text);
         //创建异步HandlerThread
         HandlerThread handlerThread = new HandlerThread("heavyWork");
         //必须先开启线程
@@ -63,6 +61,7 @@ public class HandlerThreadActivity extends Activity {
         Handler childHandler = new Handler(handlerThread.getLooper(), new ChildCallback());
         childHandler.sendEmptyMessageDelayed(uppers, 1000);
         LogHelper.logThreadInfo(TAG, "onCreate,send msg", "what=" + uppers);
+        return view;
     }
 
     /**

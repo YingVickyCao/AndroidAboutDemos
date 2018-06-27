@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.msg_handler.main_2_thread;
+package com.hades.android.example.android_about_demos.msg_handler.main_2_thread_2_main;
 
 import android.app.Fragment;
 import android.os.Bundle;

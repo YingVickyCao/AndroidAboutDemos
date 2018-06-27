@@ -38,4 +38,6 @@ public class SubHandlerThread extends HandlerThread {
 
         }.sendMessage(mHandlerConceptActivity.defineNewMessage("Lab2.2=" + result));
     }
+
+
 }
