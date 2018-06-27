@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/buttonHandlerLab1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab1" />
+
+    <Button
+        android:id="@+id/missLooperWhenCreateHandlerInThread"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab2.1" />
+
+    <Button
+        android:id="@+id/buttonHandlerLab2_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab2.2" />
+
+    <Button
+        android:id="@+id/thread2Main_createHandler_with_Looper_getMainLooper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab3.1" />
+
+    <Button
+        android:id="@+id/thread2Itself_Handler_with_Looper_prepare_and_loop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab3.2" />
+
+    <Button
+        android:id="@+id/buttonHandlerLab4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab4" />
+
+    <Button
+        android:id="@+id/buttonHandlerLab5_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab5.1" />
+
+    <Button
+        android:id="@+id/buttonHandlerLab5_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler Lab5.2" />
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.apply_theme;
+package com.hades.android.example.android_about_demos.mock;
 
 public class SFMock {
 
@@ -12,11 +12,11 @@ public class SFMock {
         }
         return mInstance;
     }
-    boolean isRedTheme() {
+    public boolean isRedTheme() {
         return mIsRedTheme;
     }
 
-    void useRedTheme(boolean isRedTheme) {
+    public void useRedTheme(boolean isRedTheme) {
         this.mIsRedTheme = isRedTheme;
     }
 }

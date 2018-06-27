@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".event_handle.EventHandlerActivity">
+        <activity android:name=".temp.sundy.async.HandlerConceptActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

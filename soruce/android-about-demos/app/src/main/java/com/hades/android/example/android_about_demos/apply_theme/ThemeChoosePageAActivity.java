@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.mock.SFMock;
 
 public class ThemeChoosePageAActivity extends Activity {
     @Override
