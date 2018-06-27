@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 import com.hades.android.example.android_about_demos.temp.sundy.async.CommonConstants;
 import com.hades.android.example.android_about_demos.temp.sundy.async.HandlerConceptActivity;
 
@@ -20,6 +22,10 @@ public class DelayHandler extends Handler {
     public void handleMessage(Message msg) {
         // TODO Auto-generated method stub
         super.handleMessage(msg);
+
+        LogHelper.logThreadInfo("DelayHandler", "thread2Itself_Handler_with_Looper_prepare_and_loop()->run()", String.valueOf(MockHeavyWork.sum()));
+
+
         Log.i(CommonConstants.LOGCAT_TAG_NAME, "Start message: " + msg.getData().getString(mHandlerConceptActivity.HANDLER_KEY));
         try {
             Thread.sleep(5 * 1000);

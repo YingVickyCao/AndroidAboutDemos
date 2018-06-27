@@ -55,7 +55,7 @@ public class HandlerConceptActivity extends Activity {
         //Handler Lab2.1 , in new thread create handler send message .
         findViewById(R.id.missLooperWhenCreateHandlerInThread).setOnClickListener(v -> missLooperWhenCreateHandlerInThread());
         //Handler Lab2.2
-        findViewById(R.id.buttonHandlerLab2_2).setOnClickListener(v -> buttonHandlerLab2_2());
+        findViewById(R.id.buttonHandlerLab2_2).setOnClickListener(v -> handlerThread2itself());
         //Handler Lab3.1 child thread get main thread's looper and send message .
         findViewById(R.id.thread2Main_createHandler_with_Looper_getMainLooper).setOnClickListener(v -> thread2Main_createHandler_with_Looper_getMainLooper());
         //Handler Lab3.2 using looper.prepare() and looper.loop()
@@ -151,10 +151,10 @@ public class HandlerConceptActivity extends Activity {
         }).start();
     }
 
-    private void buttonHandlerLab2_2() {
+    private void handlerThread2itself() {
         //using HandlerThread to make handler (message queue) ,send message
         // TODO: 27/06/2018 SubHandlerThread
-        SubHandlerThread subHandlerThread = new SubHandlerThread(HandlerConceptActivity.this, "threadone");
+        SubHandlerThread subHandlerThread = new SubHandlerThread(HandlerConceptActivity.this, "SubHandlerThread");
         subHandlerThread.start();
     }
 
@@ -201,7 +201,7 @@ public class HandlerConceptActivity extends Activity {
                 };
 
                 lab3Handler.sendMessage(defineNewMessage("Lab3"));
-                
+
                 Looper.loop();
             }
 

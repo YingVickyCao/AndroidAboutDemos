@@ -87,11 +87,14 @@
     <string name="test_event_handler_base_on_listener_4_plane">Test 基于监听的事件处理 - Plane</string>
     <string name="test_event_handler_base_on_listener_types">Test 基于监听的事件处理 - 事件处理器有5种形式</string>
     <string name="test_event_handler_base_on_callback">Test 基于回调的事件处理</string>
+
     <string name="test_listener_4_inner_class">内部类 作为事件监听器</string>
     <string name="test_listener_4_outer_class">外部类 作为事件监听器</string>
     <string name="test_listener_4_activity_itself">Activity 本身作为事件监听器类 </string>
     <string name="test_listener_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
     <string name="test_listener_4_xml">xml onClick 属性 作为事件监听器</string>
+    <string name="test_msg_handler_thread_2_main_update_text">消息处理机制 - tread -> main - 循环更新文本 </string>
+    <string name="test_msg_handler_main_2_thread_sum">消息处理机制 - maim -> tread - Sum </string>
 
     <string name="title_bar">Title bar</string>
     <string name="mock_some_items">Mock some items</string>
