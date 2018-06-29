@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".msg_handler.MessageHandlerActivity">
+        <activity android:name=".resource.ResourceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

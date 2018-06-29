@@ -97,6 +97,10 @@
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".msg_handler.MessageHandlerActivity" />
         <!-- END_EVENT_HANDLER -->
+
+        <!-- START_RESOURCES -->
+        <activity android:name=".resource.ResourceActivity"/>
+        <!-- END_RESOURCES -->
     </application>
 
 </manifest>
