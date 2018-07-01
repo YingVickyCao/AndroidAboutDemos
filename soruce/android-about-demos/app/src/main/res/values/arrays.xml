@@ -7,7 +7,6 @@
         <item>@android:color/holo_blue_dark</item>
     </array>
 
-
     <string-array name="string_array">
         <item>1</item>
         <item>2</item>
