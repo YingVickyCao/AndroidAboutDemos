@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import com.hades.android.example.android_about_demos.R;
 
+/**
+ * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
+ */
 public class ResourceActivity extends Activity {
     private static final String TAG = ResourceActivity.class.getSimpleName();
 
