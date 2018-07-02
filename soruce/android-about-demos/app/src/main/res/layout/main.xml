@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher" />
+
+    <Button
+        android:id="@+id/bn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始动画" />
+
+    <!-- -->
+    <Button
+        android:id="@+id/alpha"
+        style="@style/btn"
+        android:text="透明变换" />
+
+    <Button
+        android:id="@+id/scale"
+        style="@style/btn"
+        android:text="缩放变换" />
+
+    <Button
+        android:id="@+id/translate"
+        style="@style/btn"
+        android:text="位移变换" />
+
+    <Button
+        android:id="@+id/rotate"
+        style="@style/btn"
+        android:text="旋转变换" />
+</LinearLayout>

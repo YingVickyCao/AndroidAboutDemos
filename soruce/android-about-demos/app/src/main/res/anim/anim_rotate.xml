@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:interpolator="@android:anim/accelerate_interpolator">
+    <!-- 定义旋转变换 -->
+    <rotate
+        android:duration="1000"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="0"
+        android:toDegrees="90" />
+    <!-- 旋转次数 = repeatCount +1-->
+    <!-- infinite无限循环 -->
+    <!-- android:repeatCount="infinite" -->
+</set>
