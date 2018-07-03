@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/getNormalArray"
-        style="@style/btn"
-        android:text="普通数组" />
-
-    <Button
-        android:id="@+id/getIntArray"
-        style="@style/btn"
-        android:text="整型数组" />
-
-    <Button
-        android:id="@+id/getStringArray"
-        style="@style/btn"
-        android:text="字符串数组" />
-
-    <ListView
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/string_array" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/parseXml"
+                style="@style/btn.small"
+                android:text="原始资源" />
+
+            <Button
+                android:id="@+id/theme"
+                style="@style/btn.small"
+                android:text="Theme" />
+
+            <Button
+                android:id="@+id/play_Raw_asserts"
+                style="@style/btn.small"
+                android:text="play Raw and Asserts" />
+
+            <Button
+                android:id="@+id/internationalization"
+                style="@style/btn.small"
+                android:text="国际化" />
+
+            <Button
+                android:id="@+id/array"
+                style="@style/btn.small"
+                android:text="数组" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragmentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

@@ -6,8 +6,7 @@
 
     <Button
         android:id="@+id/parseXml"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/btn"
         android:text="Parse XML" />
 
     <TextView

@@ -1,8 +1,12 @@
 package com.hades.android.example.android_about_demos.resource.xml;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
@@ -12,16 +16,18 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 
-public class ParseXmlActivity extends Activity {
+public class ParseXmlFragment extends Fragment {
 
     private TextView show;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.res_xml);
 
-        findViewById(R.id.parseXml).setOnClickListener(v -> parseXml());
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.res_xml, container, false);
+        view.findViewById(R.id.parseXml).setOnClickListener(v -> parseXml());
+        show = view.findViewById(R.id.show);
+        return view;
     }
 
     private void parseXml() {
@@ -57,7 +63,7 @@ public class ParseXmlActivity extends Activity {
                 xrp.next(); // ①
             }
 
-            show = findViewById(R.id.show);
+
             show.setText(sb.toString());
         } catch (XmlPullParserException e) {
             e.printStackTrace();
