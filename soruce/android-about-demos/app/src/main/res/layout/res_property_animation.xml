@@ -15,4 +15,16 @@
         style="@style/btn"
         android:text="Object Animation" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="10"
+        android:max="100" />
+
+    <Button
+        android:id="@+id/animator"
+        style="@style/btn"
+        android:text="ValueAnimator" />
 </LinearLayout>

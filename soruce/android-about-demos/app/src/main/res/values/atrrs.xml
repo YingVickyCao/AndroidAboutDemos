@@ -3,4 +3,14 @@
     <!-- APPLY_THEME_START -->
     <attr name="pageRootBg" format="reference" />
     <!-- APPLY_THEME_END -->
+
+    <!-- 定义一个属性 -->
+    <!--<attr name="duration" />-->
+    <attr name="duration" format="integer" />
+
+    <!-- 定义一个styleable对象来组合多个属性 -->
+    <declare-styleable name="AlphaImageView">
+        <attr name="duration" />
+    </declare-styleable>
+
 </resources>

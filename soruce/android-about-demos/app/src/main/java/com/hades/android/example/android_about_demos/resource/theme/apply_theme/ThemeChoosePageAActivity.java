@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.apply_theme;
+package com.hades.android.example.android_about_demos.resource.theme.apply_theme;
 
 import android.app.Activity;
 import android.app.TaskStackBuilder;
@@ -14,7 +14,7 @@ public class ThemeChoosePageAActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme();
-        setContentView(R.layout.theme_choose_page);
+        setContentView(R.layout.res_theme_choose_page);
 
         findViewById(R.id.setRedTheme).setOnClickListener(v -> doSetRedThemeBtnClick());
         findViewById(R.id.setGreenTheme).setOnClickListener(v -> doSetGreenThemeBtnClick());

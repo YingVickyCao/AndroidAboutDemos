@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.apply_theme;
+package com.hades.android.example.android_about_demos.resource.theme.apply_theme;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

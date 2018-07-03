@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".resource.animator.PropertyAnimationActivity">
+        <activity android:name=".resource.material.MaterialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
