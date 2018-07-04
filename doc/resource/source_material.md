@@ -6,4 +6,5 @@
 1. `/res/raw/`
 2. `/assets` => 并列 `/res/`  
 
-![AssertManager](https://github.com/YingVickyCao/YingVickyCao.github.io/tree/master/img/android/resources/assert_manager.png)
+
+![AssertManager](https://github.com/YingVickyCao/YingVickyCao.github.io/blob/master/img/android/resources/assert_manager.png)
