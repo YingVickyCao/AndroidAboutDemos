@@ -42,7 +42,7 @@
             android:name=".app_component.activity.lifecycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".app_component.activity.lifecycle.C" />
-        <activity android:name=".app_component.activity.lifecycle.DisableRotateActivity" />
+        <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
         <!-- Activity lifecycle, end -->
         <!-- Activity, end -->
 

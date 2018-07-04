@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.activity.lifecycle;
+package com.hades.android.example.android_about_demos.resource.adapter_screen;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
