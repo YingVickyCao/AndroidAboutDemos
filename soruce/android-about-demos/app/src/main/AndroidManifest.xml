@@ -5,6 +5,13 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
+    <!-- START_CONTENT_PROVIDER -->
+    <!-- 授予读联系人ContentProvider的权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 授予写联系人ContentProvider的权限 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- END_CONTENT_PROVIDER -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -112,6 +119,7 @@
         <activity
             android:name=".app_component.cp.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
+        <activity android:name=".app_component.cp.system.SystemContactContentProviderActivity" />
         <!-- END_CONTENT_PROVIDER -->
     </application>
 

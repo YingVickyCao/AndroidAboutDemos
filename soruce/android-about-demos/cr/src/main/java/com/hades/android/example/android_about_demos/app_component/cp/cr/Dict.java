@@ -17,6 +17,6 @@ public final class Dict {
         // 定义该Content提供服务的两个Uri
         public final static Uri WORDS_URI = Uri.parse("content://" + AUTHORITY + "/words");
         public final static Uri WORD_URI = Uri.parse("content://" + AUTHORITY + "/word");
-        
+
     }
 }

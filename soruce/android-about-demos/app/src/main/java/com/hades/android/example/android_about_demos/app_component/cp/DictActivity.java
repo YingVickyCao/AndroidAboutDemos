@@ -24,7 +24,7 @@ public class DictActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cp_dict);
+        setContentView(R.layout.cp_dict);
 
         // data/data/com.xxx.xxx/databases.db
         dbHelper = new MyDatabaseHelper(this, "myDict.db3", 1);
