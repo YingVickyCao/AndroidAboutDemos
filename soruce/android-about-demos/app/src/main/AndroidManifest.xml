@@ -110,7 +110,7 @@
 
         <activity android:name=".app_component.cp.DictActivity" />
         <activity
-            android:name=".app_component.cp.ResultActivity"
+            android:name=".app_component.cp.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <!-- END_CONTENT_PROVIDER -->
     </application>

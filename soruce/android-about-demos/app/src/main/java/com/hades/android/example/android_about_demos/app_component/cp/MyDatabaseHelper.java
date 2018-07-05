@@ -18,9 +18,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db
-            , int oldVersion, int newVersion) {
-        System.out.println("--------onUpdate Called--------"
-                + oldVersion + "--->" + newVersion);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        System.out.println("--------onUpdate Called--------" + oldVersion + "--->" + newVersion);
     }
 }
