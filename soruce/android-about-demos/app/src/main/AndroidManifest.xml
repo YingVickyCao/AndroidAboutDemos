@@ -99,8 +99,15 @@
         <!-- END_EVENT_HANDLER -->
 
         <!-- START_RESOURCES -->
-        <activity android:name=".resource.ResourceActivity"/>
+        <activity android:name=".resource.ResourceActivity" />
         <!-- END_RESOURCES -->
+
+        <!-- START_CONTENT_PROVIDER -->
+        <provider
+            android:name=".app_component.cp.FirstContentProvider"
+            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.FirstContentProvider"
+            android:exported="true" />
+        <!-- END_CONTENT_PROVIDER -->
     </application>
 
 </manifest>
