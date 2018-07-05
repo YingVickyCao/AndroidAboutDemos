@@ -3,7 +3,11 @@
 
     <string name="subject">ContentResolver</string>
     <string name="query">查询</string>
-    <string name="insert">插入</string>
+    <!--<string name="insert">插入</string>-->
     <string name="update">更新</string>
     <string name="delete">删除</string>
+
+    <string name="insert">添加生词</string>
+    <string name="search">查找</string>
+    <string name="detail">解释</string>
 </resources>

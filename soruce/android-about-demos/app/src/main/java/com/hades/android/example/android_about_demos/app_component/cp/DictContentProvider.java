@@ -50,8 +50,7 @@ public class DictContentProvider extends ContentProvider {
 //        return null;
 //    }
 
-    private static UriMatcher matcher
-            = new UriMatcher(UriMatcher.NO_MATCH);
+    private static UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int WORDS = 1;
     private static final int WORD = 2;
     private MyDatabaseHelper dbOpenHelper;
