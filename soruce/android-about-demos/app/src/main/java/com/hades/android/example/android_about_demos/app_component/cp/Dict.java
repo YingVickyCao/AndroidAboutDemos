@@ -1,10 +1,9 @@
-package com.hades.android.example.android_about_demos.app_component.cp.cr;
-
+package com.hades.android.example.android_about_demos.app_component.cp;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public final class Words {
+public final class Dict {
     // 定义该ContentProvider的Authority
     public static final String AUTHORITY = "com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider";
 
@@ -16,7 +15,7 @@ public final class Words {
         public final static String DETAIL = "detail";
 
         // 定义该Content提供服务的两个Uri
-        public final static Uri DICT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/words");
-        public final static Uri WORD_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/word");
+        public final static Uri WORDS_URI = Uri.parse("content://" + AUTHORITY + "/words");
+        public final static Uri WORD_URI = Uri.parse("content://" + AUTHORITY + "/word");
     }
 }

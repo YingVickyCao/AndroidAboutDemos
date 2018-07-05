@@ -26,10 +26,7 @@ public class DictActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cp_dict);
 
-        // 创建MyDatabaseHelper对象，指定数据库版本为1，此处使用相对路径即可
-        // 数据库文件自动会保存在程序的数据文件夹的databases目录下
-
-
+        // data/data/com.xxx.xxx/databases.db
         dbHelper = new MyDatabaseHelper(this, "myDict.db3", 1);
 
         mInputWorldView = findViewById(R.id.word);
@@ -38,7 +35,6 @@ public class DictActivity extends Activity {
         findViewById(R.id.insert).setOnClickListener(source -> insert());
         findViewById(R.id.search).setOnClickListener(source -> search());
     }
-
 
     @Override
     public void onDestroy() {
@@ -77,7 +73,7 @@ public class DictActivity extends Activity {
     }
 
     private void search() {
-        Cursor cursor = querryDictById(getInputQueryUsedId());
+        Cursor cursor = queryDictById(getInputQueryUsedId());
 
         Bundle data = new Bundle();
         data.putSerializable(KEY_SEARCH_RESULT, convertCursorResultToList(cursor));
@@ -100,7 +96,7 @@ public class DictActivity extends Activity {
         return result;
     }
 
-    private Cursor querryDictById(String key) {
+    private Cursor queryDictById(String key) {
         return dbHelper.getReadableDatabase().rawQuery("select * from dict where word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"});
     }
 }
