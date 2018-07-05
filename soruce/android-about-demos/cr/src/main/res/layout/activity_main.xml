@@ -12,26 +12,27 @@
         android:text="@string/subject" />
 
     <Button
+        android:id="@+id/query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="query"
         android:text="@string/query" />
 
     <Button
+        android:id="@+id/insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="insert"
         android:text="@string/insert" />
 
     <Button
+        android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="update"
         android:text="@string/update" />
 
     <Button
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="delete"
         android:text="@string/delete" />
 </LinearLayout>

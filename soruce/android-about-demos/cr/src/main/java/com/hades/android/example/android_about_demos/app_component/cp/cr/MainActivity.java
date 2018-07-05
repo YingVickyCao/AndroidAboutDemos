@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 
@@ -21,9 +20,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         contentResolver = getContentResolver();
+
+        findViewById(R.id.query).setOnClickListener(v -> query());
+        findViewById(R.id.insert).setOnClickListener(v -> insert());
+        findViewById(R.id.update).setOnClickListener(v -> update());
+        findViewById(R.id.delete).setOnClickListener(v -> delete());
     }
 
-    public void query(View source) {
+    public void query() {
         // TODO: 05/07/2018
         // 调用ContentResolver的query()方法
         // 实际返回的是该Uri对应的ContentProvider的query()的返回值
@@ -31,21 +35,21 @@ public class MainActivity extends Activity {
         Toast.makeText(this, "远程ContentProvide返回的Cursor为：" + c, Toast.LENGTH_SHORT).show();
     }
 
-    public void insert(View source) {
+    public void insert() {
         ContentValues values = new ContentValues();
         values.put("name", "fkjava");
         Uri newUri = contentResolver.insert(uri, values);
         Toast.makeText(this, "远程ContentProvide新插入记录的Uri为：" + newUri, Toast.LENGTH_SHORT).show();
     }
 
-    public void update(View source) {
+    public void update() {
         ContentValues values = new ContentValues();
         values.put("name", "fkjava");
         int count = contentResolver.update(uri, values, "update_where", null);
         Toast.makeText(this, "远程ContentProvide更新记录数为：" + count, Toast.LENGTH_SHORT).show();
     }
 
-    public void delete(View source) {
+    public void delete() {
         int count = contentResolver.delete(uri, "delete_where", null);
         Toast.makeText(this, "远程ContentProvide删除记录数为：" + count, Toast.LENGTH_SHORT).show();
     }
