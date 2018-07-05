@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private ContentResolver contentResolver;
-    private Uri uri = Uri.parse("content://com.hades.android.example.android_about_demos.app_component.cp.FirstContentProvider/");
+    private Uri uri = Uri.parse("content://com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider/");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

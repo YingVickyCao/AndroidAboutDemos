@@ -104,9 +104,14 @@
 
         <!-- START_CONTENT_PROVIDER -->
         <provider
-            android:name=".app_component.cp.FirstContentProvider"
-            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.FirstContentProvider"
+            android:name=".app_component.cp.DictContentProvider"
+            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider"
             android:exported="true" />
+
+        <activity android:name=".app_component.cp.DictActivity" />
+        <activity
+            android:name=".app_component.cp.ResultActivity"
+            android:theme="@android:style/Theme.Material.Dialog" />
         <!-- END_CONTENT_PROVIDER -->
     </application>
 
