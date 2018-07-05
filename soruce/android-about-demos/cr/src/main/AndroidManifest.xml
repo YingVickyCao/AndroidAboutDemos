@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hades.android.example.android_about_demos.cp.cr">
+    package="com.hades.android.example.android_about_demos.app_component.cp.cr">
 
     <application
         android:allowBackup="true"

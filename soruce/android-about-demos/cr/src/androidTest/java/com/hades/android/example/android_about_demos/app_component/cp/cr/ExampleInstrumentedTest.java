@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.cp.cr;
+package com.hades.android.example.android_about_demos.app_component.cp.cr;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hades.android.example.android_about_demos.cp.cr", appContext.getPackageName());
+        assertEquals("com.hades.android.example.android_about_demos.app_component.cp.cr", appContext.getPackageName());
     }
 }

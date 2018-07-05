@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.cp.cr;
+package com.hades.android.example.android_about_demos.app_component.cp.cr;
 
 import android.app.Activity;
 import android.os.Bundle;
