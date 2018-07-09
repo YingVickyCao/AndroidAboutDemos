@@ -38,10 +38,10 @@ import io.reactivex.disposables.Disposable;
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
  */
 public class MediaActivity extends Activity {
-    private ListView show;
+    private ListView mShowListView;
     private List<MediaInfo> mData = new ArrayList<>();
     List<Map<String, Object>> listItems = new ArrayList<>();
-    private SimpleAdapter simpleAdapter;
+    private SimpleAdapter mAdapter;
 
     private View mRoot;
     private RxPermissions rxPermissions;
@@ -59,77 +59,77 @@ public class MediaActivity extends Activity {
         findViewById(R.id.add).setOnClickListener(v -> add());
         findViewById(R.id.view).setOnClickListener(v -> view());
 
-        show = findViewById(R.id.show);
-        show.setOnItemClickListener(this::onItemClick);
-        simpleAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
-        // 为show ListView组件设置Adapter
-        show.setAdapter(simpleAdapter);
+        mShowListView = findViewById(R.id.show);
+        mShowListView.setOnItemClickListener(this::onItemClick);
+        mAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
+        mShowListView.setAdapter(mAdapter);
 
         mRoot = findViewById(R.id.root);
     }
 
     private void view() {
         mData.clear();
+        searchImagesInfo();
+        convertData();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private void searchImagesInfo() {
         // 通过ContentResolver查询所有图片信息
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
-            // 获取图片的显示名
             String name = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
-            // 获取图片的详细描述
             String desc = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DESCRIPTION));
             // 获取图片的保存位置的数据
             byte[] data = cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-            // 将图片名添加到names集合中
 
-            // 将图片保存路径添加到fileNames集合中
             MediaInfo mediaInfo = new MediaInfo(name, desc, new String(data, 0, data.length - 1));
             mData.add(mediaInfo);
         }
+        cursor.close();
+    }
 
-        // 创建一个List集合，List集合的元素是Map
+    private void convertData() {
         listItems.clear();
-        // 将names、descs两个集合对象的数据转换到Map集合中
         for (int i = 0; i < mData.size(); i++) {
             Map<String, Object> listItem = new HashMap<>();
             listItem.put("name", mData.get(i).getName());
             listItem.put("desc", mData.get(i).getDesc());
             listItems.add(listItem);
         }
-        simpleAdapter.notifyDataSetChanged();
     }
 
     private void add() {
-        // 创建ContentValues对象，准备插入数据
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.DISPLAY_NAME, "bg2");
         values.put(MediaStore.Images.Media.DESCRIPTION, "金塔");
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+
         // 插入数据，返回所插入数据对应的Uri
         Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-        // 加载应用程序下的jinta图片
+        if (null == uri) {
+            return;
+        }
+
         Bitmap bitmap = BitmapFactory.decodeResource(MediaActivity.this.getResources(), R.drawable.bg2);
-        System.out.println("======");
         OutputStream os = null;
         try {
             // 获取刚插入的数据的Uri对应的输出流
-            os = getContentResolver().openOutputStream(uri); // ①
+            os = getContentResolver().openOutputStream(uri);
             // 将bitmap图片保存到Uri对应的数据节点中
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
-            os.close();
+            if (null != os) {
+                os.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void onItemClick(AdapterView<?> parent, View source, int position, long id) {
-        // 加载view.xml界面布局代表的视图
         View viewDialog = getLayoutInflater().inflate(R.layout.view, null);
-        // 获取viewDialog中ID为image的组件
-        ImageView image = (ImageView) viewDialog
-                .findViewById(R.id.image);
-        // 设置image显示指定图片
+        ImageView image = viewDialog.findViewById(R.id.image);
         image.setImageBitmap(BitmapFactory.decodeFile(mData.get(position).getFileName()));
-        // 使用对话框显示用户单击的图片
         new AlertDialog.Builder(MediaActivity.this).setView(viewDialog).setPositiveButton("确定", null).show();
     }
 
