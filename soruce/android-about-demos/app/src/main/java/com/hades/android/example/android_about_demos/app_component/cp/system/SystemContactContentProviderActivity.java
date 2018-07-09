@@ -39,6 +39,8 @@ public class SystemContactContentProviderActivity extends Activity {
     private boolean mIsHasPermission = false;
     private ExpandableListView list;
     final ArrayList<ArrayList<String>> details = new ArrayList<>();
+    final ArrayList<String> names = new ArrayList<>();
+
     final ArrayList<ContactInfo> mData = new ArrayList<>();
 
     @Override
@@ -48,6 +50,7 @@ public class SystemContactContentProviderActivity extends Activity {
 
         mRoot = findViewById(R.id.root);
         list =findViewById(R.id.list);
+        initView();
 
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);
@@ -106,95 +109,8 @@ public class SystemContactContentProviderActivity extends Activity {
         });
     }
 
-    private String parseContactId(Cursor cursor) {
-        return cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-    }
-
-    private String parseContactName(Cursor cursor) {
-        return cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-    }
-
-    private ArrayList<String> parseContactPhones(String contactId) {
-        Cursor phonesCursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null
-                , ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
-
-        if (null == phonesCursor) {
-            return null;
-        }
-
-        ArrayList<String> phones = new ArrayList<>();
-        while (phonesCursor.moveToNext()) {
-            String phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            phones.add("电话号码：" + phoneNumber);
-        }
-        phonesCursor.close();
-        return phones;
-    }
-
-    private ArrayList<String> parseEmails(String contactId, ArrayList<String> phones) {
-        ArrayList<String> emailArray = null;
-        Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = " + contactId, null, null);
-        // 遍历查询结果，获取该联系人的多个E-mail地址
-        while (emails.moveToNext()) {
-            // 获取查询结果中E-mail地址列中数据
-            String emailAddress = emails.getString(emails
-                    .getColumnIndex(ContactsContract
-                            .CommonDataKinds.Email.DATA));
-            if (null == emailArray) {
-                emailArray = new ArrayList<>();
-            }
-            emailArray.add(emailAddress);
-            phones.add("邮件地址：" + emailAddress);
-        }
-        emails.close();
-
-        return emailArray;
-    }
-
-    private void search() {
-        if (!mIsHasPermission) {
-            Toast.makeText(this, "Request permission first", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        details.clear();
-        mData.clear();
-
-        
-        final ArrayList<String> names = new ArrayList<>();
-
-        // 使用ContentResolver查找联系人数据
-        Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        if (null == cursor) {
-            return;
-        }
-
-        // 遍历查询结果，获取系统中所有联系人
-        while (cursor.moveToNext()) {
-            String contactId = parseContactId(cursor);
-
-            ContactInfo contactInfo = new ContactInfo();
-            contactInfo.setContactId(contactId);
-
-            String name = parseContactName(cursor);
-            names.add(name);
-            contactInfo.setName(name);
-
-            ArrayList<String> phones = parseContactPhones(contactId);
-            contactInfo.setPhones(phones);
-
-            ArrayList<String> emails = parseEmails(contactId, phones);
-            contactInfo.setEmails(emails);
-
-            details.add(phones);
-
-            mData.add(contactInfo);
-        }
-
-        cursor.close();
-
-
-//        // 加载result.xml界面布局代表的视图
+    private void initView(){
+        //        // 加载result.xml界面布局代表的视图
 //        View resultDialog = getLayoutInflater().inflate(R.layout.result, null);
 //        // 获取resultDialog中ID为list的ExpandableListView
 //        ExpandableListView list = (ExpandableListView) resultDialog.findViewById(R.id.list);
@@ -273,6 +189,93 @@ public class SystemContactContentProviderActivity extends Activity {
             }
         };
         list.setAdapter(adapter);
+    }
+    private String parseContactId(Cursor cursor) {
+        return cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+    }
+
+    private String parseContactName(Cursor cursor) {
+        return cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+    }
+
+    private ArrayList<String> parseContactPhones(String contactId) {
+        Cursor phonesCursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null
+                , ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
+
+        if (null == phonesCursor) {
+            return null;
+        }
+
+        ArrayList<String> phones = new ArrayList<>();
+        while (phonesCursor.moveToNext()) {
+            String phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            phones.add("电话号码：" + phoneNumber);
+        }
+        phonesCursor.close();
+        return phones;
+    }
+
+    private ArrayList<String> parseEmails(String contactId, ArrayList<String> phones) {
+        ArrayList<String> emailArray = null;
+        Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = " + contactId, null, null);
+        // 遍历查询结果，获取该联系人的多个E-mail地址
+        while (emails.moveToNext()) {
+            // 获取查询结果中E-mail地址列中数据
+            String emailAddress = emails.getString(emails
+                    .getColumnIndex(ContactsContract
+                            .CommonDataKinds.Email.DATA));
+            if (null == emailArray) {
+                emailArray = new ArrayList<>();
+            }
+            emailArray.add(emailAddress);
+            phones.add("邮件地址：" + emailAddress);
+        }
+        emails.close();
+
+        return emailArray;
+    }
+
+    private void search() {
+        if (!mIsHasPermission) {
+            Toast.makeText(this, "Request permission first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        details.clear();
+        names.clear();
+
+        mData.clear();
+
+        // 使用ContentResolver查找联系人数据
+        Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+        if (null == cursor) {
+            return;
+        }
+
+        // 遍历查询结果，获取系统中所有联系人
+        while (cursor.moveToNext()) {
+            String contactId = parseContactId(cursor);
+
+            ContactInfo contactInfo = new ContactInfo();
+            contactInfo.setContactId(contactId);
+
+            String name = parseContactName(cursor);
+            names.add(name);
+            contactInfo.setName(name);
+
+            ArrayList<String> phones = parseContactPhones(contactId);
+            contactInfo.setPhones(phones);
+
+            ArrayList<String> emails = parseEmails(contactId, phones);
+            contactInfo.setEmails(emails);
+
+            details.add(phones);
+
+            mData.add(contactInfo);
+        }
+
+        cursor.close();
+
     }
 
     private void checkPermission() {
