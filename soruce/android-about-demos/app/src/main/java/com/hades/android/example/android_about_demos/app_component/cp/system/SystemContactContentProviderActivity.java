@@ -49,6 +49,7 @@ public class SystemContactContentProviderActivity extends Activity {
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);
 
+        findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
         findViewById(R.id.search).setOnClickListener(v -> search());
         findViewById(R.id.add).setOnClickListener(v -> add());
     }
@@ -79,7 +80,7 @@ public class SystemContactContentProviderActivity extends Activity {
     }
 
     private void requestPermission() {
-        rxPermissions.request(Manifest.permission.SEND_SMS).subscribe(new Observer<Boolean>() {
+        rxPermissions.request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS).subscribe(new Observer<Boolean>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
@@ -128,24 +129,11 @@ public class SystemContactContentProviderActivity extends Activity {
     }
 
     private void search() {
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
-            askUser2GrantPermissions();
-        } else {
-            doSearch();
-        }
-    }
-
-    private void checkPermission() {
-        mIsHasPermission = false;
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
-            askUser2GrantPermissions();
+        if (!mIsHasPermission) {
+            Toast.makeText(this, "Request permission first", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        mIsHasPermission = true;
-    }
-
-    private void doSearch() {
         final ArrayList<String> names = new ArrayList<>();
         final ArrayList<ArrayList<String>> details = new ArrayList<>();
         ContactInfo contactInfo = new ContactInfo();
@@ -284,8 +272,21 @@ public class SystemContactContentProviderActivity extends Activity {
                 .show();
     }
 
-
+    private void checkPermission() {
+        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
+            askUser2GrantPermissions();
+            return;
+        }else {
+            mIsHasPermission = true;
+        }
+    }
+    
     private void add() {
+        if (!mIsHasPermission) {
+            Toast.makeText(this, "Request permission first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // 获取程序界面中的三个文本框的内容
         String name = ((EditText) findViewById(R.id.name))
                 .getText().toString();
@@ -297,6 +298,20 @@ public class SystemContactContentProviderActivity extends Activity {
         ContentValues values = new ContentValues();
         // 向RawContacts.CONTENT_URI执行一个空值插入
         // 目的是获取系统返回的rawContactId
+        /**
+         * ERROR:java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2
+         * Solution:
+         */
+
+
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.READ_CONTACTS);
+//            if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED){
+//                requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS},REQUEST_CODE_ASK_PERMISSIONS);
+//                return;
+//            }
+
+
         Uri rawContactUri = getContentResolver().insert(
                 ContactsContract.RawContacts.CONTENT_URI, values);
         long rawContactId = ContentUris.parseId(rawContactUri);
