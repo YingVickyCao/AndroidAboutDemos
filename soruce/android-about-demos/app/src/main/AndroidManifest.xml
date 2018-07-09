@@ -10,6 +10,11 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- 授予写联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!-- 授予读取外部存储设备的的访问权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 授予写入外部存储设备的的访问权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- END_CONTENT_PROVIDER -->
 
     <application
@@ -120,6 +125,7 @@
             android:name=".app_component.cp.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".app_component.cp.system.contract.SystemContactContentProviderActivity" />
+        <activity android:name=".app_component.cp.system.media.MediaActivity" />
         <!-- END_CONTENT_PROVIDER -->
     </application>
 

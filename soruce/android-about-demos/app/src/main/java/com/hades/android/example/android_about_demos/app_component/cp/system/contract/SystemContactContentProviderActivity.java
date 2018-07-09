@@ -27,6 +27,12 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
+/*
+ <!-- 授予读联系人ContentProvider的权限 -->
+ <uses-permission android:name="android.permission.READ_CONTACTS" />
+ <!-- 授予写联系人ContentProvider的权限 -->
+ <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+ */
 public class SystemContactContentProviderActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
@@ -51,6 +57,15 @@ public class SystemContactContentProviderActivity extends Activity {
         findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
         findViewById(R.id.search).setOnClickListener(v -> search());
         findViewById(R.id.add).setOnClickListener(v -> add());
+    }
+
+    private void checkPermission() {
+        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
+            askUser2GrantPermissions();
+            return;
+        } else {
+            mIsHasPermission = true;
+        }
     }
 
     private void requestPermission() {
@@ -179,15 +194,6 @@ public class SystemContactContentProviderActivity extends Activity {
 
         if (null != mAdapter) {
             mAdapter.notifyDataSetChanged();
-        }
-    }
-
-    private void checkPermission() {
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
-            askUser2GrantPermissions();
-            return;
-        } else {
-            mIsHasPermission = true;
         }
     }
 
