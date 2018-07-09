@@ -33,7 +33,7 @@ import io.reactivex.functions.Consumer;
  <!-- 授予写联系人ContentProvider的权限 -->
  <uses-permission android:name="android.permission.WRITE_CONTACTS" />
  */
-public class SystemContactContentProviderActivity extends Activity {
+public class ContactContentProviderActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
     private boolean mIsHasPermission = false;
@@ -78,9 +78,9 @@ public class SystemContactContentProviderActivity extends Activity {
             public void onNext(Boolean granted) {
                 mIsHasPermission = granted;
                 if (granted) {
-                    Toast.makeText(SystemContactContentProviderActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactContentProviderActivity.this, "permission available", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(SystemContactContentProviderActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactContentProviderActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -118,7 +118,7 @@ public class SystemContactContentProviderActivity extends Activity {
     }
 
     private void initView() {
-        mAdapter = new ContactAdapter(mData, SystemContactContentProviderActivity.this);
+        mAdapter = new ContactAdapter(mData, ContactContentProviderActivity.this);
         list.setAdapter(mAdapter);
     }
 
@@ -221,7 +221,7 @@ public class SystemContactContentProviderActivity extends Activity {
         insertName(rawContactId, name);
         insertPhone(rawContactId, phone);
         insertEmail(rawContactId, email);
-        Toast.makeText(SystemContactContentProviderActivity.this, "联系人数据添加成功", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ContactContentProviderActivity.this, "联系人数据添加成功", Toast.LENGTH_SHORT).show();
     }
 
     private void insertName(long rawContactId, String name) {

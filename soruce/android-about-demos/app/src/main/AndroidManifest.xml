@@ -15,6 +15,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 授予写入外部存储设备的的访问权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 授予本应用读取短信的权限 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
     <!-- END_CONTENT_PROVIDER -->
 
     <application
@@ -63,11 +66,11 @@
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
 
-        <receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">
-            <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">-->
+            <!--<intent-filter android:priority="1000">-->
+                <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
         <!-- APPLY_THEME_START -->
@@ -124,8 +127,9 @@
         <activity
             android:name=".app_component.cp.dict.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".app_component.cp.system.contract.SystemContactContentProviderActivity" />
+        <activity android:name=".app_component.cp.system.contract.ContactContentProviderActivity" />
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
+        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
         <!-- END_CONTENT_PROVIDER -->
     </application>
 
