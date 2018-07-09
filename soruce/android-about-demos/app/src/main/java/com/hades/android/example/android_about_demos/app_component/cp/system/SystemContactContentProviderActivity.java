@@ -2,7 +2,6 @@ package com.hades.android.example.android_about_demos.app_component.cp.system;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -15,13 +14,8 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.RawContacts.Data;
 import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
@@ -37,9 +31,10 @@ public class SystemContactContentProviderActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
     private boolean mIsHasPermission = false;
-    private ExpandableListView list;
+    private ListView list;
     final ArrayList<ArrayList<String>> details = new ArrayList<>();
     final ArrayList<String> names = new ArrayList<>();
+    private ContactAdapter adapter2;
 
     final ArrayList<ContactInfo> mData = new ArrayList<>();
 
@@ -49,7 +44,7 @@ public class SystemContactContentProviderActivity extends Activity {
         setContentView(R.layout.cp_system_contact_cp);
 
         mRoot = findViewById(R.id.root);
-        list =findViewById(R.id.list);
+        list = findViewById(R.id.list);
         initView();
 
         rxPermissions = new RxPermissions(this);
@@ -109,87 +104,11 @@ public class SystemContactContentProviderActivity extends Activity {
         });
     }
 
-    private void initView(){
-        //        // 加载result.xml界面布局代表的视图
-//        View resultDialog = getLayoutInflater().inflate(R.layout.result, null);
-//        // 获取resultDialog中ID为list的ExpandableListView
-//        ExpandableListView list = (ExpandableListView) resultDialog.findViewById(R.id.list);
-        // 创建一个ExpandableListAdapter对象
-        ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
-            // 获取指定组位置、指定子列表项处的子列表项数据
-            @Override
-            public Object getChild(int groupPosition, int childPosition) {
-                return details.get(groupPosition).get(
-                        childPosition);
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return childPosition;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return details.get(groupPosition).size();
-            }
-
-            private TextView getTextView() {
-                AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 150);
-                TextView textView = new TextView(SystemContactContentProviderActivity.this);
-                textView.setLayoutParams(lp);
-                textView.setTextSize(20);
-                return textView;
-            }
-
-            // 该方法决定每个子选项的外观
-            @Override
-            public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                TextView textView = getTextView();
-                textView.setText(getChild(groupPosition, childPosition).toString());
-                return textView;
-            }
-
-            // 获取指定组位置处的组数据
-            @Override
-            public Object getGroup(int groupPosition) {
-                return names.get(groupPosition);
-            }
-
-            @Override
-            public int getGroupCount() {
-                return names.size();
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return groupPosition;
-            }
-
-            // 该方法决定每个组选项的外观
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                TextView textView = getTextView();
-                if (null == getGroup(groupPosition)) {
-                    textView.setText("");
-                } else {
-                    textView.setText(getGroup(groupPosition).toString());
-                }
-                return textView;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition,
-                                             int childPosition) {
-                return true;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return true;
-            }
-        };
-        list.setAdapter(adapter);
+    private void initView() {
+        adapter2 = new ContactAdapter(mData, SystemContactContentProviderActivity.this);
+        list.setAdapter(adapter2);
     }
+
     private String parseContactId(Cursor cursor) {
         return cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
     }
@@ -270,12 +189,15 @@ public class SystemContactContentProviderActivity extends Activity {
             contactInfo.setEmails(emails);
 
             details.add(phones);
-
             mData.add(contactInfo);
         }
 
         cursor.close();
 
+
+        if (null != adapter2) {
+            adapter2.notifyDataSetChanged();
+        }
     }
 
     private void checkPermission() {

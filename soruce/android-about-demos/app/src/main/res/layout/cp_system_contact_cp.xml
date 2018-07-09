@@ -81,10 +81,11 @@
 
     </LinearLayout>
 
-    <ExpandableListView
+    <ListView
         android:id="@+id/list"
+        android:divider="@android:color/holo_red_dark"
+        android:dividerHeight="2dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:childIndicator="@drawable/user" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
