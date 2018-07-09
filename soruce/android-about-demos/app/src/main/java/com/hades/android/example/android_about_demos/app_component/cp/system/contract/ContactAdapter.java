@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp.system;
+package com.hades.android.example.android_about_demos.app_component.cp.system.contract;
 
 import android.content.Context;
 import android.view.View;
