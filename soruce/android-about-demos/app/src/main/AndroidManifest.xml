@@ -116,13 +116,13 @@
 
         <!-- START_CONTENT_PROVIDER -->
         <provider
-            android:name=".app_component.cp.DictContentProvider"
-            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider"
+            android:name=".app_component.cp.dict.DictContentProvider"
+            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider"
             android:exported="true" />
 
-        <activity android:name=".app_component.cp.DictActivity" />
+        <activity android:name=".app_component.cp.dict.DictActivity" />
         <activity
-            android:name=".app_component.cp.DictSearchResultActivity"
+            android:name=".app_component.cp.dict.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".app_component.cp.system.contract.SystemContactContentProviderActivity" />
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
