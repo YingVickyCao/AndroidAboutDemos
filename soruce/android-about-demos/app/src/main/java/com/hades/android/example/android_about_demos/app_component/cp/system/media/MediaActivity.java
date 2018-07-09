@@ -39,9 +39,8 @@ import io.reactivex.disposables.Disposable;
  */
 public class MediaActivity extends Activity {
     ListView show;
-    ArrayList<String> names = new ArrayList<>();
-    ArrayList<String> descs = new ArrayList<>();
-    ArrayList<String> fileNames = new ArrayList<>();
+    List<MediaInfo> mData = new ArrayList<>();
+
     private View mRoot;
     private RxPermissions rxPermissions;
 
@@ -65,10 +64,8 @@ public class MediaActivity extends Activity {
     }
 
     private void view() {
-        // 清空names、descs、fileNames集合里原有的数据
-        names.clear();
-        descs.clear();
-        fileNames.clear();
+        mData.clear();
+
         // 通过ContentResolver查询所有图片信息
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -79,24 +76,23 @@ public class MediaActivity extends Activity {
             // 获取图片的保存位置的数据
             byte[] data = cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
             // 将图片名添加到names集合中
-            names.add(name);
-            // 将图片描述添加到descs集合中
-            descs.add(desc);
+
             // 将图片保存路径添加到fileNames集合中
-            fileNames.add(new String(data, 0, data.length - 1));
+            MediaInfo mediaInfo = new MediaInfo(name, desc, new String(data, 0, data.length - 1));
+            mData.add(mediaInfo);
         }
+
         // 创建一个List集合，List集合的元素是Map
         List<Map<String, Object>> listItems = new ArrayList<>();
         // 将names、descs两个集合对象的数据转换到Map集合中
-        for (int i = 0; i < names.size(); i++) {
+        for (int i = 0; i < mData.size(); i++) {
             Map<String, Object> listItem = new HashMap<>();
-            listItem.put("name", names.get(i));
-            listItem.put("desc", descs.get(i));
+            listItem.put("name", mData.get(i).getName());
+            listItem.put("desc", mData.get(i).getDesc());
             listItems.add(listItem);
         }
         // 创建一个SimpleAdapter
-        SimpleAdapter simpleAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}
-                , new int[]{R.id.name, R.id.desc});
+        SimpleAdapter simpleAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
         // 为show ListView组件设置Adapter
         show.setAdapter(simpleAdapter);
     }
@@ -131,14 +127,10 @@ public class MediaActivity extends Activity {
         ImageView image = (ImageView) viewDialog
                 .findViewById(R.id.image);
         // 设置image显示指定图片
-        image.setImageBitmap(BitmapFactory.decodeFile(
-                fileNames.get(position)));
+        image.setImageBitmap(BitmapFactory.decodeFile(mData.get(position).getFileName()));
         // 使用对话框显示用户单击的图片
-        new AlertDialog.Builder(MediaActivity.this)
-                .setView(viewDialog).setPositiveButton("确定", null)
-                .show();
+        new AlertDialog.Builder(MediaActivity.this).setView(viewDialog).setPositiveButton("确定", null).show();
     }
-
 
     private void checkPermission() {
         if (!rxPermissions.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE) || !rxPermissions.isGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
