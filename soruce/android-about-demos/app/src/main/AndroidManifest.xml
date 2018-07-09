@@ -119,7 +119,7 @@
         <activity
             android:name=".app_component.cp.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".app_component.cp.system.SystemContactContentProviderActivity" />
+        <activity android:name=".app_component.cp.system.contract.SystemContactContentProviderActivity" />
         <!-- END_CONTENT_PROVIDER -->
     </application>
 
