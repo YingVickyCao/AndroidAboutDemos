@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp;
+package com.hades.android.example.android_about_demos.app_component.cp.dict;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import com.hades.android.example.android_about_demos.R;
 import java.util.List;
 import java.util.Map;
 
-import static com.hades.android.example.android_about_demos.app_component.cp.DictActivity.KEY_SEARCH_RESULT;
+import static com.hades.android.example.android_about_demos.app_component.cp.dict.DictActivity.KEY_SEARCH_RESULT;
 
 public class DictSearchResultActivity extends Activity {
     private ListView listView;

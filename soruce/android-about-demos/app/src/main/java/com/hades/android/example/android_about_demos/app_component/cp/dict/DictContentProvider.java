@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp;
+package com.hades.android.example.android_about_demos.app_component.cp.dict;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -7,7 +7,6 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Binder;
 import android.util.Log;
 
 import com.hades.android.example.android_about_demos.mock.LogHelper;

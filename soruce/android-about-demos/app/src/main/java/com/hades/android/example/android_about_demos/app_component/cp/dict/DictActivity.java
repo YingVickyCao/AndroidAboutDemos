@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp;
+package com.hades.android.example.android_about_demos.app_component.cp.dict;
 
 import android.app.Activity;
 import android.content.Intent;
