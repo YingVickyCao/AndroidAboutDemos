@@ -38,8 +38,10 @@ import io.reactivex.disposables.Disposable;
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
  */
 public class MediaActivity extends Activity {
-    ListView show;
-    List<MediaInfo> mData = new ArrayList<>();
+    private ListView show;
+    private List<MediaInfo> mData = new ArrayList<>();
+    List<Map<String, Object>> listItems = new ArrayList<>();
+    private SimpleAdapter simpleAdapter;
 
     private View mRoot;
     private RxPermissions rxPermissions;
@@ -59,13 +61,15 @@ public class MediaActivity extends Activity {
 
         show = findViewById(R.id.show);
         show.setOnItemClickListener(this::onItemClick);
+        simpleAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
+        // 为show ListView组件设置Adapter
+        show.setAdapter(simpleAdapter);
 
         mRoot = findViewById(R.id.root);
     }
 
     private void view() {
         mData.clear();
-
         // 通过ContentResolver查询所有图片信息
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -83,7 +87,7 @@ public class MediaActivity extends Activity {
         }
 
         // 创建一个List集合，List集合的元素是Map
-        List<Map<String, Object>> listItems = new ArrayList<>();
+        listItems.clear();
         // 将names、descs两个集合对象的数据转换到Map集合中
         for (int i = 0; i < mData.size(); i++) {
             Map<String, Object> listItem = new HashMap<>();
@@ -91,10 +95,7 @@ public class MediaActivity extends Activity {
             listItem.put("desc", mData.get(i).getDesc());
             listItems.add(listItem);
         }
-        // 创建一个SimpleAdapter
-        SimpleAdapter simpleAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.line, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
-        // 为show ListView组件设置Adapter
-        show.setAdapter(simpleAdapter);
+        simpleAdapter.notifyDataSetChanged();
     }
 
     private void add() {
