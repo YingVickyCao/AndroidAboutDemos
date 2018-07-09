@@ -32,9 +32,7 @@ public class SystemContactContentProviderActivity extends Activity {
     private View mRoot;
     private boolean mIsHasPermission = false;
     private ListView list;
-    final ArrayList<ArrayList<String>> details = new ArrayList<>();
-    final ArrayList<String> names = new ArrayList<>();
-    private ContactAdapter adapter2;
+    private ContactAdapter mAdapter;
 
     final ArrayList<ContactInfo> mData = new ArrayList<>();
 
@@ -105,8 +103,8 @@ public class SystemContactContentProviderActivity extends Activity {
     }
 
     private void initView() {
-        adapter2 = new ContactAdapter(mData, SystemContactContentProviderActivity.this);
-        list.setAdapter(adapter2);
+        mAdapter = new ContactAdapter(mData, SystemContactContentProviderActivity.this);
+        list.setAdapter(mAdapter);
     }
 
     private String parseContactId(Cursor cursor) {
@@ -118,9 +116,7 @@ public class SystemContactContentProviderActivity extends Activity {
     }
 
     private ArrayList<String> parseContactPhones(String contactId) {
-        Cursor phonesCursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null
-                , ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
-
+        Cursor phonesCursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
         if (null == phonesCursor) {
             return null;
         }
@@ -134,7 +130,7 @@ public class SystemContactContentProviderActivity extends Activity {
         return phones;
     }
 
-    private ArrayList<String> parseEmails(String contactId, ArrayList<String> phones) {
+    private ArrayList<String> parseEmails(String contactId) {
         ArrayList<String> emailArray = null;
         Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = " + contactId, null, null);
         // 遍历查询结果，获取该联系人的多个E-mail地址
@@ -146,8 +142,7 @@ public class SystemContactContentProviderActivity extends Activity {
             if (null == emailArray) {
                 emailArray = new ArrayList<>();
             }
-            emailArray.add(emailAddress);
-            phones.add("邮件地址：" + emailAddress);
+            emailArray.add("邮件地址:" + emailAddress);
         }
         emails.close();
 
@@ -160,9 +155,6 @@ public class SystemContactContentProviderActivity extends Activity {
             return;
         }
 
-        details.clear();
-        names.clear();
-
         mData.clear();
 
         // 使用ContentResolver查找联系人数据
@@ -174,29 +166,19 @@ public class SystemContactContentProviderActivity extends Activity {
         // 遍历查询结果，获取系统中所有联系人
         while (cursor.moveToNext()) {
             String contactId = parseContactId(cursor);
-
             ContactInfo contactInfo = new ContactInfo();
             contactInfo.setContactId(contactId);
+            contactInfo.setName(parseContactName(cursor));
+            contactInfo.setPhones(parseContactPhones(contactId));
+            contactInfo.setEmails(parseEmails(contactId));
 
-            String name = parseContactName(cursor);
-            names.add(name);
-            contactInfo.setName(name);
-
-            ArrayList<String> phones = parseContactPhones(contactId);
-            contactInfo.setPhones(phones);
-
-            ArrayList<String> emails = parseEmails(contactId, phones);
-            contactInfo.setEmails(emails);
-
-            details.add(phones);
             mData.add(contactInfo);
         }
 
         cursor.close();
 
-
-        if (null != adapter2) {
-            adapter2.notifyDataSetChanged();
+        if (null != mAdapter) {
+            mAdapter.notifyDataSetChanged();
         }
     }
 
