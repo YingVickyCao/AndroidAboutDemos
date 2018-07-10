@@ -58,12 +58,16 @@ public class DictContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         Log.d(TAG, "insert: uri=" + uri.toString() + ",values=" + values);
-        // insert,thread =180,Binder:3178_2
 
-        // TODO: 06/07/2018
-        // 疯狂连续插入数据
-        // insert,thread =180,Binder:3178_2
-        // insert,thread =179,Binder:3178_1
+        /**
+         * insert: uri=content://com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider/words,values=detail=A  detail word=A
+         * insert,thread =180,Binder:3178_2
+         *
+         * // 疯狂连续插入数据,有时thread =180，有时thread =179
+         // insert,thread =180,Binder:3178_2
+         // insert,thread =179,Binder:3178_1
+         */
+
         LogHelper.logThreadInfo(TAG, "insert");
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
