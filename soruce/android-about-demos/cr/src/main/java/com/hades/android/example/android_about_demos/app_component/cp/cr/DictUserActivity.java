@@ -76,6 +76,9 @@ public class DictUserActivity extends Activity {
 
     private ArrayList<Map<String, String>> convertCursorToList(Cursor cursor) {
         ArrayList<Map<String, String>> result = new ArrayList<>();
+        if (null == cursor) {
+            return result;
+        }
         // 遍历Cursor结果集
         while (cursor.moveToNext()) {
             // 将结果集中的数据存入ArrayList中

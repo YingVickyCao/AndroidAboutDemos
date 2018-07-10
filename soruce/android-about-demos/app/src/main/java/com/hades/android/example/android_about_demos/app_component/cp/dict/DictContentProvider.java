@@ -25,7 +25,7 @@ public class DictContentProvider extends ContentProvider {
     private MyDatabaseHelper dbOpenHelper;
 
     static {
-        // 为UriMatcher注册两个Uri
+        // 为 UriMatcher 注册两个Uri
         matcher.addURI(Dict.AUTHORITY, "words", WORDS);
         matcher.addURI(Dict.AUTHORITY, "word/#", WORD);
     }
@@ -63,9 +63,9 @@ public class DictContentProvider extends ContentProvider {
          * insert: uri=content://com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider/words,values=detail=A  detail word=A
          * insert,thread =180,Binder:3178_2
          *
-         * // 疯狂连续插入数据,有时thread =180，有时thread =179
-         // insert,thread =180,Binder:3178_2
-         // insert,thread =179,Binder:3178_1
+         * 疯狂连续插入数据,有时thread =180，有时thread =179
+         insert,thread =180,Binder:3178_2
+         insert,thread =179,Binder:3178_1
          */
 
         LogHelper.logThreadInfo(TAG, "insert");
@@ -157,11 +157,14 @@ public class DictContentProvider extends ContentProvider {
         getContext().getContentResolver().notifyChange(uri, null);
         return num;
     }
-
+    
     @Override
     public Cursor query(Uri uri, String[] projection, String where, String[] whereArgs, String sortOrder) {
         Log.d(TAG, "query: uri=" + uri.toString() + ",where=" + where);
-        // query,thread =180,Binder:3178_2
+        /**
+         * query: uri=content://com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider/words,where=word like ? or detail like ?
+         * query,thread =4331,Binder:21984_2
+         */
         LogHelper.logThreadInfo(TAG, "query");
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
