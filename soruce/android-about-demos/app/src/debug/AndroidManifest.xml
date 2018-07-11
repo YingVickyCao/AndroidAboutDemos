@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".resource.ResourceActivity">
+        <activity android:name=".app_component.cp.dict.DictActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,6 +5,21 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
+    <!-- START_CONTENT_PROVIDER -->
+    <!-- 授予读联系人ContentProvider的权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 授予写联系人ContentProvider的权限 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!-- 授予读取外部存储设备的的访问权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 授予写入外部存储设备的的访问权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 授予本应用读取短信的权限 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- END_CONTENT_PROVIDER -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,11 +66,11 @@
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
 
-        <receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">
-            <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">-->
+            <!--<intent-filter android:priority="1000">-->
+                <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
         <!-- APPLY_THEME_START -->
@@ -99,8 +114,23 @@
         <!-- END_EVENT_HANDLER -->
 
         <!-- START_RESOURCES -->
-        <activity android:name=".resource.ResourceActivity"/>
+        <activity android:name=".resource.ResourceActivity" />
         <!-- END_RESOURCES -->
+
+        <!-- START_CONTENT_PROVIDER -->
+        <provider
+            android:name=".app_component.cp.dict.DictContentProvider"
+            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider"
+            android:exported="true" />
+
+        <activity android:name=".app_component.cp.dict.DictActivity" />
+        <activity
+            android:name=".app_component.cp.dict.DictSearchResultActivity"
+            android:theme="@android:style/Theme.Material.Dialog" />
+        <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
+        <activity android:name=".app_component.cp.system.media.MediaActivity" />
+        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
+        <!-- END_CONTENT_PROVIDER -->
     </application>
 
 </manifest>

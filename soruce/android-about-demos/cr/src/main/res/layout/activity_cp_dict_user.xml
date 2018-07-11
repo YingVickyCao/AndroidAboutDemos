@@ -6,17 +6,17 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/holo_orange_light"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_purple"
         android:gravity="center"
         android:text="@string/subject" />
 
-    <Button
-        android:id="@+id/query"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/word"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="query"
-        android:text="@string/query" />
+        android:hint="Input word" />
 
     <Button
         android:id="@+id/insert"
@@ -24,15 +24,20 @@
         android:layout_height="wrap_content"
         android:text="@string/insert" />
 
-    <Button
-        android:id="@+id/update"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/key"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/update" />
+        android:hint="Query word by ID" />
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete" />
+        android:text="@string/search" />
+
+    <!--<ListView-->
+    <!--android:id="@+id/show"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
 </LinearLayout>

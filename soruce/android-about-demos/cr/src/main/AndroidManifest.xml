@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hades.android.example.android_about_demos.cp.cr">
+    package="com.hades.android.example.android_about_demos.app_component.cp.cr">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".DictUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".DictUserSearchResultActivity"
+            android:theme="@android:style/Theme.Material.Dialog" />
     </application>
 
 </manifest>

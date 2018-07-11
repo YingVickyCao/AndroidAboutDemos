@@ -81,4 +81,17 @@
     <string name="show_normal_toast">Show normal Toast</string>
     <string name="show_custom_toast">Show custom Toast</string>
     <string name="custom_toast">Custom Toast</string>
+
+    <string name="insert">添加生词</string>
+    <string name="detail">解释</string>
+    <string name="search">查询</string>
+    <string name="view">查看</string>
+    <string name="add">添加</string>
+    <string name="name">联系人姓名</string>
+    <string name="phone">电话</string>
+    <string name="email">Email</string>
+
+
+    <string name="subject_ContentProvider">ContentProvider</string>
+    <string name="subject_test_system_ContactContentProvider">Test System Contact ContentProvider</string>
 </resources>

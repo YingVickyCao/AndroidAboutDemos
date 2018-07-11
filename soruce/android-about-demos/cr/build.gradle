@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.3"
 
     defaultConfig {
-        applicationId "com.hades.android.example.android_about_demos.cp.cr"
+        applicationId "com.hades.android.example.android_about_demos.app_component.cp.cr"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
@@ -22,6 +22,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
