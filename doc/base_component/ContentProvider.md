@@ -23,9 +23,11 @@
 - 一个应用通过`ContentProvider` 把数据操作接口暴露给其他应用使用，其他应用通过`ContentResolver`来操作暴露的数据。  
 - 一个应用通过`ContentProvider`把数据操作接口暴露给其他应用使用，不管该应用是否启动启动，其他应用程序都可以通过该接口操作该应用的内部数据，包括`CRUD`-`增 (insert)、删(delete)、改(update)、查(query)`等。  
 - `ContentProvider`是单例模式。当多个应用通过`ContentResolver`来操作`ContentProvider`提供的数据时，`ContentResolver`调用数据操作将会委托给同一个`ContentProvider`处理。  
-- `ContentProvider`的 CRUD 方法，默认运行在创建`ContentProvider`的线程池中其中一个线程。       
+- `ContentProvider`的 CRUD 方法，默认运行在创建`ContentProvider`的线程池中其中一个线程。 
+ 
 `DictContentProvider.java`      
-`insert,thread =180,Binder:3178_2`       
+`insert,thread =180,Binder:3178_2`    
+
 -  `ContentProvider`所操作的数据，部分来源于是数据库。也可以来源于 XML、网络、文件等存储方式。  
  
 ### ContentProvider 常见方法  
@@ -61,7 +63,7 @@ getContext().getContentResolver().notifyChange(wordUri, null)
 - `index.php`：网站资源部分。当访问者需要访问不同资源时，此部分动态改变。  
 
 ### Uri
-`Dict.java`
+`Dict.java`  
 content://com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider/words    
 - `content://`:ContentProvider 的默认协议  
 - `AUTHORITY`:指定ContentProvider 的唯一 ID，系统通过此 ID 来找到对应的ContentProvider。
@@ -74,7 +76,7 @@ content://com.hades.android.example.android_about_demos.app_component.cp.DictCon
 - `content://com.hades.android.example.android_about_demos.app_component.cp.DictContentProvider/word/detail/` // word数据中detail  
 
 ## `ContentProvider` 与 `ContentResolver`的关系：     
-- 'Uri'是 `ContentProvider` 与 `ContentResolver`进行数据交换的标识。    
+- `Uri`是 `ContentProvider` 与 `ContentResolver`进行数据交换的标识。    
 - 应用 A 通过`ContentResolver`执行CRUD操作（必须指定Uri），Android 系统会根据`Uri`找到对应的`ContentProvider`（通常位于应用 B）。    
 
 ![ContentProvider、Uri、ContentResolver 的关系](https://github.com/YingVickyCao/YingVickyCao.github.io/blob/master/img/android/app_component/cp/cp_cr_and_uri.png)
