@@ -39,6 +39,7 @@ public class DictContentProvider extends ContentProvider {
     }
 
     // 返回指定Uri参数对应的数据的MIME类型
+    // TODO: 11/07/2018 getType没有调用
     @Override
     public String getType(Uri uri) {
         Log.d(TAG, "getType: uri=" + uri.toString());

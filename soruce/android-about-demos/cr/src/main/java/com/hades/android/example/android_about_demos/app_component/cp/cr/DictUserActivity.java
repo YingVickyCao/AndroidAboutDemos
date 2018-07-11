@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class DictUserActivity extends Activity {
 
     private ContentResolver contentResolver;
     public static final String KEY_SEARCH_RESULT = "search_result";
+    private DictContentObserver mDictContentObserver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,21 @@ public class DictUserActivity extends Activity {
 
         contentResolver = getContentResolver();
 
+        mDictContentObserver = new DictContentObserver(DictUserActivity.this, new Handler());
+        getContentResolver().registerContentObserver(Dict.Word.WORDS_URI, true, mDictContentObserver);
+
         findViewById(R.id.insert).setOnClickListener(v -> insert());
         findViewById(R.id.search).setOnClickListener(v -> search());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (null != mDictContentObserver) {
+            getContentResolver().unregisterContentObserver(mDictContentObserver);
+            mDictContentObserver = null;
+        }
     }
 
     private void insert() {
