@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:constantSize="true">
+    <item android:drawable="@drawable/message_read_status_read" app:state_message_read="true" />
+    <item android:drawable="@drawable/message_read_status_read" android:state_selected="true" />
+    <item android:drawable="@drawable/message_read_status_unread" />
+</selector>

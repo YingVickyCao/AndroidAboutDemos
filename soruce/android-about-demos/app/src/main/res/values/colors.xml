@@ -6,4 +6,6 @@
 
     <color name="item_view_highlight_bg">@android:color/holo_green_dark</color>
     <color name="item_view_default_bg">@android:color/transparent</color>
+
+    <color name="message_list_item_background_unread">#ff274172</color>
 </resources>

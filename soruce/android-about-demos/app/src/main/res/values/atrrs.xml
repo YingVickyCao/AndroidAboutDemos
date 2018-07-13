@@ -13,4 +13,9 @@
         <attr name="duration" />
     </declare-styleable>
 
+    <declare-styleable name="MessageState">
+        <attr name="state_message_unread" format="boolean" />
+        <attr name="state_message_read" format="boolean" />
+    </declare-styleable>
+
 </resources>
