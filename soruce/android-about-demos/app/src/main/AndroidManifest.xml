@@ -67,9 +67,9 @@
         <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
 
         <!--<receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">-->
-            <!--<intent-filter android:priority="1000">-->
-                <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
-            <!--</intent-filter>-->
+        <!--<intent-filter android:priority="1000">-->
+        <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
+        <!--</intent-filter>-->
         <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
@@ -115,6 +115,7 @@
 
         <!-- START_RESOURCES -->
         <activity android:name=".resource.ResourceActivity" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.HomeActivityActivity" />
         <!-- END_RESOURCES -->
 
         <!-- START_CONTENT_PROVIDER -->

@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <!-- 使用StateListDrawable资源 -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@drawable/drawable_state_list"/>
+        android:textColor="@drawable/drawable_state_list" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@drawable/drawable_state_list"/>
+        android:textColor="@drawable/drawable_state_list" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.hades.android.example.android_about_demos.resource.drawable.state_list.custom_selector_drawable.CustomImageView
+            android:id="@+id/message_read_status"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/message_read_status_2" />
+
+        <Button
+            android:id="@+id/read"
+            style="@style/btn.small"
+            android:layout_centerInParent="true"
+            android:text="Read" />
+
+        <Button
+            android:id="@+id/unread"
+            style="@style/btn.small"
+            android:layout_alignParentEnd="true"
+            android:text="Unread" />
+    </RelativeLayout>
+
 </LinearLayout>
