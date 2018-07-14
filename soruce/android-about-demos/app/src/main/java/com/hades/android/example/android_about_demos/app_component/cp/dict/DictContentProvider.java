@@ -69,7 +69,7 @@ public class DictContentProvider extends ContentProvider {
          insert,thread =179,Binder:3178_1
          */
 
-        LogHelper.logThreadInfo(TAG, "insert");
+        LogHelper.printThreadInfo(TAG, "insert");
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         switch (matcher.match(uri)) {
@@ -95,7 +95,7 @@ public class DictContentProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
         Log.d(TAG, "update: uri=" + uri.toString() + ",where=" + where + ",whereArgs=" + Arrays.toString(whereArgs));
-        LogHelper.logThreadInfo(TAG, "delete");
+        LogHelper.printThreadInfo(TAG, "delete");
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         // 记录所删除的记录数
@@ -129,7 +129,7 @@ public class DictContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         Log.d(TAG, "update: uri=" + uri.toString() + ",where=" + where + ",whereArgs=" + Arrays.toString(whereArgs));
-        LogHelper.logThreadInfo(TAG, "update");
+        LogHelper.printThreadInfo(TAG, "update");
 
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         // 记录所修改的记录数
@@ -166,7 +166,7 @@ public class DictContentProvider extends ContentProvider {
          * query: uri=content://com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider/words,where=word like ? or detail like ?
          * query,thread =4331,Binder:21984_2
          */
-        LogHelper.logThreadInfo(TAG, "query");
+        LogHelper.printThreadInfo(TAG, "query");
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
 

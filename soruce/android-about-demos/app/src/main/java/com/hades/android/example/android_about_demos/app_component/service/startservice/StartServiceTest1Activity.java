@@ -9,6 +9,8 @@ import com.hades.android.example.android_about_demos.R;
 
 public class StartServiceTest1Activity extends Activity {
     private static final String TAG = StartServiceTest1Activity.class.getSimpleName();
+    private int mStartCount = 0;
+    public final static String KEY_COUNT = "COUNT";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,28 +25,30 @@ public class StartServiceTest1Activity extends Activity {
     private void start() {
         final Intent intent = new Intent(this, FirstService.class);
         Log.d(TAG, "start: startService");
+        mStartCount++;
+        intent.putExtra(KEY_COUNT, mStartCount);
         startService(intent);
     }
 
-//    private void start() {
+    private void stop() {
+        final Intent intent = new Intent(this, FirstService.class);
+        Log.d(TAG, "stop: stopService, context = StartServiceTest1Activity");
+        //  When stopService, Intent can be a new one. No need to keep intent when startService();
+        stopService(intent);
+    }
+
+    //    private void start() {
 //        final Intent intent = new Intent(this.getApplicationContext(), FirstService.class);
 //        Log.d(TAG, "start: startService, context = getApplicationContext()");
 //        startService(intent);
 //    }
 
 //    private void stop() {
-//        final Intent intent = new Intent(this, FirstService.class);
-//        Log.d(TAG, "stop: stopService, context = StartServiceTest1Activity");
+//        final Intent intent = new Intent(this.getApplicationContext(), FirstService.class);
+//        Log.d(TAG, "stop: stopService");
 //        //  When stopService, Intent can be a new one. No need to keep intent when startService();
 //        stopService(intent);
 //    }
-
-    private void stop() {
-        final Intent intent = new Intent(this.getApplicationContext(), FirstService.class);
-        Log.d(TAG, "stop: stopService");
-        //  When stopService, Intent can be a new one. No need to keep intent when startService();
-        stopService(intent);
-    }
 
     private void jump() {
 //        final Intent intent = new Intent(this, StartServiceTest2Activity.class);

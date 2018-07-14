@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp.cr;
+package com.hades.android.example.android_about_demos.app_component.assist.cp.cr;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.hades.android.example.android_about_demos.app_component.assist.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

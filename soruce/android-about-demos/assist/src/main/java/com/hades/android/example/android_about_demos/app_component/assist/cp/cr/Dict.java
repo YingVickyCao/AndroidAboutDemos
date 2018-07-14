@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.cp.cr;
+package com.hades.android.example.android_about_demos.app_component.assist.cp.cr;
 
 import android.net.Uri;
 import android.provider.BaseColumns;

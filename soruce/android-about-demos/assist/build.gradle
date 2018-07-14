@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.3"
 
     defaultConfig {
-        applicationId "com.hades.android.example.android_about_demos.app_component.cp.cr"
+        applicationId "com.hades.android.example.android_about_demos.app_component.assist"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
