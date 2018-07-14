@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".resource.drawable.state_list.StateListDrawableActivity">
+        <activity android:name=".app_component.service.startservice.StartServiceTest1Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

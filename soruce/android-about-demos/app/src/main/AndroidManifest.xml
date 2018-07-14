@@ -132,6 +132,14 @@
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
         <activity android:name=".app_component.cp.system.sms.SMSActivity" />
         <!-- END_CONTENT_PROVIDER -->
+
+        <!-- START_SERVICE -->
+        <service android:name=".app_component.service.startservice.FirstService" />
+
+        <activity android:name=".app_component.service.startservice.StartServiceTest1Activity" />
+        <activity android:name=".app_component.service.startservice.StartServiceTest2Activity" />
+        <!-- END_SERVICE -->
+
     </application>
 
 </manifest>
