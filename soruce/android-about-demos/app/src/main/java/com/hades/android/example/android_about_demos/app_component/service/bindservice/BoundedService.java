@@ -6,6 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.hades.android.example.android_about_demos.mock.LogHelper;
+
 public class BoundedService extends Service {
     private static final String TAG = BoundedService.class.getSimpleName();
     private int mCount;
@@ -25,7 +27,30 @@ public class BoundedService extends Service {
     // Service被创建时回调该方法
     @Override
     public void onCreate() {
-        Log.d(TAG, "onCreate: ");
+//        Log.d(TAG, "onCreate: ");
+        LogHelper.printThreadInfo(TAG, "onCreate");
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand: ");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        Log.d(TAG, "onRebind: ");
+//        LogHelper.printThreadInfo(TAG, "onRebind");
+        super.onRebind(intent);
+    }
+
+    // 必须实现的方法，绑定该Service时回调该方法
+    @Override
+    public IBinder onBind(Intent intent) {
+//        Log.d(TAG, "onBind: ");
+        LogHelper.printThreadInfo(TAG, "onBind");
+
+        // 返回IBinder对象
 
         // 启动一条线程，动态地修改count状态值
         new Thread() {
@@ -40,20 +65,14 @@ public class BoundedService extends Service {
                 }
             }
         }.start();
-    }
-
-    // 必须实现的方法，绑定该Service时回调该方法
-    @Override
-    public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind: ");
-        // 返回IBinder对象
         return binder;
     }
 
     // Service被断开连接时回调该方法
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnbind: ");
+//        Log.d(TAG, "onUnbind: ");
+        LogHelper.printThreadInfo(TAG, "onUnbind");
         return true;
     }
 
@@ -61,6 +80,7 @@ public class BoundedService extends Service {
     @Override
     public void onDestroy() {
         this.mQuit = true;
-        Log.d(TAG, "onDestroy: ");
+//        Log.d(TAG, "onDestroy: ");
+        LogHelper.printThreadInfo(TAG, "onDestroy");
     }
 }

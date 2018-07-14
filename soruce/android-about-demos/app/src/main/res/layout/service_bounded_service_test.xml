@@ -3,26 +3,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bind"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bind"
-        android:textSize="14dp" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/unbind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/unbind"
-        android:textSize="14dp" />
+        <Button
+            android:id="@+id/bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bind"
+            android:textSize="14dp" />
 
-    <Button
-        android:id="@+id/getServiceStatus"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/unbind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unbind"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/getServiceStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getServiceStatus"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/getServiceStatus"
-        android:textSize="14dp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:textSize="14dp" />
+
+    </LinearLayout>
 </LinearLayout>
