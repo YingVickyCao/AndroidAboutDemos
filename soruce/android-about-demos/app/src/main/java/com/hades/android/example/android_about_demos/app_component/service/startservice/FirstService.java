@@ -23,7 +23,6 @@ public class FirstService extends Service {
     // Service被创建时回调该方法
     @Override
     public void onCreate() {
-        super.onCreate();
 //        Log.d(TAG, "onCreate");
         LogHelper.printThreadInfo(TAG, "onCreate");
     }
@@ -109,7 +108,6 @@ public class FirstService extends Service {
 //    // Service被关闭之前回调
 //    @Override
 //    public void onDestroy() {
-//        super.onDestroy();
 ////        Log.d(TAG, "onDestroy");
 ////        stopSelf();
 //        LogHelper.printThreadInfo(TAG, "onDestroy");
@@ -118,7 +116,6 @@ public class FirstService extends Service {
     // Service被关闭之前回调
     @Override
     public void onDestroy() {
-        super.onDestroy();
 //        Log.d(TAG, "onDestroy");
 //        mIsForceStop = true;
         LogHelper.printThreadInfo(TAG, "onDestroy");
