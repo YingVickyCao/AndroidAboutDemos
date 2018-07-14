@@ -135,9 +135,11 @@
 
         <!-- START_SERVICE -->
         <service android:name=".app_component.service.startservice.FirstService" />
+        <service android:name=".app_component.service.bindservice.BoundedService" />
 
         <activity android:name=".app_component.service.startservice.StartServiceTest1Activity" />
         <activity android:name=".app_component.service.startservice.StartServiceTest2Activity" />
+        <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity" />
         <!-- END_SERVICE -->
 
     </application>
