@@ -277,6 +277,9 @@ private void mockHeavyWorkInThread4CheckStop() {
 ---
 
 ## Bounded Service 
+- `BoundedServiceTestActivity.java`
+- `BoundedService.java`  
+        
 ### bindService - Flags:指定绑定时如果Service仍未创建时是否自动创建Service。
 - Service.BIND_AUTO_CREATE = 自动创建
 `bindService(intent, mConn, Service.BIND_AUTO_CREATE);`  
@@ -432,6 +435,41 @@ D/BoundedServiceTestActivity: stopService:
 D/BoundedService: onDestroy,thread =2,main
 ```
 
+### unbind already unbinded service, ERROR:`java.lang.IllegalArgumentException: Service not registered:`
+
+```
+D/BoundedServiceTestActivity: bindService: 
+D/BoundedService: onCreate,thread =2,main
+D/BoundedService: onBind,thread =2,main
+D/BoundedServiceTestActivity: onServiceConnected: 
+
+D/BoundedServiceTestActivity: unbindService: 
+D/BoundedService: onUnbind,thread =2,main
+D/BoundedService: onDestroy,thread =2,main
+
+D/BoundedServiceTestActivity: unbindService: 
+D/AndroidRuntime: Shutting down VM
+E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: com.hades.android.example.android_about_demos, PID: 6394
+    java.lang.IllegalArgumentException: Service not registered: com.hades.android.example.android_about_demos.app_component.service.bindservice.BoundedServiceTestActivity$1@6cd0cc1
+        at android.app.LoadedApk.forgetServiceDispatcher(LoadedApk.java:1490)
+        at android.app.ContextImpl.unbindService(ContextImpl.java:1655)   
+``` 
+
+=>
+`BoundedService.java`  
+mIsBounded = true;
+
+`BoundedServiceTestActivity.java`
+```
+  private void unbindService() {
+        if (null == mBinder || !mBinder.isBounded()) {
+            return;
+        }
+        Log.d(TAG, "unbindService: ");
+        unbindService(mConn);
+    }
+```
 ## References:
 - Serices https://developer.android.google.cn/guide/components/services
 - Bound Services https://developer.android.google.cn/guide/components/bound-services

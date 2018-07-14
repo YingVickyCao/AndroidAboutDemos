@@ -97,6 +97,9 @@ public class BoundedServiceTestActivity extends Activity {
     }
 
     private void unbindService() {
+        if (null == mBinder || !mBinder.isBounded()) {
+            return;
+        }
         Log.d(TAG, "unbindService: ");
         unbindService(mConn);
     }
