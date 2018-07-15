@@ -15,6 +15,7 @@ public class StateListDrawableActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.res_state_list_drawable);
         mCustomImageView = findViewById(R.id.message_read_status);
+        mCustomImageView.setImageResource(R.drawable.message_read_status_2);
 
         findViewById(R.id.read).setOnClickListener(v -> read());
         findViewById(R.id.unread).setOnClickListener(v -> unread());
