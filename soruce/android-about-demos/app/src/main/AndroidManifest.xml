@@ -115,7 +115,7 @@
 
         <!-- START_RESOURCES -->
         <activity android:name=".resource.ResourceActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.HomeActivityActivity" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_RESOURCES -->
 
         <!-- START_CONTENT_PROVIDER -->

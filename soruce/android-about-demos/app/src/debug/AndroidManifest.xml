@@ -4,7 +4,7 @@
 
     <application>
         <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity">
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

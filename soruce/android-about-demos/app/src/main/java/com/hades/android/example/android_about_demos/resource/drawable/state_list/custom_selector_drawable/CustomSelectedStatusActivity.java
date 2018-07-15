@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class HomeActivityActivity extends ListActivity {
+public class CustomSelectedStatusActivity extends ListActivity {
 
     /* Copyright 2012 Charles Harley
      *
