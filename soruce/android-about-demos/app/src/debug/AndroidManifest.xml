@@ -3,8 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".app_component.service.startservice.intent_service.TestIntentServiceActivity">
+        <activity android:name=".app_component.service.system.TelephonyServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

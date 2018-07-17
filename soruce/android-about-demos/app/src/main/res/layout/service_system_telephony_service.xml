@@ -9,6 +9,11 @@
         style="@style/btn.small"
         android:text="Check Permission" />
 
+    <Button
+        android:id="@+id/getData"
+        style="@style/btn.small"
+        android:text="Get data " />
+
     <ListView
         android:id="@+id/show"
         android:layout_width="match_parent"
