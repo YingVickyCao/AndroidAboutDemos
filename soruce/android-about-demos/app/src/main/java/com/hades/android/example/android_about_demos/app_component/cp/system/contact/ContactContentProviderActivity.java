@@ -37,6 +37,7 @@ public class ContactContentProviderActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
     private boolean mIsHasPermission = false;
+
     private ListView list;
     private ContactAdapter mAdapter;
 
