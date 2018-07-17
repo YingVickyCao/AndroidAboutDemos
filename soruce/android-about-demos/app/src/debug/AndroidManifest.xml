@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".app_component.service.system.TelephonyServiceActivity">
+        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

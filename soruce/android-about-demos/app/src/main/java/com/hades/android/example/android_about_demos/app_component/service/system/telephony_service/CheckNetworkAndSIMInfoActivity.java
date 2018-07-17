@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.service.system;
+package com.hades.android.example.android_about_demos.app_component.service.system.telephony_service;
 
 import android.Manifest;
 import android.app.Activity;
@@ -28,11 +28,7 @@ import io.reactivex.functions.Consumer;
     <!-- 添加访问手机状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
  */
-
-/**
- * 获取网络和SIM卡信息
- */
-public class TelephonyServiceActivity extends Activity {
+public class CheckNetworkAndSIMInfoActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
     private boolean mIsHasPermission = false;
@@ -46,7 +42,7 @@ public class TelephonyServiceActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.service_system_telephony_service);
+        setContentView(R.layout.service_system_telehphone_service_4_get_network_and_sim_info);
 
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);
@@ -56,7 +52,7 @@ public class TelephonyServiceActivity extends Activity {
         adapter = buildSimpleAdapter(status);
         showView.setAdapter(adapter);
 
-        findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
+//        findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
         findViewById(R.id.getData).setOnClickListener(v -> getData());
     }
 
@@ -109,7 +105,7 @@ public class TelephonyServiceActivity extends Activity {
     }
 
     private SimpleAdapter buildSimpleAdapter(ArrayList<Map<String, String>> status) {
-        return new SimpleAdapter(this, status, R.layout.service_system_telephony_service_item_view, new String[]{"name", "value"}, new int[]{R.id.name, R.id.value});
+        return new SimpleAdapter(this, status, R.layout.service_system_telehphone_service_4_get_network_and_sim_info_item_view, new String[]{"name", "value"}, new int[]{R.id.name, R.id.value});
     }
 
     private void checkPermission() {
@@ -131,9 +127,9 @@ public class TelephonyServiceActivity extends Activity {
             public void onNext(Boolean granted) {
                 mIsHasPermission = granted;
                 if (granted) {
-                    Toast.makeText(TelephonyServiceActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission available", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(TelephonyServiceActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
                 }
             }
 

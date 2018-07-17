@@ -149,7 +149,8 @@
         <activity android:name=".app_component.service.startservice.StartServiceTest2Activity" />
         <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity" />
         <activity android:name=".app_component.service.startservice.intent_service.TestIntentServiceActivity" />
-        <activity android:name=".app_component.service.system.TelephonyServiceActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <!-- END_SERVICE -->
 
     </application>
