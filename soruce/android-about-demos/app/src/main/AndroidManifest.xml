@@ -136,10 +136,13 @@
         <!-- START_SERVICE -->
         <service android:name=".app_component.service.startservice.FirstService" />
         <service android:name=".app_component.service.bindservice.BoundedService" />
+        <service android:name=".app_component.service.startservice.intent_service.MyService" />
+        <service android:name=".app_component.service.startservice.intent_service.MyIntentService" />
 
         <activity android:name=".app_component.service.startservice.StartServiceTest1Activity" />
         <activity android:name=".app_component.service.startservice.StartServiceTest2Activity" />
         <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity" />
+        <activity android:name=".app_component.service.startservice.intent_service.TestIntentServiceActivity" />
         <!-- END_SERVICE -->
 
     </application>

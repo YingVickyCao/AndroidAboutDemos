@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
 
+/**
+ * CustomImageView：在TabLayout - customView中能切换状态
+ * CustomTextView：在TabLayout - customView中不能切换状态
+ */
 public class CustomSelectedStatusActivity2 extends Activity {
     CustomImageView mCustomImageView;
     CustomTextView selectedStatus;
