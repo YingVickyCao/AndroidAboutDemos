@@ -28,6 +28,10 @@ import io.reactivex.functions.Consumer;
     <!-- 添加访问手机状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
  */
+
+/**
+ * 获取网络和SIM卡信息
+ */
 public class TelephonyServiceActivity extends Activity {
     private RxPermissions rxPermissions;
     private View mRoot;
@@ -105,7 +109,7 @@ public class TelephonyServiceActivity extends Activity {
     }
 
     private SimpleAdapter buildSimpleAdapter(ArrayList<Map<String, String>> status) {
-        return new SimpleAdapter(this, status, R.layout.line, new String[]{"name", "value"}, new int[]{R.id.name, R.id.value});
+        return new SimpleAdapter(this, status, R.layout.service_system_telephony_service_item_view, new String[]{"name", "value"}, new int[]{R.id.name, R.id.value});
     }
 
     private void checkPermission() {
