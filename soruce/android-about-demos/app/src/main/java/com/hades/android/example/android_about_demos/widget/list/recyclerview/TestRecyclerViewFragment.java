@@ -26,6 +26,7 @@ public class TestRecyclerViewFragment extends Fragment {
     private int mColumnCount = 1;
 
     private OnListFragmentInteractionListener mListener;
+    private RecyclerView mList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -56,18 +57,16 @@ public class TestRecyclerViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_recyclerview, container, false);
+        mList = view.findViewById(R.id.list);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        Context context = view.getContext();
+        if (mColumnCount <= 1) {
+            mList.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            mList.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        mList.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
         return view;
     }
 
