@@ -1,6 +1,6 @@
 package com.hades.android.example.android_about_demos.app_component.service.system.sms_manager;
 
-import android.app.Activity;
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
@@ -20,11 +20,18 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.app_component.activity.BaseActivityWithRuntimePermission;
 
 import java.util.ArrayList;
 
+/*
+<!-- 授予读联系人ContentProvider的权限 -->
+	<uses-permission android:name="android.permission.READ_CONTACTS"/>
+	<!-- 授予发送短信的权限 -->
+	<uses-permission android:name="android.permission.SEND_SMS"/>
+ */
+public class GroupSendSmsActivity extends BaseActivityWithRuntimePermission {
 
-public class MainActivity extends Activity {
     EditText numbers, content;
     Button select, send;
     SmsManager sManager;
@@ -34,7 +41,12 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.service_system_sms_group_send_sms);
+
+        checkPermission("Request permission for group send sms", Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
+
+        setRoot(findViewById(R.id.root));
+
         sManager = SmsManager.getDefault();
         // 获取界面上的文本框、按钮组件
         numbers = (EditText) findViewById(R.id.numbers);
@@ -48,13 +60,12 @@ public class MainActivity extends Activity {
                 for (String number : sendList) {
                     // 创建一个PendingIntent对象
                     PendingIntent pi = PendingIntent.getActivity(
-                            MainActivity.this, 0, new Intent(), 0);
+                            GroupSendSmsActivity.this, 0, new Intent(), 0);
                     // 发送短信
-                    sManager.sendTextMessage(number, null, content
-                            .getText().toString(), pi, null);
+                    sManager.sendTextMessage(number, null, content.getText().toString(), pi, null);
                 }
                 // 提示短信群发完成
-                Toast.makeText(MainActivity.this, "短信群发完成"
+                Toast.makeText(GroupSendSmsActivity.this, "短信群发完成"
                         , Toast.LENGTH_SHORT).show();
             }
         });
@@ -86,7 +97,7 @@ public class MainActivity extends Activity {
                     public View getView(int position, View convertView,
                                         ViewGroup parent) {
                         cursor.moveToPosition(position);
-                        CheckBox rb = new CheckBox(MainActivity.this);
+                        CheckBox rb = new CheckBox(GroupSendSmsActivity.this);
                         // 获取联系人的电话号码，并去掉中间的中画线、空格
                         String number = cursor
                                 .getString(cursor.getColumnIndex(ContactsContract
@@ -107,7 +118,7 @@ public class MainActivity extends Activity {
                 final ListView listView = (ListView) selectView
                         .findViewById(R.id.list);
                 listView.setAdapter(adapter);
-                new AlertDialog.Builder(MainActivity.this)
+                new AlertDialog.Builder(GroupSendSmsActivity.this)
                         .setView(selectView)
                         .setPositiveButton("确定",
                                 new DialogInterface.OnClickListener() {
@@ -143,4 +154,5 @@ public class MainActivity extends Activity {
         }
         return false;
     }
+
 }
