@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+/**
+ * http://charlesharley.com/2012/programming/custom-drawable-states-in-android
+ */
 public class CustomSelectedStatusActivity extends ListActivity {
 
     /* Copyright 2012 Charles Harley

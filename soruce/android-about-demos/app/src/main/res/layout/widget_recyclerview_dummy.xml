@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/subject"
+        style="@style/subject"
+        android:text="@string/test_recyclerView" />
+
+    <!-- QA: app:layoutManager 不起作用?
+    If RecyclerView = root view, it works. => Not need set by source.
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    -->
+    <!-- QA: tools:listitem 不起作用?
+    If RecyclerView = root view, it works.  => Not need set by source.
+     tools:listitem="@layout/widget_recyclerview_dummy_item"
+     -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:nestedScrollingEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/subject"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+</RelativeLayout>

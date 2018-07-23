@@ -8,22 +8,14 @@ import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private ItemTouchHelperAdapter mAdapter;
 
-    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
     }
 
-    public void setAdapter(ItemTouchHelperAdapter adapter) {
-        mAdapter = adapter;
-    }
-
-    // TODO: 22/06/2018 refactor
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        //首先回调的方法 返回int表示是否监听该方向
-//                int swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;//侧滑删除
-//                return makeMovementFlags(dragFlags, swipeFlags);
-        int dragFlags = getDragDirectionsFlags(viewHolder);
-        return makeFlag(ACTION_STATE_DRAG, dragFlags);
+        return makeMovementFlags(getDragDirectionsFlags(viewHolder), swipeFlags());
+//        return makeFlag(ACTION_STATE_DRAG, getDragDirectionsFlags(viewHolder));
     }
 
     private boolean isFirst(RecyclerView.ViewHolder viewHolder) {
@@ -34,30 +26,34 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return viewHolder.getAdapterPosition() == (mAdapter.list.size() - 1);
     }
 
-    private int dragDirectionWhenLast() {
+    private int dragFlags4Last() {
         return ItemTouchHelper.UP;
     }
 
-    private int drawDirectionsWhenFirst() {
+    private int dragFlags4First() {
         return ItemTouchHelper.DOWN;
     }
 
-    private int dragDirectionsWhenMiddle() {
+    private int dragFlags4Middle() {
         return ItemTouchHelper.UP | ItemTouchHelper.DOWN;
     }
 
-    private int defaultDragDirections() {
+    private int dragFlags4Default() {
         return ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+    }
+
+    private int swipeFlags() {
+        return ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
     }
 
     private int getDragDirectionsFlags(RecyclerView.ViewHolder viewHolder) {
         int dragFlags;
         if (isFirst(viewHolder)) {
-            dragFlags = drawDirectionsWhenFirst();
+            dragFlags = dragFlags4First();
         } else if (isLast(viewHolder)) {
-            dragFlags = dragDirectionWhenLast();
+            dragFlags = dragFlags4Last();
         } else {
-            dragFlags = dragDirectionsWhenMiddle();
+            dragFlags = dragFlags4Middle();
         }
         return dragFlags;
     }
@@ -74,15 +70,15 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 
-    // QA: Only drag btn can drag =  When long click item view, cannot drag ?
+    // QA: Only drag btn can drag =  When long click item view, cannot drag. => false
     @Override
     public boolean isLongPressDragEnabled() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return false;
+        return true;
     }
 
     @Override

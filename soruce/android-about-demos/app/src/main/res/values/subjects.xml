@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="test_recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
+    <string name="test_recyclerView">RecyclerView</string>
+    <string name="test_drag_and_drop">Drag and drop</string>
+
+    <string name="test_view_flipper">test ViewFlipper</string>
+    <string name="test_toast">test Toast</string>
+    <string name="test_CalendarView">test CalendarView</string>
+    <string name="test_DatePicker_and_TimePicker">Test DatePicker and TimePicker</string>
+    <string name="test_NumberPicker">Test NumberPicker</string>
+    <string name="test_SearchView">Test SearchView</string>
+    <string name="test_AlertDialog">Test AlertDialog</string>
+    <string name="test_dialog_style_activity">Test Dialog style activity</string>
+    <string name="test_ProgressDialog">Test ProgressDialog</string>
+    <string name="test_DatePickerDialog">Test DatePickerDialog</string>
+    <string name="test_TimePickerDialog">Test TimePickerDialog</string>
+    <string name="test_Notification">Test Notification</string>
+    <string name="test_PopupWindow">Test PopupWindow</string>
+    <string name="test_event_handler_base_on_listener">Test 基于监听的事件处理</string>
+    <string name="test_event_handler_base_on_listener_4_plane">Test 基于监听的事件处理 - Plane</string>
+    <string name="test_event_handler_base_on_listener_types">Test 基于监听的事件处理 - 事件处理器有5种形式</string>
+    <string name="test_event_handler_base_on_callback">Test 基于回调的事件处理</string>
+
+    <string name="test_listener_4_inner_class">内部类 作为事件监听器</string>
+    <string name="test_listener_4_outer_class">外部类 作为事件监听器</string>
+    <string name="test_listener_4_activity_itself">Activity 本身作为事件监听器类 </string>
+    <string name="test_listener_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
+    <string name="test_listener_4_xml">xml onClick 属性 作为事件监听器</string>
+    <string name="test_msg_handler_thread_2_main_update_text">消息处理机制 - tread -> main - 循环更新文本 </string>
+    <string name="test_msg_handler_main_2_thread_sum">消息处理机制 - maim -> tread - Sum </string>
+    <string name="test_msg_handler_main_2_thread_2_main_Sum">消息处理机制 - main -> thread -> main - Sum </string>
+
+    <string name="test_ContentProvider">ContentProvider</string>
+    <string name="test_system_ContactContentProvider">Test System Contact ContentProvider</string>
+    <string name="test_service_StartService">StartService</string>
+</resources>

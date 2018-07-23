@@ -91,8 +91,32 @@ ScrollView 的子 views 超出屏幕，就会 滑动。因此。要解决这种 
 </FrameLayout>
 ```
 
+## 进入时，总是l2中 ListView获取焦点，L1默认上滑了，没有显示完全。应该是l1的内容获取焦点，并完全显示l1。？  
+```
+<ScrollView>
+    <LinearLayout>
+        <LinearLayout id=l1></LinearLayout>
+        <LinearLayout id=l2>
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+```
+
+```
+onCreate(){
+    l1.view.setFocusable(true);
+    l1.view.setFocusableInTouchMode(true);
+    l1.view.requestFocus();
+}
+```
+
 ## References:
 - ScrollView https://developer.android.google.cn/reference/android/widget/ScrollView
 - NestedScrollView https://developer.android.google.cn/reference/android/support/v4/widget/NestedScrollView
 - https://www.jianshu.com/p/791c0a4acc1c
 - https://blog.csdn.net/u012124438/article/details/53495951
+- Andriid嵌套滑动和NestedScrollView   
+https://www.jianshu.com/p/1806ed9739f6   
+https://www.jianshu.com/p/5e8cf2018f3b
+
