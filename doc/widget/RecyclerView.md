@@ -13,5 +13,8 @@ android:scrollbars="none"
 
 ##  Choose CardView or RecyclerView?  
 
-## References:
+## Communicating with Other Fragments
+- Fragment -> Activity -> Other Fragments
 
+
+## References:

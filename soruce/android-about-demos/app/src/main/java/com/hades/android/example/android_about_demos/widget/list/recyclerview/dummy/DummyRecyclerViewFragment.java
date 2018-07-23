@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget.list.recyclerview;
+package com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyContent;
-import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
+import com.hades.android.example.android_about_demos.mock.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -20,7 +19,7 @@ import com.hades.android.example.android_about_demos.widget.list.recyclerview.du
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class TestRecyclerViewFragment extends Fragment {
+public class DummyRecyclerViewFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column_count";
     private int mColumnCount = 1;
@@ -32,13 +31,13 @@ public class TestRecyclerViewFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public TestRecyclerViewFragment() {
+    public DummyRecyclerViewFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static TestRecyclerViewFragment newInstance(int columnCount) {
-        TestRecyclerViewFragment fragment = new TestRecyclerViewFragment();
+    public static DummyRecyclerViewFragment newInstance(int columnCount) {
+        DummyRecyclerViewFragment fragment = new DummyRecyclerViewFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -58,16 +57,18 @@ public class TestRecyclerViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_recyclerview, container, false);
         mList = view.findViewById(R.id.list);
+        initList(view);
+        return view;
+    }
 
+    private void initList(View view) {
         Context context = view.getContext();
         if (mColumnCount <= 1) {
             mList.setLayoutManager(new LinearLayoutManager(context));
         } else {
             mList.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        mList.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-
-        return view;
+        mList.setAdapter(new DummyRecyclerViewAdapter(DummyContent.ITEMS, mListener));
     }
 
 
@@ -77,8 +78,7 @@ public class TestRecyclerViewFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener");
         }
     }
 

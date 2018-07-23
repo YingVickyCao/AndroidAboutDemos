@@ -7,7 +7,8 @@
 
     <TextView
         android:id="@+id/subject"
-        style="@style/subject" />
+        style="@style/subject"
+        android:text="@string/test_recyclerView" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"

@@ -1,4 +1,6 @@
-package com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy;
+package com.hades.android.example.android_about_demos.mock;
+
+import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +18,7 @@ public class DummyContent {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public static final List<DummyItem> ITEMS = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -44,9 +46,9 @@ public class DummyContent {
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
+//        for (int i = 0; i < position; i++) {
+//            builder.append("\nMore details information here.");
+//        }
         return builder.toString();
     }
 

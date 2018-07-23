@@ -16,6 +16,10 @@ public class DummyItem {
 
     @Override
     public String toString() {
-        return content;
+        return "{" +
+                "id='" + id + '\'' +
+                ", content='" + content + '\'' +
+                ", details='" + details + '\'' +
+                '}';
     }
 }
