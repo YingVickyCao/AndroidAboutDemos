@@ -10,10 +10,8 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,12 +29,8 @@ import java.util.ArrayList;
 	<uses-permission android:name="android.permission.SEND_SMS"/>
  */
 public class GroupSendSmsActivity extends BaseActivityWithRuntimePermission {
-
     EditText numbers, content;
-    Button select, send;
-    SmsManager sManager;
-    // 记录需要群发的号码列表
-    ArrayList<String> sendList = new ArrayList<String>();
+    ArrayList<String> toSendPhoneList = new ArrayList<String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,107 +41,97 @@ public class GroupSendSmsActivity extends BaseActivityWithRuntimePermission {
 
         setRoot(findViewById(R.id.root));
 
-        sManager = SmsManager.getDefault();
-        // 获取界面上的文本框、按钮组件
-        numbers = (EditText) findViewById(R.id.numbers);
-        content = (EditText) findViewById(R.id.content);
-        select = (Button) findViewById(R.id.select);
-        send = (Button) findViewById(R.id.send);
-        // 为send按钮的单击事件绑定监听器
-        send.setOnClickListener(new OnClickListener() {
+        numbers = findViewById(R.id.numbers);
+        content = findViewById(R.id.content);
+
+        findViewById(R.id.select).setOnClickListener(v -> selectContacts());
+        findViewById(R.id.send).setOnClickListener(v -> groupSendSms());
+    }
+
+    private void selectContacts() {
+        // 查询联系人的电话号码
+        final Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+        BaseAdapter adapter = new BaseAdapter() {
             @Override
-            public void onClick(View v) {
-                for (String number : sendList) {
-                    // 创建一个PendingIntent对象
-                    PendingIntent pi = PendingIntent.getActivity(
-                            GroupSendSmsActivity.this, 0, new Intent(), 0);
-                    // 发送短信
-                    sManager.sendTextMessage(number, null, content.getText().toString(), pi, null);
+            public int getCount() {
+                return cursor.getCount();
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return position;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return position;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                cursor.moveToPosition(position);
+                CheckBox rb = new CheckBox(GroupSendSmsActivity.this);
+                // 获取联系人的电话号码，并去掉中间的中画线、空格
+                String number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "");
+                rb.setText(number);
+                // 如果该号码已经被加入发送人名单，默认勾选该号码
+                if (isChecked(number)) {
+                    rb.setChecked(true);
                 }
-                // 提示短信群发完成
-                Toast.makeText(GroupSendSmsActivity.this, "短信群发完成"
-                        , Toast.LENGTH_SHORT).show();
+                return rb;
             }
-        });
-        // 为select按钮的单击事件绑定监听器
-        select.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 查询联系人的电话号码
-                final Cursor cursor = getContentResolver().query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                        null, null, null, null);
-                BaseAdapter adapter = new BaseAdapter() {
-                    @Override
-                    public int getCount() {
-                        return cursor.getCount();
-                    }
+        };
 
+        View selectView = getLayoutInflater().inflate(R.layout.service_system_sms_group_send_sms_4_select_contacts, null);
+        final ListView listView = selectView.findViewById(R.id.list);
+        listView.setAdapter(adapter);
+        
+        new AlertDialog.Builder(GroupSendSmsActivity.this)
+                .setView(selectView)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
-                    public Object getItem(int position) {
-                        return position;
-                    }
-
-                    @Override
-                    public long getItemId(int position) {
-                        return position;
-                    }
-
-                    @Override
-                    public View getView(int position, View convertView,
-                                        ViewGroup parent) {
-                        cursor.moveToPosition(position);
-                        CheckBox rb = new CheckBox(GroupSendSmsActivity.this);
-                        // 获取联系人的电话号码，并去掉中间的中画线、空格
-                        String number = cursor
-                                .getString(cursor.getColumnIndex(ContactsContract
-                                        .CommonDataKinds.Phone.NUMBER))
-                                .replace("-", "")
-                                .replace(" ", "");
-                        rb.setText(number);
-                        // 如果该号码已经被加入发送人名单，默认勾选该号码
-                        if (isChecked(number)) {
-                            rb.setChecked(true);
+                    public void onClick(DialogInterface dialog, int which) {
+                        resetSelectContactsResult();
+                        for (int i = 0; i < listView.getCount(); i++) {
+                            // TODO: 23/07/2018 (CheckBox) listView.getChildAt(i)
+                            CheckBox checkBox = (CheckBox) listView.getChildAt(i);
+                            if (checkBox.isChecked()) {
+                                buildSelectContactsResult(checkBox.getText().toString());
+                            }
                         }
-                        return rb;
+                        numbers.setText(toSendPhoneList.toString());
                     }
-                };
-                // 加载list.xml布局文件对应的View
-                View selectView = getLayoutInflater().inflate(R.layout.list, null);
-                // 获取selectView中的名为list的ListView组件
-                final ListView listView = (ListView) selectView
-                        .findViewById(R.id.list);
-                listView.setAdapter(adapter);
-                new AlertDialog.Builder(GroupSendSmsActivity.this)
-                        .setView(selectView)
-                        .setPositiveButton("确定",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog,
-                                                        int which) {
-                                        // 清空sendList集合
-                                        sendList.clear();
-                                        // 遍历listView组件的每个列表项
-                                        for (int i = 0; i < listView.getCount(); i++) {
-                                            CheckBox checkBox = (CheckBox) listView
-                                                    .getChildAt(i);
-                                            // 如果该列表项被勾选
-                                            if (checkBox.isChecked()) {
-                                                // 添加该列表项的电话号码
-                                                sendList.add(checkBox.getText()
-                                                        .toString());
-                                            }
-                                        }
-                                        numbers.setText(sendList.toString());
-                                    }
-                                }).show();
-            }
-        });
+                }).show();
+    }
+
+    private void resetSelectContactsResult() {
+        toSendPhoneList.clear();
+    }
+
+    private void buildSelectContactsResult(String phone) {
+        toSendPhoneList.add(phone);
+    }
+
+    private void groupSendSms() {
+        if (null == content.getText()) {
+            Toast.makeText(this, "Please input sms msg", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // TODO: 23/07/2018 主线程循环发送邮件，若多人数很多且网络延迟，群发短信可能变成一个耗时任务。 -> IntentService中发送短信，群发短信完成后，通过广播通知前台 Activity。
+        for (String number : toSendPhoneList) {
+            PendingIntent pi = PendingIntent.getActivity(GroupSendSmsActivity.this, 0, new Intent(), 0);
+            getSmsManager().sendTextMessage(number, null, content.getText().toString(), pi, null);
+        }
+        Toast.makeText(GroupSendSmsActivity.this, "短信群发完成", Toast.LENGTH_SHORT).show();
+    }
+
+    private SmsManager getSmsManager() {
+        return SmsManager.getDefault();
     }
 
     // 判断某个电话号码是否已在群发范围内
     public boolean isChecked(String phone) {
-        for (String s1 : sendList) {
+        for (String s1 : toSendPhoneList) {
             if (s1.equals(phone)) {
                 return true;
             }
