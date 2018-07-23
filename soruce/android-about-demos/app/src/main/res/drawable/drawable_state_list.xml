@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 指定获得焦点时的颜色 -->
     <item android:color="#f44" android:state_focused="true" />
-    
+
     <!-- 指定失去焦点时的颜色 -->
     <item android:color="#ccf" android:state_focused="false" />
 </selector>

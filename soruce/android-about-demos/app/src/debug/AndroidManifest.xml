@@ -3,8 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <!--<activity android:name=".widget.TestWidgetActivity">-->
-        <activity android:name=".resource.drawable.state_list.StateListDrawableActivity">
+        <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -12,5 +11,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

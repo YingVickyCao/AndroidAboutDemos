@@ -51,12 +51,12 @@ public class MsgThread2MainFragment extends Fragment {
                  */
 
                 if (msg.what == HANDLER_MSG_KEY_1) {
-                    LogHelper.logThreadInfo(TAG, "uiHandler -> handleMessage()", String.valueOf(currentImageId));
+                    LogHelper.printThreadInfo(TAG, "uiHandler -> handleMessage()", String.valueOf(currentImageId));
                     show.setText(imageIds[currentImageId++ % imageIds.length]);
                 }
 
                 if (msg.what == HANDLER_MSG_KEY_3) {
-                    LogHelper.logThreadInfo(TAG, "uiHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+                    LogHelper.printThreadInfo(TAG, "uiHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
                     Toast.makeText(getActivity(), (String) msg.obj, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -71,7 +71,7 @@ public class MsgThread2MainFragment extends Fragment {
                 /***
                  * 子线程中执行
                  */
-                LogHelper.logThreadInfo(TAG, "Timer -> run()", String.valueOf(currentImageId));
+                LogHelper.printThreadInfo(TAG, "Timer -> run()", String.valueOf(currentImageId));
 
                 uiHandler.sendEmptyMessage(HANDLER_MSG_KEY_1);
             }
@@ -116,7 +116,7 @@ public class MsgThread2MainFragment extends Fragment {
             public void run() {
                 Handler lab3Handler;
                 long result = new MockHeavyWork().sum();
-                LogHelper.logThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
+                LogHelper.printThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
 
                 lab3Handler = new Handler(Looper.getMainLooper()) {
 
@@ -126,7 +126,7 @@ public class MsgThread2MainFragment extends Fragment {
                         /**
                          * main
                          */
-                        LogHelper.logThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()->handleMessage()", "what=" + msg.what + ",obj=" + msg.obj);
+                        LogHelper.printThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()->handleMessage()", "what=" + msg.what + ",obj=" + msg.obj);
                     }
                 };
                 /**

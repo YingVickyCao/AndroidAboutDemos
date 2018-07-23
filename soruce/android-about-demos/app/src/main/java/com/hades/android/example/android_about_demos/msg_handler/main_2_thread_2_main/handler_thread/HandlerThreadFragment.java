@@ -44,7 +44,7 @@ public class HandlerThreadFragment extends Fragment {
             /**
              * main
              */
-            LogHelper.logThreadInfo(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+            LogHelper.printThreadInfo(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
             String sum = (String) msg.obj;
             test.setText(sum);
         }
@@ -61,7 +61,7 @@ public class HandlerThreadFragment extends Fragment {
         //必须先开启线程
         handlerThread.start();
 
-        LogHelper.logThreadInfo(TAG, "onCreateView,send msg", "what=" + uppers);
+        LogHelper.printThreadInfo(TAG, "onCreateView,send msg", "what=" + uppers);
 
         //子线程Handler
 //        Handler threadHandler = new Handler(handlerThread.getLooper(), new ChildCallback());
@@ -83,14 +83,14 @@ public class HandlerThreadFragment extends Fragment {
             /**
              * thread
              */
-            LogHelper.logThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            LogHelper.printThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();
             msg1.what = msg.what;
             msg1.obj = String.valueOf(sum);
 
-            LogHelper.logThreadInfo(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
+            LogHelper.printThreadInfo(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
 
             /**
              * thread -> main
@@ -105,14 +105,14 @@ public class HandlerThreadFragment extends Fragment {
     class ChildCallback implements Handler.Callback {
         @Override
         public boolean handleMessage(Message msg) {
-            LogHelper.logThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            LogHelper.printThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();
             msg1.what = msg.what;
             msg1.obj = String.valueOf(sum);
 
-            LogHelper.logThreadInfo(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
+            LogHelper.printThreadInfo(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
             mUIHandler.sendMessage(msg1);
             return false;
         }

@@ -25,7 +25,6 @@
     <string name="start_splash_notify_icon">start splash notify icon</string>
     <string name="stop_splash_notify_icon">stop splash notify icon</string>
     <string name="big_size_view">Big size TextView</string>
-
     <!-- APPLY_THEME_START -->
     <string name="page_a">Page A</string>
     <string name="page_b">Page B</string>
@@ -33,7 +32,6 @@
     <string name="green_theme">Green theme</string>
     <string name="jump_page_b">Jump page B</string>
     <!-- APPLY_THEME_END -->
-
     <string name="rating_bar">RatingBar</string>
     <string name="show">Show</string>
     <string name="hide">Hide</string>
@@ -44,6 +42,56 @@
     <string name="view_switcher">ViewSwitcher</string>
     <string name="image_switcher">ImageSwitcher</string>
     <string name="text_switcher">TextSwitcher</string>
+    <string name="title_bar">Title bar</string>
+    <string name="mock_some_items">Mock some items</string>
+    <string name="see_detail">See Detail</string>
+    <string name="show_normal_toast">Show normal Toast</string>
+    <string name="show_custom_toast">Show custom Toast</string>
+    <string name="custom_toast">Custom Toast</string>
+    <string name="insert">添加生词</string>
+    <string name="detail">解释</string>
+    <string name="search">查询</string>
+    <string name="view">查看</string>
+    <string name="add">添加</string>
+    <string name="name">联系人姓名</string>
+    <string name="phone">电话</string>
+    <string name="email">Email</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="jump">Jump</string>
+    <string name="bind">绑定Service</string>
+    <string name="unbind">解除绑定</string>
+    <string name="getServiceStatus">获取Service状态</string>
+    <string name="start_service">启动普通Service</string>
+    <string name="start_intent_service">启动IntentService</string>
+
+    <!-- 声明一个名为statusNames的字符串数组 -->
+    <string-array name="statusNames">
+        <item>设备编号</item>
+        <item>软件版本</item>
+        <item>网络运营商代号</item>
+        <item>网络运营商名称</item>
+        <item>手机制式</item>
+        <item>设备当前位置</item>
+        <item>SIM卡的国别</item>
+        <item>SIM卡序列号</item>
+        <item>SIM卡状态</item>
+    </string-array>
+    <!-- 声明一个名为simState的字符串数组 -->
+    <string-array name="simState">
+        <item>状态未知</item>
+        <item>无SIM卡</item>
+        <item>被PIN加锁</item>
+        <item>被PUK加锁</item>
+        <item>被NetWork PIN加锁</item>
+        <item>已准备好</item>
+    </string-array>
+    <!-- 声明一个名为phoneType的字符串数组 -->
+    <string-array name="phoneType">
+        <item>未知</item>
+        <item>GSM</item>
+        <item>CDMA</item>
+    </string-array>
 
     <string name="recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
     <string name="test_view_flipper">test ViewFlipper</string>
@@ -63,7 +111,6 @@
     <string name="test_event_handler_base_on_listener_4_plane">Test 基于监听的事件处理 - Plane</string>
     <string name="test_event_handler_base_on_listener_types">Test 基于监听的事件处理 - 事件处理器有5种形式</string>
     <string name="test_event_handler_base_on_callback">Test 基于回调的事件处理</string>
-
     <string name="test_listener_4_inner_class">内部类 作为事件监听器</string>
     <string name="test_listener_4_outer_class">外部类 作为事件监听器</string>
     <string name="test_listener_4_activity_itself">Activity 本身作为事件监听器类 </string>
@@ -73,25 +120,7 @@
     <string name="test_msg_handler_main_2_thread_sum">消息处理机制 - maim -> tread - Sum </string>
     <string name="test_msg_handler_main_2_thread_2_main_Sum">消息处理机制 - main -> thread -> main - Sum </string>
 
-
-    <string name="title_bar">Title bar</string>
-    <string name="mock_some_items">Mock some items</string>
-    <string name="see_detail">See Detail</string>
-
-    <string name="show_normal_toast">Show normal Toast</string>
-    <string name="show_custom_toast">Show custom Toast</string>
-    <string name="custom_toast">Custom Toast</string>
-
-    <string name="insert">添加生词</string>
-    <string name="detail">解释</string>
-    <string name="search">查询</string>
-    <string name="view">查看</string>
-    <string name="add">添加</string>
-    <string name="name">联系人姓名</string>
-    <string name="phone">电话</string>
-    <string name="email">Email</string>
-
-
     <string name="subject_ContentProvider">ContentProvider</string>
     <string name="subject_test_system_ContactContentProvider">Test System Contact ContentProvider</string>
+    <string name="subject_service_StartService">StartService</string>
 </resources>
