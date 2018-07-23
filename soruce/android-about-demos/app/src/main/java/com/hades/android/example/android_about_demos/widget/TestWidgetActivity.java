@@ -221,7 +221,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void recyclerView2() {
-        showFragment(DummyRecyclerViewFragment.newInstance(3), DummyRecyclerViewFragment.class.getSimpleName());
+        showFragment(DummyRecyclerViewFragment.newInstance(2), DummyRecyclerViewFragment.class.getSimpleName());
     }
 
     private void testRecyclerView4DragReorderList() {

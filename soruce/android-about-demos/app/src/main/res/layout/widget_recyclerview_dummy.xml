@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,13 +8,20 @@
         style="@style/subject"
         android:text="@string/test_recyclerView" />
 
+    <!-- QA: app:layoutManager 不起作用?
+    If RecyclerView = root view, it works. => Not need set by source.
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    -->
+    <!-- QA: tools:listitem 不起作用?
+    If RecyclerView = root view, it works.  => Not need set by source.
+     tools:listitem="@layout/widget_recyclerview_dummy_item"
+     -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
+        android:nestedScrollingEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/subject"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:listitem="@layout/fragment_item" />
+        android:layout_marginRight="16dp" />
 </RelativeLayout>

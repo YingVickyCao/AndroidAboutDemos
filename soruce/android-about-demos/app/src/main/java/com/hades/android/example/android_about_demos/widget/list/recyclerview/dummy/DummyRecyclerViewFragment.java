@@ -55,7 +55,7 @@ public class DummyRecyclerViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_recyclerview, container, false);
+        View view = inflater.inflate(R.layout.widget_recyclerview_dummy, container, false);
         mList = view.findViewById(R.id.list);
         initList(view);
         return view;
@@ -63,6 +63,8 @@ public class DummyRecyclerViewFragment extends Fragment {
 
     private void initList(View view) {
         Context context = view.getContext();
+        // PO:RecyclerView.setHasFixedSize(true)
+        mList.setHasFixedSize(true);
         if (mColumnCount <= 1) {
             mList.setLayoutManager(new LinearLayoutManager(context));
         } else {

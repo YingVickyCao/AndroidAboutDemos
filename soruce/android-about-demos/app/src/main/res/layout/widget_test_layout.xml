@@ -69,13 +69,13 @@
                 <Button
                     android:id="@+id/recyclerView"
                     style="@style/btn.small"
-                    android:text="@string/test_recyclerView_4_drag_reorder_list"
+                    android:text="@string/test_recyclerView"
                     android:visibility="visible" />
 
                 <Button
                     android:id="@+id/recyclerView2"
                     style="@style/btn.small"
-                    android:text="@string/test_recyclerView_4_drag_reorder_list"
+                    android:text="@string/test_recyclerView"
                     android:visibility="visible" />
 
 

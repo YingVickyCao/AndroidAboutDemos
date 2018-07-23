@@ -20,9 +20,8 @@ import java.util.List;
  * https://blog.csdn.net/qq_30379689/article/details/52463139
  * https://blog.csdn.net/minwenping/article/details/69829704
  * https://www.jianshu.com/p/4eff036360da
- *
+ * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
- *
  */
 public class DragReorderListFragment extends Fragment implements StartDragListener {
     private static final String TAG = DragReorderListFragment.class.getSimpleName();
@@ -49,6 +48,7 @@ public class DragReorderListFragment extends Fragment implements StartDragListen
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
+        rv.addItemDecoration(new MyDecoration(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.divider));
 
         mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
         mItemTouchHelper.attachToRecyclerView(rv);
