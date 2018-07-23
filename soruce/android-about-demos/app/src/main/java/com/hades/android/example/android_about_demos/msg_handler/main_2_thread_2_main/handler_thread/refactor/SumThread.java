@@ -92,10 +92,10 @@ public class SumThread extends HandlerThread implements Handler.Callback {
         }
 
         int num = msg.arg1;
-        LogHelper.logThreadInfo(TAG, "ChildCallback,handleMessage()", "num=" + num);
+        LogHelper.printThreadInfo(TAG, "ChildCallback,handleMessage()", "num=" + num);
 
         long sum = MockHeavyWork.sum(num);
-        LogHelper.logThreadInfo(TAG, "ChildCallback,handleMessage() -> sendMessage", "num=" + num + ",sum=" + sum);
+        LogHelper.printThreadInfo(TAG, "ChildCallback,handleMessage() -> sendMessage", "num=" + num + ",sum=" + sum);
 
         /**
          * 子线程计算完成，通知主线程

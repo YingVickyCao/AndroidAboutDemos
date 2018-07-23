@@ -51,7 +51,7 @@ public class SumFragment extends Fragment {
     }
 
     public void sum(View source) {
-        LogHelper.logThreadInfo(TAG, "sum()", String.valueOf(num));
+        LogHelper.printThreadInfo(TAG, "sum()", String.valueOf(num));
         /**
          * main -> thread
          */
@@ -81,7 +81,7 @@ public class SumFragment extends Fragment {
                      */
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
-                        LogHelper.logThreadInfo(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
+                        LogHelper.printThreadInfo(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
                         long sum = MockHeavyWork.sum(upper);
 
                         /**
@@ -101,7 +101,7 @@ public class SumFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                LogHelper.logThreadInfo(TAG, "updateResult()", String.valueOf(sum));
+                LogHelper.printThreadInfo(TAG, "updateResult()", String.valueOf(sum));
                 result.setText(String.valueOf(sum));
             }
         });

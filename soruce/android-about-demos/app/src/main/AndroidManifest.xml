@@ -18,6 +18,15 @@
 
     <!-- 授予本应用读取短信的权限 -->
     <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- 添加访问手机位置的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- 添加访问手机状态的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 授予发送短信的权限 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <!-- END_CONTENT_PROVIDER -->
 
     <application
@@ -115,7 +124,7 @@
 
         <!-- START_RESOURCES -->
         <activity android:name=".resource.ResourceActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.HomeActivityActivity" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_RESOURCES -->
 
         <!-- START_CONTENT_PROVIDER -->
@@ -132,6 +141,22 @@
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
         <activity android:name=".app_component.cp.system.sms.SMSActivity" />
         <!-- END_CONTENT_PROVIDER -->
+
+        <!-- START_SERVICE -->
+        <service android:name=".app_component.service.startservice.FirstService" />
+        <service android:name=".app_component.service.bindservice.BoundedService" />
+        <service android:name=".app_component.service.startservice.intent_service.MyService" />
+        <service android:name=".app_component.service.startservice.intent_service.MyIntentService" />
+
+        <activity android:name=".app_component.service.startservice.StartServiceTest1Activity" />
+        <activity android:name=".app_component.service.startservice.StartServiceTest2Activity" />
+        <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity" />
+        <activity android:name=".app_component.service.startservice.intent_service.TestIntentServiceActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
+        <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
+        <!-- END_SERVICE -->
+
     </application>
 
 </manifest>

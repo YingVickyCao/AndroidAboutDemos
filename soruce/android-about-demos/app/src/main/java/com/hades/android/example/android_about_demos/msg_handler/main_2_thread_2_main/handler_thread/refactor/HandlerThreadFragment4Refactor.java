@@ -87,7 +87,7 @@ public class HandlerThreadFragment4Refactor extends Fragment implements Handler.
 
     @Override
     public boolean handleMessage(Message msg) {
-        LogHelper.logThreadInfo(TAG, "mUIHandler,handleMessage", "num=" + msg.arg1 + ",sum=" + msg.obj);
+        LogHelper.printThreadInfo(TAG, "mUIHandler,handleMessage", "num=" + msg.arg1 + ",sum=" + msg.obj);
         switch (msg.what) {
             case KEY_SUM:
                 showResult((String) msg.obj);

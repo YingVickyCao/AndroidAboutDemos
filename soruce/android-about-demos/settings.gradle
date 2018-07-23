@@ -1,1 +1,1 @@
-include ':app', ':cr'
+include ':app', ':assist'
