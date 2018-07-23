@@ -156,6 +156,8 @@
         <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
+        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity"/>
+        <activity android:name=".app_component.service.system.vibrator.VibratorActivity"/>
         <!-- END_SERVICE -->
 
     </application>

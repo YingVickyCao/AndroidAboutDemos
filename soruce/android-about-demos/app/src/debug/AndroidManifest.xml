@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".app_component.service.system.sms_manager.GroupSendSmsActivity">
+        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
