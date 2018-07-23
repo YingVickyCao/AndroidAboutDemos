@@ -470,6 +470,13 @@ mIsBounded = true;
         unbindService(mConn);
     }
 ```
+
+---
+
+## System Service
+### AuioService
+![Service.AUDIO_SERVICE](https://github.com/YingVickyCao/YingVickyCao.github.io/blob/master/img/android/app_component/service/audio_service.png)
+
 ## References:
 - Serices https://developer.android.google.cn/guide/components/services
 - Bound Services https://developer.android.google.cn/guide/components/bound-services
