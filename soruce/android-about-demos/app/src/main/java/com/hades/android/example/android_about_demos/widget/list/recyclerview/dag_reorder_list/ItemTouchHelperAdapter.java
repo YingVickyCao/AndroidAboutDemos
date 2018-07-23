@@ -42,7 +42,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
         holder.root.setOnClickListener(v -> updateCheckStatus(bean));
         holder.root.setOnLongClickListener(v -> true);
-
         holder.drag.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 if (null != mStartDragListener) {

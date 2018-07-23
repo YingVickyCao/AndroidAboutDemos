@@ -17,6 +17,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyle
 import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
+import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
@@ -49,6 +50,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(this);
 
         findViewById(R.id.recyclerView4DragReorderList).setOnClickListener(this);
+        findViewById(R.id.testDragAndDrop).setOnClickListener(this);
         findViewById(R.id.testViewFlipper).setOnClickListener(this);
         findViewById(R.id.testToast).setOnClickListener(this);
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(this);
@@ -93,6 +95,9 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
             case R.id.recyclerView4DragReorderList:
                 testRecyclerView4DragReorderList();
+                break;
+            case R.id.testDragAndDrop:
+                testDragAndDrop();
                 break;
 
             case R.id.testViewFlipper:
@@ -160,7 +165,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testPopupWindow();
+        testRecyclerView4DragReorderList();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -195,6 +200,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testRecyclerView4DragReorderList() {
         showFragment(DragReorderListFragment.newInstance(), DragReorderListFragment.class.getSimpleName());
+    }
+
+    private void testDragAndDrop() {
+        showFragment(DragDropFragment.newInstance(), DragDropFragment.class.getSimpleName());
     }
 
     private void testViewFlipper() {

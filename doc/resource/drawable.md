@@ -4,6 +4,9 @@
 - `ShapeDrawableActivity`
 - `StateListDrawableActivity`
 
+## QA:android drawable 最小支持API
+`drawable-v21` : API >= 21
+
 ## StateListDrawable
 ![StateListDrawable](https://github.com/YingVickyCao/YingVickyCao.github.io/blob/master/img/android/resources/state_list_drawable.png)
 
