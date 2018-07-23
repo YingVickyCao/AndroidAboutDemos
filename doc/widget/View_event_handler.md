@@ -1,12 +1,3 @@
-
-# RecyclerView
-
-## 去掉上下滑动RecyclerView 边缘阴影？
-```
-android:overSchollMode="never"
-```
-
-## 滑动RecyclerView时，不显示滚动条。 How？
-```
-android:scrollbars="none"
-```
+##  click button which has both `onClick` and "onLongClick"? 
+- onLongClick true，只发生onLongClick。 => true = 消费了事件。不再继续传递
+- onLongClick false，同时发生onLongClick和onClick。

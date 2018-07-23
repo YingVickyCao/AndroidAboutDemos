@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
 
@@ -18,7 +19,9 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDia
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
+import com.hades.android.example.android_about_demos.widget.list.recyclerview.TestRecyclerViewFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
+import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.NumberPickerFragment;
@@ -28,7 +31,9 @@ import com.hades.android.example.android_about_demos.widget.view_animator.TextSw
 import com.hades.android.example.android_about_demos.widget.view_animator.ViewFlipperFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ViewSwitcherFragment;
 
-public class TestWidgetActivity extends Activity implements View.OnClickListener {
+public class TestWidgetActivity extends Activity implements View.OnClickListener, TestRecyclerViewFragment.OnListFragmentInteractionListener {
+    private static final String TAG = TestWidgetActivity.class.getSimpleName();
+
     private ScrollView mScrollView;
     private View mFragmentRoot;
 
@@ -49,8 +54,10 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(this);
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(this);
 
+        findViewById(R.id.recyclerView).setOnClickListener(this);
         findViewById(R.id.recyclerView4DragReorderList).setOnClickListener(this);
         findViewById(R.id.testDragAndDrop).setOnClickListener(this);
+
         findViewById(R.id.testViewFlipper).setOnClickListener(this);
         findViewById(R.id.testToast).setOnClickListener(this);
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(this);
@@ -93,9 +100,18 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
                 testTextSwitcher();
                 break;
 
+            case R.id.recyclerView:
+                recyclerView();
+                break;
+
+            case R.id.recyclerView2:
+                recyclerView2();
+                break;
+
             case R.id.recyclerView4DragReorderList:
                 testRecyclerView4DragReorderList();
                 break;
+
             case R.id.testDragAndDrop:
                 testDragAndDrop();
                 break;
@@ -165,7 +181,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     }
 
     private void showCurrentTest() {
-        testRecyclerView4DragReorderList();
+        recyclerView();
     }
 
     private void showFragment(Fragment fragment, String tag) {
@@ -196,6 +212,15 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testTextSwitcher() {
         showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
+    }
+
+    private void recyclerView() {
+        showFragment(TestRecyclerViewFragment.newInstance(1), TestRecyclerViewFragment.class.getSimpleName());
+    }
+
+
+    private void recyclerView2() {
+        showFragment(TestRecyclerViewFragment.newInstance(3), TestRecyclerViewFragment.class.getSimpleName());
     }
 
     private void testRecyclerView4DragReorderList() {
@@ -256,5 +281,11 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
 
     private void testPopupWindow() {
         showFragment(new PopupWindowFragment());
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyItem item) {
+        Log.d(TAG, "onListFragmentInteraction: " + item.toString());
+
     }
 }

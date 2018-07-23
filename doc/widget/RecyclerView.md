@@ -10,3 +10,8 @@ android:overSchollMode="never"
 ```
 android:scrollbars="none"
 ```
+
+##  Choose CardView or RecyclerView?  
+
+## References:
+
