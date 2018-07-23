@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/subject"
         style="@style/subject"
-        android:text="@string/subject_service_StartService" />
+        android:text="@string/test_service_StartService" />
 
     <Button
         android:id="@+id/start"

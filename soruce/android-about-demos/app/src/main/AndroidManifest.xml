@@ -103,6 +103,8 @@
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity"/>
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2"/>
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->
@@ -155,6 +157,7 @@
         <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
+        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity"/>
         <!-- END_SERVICE -->
 
     </application>

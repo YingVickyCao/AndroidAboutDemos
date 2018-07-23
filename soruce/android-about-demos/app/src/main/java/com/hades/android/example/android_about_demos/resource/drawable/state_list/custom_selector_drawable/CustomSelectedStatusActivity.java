@@ -6,14 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-<<<<<<< HEAD:soruce/android-about-demos/app/src/main/java/com/hades/android/example/android_about_demos/resource/drawable/state_list/custom_selector_drawable/HomeActivityActivity.java
 /**
  * http://charlesharley.com/2012/programming/custom-drawable-states-in-android
  */
-public class HomeActivityActivity extends ListActivity {
-=======
 public class CustomSelectedStatusActivity extends ListActivity {
->>>>>>> 182ce9d643abcdede6b5f95b0e09e95959f61e9e:soruce/android-about-demos/app/src/main/java/com/hades/android/example/android_about_demos/resource/drawable/state_list/custom_selector_drawable/CustomSelectedStatusActivity.java
 
     /* Copyright 2012 Charles Harley
      *
