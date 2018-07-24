@@ -1,6 +1,6 @@
 package com.hades.android.example.android_about_demos.app_component.service.system.vibrator;
 
-import android.app.Activity;
+import android.Manifest;
 import android.app.Service;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -8,14 +8,14 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
+import com.hades.android.example.android_about_demos.app_component.activity.BaseActivityWithRuntimePermission;
 
 
 /*
  <!-- 授予程序访问振动器的权限 -->
  <uses-permission android:name="android.permission.VIBRATE"/>
  */
-public class VibratorActivity extends EventHandlerBaseOnCallbackActivity {
+public class VibratorActivity extends BaseActivityWithRuntimePermission {
     Vibrator vibrator;
 
     @Override
@@ -24,14 +24,14 @@ public class VibratorActivity extends EventHandlerBaseOnCallbackActivity {
         setContentView(R.layout.service_system_vibrator_service);
         // 获取系统的Vibrator服务
         vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
+
+        checkPermission("Request VIBRATE permission",Manifest.permission.VIBRATE);
     }
 
-    // 重写onTouchEvent方法，当用户触碰触摸屏时触发该方法
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Toast.makeText(this, "手机振动", Toast.LENGTH_SHORT).show();
-        // 控制手机振动2秒
-        vibrator.vibrate(2000);
+        vibrator.vibrate(500);
         return super.onTouchEvent(event);
     }
 }

@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hades.android.example.android_about_demos">
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-
     <!-- START_CONTENT_PROVIDER -->
     <!-- 授予读联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -16,18 +13,18 @@
     <!-- 授予写入外部存储设备的的访问权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- 授予本应用读取短信的权限 -->
-    <uses-permission android:name="android.permission.READ_SMS" />
-
     <!-- 添加访问手机位置的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- 添加访问手机状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <!-- 授予发送短信的权限 -->
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
+    <!-- 授予程序访问振动器的权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <!-- END_CONTENT_PROVIDER -->
 
     <application
@@ -104,8 +101,8 @@
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity"/>
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2"/>
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->
@@ -158,8 +155,8 @@
         <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
-        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity"/>
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivity"/>
+        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
+        <activity android:name=".app_component.service.system.vibrator.VibratorActivity" />
         <!-- END_SERVICE -->
 
     </application>
