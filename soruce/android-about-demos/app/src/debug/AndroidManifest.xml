@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivity">
+        <activity android:name=".app_component.broadcast.TestBroadcastActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

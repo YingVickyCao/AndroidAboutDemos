@@ -101,8 +101,6 @@
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->
@@ -124,6 +122,7 @@
 
         <!-- START_RESOURCES -->
         <activity android:name=".resource.ResourceActivity" />
+        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_RESOURCES -->
 
@@ -158,6 +157,23 @@
         <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
         <activity android:name=".app_component.service.system.vibrator.VibratorActivity" />
         <!-- END_SERVICE -->
+
+        <!-- START_BROADCAST -->
+        <activity android:name=".app_component.broadcast.TestBroadcastActivity" />
+
+
+        <!-- ERROR:
+        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.android.example.android_about_demos.app_component.broadcast.SimpleReceiver.ONE flg=0x10 (has extras) }
+        to com.hades.android.example.android_about_demos/.app_component.broadcast.SimpleReceiver
+        -->
+        <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
+            <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
+            <!--<intent-filter>-->
+                <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
+                <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.SimpleReceiver.ONE" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!-- END_BROADCAST -->
 
     </application>
 

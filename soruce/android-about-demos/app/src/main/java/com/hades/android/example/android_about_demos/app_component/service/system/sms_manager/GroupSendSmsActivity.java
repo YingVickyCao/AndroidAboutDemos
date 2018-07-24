@@ -45,7 +45,7 @@ public class GroupSendSmsActivity extends BaseActivityWithRuntimePermission {
         content = findViewById(R.id.content);
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());
-        findViewById(R.id.send).setOnClickListener(v -> groupSendSms());
+        findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> groupSendSms());
     }
 
     private void selectContacts() {

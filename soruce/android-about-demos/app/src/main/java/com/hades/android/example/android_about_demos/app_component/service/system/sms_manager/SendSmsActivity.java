@@ -26,7 +26,7 @@ public class SendSmsActivity extends Activity {
         number = findViewById(R.id.number);
         content = findViewById(R.id.content);
 
-        findViewById(R.id.send).setOnClickListener(v -> send());
+        findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> send());
     }
 
     private void send() {
