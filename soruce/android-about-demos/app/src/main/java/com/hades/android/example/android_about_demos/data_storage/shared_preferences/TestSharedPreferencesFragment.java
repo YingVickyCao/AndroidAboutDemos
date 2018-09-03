@@ -1,0 +1,52 @@
+package com.hades.android.example.android_about_demos.data_storage.shared_preferences;
+
+import android.app.Fragment;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.hades.android.example.android_about_demos.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
+
+public class TestSharedPreferencesFragment extends Fragment {
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_shared_preferences_layout, container, false);
+
+        // 获取只能被本应用程序读、写的SharedPreferences对象
+        preferences = getActivity().getSharedPreferences("crazyit", MODE_PRIVATE);
+        editor = preferences.edit();
+
+        view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
+        view.findViewById(R.id.write).setOnClickListener(arg0 -> write());
+        return view;
+    }
+
+    private void read() {
+        // 读取字符串数据
+        String time = preferences.getString("time", null);
+        // 读取int类型的数据
+        int randNum = preferences.getInt("random", 0);
+        String result = time == null ? "您暂时还未写入数据" : "写入时间为：" + time + "\n上次生成的随机数为：" + randNum;
+        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+    }
+
+    private void write() {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
+        editor.putString("time", sdf.format(new Date()));
+        editor.putInt("random", (int) (Math.random() * 100));
+        editor.commit();
+    }
+}

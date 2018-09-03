@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/topic_desc"
+        style="@style/topic"
         android:text="@string/rxPermissions_topic" />
 
     <Button

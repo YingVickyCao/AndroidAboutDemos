@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_data_storage">Data Storage</string>
+    <string name="page_shared_preferences">SharedPreferences</string>
+</resources>

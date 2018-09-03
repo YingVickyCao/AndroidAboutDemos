@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/subject"
+        android:text="Ordered Broadcast" />
+
+    <TextView
+        style="@style/tv"
+        android:text="1 ->2 -> 3" />
+
+    <TextView
+        style="@style/tv"
+        android:text="优先级 = 1 -> 3 ->2" />
+
+    <TextView
+        android:id="@+id/sendOrderedBroadcastWithAbort"
+        style="@style/tv"
+        android:text="Abort order broadcast" />
+
+    <Button
+        android:text="Send Ordered Broadcast"
+        android:id="@+id/sendOrderedBroadcast"
+        style="@style/btn" />
+</LinearLayout>
