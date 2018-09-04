@@ -13,6 +13,6 @@ public class ThemeChoosePageBActivity extends ThemeChoosePageAActivity {
         super.onCreate(savedInstanceState);
 
         findViewById(R.id.jumpB).setVisibility(View.GONE);
-        ((TextView) findViewById(R.id.title)).setText(R.string.page_b);
+        ((TextView) findViewById(R.id.id)).setText(R.string.page_b);
     }
 }

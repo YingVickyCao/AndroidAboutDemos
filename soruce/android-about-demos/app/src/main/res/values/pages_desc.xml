@@ -2,4 +2,5 @@
 <resources>
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
+    <string name="page_sqlite">Sqlite</string>
 </resources>
