@@ -1,10 +1,8 @@
 package com.hades.android.example.android_about_demos.data_storage.shared_preferences;
 
-import android.app.Application;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
