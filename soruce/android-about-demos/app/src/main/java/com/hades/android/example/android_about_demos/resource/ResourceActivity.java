@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.activity.BaseActivityWithFragment;
+import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
 import com.hades.android.example.android_about_demos.resource.material.MaterialFragment;
@@ -14,8 +14,8 @@ import com.hades.android.example.android_about_demos.resource.xml.ParseXmlFragme
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivityWithFragment extends BaseActivityWithFragment {
-    private static final String TAG = ResourceActivityWithFragment.class.getSimpleName();
+public class ResourceActivity extends BaseActivity {
+    private static final String TAG = ResourceActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

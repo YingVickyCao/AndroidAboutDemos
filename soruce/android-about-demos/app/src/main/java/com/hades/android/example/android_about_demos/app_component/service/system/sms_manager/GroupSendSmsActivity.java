@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.activity.BaseActivityWithFragmentWithRuntimePermission;
+import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 	<!-- 授予发送短信的权限 -->
 	<uses-permission android:name="android.permission.SEND_SMS"/>
  */
-public class GroupSendSmsActivityWithFragment extends BaseActivityWithFragmentWithRuntimePermission {
+public class GroupSendSmsActivity extends BaseActivity {
     EditText numbers, content;
     ArrayList<String> toSendPhoneList = new ArrayList<String>();
 
@@ -37,12 +37,14 @@ public class GroupSendSmsActivityWithFragment extends BaseActivityWithFragmentWi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_system_sms_group_send_sms);
 
+        initViews();
+
+        numbers = (EditText) findViewById(R.id.numbers);
+        content = (EditText) findViewById(R.id.content);
+
         checkPermission("Request permission for group send sms", Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
 
         setRoot(findViewById(R.id.root));
-
-        numbers = findViewById(R.id.numbers);
-        content = findViewById(R.id.content);
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());
         findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> groupSendSms());
@@ -70,7 +72,7 @@ public class GroupSendSmsActivityWithFragment extends BaseActivityWithFragmentWi
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 cursor.moveToPosition(position);
-                CheckBox rb = new CheckBox(GroupSendSmsActivityWithFragment.this);
+                CheckBox rb = new CheckBox(GroupSendSmsActivity.this);
                 // 获取联系人的电话号码，并去掉中间的中画线、空格
                 String number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "");
                 rb.setText(number);
@@ -85,8 +87,8 @@ public class GroupSendSmsActivityWithFragment extends BaseActivityWithFragmentWi
         View selectView = getLayoutInflater().inflate(R.layout.service_system_sms_group_send_sms_4_select_contacts, null);
         final ListView listView = selectView.findViewById(R.id.list);
         listView.setAdapter(adapter);
-        
-        new AlertDialog.Builder(GroupSendSmsActivityWithFragment.this)
+
+        new AlertDialog.Builder(GroupSendSmsActivity.this)
                 .setView(selectView)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -119,10 +121,10 @@ public class GroupSendSmsActivityWithFragment extends BaseActivityWithFragmentWi
         }
         // TODO: 23/07/2018 主线程循环发送邮件，若多人数很多且网络延迟，群发短信可能变成一个耗时任务。 -> IntentService中发送短信，群发短信完成后，通过广播通知前台 Activity。
         for (String number : toSendPhoneList) {
-            PendingIntent pi = PendingIntent.getActivity(GroupSendSmsActivityWithFragment.this, 0, new Intent(), 0);
+            PendingIntent pi = PendingIntent.getActivity(GroupSendSmsActivity.this, 0, new Intent(), 0);
             getSmsManager().sendTextMessage(number, null, content.getText().toString(), pi, null);
         }
-        Toast.makeText(GroupSendSmsActivityWithFragment.this, "短信群发完成", Toast.LENGTH_SHORT).show();
+        Toast.makeText(GroupSendSmsActivity.this, "短信群发完成", Toast.LENGTH_SHORT).show();
     }
 
     private SmsManager getSmsManager() {
