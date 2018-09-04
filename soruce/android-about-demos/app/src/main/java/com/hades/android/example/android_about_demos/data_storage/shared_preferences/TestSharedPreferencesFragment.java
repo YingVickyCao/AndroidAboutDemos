@@ -1,8 +1,10 @@
 package com.hades.android.example.android_about_demos.data_storage.shared_preferences;
 
+import android.app.Application;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ public class TestSharedPreferencesFragment extends Fragment {
 
         view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());
+
         return view;
     }
 
@@ -66,5 +69,7 @@ public class TestSharedPreferencesFragment extends Fragment {
         editor.apply();
 
         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+//        PreferenceManager.getDefaultSharedPreferences()
     }
 }
