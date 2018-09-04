@@ -17,17 +17,10 @@ import java.util.Date;
 import static android.content.Context.MODE_PRIVATE;
 
 public class TestSharedPreferencesFragment extends Fragment {
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shared_preferences_layout, container, false);
-
-        // 获取只能被本应用程序读、写的SharedPreferences对象
-        preferences = getActivity().getSharedPreferences("crazyit", MODE_PRIVATE);
-        editor = preferences.edit();
 
         view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());
@@ -35,6 +28,9 @@ public class TestSharedPreferencesFragment extends Fragment {
     }
 
     private void read() {
+        // 获取只能被本应用程序读、写的SharedPreferences对象
+        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+
         // 读取字符串数据
         String time = preferences.getString("time", null);
         // 读取int类型的数据
@@ -43,10 +39,32 @@ public class TestSharedPreferencesFragment extends Fragment {
         Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
     }
 
-    private void write() {
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
-        editor.putString("time", sdf.format(new Date()));
-        editor.putInt("random", (int) (Math.random() * 100));
+    private void write_PO_before() {
+        // 获取只能被本应用程序读、写的SharedPreferences对象
+        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
         editor.commit();
+
+        SharedPreferences.Editor editor2 = preferences.edit();
+        editor2.putInt("random", (int) (Math.random() * 100));
+        // Default in main  thread
+        editor2.commit();
+
+        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+    }
+
+    private void write() {
+        // 获取只能被本应用程序读、写的SharedPreferences对象
+        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
+        editor.putInt("random", (int) (Math.random() * 100));
+        // Default in main  thread
+        editor.apply();
+
+        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
     }
 }

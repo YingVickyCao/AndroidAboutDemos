@@ -2,6 +2,7 @@ package com.hades.android.example.android_about_demos.data_storage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
@@ -15,9 +16,11 @@ public class DataStorageActivity extends BaseActivity {
         setContentView(R.layout.activity_data_storage_layout);
 
         initViews();
+
+        findViewById(R.id.pageSharedPreferences).setOnClickListener(v -> pageSharedPreferences());
     }
 
-    private void jumpPageSharedPreferences() {
+    private void pageSharedPreferences() {
         showFragment(new TestSharedPreferencesFragment());
     }
 }
