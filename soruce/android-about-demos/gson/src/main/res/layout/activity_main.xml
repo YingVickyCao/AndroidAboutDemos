@@ -101,12 +101,12 @@
             <Button
                 android:id="@+id/serializedNameSerialization2"
                 style="@style/btn"
-                android:text="属性重命名 @SerializedName Serialization - alternate：供备选属性名" />
+                android:text="Serialization @SerializedName-alternate：备选属性名" />
 
             <Button
                 android:id="@+id/serializedNameDeserialization2"
                 style="@style/btn"
-                android:text="属性重命名 @SerializedName Derialization - alternate：供备选属性名" />
+                android:text="DeSerialization @SerializedName-alternate：备选属性名" />
 
         </LinearLayout>
     </ScrollView>
