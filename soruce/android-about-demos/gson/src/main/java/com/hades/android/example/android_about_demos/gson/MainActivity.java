@@ -166,7 +166,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void collectionSerialization() {
         Gson gson = new Gson();
-        Collection<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 100);
+        Collection<Integer> ints = new ArrayList<>();
+        ints.add(1);
+        ints.add(2);
+        ints.add(3);
+        ints.add(4);
+        ints.add(5);
+        ints.add(100);
 
         // Serialization
         String json = gson.toJson(ints);  // ==> json is [1,2,3,4,5]
