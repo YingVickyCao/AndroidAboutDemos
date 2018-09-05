@@ -9,7 +9,7 @@ public class Foo<T> {
 
     @Override
     public String toString() {
-        return "Foo{" +
+        return "{" +
                 "value=" + value +
                 '}';
     }

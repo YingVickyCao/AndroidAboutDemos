@@ -78,6 +78,16 @@
                 android:text="Collection Deserialization2" />
 
             <Button
+                android:id="@+id/genericTypesSerialization"
+                style="@style/btn"
+                android:text="genericTypes Serialization" />
+
+            <Button
+                android:id="@+id/genericTypesDeserialization"
+                style="@style/btn"
+                android:text="genericTypes Deserialization" />
+
+            <Button
                 android:id="@+id/serializedNameSerialization"
                 style="@style/btn"
                 android:text="属性重命名 @SerializedName Serialization" />

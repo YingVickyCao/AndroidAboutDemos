@@ -15,6 +15,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.collectionSerialization).setOnClickListener(v -> collectionSerialization());
         findViewById(R.id.collectionDeserialization).setOnClickListener(v -> collectionDeserialization());
         findViewById(R.id.collectionDeserialization2).setOnClickListener(v -> collectionDeserialization2());
+
+        findViewById(R.id.genericTypesSerialization).setOnClickListener(v -> genericTypesSerialization());
+        findViewById(R.id.genericTypesDeserialization).setOnClickListener(v -> genericTypesDeserialization());
 
         findViewById(R.id.serializedNameSerialization).setOnClickListener(v -> serializedNameSerialization());
         findViewById(R.id.serializedNameDeserialization).setOnClickListener(v -> serializedNameDeserialization());
@@ -199,19 +203,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "collectionDeserialization2," + ints2.toString());
     }
 
-//    /**
-//     * Serializing and Deserializing Generic Types
-//     */
-//    @OnClick(R.id.genericTypes)
-//    public void genericTypes() {
-//        Gson gson = new Gson();
-//
-//        Foo<String> foo1 = new Foo<String>("abc");
+    /**
+     * Generic Types
+     */
+    public void genericTypesSerialization() {
+
+
+//        Foo<String> foo1 = new Foo<>("abc");
 //        String json = gson.toJson(foo1);
-//        Log.d(TAG, "genericTypes: " + json);
-//        Log.d(TAG, "genericTypes: " + gson.fromJson(json, foo1.getClass()));
-//
-//
+//        Log.d(TAG, "genericTypesSerialization: json=" + json); // => {"value":"abc"}
+
+
 //        Foo<Integer> foo12 = new Foo<Integer>(1024);
 //        json = gson.toJson(foo12);
 //        Log.d(TAG, "genericTypes: " + json);
@@ -221,8 +223,18 @@ public class MainActivity extends AppCompatActivity {
 //        json = gson.toJson(foo13);
 //        Log.d(TAG, "genericTypes: " + json);
 //        Log.d(TAG, "genericTypes: " + gson.fromJson(json, foo1.getClass()));
-//
-//    }
+
+    }
+
+    /**
+     * 泛型擦除:对于Java来说List<String> 和List<User> 这俩个的字节码文件只一个那就是List.class
+     */
+    private void genericTypesDeserialization() {
+        String jsonArray = "[\"Android\",\"Java\",\"PHP\"]";
+        List<String> stringListJson = gson.fromJson(jsonArray, new TypeToken<List<String>>() {
+        }.getType());
+        Log.d(TAG, "genericTypesDeserialization: " + stringListJson); // => [Android, Java, PHP]
+    }
 
     /*
     属性重命名 @SerializedName 注解
