@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.gson;
+package com.hades.android.example.android_about_demos.gson.bean;
 
 public class Foo<T> {
     private T value;

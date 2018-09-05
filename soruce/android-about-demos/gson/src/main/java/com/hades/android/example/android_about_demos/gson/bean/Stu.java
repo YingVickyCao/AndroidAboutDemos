@@ -1,7 +1,7 @@
-package com.hades.android.example.android_about_demos.gson;
+package com.hades.android.example.android_about_demos.gson.bean;
 
-public class InfoBean {
-    private String firstName = "John";
+public class Stu {
+    private String firstName = "Catty";
     private String lastName = "Smith";
     private String sex = "male";
     private short age = 25;

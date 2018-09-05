@@ -6,6 +6,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hades.android.example.android_about_demos.gson.bean.Stu;
+import com.hades.android.example.android_about_demos.gson.bean.StuHasSerializedName;
+import com.hades.android.example.android_about_demos.gson.bean.StuHasSerializedName2;
+import com.hades.android.example.android_about_demos.gson.bean.StuHasTransient;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -15,58 +19,41 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        gson = new Gson();
 
         findViewById(R.id.baseSerialization).setOnClickListener(v -> baseSerialization());
         findViewById(R.id.baseDeserialization).setOnClickListener(v -> baseDeserialization());
+
         findViewById(R.id.arraySerialization).setOnClickListener(v -> arraySerialization());
+        findViewById(R.id.arrayDerialization).setOnClickListener(v -> arrayDerialization());
+
         findViewById(R.id.customSerialization).setOnClickListener(v -> customSerialization());
         findViewById(R.id.customDeserialization).setOnClickListener(v -> customDeserialization());
+
         findViewById(R.id.transientCustomSerialization).setOnClickListener(v -> transientCustomSerialization());
+        findViewById(R.id.transientCustomDeserialization).setOnClickListener(v -> transientCustomDeserialization());
+
         findViewById(R.id.collectionSerialization).setOnClickListener(v -> collectionSerialization());
         findViewById(R.id.collectionDeserialization).setOnClickListener(v -> collectionDeserialization());
         findViewById(R.id.collectionDeserialization2).setOnClickListener(v -> collectionDeserialization2());
+
+        findViewById(R.id.serializedNameSerialization).setOnClickListener(v -> serializedNameSerialization());
+        findViewById(R.id.serializedNameDeserialization).setOnClickListener(v -> serializedNameDeserialization());
+
+        findViewById(R.id.serializedNameSerialization2).setOnClickListener(v -> serializedNameSerialization2());
+        findViewById(R.id.serializedNameDeserialization2).setOnClickListener(v -> serializedNameDeserialization2());
     }
-
-    /**
-     * <pre>
-     *     {
-     * "firstName": "John",
-     * "lastName": "Smith",
-     * "sex": "male",
-     * "age": 25,
-     * "address":
-     * {
-     * "streetAddress": "21 2nd Street",
-     * "city": "New York",
-     * "state": "NY",
-     * "postalCode": "10021"
-     * },
-     * "phoneNumber":
-     * [
-     * {
-     * "type": "home",
-     * "number": "212 555-1234"
-     * },
-     * {
-     * "type": "fax",
-     * "number": "646 555-4567"
-     * }
-     * ]
-     * }
-     * </pre>
-     */
-
 
     /**
      * primitive type -> json string
      */
     public void baseSerialization() {
-        Gson gson = new Gson();
         Log.d(TAG, gson.toJson(1));     // 1
         Log.d(TAG, gson.toJson("A"));   // "A
         Log.d(TAG, gson.toJson(10L));   // 10
@@ -78,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
      * json string -> primitive type
      */
     public void baseDeserialization() {
-        Gson gson = new Gson();
         int one = gson.fromJson("1", int.class);
         Log.d(TAG, one + "");   // 1
 
@@ -105,9 +91,6 @@ public class MainActivity extends AppCompatActivity {
         int[] ints = {1, 2, 3, 4, 5};
         String[] strings = {"abc", "def", "ghi"};
 
-        Gson gson = new Gson();
-
-        // Serialization
         String s1 = gson.toJson(ints);     // ==> [1,2,3,4,5]
         String s2 = gson.toJson(strings);  // ==> ["abc", "def", "ghi"]
 
@@ -121,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
     public void arrayDerialization() {
         String jsonArray = "[1,2,3,4,5]";
 
-        Gson gson = new Gson();
-
         // Deserialization
         int[] ints2 = gson.fromJson(jsonArray, int[].class);
 
@@ -131,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i : ints2) {
             builder.append(i + ",");
         }
-        Log.d(TAG, builder.toString());
+        Log.d(TAG, builder.toString()); // => 1,2,3,4,5,
     }
 
     /**
@@ -139,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
      */
     // TODO:顺序？
     public void customSerialization() {
-        String json = new Gson().toJson(new InfoBean());
-        Log.d(TAG, json);
+        String json = gson.toJson(new Stu());
+        Log.d(TAG, json); // => {"age":25,"firstName":"Catty","lastName":"Smith","sex":"male"}
     }
 
     /**
@@ -148,7 +129,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public void customDeserialization() {
         String json = "{\"age\":100,\"firstName\":\"John\",\"lastName\":\"Smith\",\"sex\":\"male\"}";
-        Log.d(TAG, new Gson().fromJson(json, InfoBean.class).toString());
+        Log.d(TAG, gson.fromJson(json, Stu.class).toString()); // => {firstName='John', lastName='Smith', sex='male', age=100}
+
+        String json2 = "{age:100,firstName:John,lastName:Smith,sex:male}";
+        Log.d(TAG, gson.fromJson(json2, Stu.class).toString()); // => {firstName='John', lastName='Smith', sex='male', age=100}
     }
 
 
@@ -157,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
      */
     // TODO:顺序？
     public void transientCustomSerialization() {
-        String json = new Gson().toJson(new TransientInfoBean("Hello", "Smith", "male", (short) 25));
-        Log.d(TAG, json);
+        String json = gson.toJson(new StuHasTransient("Hello", "Smith", "male", (short) 25));
+        Log.d(TAG, json); // => {"firstName":"Hello","lastName":"Smith","sex":"male"}, does not have transient age 25
     }
 
     /**
@@ -167,11 +151,10 @@ public class MainActivity extends AppCompatActivity {
     public void transientCustomDeserialization() {
 //        String json = "{\"age\":100,\"firstName\":\"John\",\"lastName\":\"Smith\",\"sex\":\"male\"}";
         String json = "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"sex\":\"male\"}";
-        Log.d(TAG, new Gson().fromJson(json, TransientInfoBean.class).toString());
+        Log.d(TAG, gson.fromJson(json, StuHasTransient.class).toString());
     }
 
     public void collectionSerialization() {
-        Gson gson = new Gson();
         Collection<Integer> ints = new ArrayList<>();
         ints.add(1);
         ints.add(2);
@@ -189,8 +172,6 @@ public class MainActivity extends AppCompatActivity {
      * json string -> Collection
      */
     public void collectionDeserialization() {
-        Gson gson = new Gson();
-
         String json = "[1,2,3,4,5]";
         Log.d(TAG, "collectionDeserialization," + json);
 
@@ -206,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
      * json string -> Collection
      */
     public void collectionDeserialization2() {
-        Gson gson = new Gson();
-
         // Serialization
         String json = "[1,2,3,4,5]";
         Log.d(TAG, "collectionDeserialization2," + json);
@@ -219,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         Collection<Integer> ints2 = gson.fromJson(json, collectionType);
         Log.d(TAG, "collectionDeserialization2," + ints2.toString());
     }
-
 
 //    /**
 //     * Serializing and Deserializing Generic Types
@@ -239,10 +217,43 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d(TAG, "genericTypes: " + json);
 //        Log.d(TAG, "genericTypes: " + gson.fromJson(json, foo1.getClass()));
 //
-//        Foo<InfoBean> foo13 = new Foo<InfoBean>(new InfoBean());
+//        Foo<Stu> foo13 = new Foo<Stu>(new Stu());
 //        json = gson.toJson(foo13);
 //        Log.d(TAG, "genericTypes: " + json);
 //        Log.d(TAG, "genericTypes: " + gson.fromJson(json, foo1.getClass()));
 //
 //    }
+
+    /*
+    属性重命名 @SerializedName 注解
+    Actual: {"name":"A", "age":24, "email_address":"ABC@example.com" }
+    Expect: {"name":"A", "age":24, "emailAddress":"ABC@example.com" }
+     */
+    private void serializedNameSerialization() {
+        StuHasSerializedName stu = new StuHasSerializedName("A", 24, "ABC@example.com");
+        String json = gson.toJson(stu);
+
+        Log.d(TAG, json); // => {"age":24,"emailAddress":"ABC@example.com","name":"A"}
+    }
+
+    private void serializedNameDeserialization() {
+        String json = "{{\"age\":24,\"emailAddress\":\"ABC@example.com\",\"name\":\"A\"}";
+        // ERROR:com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected name at line 1 column 2 path
+        Log.d(TAG, gson.fromJson(json, StuHasSerializedName.class).toString());
+    }
+
+
+    private void serializedNameSerialization2() {
+        StuHasSerializedName2 stu = new StuHasSerializedName2("A", 24, "ABC@example.com");
+        String json = gson.toJson(stu);
+
+        Log.d(TAG, json); // => {"age":24,"emailAddress":"ABC@example.com","name":"A"}
+    }
+
+    private void serializedNameDeserialization2() {
+        String json = "{{\"age\":24,\"emailAddress\":\"ABC@example.com\",\"name\":\"A\"}";
+        // ERROR:com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected name at line 1 column 2 path
+        StuHasSerializedName2 stu = gson.fromJson(json, StuHasSerializedName2.class);
+        Log.d(TAG, stu.toString());
+    }
 }

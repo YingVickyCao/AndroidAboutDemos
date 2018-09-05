@@ -1,12 +1,12 @@
-package com.hades.android.example.android_about_demos.gson;
+package com.hades.android.example.android_about_demos.gson.bean;
 
-public class TransientInfoBean {
+public class StuHasTransient {
     public String firstName;
     public String lastName;
     public String sex;
     public transient short age;
 
-    public TransientInfoBean(String firstName, String lastName, String sex, short age) {
+    public StuHasTransient(String firstName, String lastName, String sex, short age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
