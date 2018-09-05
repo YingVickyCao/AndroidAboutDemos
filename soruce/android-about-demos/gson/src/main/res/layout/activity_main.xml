@@ -1,18 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:text="Json and Gson Demo"
+        android:textAllCaps="false"
+        android:textAppearance="?android:textAppearanceLarge" />
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/baseSerialization"
+                style="@style/btn"
+                android:text="Base Serialization" />
+
+            <Button
+                android:id="@+id/baseDeserialization"
+                style="@style/btn"
+                android:text="Base Deserialization" />
+
+            <Button
+                android:id="@+id/arraySerialization"
+                style="@style/btn"
+                android:text="Array Serialization" />
+
+            <Button
+                android:id="@+id/arrayDerialization"
+                style="@style/btn"
+                android:text="Array Derialization"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/customSerialization"
+                style="@style/btn"
+                android:text="Custom Serialization"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/customDeserialization"
+                style="@style/btn"
+                android:text="Custom Deserialization"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/transientCustomSerialization"
+                style="@style/btn"
+                android:text="transient Custom Serialization"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/transientCustomDeserialization"
+                style="@style/btn"
+                android:text="transient Custom Deserialization"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/collectionSerialization"
+                style="@style/btn"
+                android:text="Collection Seserialization"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/collectionDeserialization"
+                style="@style/btn"
+                android:text="Collection Deserialization"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/collectionDeserialization2"
+                style="@style/btn"
+                android:text="Collection Deserialization2"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
