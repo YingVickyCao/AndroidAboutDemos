@@ -67,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public void baseSerialization() {
         Gson gson = new Gson();
-        Log.d(TAG, gson.toJson(1));
-        Log.d(TAG, gson.toJson("Johh"));
-        Log.d(TAG, gson.toJson(10L));
-        Log.d(TAG, gson.toJson(new Date()));
-        Log.d(TAG, gson.toJson(new int[]{1, 2}));
+        Log.d(TAG, gson.toJson(1));     // 1
+        Log.d(TAG, gson.toJson("A"));   // "A
+        Log.d(TAG, gson.toJson(10L));   // 10
+        Log.d(TAG, gson.toJson(new Date()));    // "Sep 5, 2018 22:57:10"
+        Log.d(TAG, gson.toJson(new int[]{1, 2}));   // [1,2]
     }
 
     /**
@@ -80,17 +80,23 @@ public class MainActivity extends AppCompatActivity {
     public void baseDeserialization() {
         Gson gson = new Gson();
         int one = gson.fromJson("1", int.class);
-        Log.d(TAG, one + "");
-        Integer oneInteger = gson.fromJson("1", Integer.class);
-        Log.d(TAG, oneInteger + "");
-        Long oneLong = gson.fromJson("1", Long.class);
-        Log.d(TAG, oneLong + "");
-        Boolean falseBoolean = gson.fromJson("false", Boolean.class);
-        Log.d(TAG, falseBoolean + "");
-        String str = gson.fromJson("\"abc\"", String.class);
-        Log.d(TAG, str + "");
-    }
+        Log.d(TAG, one + "");   // 1
 
+        Integer oneInteger = gson.fromJson("1", Integer.class);
+        Log.d(TAG, oneInteger + "");    // 1
+
+        Long oneLong = gson.fromJson("1", Long.class);
+        Log.d(TAG, oneLong + "");  // 1
+
+        Boolean falseBoolean = gson.fromJson("false", Boolean.class);
+        Log.d(TAG, falseBoolean + "");  // false
+
+        String str = gson.fromJson("\"abc\"", String.class);
+        Log.d(TAG, str + ""); // abc
+
+        String str2 = gson.fromJson("def", String.class);
+        Log.d(TAG, str2 + ""); // def
+    }
 
     /**
      * Array  -> json string
