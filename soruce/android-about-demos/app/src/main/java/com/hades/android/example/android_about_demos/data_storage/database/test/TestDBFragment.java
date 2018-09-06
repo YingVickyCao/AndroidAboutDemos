@@ -99,7 +99,7 @@ public class TestDBFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             ItemHolder itemHolder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.item_listview_test, null);//根据布局文件实例化view
+                convertView = mInflater.inflate(R.layout.list_item_view, null);//根据布局文件实例化view
                 itemHolder = new ItemHolder();
                 itemHolder.id = convertView.findViewById(R.id.id);
                 itemHolder.name = convertView.findViewById(R.id.name);
