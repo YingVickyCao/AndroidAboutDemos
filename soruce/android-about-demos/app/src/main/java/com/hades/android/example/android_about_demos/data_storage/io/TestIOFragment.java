@@ -37,6 +37,7 @@ public class TestIOFragment extends BaseFragment {
 
     ListView listView;
     TextView currentPath;
+
     File currentDirParent;
     File[] currentDirFiles;
     List<Map<String, Object>> currentDirFilesList = new ArrayList<>();
@@ -51,30 +52,40 @@ public class TestIOFragment extends BaseFragment {
         view.findViewById(R.id.write).setOnClickListener(v -> write());
 
         /**
-         <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
          */
         view.findViewById(R.id.readSDCard).setOnClickListener(v -> readSDCard());
         view.findViewById(R.id.writeSDCard).setOnClickListener(v -> writeSDCard());
 
         simpleAdapter = new SimpleAdapter(getActivity(), currentDirFilesList, R.layout.list_item_view_2, new String[]{"icon", "fileName"}, new int[]{R.id.icon, R.id.file_name});
-
         view.findViewById(R.id.back2Parent).setOnClickListener(v -> back2Parent());
         currentPath = view.findViewById(R.id.currentPath);
         listView = view.findViewById(R.id.list);
         listView.setOnItemClickListener(this::clickItem);
         listView.setAdapter(simpleAdapter);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // 获取系统的SD卡的目录
 //        File root = new File("/mnt/sdcard/");
         File root = Environment.getExternalStorageDirectory();
         // 如果 SD卡存在
+        /**
+         * File.exists()
+         */
         if (root.exists()) {
             currentDirParent = root;
+            /**
+             * File.listFiles()
+             */
             currentDirFiles = root.listFiles();
             useCurrentDirAllFiles2InflateListView(currentDirFiles);
         }
-        return view;
     }
 
     /**
@@ -193,7 +204,6 @@ public class TestIOFragment extends BaseFragment {
     private void writeSDCard() {
         // 如果手机插入了SD卡，而且应用程序具有访问SD的权限
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-
             new Thread(() -> {
 
                 String content = String.valueOf(System.currentTimeMillis()) + "SD";
@@ -224,16 +234,23 @@ public class TestIOFragment extends BaseFragment {
     }
 
     private boolean isTop() throws IOException {
-        return currentDirParent.getCanonicalPath().equals("/mnt/sdcard");
+        return currentDirParent.getCanonicalPath().equals(Environment.getExternalStorageDirectory().getCanonicalPath());
     }
 
     private void back2Parent() {
         try {
-            if (!isTop()) {
-                currentDirParent = currentDirParent.getParentFile();
-                currentDirFiles = currentDirParent.listFiles();
-                useCurrentDirAllFiles2InflateListView(currentDirFiles);
+            if (isTop()) {
+                showToast("Top Already");
+                return;
             }
+
+            /**
+             * File.getParentFile()
+             */
+            currentDirParent = currentDirParent.getParentFile();
+            currentDirFiles = currentDirParent.listFiles();
+            useCurrentDirAllFiles2InflateListView(currentDirFiles);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -255,14 +272,20 @@ public class TestIOFragment extends BaseFragment {
     }
 
     private void useCurrentDirAllFiles2InflateListView(File[] files) {
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> listItems = new ArrayList<>();
         for (File file : files) {
-            Map<String, Object> listItem = new HashMap<String, Object>();
+            Map<String, Object> listItem = new HashMap<>();
+            /**
+             * File.isDirectory()
+             */
             if (file.isDirectory()) {
                 listItem.put("icon", R.drawable.folder);
             } else {
                 listItem.put("icon", R.drawable.file);
             }
+            /**
+             * File.getName()
+             */
             listItem.put("fileName", file.getName());
             listItems.add(listItem);
         }
