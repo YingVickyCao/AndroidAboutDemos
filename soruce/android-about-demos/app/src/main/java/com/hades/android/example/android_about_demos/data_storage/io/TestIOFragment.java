@@ -25,7 +25,14 @@ public class TestIOFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_io_layout, container, false);
 
         view.findViewById(R.id.read).setOnClickListener(v -> read());
-        view.findViewById(R.id.write).setOnClickListener(v -> write(String.valueOf(System.currentTimeMillis())));
+        view.findViewById(R.id.write).setOnClickListener(v -> write());
+
+        /**
+         <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+         */
+        view.findViewById(R.id.readSDCard).setOnClickListener(v -> readSDCard());
+        view.findViewById(R.id.writeSDCard).setOnClickListener(v -> writeSDCard());
         return view;
     }
 
@@ -37,6 +44,9 @@ public class TestIOFragment extends BaseFragment {
             FileInputStream fis = null;
             try {
 
+                /**
+                 * /data/data/<package_name>/files/file_name
+                 */
                 fis = getActivity().openFileInput(FILE_NAME);
 
                 byte[] buff = new byte[1024];
@@ -65,7 +75,8 @@ public class TestIOFragment extends BaseFragment {
     /**
      * FileOutputStream => PrintStream
      */
-    private void write(String content) {
+    private void write() {
+        String content = String.valueOf(System.currentTimeMillis());
         new Thread(() -> {
             FileOutputStream fos = null;
             PrintStream ps = null;
@@ -89,5 +100,12 @@ public class TestIOFragment extends BaseFragment {
                 }
             }
         }).start();
+    }
+
+    private void readSDCard() {
+    }
+
+    private void writeSDCard() {
+
     }
 }
