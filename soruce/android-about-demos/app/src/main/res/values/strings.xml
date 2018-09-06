@@ -80,6 +80,11 @@
     <string name="read">Read</string>
     <string name="write">Write</string>
 
+    <string name="read_internal_storage">Read Internal Storage</string>
+    <string name="write_Internal_storage">Write Internal Storage</string>
+    <string name="read_sd_card">Read SD card</string>
+    <string name="write_sdc_ard">Write SD card</string>
+
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
         <item>设备编号</item>

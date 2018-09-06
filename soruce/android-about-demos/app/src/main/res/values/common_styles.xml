@@ -8,6 +8,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="topic.orange">
+        <item name="android:background">@android:color/holo_orange_dark</item>
+    </style>
+
     <style name="btn">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

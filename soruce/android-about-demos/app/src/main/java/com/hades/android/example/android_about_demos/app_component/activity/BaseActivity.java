@@ -19,6 +19,7 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(new Intent(this, cls));
     }
 
+    private View topic;
     private ScrollView mScrollView;
     private View mFragmentRoot;
 
@@ -26,25 +27,41 @@ public class BaseActivity extends AppCompatActivity {
     private RxPermissions rxPermissions;
 
     protected void initViews() {
+        topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-//        showDefaultFragment();
-        showBtns();
+        showDefaultFragment();
+//        showBtns();
     }
 
     protected void showBtns() {
-        mScrollView.setVisibility(View.VISIBLE);
-        mFragmentRoot.setVisibility(View.GONE);
+        if (null != mScrollView) {
+            mScrollView.setVisibility(View.VISIBLE);
+        }
+
+        if (null != topic) {
+            topic.setVisibility(View.VISIBLE);
+        }
+
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.GONE);
+        }
     }
 
     protected void hideBtns() {
-        mScrollView.setVisibility(View.GONE);
-        mFragmentRoot.setVisibility(View.VISIBLE);
+        if (null != mScrollView) {
+            mScrollView.setVisibility(View.GONE);
+        }
+        if (null != topic) {
+            topic.setVisibility(View.GONE);
+        }
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.VISIBLE);
+        }
     }
 
     protected void showCurrentTest() {
-
     }
 
     private void showDefaultFragment() {
@@ -53,7 +70,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean isShowDetail() {
-        return mFragmentRoot.getVisibility() == View.VISIBLE;
+        return null != mFragmentRoot && mFragmentRoot.getVisibility() == View.VISIBLE;
     }
 
     protected void removeDetailFragment() {
@@ -89,11 +106,15 @@ public class BaseActivity extends AppCompatActivity {
         return false;
     }
 
-    protected void needCheckPermission(boolean checkPermission) {
-        if (checkPermission) {
+    protected void needCheckPermission() {
+        if (isNeedCheckPermission()) {
             rxPermissions = new RxPermissions(this);
             rxPermissions.setLogging(true);
         }
+    }
+
+    protected boolean isNeedCheckPermission() {
+        return false;
     }
 
     public void setRoot(View root) {
@@ -104,6 +125,10 @@ public class BaseActivity extends AppCompatActivity {
      * @param permissions new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}
      */
     protected void checkPermission(final String permissionRationale, final String... permissions) {
+        if (!isNeedCheckPermission()) {
+            return;
+        }
+        needCheckPermission();
         if (!isGranted(permissions)) {
             askUser2GrantPermissions(permissionRationale, permissions);
         }
