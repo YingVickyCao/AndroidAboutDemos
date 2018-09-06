@@ -166,6 +166,11 @@ public class TestIOFragment extends BaseFragment {
                     File sdCardDir = Environment.getExternalStorageDirectory();
                     Log.d(TAG, "readSDCard: sdCardDir");
                     fis = new FileInputStream(sdCardDir.getCanonicalPath() + File.separator + EXTERNAL_STORAGE_FILE_NAME);
+
+                    Log.d(TAG, "readSDCard: sdCardDir.getPath()=" + sdCardDir.getPath()); // /storage/emulated/0
+                    Log.d(TAG, "readSDCard: sdCardDir.getCanonicalPath()=" + sdCardDir.getCanonicalPath()); // /storage/emulated/0
+                    Log.d(TAG, "readSDCard: sdCardDir.getAbsolutePath()=" + sdCardDir.getAbsolutePath()); // /storage/emulated/0
+
                     br = new BufferedReader(new InputStreamReader(fis));
 
                     StringBuilder sb = new StringBuilder("");
@@ -202,6 +207,7 @@ public class TestIOFragment extends BaseFragment {
     }
 
     private void writeSDCard() {
+        // TODO: 覆盖写
         // 如果手机插入了SD卡，而且应用程序具有访问SD的权限
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             new Thread(() -> {
