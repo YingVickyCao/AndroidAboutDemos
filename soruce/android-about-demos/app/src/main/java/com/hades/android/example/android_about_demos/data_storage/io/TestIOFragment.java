@@ -34,12 +34,13 @@ public class TestIOFragment extends BaseFragment {
     private static final String TAG = TestIOFragment.class.getSimpleName();
     final String Internal_Storage_FILE_NAME = "test_IO.txt";
     final String EXTERNAL_STORAGE_FILE_NAME = "sd_test_IO.txt";
+
     ListView listView;
-    TextView textView;
-    // 记录当前的父文件夹
-    File currentParent;
-    // 记录当前路径下的所有文件的文件数组
-    File[] currentFiles;
+    TextView currentPath;
+    File currentDirParent;
+    File[] currentDirFiles;
+    List<Map<String, Object>> currentDirFilesList = new ArrayList<>();
+    private SimpleAdapter simpleAdapter;
 
     @Nullable
     @Override
@@ -56,25 +57,23 @@ public class TestIOFragment extends BaseFragment {
         view.findViewById(R.id.readSDCard).setOnClickListener(v -> readSDCard());
         view.findViewById(R.id.writeSDCard).setOnClickListener(v -> writeSDCard());
 
-        // 获取列出全部文件的ListView
+        simpleAdapter = new SimpleAdapter(getActivity(), currentDirFilesList, R.layout.list_item_view_2, new String[]{"icon", "fileName"}, new int[]{R.id.icon, R.id.file_name});
+
+        view.findViewById(R.id.back2Parent).setOnClickListener(v -> back2Parent());
+        currentPath = view.findViewById(R.id.currentPath);
         listView = view.findViewById(R.id.list);
-        textView = view.findViewById(R.id.path);
+        listView.setOnItemClickListener(this::clickItem);
+        listView.setAdapter(simpleAdapter);
 
         // 获取系统的SD卡的目录
-        File root = new File("/mnt/sdcard/");
+//        File root = new File("/mnt/sdcard/");
+        File root = Environment.getExternalStorageDirectory();
         // 如果 SD卡存在
         if (root.exists()) {
-            currentParent = root;
-            currentFiles = root.listFiles();
-            // 使用当前目录下的全部文件、文件夹来填充ListView
-            inflateListView(currentFiles);
+            currentDirParent = root;
+            currentDirFiles = root.listFiles();
+            useCurrentDirAllFiles2InflateListView(currentDirFiles);
         }
-
-        // 为ListView的列表项的单击事件绑定监听器
-        listView.setOnItemClickListener(this::clickItem);
-
-        view.findViewById(R.id.parent).setOnClickListener(v -> parent());
-
         return view;
     }
 
@@ -224,16 +223,16 @@ public class TestIOFragment extends BaseFragment {
         }
     }
 
-    private void parent() {
+    private boolean isTop() throws IOException {
+        return currentDirParent.getCanonicalPath().equals("/mnt/sdcard");
+    }
+
+    private void back2Parent() {
         try {
-            if (!currentParent.getCanonicalPath()
-                    .equals("/mnt/sdcard")) {
-                // 获取上一级目录
-                currentParent = currentParent.getParentFile();
-                // 列出当前目录下所有文件
-                currentFiles = currentParent.listFiles();
-                // 再次更新ListView
-                inflateListView(currentFiles);
+            if (!isTop()) {
+                currentDirParent = currentDirParent.getParentFile();
+                currentDirFiles = currentDirParent.listFiles();
+                useCurrentDirAllFiles2InflateListView(currentDirFiles);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -241,46 +240,42 @@ public class TestIOFragment extends BaseFragment {
     }
 
     public void clickItem(AdapterView<?> parent, View view, int position, long id) {
-        // 用户单击了文件，直接返回，不做任何处理
-        if (currentFiles[position].isFile()) return;
-        // 获取用户点击的文件夹下的所有文件
-        File[] tmp = currentFiles[position].listFiles();
+        if (currentDirFiles[position].isFile()) {
+            return;
+        }
+
+        File[] tmp = currentDirFiles[position].listFiles();
         if (tmp == null || tmp.length == 0) {
             showToast("当前路径不可访问或该路径下没有文件");
         } else {
-            // 获取用户单击的列表项对应的文件夹，设为当前的父文件夹
-            currentParent = currentFiles[position]; // ②
-            // 保存当前的父文件夹内的全部文件和文件夹
-            currentFiles = tmp;
-            // 再次更新ListView
-            inflateListView(currentFiles);
+            currentDirParent = currentDirFiles[position];
+            currentDirFiles = tmp;
+            useCurrentDirAllFiles2InflateListView(currentDirFiles);
         }
     }
 
-    private void inflateListView(File[] files) {
-        // 创建一个List集合，List集合的元素是Map
-        List<Map<String, Object>> listItems =
-                new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < files.length; i++) {
-            Map<String, Object> listItem =
-                    new HashMap<String, Object>();
-            // 如果当前File是文件夹，使用folder图标；否则使用file图标
-            if (files[i].isDirectory()) {
+    private void useCurrentDirAllFiles2InflateListView(File[] files) {
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for (File file : files) {
+            Map<String, Object> listItem = new HashMap<String, Object>();
+            if (file.isDirectory()) {
                 listItem.put("icon", R.drawable.folder);
             } else {
                 listItem.put("icon", R.drawable.file);
             }
-            listItem.put("fileName", files[i].getName());
-            // 添加List项
+            listItem.put("fileName", file.getName());
             listItems.add(listItem);
         }
-        // 创建一个SimpleAdapter
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.list_item_view_2, new String[]{"icon", "fileName"}, new int[]{R.id.icon, R.id.file_name});
-        // 为ListView设置Adapter
-        listView.setAdapter(simpleAdapter);
+
+        if (!listItems.isEmpty()) {
+            currentDirFilesList.clear();
+            currentDirFilesList.addAll(listItems);
+        }
+
+        simpleAdapter.notifyDataSetChanged();
+
         try {
-            textView.setText("当前路径为："
-                    + currentParent.getCanonicalPath());
+            currentPath.setText(currentDirParent.getCanonicalPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
