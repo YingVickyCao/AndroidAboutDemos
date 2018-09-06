@@ -19,6 +19,7 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(new Intent(this, cls));
     }
 
+    private View topic;
     private ScrollView mScrollView;
     private View mFragmentRoot;
 
@@ -26,6 +27,7 @@ public class BaseActivity extends AppCompatActivity {
     private RxPermissions rxPermissions;
 
     protected void initViews() {
+        topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
@@ -34,13 +36,29 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void showBtns() {
-        mScrollView.setVisibility(View.VISIBLE);
-        mFragmentRoot.setVisibility(View.GONE);
+        if (null != mScrollView) {
+            mScrollView.setVisibility(View.VISIBLE);
+        }
+
+        if (null != topic) {
+            topic.setVisibility(View.VISIBLE);
+        }
+
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.GONE);
+        }
     }
 
     protected void hideBtns() {
-        mScrollView.setVisibility(View.GONE);
-        mFragmentRoot.setVisibility(View.VISIBLE);
+        if (null != mScrollView) {
+            mScrollView.setVisibility(View.GONE);
+        }
+        if (null != topic) {
+            topic.setVisibility(View.GONE);
+        }
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.VISIBLE);
+        }
     }
 
     protected void showCurrentTest() {
@@ -53,7 +71,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean isShowDetail() {
-        return mFragmentRoot.getVisibility() == View.VISIBLE;
+        return null != mFragmentRoot && mFragmentRoot.getVisibility() == View.VISIBLE;
     }
 
     protected void removeDetailFragment() {
