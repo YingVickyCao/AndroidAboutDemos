@@ -19,14 +19,15 @@ public class TestDBActivity extends Activity {
     Button bn = null;
     ListView listView;
 
+    private final String DB_NAME = "test_db.db";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_db_layout_2);
 
         // 创建或打开数据库（此处需要使用绝对路径）
-        db = SQLiteDatabase.openOrCreateDatabase(
-                this.getFilesDir().toString() + "/my.db3", null);
+        db = getApplicationContext().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
         listView = (ListView) findViewById(R.id.show);
         bn = (Button) findViewById(R.id.ok);
         bn.setOnClickListener(new View.OnClickListener() {
