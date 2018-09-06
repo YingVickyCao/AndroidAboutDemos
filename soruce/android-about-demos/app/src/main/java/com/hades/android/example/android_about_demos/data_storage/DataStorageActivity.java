@@ -1,5 +1,6 @@
 package com.hades.android.example.android_about_demos.data_storage;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -16,11 +17,23 @@ public class DataStorageActivity extends BaseActivity {
 
         setContentView(R.layout.activity_data_storage_layout);
 
+        checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
         initViews();
 
         findViewById(R.id.pageSharedPreferences).setOnClickListener(v -> pageSharedPreferences());
         findViewById(R.id.pageDatabase).setOnClickListener(v -> pageDatabase());
         findViewById(R.id.pageIO).setOnClickListener(v -> pageIO());
+    }
+
+    @Override
+    protected boolean isNeedCheckPermission() {
+        return true;
+    }
+
+    @Override
+    protected void showCurrentTest() {
+        pageIO();
     }
 
     private void pageSharedPreferences() {

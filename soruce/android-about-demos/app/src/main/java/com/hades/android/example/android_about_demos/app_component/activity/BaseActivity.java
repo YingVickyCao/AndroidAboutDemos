@@ -31,8 +31,8 @@ public class BaseActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-//        showDefaultFragment();
-        showBtns();
+        showDefaultFragment();
+//        showBtns();
     }
 
     protected void showBtns() {
@@ -62,7 +62,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void showCurrentTest() {
-
     }
 
     private void showDefaultFragment() {
@@ -107,11 +106,15 @@ public class BaseActivity extends AppCompatActivity {
         return false;
     }
 
-    protected void needCheckPermission(boolean checkPermission) {
-        if (checkPermission) {
+    protected void needCheckPermission() {
+        if (isNeedCheckPermission()) {
             rxPermissions = new RxPermissions(this);
             rxPermissions.setLogging(true);
         }
+    }
+
+    protected boolean isNeedCheckPermission() {
+        return false;
     }
 
     public void setRoot(View root) {
@@ -122,6 +125,10 @@ public class BaseActivity extends AppCompatActivity {
      * @param permissions new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}
      */
     protected void checkPermission(final String permissionRationale, final String... permissions) {
+        if (!isNeedCheckPermission()) {
+            return;
+        }
+        needCheckPermission();
         if (!isGranted(permissions)) {
             askUser2GrantPermissions(permissionRationale, permissions);
         }

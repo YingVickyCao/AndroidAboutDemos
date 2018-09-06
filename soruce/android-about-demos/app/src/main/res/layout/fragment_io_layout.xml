@@ -38,12 +38,12 @@
             <Button
                 android:id="@+id/readSDCard"
                 style="@style/btn.small"
-                android:text="@string/read" />
+                android:text="@string/read_sd_card" />
 
             <Button
                 android:id="@+id/writeSDCard"
                 style="@style/btn.small"
-                android:text="@string/write" />
+                android:text="@string/write_sdc_ard" />
         </LinearLayout>
 
 

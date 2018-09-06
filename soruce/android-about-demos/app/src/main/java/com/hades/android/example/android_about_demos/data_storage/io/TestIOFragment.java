@@ -1,7 +1,9 @@
 package com.hades.android.example.android_about_demos.data_storage.io;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,21 @@ import android.view.ViewGroup;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.base.BaseFragment;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.RandomAccessFile;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class TestIOFragment extends BaseFragment {
-    final String FILE_NAME = "test_IO.txt";
+    private static final String TAG = TestIOFragment.class.getSimpleName();
+    final String Internal_Storage_FILE_NAME = "test_IO.txt";
+    final String EXTERNAL_STORAGE_FILE_NAME = "sd_test_IO.txt";
 
     @Nullable
     @Override
@@ -47,7 +55,7 @@ public class TestIOFragment extends BaseFragment {
                 /**
                  * /data/data/<package_name>/files/file_name
                  */
-                fis = getActivity().openFileInput(FILE_NAME);
+                fis = getActivity().openFileInput(Internal_Storage_FILE_NAME);
 
                 byte[] buff = new byte[1024];
                 int hasRead = 0;
@@ -55,9 +63,9 @@ public class TestIOFragment extends BaseFragment {
                 while ((hasRead = fis.read(buff)) > 0) {
                     sb.append(new String(buff, 0, hasRead));
                 }
+
                 String result = sb.toString();
                 showToast(result);
-
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -81,7 +89,7 @@ public class TestIOFragment extends BaseFragment {
             FileOutputStream fos = null;
             PrintStream ps = null;
             try {
-                fos = getActivity().openFileOutput(FILE_NAME, MODE_PRIVATE);
+                fos = getActivity().openFileOutput(Internal_Storage_FILE_NAME, MODE_PRIVATE);
                 ps = new PrintStream(fos);
                 ps.println(content);
             } catch (Exception e) {
@@ -103,9 +111,82 @@ public class TestIOFragment extends BaseFragment {
     }
 
     private void readSDCard() {
+        // 如果手机插入了SD卡，而且应用程序具有访问SD的权限
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            new Thread(() -> {
+
+                FileInputStream fis = null;
+                BufferedReader br = null;
+                try {
+
+                    File sdCardDir = Environment.getExternalStorageDirectory();
+                    Log.d(TAG, "readSDCard: sdCardDir");
+                    fis = new FileInputStream(sdCardDir.getCanonicalPath() + File.separator + EXTERNAL_STORAGE_FILE_NAME);
+                    br = new BufferedReader(new InputStreamReader(fis));
+
+                    StringBuilder sb = new StringBuilder("");
+                    String line = null;
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    String result = sb.toString();
+                    showToast(result);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (null != fis) {
+                        try {
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if (null != br) {
+                        try {
+                            br.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            }).start();
+        }
     }
 
     private void writeSDCard() {
+        // 如果手机插入了SD卡，而且应用程序具有访问SD的权限
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 
+            new Thread(() -> {
+
+                String content = String.valueOf(System.currentTimeMillis()) + "SD";
+                RandomAccessFile raf = null;
+                try {
+                    // 获取SD卡的目录
+                    File sdCardDir = Environment.getExternalStorageDirectory(); // /storage/emulated/0
+                    File targetFile = new File(sdCardDir.getCanonicalPath() + File.separator + EXTERNAL_STORAGE_FILE_NAME); // /storage/emulated/0/sd_test_IO.txt   => sdcard/sd_test_IO.txt
+
+                    raf = new RandomAccessFile(targetFile, "rw");
+                    raf.seek(targetFile.length());// 将文件记录指针移动到最后
+                    raf.write(content.getBytes());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (null != raf) {
+                        try {
+                            raf.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
+
+        }
     }
 }
