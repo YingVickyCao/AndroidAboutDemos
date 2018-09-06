@@ -58,7 +58,7 @@ public class TestIOFragment extends BaseFragment {
         view.findViewById(R.id.readSDCard).setOnClickListener(v -> readSDCard());
         view.findViewById(R.id.writeSDCard).setOnClickListener(v -> writeSDCard());
 
-        simpleAdapter = new SimpleAdapter(getActivity(), currentDirFilesList, R.layout.list_item_view_2, new String[]{"icon", "fileName"}, new int[]{R.id.icon, R.id.file_name});
+        simpleAdapter = new SimpleAdapter(getActivity(), currentDirFilesList, R.layout.list_item_view_2, new String[]{"icon", "fileName"}, new int[]{R.id.icon, R.id.title});
         view.findViewById(R.id.back2Parent).setOnClickListener(v -> back2Parent());
         currentPath = view.findViewById(R.id.currentPath);
         listView = view.findViewById(R.id.list);
