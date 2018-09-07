@@ -114,7 +114,8 @@ public class TestDBFragment extends BaseFragment {
 
 
     private void deleteTableDataBtnClick() {
-        db.execSQL("DELETE from news_info");
+//        db.execSQL("DELETE from news_info");
+        db.execSQL("DELETE from " + NEWS_INFO_TABLE_NAME);
         query();
     }
 
