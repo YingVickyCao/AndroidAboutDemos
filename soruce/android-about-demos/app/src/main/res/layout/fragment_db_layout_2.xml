@@ -4,22 +4,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="2" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/insertDictClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insert" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/insertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/insert" />
+        android:id="@+id/insertBundlesData"
+        style="@style/btn.small"
+        android:text="@string/insert_bundles_data" />
 
     <ListView
         android:id="@+id/tableContentList"
