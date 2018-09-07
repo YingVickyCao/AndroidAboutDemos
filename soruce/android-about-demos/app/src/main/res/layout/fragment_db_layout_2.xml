@@ -26,11 +26,25 @@
                     android:text="@string/insert" />
 
                 <Button
+                    android:id="@+id/insertBundlesBtnClick"
+                    style="@style/btn.small"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/holo_green_light"
+                    android:text="@string/insert_bundles" />
+
+                <Button
                     android:id="@+id/deleteBtnClick"
                     style="@style/btn.small"
                     android:layout_marginStart="5dp"
                     android:background="@android:color/holo_green_light"
                     android:text="@string/delete" />
+
+                <Button
+                    android:id="@+id/deleteTableAllDataBtnClick"
+                    style="@style/btn.small"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/holo_green_light"
+                    android:text="@string/delete_table_data" />
 
                 <Button
                     android:id="@+id/updateBtnClick"
@@ -47,13 +61,6 @@
                     android:text="@string/query" />
 
                 <Button
-                    android:id="@+id/insertBundlesBtnClick"
-                    style="@style/btn.small"
-                    android:layout_marginStart="5dp"
-                    android:background="@android:color/holo_green_light"
-                    android:text="@string/insert_bundles" />
-
-                <Button
                     android:id="@+id/createTableBtnClick"
                     style="@style/btn.small"
                     android:layout_marginStart="5dp"
@@ -66,13 +73,6 @@
                     android:layout_marginStart="5dp"
                     android:background="@android:color/holo_green_light"
                     android:text="@string/delete_table" />
-
-                <Button
-                    android:id="@+id/deleteTableDataBtnClick"
-                    style="@style/btn.small"
-                    android:layout_marginStart="5dp"
-                    android:background="@android:color/holo_green_light"
-                    android:text="@string/delete_table_data" />
 
                 <Button
                     android:id="@+id/clear"

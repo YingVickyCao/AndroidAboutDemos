@@ -54,7 +54,7 @@
     <string name="delete">delete</string>
     <string name="create_table">create table</string>
     <string name="delete_table">delete table</string>
-    <string name="delete_table_data">delete table data</string>
+    <string name="delete_table_data">delete table all data</string>
     <string name="clear">clear</string>
     <string name="update">update</string>
     <string name="query">query</string>

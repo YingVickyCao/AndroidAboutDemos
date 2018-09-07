@@ -42,7 +42,7 @@ public class TestDBFragment extends BaseFragment {
         view.findViewById(R.id.insertBundlesBtnClick).setOnClickListener(v -> insertBundlesBtnClick());
         view.findViewById(R.id.createTableBtnClick).setOnClickListener(v -> createTableBtnClick());
         view.findViewById(R.id.deleteTableBtnClick).setOnClickListener(v -> deleteTableBtnClick());
-        view.findViewById(R.id.deleteTableDataBtnClick).setOnClickListener(v -> deleteTableDataBtnClick());
+        view.findViewById(R.id.deleteTableAllDataBtnClick).setOnClickListener(v -> deleteTableAllDataBtnClick());
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         return view;
     }
@@ -58,15 +58,6 @@ public class TestDBFragment extends BaseFragment {
     public final static String NEWS_INFO_TABLE_NEWS_TITLE = "news_title";
     public final static String NEWS_INFO_TABLE_NEWS_CONTENT = "news_content";
 
-    private void doCreateTable() {
-//        db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
-        db.execSQL("CREATE TABLE " + NEWS_INFO_TABLE_NAME + " ("
-                + NEWS_INFO_TABLE_id + " integer PRIMARY KEY AUTOINCREMENT,"
-                + NEWS_INFO_TABLE_NEWS_TITLE + " varchar(50),"
-                + NEWS_INFO_TABLE_NEWS_CONTENT + " varchar(255)" +
-                ")");
-    }
-
     private void insertBtnClick() {
         new Thread(() -> {
             int count = count();
@@ -76,7 +67,7 @@ public class TestDBFragment extends BaseFragment {
                 insert(db, title, content);
                 query();
             } catch (SQLiteException se) {
-                doCreateTable();
+                createTable();
                 insert(db, title, content);
             }
         }).start();
@@ -92,7 +83,7 @@ public class TestDBFragment extends BaseFragment {
                 try {
                     insert(db, title, content);
                 } catch (Exception se) {
-                    doCreateTable();
+                    createTable();
                     insert(db, title, content);
                 }
             }
@@ -101,22 +92,6 @@ public class TestDBFragment extends BaseFragment {
     }
 
     private void deleteBtnClick() {
-    }
-
-    private void createTableBtnClick() {
-        doCreateTable();
-    }
-
-    private void deleteTableBtnClick() {
-//        db.execSQL("DROP TABLE IF EXISTS news_info");
-        db.execSQL("DROP TABLE IF EXISTS " + NEWS_INFO_TABLE_NAME);
-    }
-
-
-    private void deleteTableDataBtnClick() {
-//        db.execSQL("DELETE from news_info");
-        db.execSQL("DELETE from " + NEWS_INFO_TABLE_NAME);
-        query();
     }
 
     private void updateBtnClick() {
@@ -138,11 +113,36 @@ public class TestDBFragment extends BaseFragment {
         query();
     }
 
+    private void createTableBtnClick() {
+        createTable();
+    }
+
+    private void deleteTableBtnClick() {
+        dropTable();
+    }
+
+    private void deleteTableAllDataBtnClick() {
+        deleteAll();
+        query();
+    }
+
     private void clear() {
         if (null != adapter) {
             adapter.swapCursor(null);
             adapter.notifyDataSetChanged();
         }
+    }
+
+    /**
+     * DML
+     */
+    private void insert(SQLiteDatabase db, String title, String content) {
+        db.execSQL("insert into news_info values(null , ? , ?)", new String[]{title, content});
+    }
+
+    private void deleteAll() {
+        //        db.execSQL("DELETE from news_info");
+        db.execSQL("DELETE from " + NEWS_INFO_TABLE_NAME);
     }
 
     private void query() {
@@ -158,10 +158,22 @@ public class TestDBFragment extends BaseFragment {
         return rawQuery().getCount();
     }
 
-    private void insert(SQLiteDatabase db, String title, String content) {
-        db.execSQL("insert into news_info values(null , ? , ?)", new String[]{title, content});
+    /**
+     * DDL
+     */
+    private void createTable() {
+        //        db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
+        db.execSQL("CREATE TABLE " + NEWS_INFO_TABLE_NAME + " ("
+                + NEWS_INFO_TABLE_id + " integer PRIMARY KEY AUTOINCREMENT,"
+                + NEWS_INFO_TABLE_NEWS_TITLE + " varchar(50),"
+                + NEWS_INFO_TABLE_NEWS_CONTENT + " varchar(255)" +
+                ")");
     }
 
+    private void dropTable() {
+//        db.execSQL("DROP TABLE IF EXISTS news_info");
+        db.execSQL("DROP TABLE IF EXISTS " + NEWS_INFO_TABLE_NAME);
+    }
 
     private void inflateList(Cursor cursor) {
         getActivity().runOnUiThread(() -> {
