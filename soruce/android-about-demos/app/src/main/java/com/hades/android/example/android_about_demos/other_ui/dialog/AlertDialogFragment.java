@@ -31,7 +31,7 @@ public class AlertDialogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_alertdialog, container, false);
 
-        mShow = view.findViewById(R.id.show);
+        mShow = view.findViewById(R.id.tableContentList);
 
         view.findViewById(R.id.simple).setOnClickListener(this::simple);
         view.findViewById(R.id.simpleList).setOnClickListener(this::simpleList);

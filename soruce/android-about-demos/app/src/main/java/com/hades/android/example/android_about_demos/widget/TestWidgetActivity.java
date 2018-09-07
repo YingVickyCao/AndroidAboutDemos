@@ -45,7 +45,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-        findViewById(R.id.show).setOnClickListener(this);
+        findViewById(R.id.tableContentList).setOnClickListener(this);
         findViewById(R.id.hide).setOnClickListener(this);
 
         findViewById(R.id.jumpRatingBar).setOnClickListener(this);
@@ -77,7 +77,7 @@ public class TestWidgetActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.show:
+            case R.id.tableContentList:
                 showBtns();
                 break;
 

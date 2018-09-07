@@ -10,7 +10,7 @@
         android:visibility="gone">
 
         <Button
-            android:id="@+id/show"
+            android:id="@+id/tableContentList"
             style="@style/btn.small.red"
             android:text="@string/show" />
 

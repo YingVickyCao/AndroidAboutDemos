@@ -30,7 +30,7 @@ public class NumberPickerFragment extends Fragment {
         View view = inflater.inflate(R.layout.widget_numberpicker, container, false);
 
         NumberPicker np = view.findViewById(R.id.np);
-        TextView mShow = view.findViewById(R.id.show);
+        TextView mShow = view.findViewById(R.id.tableContentList);
 
         /**
          * 格式化NumberPicker内部的数字

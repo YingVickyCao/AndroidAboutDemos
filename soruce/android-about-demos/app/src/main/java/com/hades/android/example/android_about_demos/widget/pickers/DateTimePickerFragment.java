@@ -38,7 +38,7 @@ public class DateTimePickerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_datepicker_timepicker, container, false);
 
-        mShow = view.findViewById(R.id.show);
+        mShow = view.findViewById(R.id.tableContentList);
 
         DatePicker mDatePicker = view.findViewById(R.id.datePicker);
         TimePicker timePicker = view.findViewById(R.id.timePicker);

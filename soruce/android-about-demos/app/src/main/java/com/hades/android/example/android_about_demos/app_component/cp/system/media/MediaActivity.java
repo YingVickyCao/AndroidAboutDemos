@@ -59,7 +59,7 @@ public class MediaActivity extends Activity {
         findViewById(R.id.add).setOnClickListener(v -> add());
         findViewById(R.id.view).setOnClickListener(v -> view());
 
-        mShowListView = findViewById(R.id.show);
+        mShowListView = findViewById(R.id.tableContentList);
         mShowListView.setOnItemClickListener(this::onItemClick);
         mAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.cp_media_resarch_result, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
         mShowListView.setAdapter(mAdapter);

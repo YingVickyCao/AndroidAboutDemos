@@ -9,7 +9,7 @@
     android:showDividers="beginning">
 
     <ListView
-        android:id="@+id/show"
+        android:id="@+id/tableContentList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

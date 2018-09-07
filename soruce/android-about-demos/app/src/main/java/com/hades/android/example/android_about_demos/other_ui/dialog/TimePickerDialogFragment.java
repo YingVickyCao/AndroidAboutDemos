@@ -30,7 +30,7 @@ public class TimePickerDialogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_timepickerdialog, container, false);
 
-        show = view.findViewById(R.id.show);
+        show = view.findViewById(R.id.tableContentList);
         view.findViewById(R.id.timeBn).setOnClickListener(source -> showTimePickerDialog());
         return view;
     }

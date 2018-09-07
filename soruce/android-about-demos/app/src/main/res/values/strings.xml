@@ -48,7 +48,7 @@
     <string name="show_normal_toast">Show normal Toast</string>
     <string name="show_custom_toast">Show custom Toast</string>
     <string name="custom_toast">Custom Toast</string>
-    <string name="insert">添加生词</string>
+    <string name="insert">添加New data</string>
     <string name="detail">解释</string>
     <string name="search">查询</string>
     <string name="view">查看</string>
