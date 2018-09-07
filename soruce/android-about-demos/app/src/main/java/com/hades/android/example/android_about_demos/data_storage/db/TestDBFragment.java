@@ -50,6 +50,8 @@ public class TestDBFragment extends BaseFragment {
         view.findViewById(R.id.createTableBtnClick).setOnClickListener(v -> createTableBtnClick());
         view.findViewById(R.id.deleteTableBtnClick).setOnClickListener(v -> deleteTableBtnClick());
         view.findViewById(R.id.deleteTableAllDataBtnClick).setOnClickListener(v -> deleteTableAllDataBtnClick());
+        view.findViewById(R.id.queryAllBtnClick).setOnClickListener(v -> queryAllBtnClick());
+
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         return view;
     }
@@ -67,7 +69,7 @@ public class TestDBFragment extends BaseFragment {
             String content = title + "_Values";
             try {
                 insert(db, title, content);
-                query();
+                queryAll();
             } catch (SQLiteException se) {
                 createTable();
                 insert(db, title, content);
@@ -89,18 +91,18 @@ public class TestDBFragment extends BaseFragment {
                     insert(db, title, content);
                 }
             }
-            query();
+            queryAll();
         }).start();
     }
 
     private void deleteBtnClick() {
         delete();
-        query();
+        queryAll();
     }
 
     private void updateBtnClick() {
         update();
-        query();
+        queryAll();
     }
 
     /*
@@ -111,12 +113,16 @@ public class TestDBFragment extends BaseFragment {
 
     #################################################################
     Error Code : 1 (SQLITE_ERROR)
-    Caused By : SQL(query) error or missing database.
+    Caused By : SQL(queryAll) error or missing database.
     	(no such table: news_info (code 1))
     #################################################################
      */
     private void queryBtnClick() {
         query();
+    }
+
+    private void queryAllBtnClick() {
+        queryAll();
     }
 
     private void createTableBtnClick() {
@@ -129,7 +135,7 @@ public class TestDBFragment extends BaseFragment {
 
     private void deleteTableAllDataBtnClick() {
         deleteAll();
-        query();
+        queryAll();
     }
 
     private void clear() {
@@ -185,12 +191,25 @@ public class TestDBFragment extends BaseFragment {
         inflateList(cursor);
     }
 
+    private void queryAll() {
+        Cursor cursor = rawQuery4All();
+        inflateList(cursor);
+    }
+
     private Cursor rawQuery() {
+        // 通配符：任何位置包含8
+//        return db.rawQuery("select * from news_info where news_title like '%8%'" , null);
+//        return db.rawQuery("SELECT * FROM " + NEWS_INFO_TABLE_NAME + " where news_title like '%8%'", null);
+        String filter = "8";
+        return db.rawQuery("SELECT * FROM " + NEWS_INFO_TABLE_NAME + " where " + NEWS_INFO_TABLE_NEWS_TITLE + " like '%" + filter + "%'", null);
+    }
+
+    private Cursor rawQuery4All() {
         return db.rawQuery("select * from news_info", null);
     }
 
     private int count() {
-        return rawQuery().getCount();
+        return rawQuery4All().getCount();
     }
 
     /**
