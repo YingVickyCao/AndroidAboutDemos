@@ -28,6 +28,7 @@ public class TestDBFragment extends BaseFragment {
 
     private SQLiteDatabase db;
     private SimpleCursorAdapter adapter;
+    public static final int ONCE_FRESH_DATA_NUM = 1000;
 
     @Nullable
     @Override
@@ -37,8 +38,8 @@ public class TestDBFragment extends BaseFragment {
         mTableContentListView = view.findViewById(R.id.tableContentList);
         mTitleView = view.findViewById(R.id.title);
         mContentView = view.findViewById(R.id.content);
-        view.findViewById(R.id.insertDictClick).setOnClickListener(v -> insertClick());
-        view.findViewById(R.id.insertBundlesData).setOnClickListener(v -> insertBundlesData());
+
+        view.findViewById(R.id.insertBundlesBtnClick).setOnClickListener(v -> insertBundlesBtnClick());
 
         view.findViewById(R.id.insertBtnClick).setOnClickListener(v -> insertBtnClick());
         view.findViewById(R.id.deleteBtnClick).setOnClickListener(v -> deleteBtnClick());
@@ -53,31 +54,56 @@ public class TestDBFragment extends BaseFragment {
         db = getActivity().getApplicationContext().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
     }
 
-    private void insertClick() {
-        String title = mTitleView.getText().toString();
-        String content = mContentView.getText().toString();
-        if (title.isEmpty()) {
-            return;
-        }
-        try {
-            insert(db, title, content);
-            query();
-        } catch (SQLiteException se) {
-            doCreateTable();
-            insert(db, title, content);
-        }
-    }
+    public final static String NEWS_INFO_TABLE_NAME = "news_info";
+    public final static String NEWS_INFO_TABLE_id = "_id";
+    public final static String NEWS_INFO_TABLE_NEWS_TITLE = "news_title";
+    public final static String NEWS_INFO_TABLE_NEWS_CONTENT = "news_content";
 
     private void doCreateTable() {
-        db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
+//        db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
+        db.execSQL("CREATE TABLE " + NEWS_INFO_TABLE_NAME + " ("
+                + NEWS_INFO_TABLE_id + " integer PRIMARY KEY AUTOINCREMENT,"
+                + NEWS_INFO_TABLE_NEWS_TITLE + " varchar(50),"
+                + NEWS_INFO_TABLE_NEWS_CONTENT + " varchar(255)" +
+                ")");
     }
 
     private void insertBtnClick() {
+        new Thread(() -> {
+            String title = mTitleView.getText().toString();
+            String content = mContentView.getText().toString();
+            if (title.isEmpty()) {
+                return;
+            }
+            try {
+                insert(db, title, content);
+                query();
+            } catch (SQLiteException se) {
+                doCreateTable();
+                insert(db, title, content);
+            }
+        }).start();
+    }
 
+    private void insertBundlesBtnClick() {
+        new Thread(() -> {
+            String title = mTitleView.getText().toString();
+            String content = mContentView.getText().toString();
+            if (title.isEmpty()) {
+                return;
+            }
+            try {
+                insert(db, title, content);
+                query();
+            } catch (SQLiteException se) {
+                doCreateTable();
+                insert(db, title, content);
+            }
+        }).start();
     }
 
     private void deleteBtnClick() {
-
+//        db.execSQL("DROP TABLE IF EXISTS " + NoBatchNumbersContentProvider.TABLE_NAME);
     }
 
     private void updateBtnClick() {
@@ -86,9 +112,6 @@ public class TestDBFragment extends BaseFragment {
 
     private void queryBtnClick() {
         query();
-    }
-
-    private void insertBundlesData() {
     }
 
     private void query() {
@@ -101,13 +124,15 @@ public class TestDBFragment extends BaseFragment {
     }
 
     private void inflateList(Cursor cursor) {
-        if (null == adapter) {
-            adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_view_3, cursor, new String[]{"news_title", "news_content"}, new int[]{R.id.my_title, R.id.my_content}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-            mTableContentListView.setAdapter(adapter);
-        } else {
-            adapter.swapCursor(cursor);
-            adapter.notifyDataSetChanged();
-        }
+        getActivity().runOnUiThread(() -> {
+            if (null == adapter) {
+                adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_view_3, cursor, new String[]{"news_title", "news_content"}, new int[]{R.id.my_title, R.id.my_content}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+                mTableContentListView.setAdapter(adapter);
+            } else {
+                adapter.swapCursor(cursor);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

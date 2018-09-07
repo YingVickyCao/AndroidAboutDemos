@@ -49,7 +49,7 @@
     <string name="show_custom_toast">Show custom Toast</string>
     <string name="custom_toast">Custom Toast</string>
     <string name="insert_dict">添加单词</string>
-    <string name="insert_bundles_data">Insert bundles of data</string>
+    <string name="insert_bundles">Insert bundles</string>
     <string name="insert">Insert</string>
     <string name="delete">delete</string>
     <string name="update">update</string>

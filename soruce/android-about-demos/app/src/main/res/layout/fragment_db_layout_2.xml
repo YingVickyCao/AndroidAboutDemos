@@ -7,31 +7,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-        <Button
-            android:id="@+id/insertDictClick"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/insert_dict" />
+            android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:weightSum="2">
-
-            <EditText
-                android:id="@+id/title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/content"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,10 +56,18 @@
             android:text="@string/query" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/insertBundlesData"
-        style="@style/btn.small"
-        android:text="@string/insert_bundles_data" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/insertBundlesBtnClick"
+            style="@style/btn.small"
+            android:background="@android:color/holo_green_light"
+            android:text="@string/insert_bundles" />
+
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/tableContentList"
