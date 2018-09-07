@@ -13,7 +13,7 @@
             android:id="@+id/insertDictClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/insert" />
+            android:text="@string/insert_dict" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +32,39 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/insertBtnClick"
+            style="@style/btn.small"
+            android:background="@android:color/holo_green_light"
+            android:text="@string/insert" />
+
+        <Button
+            android:id="@+id/deleteBtnClick"
+            style="@style/btn.small"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/holo_green_light"
+            android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/updateBtnClick"
+            style="@style/btn.small"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/holo_green_light"
+            android:text="@string/update" />
+
+        <Button
+            android:id="@+id/queryBtnClick"
+            style="@style/btn.small"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/holo_green_light"
+            android:text="@string/query" />
     </LinearLayout>
 
     <Button

@@ -39,6 +39,11 @@ public class TestDBFragment extends BaseFragment {
         mContentView = view.findViewById(R.id.content);
         view.findViewById(R.id.insertDictClick).setOnClickListener(v -> insertClick());
         view.findViewById(R.id.insertBundlesData).setOnClickListener(v -> insertBundlesData());
+
+        view.findViewById(R.id.insertBtnClick).setOnClickListener(v -> insertBtnClick());
+        view.findViewById(R.id.deleteBtnClick).setOnClickListener(v -> deleteBtnClick());
+        view.findViewById(R.id.updateBtnClick).setOnClickListener(v -> updateBtnClick());
+        view.findViewById(R.id.queryBtnClick).setOnClickListener(v -> queryBtnClick());
         return view;
     }
 
@@ -55,21 +60,43 @@ public class TestDBFragment extends BaseFragment {
             return;
         }
         try {
-            insertData(db, title, content);
-            Cursor cursor = db.rawQuery("select * from news_info", null);
-            inflateList(cursor);
+            insert(db, title, content);
+            query();
         } catch (SQLiteException se) {
-            db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
-            insertData(db, title, content);
-            Cursor cursor = db.rawQuery("select * from news_info", null);
-            inflateList(cursor);
+            doCreateTable();
+            insert(db, title, content);
         }
+    }
+
+    private void doCreateTable() {
+        db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
+    }
+
+    private void insertBtnClick() {
+
+    }
+
+    private void deleteBtnClick() {
+
+    }
+
+    private void updateBtnClick() {
+
+    }
+
+    private void queryBtnClick() {
+        query();
     }
 
     private void insertBundlesData() {
     }
 
-    private void insertData(SQLiteDatabase db, String title, String content) {
+    private void query() {
+        Cursor cursor = db.rawQuery("select * from news_info", null);
+        inflateList(cursor);
+    }
+
+    private void insert(SQLiteDatabase db, String title, String content) {
         db.execSQL("insert into news_info values(null , ? , ?)", new String[]{title, content});
     }
 

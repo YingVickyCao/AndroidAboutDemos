@@ -29,7 +29,7 @@ public class TestDBActivity extends Activity {
         // 创建MyDatabaseHelper对象，指定数据库版本为1，此处使用相对路径即可
         // 数据库文件自动会保存在程序的数据文件夹的databases目录下
         dbHelper = new MyDatabaseHelper(this, "myDict2.db", 1);
-        insert = (Button) findViewById(R.id.insert);
+        insert = (Button) findViewById(R.id.insertBtnClick);
         search = (Button) findViewById(R.id.search);
         insert.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,7 +32,7 @@ public class DictActivity extends Activity {
         mInputWorldView = findViewById(R.id.word);
         mInputIdView = findViewById(R.id.key);
 
-        findViewById(R.id.insert).setOnClickListener(source -> insert());
+        findViewById(R.id.insertBtnClick).setOnClickListener(source -> insert());
         findViewById(R.id.search).setOnClickListener(source -> search());
     }
 

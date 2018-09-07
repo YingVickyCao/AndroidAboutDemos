@@ -48,8 +48,12 @@
     <string name="show_normal_toast">Show normal Toast</string>
     <string name="show_custom_toast">Show custom Toast</string>
     <string name="custom_toast">Custom Toast</string>
-    <string name="insert">添加单词</string>
+    <string name="insert_dict">添加单词</string>
     <string name="insert_bundles_data">Insert bundles of data</string>
+    <string name="insert">Insert</string>
+    <string name="delete">delete</string>
+    <string name="update">update</string>
+    <string name="query">query</string>
     <string name="detail">解释</string>
     <string name="search">查询</string>
     <string name="view">查看</string>
