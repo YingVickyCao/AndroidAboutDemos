@@ -38,40 +38,35 @@ public class TestDBActivity extends Activity {
                         R.id.title)).getText().toString();
                 String content = ((EditText) findViewById(R.id.content))
                         .getText().toString();
+                if (title.isEmpty()) {
+                    return;
+                }
                 try {
                     insertData(db, title, content);
-                    Cursor cursor = db.rawQuery("select * from news_inf"
-                            , null);
+                    Cursor cursor = db.rawQuery("select * from news_inf", null);
                     inflateList(cursor);
                 } catch (SQLiteException se) {
                     // 执行DDL创建数据表
-                    db.execSQL("create table news_inf(_id integer"
-                            + " primary key autoincrement,"
-                            + " news_title varchar(50),"
-                            + " news_content varchar(255))");
+                    db.execSQL("create table news_inf(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
                     // 执行insert语句插入数据
                     insertData(db, title, content);
                     // 执行查询
-                    Cursor cursor = db.rawQuery("select * from news_inf"
-                            , null);
+                    Cursor cursor = db.rawQuery("select * from news_inf", null);
                     inflateList(cursor);
                 }
             }
         });
     }
 
-    private void insertData(SQLiteDatabase db
-            , String title, String content)  // ②
-    {
+    private void insertData(SQLiteDatabase db, String title, String content) {
         // 执行插入语句
-        db.execSQL("insert into news_inf values(null , ? , ?)"
-                , new String[]{title, content});
+        db.execSQL("insert into news_inf values(null , ? , ?)", new String[]{title, content});
     }
 
     private void inflateList(Cursor cursor) {
         // 填充SimpleCursorAdapter
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(TestDBActivity.this, R.layout.list_item_view_3, cursor, new String[]{"news_title", "news_content"}
-                , new int[]{R.id.my_title, R.id.my_content}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);  // ③
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(TestDBActivity.this, R.layout.list_item_view_3, cursor, new String[]{"news_title", "news_content"}, new int[]{R.id.my_title, R.id.my_content}
+                , CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         // 显示数据
         listView.setAdapter(adapter);
     }
