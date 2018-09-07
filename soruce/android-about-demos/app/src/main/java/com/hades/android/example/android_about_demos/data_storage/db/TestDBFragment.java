@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -21,8 +20,6 @@ import static android.content.Context.MODE_PRIVATE;
 public class TestDBFragment extends BaseFragment {
 
     private ListView mTableContentListView;
-    private EditText mTitleView;
-    private EditText mContentView;
 
     private final String DB_NAME = "test_db.db";
 
@@ -36,15 +33,17 @@ public class TestDBFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_db_layout_2, container, false);
 
         mTableContentListView = view.findViewById(R.id.tableContentList);
-        mTitleView = view.findViewById(R.id.title);
-        mContentView = view.findViewById(R.id.content);
-
-        view.findViewById(R.id.insertBundlesBtnClick).setOnClickListener(v -> insertBundlesBtnClick());
 
         view.findViewById(R.id.insertBtnClick).setOnClickListener(v -> insertBtnClick());
         view.findViewById(R.id.deleteBtnClick).setOnClickListener(v -> deleteBtnClick());
         view.findViewById(R.id.updateBtnClick).setOnClickListener(v -> updateBtnClick());
         view.findViewById(R.id.queryBtnClick).setOnClickListener(v -> queryBtnClick());
+
+        view.findViewById(R.id.insertBundlesBtnClick).setOnClickListener(v -> insertBundlesBtnClick());
+        view.findViewById(R.id.createTableBtnClick).setOnClickListener(v -> createTableBtnClick());
+        view.findViewById(R.id.deleteTableBtnClick).setOnClickListener(v -> deleteTableBtnClick());
+        view.findViewById(R.id.deleteTableDataBtnClick).setOnClickListener(v -> deleteTableDataBtnClick());
+        view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         return view;
     }
 
@@ -70,11 +69,9 @@ public class TestDBFragment extends BaseFragment {
 
     private void insertBtnClick() {
         new Thread(() -> {
-            String title = mTitleView.getText().toString();
-            String content = mContentView.getText().toString();
-            if (title.isEmpty()) {
-                return;
-            }
+            int count = count();
+            String title = String.valueOf(count + 1);
+            String content = title + "_Values";
             try {
                 insert(db, title, content);
                 query();
@@ -87,41 +84,83 @@ public class TestDBFragment extends BaseFragment {
 
     private void insertBundlesBtnClick() {
         new Thread(() -> {
-            String title = mTitleView.getText().toString();
-            String content = mContentView.getText().toString();
-            if (title.isEmpty()) {
-                return;
+            int count = count();
+            for (int i = 1; i <= ONCE_FRESH_DATA_NUM; i++) {
+                String title = String.valueOf(count + i);
+                String content = title + "_Values";
+
+                try {
+                    insert(db, title, content);
+                } catch (Exception se) {
+                    doCreateTable();
+                    insert(db, title, content);
+                }
             }
-            try {
-                insert(db, title, content);
-                query();
-            } catch (SQLiteException se) {
-                doCreateTable();
-                insert(db, title, content);
-            }
+            query();
         }).start();
     }
 
     private void deleteBtnClick() {
-//        db.execSQL("DROP TABLE IF EXISTS " + NoBatchNumbersContentProvider.TABLE_NAME);
+    }
+
+    private void createTableBtnClick() {
+        doCreateTable();
+    }
+
+    private void deleteTableBtnClick() {
+//        db.execSQL("DROP TABLE IF EXISTS news_info");
+        db.execSQL("DROP TABLE IF EXISTS " + NEWS_INFO_TABLE_NAME);
+    }
+
+
+    private void deleteTableDataBtnClick() {
+        db.execSQL("DELETE from news_info");
+        query();
     }
 
     private void updateBtnClick() {
-
     }
 
+    /*
+    ERROR:
+    E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: PID: 30518
+    android.database.sqlite.SQLiteException: no such table: news_info (code 1)
+
+    #################################################################
+    Error Code : 1 (SQLITE_ERROR)
+    Caused By : SQL(query) error or missing database.
+    	(no such table: news_info (code 1))
+    #################################################################
+     */
     private void queryBtnClick() {
         query();
     }
 
+    private void clear() {
+        if (null != adapter) {
+            adapter.swapCursor(null);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     private void query() {
-        Cursor cursor = db.rawQuery("select * from news_info", null);
+        Cursor cursor = rawQuery();
         inflateList(cursor);
+    }
+
+    private Cursor rawQuery() {
+        return db.rawQuery("select * from news_info", null);
+    }
+
+    private int count() {
+        return rawQuery().getCount();
     }
 
     private void insert(SQLiteDatabase db, String title, String content) {
         db.execSQL("insert into news_info values(null , ? , ?)", new String[]{title, content});
     }
+
 
     private void inflateList(Cursor cursor) {
         getActivity().runOnUiThread(() -> {
