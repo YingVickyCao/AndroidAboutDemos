@@ -192,9 +192,10 @@
         <!--</receiver>-->
         <!-- END_BROADCAST -->
 
-
         <!-- DATA_STORAGE_START -->
         <activity android:name=".data_storage.DataStorageActivity" />
+        <activity android:name=".data_storage.db.TestDBActivity" />
+        <activity android:name=".data_storage.db.ResultActivity" />
         <!-- DATA_STORAGE_END -->
 
     </application>

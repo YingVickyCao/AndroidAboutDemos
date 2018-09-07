@@ -25,7 +25,7 @@ public class TestDBFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_db_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_db_layout_2, container, false);
 
         view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());

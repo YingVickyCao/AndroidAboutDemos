@@ -9,7 +9,7 @@
         android:text="DatePicker + TimePicker" />
 
     <TextView
-        android:id="@+id/show"
+        android:id="@+id/tableContentList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

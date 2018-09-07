@@ -30,7 +30,7 @@ public class DateTimePickerDialogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_datepickerdialog, container, false);
 
-        show = view.findViewById(R.id.show);
+        show = view.findViewById(R.id.tableContentList);
         view.findViewById(R.id.dateBn).setOnClickListener(source -> showDatePickerDialog());
         return view;
     }

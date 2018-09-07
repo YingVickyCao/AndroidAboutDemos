@@ -26,7 +26,7 @@ public class ParseXmlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_xml, container, false);
         view.findViewById(R.id.parseXml).setOnClickListener(v -> parseXml());
-        show = view.findViewById(R.id.show);
+        show = view.findViewById(R.id.tableContentList);
         return view;
     }
 

@@ -47,7 +47,7 @@ public class CheckNetworkAndSIMInfoActivity extends Activity {
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);
 
-        showView = findViewById(R.id.show);
+        showView = findViewById(R.id.tableContentList);
 
         adapter = buildSimpleAdapter(status);
         showView.setAdapter(adapter);

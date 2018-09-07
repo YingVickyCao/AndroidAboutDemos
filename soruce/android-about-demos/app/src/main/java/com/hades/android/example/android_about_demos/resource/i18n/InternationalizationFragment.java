@@ -15,7 +15,7 @@ public class InternationalizationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_internationalization, container, false);
-        TextView tvShow = view.findViewById(R.id.show);
+        TextView tvShow = view.findViewById(R.id.tableContentList);
         tvShow.setText(R.string.msg);
         return view;
     }

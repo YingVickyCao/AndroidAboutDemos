@@ -2,4 +2,5 @@
 <resources>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="topic_height">45dp</dimen>
+    <dimen name="small_text_size">10sp</dimen>
 </resources>

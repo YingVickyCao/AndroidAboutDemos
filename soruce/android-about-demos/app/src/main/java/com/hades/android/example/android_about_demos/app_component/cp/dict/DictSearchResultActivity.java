@@ -21,7 +21,7 @@ public class DictSearchResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cp_dict_search_result_popup);
 
-        listView = findViewById(R.id.show);
+        listView = findViewById(R.id.tableContentList);
         showDictSearchResult();
     }
 

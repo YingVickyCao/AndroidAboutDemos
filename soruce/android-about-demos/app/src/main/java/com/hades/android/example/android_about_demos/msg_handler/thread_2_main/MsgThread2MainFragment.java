@@ -38,7 +38,7 @@ public class MsgThread2MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.msg_handler_thread_2_main_update_text, container, false);
 
-        final TextView show = view.findViewById(R.id.show);
+        final TextView show = view.findViewById(R.id.tableContentList);
         view.findViewById(R.id.startRecycleUpdateText).setOnClickListener(v -> startRecycleUpdateText());
         view.findViewById(R.id.missLooperWhenCreateHandlerInThread).setOnClickListener(v -> missLooperWhenCreateHandlerInThread());
         view.findViewById(R.id.thread2Main_createHandler_with_Looper_getMainLooper).setOnClickListener(v -> thread2Main_createHandler_with_Looper_getMainLooper());

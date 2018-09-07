@@ -10,7 +10,7 @@
         android:text="Parse XML" />
 
     <TextView
-        android:id="@+id/show"
+        android:id="@+id/tableContentList"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@android:color/holo_blue_dark"

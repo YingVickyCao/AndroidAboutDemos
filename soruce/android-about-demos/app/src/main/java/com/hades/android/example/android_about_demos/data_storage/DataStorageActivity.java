@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
-import com.hades.android.example.android_about_demos.data_storage.database.test.TestDBFragment;
+import com.hades.android.example.android_about_demos.data_storage.db.TestDBFragment;
 import com.hades.android.example.android_about_demos.data_storage.io.TestIOFragment;
 import com.hades.android.example.android_about_demos.data_storage.shared_preferences.TestSharedPreferencesFragment;
 
@@ -33,7 +33,7 @@ public class DataStorageActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageIO();
+        pageDatabase();
     }
 
     private void pageSharedPreferences() {

@@ -27,10 +27,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/insert"
+            android:id="@+id/insertBtnClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/insert" />
+            android:text="@string/insert_dict" />
 
         <Button
             android:id="@+id/search"
