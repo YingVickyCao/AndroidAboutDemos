@@ -37,8 +37,8 @@ public class TestDBFragment extends BaseFragment {
         mTableContentListView = view.findViewById(R.id.tableContentList);
         mTitleView = view.findViewById(R.id.title);
         mContentView = view.findViewById(R.id.content);
-        view.findViewById(R.id.insertDictClick).setOnClickListener(v -> insertBundlesData());
-        view.findViewById(R.id.insertBundlesData).setOnClickListener(v -> insertClick());
+        view.findViewById(R.id.insertDictClick).setOnClickListener(v -> insertClick());
+        view.findViewById(R.id.insertBundlesData).setOnClickListener(v -> insertBundlesData());
         return view;
     }
 
@@ -59,7 +59,7 @@ public class TestDBFragment extends BaseFragment {
             Cursor cursor = db.rawQuery("select * from news_info", null);
             inflateList(cursor);
         } catch (SQLiteException se) {
-            db.execSQL("create table news_info(id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
+            db.execSQL("create table news_info(_id integer" + " primary key autoincrement," + " news_title varchar(50)," + " news_content varchar(255))");
             insertData(db, title, content);
             Cursor cursor = db.rawQuery("select * from news_info", null);
             inflateList(cursor);
