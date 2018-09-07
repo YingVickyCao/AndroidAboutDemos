@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.hades.android.example.android_about_demos.base.BaseFragment;
 import static android.content.Context.MODE_PRIVATE;
 
 public class TestDBFragment extends BaseFragment {
+    private static final String TAG = TestDBFragment.class.getSimpleName();
 
     private ListView mTableContentListView;
 
@@ -26,6 +28,11 @@ public class TestDBFragment extends BaseFragment {
     private SQLiteDatabase db;
     private SimpleCursorAdapter adapter;
     public static final int ONCE_FRESH_DATA_NUM = 1000;
+
+    public final static String NEWS_INFO_TABLE_NAME = "news_info";
+    public final static String NEWS_INFO_TABLE_id = "_id";
+    public final static String NEWS_INFO_TABLE_NEWS_TITLE = "news_title";
+    public final static String NEWS_INFO_TABLE_NEWS_CONTENT = "news_content";
 
     @Nullable
     @Override
@@ -50,13 +57,8 @@ public class TestDBFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        db = getActivity().getApplicationContext().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
+        db = getDB();
     }
-
-    public final static String NEWS_INFO_TABLE_NAME = "news_info";
-    public final static String NEWS_INFO_TABLE_id = "_id";
-    public final static String NEWS_INFO_TABLE_NEWS_TITLE = "news_title";
-    public final static String NEWS_INFO_TABLE_NEWS_CONTENT = "news_content";
 
     private void insertBtnClick() {
         new Thread(() -> {
@@ -92,9 +94,13 @@ public class TestDBFragment extends BaseFragment {
     }
 
     private void deleteBtnClick() {
+        delete();
+        query();
     }
 
     private void updateBtnClick() {
+        update();
+        query();
     }
 
     /*
@@ -133,6 +139,10 @@ public class TestDBFragment extends BaseFragment {
         }
     }
 
+    private SQLiteDatabase getDB() {
+        return db = getActivity().getApplicationContext().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
+    }
+
     /**
      * DML
      */
@@ -140,9 +150,34 @@ public class TestDBFragment extends BaseFragment {
         db.execSQL("insert into news_info values(null , ? , ?)", new String[]{title, content});
     }
 
+    private void delete() {
+        // FIX_ERROR:android.database.sqlite.SQLiteException: no such column: news_info (code 1): , while compiling: DELETE FROM news_info WHERE news_info=2
+        // If catch Exception,it will not crash.
+//        try {
+//            db.execSQL("DELETE FROM " + NEWS_INFO_TABLE_NAME + " WHERE " + NEWS_INFO_TABLE_NAME + "=1");
+//        } catch (Exception ex) {
+//            Log.d(TAG, "deleteBtnClick: ");
+//            showToast("DELETE ERROR");
+//        }
+
+        try {
+            // If table does not have the data[news_title=1],it does not throw exception.
+//            db.execSQL("delete from news_info where news_title=1");
+            db.execSQL("DELETE FROM " + NEWS_INFO_TABLE_NAME + " WHERE " + NEWS_INFO_TABLE_NEWS_TITLE + "=1");
+        } catch (Exception ex) {
+            Log.d(TAG, "deleteBtnClick: ");
+            showToast("DELETE ERROR");
+        }
+    }
+
     private void deleteAll() {
         //        db.execSQL("DELETE from news_info");
         db.execSQL("DELETE from " + NEWS_INFO_TABLE_NAME);
+    }
+
+    private void update() {
+//        db.execSQL("update news_info set news_content=" + System.currentTimeMillis() + " where news_title=5");
+        db.execSQL("UPDATE " + NEWS_INFO_TABLE_NAME + " SET " + NEWS_INFO_TABLE_NEWS_CONTENT + "=" + System.currentTimeMillis() + " WHERE " + " news_title=8");
     }
 
     private void query() {
