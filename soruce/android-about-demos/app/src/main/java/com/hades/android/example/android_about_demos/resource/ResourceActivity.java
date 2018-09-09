@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
+import com.hades.android.example.android_about_demos.base.BaseActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
 import com.hades.android.example.android_about_demos.resource.material.MaterialFragment;

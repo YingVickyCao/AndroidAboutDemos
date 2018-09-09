@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
+import com.hades.android.example.android_about_demos.base.BaseActivity;
 
 
 /*

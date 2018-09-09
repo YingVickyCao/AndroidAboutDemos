@@ -20,130 +20,114 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/linearlayout"
+                style="@style/btn.small"
+                android:text="@string/page_linearLayout" />
+
+            <Button
                 android:id="@+id/jumpRatingBar"
                 style="@style/btn.small"
-                android:text="@string/rating_bar"
-                android:visibility="visible" />
+                android:text="@string/rating_bar" />
 
             <Button
                 android:id="@+id/jumpViewSwitcher"
                 style="@style/btn.small"
-                android:text="@string/view_switcher"
-                android:visibility="visible" />
+                android:text="@string/view_switcher" />
 
             <Button
                 android:id="@+id/jumpImageSwitcher"
                 style="@style/btn.small"
-                android:text="@string/image_switcher"
-                android:visibility="visible" />
+                android:text="@string/image_switcher" />
 
             <Button
                 android:id="@+id/jumpTextSwitcher"
                 style="@style/btn.small"
-                android:text="@string/text_switcher"
-                android:visibility="visible" />
+                android:text="@string/text_switcher" />
 
             <Button
                 android:id="@+id/recyclerView"
                 style="@style/btn.small"
-                android:text="@string/test_recyclerView"
-                android:visibility="visible" />
+                android:text="@string/test_recyclerView" />
 
             <Button
                 android:id="@+id/recyclerView2"
                 style="@style/btn.small"
-                android:text="@string/test_recyclerView"
-                android:visibility="visible" />
+                android:text="@string/test_recyclerView" />
 
             <Button
                 android:id="@+id/recyclerView4DragReorderList"
                 style="@style/btn.small"
-                android:text="@string/test_recyclerView_4_drag_reorder_list"
-                android:visibility="visible" />
+                android:text="@string/test_recyclerView_4_drag_reorder_list" />
 
             <Button
                 android:id="@+id/testDragAndDrop"
                 style="@style/btn.small"
-                android:text="@string/test_drag_and_drop"
-                android:visibility="visible" />
+                android:text="@string/test_drag_and_drop" />
 
             <Button
                 android:id="@+id/testViewFlipper"
                 style="@style/btn.small"
-                android:text="@string/test_view_flipper"
-                android:visibility="visible" />
+                android:text="@string/test_view_flipper" />
 
             <Button
                 android:id="@+id/testToast"
                 style="@style/btn.small"
-                android:text="@string/test_toast"
-                android:visibility="visible" />
+                android:text="@string/test_toast" />
 
             <Button
                 android:id="@+id/testCalendarView"
                 style="@style/btn.small"
-                android:text="@string/test_CalendarView"
-                android:visibility="visible" />
+                android:text="@string/test_CalendarView" />
 
             <Button
                 android:id="@+id/testDatePickerAndTimePicker"
                 style="@style/btn.small"
-                android:text="@string/test_DatePicker_and_TimePicker"
-                android:visibility="visible" />
+                android:text="@string/test_DatePicker_and_TimePicker" />
 
             <Button
                 android:id="@+id/testNumberPicker"
                 style="@style/btn.small"
-                android:text="@string/test_NumberPicker"
-                android:visibility="visible" />
+                android:text="@string/test_NumberPicker" />
 
             <Button
                 android:id="@+id/testSearchView"
                 style="@style/btn.small"
-                android:text="@string/test_SearchView"
-                android:visibility="visible" />
+                android:text="@string/test_SearchView" />
 
             <Button
                 android:id="@+id/testAlertDialog"
                 style="@style/btn.small"
-                android:text="@string/test_AlertDialog"
-                android:visibility="visible" />
+                android:text="@string/test_AlertDialog" />
 
             <Button
                 android:id="@+id/testDialogStyleActivity"
                 style="@style/btn.small"
-                android:text="@string/test_dialog_style_activity"
-                android:visibility="visible" />
+                android:text="@string/test_dialog_style_activity" />
 
             <Button
                 android:id="@+id/testProgressDialog"
                 style="@style/btn.small"
-                android:text="@string/test_ProgressDialog"
-                android:visibility="visible" />
+                android:text="@string/test_ProgressDialog" />
 
             <Button
                 android:id="@+id/testDatePickerDialog"
                 style="@style/btn.small"
-                android:text="@string/test_DatePickerDialog"
-                android:visibility="visible" />
+                android:text="@string/test_DatePickerDialog" />
 
             <Button
                 android:id="@+id/testTimePickerDialog"
                 style="@style/btn.small"
-                android:text="@string/test_TimePickerDialog"
-                android:visibility="visible" />
+                android:text="@string/test_TimePickerDialog" />
 
             <Button
                 android:id="@+id/testNotification"
                 style="@style/btn.small"
-                android:text="@string/test_Notification"
-                android:visibility="visible" />
+                android:text="@string/test_Notification" />
 
             <Button
                 android:id="@+id/testPopupWindow"
                 style="@style/btn.small"
-                android:text="@string/test_PopupWindow"
-                android:visibility="visible" />
+                android:text="@string/test_PopupWindow" />
         </LinearLayout>
     </ScrollView>
 

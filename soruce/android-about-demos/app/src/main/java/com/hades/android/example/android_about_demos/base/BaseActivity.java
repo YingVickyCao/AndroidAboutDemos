@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.activity;
+package com.hades.android.example.android_about_demos.base;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-//        showDefaultFragment();
+        showDefaultFragment();
         showBtns();
     }
 

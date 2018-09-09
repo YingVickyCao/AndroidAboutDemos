@@ -14,11 +14,12 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.base.BaseFragment;
 
 /**
  * SearchView 监听输入，ListView为SearchView显示自动补齐列表
  */
-public class SearchViewFragment extends Fragment {
+public class SearchViewFragment extends BaseFragment {
     public static SearchViewFragment newInstance() {
 
         Bundle args = new Bundle();

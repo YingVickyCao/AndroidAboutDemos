@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.activity.BaseActivity;
+import com.hades.android.example.android_about_demos.base.BaseActivity;
 import com.hades.android.example.android_about_demos.other_ui.PopupWindowFragment;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;
@@ -15,6 +15,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDia
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
+import com.hades.android.example.android_about_demos.widget.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
@@ -37,6 +38,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(v -> testViewSwitcher());
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(v -> testImageSwitcher());
@@ -65,6 +67,15 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected boolean isNeedCheckPermission() {
         return false;
+    }
+
+    @Override
+    protected void showCurrentTest() {
+        linearlayout();
+    }
+
+    private void linearlayout() {
+        showActivity(LinearLayoutActivity.class);
     }
 
     private void testRatingBar() {
