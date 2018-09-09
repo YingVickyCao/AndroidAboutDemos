@@ -84,7 +84,7 @@
 
         <!-- APPLY_THEME_END -->
 
-        <activity android:name=".widget.TestWidgetActivity" />
+        <activity android:name=".widget.WidgetActivity" />
 
         <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
