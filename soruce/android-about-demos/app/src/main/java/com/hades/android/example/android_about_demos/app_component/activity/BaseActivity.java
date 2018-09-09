@@ -31,8 +31,8 @@ public class BaseActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-        showDefaultFragment();
-//        showBtns();
+//        showDefaultFragment();
+        showBtns();
     }
 
     protected void showBtns() {
@@ -81,6 +81,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void showFragment(Fragment fragment) {
         hideBtns();
         getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
+    protected void showFragment(Fragment fragment, String tag) {
+        hideBtns();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, tag).commit();
     }
 
     protected void showActivity(Class<?> dest) {
