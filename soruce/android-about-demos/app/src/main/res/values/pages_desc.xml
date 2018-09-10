@@ -7,4 +7,6 @@
 
     <string name="page_widget">Widget</string>
     <string name="page_linearLayout">LinearLayout</string>
+    <string name="page_customview">CustomView</string>
+
 </resources>

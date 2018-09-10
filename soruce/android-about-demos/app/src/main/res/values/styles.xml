@@ -25,11 +25,15 @@
         <item name="android:maxHeight">48dip</item>
     </style>
 
-    <style name="subject">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:background">@android:color/holo_orange_light</item>
-        <item name="android:gravity">center</item>
-    </style>
+    <declare-styleable name="CascadeLayout">
+        <!-- 水平间距 -->
+        <attr name="horizontal_spacing" format="dimension" />
+        <!-- 垂直间距 -->
+        <attr name="vertical_spacing" format="dimension" />
+    </declare-styleable>
 
+    <declare-styleable name="CascadeLayout_LayoutParams">
+        <!-- 为特定子视图重写垂直间距 -->
+        <attr name="layout_vertical_spacing" format="dimension" />
+    </declare-styleable>
 </resources>

@@ -14,6 +14,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyle
 import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
+import com.hades.android.example.android_about_demos.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
@@ -38,6 +39,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(v -> testViewSwitcher());
@@ -72,6 +74,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void customview() {
+        showActivity(CascadeLayoutActivity.class);
     }
 
     private void linearlayout() {

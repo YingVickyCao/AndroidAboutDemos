@@ -31,7 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-        showDefaultFragment();
+//        showDefaultFragment();
         showBtns();
     }
 

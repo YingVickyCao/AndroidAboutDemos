@@ -100,6 +100,8 @@
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".widget.linearlayout.LinearLayoutActivity" />
+
+        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity"/>
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->
