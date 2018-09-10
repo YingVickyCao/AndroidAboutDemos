@@ -16,6 +16,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerD
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
 import com.hades.android.example.android_about_demos.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
+import com.hades.android.example.android_about_demos.widget.imageview.KenBurnsImageActivity;
 import com.hades.android.example.android_about_demos.widget.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
@@ -39,6 +40,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
@@ -74,6 +76,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageKenBurnsImage() {
+        startActivity(KenBurnsImageActivity.class);
     }
 
     private void customview() {

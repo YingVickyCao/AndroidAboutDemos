@@ -101,7 +101,8 @@
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".widget.linearlayout.LinearLayoutActivity" />
 
-        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity"/>
+        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
+        <activity android:name=".widget.imageview.KenBurnsImageActivity" />
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->
