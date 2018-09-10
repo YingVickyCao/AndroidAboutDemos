@@ -20,6 +20,11 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/pageUseButton2AvoidCheckEditInputDate"
+                style="@style/btn.small"
+                android:text="@string/page_use_btn_2_avoid_check_edit_input_date_layout" />
+
+            <Button
                 android:id="@+id/pageKenBurnsImage"
                 style="@style/btn.small"
                 android:text="@string/page_ken_burns_image" />

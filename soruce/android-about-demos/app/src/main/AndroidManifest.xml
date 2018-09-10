@@ -103,6 +103,7 @@
 
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
         <activity android:name=".widget.imageview.KenBurnsImageActivity" />
+        <activity android:name=".widget.button.UseButton2AvoidCheckEditInputDateActivity"/>
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->

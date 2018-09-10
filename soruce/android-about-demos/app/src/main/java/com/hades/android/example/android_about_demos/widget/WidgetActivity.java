@@ -14,6 +14,7 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.DialogStyle
 import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
+import com.hades.android.example.android_about_demos.widget.button.UseButton2AvoidCheckEditInputDateActivity;
 import com.hades.android.example.android_about_demos.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.imageview.KenBurnsImageActivity;
@@ -40,6 +41,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
@@ -76,6 +78,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageUseButton2AvoidCheckEditInputDate() {
+        showActivity(UseButton2AvoidCheckEditInputDateActivity.class);
     }
 
     private void pageKenBurnsImage() {
