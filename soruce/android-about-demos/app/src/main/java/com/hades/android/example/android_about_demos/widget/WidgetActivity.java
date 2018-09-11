@@ -25,6 +25,7 @@ import com.hades.android.example.android_about_demos.widget.list.recyclerview.du
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.NumberPickerFragment;
+import com.hades.android.example.android_about_demos.widget.textview.HighlightDigitalClockFragment;
 import com.hades.android.example.android_about_demos.widget.textview.TextViewFormatHTMLFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
@@ -42,6 +43,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
         findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
@@ -80,6 +82,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageHighlightDigitalClock() {
+        showFragment(new HighlightDigitalClockFragment());
     }
 
     private void pageFormatHtml() {

@@ -98,6 +98,7 @@
     <string name="picked_date_format">Picked date: %1$d/%2$d/%3$d</string>
     <string name="text1"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]></string>
     <string name="text2">Hello World, HomeActivity!</string>
+    <string name="default_time">88:88:88</string>
 
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
