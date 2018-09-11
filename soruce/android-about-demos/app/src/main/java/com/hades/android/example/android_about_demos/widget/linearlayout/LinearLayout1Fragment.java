@@ -13,7 +13,7 @@ public class LinearLayout1Fragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_linearlayout_1_layout, container, false);
+        View view = inflater.inflate(R.layout.widget_linearlayout_1_layout, container, false);
         return view;
     }
 }

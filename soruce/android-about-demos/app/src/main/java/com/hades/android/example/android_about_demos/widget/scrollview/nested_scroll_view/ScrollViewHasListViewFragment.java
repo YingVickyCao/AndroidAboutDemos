@@ -21,6 +21,6 @@ public class ScrollViewHasListViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_scrollview_has_listview_layout, container, false);
+        return inflater.inflate(R.layout.widget_scrollview_has_listview_layout, container, false);
     }
 }

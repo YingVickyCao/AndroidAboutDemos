@@ -43,12 +43,10 @@
 
         <activity android:name=".MainActivity" />
 
-        <!-- Activity, start -->
+        <!-- ACTIVITY_START -->
+        <!-- ACTIVITY_LIFECYCLE_START -->
 
-        <!-- Activity lifecycle, start -->
-        <!--<activity-->
-        <!--android:name=".app_component.activity.lifecycle.A"/>-->
-
+        <activity android:name=".app_component.activity.ActivityTestActivity" />
         <activity
             android:name=".app_component.activity.lifecycle.A"
             android:configChanges="orientation" />
@@ -63,8 +61,10 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".app_component.activity.lifecycle.C" />
         <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
-        <!-- Activity lifecycle, end -->
-        <!-- Activity, end -->
+        <!-- ACTIVITY_LIFECYCLE_END -->
+
+        <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
+        <!-- ACTIVITY_END -->
 
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
@@ -103,7 +103,7 @@
 
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
         <activity android:name=".widget.imageview.KenBurnsImageActivity" />
-        <activity android:name=".widget.button.UseButton2AvoidCheckEditInputDateActivity"/>
+        <activity android:name=".widget.button.UseButton2AvoidCheckEditInputDateActivity" />
         <!-- END_WIDGET -->
 
         <!-- START_OTHER_UI -->

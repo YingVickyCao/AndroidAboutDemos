@@ -30,7 +30,7 @@ public class NestedScrollViewHasRecycleViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_nestedscrollview_has_recyclerview_layout, container, false);
+        View view = inflater.inflate(R.layout.widget_nestedscrollview_has_recyclerview_layout, container, false);
 
         mAdapter = new NumAdapter(getListData());
         

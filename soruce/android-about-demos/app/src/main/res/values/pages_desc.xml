@@ -12,5 +12,7 @@
     <string name="page_use_btn_2_avoid_check_edit_input_date_layout">避免在 EditText 中验证日期</string>
     <string name="page_format_html">Format HTML</string>
     <string name="page_highlight_digital_clock">Highlight Digital Clock</string>
+    <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
+
 
 </resources>

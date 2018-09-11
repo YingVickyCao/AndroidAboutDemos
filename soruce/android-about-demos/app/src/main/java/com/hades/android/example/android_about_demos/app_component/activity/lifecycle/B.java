@@ -20,7 +20,7 @@ public class B extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
 
-        setContentView(R.layout.activity_app_component_activity_lifecycle_b_layout);
+        setContentView(R.layout.activity_activity_lifecycle_b_layout);
         findViewById(R.id.openB).setOnClickListener(new OnClickListener() {
 
             @Override

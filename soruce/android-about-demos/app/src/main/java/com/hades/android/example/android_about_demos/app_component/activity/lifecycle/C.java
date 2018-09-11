@@ -16,7 +16,7 @@ public class C extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_component_activity_lifecycle_c_layout);
+        setContentView(R.layout.activity_activity_lifecycle_c_layout);
         findViewById(R.id.openB).setOnClickListener(new OnClickListener() {
 
             @Override

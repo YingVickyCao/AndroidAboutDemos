@@ -20,7 +20,7 @@ public class A extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
 
-        setContentView(R.layout.activity_app_component_activity_lifecycle_a_layout);
+        setContentView(R.layout.activity_activity_lifecycle_a_layout);
         if (savedInstanceState != null) {
             String test = savedInstanceState.getString(INSTANCE_STATE_KEY);
             Log.d(TAG, "[onCreate]restore extra_test:" + test);

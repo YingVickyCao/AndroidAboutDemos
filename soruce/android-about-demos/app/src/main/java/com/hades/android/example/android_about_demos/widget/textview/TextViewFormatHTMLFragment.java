@@ -21,7 +21,7 @@ public class TextViewFormatHTMLFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_textview_layout, container, false);
+        View view = inflater.inflate(R.layout.widget_textview_layout, container, false);
 
         format1(view);
         format2(view);
