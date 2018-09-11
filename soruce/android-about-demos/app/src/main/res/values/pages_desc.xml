@@ -10,5 +10,6 @@
     <string name="page_customview">CustomView</string>
     <string name="page_ken_burns_image">Ken Burns Image</string>
     <string name="page_use_btn_2_avoid_check_edit_input_date_layout">避免在 EditText 中验证日期</string>
+    <string name="page_format_html">Format HTML</string>
 
 </resources>

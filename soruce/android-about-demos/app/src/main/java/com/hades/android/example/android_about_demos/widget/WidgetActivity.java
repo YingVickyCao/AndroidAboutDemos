@@ -25,6 +25,7 @@ import com.hades.android.example.android_about_demos.widget.list.recyclerview.du
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.NumberPickerFragment;
+import com.hades.android.example.android_about_demos.widget.textview.TextViewFormatHTMLFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
@@ -41,6 +42,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
         findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
@@ -78,6 +80,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageFormatHtml() {
+        showFragment(new TextViewFormatHTMLFragment());
     }
 
     private void pageUseButton2AvoidCheckEditInputDate() {
