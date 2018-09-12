@@ -27,6 +27,7 @@ import com.hades.android.example.android_about_demos.widget.pickers.DateTimePick
 import com.hades.android.example.android_about_demos.widget.pickers.NumberPickerFragment;
 import com.hades.android.example.android_about_demos.widget.textview.HighlightDigitalClockFragment;
 import com.hades.android.example.android_about_demos.widget.textview.TextViewFormatHTMLFragment;
+import com.hades.android.example.android_about_demos.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.android.example.android_about_demos.widget.view_animator.ImageSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.RatingBarFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
@@ -43,6 +44,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
         findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
@@ -82,6 +84,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageVideoviewRotateScreenTip() {
+        showActivity(VideoViewRotateScreenTipActivity.class);
     }
 
     private void pageHighlightDigitalClock() {

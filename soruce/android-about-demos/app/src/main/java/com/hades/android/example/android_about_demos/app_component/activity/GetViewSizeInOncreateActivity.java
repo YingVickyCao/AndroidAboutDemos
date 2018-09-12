@@ -44,6 +44,7 @@ public class GetViewSizeInOncreateActivity extends Activity {
                 Log.d(TAG, "onCreate2: width=" + mTextView.getWidth() + ",height" + mTextView.getHeight());
                 String size = String.format(Locale.getDefault(), "TextView's width: %d, height: %d", mTextView.getWidth(), mTextView.getHeight());
                 Toast.makeText(GetViewSizeInOncreateActivity.this, size, Toast.LENGTH_SHORT).show();
+                mTextView.setText(size);
             }
         });
     }
