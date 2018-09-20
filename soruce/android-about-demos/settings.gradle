@@ -1,1 +1,1 @@
-include ':app', ':assist', ':gson'
+include ':app', ':assist'
