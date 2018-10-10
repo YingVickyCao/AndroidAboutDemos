@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".resource.anim.TweenAnimationActivity">
+        <activity android:name=".widget.linearlayout.LinearLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
