@@ -3,8 +3,10 @@ package com.hades.android.example.android_about_demos.app_component.service.syst
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.ListView;
@@ -75,6 +77,18 @@ public class CheckNetworkAndSIMInfoActivity extends Activity {
         // 获取代表电话网络类型的数组
         String[] phoneType = getResources().getStringArray(R.array.phoneType);
         // 获取设备编号
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        // TODO: 15/10/2018  
+        statusValues.add(tManager.getDeviceId());
         statusValues.add(tManager.getDeviceId());
         // 获取系统平台的版本
         statusValues.add(tManager.getDeviceSoftwareVersion() != null ? tManager.getDeviceSoftwareVersion() : "未知");
