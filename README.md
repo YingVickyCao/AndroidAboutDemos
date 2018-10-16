@@ -122,6 +122,8 @@ ANDROID_SDK_HOME = D:\ANDROID_SDK_HOME
 
 ## 3. NDK
 ### MAC
+![Download the NDK and Tools](https://developer.android.google.cn/studio/images/projects/ndk-install_2-2_2x.png)
+
 ```
 # NDk
 export NDK_HOME=~/Library/Android/sdk/ndk-bundle
