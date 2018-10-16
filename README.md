@@ -140,8 +140,21 @@ Android NDK: Could not find application project directory !
 Android NDK: Please define the NDK_PROJECT_PATH variable to point to it.   
 ```
 ---
+## 4. CMake
+### MAC
+```
+# NDK
+export NDK_HOME=~/Library/Android/sdk/ndk-bundle
+export PATH=$PATH:$NDK_HOME/
+```
 
-## 4.Gradle
+测试
+```
+$cmake -version
+cmake version 3.6.0-rc2
+```
+
+## 5.Gradle
 ### 配置Gradle 环境变量：
 #### Mac OS X
 - `export GRADLE_HOME=~/Library/gradle`
