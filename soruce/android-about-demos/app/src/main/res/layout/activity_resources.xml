@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/parseXml"
+                android:id="@+id/parseMaterial"
                 style="@style/btn.small"
                 android:text="原始资源" />
 
@@ -24,11 +24,6 @@
                 android:id="@+id/theme"
                 style="@style/btn.small"
                 android:text="Theme" />
-
-            <Button
-                android:id="@+id/play_Raw_asserts"
-                style="@style/btn.small"
-                android:text="play Raw and Asserts" />
 
             <Button
                 android:id="@+id/internationalization"
