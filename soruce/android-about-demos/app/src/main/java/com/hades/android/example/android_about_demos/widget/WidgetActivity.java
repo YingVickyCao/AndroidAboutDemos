@@ -33,6 +33,7 @@ import com.hades.android.example.android_about_demos.widget.view_animator.Rating
 import com.hades.android.example.android_about_demos.widget.view_animator.TextSwitcherFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ViewFlipperFragment;
 import com.hades.android.example.android_about_demos.widget.view_animator.ViewSwitcherFragment;
+import com.hades.android.example.android_about_demos.widget.webview.TestWebViewFragment;
 
 public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
     private static final String TAG = WidgetActivity.class.getSimpleName();
@@ -44,6 +45,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
@@ -84,6 +86,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     @Override
     protected void showCurrentTest() {
         linearlayout();
+    }
+
+    private void pageWebView() {
+        showFragment(new TestWebViewFragment());
     }
 
     private void pageVideoviewRotateScreenTip() {
