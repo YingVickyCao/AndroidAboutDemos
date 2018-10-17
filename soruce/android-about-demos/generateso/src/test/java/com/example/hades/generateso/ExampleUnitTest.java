@@ -1,4 +1,4 @@
-package com.example.hades.testndk;
+package com.example.hades.generateso;
 
 import org.junit.Test;
 

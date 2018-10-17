@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.hades.testndk"
+        applicationId "com.example.hades.generateso"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -20,15 +20,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    // Encapsulates external native build configurations.
-    externalNativeBuild {
-        // Encapsulates CMake build configurations.
-        cmake {
-            // Provides a relative path to your CMake build script.
-            path file('CMakeLists.txt')
         }
     }
 

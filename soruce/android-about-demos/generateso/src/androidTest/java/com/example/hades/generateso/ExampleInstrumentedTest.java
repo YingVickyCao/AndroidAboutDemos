@@ -1,4 +1,4 @@
-package com.example.hades.testndk;
+package com.example.hades.generateso;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.hades.testndk", appContext.getPackageName());
+        assertEquals("com.example.hades.generateso", appContext.getPackageName());
     }
 }

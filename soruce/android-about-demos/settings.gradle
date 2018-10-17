@@ -1,1 +1,1 @@
-include ':app', ':assist', ':testndk'
+include ':app', ':assist', ':generateso'
