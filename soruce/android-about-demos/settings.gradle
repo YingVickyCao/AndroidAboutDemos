@@ -1,1 +1,1 @@
-include ':app', ':assist', ':generateso'
+include ':app', ':assist', ':generateso', ':useso'
