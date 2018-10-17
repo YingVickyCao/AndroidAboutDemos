@@ -19,6 +19,12 @@ android {
                 cppFlags ""
             }
         }
+
+        // ERROR:ABIs [armeabi] are not supported for platform. Supported ABIs are [armeabi-v7a, arm64-v8a, x86, x86_64].
+        ndk{
+            // Specifies ABI to build and package with APK
+            abiFilters 'x86_64','armeabi-v7a'
+        }
     }
 
     buildTypes {
