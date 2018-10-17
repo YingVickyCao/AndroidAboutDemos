@@ -87,7 +87,7 @@ public class CheckNetworkAndSIMInfoActivity extends Activity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        // TODO: 15/10/2018  
+        // TODO: 15/10/2018
         statusValues.add(tManager.getDeviceId());
         statusValues.add(tManager.getDeviceId());
         // 获取系统平台的版本

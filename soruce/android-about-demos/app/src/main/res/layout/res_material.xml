@@ -5,6 +5,11 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/parseXML"
+        style="@style/btn"
+        android:text="XML" />
+
+    <Button
         android:id="@+id/playRaw"
         style="@style/btn"
         android:text="play raw 原始资源" />
@@ -13,4 +18,22 @@
         android:id="@+id/playAsserts"
         style="@style/btn"
         android:text="play asserts 原始资源" />
+
+    <Button
+        android:id="@+id/loadAssertsImg"
+        style="@style/btn"
+        android:text="Load asserts Image" />
+
+    <TextView
+        android:id="@+id/tableContentList"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_blue_dark"
+        android:cursorVisible="false" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

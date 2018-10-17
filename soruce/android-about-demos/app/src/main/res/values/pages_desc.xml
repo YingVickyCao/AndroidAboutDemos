@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
     <string name="page_sqlite">Sqlite</string>
@@ -15,4 +15,5 @@
     <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
     <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
 
+    <string name="page_webView">WebView</string>
 </resources>

@@ -1,0 +1,4 @@
+
+## SharedPreferences.OnSharedPreferenceChangeListener
+- `registerOnSharedPreferenceChangeListener`
+- `unregisterOnSharedPreferenceChangeListener`  
