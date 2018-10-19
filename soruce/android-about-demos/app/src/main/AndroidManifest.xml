@@ -49,6 +49,7 @@
         <!-- ACTIVITY_LIFECYCLE_START -->
 
         <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
+        <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component.activity.lifecycle.A"
             android:configChanges="orientation" />
