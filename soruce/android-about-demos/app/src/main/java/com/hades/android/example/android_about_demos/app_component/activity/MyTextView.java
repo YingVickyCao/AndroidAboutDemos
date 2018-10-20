@@ -1,12 +1,15 @@
 package com.hades.android.example.android_about_demos.app_component.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+@SuppressLint("AppCompatCustomView")
 public class MyTextView extends TextView {
     private static final String TAG = MyTextView.class.getSimpleName();
 
@@ -49,5 +52,21 @@ public class MyTextView extends TextView {
     public void layout(int l, int t, int r, int b) {
         super.layout(l, t, r, b);
         Log.d(TAG, "layout: ");
+    }
+
+    // MyTextView: onSaveInstanceState:state=android.view.AbsSavedState$1@a062857
+    @Override
+    public Parcelable onSaveInstanceState() {
+        Parcelable state = super.onSaveInstanceState();
+        Log.d(TAG, "onSaveInstanceState:state=" + state);
+        return state;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
+        if (null != state) {
+            Log.d(TAG, "onRestoreInstanceState: state=" + state.hashCode());
+        }
     }
 }
