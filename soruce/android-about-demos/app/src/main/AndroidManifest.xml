@@ -48,7 +48,7 @@
         <!-- ACTIVITY_START -->
         <!-- ACTIVITY_LIFECYCLE_START -->
 
-        <activity android:name=".app_component.activity.ActivityTestActivity" />
+        <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
         <activity
             android:name=".app_component.activity.lifecycle.A"
             android:configChanges="orientation" />
