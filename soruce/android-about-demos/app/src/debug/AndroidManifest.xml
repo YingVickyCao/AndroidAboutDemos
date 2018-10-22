@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".resource.ResourceActivity">
+        <activity android:name=".app_component.activity.ActivityTestHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.activity.lifecycle;
+package com.hades.android.example.android_about_demos.app_component.activity._life_cycle;
 
 import android.app.Activity;
 import android.content.Intent;
