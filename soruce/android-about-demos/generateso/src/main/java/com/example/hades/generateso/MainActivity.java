@@ -31,4 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public native String stringFromJNI();
 
     public native int sum(int a, int b);
+
+//    openssl pkcs7 -inform DER -in CERT.RSA.RSA -noout -print_certs -text
+
 }

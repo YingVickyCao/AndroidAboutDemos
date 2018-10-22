@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/openActivity"
+        style="@style/btn.small"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Open activity" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/topic"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:text="D" />
+
+</RelativeLayout>

@@ -48,24 +48,27 @@
         <!-- ACTIVITY_START -->
         <!-- ACTIVITY_LIFECYCLE_START -->
 
-        <activity android:name=".app_component.activity.ActivityTestActivity" />
+        <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
+        <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
-            android:name=".app_component.activity.lifecycle.A"
+            android:name=".app_component.activity._life_cycle.A"
             android:configChanges="orientation" />
 
-        <activity android:name=".app_component.activity.lifecycle.B" />
+        <activity android:name=".app_component.activity._life_cycle.B" />
 
         <activity
-            android:name=".app_component.activity.lifecycle.TranslucentB"
+            android:name=".app_component.activity._life_cycle.TranslucentB"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".app_component.activity.lifecycle.FloatB"
+            android:name=".app_component.activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".app_component.activity.lifecycle.C" />
+        <activity android:name=".app_component.activity._life_cycle.C" />
         <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
         <!-- ACTIVITY_LIFECYCLE_END -->
 
         <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
+        <activity android:name=".app_component.activity._launch_modes.DActivity" />
+        <activity android:name=".app_component.activity._launch_modes.EActivity" />
         <!-- ACTIVITY_END -->
 
         <!-- START_RUNTIME_PERMISSION -->
