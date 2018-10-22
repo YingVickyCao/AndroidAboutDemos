@@ -16,6 +16,7 @@
     <string name="page_highlight_digital_clock">Highlight Digital Clock</string>
     <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
     <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
+    <string name="page_provide_alternative_bitmaps">Provide alternative bitmaps</string>
 
     <string name="page_webView">WebView</string>
 </resources>
