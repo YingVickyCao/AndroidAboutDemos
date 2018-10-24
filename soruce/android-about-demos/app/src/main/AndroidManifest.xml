@@ -63,7 +63,6 @@
             android:name=".app_component.activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".app_component.activity._life_cycle.C" />
-        <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
         <!-- ACTIVITY_LIFECYCLE_END -->
 
         <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
@@ -73,8 +72,8 @@
 
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RuntTimePermissionTestActivity" />
-        <activity android:name="com.hades.android.example.android_about_demos.runtime_permission.RxPermissionsTestActivity" />
+        <activity android:name=".runtime_permission.RuntTimePermissionTestActivity" />
+        <activity android:name=".runtime_permission.RxPermissionsTestActivity" />
 
         <!--<receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">-->
         <!--<intent-filter android:priority="1000">-->
@@ -82,12 +81,6 @@
         <!--</intent-filter>-->
         <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
-
-        <!-- APPLY_THEME_START -->
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
-
-        <!-- APPLY_THEME_END -->
 
         <activity android:name=".widget.WidgetActivity" />
 
@@ -101,9 +94,13 @@
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <!-- END_SCROLL_VIEW -->
 
+        <!-- START_OTHER_UI -->
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
+        <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
+        <!-- START_OTHER_UI -->
+
         <activity android:name=".widget.linearlayout.LinearLayoutActivity" />
 
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
@@ -111,10 +108,6 @@
         <activity android:name=".widget.button.UseButton2AvoidCheckEditInputDateActivity" />
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
-
-        <!-- START_OTHER_UI -->
-        <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
-        <!-- START_OTHER_UI -->
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".event_handle.EventHandlerActivity" />
@@ -133,8 +126,12 @@
         <activity
             android:name=".resource.ResourceActivity"
             android:theme="@style/AppTheme.FullScreen" />
+        <activity android:name=".resource.adapter_screen.DipTestActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
+        <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
+        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
+        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
         <!-- END_RESOURCES -->
 
         <!-- START_CONTENT_PROVIDER -->

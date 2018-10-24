@@ -5,7 +5,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_provide_alternative_bitmaps" />
+        android:text="@string/page_provide_screen_density_bitmaps" />
 
 
     <ImageView

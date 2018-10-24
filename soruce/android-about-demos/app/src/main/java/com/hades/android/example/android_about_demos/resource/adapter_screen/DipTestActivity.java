@@ -15,4 +15,3 @@ public class DipTestActivity extends Activity {
         setContentView(R.layout.res_dip);
     }
 }
-

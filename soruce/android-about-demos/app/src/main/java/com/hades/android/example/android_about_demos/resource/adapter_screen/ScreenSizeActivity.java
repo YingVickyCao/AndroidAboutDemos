@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.hades.android.example.android_about_demos.R;
 
 
-public class ScreenSizeTestActivity extends Activity {
+public class ScreenSizeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,4 +15,3 @@ public class ScreenSizeTestActivity extends Activity {
         setContentView(R.layout.res_screen_size);
     }
 }
-

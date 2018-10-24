@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.base.BaseActivity;
+import com.hades.android.example.android_about_demos.resource.adapter_screen.DisableRotateActivity;
+import com.hades.android.example.android_about_demos.resource.adapter_screen.DrawableFragment;
+import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
-import com.hades.android.example.android_about_demos.resource.drawable.DrawableFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
 import com.hades.android.example.android_about_demos.resource.material.MaterialFragment;
 import com.hades.android.example.android_about_demos.resource.theme.apply_theme.ThemeChoosePageAActivity;
@@ -28,8 +30,10 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.theme).setOnClickListener(v -> theme());
         findViewById(R.id.internationalization).setOnClickListener(v -> internationalization());
         findViewById(R.id.array).setOnClickListener(v -> array());
-        findViewById(R.id.pageDrawable).setOnClickListener(v -> pageDrawable());
         findViewById(R.id.parseXML).setOnClickListener(v -> parseXML());
+        findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
+        findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
+        findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
     }
 
     @Override
@@ -53,11 +57,19 @@ public class ResourceActivity extends BaseActivity {
         showFragment(new ArrayFragment());
     }
 
-    private void pageDrawable() {
-        showFragment(new DrawableFragment());
-    }
-
     private void parseXML() {
         showFragment(new ParseXMLFragment());
+    }
+
+    private void pageScreenOrientation() {
+        showActivity(DisableRotateActivity.class);
+    }
+
+    private void pageScreenSize() {
+        showActivity(ScreenSizeActivity.class);
+    }
+
+    private void pageDrawableAndScreenDensity() {
+        showFragment(new DrawableFragment());
     }
 }

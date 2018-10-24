@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.resource.drawable;
+package com.hades.android.example.android_about_demos.resource.adapter_screen;
 
 import android.app.Fragment;
 import android.graphics.Bitmap;
