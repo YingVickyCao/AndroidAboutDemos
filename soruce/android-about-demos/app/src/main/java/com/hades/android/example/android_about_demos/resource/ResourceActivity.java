@@ -10,6 +10,7 @@ import com.hades.android.example.android_about_demos.resource.drawable.DrawableF
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
 import com.hades.android.example.android_about_demos.resource.material.MaterialFragment;
 import com.hades.android.example.android_about_demos.resource.theme.apply_theme.ThemeChoosePageAActivity;
+import com.hades.android.example.android_about_demos.resource.xml.ParseXMLFragment;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
@@ -28,6 +29,7 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.internationalization).setOnClickListener(v -> internationalization());
         findViewById(R.id.array).setOnClickListener(v -> array());
         findViewById(R.id.pageDrawable).setOnClickListener(v -> pageDrawable());
+        findViewById(R.id.parseXML).setOnClickListener(v -> parseXML());
     }
 
     @Override
@@ -53,5 +55,9 @@ public class ResourceActivity extends BaseActivity {
 
     private void pageDrawable() {
         showFragment(new DrawableFragment());
+    }
+
+    private void parseXML() {
+        showFragment(new ParseXMLFragment());
     }
 }

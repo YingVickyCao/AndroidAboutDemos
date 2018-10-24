@@ -5,11 +5,6 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/parseXML"
-        style="@style/btn"
-        android:text="XML" />
-
-    <Button
         android:id="@+id/playRaw"
         style="@style/btn"
         android:text="play raw 原始资源" />
@@ -25,7 +20,7 @@
         android:text="Load asserts Image" />
 
     <TextView
-        android:id="@+id/tableContentList"
+        android:id="@+id/xmlContent"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@android:color/holo_blue_dark"
