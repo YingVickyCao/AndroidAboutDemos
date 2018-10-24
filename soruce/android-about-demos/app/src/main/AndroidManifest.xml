@@ -130,7 +130,9 @@
         <!-- END_EVENT_HANDLER -->
 
         <!-- START_RESOURCES -->
-        <activity android:name=".resource.ResourceActivity" />
+        <activity
+            android:name=".resource.ResourceActivity"
+            android:theme="@style/AppTheme.FullScreen" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!-- END_RESOURCES -->

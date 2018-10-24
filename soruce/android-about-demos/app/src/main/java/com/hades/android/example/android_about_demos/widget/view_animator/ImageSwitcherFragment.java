@@ -22,7 +22,7 @@ public class ImageSwitcherFragment extends Fragment {
     private ImageSwitcher imageSwicher;
 
     // 图片数组
-    private int[] arrayPictures = {R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4};
+    private int[] arrayPictures = {R.drawable.dot_image, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4};
 
     // 要显示的图片在图片数组中的Index
     private int pictureIndex;
