@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.resource.adapter_screen;
+package com.hades.android.example.android_about_demos.resource.drawable;
 
 import android.app.Fragment;
 import android.graphics.Bitmap;
@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 import com.hades.android.example.android_about_demos.R;
 
-public class DrawableFragment extends Fragment {
-    private static final String TAG = DrawableFragment.class.getSimpleName();
+public class BitmapDrawableFragment extends Fragment {
+    private static final String TAG = BitmapDrawableFragment.class.getSimpleName();
 
     private ImageView mImageView;
 

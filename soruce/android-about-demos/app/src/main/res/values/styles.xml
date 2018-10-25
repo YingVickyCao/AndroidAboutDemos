@@ -31,6 +31,13 @@
         <item name="android:maxHeight">48dip</item>
     </style>
 
+    <style name="scaleType">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:src">@drawable/scale_type_2</item>
+        <item name="android:background">@android:color/holo_red_dark</item>
+    </style>
+
     <declare-styleable name="CascadeLayout">
         <!-- 水平间距 -->
         <attr name="horizontal_spacing" format="dimension" />

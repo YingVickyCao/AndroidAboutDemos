@@ -18,6 +18,7 @@ import com.hades.android.example.android_about_demos.widget.button.UseButton2Avo
 import com.hades.android.example.android_about_demos.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.imageview.KenBurnsImageActivity;
+import com.hades.android.example.android_about_demos.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.android.example.android_about_demos.widget.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
@@ -51,6 +52,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
         findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
         findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
+        findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
@@ -85,7 +87,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
     @Override
     protected void showCurrentTest() {
-        linearlayout();
+        pageImageViewScaleType();
     }
 
     private void pageWebView() {
@@ -110,6 +112,10 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
     private void pageKenBurnsImage() {
         startActivity(KenBurnsImageActivity.class);
+    }
+
+    private void pageImageViewScaleType() {
+        showFragment(new TestImageViewScaleTypeFragment());
     }
 
     private void customview() {

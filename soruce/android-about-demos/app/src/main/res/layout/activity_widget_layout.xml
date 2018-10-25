@@ -50,6 +50,11 @@
                 android:text="@string/page_ken_burns_image" />
 
             <Button
+                android:id="@+id/pageImageViewScaleType"
+                style="@style/btn.small"
+                android:text="@string/page_imageView_scaleType" />
+
+            <Button
                 android:id="@+id/page_customview"
                 style="@style/btn.small"
                 android:text="@string/page_customview" />

@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.base.BaseActivity;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.DisableRotateActivity;
-import com.hades.android.example.android_about_demos.resource.adapter_screen.DrawableFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.BitmapDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
@@ -70,6 +70,6 @@ public class ResourceActivity extends BaseActivity {
     }
 
     private void pageDrawableAndScreenDensity() {
-        showFragment(new DrawableFragment());
+        showFragment(new BitmapDrawableFragment());
     }
 }

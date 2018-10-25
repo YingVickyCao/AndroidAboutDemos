@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.resource.attribute;
+package com.hades.android.example.android_about_demos.resource.drawable.alpha;
 
 import android.app.Activity;
 import android.os.Bundle;

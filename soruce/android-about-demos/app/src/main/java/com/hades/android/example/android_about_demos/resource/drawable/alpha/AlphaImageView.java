@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.resource.attribute;
+package com.hades.android.example.android_about_demos.resource.drawable.alpha;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -35,7 +35,7 @@ public class AlphaImageView extends ImageView {
                 curAlpha += alphaDelta;
                 if (curAlpha > 255) curAlpha = 255;
                 // 修改该ImageView的透明度
-                AlphaImageView.this.setAlpha(curAlpha);
+                AlphaImageView.this.setImageAlpha(curAlpha);
             }
         }
     };
