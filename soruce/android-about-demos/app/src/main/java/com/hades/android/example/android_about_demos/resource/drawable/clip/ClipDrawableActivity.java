@@ -22,9 +22,9 @@ public class ClipDrawableActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.res_clip_drawable);
+        setContentView(R.layout.res_drawable_clip);
 
-        ImageView imageview = findViewById(R.id.image);
+        ImageView imageview = findViewById(R.id.imageView);
 
         // 获取图片所显示的ClipDrawable对象
         final ClipDrawable drawable = (ClipDrawable) imageview.getDrawable();

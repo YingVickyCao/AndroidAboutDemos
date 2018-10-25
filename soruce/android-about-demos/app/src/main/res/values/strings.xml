@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">Android-About-Project</string>
 
     <string name="runt_time_permission">Runtime Permission</string>
@@ -68,6 +68,8 @@
     <string name="email">Email</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="start_animation">Start animation</string>
+    <string name="stop_animation">Stop animation</string>
     <string name="jump">Jump</string>
     <string name="bind">绑定Service</string>
     <string name="unbind">解除绑定</string>
@@ -99,6 +101,11 @@
     <string name="text1"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]></string>
     <string name="text2">Hello World, HomeActivity!</string>
     <string name="default_time">88:88:88</string>
+    <string name="check_memory">Check memory</string>
+    <string name="check_render_time">Check rendering time</string>
+    <string name="vector_drawable">Vector Drawable</string>
+    <string name="png">PNG</string>
+    <string name="duration">Rendering duration: %.3f</string>
 
     <string name="big_str">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non metus et ligula dignissim imperdiet vitae nec diam. Fusce sit amet lorem quam, feugiat fermentum odio. Nam ante eros, luctus a laoreet a, placerat non lectus. Phasellus nec dui vel tellus imperdiet facilisis. In eu leo neque, at auctor lacus. Ut et sapien tellus, eget suscipit ante. Suspendisse nec arcu nisi, a hendrerit tortor. Pellentesque ullamcorper, lacus in congue feugiat, velit tellus congue turpis, et volutpat sapien nibh vitae ante. Mauris eget erat id elit rutrum tempor quis sed nibh. Donec tristique, leo eu placerat bibendum, ante turpis pellentesque nisl, non commodo nibh enim sit amet felis.</string>
     <string name="big_str2">Quisque ultrices est justo, non aliquet libero.

@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.base.BaseActivity;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.DisableRotateActivity;
-import com.hades.android.example.android_about_demos.resource.drawable.BitmapDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.BitmapDrawableFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.vector.MeasureVectorDrawableFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
 import com.hades.android.example.android_about_demos.resource.material.MaterialFragment;
 import com.hades.android.example.android_about_demos.resource.theme.apply_theme.ThemeChoosePageAActivity;
@@ -34,11 +36,13 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
+        findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
+        findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
     }
 
     @Override
     protected void showCurrentTest() {
-        array();
+        pageMeasureVectorRenderingTime();
     }
 
     private void parseXml() {
@@ -71,5 +75,13 @@ public class ResourceActivity extends BaseActivity {
 
     private void pageDrawableAndScreenDensity() {
         showFragment(new BitmapDrawableFragment());
+    }
+
+    private void pageVectorDrawable() {
+        showFragment(new VectorDrawableFragment());
+    }
+
+    private void pageMeasureVectorRenderingTime() {
+        showFragment(new MeasureVectorDrawableFragment());
     }
 }

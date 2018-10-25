@@ -15,7 +15,7 @@ public class TweenAnimationActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.res_tween_animation);
-        image = findViewById(R.id.image);
+        image = findViewById(R.id.imageView);
 
         findViewById(R.id.alpha).setOnClickListener(v -> alpha());
         findViewById(R.id.scale).setOnClickListener(v -> scale());

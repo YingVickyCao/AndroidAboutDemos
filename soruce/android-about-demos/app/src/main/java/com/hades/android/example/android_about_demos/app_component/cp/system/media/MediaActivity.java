@@ -128,7 +128,7 @@ public class MediaActivity extends Activity {
 
     public void onItemClick(AdapterView<?> parent, View source, int position, long id) {
         View viewDialog = getLayoutInflater().inflate(R.layout.cp_media_view_one_image, null);
-        ImageView image = viewDialog.findViewById(R.id.image);
+        ImageView image = viewDialog.findViewById(R.id.imageView);
         image.setImageBitmap(BitmapFactory.decodeFile(mData.get(position).getFileName()));
         new AlertDialog.Builder(MediaActivity.this).setView(viewDialog).setPositiveButton("确定", null).show();
     }
