@@ -19,6 +19,8 @@
     <string name="page_provide_screen_density_bitmaps">屏幕分辨率 —— bitmaps</string>
     <string name="page_imageView_scaleType">ImageView scaleType</string>
     <string name="page_drawable_vectorDrawable">VectorDrawable</string>
+    <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
+
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
 
     <string name="page_webView">WebView</string>

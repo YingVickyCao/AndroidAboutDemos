@@ -9,6 +9,7 @@ import com.hades.android.example.android_about_demos.resource.adapter_screen.Dis
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.BitmapDrawableFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.ManagingBitmapMemoryFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
@@ -38,11 +39,12 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
+        findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageVectorDrawable();
+        pageManagingBitmapMemory();
     }
 
     private void parseXml() {
@@ -83,5 +85,9 @@ public class ResourceActivity extends BaseActivity {
 
     private void pageMeasureVectorRenderingTime() {
         showFragment(new MeasureVectorDrawableFragment());
+    }
+
+    private void pageManagingBitmapMemory() {
+        showFragment(new ManagingBitmapMemoryFragment());
     }
 }
