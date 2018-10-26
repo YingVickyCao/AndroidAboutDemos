@@ -42,7 +42,7 @@ public class ResourceActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageMeasureVectorRenderingTime();
+        pageVectorDrawable();
     }
 
     private void parseXml() {

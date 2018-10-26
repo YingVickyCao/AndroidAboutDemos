@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:src="@drawable/vd" />
+        android:src="@drawable/vd"
+        app:srcCompat="@drawable/vd" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -18,21 +20,27 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/avd" />
 
+    <!--android:tint="@color/colorAccent"-->
     <ImageView
         android:id="@+id/circle4Svg"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_adjust_48px" />
+        android:src="@drawable/ic_adjust_48px"
+        android:tint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_adjust_48px" />
 
+    <!--android:tint="@color/colorAccent"-->
     <ImageView
         android:id="@+id/circle4Png"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_adjust_black_18dp" />
+        android:src="@drawable/ic_adjust_black_18dp"
+        android:tint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_adjust_48px" />
 
     <Button
         android:id="@+id/startAnimation"
