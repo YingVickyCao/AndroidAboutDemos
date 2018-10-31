@@ -23,5 +23,7 @@
 
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
 
+
+    <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_webView">WebView</string>
 </resources>

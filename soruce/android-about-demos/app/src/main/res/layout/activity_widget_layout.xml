@@ -5,6 +5,7 @@
     android:gravity="center_horizontal">
 
     <TextView
+        android:id="@+id/topic"
         style="@style/topic"
         android:text="@string/page_widget" />
 
@@ -18,6 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/pageConstraintLayout"
+                style="@style/btn.small"
+                android:text="@string/page_ConstraintLayout" />
 
             <Button
                 android:id="@+id/pageWebView"

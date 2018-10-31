@@ -19,7 +19,8 @@ import com.hades.android.example.android_about_demos.widget.custom_view.cascadel
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.imageview.KenBurnsImageActivity;
 import com.hades.android.example.android_about_demos.widget.imageview.TestImageViewScaleTypeFragment;
-import com.hades.android.example.android_about_demos.widget.linearlayout.LinearLayoutActivity;
+import com.hades.android.example.android_about_demos.widget.layout.ConstraintLayoutFragment;
+import com.hades.android.example.android_about_demos.widget.layout.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
@@ -46,6 +47,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
+        findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
@@ -87,7 +89,11 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
     @Override
     protected void showCurrentTest() {
-        pageImageViewScaleType();
+        pageConstraintLayout();
+    }
+
+    private void pageConstraintLayout() {
+        showFragment(new ConstraintLayoutFragment());
     }
 
     private void pageWebView() {
