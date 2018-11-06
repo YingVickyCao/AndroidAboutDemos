@@ -18,7 +18,7 @@
 
             <intent-filter>
                 <action android:name="com.hades.android.example.android_about_demos.security.a" />
-                <data android:mimeType="text/plan" />
+                <data android:mimeType="text/plain" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
