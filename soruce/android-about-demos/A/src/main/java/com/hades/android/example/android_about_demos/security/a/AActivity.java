@@ -4,8 +4,11 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 public class AActivity extends AppCompatActivity {
+    private static final String TAG = AActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +16,7 @@ public class AActivity extends AppCompatActivity {
         setContentView(R.layout.security_a);
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
         findViewById(R.id.jumpC4ImplicitIntent).setOnClickListener(v -> jumpC4ImplicitIntent());
-        findViewById(R.id.jumpC).setOnClickListener(v -> jumpC4ExplicitIntent());
+        findViewById(R.id.jumpC4ExplicitIntent).setOnClickListener(v -> jumpC4ExplicitIntent());
     }
 
     private void jumpB() {
@@ -35,8 +38,9 @@ public class AActivity extends AppCompatActivity {
         // setClassName
         intent.setClassName("com.hades.android.example.android_about_demos.security.b",
                 "com.hades.android.example.android_about_demos.security.b.CActivity");
-        intent.putExtra("NUM", 100);
-        startActivity(intent);
+        intent.putExtra("NUM1", 100);
+//        startActivity(intent);
+        startActivityForResult(intent, 1000);
     }
 
     /*
@@ -48,7 +52,20 @@ public class AActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("com.hades.android.example.android_about_demos.security.b.c");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.putExtra("NUM", 100);
-        startActivity(intent);
+        intent.putExtra("NUM2", 200);
+//        startActivity(intent);
+        startActivityForResult(intent, 2000);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult: intent=" + data.toString());
+        if (1000 == requestCode) {
+            Log.d(TAG, "onActivityResult:num1=" + data.getStringExtra("NUM1"));
+            Toast.makeText(this, data.getIntExtra("NUM1", 0), Toast.LENGTH_SHORT).show();
+        } else if (2000 == requestCode) {
+            Log.d(TAG, "onActivityResult:num2=" + data.getStringExtra("NUM2"));
+            Toast.makeText(this, data.getIntExtra("NUM2", 0), Toast.LENGTH_SHORT).show();
+        }
     }
 }
