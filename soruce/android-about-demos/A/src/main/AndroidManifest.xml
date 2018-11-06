@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos.security.a"
-    android:sharedUserId="android_about_demos.test.AcrossAPPJump">
+    package="com.hades.android.example.android_about_demos.security.a">
+    <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
 
     <application
         android:allowBackup="false"

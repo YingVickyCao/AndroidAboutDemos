@@ -19,6 +19,15 @@
         android:textAllCaps="false" />
 
     <Button
+        android:id="@+id/jumpC4ImplicitIntent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Jump C by Implicit Intent"
+        android:textAllCaps="false" />
+
+    <Button
         android:id="@+id/jumpC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
