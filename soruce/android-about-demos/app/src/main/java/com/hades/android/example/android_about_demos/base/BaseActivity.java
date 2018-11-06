@@ -31,8 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
 
-        showDefaultFragment();
-//        showBtns();
+        showCurrentTest();
     }
 
     protected void showBtns() {
@@ -62,11 +61,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void showCurrentTest() {
-    }
-
-    private void showDefaultFragment() {
         hideBtns();
-        showCurrentTest();
     }
 
     protected boolean isShowDetail() {

@@ -1,2 +1,2 @@
 //include ':app', ':assist', ':generateso', ':useso'
-include ':app', ':useso'
+include ':app', ':useso', ':A', ':B'

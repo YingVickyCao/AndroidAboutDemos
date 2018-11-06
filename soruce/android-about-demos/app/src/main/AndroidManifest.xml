@@ -208,6 +208,8 @@
         <activity android:name=".data_storage.db.ResultActivity" />
         <!-- DATA_STORAGE_END -->
 
+        <activity android:name=".security.SecurityActivity" />
+
     </application>
 
 </manifest>

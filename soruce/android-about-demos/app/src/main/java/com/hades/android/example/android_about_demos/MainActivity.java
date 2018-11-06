@@ -1,45 +1,27 @@
 package com.hades.android.example.android_about_demos;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.hades.android.example.android_about_demos.widget.scrollview.nested_scroll_view.NestedScrollViewHasRecycleViewFragment;
+import com.hades.android.example.android_about_demos.base.BaseActivity;
+import com.hades.android.example.android_about_demos.security.SecurityActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
 
-//        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        new TestAppend().test();
-//                    }
-//                }).start();
-//            }
-//        });
-
-        /*getFragmentManager().beginTransaction()
-                .replace(R.id.root, getTestFragment(), getTestFragmentTag())
-                .commit();*/
+        findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
     }
 
-//    private Fragment getTestFragment() {
-//        return ScrollViewHasListViewFragment.newInstance();
-//        return NestedScrollViewHasRecycleViewFragment.newInstance();
-//        return ScrollViewAboveListViewFragment.newInstance();
-//    }
-
-
-    private String getTestFragmentTag() {
-//        return ScrollViewHasListViewFragment.class.getSimpleName();
-        return NestedScrollViewHasRecycleViewFragment.class.getSimpleName();
-//        return ScrollViewAboveListViewFragment.class.getSimpleName();
+    @Override
+    protected void showCurrentTest() {
+        pageSecurity();
     }
 
+    private void pageSecurity() {
+        showActivity(SecurityActivity.class);
+    }
 }
