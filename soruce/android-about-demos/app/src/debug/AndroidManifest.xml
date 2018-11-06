@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".widget.WidgetActivity">
+        <activity android:name=".data_storage.DataStorageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
