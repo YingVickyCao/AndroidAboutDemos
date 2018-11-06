@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hades.android.example.android_about_demos.security.b">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hades.android.example.android_about_demos.security.b"
+    android:sharedUserId="android_about_demos.test.AcrossAPPJump">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <!--
+        ERROR: android:exported="false"
+        Process: com.hades.android.example.android_about_demos.security.a, PID: 30624
+        java.lang.SecurityException: Permission Denial: starting Intent { typ=text/plain cmp=com.hades.android.example.android_about_demos.security.b/.BActivity (has extras) }
+        from ProcessRecord{15c37b8 30624:com.hades.android.example.android_about_demos.security.a/u0a236} (pid=30624, uid=10236) not exported from uid 10237
+
+        Solution:
+        android:exported="false" -> android:exported="true"   or same android:sharedUserId
+        -->
+
         <activity android:name=".BActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.security.b" />
-                <data android:mimeType="text/plain" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            <!--<intent-filter>-->
+            <!--<action android:name="com.hades.android.example.android_about_demos.security.b" />-->
+            <!--&lt;!&ndash;<data android:mimeType="text/plain" />&ndash;&gt;-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
         </activity>
+        <activity
+            android:name=".CActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

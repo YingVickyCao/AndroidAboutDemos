@@ -7,7 +7,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="App之间跳转" />
+        android:text="App之间跳转(B)" />
 
     <Button
         android:id="@+id/back"
