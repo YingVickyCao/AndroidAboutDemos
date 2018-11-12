@@ -13,7 +13,7 @@ public class AActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.security_a);
+        setContentView(R.layout.manifest_security_a_layout);
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
         findViewById(R.id.jumpC4ImplicitIntent).setOnClickListener(v -> jumpC4ImplicitIntent());
         findViewById(R.id.jumpC4ExplicitIntent).setOnClickListener(v -> jumpC4ExplicitIntent());

@@ -4,6 +4,13 @@
     package="com.hades.android.example.android_about_demos.security.b">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
 
+    <!--android:protectionLevel="normal"-->
+    <permission
+        android:name="${applicationId}.CUSTOM_PERMISSION_TEST"
+        android:description="@string/app_name"
+        android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"
+        android:protectionLevel="signature" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -12,6 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".BActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- START_ALLOW_OTHER_APP_ACCESS_YOUR_ACTIVITIES -->
 
         <!--
         ERROR: android:exported="false"
@@ -22,22 +39,26 @@
         Solution:
         android:exported="false" -> android:exported="true"   or same android:sharedUserId
         -->
-
-        <activity android:name=".BActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".CActivity"
             android:exported="true">
             <!--<intent-filter>-->
-                <!--<action android:name="com.hades.android.example.android_about_demos.security.b.c" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--<action android:name="com.hades.android.example.android_about_demos.security.b.c" />-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </activity>
+        <!-- END_ALLOW_OTHER_APP_ACCESS_YOUR_ACTIVITIES -->
+
+        <!-- START_CUSTOM_PERMISSION -->
+        <!--<activity-->
+        <!--android:name=".DActivity"-->
+        <!--android:exported="true" />-->
+
+        <activity
+            android:name=".DActivity"
+            android:exported="true"
+            android:permission="${applicationId}.CUSTOM_PERMISSION_TEST" />
+        <!-- END_CUSTOM_PERMISSION -->
     </application>
 
 </manifest>

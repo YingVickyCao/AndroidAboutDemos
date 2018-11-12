@@ -1,31 +1,38 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug_key {
+            keyAlias 'debug_key'
+            keyPassword '123456'
+            storeFile file('/Users/hades/Documents/GitHub/AndroidAboutDemos/soruce/android-about-demos/key/debug/debug_key.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 27
-
-
-
     defaultConfig {
         applicationId "com.hades.android.example.android_about_demos.security.b"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        signingConfig signingConfigs.debug_key
     }
-
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug_key
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
     }
 }
 

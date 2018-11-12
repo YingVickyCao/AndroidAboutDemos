@@ -7,7 +7,14 @@
 
     <TextView
         style="@style/topic"
-        android:text="App之间跳转(C)" />
+        android:text="Allow other app to access your Activities(C)" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:text="android:sharedUserId\nandroid:exported" />
 
     <Button
         android:id="@+id/back"

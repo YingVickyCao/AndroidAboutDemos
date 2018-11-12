@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.base.BaseActivity;
+import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 import com.hades.android.example.android_about_demos.other_ui.PopupWindowFragment;
 import com.hades.android.example.android_about_demos.other_ui.ToastFragment;
 import com.hades.android.example.android_about_demos.other_ui.dialog.AlertDialogFragment;

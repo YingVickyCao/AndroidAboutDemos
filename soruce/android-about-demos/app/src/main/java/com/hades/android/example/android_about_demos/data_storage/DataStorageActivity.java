@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.base.BaseActivity;
+import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 import com.hades.android.example.android_about_demos.data_storage.db.TestDBFragment;
 import com.hades.android.example.android_about_demos.data_storage.io.TestIOFragment;
 import com.hades.android.example.android_about_demos.data_storage.shared_preferences.IOSharedPreferencesFragment;

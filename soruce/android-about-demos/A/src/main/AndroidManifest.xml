@@ -4,6 +4,8 @@
     package="com.hades.android.example.android_about_demos.security.a">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
 
+    <uses-permission android:name="com.hades.android.example.android_about_demos.security.b.CUSTOM_PERMISSION_TEST" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -12,19 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AActivity">
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
 
+        <activity android:name=".AActivity">
             <intent-filter>
                 <action android:name="com.hades.android.example.android_about_demos.security.a" />
                 <data android:mimeType="text/plain" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".TestCustomPermissionActivity" />
     </application>
 
 </manifest>

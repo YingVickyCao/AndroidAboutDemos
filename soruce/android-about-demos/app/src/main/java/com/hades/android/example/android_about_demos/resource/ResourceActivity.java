@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.base.BaseActivity;
+import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.DisableRotateActivity;
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
