@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos.security.a"
+    package="com.hades.android.example.android_about_demos.po.security.a"
     android:sharedUserId="android_about_demos.test.AcrossAPPJump">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
 
-    <uses-permission android:name="com.hades.android.example.android_about_demos.security.b.CUSTOM_PERMISSION_TEST" />
+    <uses-permission android:name="com.hades.android.example.android_about_demos.po.security.b.CUSTOM_PERMISSION_TEST" />
 
     <application
         android:allowBackup="false"
@@ -26,7 +26,7 @@
 
         <activity android:name=".AActivity">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.security.a" />
+                <action android:name="com.hades.android.example.android_about_demos.po.security.a" />
                 <data android:mimeType="text/plain" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

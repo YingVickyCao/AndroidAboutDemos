@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.security.b;
+package com.hades.android.example.android_about_demos.po.security.b;
 
 import org.junit.Test;
 

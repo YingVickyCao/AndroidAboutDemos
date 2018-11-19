@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.security.a;
+package com.hades.android.example.android_about_demos.po.security.a;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hades.android.example.android_about_demos.security.a", appContext.getPackageName());
+        assertEquals("com.hades.android.example.android_about_demos.po.security.a", appContext.getPackageName());
     }
 }

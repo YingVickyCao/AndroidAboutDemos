@@ -3,7 +3,7 @@ package com.hades.android.example.android_about_demos;
 import android.os.Bundle;
 
 import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
-import com.hades.android.example.android_about_demos.security.SecurityActivity;
+import com.hades.android.example.android_about_demos.po.security.SecurityActivity;
 
 public class MainActivity extends BaseActivity {
 

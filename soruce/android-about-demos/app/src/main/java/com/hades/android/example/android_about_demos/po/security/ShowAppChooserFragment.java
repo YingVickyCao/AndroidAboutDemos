@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.security;
+package com.hades.android.example.android_about_demos.po.security;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
