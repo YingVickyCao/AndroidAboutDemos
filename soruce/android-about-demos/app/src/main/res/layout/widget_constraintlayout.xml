@@ -151,8 +151,7 @@
             android:layout_height="50dp"
             android:background="@android:color/holo_red_dark"
             android:gravity="center"
-            android:text="A"
-            android:visibility="visible" />
+            android:text="A" />
 
         <TextView
             android:id="@+id/tv62"
@@ -233,7 +232,8 @@
     <!-- START_CIRCULAR_POSITING -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv71"
@@ -257,4 +257,188 @@
             app:layout_constraintCircleRadius="80dp" />
     </android.support.constraint.ConstraintLayout>
     <!-- END_CIRCULAR_POSITING -->
+
+    <!--START_VISIBILITY_BEHAVIOR -->
+    <!-- app:layout_goneMargin*  -->
+    <!--END_VISIBILITY_BEHAVIOR -->
+
+
+    <!--START_DIMENSION_CONSTRAINTS -->
+    <!-- Case 1: Minimum dimensions on ConstraintLayout -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv81"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:maxWidth="220dp"
+            android:maxHeight="400dp"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:text="ABCDEFGHIJK" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Case 2: Widgets dimension constraints -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- android:layout_width="50dp" -->
+        <!-- android:layout_width="wrap_content" -->
+
+        <!-- Using 0dp, which is the equivalent of "MATCH_CONSTRAINT" -->
+        <!-- android:layout_width="0dp"  ===  android:layout_width="match_parent" -->
+        <TextView
+            android:id="@+id/tv9_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- WRAP_CONTENT : enforcing constraints -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv10_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <!-- android:layout_width="wrap_content" && app:layout_constrainedWidth="true" 时， app:layout_constraintWidth_min = minWidth -->
+        <TextView
+            android:id="@+id/tv10_2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_min="200dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- MATCH_CONSTRAINT dimensions -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv11_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <!-- 当android:layout_width="0dp"，app:layout_constrainedWidth="false" 无效，app:layout_constraintWidth_min="100dp" == minWidth  -->
+        <TextView
+            android:id="@+id/tv11_2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constrainedWidth="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_min="100dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- MATCH_CONSTRAINT dimensions -->
+    <!--Percent dimension-->
+    <!-- 居中，且宽=1/2 -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- android:layout_width="0dp"时，默认 app:layout_constraintWidth_percent="1" （全宽）-->
+        <TextView
+            android:id="@+id/tv12_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Ratio -->
+    <!-- with:height -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <!--<TextView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:background="@android:color/holo_red_dark"-->
+        <!--android:gravity="center"-->
+        <!--android:text="A" />-->
+
+        <!-- 必须加constraint 限制，否则不生效 -->
+        <!-- app:layout_constraintDimensionRatio="1:2" with:height -->
+
+        <!--<TextView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:background="@android:color/holo_red_dark"-->
+        <!--android:gravity="center"-->
+        <!--android:text="A"-->
+        <!--app:layout_constraintDimensionRatio="1:2"-->
+        <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!-- app:layout_constraintDimensionRatio="H,1:2" -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="H,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--<TextView-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:background="@android:color/holo_red_dark"-->
+        <!--android:gravity="center"-->
+        <!--android:text="A"-->
+        <!--app:layout_constraintDimensionRatio="H,1:2"-->
+        <!--app:layout_constraintTop_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!--END_DIMENSION_CONSTRAINTS -->
+
+    <!--START_CHAINS -->
+    <!--END_CHAINS -->
+
+    <!--START_VIRTUAL_HELPERS_OBJECTS -->
+    <!--END_VIRTUAL_HELPERS_OBJECTS -->
+
+    <!--START_OPTIMIZER  -->
+    <!--END_OPTIMIZER  -->
 </LinearLayout>
