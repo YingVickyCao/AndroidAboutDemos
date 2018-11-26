@@ -231,6 +231,30 @@
     <!-- END_CENTER_POSITING_AND_BIAS -->
 
     <!-- START_CIRCULAR_POSITING -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv71"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- app:layout_constraintCircleAngle="45", default  = 0 degree, 正上方 -->
+        <!-- app:layout_constraintCircleRadius="80dp",default  = 0 -->
+        <TextView
+            android:id="@+id/tv72"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            app:layout_constraintCircle="@id/tv71"
+            app:layout_constraintCircleAngle="45"
+            app:layout_constraintCircleRadius="80dp" />
+    </android.support.constraint.ConstraintLayout>
     <!-- END_CIRCULAR_POSITING -->
 </LinearLayout>
