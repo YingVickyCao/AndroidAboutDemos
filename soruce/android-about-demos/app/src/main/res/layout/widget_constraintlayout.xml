@@ -65,7 +65,7 @@
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/tv41"
+            android:id="@+id/tv31"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@android:color/holo_red_dark"
@@ -74,7 +74,7 @@
 
         <!-- Baseline -->
         <TextView
-            android:id="@+id/tv42"
+            android:id="@+id/tv32"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@android:color/holo_green_dark"
@@ -88,32 +88,149 @@
     <!-- START_MARGIN -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/tv31"
+            android:id="@+id/tv41"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <TextView
+            android:id="@+id/tv42"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv41" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv51"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv52"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv51" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv61"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv62"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv61"
+            app:layout_goneMarginStart="40dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B" />
+    </LinearLayout>
+    <!-- END_MARGIN -->
+
+    <!-- START_CENTER_POSITING_AND_BIAS -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@android:color/holo_red_dark"
             android:gravity="center"
             android:text="A"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Baseline -->
-        <TextView
-            android:id="@+id/tv32"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            android:textSize="35sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv31"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
-    <!-- END_MARGIN -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <!-- app:layout_constraintVertical_bias="0.5" default = 0.5  -->
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+    </android.support.constraint.ConstraintLayout>
+    <!-- END_CENTER_POSITING_AND_BIAS -->
+
+    <!-- START_CIRCULAR_POSITING -->
+
+    <!-- END_CIRCULAR_POSITING -->
 </LinearLayout>
