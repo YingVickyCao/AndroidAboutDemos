@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 import com.hades.android.example.android_about_demos.po.security.SecurityActivity;
+import com.hades.android.example.android_about_demos.widget.WidgetActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -14,14 +15,19 @@ public class MainActivity extends BaseActivity {
         initViews();
 
         findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
+        findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageSecurity();
+        pageWidget();
     }
 
     private void pageSecurity() {
         showActivity(SecurityActivity.class);
+    }
+
+    private void pageWidget() {
+        showActivity(WidgetActivity.class);
     }
 }

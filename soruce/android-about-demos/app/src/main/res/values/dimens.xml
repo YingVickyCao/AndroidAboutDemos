@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="topic_height">45dp</dimen>
+    <dimen name="topic_height">30dp</dimen>
     <dimen name="small_text_size">10sp</dimen>
 
     <!-- 水平间距的默认值 -->
