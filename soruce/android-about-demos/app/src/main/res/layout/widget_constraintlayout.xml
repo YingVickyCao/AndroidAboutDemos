@@ -387,49 +387,151 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
-        <!--<TextView-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:background="@android:color/holo_red_dark"-->
-        <!--android:gravity="center"-->
-        <!--android:text="A" />-->
-
-        <!-- 必须加constraint 限制，否则不生效 -->
-        <!-- app:layout_constraintDimensionRatio="1:2" with:height -->
-
-        <!--<TextView-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:background="@android:color/holo_red_dark"-->
-        <!--android:gravity="center"-->
-        <!--android:text="A"-->
-        <!--app:layout_constraintDimensionRatio="1:2"-->
-        <!--app:layout_constraintStart_toStartOf="parent" />-->
-
-        <!-- app:layout_constraintDimensionRatio="H,1:2" -->
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="200dp"
             android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- 以With约束height, With => height? -->
+        <!--app:layout_constraintDimensionRatio="1:2"-->
+        <!--app:layout_constraintDimensionRatio="H,1:2"-->
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_green_dark"
             android:gravity="center"
             android:text="A"
             app:layout_constraintDimensionRatio="H,1:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--<TextView-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:background="@android:color/holo_red_dark"-->
-        <!--android:gravity="center"-->
-        <!--android:text="A"-->
-        <!--app:layout_constraintDimensionRatio="H,1:2"-->
-        <!--app:layout_constraintTop_toBottomOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width? <= Height-->
+        <!--app:layout_constraintDimensionRatio="1:2"-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="W,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="H,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="W,2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- With和Height  0dp 以外的具体尺寸（包括wrap_content），Ratio 失效 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="2:1" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
 
     <!--END_DIMENSION_CONSTRAINTS -->
 
