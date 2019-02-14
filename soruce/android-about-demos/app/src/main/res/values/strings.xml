@@ -112,9 +112,13 @@
     <string name="big_str2">Quisque ultrices est justo, non aliquet libero.
         Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit. Quisque ultrices est justo, non aliquet libero. Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit.</string>
 
-    <string	name="cancel">Cancel</string>
-    <string	name="msg">Hello , Android!</string>
+    <string name="cancel">Cancel</string>
+    <string name="msg">Hello , Android!</string>
     <string name="check_if_have_added_view">Check if have added view</string>
+    <string name="frameLayout_layout_gravity">FrameLayout layout_gravity</string>
+    <string name="frameLayout_layout_gravity_center">FrameLayout layout_gravity=center</string>
+    <string name="linearLayout_layout_gravity">LinearLayout layout_gravity</string>
+    <string name="linearLayout_layout_gravity_center">LinearLayout layout_gravity=center</string>
 
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
