@@ -51,7 +51,7 @@
     <string name="insert_dict">添加单词</string>
     <string name="insert_bundles">Insert bundles</string>
     <string name="insert">Insert</string>
-    <string name="delete">delete</string>
+    <string name="delete">Delete</string>
     <string name="create_table">create table</string>
     <string name="delete_table">delete table</string>
     <string name="delete_table_data">delete table all data</string>
@@ -62,7 +62,7 @@
     <string name="detail">解释</string>
     <string name="search">查询</string>
     <string name="view">查看</string>
-    <string name="add">添加</string>
+    <string name="add">Add</string>
     <string name="name">联系人姓名</string>
     <string name="phone">电话</string>
     <string name="email">Email</string>
@@ -112,6 +112,9 @@
     <string name="big_str2">Quisque ultrices est justo, non aliquet libero.
         Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit. Quisque ultrices est justo, non aliquet libero. Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit.</string>
 
+    <string	name="cancel">Cancel</string>
+    <string	name="msg">Hello , Android!</string>
+    <string name="check_if_have_added_view">Check if have added view</string>
 
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">

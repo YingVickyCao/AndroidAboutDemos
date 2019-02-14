@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_margin">16dp</dimen>
-    <dimen name="topic_height">30dp</dimen>
-    <dimen name="small_text_size">10sp</dimen>
+
+    <dimen name="size_small_text">10sp</dimen>
+    <dimen name="size_text_margin">16dp</dimen>
+    <dimen name="size_topic">30dp</dimen>
+    <dimen name="size_20">20dp</dimen>
 
     <!-- 水平间距的默认值 -->
     <dimen name="cascade_horizontal_spacing">10dp</dimen>

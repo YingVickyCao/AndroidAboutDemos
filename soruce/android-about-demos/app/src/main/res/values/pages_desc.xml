@@ -20,6 +20,7 @@
     <string name="page_imageView_scaleType">ImageView scaleType</string>
     <string name="page_drawable_vectorDrawable">VectorDrawable</string>
     <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
+    <string name="page_qa_about_view">QA about view</string>
 
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
 
