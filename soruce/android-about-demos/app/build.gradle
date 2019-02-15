@@ -6,7 +6,8 @@ android {
     defaultConfig {
         applicationId "com.hades.android.example.android_about_demos"
 //        minSdkVersion 21
-        minSdkVersion 20
+//        minSdkVersion 20
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

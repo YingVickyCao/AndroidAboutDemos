@@ -15,7 +15,6 @@ import com.hades.android.example.android_about_demos.other_ui.dialog.ProgressDia
 import com.hades.android.example.android_about_demos.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.android.example.android_about_demos.other_ui.notifiaction.NotificationFragment;
 import com.hades.android.example.android_about_demos.widget.button.UseButton2AvoidCheckEditInputDateActivity;
-import com.hades.android.example.android_about_demos.widget.common.QAAboutViewFragemnt;
 import com.hades.android.example.android_about_demos.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.drag_drop.DragDropFragment;
 import com.hades.android.example.android_about_demos.widget.imageview.KenBurnsImageActivity;
@@ -48,7 +47,6 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
         initViews();
 
-        findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
@@ -91,11 +89,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
     @Override
     protected void showCurrentTest() {
-        pageQAAboutView();
-    }
-
-    private void pageQAAboutView() {
-        showFragment(new QAAboutViewFragemnt());
+        pageWebView();
     }
 
     private void pageConstraintLayout() {

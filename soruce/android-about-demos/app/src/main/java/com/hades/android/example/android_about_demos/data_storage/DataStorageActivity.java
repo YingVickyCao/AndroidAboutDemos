@@ -8,7 +8,7 @@ import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 import com.hades.android.example.android_about_demos.data_storage.db.TestDBFragment;
 import com.hades.android.example.android_about_demos.data_storage.io.TestIOFragment;
-import com.hades.android.example.android_about_demos.data_storage.shared_preferences.IOSharedPreferencesFragment;
+import com.hades.android.example.android_about_demos.data_storage.shared_preferences.TestSharedPreferencesFragment;
 
 public class DataStorageActivity extends BaseActivity {
     @Override
@@ -37,7 +37,7 @@ public class DataStorageActivity extends BaseActivity {
     }
 
     private void pageSharedPreferences() {
-        showFragment(new IOSharedPreferencesFragment());
+        showFragment(new TestSharedPreferencesFragment());
     }
 
     private void pageDatabase() {

@@ -119,6 +119,7 @@
     <string name="frameLayout_layout_gravity_center">FrameLayout layout_gravity=center</string>
     <string name="linearLayout_layout_gravity">LinearLayout layout_gravity</string>
     <string name="linearLayout_layout_gravity_center">LinearLayout layout_gravity=center</string>
+    <string name="check_sharedPreferences_is_same_instance">Check SharedPreferences Is same instance</string>
 
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
