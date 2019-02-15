@@ -33,4 +33,9 @@
         style="@style/btn.small"
         android:text="@string/check_sharedPreferences_is_same_instance" />
 
+    <Button
+        android:id="@+id/runnableInMainThread"
+        style="@style/btn.small"
+        android:text="Runnable on Main Thread" />
+
 </LinearLayout>

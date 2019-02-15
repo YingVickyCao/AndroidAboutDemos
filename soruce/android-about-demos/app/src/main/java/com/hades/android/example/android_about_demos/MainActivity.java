@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageQAAboutView();
+        pageDateStorage();
     }
 
     private void pageSecurity() {

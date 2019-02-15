@@ -28,11 +28,12 @@ public class TestSharedPreferencesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.io_shared_preferences_layout, container, false);
-
         mContent = view.findViewById(R.id.content);
+
         view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());
         view.findViewById(R.id.checkSharedPreferencesIsSameInstance).setOnClickListener(v -> checkSharedPreferencesIsSameInstance());
+        view.findViewById(R.id.runnableInMainThread).setOnClickListener(v -> runnableInMainThread());
 
         return view;
     }
@@ -70,6 +71,7 @@ public class TestSharedPreferencesFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
 
         SharedPreferences.Editor editor = preferences.edit();
+        Log.d(TAG, "write,Editor hashCode=" + editor.hashCode());
         editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
         editor.putInt("random", (int) (Math.random() * 100));
         // Default in main  thread
@@ -106,5 +108,16 @@ public class TestSharedPreferencesFragment extends Fragment {
 
         SharedPreferences sharedPreferences4 = getActivity().getApplication().getSharedPreferences(fileName, Context.MODE_PRIVATE);
         Log.d(TAG, "testSharedPreferences,Application Context=" + getActivity().getApplication().hashCode() + ",SF hasCode=" + sharedPreferences4.hashCode());
+    }
+
+    private void runnableInMainThread() {
+        Runnable runnable = new Runnable() {
+
+            @Override
+            public void run() {
+                Log.d(TAG, "runnableInMainThread,thread id =" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+            }
+        };
+        runnable.run();
     }
 }
