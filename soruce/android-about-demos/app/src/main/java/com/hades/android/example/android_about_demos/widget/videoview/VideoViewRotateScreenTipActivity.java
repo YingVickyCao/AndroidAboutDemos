@@ -56,12 +56,7 @@ public class VideoViewRotateScreenTipActivity extends Activity {
              *横屏时，videoView全屏显示
              */
             case Configuration.ORIENTATION_LANDSCAPE: {
-                // 隐藏portrait content
-                mPortraitContent.setVisibility(View.GONE);
-
-                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                params.addRule(RelativeLayout.CENTER_IN_PARENT);
-                mVideoView.setLayoutParams(params);
+                switchToLandscape();
                 break;
             }
 
@@ -71,23 +66,34 @@ public class VideoViewRotateScreenTipActivity extends Activity {
             case Configuration.ORIENTATION_UNDEFINED:
             case Configuration.ORIENTATION_PORTRAIT:
             default: {
-                // 显示portrait content
-                mPortraitContent.setVisibility(View.VISIBLE);
-
-                int[] locationArray = new int[2];
-                /**
-                 * 取白色背景视图的位置大小
-                 */
-                mPortraitPosition.getLocationOnScreen(locationArray);
-
-                // 其设置为 videoView 的布局参数
-                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mPortraitPosition.getWidth(), mPortraitPosition.getHeight());
-                params.leftMargin = locationArray[0];
-                params.topMargin = locationArray[1];
-                mVideoView.setLayoutParams(params);
+                switchToPortrait();
                 break;
             }
         }
+    }
+
+    private void switchToPortrait() {
+        mPortraitContent.setVisibility(View.VISIBLE);
+
+        int[] locationArray = new int[2];
+        /**
+         * 取白色背景视图的位置大小
+         */
+        mPortraitPosition.getLocationOnScreen(locationArray);
+
+        // 其设置为 videoView 的布局参数
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mPortraitPosition.getWidth(), mPortraitPosition.getHeight());
+        params.leftMargin = locationArray[0];
+        params.topMargin = locationArray[1];
+        mVideoView.setLayoutParams(params);
+    }
+
+    private void switchToLandscape() {
+        mPortraitContent.setVisibility(View.GONE);
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        mVideoView.setLayoutParams(params);
     }
 
     @Override

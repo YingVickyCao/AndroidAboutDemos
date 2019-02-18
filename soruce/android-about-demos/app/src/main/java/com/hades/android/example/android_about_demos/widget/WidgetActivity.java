@@ -89,7 +89,7 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
 
     @Override
     protected void showCurrentTest() {
-        pageWebView();
+            pageVideoviewRotateScreenTip();
     }
 
     private void pageConstraintLayout() {
