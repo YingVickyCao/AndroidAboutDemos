@@ -3,6 +3,7 @@ package com.hades.android.example.android_about_demos;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class QAAboutFragment extends Fragment {
     View redBtn;
     TextView textViewInFrameLayout;
     TextView textViewInLinearLayout;
+    View checkedGoneView;
 
     @Nullable
     @Override
@@ -26,11 +28,12 @@ public class QAAboutFragment extends Fragment {
 
         redBtnContainer = view.findViewById(R.id.redBtnContainer);
         textViewInFrameLayout = view.findViewById(R.id.textViewInFrameLayout);
-        textViewInLinearLayout = view.findViewById(R.id.textViewInLinearLayout);
+        checkedGoneView = view.findViewById(R.id.checkedGoneView);
 
         view.findViewById(R.id.checkIfHaveAddedView).setOnClickListener(v -> checkIfHaveAddedView());
         view.findViewById(R.id.frameLayoutLayoutGravity).setOnClickListener(v -> frameLayoutLayoutGravity());
         view.findViewById(R.id.linearLayoutLayoutGravity).setOnClickListener(v -> linearLayoutLayoutGravity());
+        view.findViewById(R.id.checkGoneViewSize).setOnClickListener(v -> checkGoneViewSize());
         return view;
     }
 
@@ -66,5 +69,20 @@ public class QAAboutFragment extends Fragment {
 
 //        android:gravity="center"
         textViewInLinearLayout.setGravity(Gravity.CENTER);
+    }
+
+    private void checkGoneViewSize() {
+        if (checkedGoneView.getVisibility() == View.VISIBLE) {
+            checkedGoneView.setVisibility(View.GONE);
+            printLayoutParams("GONE");
+        } else {
+            checkedGoneView.setVisibility(View.VISIBLE);
+            printLayoutParams("VISIBLE");
+        }
+    }
+
+    private void printLayoutParams(String tag) {
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) checkedGoneView.getLayoutParams();
+        Log.d(TAG, tag + ",height=" + layoutParams.height + ",width=" + layoutParams.width);
     }
 }

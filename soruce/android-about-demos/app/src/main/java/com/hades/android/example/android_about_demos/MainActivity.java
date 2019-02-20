@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageWidget();
+        pageQAAboutView();
     }
 
     private void pageSecurity() {
