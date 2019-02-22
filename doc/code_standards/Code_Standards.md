@@ -8,5 +8,11 @@
 - 3x    —— res/  drawable-xxhdpi/
 - 4x 	—— res/  drawable-xxxhdpi/	
 
-
 ![Figure 2. Relative sizes for bitmaps at different density sizes](https://developer.android.google.cn/images/screens_support/devices-density_2x.png)
+
+
+## Image name rule
+- xml_close
+- icon_close
+- t_close_light
+- t_close_dark
