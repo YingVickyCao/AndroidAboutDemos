@@ -16,3 +16,6 @@
 - icon_close
 - t_close_light
 - t_close_dark
+
+## Debug code
+- app/src/debug
