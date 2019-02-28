@@ -14,11 +14,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.component.BitmapUtil;
 
 public class LoadBitmapPOFragment extends Fragment {
     private static final String TAG = LoadBitmapPOFragment.class.getSimpleName();
 
     private ImageView mImageView;
+    private BitmapUtil bitmapUtil = new BitmapUtil();
 
     @Nullable
     @Override
@@ -28,7 +30,7 @@ public class LoadBitmapPOFragment extends Fragment {
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         view.findViewById(R.id.setImageResource).setOnClickListener(v -> setImageResource());
         view.findViewById(R.id.decodeResource).setOnClickListener(v -> decodeResource());
-        view.findViewById(R.id.decodeResourceWithSampled).setOnClickListener(v -> decodeResourceWithSampled());
+        view.findViewById(R.id.decodeResourceWithSampled).setOnClickListener(v -> decodeResourceWithSampled2());
         view.findViewById(R.id.decodeFile).setOnClickListener(v -> decodeFile());
         return view;
     }
@@ -64,6 +66,20 @@ public class LoadBitmapPOFragment extends Fragment {
         checkDrawableMemory();
     }
 
+    /**
+     * checkDrawableMemory: [Bitmap]: Width=2560,Height=1440,ByteCount=14745600,[ImageView]: width=1440, height=2520
+     */
+    private void decodeResourceWithSampled2() {
+        int requireWidth = mImageView.getWidth();
+        int requireHeight = bitmapUtil.getRequireHeight(getResources(), R.drawable.wallpaper, mImageView.getWidth());
+        Bitmap bitmap2 = bitmapUtil.decodeResourceWithSampled(getResources(), R.drawable.wallpaper, requireWidth, requireHeight);
+        mImageView.setImageBitmap(bitmap2);
+        checkDrawableMemory();
+    }
+
+    /**
+     * checkDrawableMemory: [Bitmap]: Width=2560,Height=1440,ByteCount=14745600,[ImageView]: width=1440, height=400
+     */
     private void decodeResourceWithSampled() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         // First decode with inJustDecodeBounds=true to check dimensions
