@@ -6,6 +6,7 @@
     <string name="page_shared_preferences">SharedPreferences</string>
     <string name="page_sqlite">Sqlite</string>
     <string name="page_io">IO</string>
+    <string name="page_resource">Resource</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_linearLayout">LinearLayout</string>
@@ -21,13 +22,11 @@
     <string name="page_drawable_vectorDrawable">VectorDrawable</string>
     <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_qa_about_view">QA about view</string>
-
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
-
-
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_webView">WebView</string>
     <string name="page_app_chooser">Show an app chooser</string>
     <string name="page_security">Security</string>
+    <string name="page_load_bitmap_po">Load-bitmap PO</string>
 
 </resources>

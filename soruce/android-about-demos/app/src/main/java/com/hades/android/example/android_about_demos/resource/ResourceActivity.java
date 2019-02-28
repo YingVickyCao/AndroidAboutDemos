@@ -9,6 +9,7 @@ import com.hades.android.example.android_about_demos.resource.adapter_screen.Dis
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.BitmapDrawableFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.bitmap.LoadBitmapPOFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.VectorDrawableFragment;
@@ -29,6 +30,7 @@ public class ResourceActivity extends BaseActivity {
         setContentView(R.layout.activity_resources);
         initViews();
 
+        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.theme).setOnClickListener(v -> theme());
         findViewById(R.id.internationalization).setOnClickListener(v -> internationalization());
@@ -44,7 +46,11 @@ public class ResourceActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageManagingBitmapMemory();
+        pageLoadBitmapPo();
+    }
+
+    private void pageLoadBitmapPo() {
+        showFragment(new LoadBitmapPOFragment());
     }
 
     private void parseXml() {
