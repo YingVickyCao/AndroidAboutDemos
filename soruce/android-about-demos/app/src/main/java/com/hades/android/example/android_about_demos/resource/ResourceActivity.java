@@ -1,5 +1,6 @@
 package com.hades.android.example.android_about_demos.resource;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -29,6 +30,8 @@ public class ResourceActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resources);
         initViews();
+
+        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
