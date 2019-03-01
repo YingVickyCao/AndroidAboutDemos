@@ -38,9 +38,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * A simple subclass of {@link ImageResizer} that fetches and resizes images fetched from a URL.
+ * A simple subclass of {@link ImageResize} that fetches and resizes images fetched from a URL.
  */
-public class ImageFetcher extends ImageResizer {
+public class ImageFetcher extends ImageResize {
     private static final String TAG = "ImageFetcher";
     private static final int HTTP_CACHE_SIZE = 10 * 1024 * 1024; // 10MB
     private static final String HTTP_CACHE_DIR = "http";
@@ -241,7 +241,7 @@ public class ImageFetcher extends ImageResizer {
 
         Bitmap bitmap = null;
         if (fileDescriptor != null) {
-            bitmap = decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth,
+            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth,
                     mImageHeight, getImageCache());
         }
         if (fileInputStream != null) {
