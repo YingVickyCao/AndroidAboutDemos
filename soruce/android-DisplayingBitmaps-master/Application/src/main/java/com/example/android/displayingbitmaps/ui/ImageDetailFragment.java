@@ -28,12 +28,13 @@ import android.widget.ProgressBar;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
 import com.example.android.displayingbitmaps.util.ImageWorker;
+import com.example.android.displayingbitmaps.util.OnImageLoadedListener;
 import com.example.android.displayingbitmaps.util.Utils;
 
 /**
  * This fragment will populate the children of the ViewPager from {@link ImageDetailActivity}.
  */
-public class ImageDetailFragment extends Fragment implements ImageWorker.OnImageLoadedListener {
+public class ImageDetailFragment extends Fragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
     private String mImageUrl;
     private ImageView mImageView;

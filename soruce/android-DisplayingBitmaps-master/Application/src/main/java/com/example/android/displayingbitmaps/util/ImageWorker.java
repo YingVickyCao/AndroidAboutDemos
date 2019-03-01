@@ -61,41 +61,29 @@ public abstract class ImageWorker {
         mResources = context.getResources();
     }
 
-    /**
-     * Load an image specified by the data parameter into an ImageView (override
-     * {@link ImageWorker#processBitmap(Object)} to define the processing logic). A memory and
-     * disk cache will be used if an {@link ImageCache} has been added using
-     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}. If the
-     * image is found in the memory cache, it is set immediately, otherwise an {@link AsyncTask}
-     * will be created to asynchronously load the bitmap.
-     *
-     * @param data The URL of the image to download.
-     * @param imageView The ImageView to bind the downloaded image to.
-     * @param listener A listener that will be called back once the image has been loaded.
-     */
-    public void loadImage(Object data, ImageView imageView, OnImageLoadedListener listener) {
-        if (data == null) {
+    public void loadImage(String url, ImageView boundImageView, OnImageLoadedListener listener) {
+        if (url == null) {
             return;
         }
 
         BitmapDrawable value = null;
 
         if (mImageCache != null) {
-            value = mImageCache.getBitmapFromMemCache(String.valueOf(data));
+            value = mImageCache.getBitmapFromMemCache(String.valueOf(url));
         }
 
         if (value != null) {
             // Bitmap found in memory cache
-            imageView.setImageDrawable(value);
+            boundImageView.setImageDrawable(value);
             if (listener != null) {
                 listener.onImageLoaded(true);
             }
-        } else if (cancelPotentialWork(data, imageView)) {
+        } else if (cancelPotentialWork(url, boundImageView)) {
             //BEGIN_INCLUDE(execute_background_task)
-            final BitmapWorkerTask task = new BitmapWorkerTask(data, imageView, listener);
+            final BitmapWorkerTask task = new BitmapWorkerTask(url, boundImageView, listener);
             final AsyncDrawable asyncDrawable =
                     new AsyncDrawable(mResources, mLoadingBitmap, task);
-            imageView.setImageDrawable(asyncDrawable);
+            boundImageView.setImageDrawable(asyncDrawable);
 
             // NOTE: This uses a custom version of AsyncTask that has been pulled from the
             // framework and slightly modified. Refer to the docs at the top of the class
@@ -112,28 +100,17 @@ public abstract class ImageWorker {
      * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}. If the
      * image is found in the memory cache, it is set immediately, otherwise an {@link AsyncTask}
      * will be created to asynchronously load the bitmap.
-     *
-     * @param data The URL of the image to download.
+     *  @param url      The URL of the image to download.
      * @param imageView The ImageView to bind the downloaded image to.
      */
-    public void loadImage(Object data, ImageView imageView) {
-        loadImage(data, imageView, null);
+    public void loadImage(String url, ImageView imageView) {
+        loadImage(url, imageView, null);
     }
 
-    /**
-     * Set placeholder bitmap that shows when the the background thread is running.
-     *
-     * @param bitmap
-     */
     public void setLoadingImage(Bitmap bitmap) {
         mLoadingBitmap = bitmap;
     }
 
-    /**
-     * Set placeholder bitmap that shows when the the background thread is running.
-     *
-     * @param resId
-     */
     public void setLoadingImage(int resId) {
         mLoadingBitmap = BitmapFactory.decodeResource(mResources, resId);
     }
@@ -141,11 +118,12 @@ public abstract class ImageWorker {
     /**
      * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
      * caching.
+     *
      * @param fragmentManager
-     * @param cacheParams The cache parameters to use for the image cache.
+     * @param cacheParams     The cache parameters to use for the image cache.
      */
     public void addImageCache(FragmentManager fragmentManager,
-            ImageCacheParams cacheParams) {
+                              ImageCacheParams cacheParams) {
         mImageCacheParams = cacheParams;
         mImageCache = ImageCache.getInstance(fragmentManager, mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
@@ -154,9 +132,10 @@ public abstract class ImageWorker {
     /**
      * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
      * caching.
+     *
      * @param activity
      * @param diskCacheDirectoryName See
-     * {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
+     *                               {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
      */
     public void addImageCache(FragmentActivity activity, String diskCacheDirectoryName) {
         mImageCacheParams = new ImageCacheParams(activity, diskCacheDirectoryName);
@@ -182,7 +161,7 @@ public abstract class ImageWorker {
      * example, you could resize a large bitmap here, or pull down an image from the network.
      *
      * @param data The data to identify which image to process, as provided by
-     *            {@link ImageWorker#loadImage(Object, android.widget.ImageView)}
+     *             {@link ImageWorker#loadImage(String, ImageView)}
      * @return The processed bitmap
      */
     protected abstract Bitmap processBitmap(Object data);
@@ -196,6 +175,7 @@ public abstract class ImageWorker {
 
     /**
      * Cancels any pending work attached to the provided ImageView.
+     *
      * @param imageView
      */
     public static void cancelWork(ImageView imageView) {
@@ -290,7 +270,8 @@ public abstract class ImageWorker {
                 while (mPauseWork && !isCancelled()) {
                     try {
                         mPauseWorkLock.wait();
-                    } catch (InterruptedException e) {}
+                    } catch (InterruptedException e) {
+                    }
                 }
             }
 
@@ -390,19 +371,6 @@ public abstract class ImageWorker {
     }
 
     /**
-     * Interface definition for callback on image loaded successfully.
-     */
-    public interface OnImageLoadedListener {
-
-        /**
-         * Called once the image has been loaded.
-         * @param success True if the image was loaded successfully, false if
-         *                there was an error.
-         */
-        void onImageLoaded(boolean success);
-    }
-
-    /**
      * A custom Drawable that will be attached to the imageView while the work is in progress.
      * Contains a reference to the actual worker task, so that it can be stopped if a new binding is
      * required, and makes sure that only the last started worker process can bind its result,
@@ -414,7 +382,7 @@ public abstract class ImageWorker {
         public AsyncDrawable(Resources res, Bitmap bitmap, BitmapWorkerTask bitmapWorkerTask) {
             super(res, bitmap);
             bitmapWorkerTaskReference =
-                new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
+                    new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
         }
 
         public BitmapWorkerTask getBitmapWorkerTask() {
@@ -423,7 +391,7 @@ public abstract class ImageWorker {
     }
 
     /**
-     * Called when the processing is complete and the final drawable should be 
+     * Called when the processing is complete and the final drawable should be
      * set on the ImageView.
      *
      * @param imageView
@@ -433,7 +401,7 @@ public abstract class ImageWorker {
         if (mFadeInBitmap) {
             // Transition drawable with a transparent drawable and the final drawable
             final TransitionDrawable td =
-                    new TransitionDrawable(new Drawable[] {
+                    new TransitionDrawable(new Drawable[]{
                             new ColorDrawable(android.R.color.transparent),
                             drawable
                     });
@@ -473,7 +441,7 @@ public abstract class ImageWorker {
 
         @Override
         protected Void doInBackground(Object... params) {
-            switch ((Integer)params[0]) {
+            switch ((Integer) params[0]) {
                 case MESSAGE_CLEAR:
                     clearCacheInternal();
                     break;
