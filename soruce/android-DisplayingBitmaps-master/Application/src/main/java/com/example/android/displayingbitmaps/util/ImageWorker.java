@@ -43,7 +43,7 @@ public abstract class ImageWorker {
     private static final int FADE_IN_TIME = 200;
 
     private ImageCache mImageCache;
-    private ImageCache.ImageCacheParams mImageCacheParams;
+    private ImageCacheParams mImageCacheParams;
     private Bitmap mLoadingBitmap;
     private boolean mFadeInBitmap = true;
     private boolean mExitTasksEarly = false;
@@ -65,7 +65,7 @@ public abstract class ImageWorker {
      * Load an image specified by the data parameter into an ImageView (override
      * {@link ImageWorker#processBitmap(Object)} to define the processing logic). A memory and
      * disk cache will be used if an {@link ImageCache} has been added using
-     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCache.ImageCacheParams)}. If the
+     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}. If the
      * image is found in the memory cache, it is set immediately, otherwise an {@link AsyncTask}
      * will be created to asynchronously load the bitmap.
      *
@@ -109,7 +109,7 @@ public abstract class ImageWorker {
      * Load an image specified by the data parameter into an ImageView (override
      * {@link ImageWorker#processBitmap(Object)} to define the processing logic). A memory and
      * disk cache will be used if an {@link ImageCache} has been added using
-     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCache.ImageCacheParams)}. If the
+     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}. If the
      * image is found in the memory cache, it is set immediately, otherwise an {@link AsyncTask}
      * will be created to asynchronously load the bitmap.
      *
@@ -145,7 +145,7 @@ public abstract class ImageWorker {
      * @param cacheParams The cache parameters to use for the image cache.
      */
     public void addImageCache(FragmentManager fragmentManager,
-            ImageCache.ImageCacheParams cacheParams) {
+            ImageCacheParams cacheParams) {
         mImageCacheParams = cacheParams;
         mImageCache = ImageCache.getInstance(fragmentManager, mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
@@ -156,10 +156,10 @@ public abstract class ImageWorker {
      * caching.
      * @param activity
      * @param diskCacheDirectoryName See
-     * {@link ImageCache.ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
+     * {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
      */
     public void addImageCache(FragmentActivity activity, String diskCacheDirectoryName) {
-        mImageCacheParams = new ImageCache.ImageCacheParams(activity, diskCacheDirectoryName);
+        mImageCacheParams = new ImageCacheParams(activity, diskCacheDirectoryName);
         mImageCache = ImageCache.getInstance(activity.getSupportFragmentManager(), mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
     }

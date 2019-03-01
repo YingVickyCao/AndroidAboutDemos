@@ -37,7 +37,7 @@ import android.widget.Toast;
 import com.example.android.displayingbitmaps.BuildConfig;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.provider.Images;
-import com.example.android.displayingbitmaps.util.ImageCache;
+import com.example.android.displayingbitmaps.util.ImageCacheParams;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
 import com.example.android.displayingbitmaps.util.Utils;
 
@@ -72,8 +72,8 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
         // cache.
         final int longest = (height > width ? height : width) / 2;
 
-        ImageCache.ImageCacheParams cacheParams =
-                new ImageCache.ImageCacheParams(this, IMAGE_CACHE_DIR);
+        ImageCacheParams cacheParams =
+                new ImageCacheParams(this, IMAGE_CACHE_DIR);
         cacheParams.setMemCacheSizePercent(0.25f); // Set memory cache to 25% of app memory
 
         // The ImageFetcher takes care of loading images into our ImageView children asynchronously
