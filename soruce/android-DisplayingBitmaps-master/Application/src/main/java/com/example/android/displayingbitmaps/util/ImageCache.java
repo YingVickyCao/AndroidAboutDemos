@@ -34,11 +34,6 @@ import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 
 import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.ref.SoftReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -73,12 +68,10 @@ public class ImageCache {
     public static final boolean DEFAULT_DISK_CACHE_ENABLED = true;
     public static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE = false;
 
-    private DiskLruCache mDiskLruCache;
-
     private ImageCacheParams mCacheParams;
-    private final Object mDiskCacheLock = new Object();
-    private boolean mDiskCacheStarting = true;
+
     MemoryCache mMemoryCache = new MemoryCache();
+    DiskCache mDiskCache = new DiskCache();
 
     private Set<SoftReference<Bitmap>> mReusableBitmaps;
 
@@ -127,6 +120,7 @@ public class ImageCache {
      */
     private void init(ImageCacheParams cacheParams) {
         mCacheParams = cacheParams;
+        mDiskCache.init(cacheParams);
 
         //BEGIN_INCLUDE(init_memory_cache)
         // Set up memory cache
@@ -167,80 +161,15 @@ public class ImageCache {
      * background thread.
      */
     public void initDiskCache() {
-        // Set up disk cache
-        synchronized (mDiskCacheLock) {
-            if (mDiskLruCache == null || mDiskLruCache.isClosed()) {
-                File diskCacheDir = mCacheParams.diskCacheDir;
-                if (mCacheParams.diskCacheEnabled && diskCacheDir != null) {
-                    if (!diskCacheDir.exists()) {
-                        diskCacheDir.mkdirs();
-                    }
-                    if (getUsableSpace(diskCacheDir) > mCacheParams.diskCacheSize) {
-                        try {
-                            mDiskLruCache = DiskLruCache.open(
-                                    diskCacheDir, 1, 1, mCacheParams.diskCacheSize);
-                            if (BuildConfig.DEBUG) {
-                                Log.d(TAG, "Disk cache initialized");
-                            }
-                        } catch (final IOException e) {
-                            mCacheParams.diskCacheDir = null;
-                            Log.e(TAG, "initDiskCache - " + e);
-                        }
-                    }
-                }
-            }
-            mDiskCacheStarting = false;
-            mDiskCacheLock.notifyAll();
-        }
+        mDiskCache.initDiskCache();
     }
 
-    /**
-     * Adds a bitmap to both memory and disk cache.
-     *
-     * @param data  Unique identifier for the bitmap to store
-     * @param value The bitmap drawable to store
-     */
     public void addBitmapToCache(String data, BitmapDrawable value) {
-        //BEGIN_INCLUDE(add_bitmap_to_cache)
         if (data == null || value == null) {
             return;
         }
         mMemoryCache.addBitmapToCache(data, value);
-
-        synchronized (mDiskCacheLock) {
-            // Add to disk cache
-            if (mDiskLruCache != null) {
-                final String key = hashKeyForDisk(data);
-                OutputStream out = null;
-                try {
-                    DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
-                    if (snapshot == null) {
-                        final DiskLruCache.Editor editor = mDiskLruCache.edit(key);
-                        if (editor != null) {
-                            out = editor.newOutputStream(DISK_CACHE_INDEX);
-                            value.getBitmap().compress(
-                                    mCacheParams.compressFormat, mCacheParams.compressQuality, out);
-                            editor.commit();
-                            out.close();
-                        }
-                    } else {
-                        snapshot.getInputStream(DISK_CACHE_INDEX).close();
-                    }
-                } catch (final IOException e) {
-                    Log.e(TAG, "addBitmapToCache - " + e);
-                } catch (Exception e) {
-                    Log.e(TAG, "addBitmapToCache - " + e);
-                } finally {
-                    try {
-                        if (out != null) {
-                            out.close();
-                        }
-                    } catch (IOException e) {
-                    }
-                }
-            }
-        }
-        //END_INCLUDE(add_bitmap_to_cache)
+        mDiskCache.addBitmapToCache(data, value);
     }
 
     public BitmapDrawable getBitmapFromMemoryCache(String url) {
@@ -252,56 +181,8 @@ public class ImageCache {
         return memValue;
     }
 
-    /**
-     * Get from disk cache.
-     *
-     * @param data Unique identifier for which item to get
-     * @return The bitmap if found in cache, null otherwise
-     */
-    public Bitmap getBitmapFromDiskCache(String data) {
-        //BEGIN_INCLUDE(get_bitmap_from_disk_cache)
-        final String key = hashKeyForDisk(data);
-        Bitmap bitmap = null;
-
-        synchronized (mDiskCacheLock) {
-            while (mDiskCacheStarting) {
-                try {
-                    mDiskCacheLock.wait();
-                } catch (InterruptedException e) {
-                }
-            }
-            if (mDiskLruCache != null) {
-                InputStream inputStream = null;
-                try {
-                    final DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
-                    if (snapshot != null) {
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "Disk cache hit");
-                        }
-                        inputStream = snapshot.getInputStream(DISK_CACHE_INDEX);
-                        if (inputStream != null) {
-                            FileDescriptor fd = ((FileInputStream) inputStream).getFD();
-
-                            // Decode bitmap, but we don't want to sample so give
-                            // MAX_VALUE as the target dimensions
-                            bitmap = ImageResizer.decodeSampledBitmapFromDescriptor(
-                                    fd, Integer.MAX_VALUE, Integer.MAX_VALUE, this);
-                        }
-                    }
-                } catch (final IOException e) {
-                    Log.e(TAG, "getBitmapFromDiskCache - " + e);
-                } finally {
-                    try {
-                        if (inputStream != null) {
-                            inputStream.close();
-                        }
-                    } catch (IOException e) {
-                    }
-                }
-            }
-            return bitmap;
-        }
-        //END_INCLUDE(get_bitmap_from_disk_cache)
+    public Bitmap getBitmapFromDiskCache(String url) {
+        return mDiskCache.getBitmapFromDiskCache(url, this);
     }
 
     /**
@@ -347,21 +228,7 @@ public class ImageCache {
      */
     public void clearCache() {
         mMemoryCache.clearCache();
-        synchronized (mDiskCacheLock) {
-            mDiskCacheStarting = true;
-            if (mDiskLruCache != null && !mDiskLruCache.isClosed()) {
-                try {
-                    mDiskLruCache.delete();
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "Disk cache cleared");
-                    }
-                } catch (IOException e) {
-                    Log.e(TAG, "clearCache - " + e);
-                }
-                mDiskLruCache = null;
-                initDiskCache();
-            }
-        }
+        mDiskCache.clearCache();
     }
 
     /**
@@ -369,18 +236,7 @@ public class ImageCache {
      * disk access so this should not be executed on the main/UI thread.
      */
     public void flush() {
-        synchronized (mDiskCacheLock) {
-            if (mDiskLruCache != null) {
-                try {
-                    mDiskLruCache.flush();
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "Disk cache flushed");
-                    }
-                } catch (IOException e) {
-                    Log.e(TAG, "flush - " + e);
-                }
-            }
-        }
+        mDiskCache.flush();
     }
 
     /**
@@ -388,21 +244,7 @@ public class ImageCache {
      * disk access so this should not be executed on the main/UI thread.
      */
     public void close() {
-        synchronized (mDiskCacheLock) {
-            if (mDiskLruCache != null) {
-                try {
-                    if (!mDiskLruCache.isClosed()) {
-                        mDiskLruCache.close();
-                        mDiskLruCache = null;
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "Disk cache closed");
-                        }
-                    }
-                } catch (IOException e) {
-                    Log.e(TAG, "close - " + e);
-                }
-            }
-        }
+        mDiskCache.close();
     }
 
     /**
