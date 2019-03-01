@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.R;
+import com.example.android.displayingbitmaps.provider.Images;
 import com.example.android.displayingbitmaps.util.ImageCacheParams;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
 import com.example.android.displayingbitmaps.util.Utils;
@@ -65,7 +66,7 @@ public class ImageGridFragment extends Fragment {
         mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
         mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_spacing);
 
-        mAdapter = new ImageAdapter(this, getActivity());
+        mAdapter = new ImageAdapter(this, getActivity(), Images.imageThumbUrls);
 
         mImageFetcher = new ImageFetcher(getActivity(), mImageThumbSize);
         mImageFetcher.setLoadingImage(R.drawable.empty_photo);
