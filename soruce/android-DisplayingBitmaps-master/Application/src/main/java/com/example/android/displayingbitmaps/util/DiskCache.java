@@ -13,12 +13,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static com.example.android.displayingbitmaps.util.ImageCache.DISK_CACHE_INDEX;
-import static com.example.android.displayingbitmaps.util.ImageCache.getUsableSpace;
-import static com.example.android.displayingbitmaps.util.ImageCache.hashKeyForDisk;
+import static com.example.android.displayingbitmaps.util.LoadImageUtil.getUsableSpace;
+import static com.example.android.displayingbitmaps.util.LoadImageUtil.hashKeyForDisk;
 
 public class DiskCache {
     private static final String TAG = DiskCache.class.getSimpleName();
+    public static final boolean DEFAULT_DISK_CACHE_ENABLED = true;
+    public static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE = false;
+
+    public static final int DEFAULT_DISK_CACHE_BYTES_SIZE = 1024 * 1024 * 10; // 10MB
+    public static final int DISK_CACHE_INDEX = 0;
 
     private DiskLruCache mDiskLruCache;
     private final Object mDiskCacheLock = new Object();

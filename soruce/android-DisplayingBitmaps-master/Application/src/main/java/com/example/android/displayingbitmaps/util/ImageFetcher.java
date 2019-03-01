@@ -77,7 +77,7 @@ public class ImageFetcher extends ImageResizer {
 
     private void init(Context context) {
         checkConnection(context);
-        mHttpCacheDir = ImageCache.getDiskCacheDir(context, HTTP_CACHE_DIR);
+        mHttpCacheDir = LoadImageUtil.getDiskCacheDir(context, HTTP_CACHE_DIR);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class ImageFetcher extends ImageResizer {
             mHttpCacheDir.mkdirs();
         }
         synchronized (mHttpDiskCacheLock) {
-            if (ImageCache.getUsableSpace(mHttpCacheDir) > HTTP_CACHE_SIZE) {
+            if (LoadImageUtil.getUsableSpace(mHttpCacheDir) > HTTP_CACHE_SIZE) {
                 try {
                     mHttpDiskCache = DiskLruCache.open(mHttpCacheDir, 1, 1, HTTP_CACHE_SIZE);
                     if (BuildConfig.DEBUG) {
@@ -190,7 +190,7 @@ public class ImageFetcher extends ImageResizer {
             Log.d(TAG, "processBitmap - " + data);
         }
 
-        final String key = ImageCache.hashKeyForDisk(data);
+        final String key = LoadImageUtil.hashKeyForDisk(data);
         FileDescriptor fileDescriptor = null;
         FileInputStream fileInputStream = null;
         DiskLruCache.Snapshot snapshot;

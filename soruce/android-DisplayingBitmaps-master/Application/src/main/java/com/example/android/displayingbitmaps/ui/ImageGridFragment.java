@@ -101,7 +101,7 @@ public class ImageGridFragment extends Fragment {
     private void jumpImageDetailActivity(View v, long id) {
         final Intent i = new Intent(getActivity(), ImageDetailActivity.class);
         i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
-        if (Utils.hasJellyBean()) {
+        if (Utils.isVersionNoLessThanJellyBean()) {
             ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
             getActivity().startActivity(i, options.toBundle());
         } else {
@@ -114,7 +114,7 @@ public class ImageGridFragment extends Fragment {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                    if (!Utils.hasHoneycomb()) {
+                    if (!Utils.isVersionNoLessThanHoneycomb()) {
                         mImageFetcher.setPauseWork(true);
                     }
                 } else {

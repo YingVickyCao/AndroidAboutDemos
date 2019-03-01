@@ -16,27 +16,18 @@
 
 package com.example.android.displayingbitmaps.util;
 
-import android.annotation.TargetApi;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StatFs;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 
-import java.io.File;
 import java.lang.ref.SoftReference;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,23 +41,11 @@ import java.util.Set;
  * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}.
  */
 public class ImageCache {
-    private static final String TAG = "ImageCache";
-
-    // Default memory cache size in kilobytes
-    public static final int DEFAULT_MEM_CACHE_SIZE = 1024 * 5; // 5MB
-
-    // Default disk cache size in bytes
-    public static final int DEFAULT_DISK_CACHE_SIZE = 1024 * 1024 * 10; // 10MB
+    public static final String TAG = "ImageCache";
 
     // Compression settings when writing images to disk cache
     public static final CompressFormat DEFAULT_COMPRESS_FORMAT = CompressFormat.JPEG;
     public static final int DEFAULT_COMPRESS_QUALITY = 70;
-    public static final int DISK_CACHE_INDEX = 0;
-
-    // Constants to easily toggle various caches
-    protected static final boolean DEFAULT_MEM_CACHE_ENABLED = true;
-    public static final boolean DEFAULT_DISK_CACHE_ENABLED = true;
-    public static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE = false;
 
     private ImageCacheParams mCacheParams;
 
@@ -99,7 +78,7 @@ public class ImageCache {
             FragmentManager fragmentManager, ImageCacheParams cacheParams) {
 
         // Search for, or create an instance of the non-UI RetainFragment
-        final RetainFragment mRetainFragment = findOrCreateRetainFragment(fragmentManager);
+        final RetainFragment mRetainFragment = LoadImageUtil.findOrCreateRetainFragment(fragmentManager);
 
         // See if we already have an ImageCache stored in RetainFragment
         ImageCache imageCache = (ImageCache) mRetainFragment.getObject();
@@ -138,7 +117,7 @@ public class ImageCache {
             // require knowledge of the expected size of the bitmaps. From Honeycomb to JellyBean
             // the size would need to be precise, from KitKat onward the size would just need to
             // be the upper bound (due to changes in how inBitmap can re-use bitmaps).
-            if (Utils.hasHoneycomb()) {
+            if (Utils.isVersionNoLessThanHoneycomb()) {
                 mReusableBitmaps = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
             }
 
@@ -203,7 +182,7 @@ public class ImageCache {
 
                     if (null != item && item.isMutable()) {
                         // Check to see it the item can be used for inBitmap
-                        if (canUseForInBitmap(item, options)) {
+                        if (LoadImageUtil.canUseForInBitmap(item, options)) {
                             bitmap = item;
 
                             // Remove from reusable set so it can't be used again
@@ -219,7 +198,6 @@ public class ImageCache {
         }
 
         return bitmap;
-        //END_INCLUDE(get_bitmap_from_reusable_set)
     }
 
     /**
@@ -248,200 +226,12 @@ public class ImageCache {
     }
 
     /**
-     * @param candidate     - Bitmap to check
-     * @param targetOptions - Options that have the out* value populated
-     * @return true if <code>candidate</code> can be used for inBitmap re-use with
-     * <code>targetOptions</code>
-     */
-    @TargetApi(VERSION_CODES.KITKAT)
-    private static boolean canUseForInBitmap(
-            Bitmap candidate, BitmapFactory.Options targetOptions) {
-        //BEGIN_INCLUDE(can_use_for_inbitmap)
-        if (!Utils.hasKitKat()) {
-            // On earlier versions, the dimensions must match exactly and the inSampleSize must be 1
-            return candidate.getWidth() == targetOptions.outWidth
-                    && candidate.getHeight() == targetOptions.outHeight
-                    && targetOptions.inSampleSize == 1;
-        }
-
-        // From Android 4.4 (KitKat) onward we can re-use if the byte size of the new bitmap
-        // is smaller than the reusable bitmap candidate allocation byte count.
-        int width = targetOptions.outWidth / targetOptions.inSampleSize;
-        int height = targetOptions.outHeight / targetOptions.inSampleSize;
-        int byteCount = width * height * getBytesPerPixel(candidate.getConfig());
-        return byteCount <= candidate.getAllocationByteCount();
-        //END_INCLUDE(can_use_for_inbitmap)
-    }
-
-    /**
-     * Return the byte usage per pixel of a bitmap based on its configuration.
-     *
-     * @param config The bitmap configuration.
-     * @return The byte usage per pixel.
-     */
-    private static int getBytesPerPixel(Config config) {
-        if (config == Config.ARGB_8888) {
-            return 4;
-        } else if (config == Config.RGB_565) {
-            return 2;
-        } else if (config == Config.ARGB_4444) {
-            return 2;
-        } else if (config == Config.ALPHA_8) {
-            return 1;
-        }
-        return 1;
-    }
-
-    public static File getDiskCacheDir(Context context, String uniqueName) {
-        final String cachePath = checkIsMediaMounted() || checkIsExternalStorageBuiltIn() ? getExternalCacheDirPath(context) : getInternalCacheDirPath(context);
-        return new File(cachePath + File.separator + uniqueName);
-    }
-
-    private static boolean checkIsMediaMounted() {
-        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    }
-
-    private static boolean checkIsExternalStorageBuiltIn() {
-        return !isExternalStorageRemovable();
-    }
-
-    private static String getExternalCacheDirPath(Context context) {
-        return getExternalCacheDir(context).getPath();
-    }
-
-    private static String getInternalCacheDirPath(Context context) {
-        return context.getCacheDir().getPath();
-    }
-
-    /**
-     * A hashing method that changes a string (like a URL) into a hash suitable for using as a
-     * disk filename.
-     */
-    public static String hashKeyForDisk(String key) {
-        String cacheKey;
-        try {
-            final MessageDigest mDigest = MessageDigest.getInstance("MD5");
-            mDigest.update(key.getBytes());
-            cacheKey = bytesToHexString(mDigest.digest());
-        } catch (NoSuchAlgorithmException e) {
-            cacheKey = String.valueOf(key.hashCode());
-        }
-        return cacheKey;
-    }
-
-    private static String bytesToHexString(byte[] bytes) {
-        // http://stackoverflow.com/questions/332079
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-            String hex = Integer.toHexString(0xFF & bytes[i]);
-            if (hex.length() == 1) {
-                sb.append('0');
-            }
-            sb.append(hex);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Get the size in bytes of a bitmap in a BitmapDrawable. Note that from Android 4.4 (KitKat)
-     * onward this returns the allocated memory size of the bitmap which can be larger than the
-     * actual bitmap data byte count (in the case it was re-used).
-     *
-     * @param value
-     * @return size in bytes
-     */
-    @TargetApi(VERSION_CODES.KITKAT)
-    public static int getBitmapSize(BitmapDrawable value) {
-        Bitmap bitmap = value.getBitmap();
-
-        // From KitKat onward use getAllocationByteCount() as allocated bytes can potentially be
-        // larger than bitmap byte count.
-        if (Utils.hasKitKat()) {
-            return bitmap.getAllocationByteCount();
-        }
-
-        if (Utils.hasHoneycombMR1()) {
-            return bitmap.getByteCount();
-        }
-
-        // Pre HC-MR1
-        return bitmap.getRowBytes() * bitmap.getHeight();
-    }
-
-    /**
-     * Check if external storage is built-in or removable.
-     *
-     * @return True if external storage is removable (like an SD card), false
-     * otherwise.
-     */
-    @TargetApi(VERSION_CODES.GINGERBREAD)
-    public static boolean isExternalStorageRemovable() {
-        if (Utils.hasGingerbread()) {
-            return Environment.isExternalStorageRemovable();
-        }
-        return true;
-    }
-
-    /**
-     * Get the external app cache directory.
-     *
-     * @param context The context to use
-     * @return The external cache dir
-     */
-    @TargetApi(VERSION_CODES.FROYO)
-    public static File getExternalCacheDir(Context context) {
-        if (Utils.hasFroyo()) {
-            return context.getExternalCacheDir();
-        }
-
-        // Before Froyo we need to construct the external cache dir ourselves
-        final String cacheDir = "/Android/data/" + context.getPackageName() + "/cache/";
-        return new File(Environment.getExternalStorageDirectory().getPath() + cacheDir);
-    }
-
-    /**
-     * Check how much usable space is available at a given path.
-     *
-     * @param path The path to check
-     * @return The space available in bytes
-     */
-    @TargetApi(VERSION_CODES.GINGERBREAD)
-    public static long getUsableSpace(File path) {
-        if (Utils.hasGingerbread()) {
-            return path.getUsableSpace();
-        }
-        final StatFs stats = new StatFs(path.getPath());
-        return (long) stats.getBlockSize() * (long) stats.getAvailableBlocks();
-    }
-
-    /**
-     * Locate an existing instance of this Fragment or if not found, create and
-     * add it using FragmentManager.
-     *
-     * @param fm The FragmentManager manager to use.
-     * @return The existing instance of the Fragment or the new instance if just
-     * created.
-     */
-    private static RetainFragment findOrCreateRetainFragment(FragmentManager fm) {
-        //BEGIN_INCLUDE(find_create_retain_fragment)
-        // Check to see if we have retained the worker fragment.
-        RetainFragment mRetainFragment = (RetainFragment) fm.findFragmentByTag(TAG);
-
-        // If not retained (or first time running), we need to create and add it.
-        if (mRetainFragment == null) {
-            mRetainFragment = new RetainFragment();
-            fm.beginTransaction().add(mRetainFragment, TAG).commitAllowingStateLoss();
-        }
-
-        return mRetainFragment;
-        //END_INCLUDE(find_create_retain_fragment)
-    }
-
-    /**
      * A simple non-UI Fragment that stores a single Object and is retained over configuration
      * changes. It will be used to retain the ImageCache object.
      */
     public static class RetainFragment extends Fragment {
+        public static final String TAG = RetainFragment.class.getSimpleName();
+
         private Object mObject;
 
         /**

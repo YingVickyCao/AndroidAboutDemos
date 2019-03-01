@@ -94,7 +94,7 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
         }
 
         // Pass clicks on the ImageView to the parent activity to handle
-        if (OnClickListener.class.isInstance(getActivity()) && Utils.hasHoneycomb()) {
+        if (OnClickListener.class.isInstance(getActivity()) && Utils.isVersionNoLessThanHoneycomb()) {
             mImageView.setOnClickListener((OnClickListener) getActivity());
         }
     }

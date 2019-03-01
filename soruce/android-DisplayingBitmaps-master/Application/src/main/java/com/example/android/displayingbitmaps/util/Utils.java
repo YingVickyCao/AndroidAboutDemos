@@ -33,7 +33,7 @@ public class Utils {
 
     @TargetApi(VERSION_CODES.HONEYCOMB)
     public static void enableStrictMode() {
-        if (Utils.hasGingerbread()) {
+        if (Utils.isVersionNoLessThanGingerbread()) {
             StrictMode.ThreadPolicy.Builder threadPolicyBuilder =
                     new StrictMode.ThreadPolicy.Builder()
                             .detectAll()
@@ -43,7 +43,7 @@ public class Utils {
                             .detectAll()
                             .penaltyLog();
 
-            if (Utils.hasHoneycomb()) {
+            if (Utils.isVersionNoLessThanHoneycomb()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
                         .setClassInstanceLimit(ImageGridActivity.class, 1)
@@ -54,29 +54,29 @@ public class Utils {
         }
     }
 
-    public static boolean hasFroyo() {
+    public static boolean isVersionNoLessThanFroyo() {
         // Can use static final constants like FROYO, declared in later versions
         // of the OS since they are inlined at compile time. This is guaranteed behavior.
-        return Build.VERSION.SDK_INT >= VERSION_CODES.FROYO;
+        return Build.VERSION.SDK_INT >= VERSION_CODES.FROYO;// 2.2
     }
 
-    public static boolean hasGingerbread() {
-        return Build.VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD;
+    public static boolean isVersionNoLessThanGingerbread() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD; // >=2.3
     }
 
-    public static boolean hasHoneycomb() {
-        return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB;
+    public static boolean isVersionNoLessThanHoneycomb() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB; // >=3.0
     }
 
-    public static boolean hasHoneycombMR1() {
-        return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB_MR1;
+    public static boolean isVersionNoLessThanHoneycombMR1() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB_MR1; // >=3.1
     }
 
-    public static boolean hasJellyBean() {
-        return Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN;
+    public static boolean isVersionNoLessThanJellyBean() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN; // >=4.1
     }
 
-    public static boolean hasKitKat() {
-        return Build.VERSION.SDK_INT >= VERSION_CODES.KITKAT;
+    public static boolean isVersionNoLessThanKitKat() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.KITKAT; // >=4.4
     }
 }

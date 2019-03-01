@@ -1,7 +1,9 @@
 package com.example.android.displayingbitmaps.util;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.support.v4.util.LruCache;
 
 import com.example.android.common.logger.Log;
@@ -10,9 +12,9 @@ import com.example.android.displayingbitmaps.BuildConfig;
 import java.lang.ref.SoftReference;
 import java.util.Set;
 
-import static com.example.android.displayingbitmaps.util.ImageCache.getBitmapSize;
-
 public class MemoryCache {
+    public static final int DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE = 1024 * 5; // 5MB
+    protected static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
     private static final String TAG = MemoryCache.class.getSimpleName();
 
     private LruCache<String, BitmapDrawable> mMemoryCache;
@@ -33,7 +35,7 @@ public class MemoryCache {
                 } else {
                     // The removed entry is a standard BitmapDrawable
 
-                    if (Utils.hasHoneycomb()) {
+                    if (Utils.isVersionNoLessThanHoneycomb()) {
                         // We're running on Honeycomb or later, so add the bitmap
                         // to a SoftReference set for possible use with inBitmap later
                         mReusableBitmaps.add(new SoftReference<Bitmap>(oldValue.getBitmap()));
@@ -83,5 +85,31 @@ public class MemoryCache {
                 Log.d(TAG, "Memory cache cleared");
             }
         }
+    }
+
+    /**
+     * Get the size in bytes of a bitmap in a BitmapDrawable. Note that from Android 4.4 (KitKat)
+     * onward this returns the allocated memory size of the bitmap which can be larger than the
+     * actual bitmap data byte count (in the case it was re-used).
+     *
+     * @param value
+     * @return size in bytes
+     */
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private int getBitmapSize(BitmapDrawable value) {
+        Bitmap bitmap = value.getBitmap();
+
+        // From KitKat onward use getAllocationByteCount() as allocated bytes can potentially be
+        // larger than bitmap byte count.
+        if (Utils.isVersionNoLessThanKitKat()) {
+            return bitmap.getAllocationByteCount();
+        }
+
+        if (Utils.isVersionNoLessThanHoneycombMR1()) {
+            return bitmap.getByteCount();
+        }
+
+        // Pre HC-MR1
+        return bitmap.getRowBytes() * bitmap.getHeight();
     }
 }
