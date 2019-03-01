@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.component.BitmapUtil;
+import com.hades.android.example.android_about_demos.component.bitmap.BitmapUtil;
 
-public class LoadBitmapPOFragment extends Fragment {
-    private static final String TAG = LoadBitmapPOFragment.class.getSimpleName();
+public class DecodeBitmapPOFragment extends Fragment {
+    private static final String TAG = DecodeBitmapPOFragment.class.getSimpleName();
 
     private ImageView mImageView;
     private BitmapUtil bitmapUtil = new BitmapUtil();
@@ -25,7 +25,7 @@ public class LoadBitmapPOFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_load_bitmap_po, container, false);
+        View view = inflater.inflate(R.layout.res_decode_bitmap, container, false);
         mImageView = view.findViewById(R.id.imageView);
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         view.findViewById(R.id.setImageResource).setOnClickListener(v -> setImageResource());
@@ -72,7 +72,7 @@ public class LoadBitmapPOFragment extends Fragment {
     private void decodeResourceWithSampled2() {
         int requireWidth = mImageView.getWidth();
         int requireHeight = bitmapUtil.getRequireHeight(getResources(), R.drawable.wallpaper, mImageView.getWidth());
-        Bitmap bitmap2 = bitmapUtil.decodeResourceWithSampled(getResources(), R.drawable.wallpaper, requireWidth, requireHeight);
+        Bitmap bitmap2 = bitmapUtil.decodeSampledBitmapFromResource(getResources(), R.drawable.wallpaper, requireWidth, requireHeight);
         mImageView.setImageBitmap(bitmap2);
         checkDrawableMemory();
     }
@@ -87,22 +87,22 @@ public class LoadBitmapPOFragment extends Fragment {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper, options);
         int outWidth = options.outWidth;
         int outHeight = options.outHeight;
-        Log.d(TAG, "decodeResourceWithSampled: [Bitmap] outWidth=" + outWidth + ",outHeight=" + outHeight);
+        Log.d(TAG, "decodeSampledBitmapFromResource: [Bitmap] outWidth=" + outWidth + ",outHeight=" + outHeight);
 
         int requireWidth = mImageView.getWidth();
         int requireHeight = mImageView.getWidth() * outHeight / outWidth;
 
-        Log.d(TAG, "decodeResourceWithSampled:[ImageView] width=" + mImageView.getWidth() + ",height=" + mImageView.getHeight());
+        Log.d(TAG, "decodeSampledBitmapFromResource:[ImageView] width=" + mImageView.getWidth() + ",height=" + mImageView.getHeight());
         mImageView.getLayoutParams().height = requireHeight;
         mImageView.requestLayout();
-        Log.d(TAG, "decodeResourceWithSampled:[Bitmap]=" + bitmap + ",requireWidth=" + requireWidth + ",requireHeight=" + requireHeight);
-        Log.d(TAG, "decodeResourceWithSampled:[ImageView] width=" + mImageView.getWidth() + ",height=" + mImageView.getHeight());
+        Log.d(TAG, "decodeSampledBitmapFromResource:[Bitmap]=" + bitmap + ",requireWidth=" + requireWidth + ",requireHeight=" + requireHeight);
+        Log.d(TAG, "decodeSampledBitmapFromResource:[ImageView] width=" + mImageView.getWidth() + ",height=" + mImageView.getHeight());
 
         // Calculate inSampleSize
-        Log.d(TAG, "decodeResourceWithSampled: options.inSampleSize=" + options.inSampleSize);
+        Log.d(TAG, "decodeSampledBitmapFromResource: options.inSampleSize=" + options.inSampleSize);
         options.inSampleSize = calculateInSampleSize(options, requireWidth, requireHeight);
-        Log.d(TAG, "decodeResourceWithSampled: options.inSampleSize=" + options.inSampleSize);
-        Log.d(TAG, "decodeResourceWithSampled: [Bitmap] outWidth=" + outWidth + ",outHeight=" + outHeight);
+        Log.d(TAG, "decodeSampledBitmapFromResource: options.inSampleSize=" + options.inSampleSize);
+        Log.d(TAG, "decodeSampledBitmapFromResource: [Bitmap] outWidth=" + outWidth + ",outHeight=" + outHeight);
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;

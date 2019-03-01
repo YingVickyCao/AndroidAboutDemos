@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.component;
+package com.hades.android.example.android_about_demos.component.bitmap;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -14,7 +14,7 @@ public class BitmapUtil {
         return originImageViewWidth * outHeight / outWidth;
     }
 
-    public Bitmap decodeResourceWithSampled(Resources res, int id, int requireWidth, int requireHeight) {
+    public Bitmap decodeSampledBitmapFromResource(Resources res, int id, int requireWidth, int requireHeight) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, id, options);

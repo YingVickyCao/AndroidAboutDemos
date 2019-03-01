@@ -10,8 +10,9 @@ import com.hades.android.example.android_about_demos.resource.adapter_screen.Dis
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.BitmapDrawableFragment;
-import com.hades.android.example.android_about_demos.resource.drawable.bitmap.LoadBitmapPOFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.bitmap.DecodeBitmapPOFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.bitmap.MemoryCacheBitmapFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
@@ -33,7 +34,6 @@ public class ResourceActivity extends BaseActivity {
 
         checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.theme).setOnClickListener(v -> theme());
         findViewById(R.id.internationalization).setOnClickListener(v -> internationalization());
@@ -45,15 +45,13 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
         findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
+        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
+        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageMemoryCacheBitmap());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageLoadBitmapPo();
-    }
-
-    private void pageLoadBitmapPo() {
-        showFragment(new LoadBitmapPOFragment());
+        pageMemoryCacheBitmap();
     }
 
     private void parseXml() {
@@ -98,5 +96,13 @@ public class ResourceActivity extends BaseActivity {
 
     private void pageManagingBitmapMemory() {
         showFragment(new ManagingBitmapMemoryFragment());
+    }
+
+    private void pageLoadBitmapPo() {
+        showFragment(new DecodeBitmapPOFragment());
+    }
+
+    private void pageMemoryCacheBitmap() {
+        showFragment(new MemoryCacheBitmapFragment());
     }
 }
