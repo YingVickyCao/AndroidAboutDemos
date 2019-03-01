@@ -1,6 +1,7 @@
 package com.example.android.displayingbitmaps.ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 class ImageAdapter extends BaseAdapter {
+    private static final String TAG = ImageAdapter.class.getSimpleName();
 
     private ImageGridFragment imageGridFragment;
     private final Context mContext;
@@ -17,19 +19,24 @@ class ImageAdapter extends BaseAdapter {
     private int mNumColumns = 0;
     private int mActionBarHeight = 0;
     private GridView.LayoutParams mImageViewLayoutParams;
-    private String[] imageThumbUrls;
+    private String[] mImageThumbUrls;
 
     public ImageAdapter(ImageGridFragment imageGridFragment, Context context, String[] imageThumbUrls) {
         super();
-        this.imageGridFragment = imageGridFragment;
         mContext = context;
+        this.imageGridFragment = imageGridFragment;
+        mImageThumbUrls = imageThumbUrls;
+
         mImageViewLayoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        // Calculate ActionBar height
+        calculateActionBarHeight();
+
+    }
+
+    private void calculateActionBarHeight() {
         TypedValue tv = new TypedValue();
-        if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            mActionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        if (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+            mActionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());
         }
-        this.imageThumbUrls = imageThumbUrls;
     }
 
     @Override
@@ -37,14 +44,18 @@ class ImageAdapter extends BaseAdapter {
         if (getNumColumns() == 0) {
             return 0;
         }
+        return countWithEmptyRow();
+    }
 
-        // Size + number of columns for top empty row
-        return imageThumbUrls.length + mNumColumns;
+    private int countWithEmptyRow() {
+        Log.d(TAG, "countWithEmptyRow: count=" + mImageThumbUrls.length + mNumColumns);
+        return mImageThumbUrls.length + mNumColumns;
     }
 
     @Override
     public String getItem(int position) {
-        return position < mNumColumns ? null : imageThumbUrls[position - mNumColumns];
+        Log.d(TAG, "getItem: position=" + position);
+        return position < mNumColumns ? null : mImageThumbUrls[position - mNumColumns];
     }
 
     @Override
@@ -68,11 +79,13 @@ class ImageAdapter extends BaseAdapter {
         return true;
     }
 
+    private boolean isTopRow(int position) {
+        return position < mNumColumns;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup container) {
-        //BEGIN_INCLUDE(load_gridview_item)
-        // First check if this is the top row
-        if (position < mNumColumns) {
+        if (isTopRow(position)) {
             if (convertView == null) {
                 convertView = new View(mContext);
             }
@@ -98,9 +111,8 @@ class ImageAdapter extends BaseAdapter {
 
         // Finally load the image asynchronously into the ImageView, this also takes care of
         // setting a placeholder image while the background thread runs
-        imageGridFragment.mImageFetcher.loadImage(imageThumbUrls[position - mNumColumns], imageView);
+        imageGridFragment.mImageFetcher.loadImage(mImageThumbUrls[position - mNumColumns], imageView);
         return imageView;
-        //END_INCLUDE(load_gridview_item)
     }
 
     void setItemHeight(int height) {
@@ -108,8 +120,7 @@ class ImageAdapter extends BaseAdapter {
             return;
         }
         mItemHeight = height;
-        mImageViewLayoutParams =
-                new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mItemHeight);
+        mImageViewLayoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mItemHeight);
         imageGridFragment.mImageFetcher.setImageSize(height);
         notifyDataSetChanged();
     }
