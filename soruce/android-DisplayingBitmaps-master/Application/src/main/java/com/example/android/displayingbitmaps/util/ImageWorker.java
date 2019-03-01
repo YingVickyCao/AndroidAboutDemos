@@ -67,9 +67,8 @@ public abstract class ImageWorker {
         }
 
         BitmapDrawable value = null;
-
         if (mImageCache != null) {
-            value = mImageCache.getBitmapFromMemCache(String.valueOf(url));
+            value = mImageCache.getBitmapFromMemoryCache(url);
         }
 
         if (value != null) {
@@ -93,18 +92,8 @@ public abstract class ImageWorker {
         }
     }
 
-    /**
-     * Load an image specified by the data parameter into an ImageView (override
-     * {@link ImageWorker#processBitmap(Object)} to define the processing logic). A memory and
-     * disk cache will be used if an {@link ImageCache} has been added using
-     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}. If the
-     * image is found in the memory cache, it is set immediately, otherwise an {@link AsyncTask}
-     * will be created to asynchronously load the bitmap.
-     *  @param url      The URL of the image to download.
-     * @param imageView The ImageView to bind the downloaded image to.
-     */
-    public void loadImage(String url, ImageView imageView) {
-        loadImage(url, imageView, null);
+    public void loadImage(String url, ImageView boundImageView) {
+        loadImage(url, boundImageView, null);
     }
 
     public void setLoadingImage(Bitmap bitmap) {

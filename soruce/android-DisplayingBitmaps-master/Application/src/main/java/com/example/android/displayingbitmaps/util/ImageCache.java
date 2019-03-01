@@ -29,7 +29,6 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.util.LruCache;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
@@ -75,10 +74,11 @@ public class ImageCache {
     public static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE = false;
 
     private DiskLruCache mDiskLruCache;
-    private LruCache<String, BitmapDrawable> mMemoryCache;
+
     private ImageCacheParams mCacheParams;
     private final Object mDiskCacheLock = new Object();
     private boolean mDiskCacheStarting = true;
+    MemoryCache mMemoryCache = new MemoryCache();
 
     private Set<SoftReference<Bitmap>> mReusableBitmaps;
 
@@ -145,43 +145,10 @@ public class ImageCache {
             // the size would need to be precise, from KitKat onward the size would just need to
             // be the upper bound (due to changes in how inBitmap can re-use bitmaps).
             if (Utils.hasHoneycomb()) {
-                mReusableBitmaps =
-                        Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
+                mReusableBitmaps = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
             }
 
-            mMemoryCache = new LruCache<String, BitmapDrawable>(mCacheParams.memCacheSize) {
-
-                /**
-                 * Notify the removed entry that is no longer being cached
-                 */
-                @Override
-                protected void entryRemoved(boolean evicted, String key,
-                                            BitmapDrawable oldValue, BitmapDrawable newValue) {
-                    if (RecyclingBitmapDrawable.class.isInstance(oldValue)) {
-                        // The removed entry is a recycling drawable, so notify it
-                        // that it has been removed from the memory cache
-                        ((RecyclingBitmapDrawable) oldValue).setIsCached(false);
-                    } else {
-                        // The removed entry is a standard BitmapDrawable
-
-                        if (Utils.hasHoneycomb()) {
-                            // We're running on Honeycomb or later, so add the bitmap
-                            // to a SoftReference set for possible use with inBitmap later
-                            mReusableBitmaps.add(new SoftReference<Bitmap>(oldValue.getBitmap()));
-                        }
-                    }
-                }
-
-                /**
-                 * Measure item size in kilobytes rather than units which is more practical
-                 * for a bitmap cache
-                 */
-                @Override
-                protected int sizeOf(String key, BitmapDrawable value) {
-                    final int bitmapSize = getBitmapSize(value) / 1024;
-                    return bitmapSize == 0 ? 1 : bitmapSize;
-                }
-            };
+            mMemoryCache.init(cacheParams, mReusableBitmaps);
         }
         //END_INCLUDE(init_memory_cache)
 
@@ -238,16 +205,7 @@ public class ImageCache {
         if (data == null || value == null) {
             return;
         }
-
-        // Add to memory cache
-        if (mMemoryCache != null) {
-            if (RecyclingBitmapDrawable.class.isInstance(value)) {
-                // The removed entry is a recycling drawable, so notify it
-                // that it has been added into the memory cache
-                ((RecyclingBitmapDrawable) value).setIsCached(true);
-            }
-            mMemoryCache.put(data, value);
-        }
+        mMemoryCache.addBitmapToCache(data, value);
 
         synchronized (mDiskCacheLock) {
             // Add to disk cache
@@ -285,26 +243,13 @@ public class ImageCache {
         //END_INCLUDE(add_bitmap_to_cache)
     }
 
-    /**
-     * Get from memory cache.
-     *
-     * @param data Unique identifier for which item to get
-     * @return The bitmap drawable if found in cache, null otherwise
-     */
-    public BitmapDrawable getBitmapFromMemCache(String data) {
-        //BEGIN_INCLUDE(get_bitmap_from_mem_cache)
-        BitmapDrawable memValue = null;
-
-        if (mMemoryCache != null) {
-            memValue = mMemoryCache.get(data);
-        }
-
+    public BitmapDrawable getBitmapFromMemoryCache(String url) {
+        BitmapDrawable memValue = mMemoryCache.getBitmapFromMemoryCache(url);
         if (BuildConfig.DEBUG && memValue != null) {
             Log.d(TAG, "Memory cache hit");
         }
 
         return memValue;
-        //END_INCLUDE(get_bitmap_from_mem_cache)
     }
 
     /**
@@ -401,13 +346,7 @@ public class ImageCache {
      * this includes disk access so this should not be executed on the main/UI thread.
      */
     public void clearCache() {
-        if (mMemoryCache != null) {
-            mMemoryCache.evictAll();
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "Memory cache cleared");
-            }
-        }
-
+        mMemoryCache.clearCache();
         synchronized (mDiskCacheLock) {
             mDiskCacheStarting = true;
             if (mDiskLruCache != null && !mDiskLruCache.isClosed()) {
