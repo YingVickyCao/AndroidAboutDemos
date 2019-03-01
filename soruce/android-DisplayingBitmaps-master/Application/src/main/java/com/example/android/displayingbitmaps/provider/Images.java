@@ -16,20 +16,7 @@
 
 package com.example.android.displayingbitmaps.provider;
 
-/**
- * Some simple test data to use for this sample app.
- */
 public class Images {
-
-    /**
-     * This are PicasaWeb URLs and could potentially change. Ideally the PicasaWeb API should be
-     * used to fetch the URLs.
-     * <p>
-     * Credit to Romain Guy for the photos:
-     * http://www.curious-creature.org/
-     * https://plus.google.com/109538161516040592207/about
-     * http://www.flickr.com/photos/romainguy
-     */
     public final static String[] imageUrls = new String[]{
             "https://yingvickycao.github.io/img/resources/desktop_pictures/Abstract_1.jpg",
             "https://yingvickycao.github.io/img/resources/desktop_pictures/Abstract_2.jpg",
@@ -76,15 +63,6 @@ public class Images {
             "https://yingvickycao.github.io/img/resources/desktop_pictures/Yosemite_4.jpg",
     };
 
-    /**
-     * This are PicasaWeb thumbnail URLs and could potentially change. Ideally the PicasaWeb API
-     * should be used to fetch the URLs.
-     * <p>
-     * Credit to Romain Guy for the photos:
-     * http://www.curious-creature.org/
-     * https://plus.google.com/109538161516040592207/about
-     * http://www.flickr.com/photos/romainguy
-     */
     public final static String[] imageThumbUrls = new String[]{
             "https://yingvickycao.github.io/img/resources/desktop_pictures/thumbnails/Abstract_1.jpg",
             "https://yingvickycao.github.io/img/resources/desktop_pictures/thumbnails/Abstract_2.jpg",

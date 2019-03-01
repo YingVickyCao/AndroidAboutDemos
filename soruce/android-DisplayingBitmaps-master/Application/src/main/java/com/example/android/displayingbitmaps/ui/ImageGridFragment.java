@@ -92,20 +92,20 @@ public class ImageGridFragment extends Fragment {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                final Intent i = new Intent(getActivity(), ImageDetailActivity.class);
-                i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
-                if (Utils.hasJellyBean()) {
-                    // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may
-                    // show plus the thumbnail image in GridView is cropped. so using
-                    // makeScaleUpAnimation() instead.
-                    ActivityOptions options =
-                            ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
-                    getActivity().startActivity(i, options.toBundle());
-                } else {
-                    startActivity(i);
-                }
+                jumpImageDetailActivity(v, id);
             }
         });
+    }
+
+    private void jumpImageDetailActivity(View v, long id) {
+        final Intent i = new Intent(getActivity(), ImageDetailActivity.class);
+        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
+        if (Utils.hasJellyBean()) {
+            ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
+            getActivity().startActivity(i, options.toBundle());
+        } else {
+            startActivity(i);
+        }
     }
 
     private void pauseFetchImageViewOnScrollStateChanged() {
@@ -113,10 +113,9 @@ public class ImageGridFragment extends Fragment {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-//                    if (!Utils.hasHoneycomb()) {
-//                        mImageFetcher.setPauseWork(true);
-//                    }
-                    mImageFetcher.setPauseWork(true);
+                    if (!Utils.hasHoneycomb()) {
+                        mImageFetcher.setPauseWork(true);
+                    }
                 } else {
                     mImageFetcher.setPauseWork(false);
                 }
