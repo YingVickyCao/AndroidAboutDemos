@@ -31,6 +31,7 @@ public class DiskCache {
 
     public void init(ImageCacheParams cacheParams) {
         mCacheParams = cacheParams;
+//        initDiskCache();
     }
 
     /**
@@ -39,6 +40,7 @@ public class DiskCache {
      * cache when it is created, instead you should call initDiskCache() to initialize it on a
      * background thread.
      */
+    // TODO: 2019/3/1  call initDiskCache() to initialize it on a background thread.
     public void initDiskCache() {
         // Set up disk cache
         synchronized (mDiskCacheLock) {
@@ -50,11 +52,8 @@ public class DiskCache {
                     }
                     if (getUsableSpace(diskCacheDir) > mCacheParams.diskCacheSize) {
                         try {
-                            mDiskLruCache = DiskLruCache.open(
-                                    diskCacheDir, 1, 1, mCacheParams.diskCacheSize);
-                            if (BuildConfig.DEBUG) {
-                                Log.d(TAG, "Disk cache initialized");
-                            }
+                            mDiskLruCache = DiskLruCache.open(diskCacheDir, 1, 1, mCacheParams.diskCacheSize);
+                            Log.d(TAG, "Disk cache initialized");
                         } catch (final IOException e) {
                             mCacheParams.diskCacheDir = null;
                             Log.e(TAG, "initDiskCache - " + e);

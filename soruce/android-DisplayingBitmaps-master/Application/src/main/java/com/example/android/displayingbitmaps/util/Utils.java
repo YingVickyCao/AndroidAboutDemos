@@ -28,7 +28,10 @@ import com.example.android.displayingbitmaps.ui.ImageGridActivity;
  * Class containing some static utility methods.
  */
 public class Utils {
-    private Utils() {};
+    private Utils() {
+    }
+
+    ;
 
 
     @TargetApi(VERSION_CODES.HONEYCOMB)
@@ -55,8 +58,6 @@ public class Utils {
     }
 
     public static boolean isVersionNoLessThanFroyo() {
-        // Can use static final constants like FROYO, declared in later versions
-        // of the OS since they are inlined at compile time. This is guaranteed behavior.
         return Build.VERSION.SDK_INT >= VERSION_CODES.FROYO;// 2.2
     }
 

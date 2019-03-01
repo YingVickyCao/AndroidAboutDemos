@@ -25,7 +25,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.android.common.logger.Log;
-import com.example.android.displayingbitmaps.BuildConfig;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;
@@ -46,8 +45,6 @@ public class ImageCache {
     // Compression settings when writing images to disk cache
     public static final CompressFormat DEFAULT_COMPRESS_FORMAT = CompressFormat.JPEG;
     public static final int DEFAULT_COMPRESS_QUALITY = 70;
-
-    private ImageCacheParams mCacheParams;
 
     MemoryCache mMemoryCache = new MemoryCache();
     DiskCache mDiskCache = new DiskCache();
@@ -74,9 +71,7 @@ public class ImageCache {
      * @param cacheParams     The cache parameters to use if the ImageCache needs instantiation.
      * @return An existing retained ImageCache object or a new one if one did not exist
      */
-    public static ImageCache getInstance(
-            FragmentManager fragmentManager, ImageCacheParams cacheParams) {
-
+    public static ImageCache getInstance(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
         // Search for, or create an instance of the non-UI RetainFragment
         final RetainFragment mRetainFragment = LoadImageUtil.findOrCreateRetainFragment(fragmentManager);
 
@@ -98,15 +93,13 @@ public class ImageCache {
      * @param cacheParams The cache parameters to initialize the cache
      */
     private void init(ImageCacheParams cacheParams) {
-        mCacheParams = cacheParams;
         mDiskCache.init(cacheParams);
+        if (cacheParams.initDiskCacheOnCreate) {
+            mDiskCache.initDiskCache();
+        }
 
-        //BEGIN_INCLUDE(init_memory_cache)
-        // Set up memory cache
-        if (mCacheParams.memoryCacheEnabled) {
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "Memory cache created (size = " + mCacheParams.memCacheSize + ")");
-            }
+        if (cacheParams.memoryCacheEnabled) {
+            Log.d(TAG, "Memory cache created (size = " + cacheParams.memCacheSize + ")");
 
             // If we're running on Honeycomb or newer, create a set of reusable bitmaps that can be
             // populated into the inBitmap field of BitmapFactory.Options. Note that the set is
@@ -121,29 +114,17 @@ public class ImageCache {
                 mReusableBitmaps = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
             }
 
-            mMemoryCache.init(cacheParams, mReusableBitmaps);
-        }
-        //END_INCLUDE(init_memory_cache)
-
-        // By default the disk cache is not initialized here as it should be initialized
-        // on a separate thread due to disk access.
-        if (cacheParams.initDiskCacheOnCreate) {
-            // Set up disk cache
-            initDiskCache();
+            if (cacheParams.memoryCacheEnabled) {
+                mMemoryCache.init(cacheParams, mReusableBitmaps);
+            }
         }
     }
 
-    /**
-     * Initializes the disk cache.  Note that this includes disk access so this should not be
-     * executed on the main/UI thread. By default an ImageCache does not initialize the disk
-     * cache when it is created, instead you should call initDiskCache() to initialize it on a
-     * background thread.
-     */
     public void initDiskCache() {
         mDiskCache.initDiskCache();
     }
 
-    public void addBitmapToCache(String data, BitmapDrawable value) {
+    void addBitmapToCache(String data, BitmapDrawable value) {
         if (data == null || value == null) {
             return;
         }
@@ -151,16 +132,15 @@ public class ImageCache {
         mDiskCache.addBitmapToCache(data, value);
     }
 
-    public BitmapDrawable getBitmapFromMemoryCache(String url) {
+    BitmapDrawable getBitmapFromMemoryCache(String url) {
         BitmapDrawable memValue = mMemoryCache.getBitmapFromMemoryCache(url);
-        if (BuildConfig.DEBUG && memValue != null) {
+        if (memValue != null) {
             Log.d(TAG, "Memory cache hit");
         }
-
         return memValue;
     }
 
-    public Bitmap getBitmapFromDiskCache(String url) {
+    Bitmap getBitmapFromDiskCache(String url) {
         return mDiskCache.getBitmapFromDiskCache(url, this);
     }
 
@@ -169,7 +149,6 @@ public class ImageCache {
      * @return Bitmap that case be used for inBitmap
      */
     protected Bitmap getBitmapFromReusableSet(BitmapFactory.Options options) {
-        //BEGIN_INCLUDE(get_bitmap_from_reusable_set)
         Bitmap bitmap = null;
 
         if (mReusableBitmaps != null && !mReusableBitmaps.isEmpty()) {

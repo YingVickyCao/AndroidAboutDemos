@@ -16,18 +16,19 @@ public class MemoryCache {
     public static final int DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE = 1024 * 5; // 5MB
     protected static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
     private static final String TAG = MemoryCache.class.getSimpleName();
+    private ImageCacheParams mCacheParams;
 
     private LruCache<String, BitmapDrawable> mMemoryCache;
 
     public void init(ImageCacheParams cacheParams, final Set<SoftReference<Bitmap>> mReusableBitmaps) {
+        mCacheParams = cacheParams;
         mMemoryCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
 
             /**
              * Notify the removed entry that is no longer being cached
              */
             @Override
-            protected void entryRemoved(boolean evicted, String key,
-                                        BitmapDrawable oldValue, BitmapDrawable newValue) {
+            protected void entryRemoved(boolean evicted, String key, BitmapDrawable oldValue, BitmapDrawable newValue) {
                 if (RecyclingBitmapDrawable.class.isInstance(oldValue)) {
                     // The removed entry is a recycling drawable, so notify it
                     // that it has been removed from the memory cache
