@@ -2,10 +2,8 @@ package com.example.android.displayingbitmaps.ui;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ class ImageAdapter extends BaseAdapter {
     private final Context mContext;
     private int mItemHeight = 0;
     private int mNumColumns = 0;
-    private int mActionBarHeight = 0;
     private GridView.LayoutParams mImageViewLayoutParams;
     private String[] mImageThumbUrls;
 
@@ -26,75 +23,27 @@ class ImageAdapter extends BaseAdapter {
         mContext = context;
         this.imageGridFragment = imageGridFragment;
         mImageThumbUrls = imageThumbUrls;
-
         mImageViewLayoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        calculateActionBarHeight();
-
-    }
-
-    private void calculateActionBarHeight() {
-        TypedValue tv = new TypedValue();
-        if (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            mActionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());
-        }
     }
 
     @Override
     public int getCount() {
-        if (getNumColumns() == 0) {
-            return 0;
-        }
-        return countWithEmptyRow();
-    }
-
-    private int countWithEmptyRow() {
-        Log.d(TAG, "countWithEmptyRow: count=" + mImageThumbUrls.length + mNumColumns);
-        return mImageThumbUrls.length + mNumColumns;
+        return mImageThumbUrls.length;
     }
 
     @Override
     public String getItem(int position) {
         Log.d(TAG, "getItem: position=" + position);
-        return position < mNumColumns ? null : mImageThumbUrls[position - mNumColumns];
+        return mImageThumbUrls[position];
     }
 
     @Override
     public long getItemId(int position) {
-        return position < mNumColumns ? 0 : position - mNumColumns;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        // Two types of views, the normal ImageView and the top row of empty views
-        return 2;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return (position < mNumColumns) ? 1 : 0;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return true;
-    }
-
-    private boolean isTopRow(int position) {
-        return position < mNumColumns;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup container) {
-        if (isTopRow(position)) {
-            if (convertView == null) {
-                convertView = new View(mContext);
-            }
-            // Set empty view with height of ActionBar
-            convertView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mActionBarHeight));
-            return convertView;
-        }
-
-        // Now handle the main ImageView thumbnails
         ImageView imageView;
         if (convertView == null) {
             imageView = new RecyclingImageView(mContext);
@@ -104,15 +53,16 @@ class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        // Check the height matches our calculated column width
         if (imageView.getLayoutParams().height != mItemHeight) {
             imageView.setLayoutParams(mImageViewLayoutParams);
         }
 
-        // Finally load the image asynchronously into the ImageView, this also takes care of
-        // setting a placeholder image while the background thread runs
-        imageGridFragment.mImageFetcher.loadImage(mImageThumbUrls[position - mNumColumns], imageView);
+        loadImageAsync2ImageView(position,imageView);
         return imageView;
+    }
+
+    private void loadImageAsync2ImageView(int position, ImageView imageView) {
+        imageGridFragment.mImageFetcher.loadImage(mImageThumbUrls[position], imageView);
     }
 
     void setItemHeight(int height) {
