@@ -102,7 +102,6 @@ public class DiskCache {
     }
 
     public Bitmap getBitmapFromDiskCache(String url, final ImageCache imageCache) {
-        //BEGIN_INCLUDE(get_bitmap_from_disk_cache)
         final String key = hashKeyForDisk(url);
         Bitmap bitmap = null;
 

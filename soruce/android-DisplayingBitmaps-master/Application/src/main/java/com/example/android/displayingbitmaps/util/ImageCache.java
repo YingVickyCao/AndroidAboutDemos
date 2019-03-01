@@ -16,10 +16,12 @@
 
 package com.example.android.displayingbitmaps.util;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -161,7 +163,7 @@ public class ImageCache {
 
                     if (null != item && item.isMutable()) {
                         // Check to see it the item can be used for inBitmap
-                        if (LoadImageUtil.canUseForInBitmap(item, options)) {
+                        if (canUseForInBitmap(item, options)) {
                             bitmap = item;
 
                             // Remove from reusable set so it can't be used again
@@ -177,6 +179,47 @@ public class ImageCache {
         }
 
         return bitmap;
+    }
+
+    /**
+     * @param candidate     - Bitmap to check
+     * @param targetOptions - Options that have the out* value populated
+     * @return true if <code>candidate</code> can be used for inBitmap re-use with
+     * <code>targetOptions</code>
+     */
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    static boolean canUseForInBitmap(
+            Bitmap candidate, BitmapFactory.Options targetOptions) {
+        if (!Utils.isVersionNoLessThanKitKat()) {
+            // On earlier versions, the dimensions must match exactly and the inSampleSize must be 1
+            return candidate.getWidth() == targetOptions.outWidth && candidate.getHeight() == targetOptions.outHeight && targetOptions.inSampleSize == 1;
+        }
+
+        // From Android 4.4 (KitKat) onward we can re-use if the byte size of the new bitmap
+        // is smaller than the reusable bitmap candidate allocation byte count.
+        int width = targetOptions.outWidth / targetOptions.inSampleSize;
+        int height = targetOptions.outHeight / targetOptions.inSampleSize;
+        int byteCount = width * height * getBytesPerPixel(candidate.getConfig());
+        return byteCount <= candidate.getAllocationByteCount();
+    }
+
+    /**
+     * Return the byte usage per pixel of a bitmap based on its configuration.
+     *
+     * @param config The bitmap configuration.
+     * @return The byte usage per pixel.
+     */
+    private static int getBytesPerPixel(Bitmap.Config config) {
+        if (config == Bitmap.Config.ARGB_8888) {
+            return 4;
+        } else if (config == Bitmap.Config.RGB_565) {
+            return 2;
+        } else if (config == Bitmap.Config.ARGB_4444) {
+            return 2;
+        } else if (config == Bitmap.Config.ALPHA_8) {
+            return 1;
+        }
+        return 1;
     }
 
     /**
