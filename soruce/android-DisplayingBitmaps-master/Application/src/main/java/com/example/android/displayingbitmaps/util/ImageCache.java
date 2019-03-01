@@ -22,8 +22,6 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.android.common.logger.Log;
@@ -115,14 +113,14 @@ public class ImageCache {
             if (Utils.isVersionNoLessThanHoneycomb()) {
                 mReusableBitmaps = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
             }
+        }
 
-            if (cacheParams.memoryCacheEnabled) {
-                mMemoryCache.init(cacheParams, mReusableBitmaps);
-            }
+        if (cacheParams.memoryCacheEnabled) {
+            mMemoryCache.init(cacheParams, mReusableBitmaps);
         }
     }
 
-    public void initDiskCache() {
+    void initDiskCache() {
         mDiskCache.initDiskCache();
     }
 
@@ -150,7 +148,7 @@ public class ImageCache {
      * @param options - BitmapFactory.Options with out* options populated
      * @return Bitmap that case be used for inBitmap
      */
-    protected Bitmap getBitmapFromReusableSet(BitmapFactory.Options options) {
+    Bitmap getBitmapFromReusableSet(BitmapFactory.Options options) {
         Bitmap bitmap = null;
 
         if (mReusableBitmaps != null && !mReusableBitmaps.isEmpty()) {
@@ -188,8 +186,7 @@ public class ImageCache {
      * <code>targetOptions</code>
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    static boolean canUseForInBitmap(
-            Bitmap candidate, BitmapFactory.Options targetOptions) {
+    private boolean canUseForInBitmap(Bitmap candidate, BitmapFactory.Options targetOptions) {
         if (!Utils.isVersionNoLessThanKitKat()) {
             // On earlier versions, the dimensions must match exactly and the inSampleSize must be 1
             return candidate.getWidth() == targetOptions.outWidth && candidate.getHeight() == targetOptions.outHeight && targetOptions.inSampleSize == 1;
@@ -203,13 +200,7 @@ public class ImageCache {
         return byteCount <= candidate.getAllocationByteCount();
     }
 
-    /**
-     * Return the byte usage per pixel of a bitmap based on its configuration.
-     *
-     * @param config The bitmap configuration.
-     * @return The byte usage per pixel.
-     */
-    private static int getBytesPerPixel(Bitmap.Config config) {
+    private int getBytesPerPixel(Bitmap.Config config) {
         if (config == Bitmap.Config.ARGB_8888) {
             return 4;
         } else if (config == Bitmap.Config.RGB_565) {
@@ -222,71 +213,17 @@ public class ImageCache {
         return 1;
     }
 
-    /**
-     * Clears both the memory and disk cache associated with this ImageCache object. Note that
-     * this includes disk access so this should not be executed on the main/UI thread.
-     */
-    public void clearCache() {
+    void clearCache() {
         mMemoryCache.clearCache();
         mDiskCache.clearCache();
     }
 
-    /**
-     * Flushes the disk cache associated with this ImageCache object. Note that this includes
-     * disk access so this should not be executed on the main/UI thread.
-     */
-    public void flush() {
+    void flush() {
         mDiskCache.flush();
     }
 
-    /**
-     * Closes the disk cache associated with this ImageCache object. Note that this includes
-     * disk access so this should not be executed on the main/UI thread.
-     */
-    public void close() {
+    void close() {
         mDiskCache.close();
-    }
-
-    /**
-     * A simple non-UI Fragment that stores a single Object and is retained over configuration
-     * changes. It will be used to retain the ImageCache object.
-     */
-    public static class RetainFragment extends Fragment {
-        public static final String TAG = RetainFragment.class.getSimpleName();
-
-        private Object mObject;
-
-        /**
-         * Empty constructor as per the Fragment documentation
-         */
-        public RetainFragment() {
-        }
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            // Make sure this Fragment is retained over a configuration change
-            setRetainInstance(true);
-        }
-
-        /**
-         * Store a single object in this Fragment.
-         *
-         * @param object The object to store
-         */
-        public void setObject(Object object) {
-            mObject = object;
-        }
-
-        /**
-         * Get the stored object.
-         *
-         * @return The stored object
-         */
-        public Object getObject() {
-            return mObject;
-        }
     }
 
 }

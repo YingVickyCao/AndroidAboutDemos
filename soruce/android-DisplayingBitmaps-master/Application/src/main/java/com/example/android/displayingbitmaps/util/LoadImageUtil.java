@@ -114,14 +114,14 @@ public class LoadImageUtil {
      * @return The existing instance of the Fragment or the new instance if just
      * created.
      */
-    static ImageCache.RetainFragment findOrCreateRetainFragment(FragmentManager fm) {
+    static RetainFragment findOrCreateRetainFragment(FragmentManager fm) {
         //BEGIN_INCLUDE(find_create_retain_fragment)
         // Check to see if we have retained the worker fragment.
-        ImageCache.RetainFragment mRetainFragment = (ImageCache.RetainFragment) fm.findFragmentByTag(ImageCache.TAG);
+        RetainFragment mRetainFragment = (RetainFragment) fm.findFragmentByTag(ImageCache.TAG);
 
         // If not retained (or first time running), we need to create and add it.
         if (mRetainFragment == null) {
-            mRetainFragment = new ImageCache.RetainFragment();
+            mRetainFragment = new RetainFragment();
             fm.beginTransaction().add(mRetainFragment, ImageCache.TAG).commitAllowingStateLoss();
         }
 
