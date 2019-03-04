@@ -43,7 +43,7 @@ public class Utils {
                             .detectAll()
                             .penaltyLog();
 
-            if (Utils.isVersionNoLessThan3_0()) {
+            if (Utils.isNoLessThanV3()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
                         .setClassInstanceLimit(ImageGridActivity.class, 1)
@@ -62,7 +62,7 @@ public class Utils {
         return Build.VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD; // >=2.3
     }
 
-    public static boolean isVersionNoLessThan3_0() {
+    public static boolean isNoLessThanV3() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB; // >=3.0
     }
 

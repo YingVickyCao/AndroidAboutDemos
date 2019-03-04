@@ -114,7 +114,7 @@ public class ImageGridFragment extends Fragment {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                    if (!Utils.isVersionNoLessThan3_0()) {
+                    if (!Utils.isNoLessThanV3()) {
                         mImageFetcher.setPauseWork(true);
                     }
                 } else {

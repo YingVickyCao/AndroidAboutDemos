@@ -85,11 +85,11 @@ public class ImageCache implements IInBitmapListener {
         }
     }
 
-    void addBitmapToCache(String data, BitmapDrawable value) {
+    void cacheBitmap(String data, BitmapDrawable value) {
         if (data == null || value == null) {
             return;
         }
-        mMemoryCache.addBitmapToCache(data, value);
+        mMemoryCache.cacheBitmap(data, value);
         mDiskCache.cacheBitmap(data, value);
     }
 

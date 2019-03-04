@@ -57,20 +57,21 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
 
         bitmap = findBitmapInDishCache(url);
         bitmap = processBitmap(bitmap);
-        if (bitmap != null) {
-            if (Utils.isVersionNoLessThan3_0()) {
-                drawable = new BitmapDrawable(imageWorker.mResources, bitmap);
-            }
 
-            if (imageWorker.mImageCache != null) {
-                imageWorker.mImageCache.addBitmapToCache(url, drawable);
+        if (null == bitmap) {
+            if (BuildConfig.DEBUG) {
+                Log.d(TAG, "doInBackground - finished work");
             }
+            return null;
         }
 
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "doInBackground - finished work");
+        if (Utils.isNoLessThanV3()) {
+            // PO:[Bitmap] BitmapDrawable
+            drawable = new BitmapDrawable(imageWorker.mResources, bitmap);
         }
-
+        if (imageWorker.mImageCache != null) {
+            imageWorker.mImageCache.cacheBitmap(url, drawable);
+        }
         return drawable;
     }
 

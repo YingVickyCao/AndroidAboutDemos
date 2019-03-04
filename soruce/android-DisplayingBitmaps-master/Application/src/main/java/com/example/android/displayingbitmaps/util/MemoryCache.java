@@ -26,14 +26,14 @@ public class MemoryCache {
     private Set<SoftReference<Bitmap>> mReusableBitmapsPopulatedIntoInBitmap;
 
     public void init(ImageCacheParams cacheParams) {
-        if (Utils.isVersionNoLessThan3_0()) {
+        if (Utils.isNoLessThanV3()) {
             mReusableBitmapsPopulatedIntoInBitmap = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
         }
 
         mMemoryCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
             @Override
             protected void entryRemoved(boolean evicted, String key, BitmapDrawable oldValue, BitmapDrawable newValue) {
-                if (Utils.isVersionNoLessThan3_0()) {
+                if (Utils.isNoLessThanV3()) {
                     mReusableBitmapsPopulatedIntoInBitmap.add(new SoftReference<>(oldValue.getBitmap()));
                 }
             }
@@ -46,7 +46,7 @@ public class MemoryCache {
         };
     }
 
-    public void addBitmapToCache(String data, BitmapDrawable value) {
+    public void cacheBitmap(String data, BitmapDrawable value) {
         if (data == null || value == null) {
             return;
         }

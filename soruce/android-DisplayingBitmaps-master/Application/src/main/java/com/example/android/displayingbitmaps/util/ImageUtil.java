@@ -80,7 +80,7 @@ public class ImageUtil {
     }
 
     private void useInBitmap(final BitmapFactory.Options options, IInBitmapListener listener) {
-        if (Utils.isVersionNoLessThan3_0() && null != listener) {
+        if (Utils.isNoLessThanV3() && null != listener) {
             addInBitmapOptions(options, listener);
         }
     }

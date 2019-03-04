@@ -93,7 +93,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
         // Enable some additional newer visibility and ActionBar features to create a more
         // immersive photo viewing experience
-        if (Utils.isVersionNoLessThan3_0()) {
+        if (Utils.isNoLessThanV3()) {
             final ActionBar actionBar = getActionBar();
 
             // Hide title text and set home as up
