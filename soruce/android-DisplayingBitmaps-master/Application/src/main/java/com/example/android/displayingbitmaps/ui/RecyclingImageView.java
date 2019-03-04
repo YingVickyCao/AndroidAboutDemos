@@ -22,8 +22,6 @@ import android.graphics.drawable.LayerDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.example.android.displayingbitmaps.util.RecyclingBitmapDrawable;
-
 public class RecyclingImageView extends ImageView {
 
     public RecyclingImageView(Context context) {
@@ -49,9 +47,7 @@ public class RecyclingImageView extends ImageView {
     }
 
     private static void notifyDrawableDisplayedStatusChanged(Drawable drawable, final boolean isDisplayed) {
-        if (drawable instanceof RecyclingBitmapDrawable) {
-            ((RecyclingBitmapDrawable) drawable).setIsDisplayed(isDisplayed);
-        } else if (drawable instanceof LayerDrawable) {
+        if (drawable instanceof LayerDrawable) {
             LayerDrawable layerDrawable = (LayerDrawable) drawable;
             for (int i = 0, z = layerDrawable.getNumberOfLayers(); i < z; i++) {
                 notifyDrawableDisplayedStatusChanged(layerDrawable.getDrawable(i), isDisplayed);

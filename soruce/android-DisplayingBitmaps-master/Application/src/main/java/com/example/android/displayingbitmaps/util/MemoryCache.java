@@ -29,19 +29,12 @@ public class MemoryCache {
              */
             @Override
             protected void entryRemoved(boolean evicted, String key, BitmapDrawable oldValue, BitmapDrawable newValue) {
-                if (RecyclingBitmapDrawable.class.isInstance(oldValue)) {
-                    // The removed entry is a recycling drawable, so notify it
-                    // that it has been removed from the memory cache
-                    ((RecyclingBitmapDrawable) oldValue).setIsCached(false);
-                } else {
-                    // The removed entry is a standard BitmapDrawable
-
-                    if (Utils.isVersionNoLessThanHoneycomb()) {
-                        // We're running on Honeycomb or later, so add the bitmap
-                        // to a SoftReference set for possible use with inBitmap later
-                        mReusableBitmaps.add(new SoftReference<Bitmap>(oldValue.getBitmap()));
-                    }
+                if (Utils.isVersionNoLessThanHoneycomb()) {
+                    // We're running on Honeycomb or later, so add the bitmap
+                    // to a SoftReference set for possible use with inBitmap later
+                    mReusableBitmaps.add(new SoftReference<Bitmap>(oldValue.getBitmap()));
                 }
+
             }
 
             /**
@@ -62,9 +55,6 @@ public class MemoryCache {
         }
 
         if (mMemoryCache != null) {
-            if (value instanceof RecyclingBitmapDrawable) {
-                ((RecyclingBitmapDrawable) value).setIsCached(true);
-            }
             mMemoryCache.put(data, value);
         }
 

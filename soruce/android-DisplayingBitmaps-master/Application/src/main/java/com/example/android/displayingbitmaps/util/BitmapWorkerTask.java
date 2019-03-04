@@ -29,16 +29,13 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
      */
     @Override
     protected BitmapDrawable doInBackground(Void... params) {
-        return backgroundProcessing(params);
+        return loadBitmapInBackground(params);
     }
 
-    private BitmapDrawable backgroundProcessing(Void... params) {
-        //BEGIN_INCLUDE(load_bitmap_in_background)
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "doInBackground - starting work");
         }
-
-        final String dataString = String.valueOf(mData);
+        final String url = String.valueOf(mData);
         Bitmap bitmap = null;
         BitmapDrawable drawable = null;
 
@@ -52,40 +49,15 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
             }
         }
 
-        // If the image cache is available and this task has not been cancelled by another
-        // thread and the ImageView that was originally bound to this task is still bound back
-        // to this task and our "exit early" flag is not set then try and fetch the bitmap from
-        // the cache
-        if (imageWorker.mImageCache != null && !isCancelled() && getAttachedImageView() != null
-                && !imageWorker.mExitTasksEarly) {
-            bitmap = imageWorker.mImageCache.getBitmapFromDiskCache(dataString);
-        }
-
-        // If the bitmap was not found in the cache and this task has not been cancelled by
-        // another thread and the ImageView that was originally bound to this task is still
-        // bound back to this task and our "exit early" flag is not set, then call the main
-        // process method (as implemented by a subclass)
-        if (bitmap == null && !isCancelled() && getAttachedImageView() != null
-                && !imageWorker.mExitTasksEarly) {
-            bitmap = imageWorker.processBitmap(mData);
-        }
-
-        // If the bitmap was processed and the image cache is available, then add the processed
-        // bitmap to the cache for future use. Note we don't check if the task was cancelled
-        // here, if it was, and the thread is still running, we may as well add the processed
-        // bitmap to our cache as it might be used again in the future
+        bitmap = findBitmapInDishCache(url);
+        bitmap = processBitmap(bitmap);
         if (bitmap != null) {
             if (Utils.isVersionNoLessThanHoneycomb()) {
-                // Running on Honeycomb or newer, so wrap in a standard BitmapDrawable
                 drawable = new BitmapDrawable(imageWorker.mResources, bitmap);
-            } else {
-                // Running on Gingerbread or older, so wrap in a RecyclingBitmapDrawable
-                // which will recycle automagically
-                drawable = new RecyclingBitmapDrawable(imageWorker.mResources, bitmap);
             }
 
             if (imageWorker.mImageCache != null) {
-                imageWorker.mImageCache.addBitmapToCache(dataString, drawable);
+                imageWorker.mImageCache.addBitmapToCache(url, drawable);
             }
         }
 
@@ -94,7 +66,20 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         }
 
         return drawable;
-        //END_INCLUDE(load_bitmap_in_background)
+    }
+
+    private Bitmap findBitmapInDishCache(String url) {
+        if (imageWorker.mImageCache != null && !isCancelled() && getAttachedImageView() != null && !imageWorker.mExitTasksEarly) {
+            return imageWorker.mImageCache.getBitmapFromDiskCache(url);
+        }
+        return null;
+    }
+
+    private Bitmap processBitmap(Bitmap bitmap) {
+        if (bitmap == null && !isCancelled() && getAttachedImageView() != null && !imageWorker.mExitTasksEarly) {
+            bitmap = imageWorker.processBitmap(mData);
+        }
+        return bitmap;
     }
 
     public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView, OnImageLoadedListener listener) {
