@@ -32,6 +32,7 @@ public class ImageFetcher extends ImageResize {
     private boolean mHttpDiskCacheStarting = true;
     private final Object mHttpDiskCacheLock = new Object();
     private static final int DISK_CACHE_INDEX = 0;
+    private FileUtil fileUtil = new FileUtil();
 
     public ImageFetcher(Context context, int targetImageWidth, int targetImageHeight) {
         super(context, targetImageWidth, targetImageHeight);
@@ -45,7 +46,7 @@ public class ImageFetcher extends ImageResize {
 
     private void init(Context context) {
         checkNetworkConnection(context);
-        mHttpCacheDir = LoadImageUtil.getDiskCacheDir(context, HTTP_CACHE_DIR);
+        mHttpCacheDir = fileUtil.getDiskCacheDir(context, HTTP_CACHE_DIR);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class ImageFetcher extends ImageResize {
             mHttpCacheDir.mkdirs();
         }
         synchronized (mHttpDiskCacheLock) {
-            if (LoadImageUtil.getUsableSpace(mHttpCacheDir) > HTTP_CACHE_SIZE) {
+            if (fileUtil.getUsableSpace(mHttpCacheDir) > HTTP_CACHE_SIZE) {
                 try {
                     mHttpDiskCache = DiskLruCache.open(mHttpCacheDir, 1, 1, HTTP_CACHE_SIZE);
                     if (BuildConfig.DEBUG) {
@@ -153,7 +154,7 @@ public class ImageFetcher extends ImageResize {
             Log.d(TAG, "processBitmap4DownloadResize - " + data);
         }
 
-        final String key = LoadImageUtil.hashKeyForDisk(data);
+        final String key = fileUtil.hashKeyForDisk(data);
         FileDescriptor fileDescriptor = null;
         FileInputStream fileInputStream = null;
         DiskLruCache.Snapshot snapshot;

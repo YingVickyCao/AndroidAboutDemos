@@ -1,110 +1,14 @@
 package com.example.android.displayingbitmaps.util;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.os.Environment;
-import android.os.StatFs;
 
-import java.io.File;
 import java.io.FileDescriptor;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class LoadImageUtil {
-    /**
-     * Get the external app cache directory.
-     *
-     * @param context The context to use
-     * @return The external cache dir
-     */
-    @TargetApi(Build.VERSION_CODES.FROYO)
-    public static File getExternalCacheDir(Context context) {
-        if (Utils.isVersionNoLessThanFroyo()) {
-            return context.getExternalCacheDir();
-        }
-
-        // Before Froyo we need to construct the external cache dir ourselves
-        final String cacheDir = "/Android/data/" + context.getPackageName() + "/cache/";
-        return new File(Environment.getExternalStorageDirectory().getPath() + cacheDir);
-    }
-
-    /**
-     * Check how much usable space is available at a given path.
-     *
-     * @param path The path to check
-     * @return The space available in bytes
-     */
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static long getUsableSpace(File path) {
-        if (Utils.isVersionNoLessThanGingerbread()) {
-            return path.getUsableSpace();
-        }
-        final StatFs stats = new StatFs(path.getPath());
-        return (long) stats.getBlockSize() * (long) stats.getAvailableBlocks();
-    }
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static boolean isExternalStorageRemovable() {
-        if (Utils.isVersionNoLessThanGingerbread()) {
-            return Environment.isExternalStorageRemovable();
-        }
-        return true;
-    }
-
-    static String bytesToHexString(byte[] bytes) {
-        // http://stackoverflow.com/questions/332079
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-            String hex = Integer.toHexString(0xFF & bytes[i]);
-            if (hex.length() == 1) {
-                sb.append('0');
-            }
-            sb.append(hex);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * A hashing method that changes a string (like a URL) into a hash suitable for using as a
-     * disk filename.
-     */
-    public static String hashKeyForDisk(String key) {
-        String cacheKey;
-        try {
-            final MessageDigest mDigest = MessageDigest.getInstance("MD5");
-            mDigest.update(key.getBytes());
-            cacheKey = bytesToHexString(mDigest.digest());
-        } catch (NoSuchAlgorithmException e) {
-            cacheKey = String.valueOf(key.hashCode());
-        }
-        return cacheKey;
-    }
-
-    public static File getDiskCacheDir(Context context, String uniqueName) {
-        final String cachePath = checkIsMediaMounted() || checkIsExternalStorageBuiltIn() ? getExternalCacheDirPath(context) : getInternalCacheDirPath(context);
-        return new File(cachePath + File.separator + uniqueName);
-    }
-
-    private static boolean checkIsMediaMounted() {
-        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    }
-
-    private static boolean checkIsExternalStorageBuiltIn() {
-        return !isExternalStorageRemovable();
-    }
-
-    private static String getExternalCacheDirPath(Context context) {
-        return getExternalCacheDir(context).getPath();
-    }
-
-    private static String getInternalCacheDirPath(Context context) {
-        return context.getCacheDir().getPath();
-    }
-
     /**
      * Decode and sample down a bitmap from a file input stream to the requested width and height.
      *

@@ -30,7 +30,7 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         imageViewReference = new WeakReference<>(imageView);
         mOnImageLoadedListener = listener;
     }
-    
+
     @Override
     protected BitmapDrawable doInBackground(Void... params) {
         return loadBitmapInBackground(params);

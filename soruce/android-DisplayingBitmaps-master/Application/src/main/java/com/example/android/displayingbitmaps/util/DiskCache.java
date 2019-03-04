@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static com.example.android.displayingbitmaps.util.LoadImageUtil.getUsableSpace;
-import static com.example.android.displayingbitmaps.util.LoadImageUtil.hashKeyForDisk;
-
 public class DiskCache {
     private static final String TAG = DiskCache.class.getSimpleName();
     public static final boolean DEFAULT_DISK_CACHE_ENABLED = true;
@@ -28,6 +25,7 @@ public class DiskCache {
     private final Object mDiskCacheLock = new Object();
     private boolean mDiskCacheStarting = true;
     private ImageCacheParams mCacheParams;
+    FileUtil fileUtil = new FileUtil();
 
     public void init(ImageCacheParams cacheParams) {
         mCacheParams = cacheParams;
@@ -50,7 +48,7 @@ public class DiskCache {
                     if (!diskCacheDir.exists()) {
                         diskCacheDir.mkdirs();
                     }
-                    if (getUsableSpace(diskCacheDir) > mCacheParams.diskCacheSize) {
+                    if (fileUtil.getUsableSpace(diskCacheDir) > mCacheParams.diskCacheSize) {
                         try {
                             mDiskLruCache = DiskLruCache.open(diskCacheDir, 1, 1, mCacheParams.diskCacheSize);
                             Log.d(TAG, "Disk cache initialized");
@@ -70,7 +68,7 @@ public class DiskCache {
         synchronized (mDiskCacheLock) {
             // Add to disk cache
             if (mDiskLruCache != null) {
-                final String key = hashKeyForDisk(data);
+                final String key = fileUtil.hashKeyForDisk(data);
                 OutputStream out = null;
                 try {
                     DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
@@ -102,7 +100,7 @@ public class DiskCache {
     }
 
     public Bitmap getBitmapFromDiskCache(String url, final ImageCache imageCache) {
-        final String key = hashKeyForDisk(url);
+        final String key = fileUtil.hashKeyForDisk(url);
         Bitmap bitmap = null;
 
         synchronized (mDiskCacheLock) {
