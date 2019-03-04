@@ -16,14 +16,17 @@
 
 package com.example.android.displayingbitmaps.util;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 
 import com.example.android.common.logger.Log;
 
-public class ImageCache {
-    public static final String TAG = "ImageCache";
+public class ImageCache implements IInBitmapListener {
+    public static final String TAG = ImageCache.class.getSimpleName();
 
     public static final int DEFAULT_COMPRESS_QUALITY = 70;
 
@@ -45,6 +48,10 @@ public class ImageCache {
         return imageCache;
     }
 
+    void initDiskCache() {
+        mDiskCache.initDiskCache();
+    }
+
     static RetainImageCacheFragment findOrCreateRetainFragment(FragmentManager fm) {
         RetainImageCacheFragment fragment = (RetainImageCacheFragment) fm.findFragmentByTag(RetainImageCacheFragment.TAG);
         if (null != fragment) {
@@ -58,19 +65,14 @@ public class ImageCache {
     }
 
 
-    public MemoryCache getmMemoryCache() {
+    public MemoryCache getMemoryCache() {
         return mMemoryCache;
     }
 
-    public DiskCache getmDiskCache() {
+    public DiskCache getDiskCache() {
         return mDiskCache;
     }
 
-    /**
-     * Initialize the cache, providing all parameters.
-     *
-     * @param cacheParams The cache parameters to initialize the cache
-     */
     private void init(ImageCacheParams cacheParams) {
         mDiskCache.init(cacheParams);
         if (cacheParams.initDiskCacheOnCreate) {
@@ -81,10 +83,6 @@ public class ImageCache {
             Log.d(TAG, "Memory cache created (size = " + cacheParams.memCacheSize + ")");
             mMemoryCache.init(cacheParams);
         }
-    }
-
-    void initDiskCache() {
-        mDiskCache.initDiskCache();
     }
 
     void addBitmapToCache(String data, BitmapDrawable value) {
@@ -104,7 +102,7 @@ public class ImageCache {
     }
 
     Bitmap getBitmapFromDiskCache(String url) {
-        return mDiskCache.getBitmapFromDiskCache(url, mMemoryCache);
+        return mDiskCache.getBitmapFromDiskCache(url, this);
     }
 
     void clearCache() {
@@ -118,5 +116,11 @@ public class ImageCache {
 
     void close() {
         mDiskCache.close();
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Override
+    public Bitmap check(BitmapFactory.Options options) {
+        return mMemoryCache.getBitmapUsed4InBitmapFromReusableSet(options);
     }
 }

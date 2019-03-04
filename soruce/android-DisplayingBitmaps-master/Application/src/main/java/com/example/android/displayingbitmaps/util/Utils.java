@@ -33,7 +33,7 @@ public class Utils {
 
     @TargetApi(VERSION_CODES.HONEYCOMB)
     public static void enableStrictMode() {
-        if (Utils.isVersionNoLessThanGingerbread()) {
+        if (Utils.isVersionNoLessThan2_3()) {
             StrictMode.ThreadPolicy.Builder threadPolicyBuilder =
                     new StrictMode.ThreadPolicy.Builder()
                             .detectAll()
@@ -43,7 +43,7 @@ public class Utils {
                             .detectAll()
                             .penaltyLog();
 
-            if (Utils.isVersionNoLessThanHoneycomb()) {
+            if (Utils.isVersionNoLessThan3_0()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
                         .setClassInstanceLimit(ImageGridActivity.class, 1)
@@ -54,27 +54,27 @@ public class Utils {
         }
     }
 
-    public static boolean isVersionNoLessThanFroyo() {
+    public static boolean isVersionNoLessThan2_2() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.FROYO;// 2.2
     }
 
-    public static boolean isVersionNoLessThanGingerbread() {
+    public static boolean isVersionNoLessThan2_3() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD; // >=2.3
     }
 
-    public static boolean isVersionNoLessThanHoneycomb() {
+    public static boolean isVersionNoLessThan3_0() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB; // >=3.0
     }
 
-    public static boolean isVersionNoLessThanHoneycombMR1() {
+    public static boolean isVersionNoLessThan3_1() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB_MR1; // >=3.1
     }
 
-    public static boolean isVersionNoLessThanJellyBean() {
+    public static boolean isVersionNoLessThan4_1() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN; // >=4.1
     }
 
-    public static boolean isVersionNoLessThanKitKat() {
+    public static boolean isVersionNoLessThan4_4() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.KITKAT; // >=4.4
     }
 }

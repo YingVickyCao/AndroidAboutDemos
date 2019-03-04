@@ -19,7 +19,7 @@ public class FileUtil {
      */
     @TargetApi(Build.VERSION_CODES.FROYO)
     public File getExternalCacheDir(Context context) {
-        if (Utils.isVersionNoLessThanFroyo()) {
+        if (Utils.isVersionNoLessThan2_2()) {
             return context.getExternalCacheDir();
         }
 
@@ -36,7 +36,7 @@ public class FileUtil {
      */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public long getUsableSpace(File path) {
-        if (Utils.isVersionNoLessThanGingerbread()) {
+        if (Utils.isVersionNoLessThan2_3()) {
             return path.getUsableSpace();
         }
         final StatFs stats = new StatFs(path.getPath());
@@ -45,7 +45,7 @@ public class FileUtil {
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public boolean isExternalStorageRemovable() {
-        if (Utils.isVersionNoLessThanGingerbread()) {
+        if (Utils.isVersionNoLessThan2_3()) {
             return Environment.isExternalStorageRemovable();
         }
         return true;

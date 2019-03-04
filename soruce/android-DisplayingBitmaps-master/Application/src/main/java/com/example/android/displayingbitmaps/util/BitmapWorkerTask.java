@@ -57,7 +57,7 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         bitmap = findBitmapInDishCache(url);
         bitmap = processBitmap(bitmap);
         if (bitmap != null) {
-            if (Utils.isVersionNoLessThanHoneycomb()) {
+            if (Utils.isVersionNoLessThan3_0()) {
                 drawable = new BitmapDrawable(imageWorker.mResources, bitmap);
             }
 

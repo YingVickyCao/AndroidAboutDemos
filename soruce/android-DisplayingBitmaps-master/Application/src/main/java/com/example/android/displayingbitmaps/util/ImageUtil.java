@@ -4,30 +4,56 @@ import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 
 import java.io.FileDescriptor;
 
 public class ImageUtil {
-    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, MemoryCache cache) {
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public int getBitmapBytesSizeAtBitmapDrawable(BitmapDrawable value) {
+        Bitmap bitmap = value.getBitmap();
+        if (Utils.isVersionNoLessThan4_4()) {
+            return bitmap.getAllocationByteCount();
+        }
+        if (Utils.isVersionNoLessThan3_1()) {
+            return bitmap.getByteCount();
+        }
+        return bitmap.getRowBytes() * bitmap.getHeight();
+    }
+
+    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        useInBitmap(options, listener);
         options.inJustDecodeBounds = false;
-        useInBitmap(options, cache);
         return BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void addInBitmapOptions(BitmapFactory.Options options, MemoryCache cache) {
-        if (cache != null) {
-            Bitmap inBitmap = cache.getBitmapFromReusableSet(options);
-            if (inBitmap != null) {
-                options.inMutable = true;
-                options.inBitmap = inBitmap;
-            }
-        }
+    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        // PO:[Bitmap] BitmapFactory.Options.inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        useInBitmap(options, listener);
+        options.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, IInBitmapListener listener) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(filename, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        useInBitmap(options, listener);
+        options.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeFile(filename, options);
     }
 
     private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
@@ -53,37 +79,25 @@ public class ImageUtil {
         return inSampleSize;
     }
 
-    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, MemoryCache cache) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(filename, options);
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        useInBitmap(options, cache);
-        options.inJustDecodeBounds = false;
-
-        return BitmapFactory.decodeFile(filename, options);
-    }
-
-    private void useInBitmap(final BitmapFactory.Options options, MemoryCache cache) {
-        if (Utils.isVersionNoLessThanHoneycomb()) {
-            addInBitmapOptions(options, cache);
+    private void useInBitmap(final BitmapFactory.Options options, IInBitmapListener listener) {
+        if (Utils.isVersionNoLessThan3_0() && null != listener) {
+            addInBitmapOptions(options, listener);
         }
     }
 
-    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, MemoryCache cache) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        useInBitmap(options, cache);
-        options.inJustDecodeBounds = false;
-
-        return BitmapFactory.decodeResource(res, resId, options);
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void addInBitmapOptions(BitmapFactory.Options options, IInBitmapListener listener) {
+        Bitmap inBitmap = listener.check(options);
+        if (inBitmap != null) {
+            options.inMutable = true;
+            // PO:[Bitmap] BitmapFactory.Options.inBitmap
+            options.inBitmap = inBitmap;
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public boolean canUsedForInBitmapReuseWithTargetOptions(Bitmap candidate, BitmapFactory.Options targetOptions) {
-        if (Utils.isVersionNoLessThanKitKat()) {
+        if (Utils.isVersionNoLessThan4_4()) {
             // From Android 4.4 (KitKat) onward we can re-use if the byte size of the new bitmap is smaller than the reusable bitmap candidate allocation byte count.
             int width = targetOptions.outWidth / targetOptions.inSampleSize;
             int height = targetOptions.outHeight / targetOptions.inSampleSize;
@@ -95,6 +109,7 @@ public class ImageUtil {
         }
     }
 
+    // PO:[Bitmap] Bitmap.Config.ARGB_4444
     public int getBytesPerPixel(Bitmap.Config config) {
         if (config == Bitmap.Config.ARGB_8888) {
             return 4;

@@ -26,6 +26,7 @@ public class DiskCache {
     private final Object mDiskCacheLock = new Object();
     private boolean mDiskCacheStarting = true;
     private ImageCacheParams mCacheParams;
+
     FileUtil fileUtil = new FileUtil();
     ImageUtil imageUtil = new ImageUtil();
 
@@ -42,7 +43,6 @@ public class DiskCache {
      */
     // TODO: 2019/3/1  call initDiskCache() to initialize it on a background thread.
     public void initDiskCache() {
-        // Set up disk cache
         synchronized (mDiskCacheLock) {
             if (mDiskLruCache == null || mDiskLruCache.isClosed()) {
                 File diskCacheDir = mCacheParams.diskCacheDir;
@@ -68,7 +68,6 @@ public class DiskCache {
 
     public void addBitmapToCache(String data, BitmapDrawable value) {
         synchronized (mDiskCacheLock) {
-            // Add to disk cache
             if (mDiskLruCache != null) {
                 final String key = fileUtil.hashKeyForDisk(data);
                 OutputStream out = null;
@@ -101,7 +100,7 @@ public class DiskCache {
         }
     }
 
-    public Bitmap getBitmapFromDiskCache(String url, final MemoryCache memoryCache) {
+    public Bitmap getBitmapFromDiskCache(String url, final IInBitmapListener listener) {
         final String key = fileUtil.hashKeyForDisk(url);
         Bitmap bitmap = null;
 
@@ -123,10 +122,8 @@ public class DiskCache {
                         inputStream = snapshot.getInputStream(DISK_CACHE_INDEX);
                         if (inputStream != null) {
                             FileDescriptor fd = ((FileInputStream) inputStream).getFD();
-
-                            // Decode bitmap, but we don't want to sample so give
-                            // MAX_VALUE as the target dimensions
-                            bitmap = imageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
+                            // Decode bitmap, but we don't want to sample so give MAX_VALUE as the target dimensions
+                            bitmap = imageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, listener);
                         }
                     }
                 } catch (final IOException e) {
