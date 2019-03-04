@@ -90,7 +90,7 @@ public class ImageCache implements IInBitmapListener {
             return;
         }
         mMemoryCache.addBitmapToCache(data, value);
-        mDiskCache.addBitmapToCache(data, value);
+        mDiskCache.cacheBitmap(data, value);
     }
 
     BitmapDrawable getBitmapFromMemoryCache(String url) {
@@ -102,7 +102,7 @@ public class ImageCache implements IInBitmapListener {
     }
 
     Bitmap getBitmapFromDiskCache(String url) {
-        return mDiskCache.getBitmapFromDiskCache(url, this);
+        return mDiskCache.getBitmap(url, this);
     }
 
     void clearCache() {

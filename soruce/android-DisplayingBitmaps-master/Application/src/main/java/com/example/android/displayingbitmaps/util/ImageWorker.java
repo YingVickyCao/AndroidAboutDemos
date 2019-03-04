@@ -24,6 +24,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.widget.ImageView;
@@ -74,7 +75,7 @@ public abstract class ImageWorker {
             final BitmapWorkerTask task = new BitmapWorkerTask(this, url, boundImageView, listener);
             final AsyncDrawable asyncDrawable = new AsyncDrawable(mResources, mLoadingBitmap, task);
             boundImageView.setImageDrawable(asyncDrawable);
-            task.executeOnExecutor(AsyncTask.DUAL_THREAD_EXECUTOR);
+            task.execute();
         }
     }
 

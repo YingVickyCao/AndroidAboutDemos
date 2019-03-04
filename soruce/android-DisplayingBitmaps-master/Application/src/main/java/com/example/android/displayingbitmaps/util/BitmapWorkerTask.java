@@ -2,6 +2,7 @@ package com.example.android.displayingbitmaps.util;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.widget.ImageView;
 
 import com.example.android.common.logger.Log;
