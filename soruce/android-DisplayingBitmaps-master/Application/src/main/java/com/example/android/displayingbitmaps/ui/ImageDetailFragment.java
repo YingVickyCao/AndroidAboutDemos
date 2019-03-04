@@ -26,9 +26,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.android.displayingbitmaps.R;
-import com.example.android.displayingbitmaps.util.ImageFetcher;
-import com.example.android.displayingbitmaps.util.OnImageLoadedListener;
-import com.example.android.displayingbitmaps.util.Utils;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.ImageFetcher;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.OnImageLoadedListener;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 public class ImageDetailFragment extends Fragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
@@ -76,7 +76,7 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
         }
 
         // Pass clicks on the ImageView to the parent activity to handle
-        if (OnClickListener.class.isInstance(getActivity()) && Utils.isNoLessThanV3()) {
+        if (OnClickListener.class.isInstance(getActivity()) && VersionUtil.isNoLessThanV3()) {
             mImageView.setOnClickListener((OnClickListener) getActivity());
         }
     }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.common;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -27,13 +27,11 @@ import com.example.android.displayingbitmaps.ui.ImageGridActivity;
 /**
  * Class containing some static utility methods.
  */
-public class Utils {
-    private Utils() {
-    }
+public class VersionUtil {
 
     @TargetApi(VERSION_CODES.HONEYCOMB)
     public static void enableStrictMode() {
-        if (Utils.isVersionNoLessThan2_3()) {
+        if (VersionUtil.isVersionNoLessThan2_3()) {
             StrictMode.ThreadPolicy.Builder threadPolicyBuilder =
                     new StrictMode.ThreadPolicy.Builder()
                             .detectAll()
@@ -43,7 +41,7 @@ public class Utils {
                             .detectAll()
                             .penaltyLog();
 
-            if (Utils.isNoLessThanV3()) {
+            if (VersionUtil.isNoLessThanV3()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
                         .setClassInstanceLimit(ImageGridActivity.class, 1)

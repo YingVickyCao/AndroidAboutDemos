@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.cache.disk;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;

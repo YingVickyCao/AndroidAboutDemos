@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.cache;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -24,6 +24,10 @@ import android.os.Build;
 import android.support.v4.app.FragmentManager;
 
 import com.example.android.common.logger.Log;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IInBitmapListener;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.RetainImageCacheFragment;
+import com.example.android.displayingbitmaps.util.bitmap.cache.disk.DiskCache;
+import com.example.android.displayingbitmaps.util.bitmap.cache.mememory.MemoryCache;
 
 public class ImageCache implements IInBitmapListener {
     public static final String TAG = ImageCache.class.getSimpleName();
@@ -37,7 +41,7 @@ public class ImageCache implements IInBitmapListener {
         init(cacheParams);
     }
 
-    static ImageCache getInstance(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
+    public static ImageCache getInstance(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
         final RetainImageCacheFragment mRetainFragment = findOrCreateRetainFragment(fragmentManager);
         ImageCache imageCache = (ImageCache) mRetainFragment.getObject();
         if (imageCache == null) {
@@ -48,7 +52,7 @@ public class ImageCache implements IInBitmapListener {
         return imageCache;
     }
 
-    void initDiskCache() {
+    public void initDiskCache() {
         mDiskCache.initDiskCache();
     }
 
@@ -85,7 +89,7 @@ public class ImageCache implements IInBitmapListener {
         }
     }
 
-    void cacheBitmap(String data, BitmapDrawable value) {
+    public void cacheBitmap(String data, BitmapDrawable value) {
         if (data == null || value == null) {
             return;
         }
@@ -93,7 +97,7 @@ public class ImageCache implements IInBitmapListener {
         mDiskCache.cacheBitmap(data, value);
     }
 
-    BitmapDrawable getBitmapFromMemoryCache(String url) {
+    public BitmapDrawable getBitmapFromMemoryCache(String url) {
         BitmapDrawable memValue = mMemoryCache.getBitmapFromMemoryCache(url);
         if (memValue != null) {
             Log.d(TAG, "Memory cache hit");
@@ -101,20 +105,20 @@ public class ImageCache implements IInBitmapListener {
         return memValue;
     }
 
-    Bitmap getBitmapFromDiskCache(String url) {
+    public Bitmap getBitmapFromDiskCache(String url) {
         return mDiskCache.getBitmap(url, this);
     }
 
-    void clearCache() {
+    public void clearCache() {
         mMemoryCache.clearCache();
         mDiskCache.clearCache();
     }
 
-    void flush() {
+    public void flush() {
         mDiskCache.flush();
     }
 
-    void close() {
+    public void close() {
         mDiskCache.close();
     }
 

@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.common;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -19,7 +19,7 @@ public class FileUtil {
      */
     @TargetApi(Build.VERSION_CODES.FROYO)
     public File getExternalCacheDir(Context context) {
-        if (Utils.isVersionNoLessThan2_2()) {
+        if (VersionUtil.isVersionNoLessThan2_2()) {
             return context.getExternalCacheDir();
         }
 
@@ -36,7 +36,7 @@ public class FileUtil {
      */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public long getUsableSpace(File path) {
-        if (Utils.isVersionNoLessThan2_3()) {
+        if (VersionUtil.isVersionNoLessThan2_3()) {
             return path.getUsableSpace();
         }
         final StatFs stats = new StatFs(path.getPath());
@@ -45,7 +45,7 @@ public class FileUtil {
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public boolean isExternalStorageRemovable() {
-        if (Utils.isVersionNoLessThan2_3()) {
+        if (VersionUtil.isVersionNoLessThan2_3()) {
             return Environment.isExternalStorageRemovable();
         }
         return true;

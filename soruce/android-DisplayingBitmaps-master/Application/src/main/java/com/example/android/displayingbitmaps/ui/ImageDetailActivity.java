@@ -37,9 +37,9 @@ import android.widget.Toast;
 import com.example.android.displayingbitmaps.BuildConfig;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.provider.Images;
-import com.example.android.displayingbitmaps.util.ImageCacheParams;
-import com.example.android.displayingbitmaps.util.ImageFetcher;
-import com.example.android.displayingbitmaps.util.Utils;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.ImageFetcher;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 public class ImageDetailActivity extends FragmentActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";
@@ -53,7 +53,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {
-            Utils.enableStrictMode();
+            VersionUtil.enableStrictMode();
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_detail_pager);
@@ -93,7 +93,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
         // Enable some additional newer visibility and ActionBar features to create a more
         // immersive photo viewing experience
-        if (Utils.isNoLessThanV3()) {
+        if (VersionUtil.isNoLessThanV3()) {
             final ActionBar actionBar = getActionBar();
 
             // Hide title text and set home as up

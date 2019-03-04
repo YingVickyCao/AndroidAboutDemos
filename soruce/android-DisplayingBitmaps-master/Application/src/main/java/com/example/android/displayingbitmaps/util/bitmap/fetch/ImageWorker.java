@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.fetch;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,6 +31,9 @@ import android.widget.ImageView;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCache;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.common.ImageUtil;
 
 public abstract class ImageWorker implements IImageWorker{
     private static final String TAG = ImageWorker.class.getSimpleName();

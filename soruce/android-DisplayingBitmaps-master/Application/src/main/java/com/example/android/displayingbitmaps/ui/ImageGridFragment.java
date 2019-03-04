@@ -38,10 +38,10 @@ import android.widget.Toast;
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.provider.Images;
-import com.example.android.displayingbitmaps.util.IImageWorker;
-import com.example.android.displayingbitmaps.util.ImageCacheParams;
-import com.example.android.displayingbitmaps.util.ImageFetcher;
-import com.example.android.displayingbitmaps.util.Utils;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IImageWorker;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.ImageFetcher;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 public class ImageGridFragment extends Fragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();
@@ -96,7 +96,7 @@ public class ImageGridFragment extends Fragment implements IImageWorker {
     private void jumpImageDetailActivity(View v, long id) {
         final Intent i = new Intent(getActivity(), ImageDetailActivity.class);
         i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
-        if (Utils.isVersionNoLessThan4_1()) {
+        if (VersionUtil.isVersionNoLessThan4_1()) {
             ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
             getActivity().startActivity(i, options.toBundle());
         } else {
@@ -109,7 +109,7 @@ public class ImageGridFragment extends Fragment implements IImageWorker {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                    if (!Utils.isNoLessThanV3()) {
+                    if (!VersionUtil.isNoLessThanV3()) {
                         mImageFetcher.setPauseWork(true);
                     }
                 } else {

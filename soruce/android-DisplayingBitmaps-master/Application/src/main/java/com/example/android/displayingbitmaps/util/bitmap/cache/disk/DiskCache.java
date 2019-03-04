@@ -1,10 +1,14 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.cache.disk;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IInBitmapListener;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.common.FileUtil;
+import com.example.android.displayingbitmaps.util.common.ImageUtil;
 
 import java.io.File;
 import java.io.FileDescriptor;

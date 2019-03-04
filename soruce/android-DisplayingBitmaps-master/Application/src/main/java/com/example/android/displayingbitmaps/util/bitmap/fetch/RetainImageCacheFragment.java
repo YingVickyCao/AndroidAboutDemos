@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.fetch;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

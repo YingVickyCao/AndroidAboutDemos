@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.example.android.displayingbitmaps.util.IImageWorker;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IImageWorker;
 
 class ImageAdapter extends BaseAdapter {
     private static final String TAG = ImageAdapter.class.getSimpleName();

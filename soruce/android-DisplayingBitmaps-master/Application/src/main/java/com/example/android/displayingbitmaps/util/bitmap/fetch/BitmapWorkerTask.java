@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.fetch;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 import java.lang.ref.WeakReference;
 
@@ -66,7 +67,7 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
             return null;
         }
 
-        if (Utils.isNoLessThanV3()) {
+        if (VersionUtil.isNoLessThanV3()) {
             // PO:[Bitmap] BitmapDrawable
             drawable = new BitmapDrawable(imageWorker.mResources, bitmap);
         }

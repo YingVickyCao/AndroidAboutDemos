@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.fetch;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 import com.example.android.displayingbitmaps.R;
+import com.example.android.displayingbitmaps.util.bitmap.cache.disk.DiskLruCache;
+import com.example.android.displayingbitmaps.util.common.FileUtil;
+import com.example.android.displayingbitmaps.util.common.ImageUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

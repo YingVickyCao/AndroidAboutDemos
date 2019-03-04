@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.bitmap.cache.mememory;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +7,9 @@ import android.support.v4.util.LruCache;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
+import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.common.ImageUtil;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;
@@ -18,7 +21,7 @@ public class MemoryCache {
     private static final String TAG = MemoryCache.class.getSimpleName();
 
     public static final int DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE = 1024 * 5; // 5MB
-    protected static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
+    public static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
 
     ImageUtil imageUtil = new ImageUtil();
 
@@ -26,14 +29,14 @@ public class MemoryCache {
     private Set<SoftReference<Bitmap>> mReusableBitmapsPopulatedIntoInBitmap;
 
     public void init(ImageCacheParams cacheParams) {
-        if (Utils.isNoLessThanV3()) {
+        if (VersionUtil.isNoLessThanV3()) {
             mReusableBitmapsPopulatedIntoInBitmap = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
         }
 
         mMemoryCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
             @Override
             protected void entryRemoved(boolean evicted, String key, BitmapDrawable oldValue, BitmapDrawable newValue) {
-                if (Utils.isNoLessThanV3()) {
+                if (VersionUtil.isNoLessThanV3()) {
                     mReusableBitmapsPopulatedIntoInBitmap.add(new SoftReference<>(oldValue.getBitmap()));
                 }
             }
@@ -74,7 +77,7 @@ public class MemoryCache {
         }
     }
 
-    Bitmap getBitmapUsed4InBitmapFromReusableSet(BitmapFactory.Options options) {
+    public Bitmap getBitmapUsed4InBitmapFromReusableSet(BitmapFactory.Options options) {
         Bitmap bitmap = null;
         if (mReusableBitmapsPopulatedIntoInBitmap != null && !mReusableBitmapsPopulatedIntoInBitmap.isEmpty()) {
             synchronized (mReusableBitmapsPopulatedIntoInBitmap) {

@@ -1,4 +1,4 @@
-package com.example.android.displayingbitmaps.util;
+package com.example.android.displayingbitmaps.util.common;
 
 import android.annotation.TargetApi;
 import android.content.res.Resources;
@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IInBitmapListener;
+
 import java.io.FileDescriptor;
 
 public class ImageUtil {
@@ -14,10 +16,10 @@ public class ImageUtil {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public int getBitmapBytesSizeAtBitmapDrawable(BitmapDrawable value) {
         Bitmap bitmap = value.getBitmap();
-        if (Utils.isVersionNoLessThan4_4()) {
+        if (VersionUtil.isVersionNoLessThan4_4()) {
             return bitmap.getAllocationByteCount();
         }
-        if (Utils.isVersionNoLessThan3_1()) {
+        if (VersionUtil.isVersionNoLessThan3_1()) {
             return bitmap.getByteCount();
         }
         return bitmap.getRowBytes() * bitmap.getHeight();
@@ -80,7 +82,7 @@ public class ImageUtil {
     }
 
     private void useInBitmap(final BitmapFactory.Options options, IInBitmapListener listener) {
-        if (Utils.isNoLessThanV3() && null != listener) {
+        if (VersionUtil.isNoLessThanV3() && null != listener) {
             addInBitmapOptions(options, listener);
         }
     }
@@ -97,7 +99,7 @@ public class ImageUtil {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public boolean canUsedForInBitmapReuseWithTargetOptions(Bitmap candidate, BitmapFactory.Options targetOptions) {
-        if (Utils.isVersionNoLessThan4_4()) {
+        if (VersionUtil.isVersionNoLessThan4_4()) {
             // From Android 4.4 (KitKat) onward we can re-use if the byte size of the new bitmap is smaller than the reusable bitmap candidate allocation byte count.
             int width = targetOptions.outWidth / targetOptions.inSampleSize;
             int height = targetOptions.outHeight / targetOptions.inSampleSize;

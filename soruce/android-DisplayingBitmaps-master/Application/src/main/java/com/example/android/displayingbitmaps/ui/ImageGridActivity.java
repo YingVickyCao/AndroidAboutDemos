@@ -21,7 +21,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.android.displayingbitmaps.BuildConfig;
-import com.example.android.displayingbitmaps.util.Utils;
+import com.example.android.displayingbitmaps.util.common.VersionUtil;
 
 /**
  * Simple FragmentActivity to hold the main {@link ImageGridFragment} and not much else.
@@ -32,7 +32,7 @@ public class ImageGridActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {
-            Utils.enableStrictMode();
+            VersionUtil.enableStrictMode();
         }
         super.onCreate(savedInstanceState);
 
