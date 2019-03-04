@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DiskCache {
+    public static final Bitmap.CompressFormat DEFAULT_COMPRESS_FORMAT = Bitmap.CompressFormat.JPEG;
     private static final String TAG = DiskCache.class.getSimpleName();
     public static final boolean DEFAULT_DISK_CACHE_ENABLED = true;
     public static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE = false;
@@ -99,7 +100,7 @@ public class DiskCache {
         }
     }
 
-    public Bitmap getBitmapFromDiskCache(String url, final ImageCache imageCache) {
+    public Bitmap getBitmapFromDiskCache(String url, final MemoryCache memoryCache) {
         final String key = fileUtil.hashKeyForDisk(url);
         Bitmap bitmap = null;
 
@@ -124,7 +125,7 @@ public class DiskCache {
 
                             // Decode bitmap, but we don't want to sample so give
                             // MAX_VALUE as the target dimensions
-                            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, imageCache);
+                            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
                         }
                     }
                 } catch (final IOException e) {

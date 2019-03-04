@@ -9,23 +9,22 @@ import android.os.Build;
 import java.io.FileDescriptor;
 
 public class LoadImageUtil {
-    public static Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, ImageCache cache) {
+    public static Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         options.inJustDecodeBounds = false;
-        tryToUseInBitmap(options, cache);
+        useInBitmap(options, cache);
         return BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    static void addInBitmapOptions(BitmapFactory.Options options, ImageCache cache) {
-        options.inMutable = true;
-
+    static void addInBitmapOptions(BitmapFactory.Options options, MemoryCache cache) {
         if (cache != null) {
             Bitmap inBitmap = cache.getBitmapFromReusableSet(options);
             if (inBitmap != null) {
+                options.inMutable = true;
                 options.inBitmap = inBitmap;
             }
         }
@@ -54,29 +53,58 @@ public class LoadImageUtil {
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, ImageCache cache) {
+    public static Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filename, options);
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        tryToUseInBitmap(options, cache);
+        useInBitmap(options, cache);
         options.inJustDecodeBounds = false;
+
         return BitmapFactory.decodeFile(filename, options);
     }
 
-    private static void tryToUseInBitmap(final BitmapFactory.Options options, ImageCache cache) {
+    private static void useInBitmap(final BitmapFactory.Options options, MemoryCache cache) {
         if (Utils.isVersionNoLessThanHoneycomb()) {
             addInBitmapOptions(options, cache);
         }
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, ImageCache cache) {
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        tryToUseInBitmap(options, cache);
+        useInBitmap(options, cache);
         options.inJustDecodeBounds = false;
+
         return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public boolean canUsedForInBitmapReuseWithTargetOptions(Bitmap candidate, BitmapFactory.Options targetOptions) {
+        if (Utils.isVersionNoLessThanKitKat()) {
+            // From Android 4.4 (KitKat) onward we can re-use if the byte size of the new bitmap is smaller than the reusable bitmap candidate allocation byte count.
+            int width = targetOptions.outWidth / targetOptions.inSampleSize;
+            int height = targetOptions.outHeight / targetOptions.inSampleSize;
+            int byteCount = width * height * getBytesPerPixel(candidate.getConfig());
+            return byteCount <= candidate.getAllocationByteCount();
+        } else {
+            // On earlier versions, the dimensions must match exactly and the inSampleSize must be 1
+            return candidate.getWidth() == targetOptions.outWidth && candidate.getHeight() == targetOptions.outHeight && targetOptions.inSampleSize == 1;
+        }
+    }
+
+    public int getBytesPerPixel(Bitmap.Config config) {
+        if (config == Bitmap.Config.ARGB_8888) {
+            return 4;
+        } else if (config == Bitmap.Config.RGB_565) {
+            return 2;
+        } else if (config == Bitmap.Config.ARGB_4444) {
+            return 2;
+        } else if (config == Bitmap.Config.ALPHA_8) {
+            return 1;
+        }
+        return 1;
     }
 }

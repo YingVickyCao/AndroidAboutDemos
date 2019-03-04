@@ -47,7 +47,7 @@ public class ImageResize extends ImageWorker {
 
     private Bitmap processBitmap(int resId) {
         Log.d(TAG, "processBitmap,resId= " + resId);
-        return LoadImageUtil.decodeSampledBitmapFromResource(mResources, resId, mImageWidth, mImageHeight, getImageCache());
+        return LoadImageUtil.decodeSampledBitmapFromResource(mResources, resId, mImageWidth, mImageHeight, mImageCache.getmMemoryCache());
     }
 
     @Override

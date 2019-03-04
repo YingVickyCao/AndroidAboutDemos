@@ -12,7 +12,7 @@ public class ImageCacheParams {
     public int memCacheSize = MemoryCache.DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE;
     public int diskCacheSize = DiskCache.DEFAULT_DISK_CACHE_BYTES_SIZE;
     public File diskCacheDir;
-    public Bitmap.CompressFormat compressFormat = ImageCache.DEFAULT_COMPRESS_FORMAT;
+    public Bitmap.CompressFormat compressFormat = DiskCache.DEFAULT_COMPRESS_FORMAT;
     public int compressQuality = ImageCache.DEFAULT_COMPRESS_QUALITY;
     public boolean memoryCacheEnabled = MemoryCache.DEFAULT_MEMORY_CACHE_ENABLED;
     public boolean diskCacheEnabled = DiskCache.DEFAULT_DISK_CACHE_ENABLED;

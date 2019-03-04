@@ -2,6 +2,7 @@ package com.example.android.displayingbitmaps.util;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v4.util.LruCache;
@@ -10,18 +11,39 @@ import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 
 import java.lang.ref.SoftReference;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class MemoryCache {
+    private static final String TAG = MemoryCache.class.getSimpleName();
+
     public static final int DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE = 1024 * 5; // 5MB
     protected static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
-    private static final String TAG = MemoryCache.class.getSimpleName();
+
+    LoadImageUtil loadImageUtil = new LoadImageUtil();
+
     private ImageCacheParams mCacheParams;
 
     private LruCache<String, BitmapDrawable> mMemoryCache;
+    private Set<SoftReference<Bitmap>> mReusableBitmaps;
 
-    public void init(ImageCacheParams cacheParams, final Set<SoftReference<Bitmap>> mReusableBitmaps) {
+    public void init(ImageCacheParams cacheParams) {
         mCacheParams = cacheParams;
+        // If we're running on Honeycomb or newer, create a set of reusable bitmaps that can be
+        // populated into the inBitmap field of BitmapFactory.Options. Note that the set is
+        // of SoftReferences which will actually not be very effective due to the garbage
+        // collector being aggressive clearing Soft/WeakReferences. A better approach
+        // would be to use a strongly references bitmaps, however this would require some
+        // balancing of memory usage between this set and the bitmap LruCache. It would also
+        // require knowledge of the expected size of the bitmaps. From Honeycomb to JellyBean
+        // the size would need to be precise, from KitKat onward the size would just need to
+        // be the upper bound (due to changes in how inBitmap can re-use bitmaps).
+        if (Utils.isVersionNoLessThanHoneycomb()) {
+            mReusableBitmaps = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
+        }
+
         mMemoryCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
 
             /**
@@ -76,6 +98,39 @@ public class MemoryCache {
                 Log.d(TAG, "Memory cache cleared");
             }
         }
+    }
+
+    /**
+     * @param options - BitmapFactory.Options with out* options populated
+     * @return Bitmap that case be used for inBitmap
+     */
+    Bitmap getBitmapFromReusableSet(BitmapFactory.Options options) {
+        Bitmap bitmap = null;
+
+        if (mReusableBitmaps != null && !mReusableBitmaps.isEmpty()) {
+            synchronized (mReusableBitmaps) {
+                final Iterator<SoftReference<Bitmap>> iterator = mReusableBitmaps.iterator();
+                Bitmap item;
+                while (iterator.hasNext()) {
+                    item = iterator.next().get();
+
+                    if (null != item && item.isMutable()) {
+                        if (loadImageUtil.canUsedForInBitmapReuseWithTargetOptions(item, options)) {
+                            bitmap = item;
+
+                            // Remove from reusable set so it can't be used again
+                            iterator.remove();
+                            break;
+                        }
+                    } else {
+                        // Remove from the set if the reference has been cleared.
+                        iterator.remove();
+                    }
+                }
+            }
+        }
+
+        return bitmap;
     }
 
     /**

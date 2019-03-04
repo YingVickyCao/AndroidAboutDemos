@@ -207,8 +207,7 @@ public class ImageFetcher extends ImageResize {
 
         Bitmap bitmap = null;
         if (fileDescriptor != null) {
-            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth,
-                    mImageHeight, getImageCache());
+            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth, mImageHeight, mImageCache.getmMemoryCache());
         }
         if (fileInputStream != null) {
             try {
