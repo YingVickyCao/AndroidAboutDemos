@@ -87,7 +87,7 @@ public class ImageUtil {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void addInBitmapOptions(BitmapFactory.Options options, IInBitmapListener listener) {
-        Bitmap inBitmap = listener.check(options);
+        Bitmap inBitmap = listener.checkReusableBitmapsPopulatedIntoInBitmap(options);
         if (inBitmap != null) {
             options.inMutable = true;
             // PO:[Bitmap] BitmapFactory.Options.inBitmap

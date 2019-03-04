@@ -120,7 +120,7 @@ public class ImageCache implements IInBitmapListener {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-    public Bitmap check(BitmapFactory.Options options) {
+    public Bitmap checkReusableBitmapsPopulatedIntoInBitmap(BitmapFactory.Options options) {
         return mMemoryCache.getBitmapUsed4InBitmapFromReusableSet(options);
     }
 }

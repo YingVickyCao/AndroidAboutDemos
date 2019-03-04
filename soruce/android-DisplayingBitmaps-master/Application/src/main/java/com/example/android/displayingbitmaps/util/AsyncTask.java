@@ -157,7 +157,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * After invoking this method, {@link #onCancelled(Object)}, instead of
  * {@link #onPostExecute(Object)} will be invoked after {@link #doInBackground(Object[])}
  * returns. To ensure that a task is cancelled as quickly as possible, you should always
- * check the return value of {@link #isCancelled()} periodically from
+ * checkReusableBitmapsPopulatedIntoInBitmap the return value of {@link #isCancelled()} periodically from
  * {@link #doInBackground(Object[])}, if possible (inside a loop for instance.)</p>
  *
  * <h2>Threading rules</h2>
@@ -472,7 +472,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * <p>Calling this method will result in {@link #onCancelled(Object)} being
      * invoked on the UI thread after {@link #doInBackground(Object[])}
      * returns. Calling this method guarantees that {@link #onPostExecute(Object)}
-     * is never invoked. After invoking this method, you should check the
+     * is never invoked. After invoking this method, you should checkReusableBitmapsPopulatedIntoInBitmap the
      * value returned by {@link #isCancelled()} periodically from
      * {@link #doInBackground(Object[])} to finish the task as early as
      * possible.</p>
