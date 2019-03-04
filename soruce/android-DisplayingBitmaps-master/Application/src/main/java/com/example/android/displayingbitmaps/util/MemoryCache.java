@@ -22,7 +22,7 @@ public class MemoryCache {
     public static final int DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE = 1024 * 5; // 5MB
     protected static final boolean DEFAULT_MEMORY_CACHE_ENABLED = true;
 
-    LoadImageUtil loadImageUtil = new LoadImageUtil();
+    ImageUtil imageUtil = new ImageUtil();
 
     private ImageCacheParams mCacheParams;
 
@@ -115,7 +115,7 @@ public class MemoryCache {
                     item = iterator.next().get();
 
                     if (null != item && item.isMutable()) {
-                        if (loadImageUtil.canUsedForInBitmapReuseWithTargetOptions(item, options)) {
+                        if (imageUtil.canUsedForInBitmapReuseWithTargetOptions(item, options)) {
                             bitmap = item;
 
                             // Remove from reusable set so it can't be used again

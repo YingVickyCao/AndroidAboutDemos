@@ -33,7 +33,7 @@ public class ImageFetcher extends ImageResize {
     private final Object mHttpDiskCacheLock = new Object();
     private static final int DISK_CACHE_INDEX = 0;
     private FileUtil fileUtil = new FileUtil();
-    private LoadImageUtil loadImageUtil = new LoadImageUtil();
+    private ImageUtil imageUtil = new ImageUtil();
 
     public ImageFetcher(Context context, int targetImageWidth, int targetImageHeight) {
         super(context, targetImageWidth, targetImageHeight);
@@ -208,7 +208,7 @@ public class ImageFetcher extends ImageResize {
 
         Bitmap bitmap = null;
         if (fileDescriptor != null) {
-            bitmap = loadImageUtil.decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth, mImageHeight, mImageCache.getmMemoryCache());
+            bitmap = imageUtil.decodeSampledBitmapFromDescriptor(fileDescriptor, mImageWidth, mImageHeight, mImageCache.getmMemoryCache());
         }
         if (fileInputStream != null) {
             try {

@@ -8,7 +8,7 @@ import android.os.Build;
 
 import java.io.FileDescriptor;
 
-public class LoadImageUtil {
+public class ImageUtil {
     public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
