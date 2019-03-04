@@ -31,9 +31,6 @@ public class Utils {
     private Utils() {
     }
 
-    ;
-
-
     @TargetApi(VERSION_CODES.HONEYCOMB)
     public static void enableStrictMode() {
         if (Utils.isVersionNoLessThanGingerbread()) {

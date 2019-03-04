@@ -20,13 +20,17 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
     public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView) {
         this.imageWorker = imageWorker;
         mData = data;
-        imageViewReference = new WeakReference<ImageView>(imageView);
+        imageViewReference = new WeakReference<>(imageView);
         mOnImageLoadedListener = null;
     }
 
-    /**
-     * Background processing.
-     */
+    public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView, OnImageLoadedListener listener) {
+        this.imageWorker = imageWorker;
+        mData = data;
+        imageViewReference = new WeakReference<>(imageView);
+        mOnImageLoadedListener = listener;
+    }
+    
     @Override
     protected BitmapDrawable doInBackground(Void... params) {
         return loadBitmapInBackground(params);
@@ -83,37 +87,26 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         return bitmap;
     }
 
-    public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView, OnImageLoadedListener listener) {
-        this.imageWorker = imageWorker;
-        mData = data;
-        imageViewReference = new WeakReference<ImageView>(imageView);
-        mOnImageLoadedListener = listener;
-    }
-
-    /**
-     * Once the image is processed, associates it to the imageView
-     */
     @Override
     protected void onPostExecute(BitmapDrawable value) {
-        //BEGIN_INCLUDE(complete_background_work)
-        boolean success = false;
-        // if cancel was called on this task or the "exit early" flag is set then we're done
         if (isCancelled() || imageWorker.mExitTasksEarly) {
             value = null;
         }
 
         final ImageView imageView = getAttachedImageView();
-        if (value != null && imageView != null) {
+        if (isSuccess(value, imageView)) {
             if (BuildConfig.DEBUG) {
                 Log.d(TAG, "onPostExecute - setting bitmap");
             }
-            success = true;
             imageWorker.setImageDrawable(imageView, value);
         }
         if (mOnImageLoadedListener != null) {
-            mOnImageLoadedListener.onImageLoaded(success);
+            mOnImageLoadedListener.onImageLoaded(isSuccess(value, imageView));
         }
-        //END_INCLUDE(complete_background_work)
+    }
+
+    boolean isSuccess(BitmapDrawable value, ImageView imageView) {
+        return value != null && imageView != null;
     }
 
     @Override
@@ -124,10 +117,6 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         }
     }
 
-    /**
-     * Returns the ImageView associated with this task as long as the ImageView's task still
-     * points to this task as well. Returns null otherwise.
-     */
     private ImageView getAttachedImageView() {
         final ImageView imageView = imageViewReference.get();
         final BitmapWorkerTask bitmapWorkerTask = imageWorker.getBitmapWorkerTask(imageView);
