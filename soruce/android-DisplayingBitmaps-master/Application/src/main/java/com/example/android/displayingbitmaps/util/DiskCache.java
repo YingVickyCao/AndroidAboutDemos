@@ -27,6 +27,7 @@ public class DiskCache {
     private boolean mDiskCacheStarting = true;
     private ImageCacheParams mCacheParams;
     FileUtil fileUtil = new FileUtil();
+    LoadImageUtil loadImageUtil = new LoadImageUtil();
 
     public void init(ImageCacheParams cacheParams) {
         mCacheParams = cacheParams;
@@ -125,7 +126,7 @@ public class DiskCache {
 
                             // Decode bitmap, but we don't want to sample so give
                             // MAX_VALUE as the target dimensions
-                            bitmap = LoadImageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
+                            bitmap = loadImageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
                         }
                     }
                 } catch (final IOException e) {

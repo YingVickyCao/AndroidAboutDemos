@@ -49,6 +49,7 @@ public abstract class ImageWorker {
     private static final int MESSAGE_CLOSE = 3;
 
     protected Resources mResources;
+    protected LoadImageUtil loadImageUtil = new LoadImageUtil();
 
     protected ImageWorker(Context context) {
         mResources = context.getResources();

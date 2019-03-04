@@ -9,7 +9,7 @@ import android.os.Build;
 import java.io.FileDescriptor;
 
 public class LoadImageUtil {
-    public static Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, MemoryCache cache) {
+    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
@@ -20,7 +20,7 @@ public class LoadImageUtil {
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    static void addInBitmapOptions(BitmapFactory.Options options, MemoryCache cache) {
+    private void addInBitmapOptions(BitmapFactory.Options options, MemoryCache cache) {
         if (cache != null) {
             Bitmap inBitmap = cache.getBitmapFromReusableSet(options);
             if (inBitmap != null) {
@@ -30,7 +30,7 @@ public class LoadImageUtil {
         }
     }
 
-    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;
@@ -53,7 +53,7 @@ public class LoadImageUtil {
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, MemoryCache cache) {
+    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filename, options);
@@ -64,13 +64,13 @@ public class LoadImageUtil {
         return BitmapFactory.decodeFile(filename, options);
     }
 
-    private static void useInBitmap(final BitmapFactory.Options options, MemoryCache cache) {
+    private void useInBitmap(final BitmapFactory.Options options, MemoryCache cache) {
         if (Utils.isVersionNoLessThanHoneycomb()) {
             addInBitmapOptions(options, cache);
         }
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, MemoryCache cache) {
+    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, MemoryCache cache) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
