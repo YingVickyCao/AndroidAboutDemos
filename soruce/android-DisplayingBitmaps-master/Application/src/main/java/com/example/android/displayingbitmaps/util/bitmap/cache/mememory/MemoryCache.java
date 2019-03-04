@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 
-import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
 import com.example.android.displayingbitmaps.util.common.ImageUtil;

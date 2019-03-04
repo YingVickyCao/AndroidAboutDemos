@@ -27,9 +27,9 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCache;
 import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;

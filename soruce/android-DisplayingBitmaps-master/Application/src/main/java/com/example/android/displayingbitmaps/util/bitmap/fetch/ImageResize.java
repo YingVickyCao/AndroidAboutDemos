@@ -18,8 +18,8 @@ package com.example.android.displayingbitmaps.util.bitmap.fetch;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 
-import com.example.android.common.logger.Log;
 
 public class ImageResize extends ImageWorker {
     private static final String TAG = ImageResize.class.getSimpleName();

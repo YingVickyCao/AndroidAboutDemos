@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,11 +36,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.provider.Images;
-import com.example.android.displayingbitmaps.util.bitmap.fetch.IImageWorker;
 import com.example.android.displayingbitmaps.util.bitmap.cache.ImageCacheParams;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IImageWorker;
 import com.example.android.displayingbitmaps.util.bitmap.fetch.ImageFetcher;
 import com.example.android.displayingbitmaps.util.common.VersionUtil;
 

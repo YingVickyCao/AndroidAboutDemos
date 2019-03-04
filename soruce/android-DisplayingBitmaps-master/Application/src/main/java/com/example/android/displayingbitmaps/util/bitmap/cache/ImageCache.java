@@ -22,12 +22,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 
-import com.example.android.common.logger.Log;
-import com.example.android.displayingbitmaps.util.bitmap.fetch.IInBitmapListener;
-import com.example.android.displayingbitmaps.util.bitmap.fetch.RetainImageCacheFragment;
 import com.example.android.displayingbitmaps.util.bitmap.cache.disk.DiskCache;
 import com.example.android.displayingbitmaps.util.bitmap.cache.mememory.MemoryCache;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.IInBitmapListener;
+import com.example.android.displayingbitmaps.util.bitmap.fetch.RetainImageCacheFragment;
 
 public class ImageCache implements IInBitmapListener {
     public static final String TAG = ImageCache.class.getSimpleName();
