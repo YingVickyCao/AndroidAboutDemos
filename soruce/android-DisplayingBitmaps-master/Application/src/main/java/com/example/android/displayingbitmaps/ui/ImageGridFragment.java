@@ -41,13 +41,6 @@ import com.example.android.displayingbitmaps.util.ImageCacheParams;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
 import com.example.android.displayingbitmaps.util.Utils;
 
-/**
- * The main fragment that powers the ImageGridActivity screen. Fairly straight forward GridView
- * implementation with the key addition being the ImageWorker class w/ImageCache to load children
- * asynchronously, keeping the UI nice and smooth and caching thumbnails for quick retrieval. The
- * cache is retained over configuration changes like orientation change so the images are populated
- * quickly if, for example, the user rotates the device.
- */
 public class ImageGridFragment extends Fragment {
     private static final String TAG = ImageGridFragment.class.getSimpleName();
     private static final String IMAGE_CACHE_DIR = "thumbs";
@@ -138,7 +131,10 @@ public class ImageGridFragment extends Fragment {
                             final int numColumns = getNumColumns();
                             if (numColumns > 0) {
                                 mAdapter.setNumColumns(numColumns);
-                                mAdapter.setItemHeight(getColumnWidth(numColumns));
+                                int height = getColumnWidth(numColumns);
+                                if (mAdapter.setItemHeight(height)) {
+                                    mImageFetcher.setImageSize(height, height);
+                                }
                                 Log.d(TAG, "onCreateView - numColumns set to " + numColumns);
                                 mGridView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                             }

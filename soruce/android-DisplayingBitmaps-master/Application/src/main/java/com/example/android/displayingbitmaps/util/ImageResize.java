@@ -36,7 +36,7 @@ public class ImageResize extends ImageWorker {
         setImageSize(imageSize);
     }
 
-    private void setImageSize(int width, int height) {
+    public void setImageSize(int width, int height) {
         mImageWidth = width;
         mImageHeight = height;
     }

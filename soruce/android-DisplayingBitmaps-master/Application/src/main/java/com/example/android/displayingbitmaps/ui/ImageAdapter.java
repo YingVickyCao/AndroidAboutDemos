@@ -57,7 +57,7 @@ class ImageAdapter extends BaseAdapter {
             imageView.setLayoutParams(mImageViewLayoutParams);
         }
 
-        loadImageAsync2ImageView(position,imageView);
+        loadImageAsync2ImageView(position, imageView);
         return imageView;
     }
 
@@ -65,14 +65,14 @@ class ImageAdapter extends BaseAdapter {
         imageGridFragment.mImageFetcher.loadImage(mImageThumbUrls[position], imageView);
     }
 
-    void setItemHeight(int height) {
+    boolean setItemHeight(int height) {
         if (height == mItemHeight) {
-            return;
+            return false;
         }
         mItemHeight = height;
         mImageViewLayoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mItemHeight);
-        imageGridFragment.mImageFetcher.setImageSize(height);
         notifyDataSetChanged();
+        return true;
     }
 
     public void setNumColumns(int numColumns) {
