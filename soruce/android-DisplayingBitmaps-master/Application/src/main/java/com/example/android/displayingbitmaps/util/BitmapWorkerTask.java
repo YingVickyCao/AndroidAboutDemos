@@ -32,6 +32,7 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         return loadBitmapInBackground(params);
     }
 
+    private BitmapDrawable loadBitmapInBackground(Void... params) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "doInBackground - starting work");
         }
