@@ -60,7 +60,8 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
     /**
      * Empty constructor as per the Fragment documentation
      */
-    public ImageDetailFragment() {}
+    public ImageDetailFragment() {
+    }
 
     /**
      * Populate image using a url from extras, use the convenience factory method
@@ -74,7 +75,7 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         // Inflate and locate the main ImageView
         final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
         mImageView = (ImageView) v.findViewById(R.id.imageView);
@@ -108,11 +109,14 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
             mImageView.setImageDrawable(null);
         }
     }
-
+    
     @Override
     public void onImageLoaded(boolean success) {
-        // Set loading spinner to gone once image has loaded. Cloud also show
-        // an error view here if needed.
-        mProgressBar.setVisibility(View.GONE);
+        if (success) {
+            mProgressBar.setVisibility(View.GONE);
+        } else {
+            // TODO: 2019/3/4 ERROR
+            mProgressBar.setVisibility(View.GONE);
+        }
     }
 }

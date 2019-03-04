@@ -60,7 +60,7 @@ public class ImageFetcher extends ImageResize {
     }
 
     private void init(Context context) {
-        checkConnection(context);
+        checkNetworkConnection(context);
         mHttpCacheDir = LoadImageUtil.getDiskCacheDir(context, HTTP_CACHE_DIR);
     }
 
@@ -147,18 +147,13 @@ public class ImageFetcher extends ImageResize {
         }
     }
 
-    /**
-     * Simple network connection check.
-     *
-     * @param context
-     */
-    private void checkConnection(Context context) {
-        final ConnectivityManager cm =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    // TODO: 2019/3/4
+    private void checkNetworkConnection(Context context) {
+        final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo == null || !networkInfo.isConnectedOrConnecting()) {
             Toast.makeText(context, R.string.no_network_connection_toast, Toast.LENGTH_LONG).show();
-            Log.e(TAG, "checkConnection - no connection found");
+            Log.e(TAG, "checkNetworkConnection - no connection found");
         }
     }
 
