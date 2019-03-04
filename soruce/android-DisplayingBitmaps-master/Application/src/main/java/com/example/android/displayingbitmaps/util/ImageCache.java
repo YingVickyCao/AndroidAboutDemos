@@ -51,34 +51,13 @@ public class ImageCache {
 
     private Set<SoftReference<Bitmap>> mReusableBitmaps;
 
-    /**
-     * Create a new ImageCache object using the specified parameters. This should not be
-     * called directly by other classes, instead use
-     * {@link ImageCache#getInstance(android.support.v4.app.FragmentManager, ImageCacheParams)} to fetch an ImageCache
-     * instance.
-     *
-     * @param cacheParams The cache parameters to use to initialize the cache
-     */
     private ImageCache(ImageCacheParams cacheParams) {
         init(cacheParams);
     }
 
-    /**
-     * Return an {@link ImageCache} instance. A {@link RetainFragment} is used to retain the
-     * ImageCache object across configuration changes such as a change in device orientation.
-     *
-     * @param fragmentManager The fragment manager to use when dealing with the retained fragment.
-     * @param cacheParams     The cache parameters to use if the ImageCache needs instantiation.
-     * @return An existing retained ImageCache object or a new one if one did not exist
-     */
-    public static ImageCache getInstance(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
-        // Search for, or create an instance of the non-UI RetainFragment
-        final RetainFragment mRetainFragment = LoadImageUtil.findOrCreateRetainFragment(fragmentManager);
-
-        // See if we already have an ImageCache stored in RetainFragment
+    static ImageCache getInstance(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
+        final RetainImageCacheFragment mRetainFragment = findOrCreateRetainFragment(fragmentManager);
         ImageCache imageCache = (ImageCache) mRetainFragment.getObject();
-
-        // No existing ImageCache, create one and store it in RetainFragment
         if (imageCache == null) {
             imageCache = new ImageCache(cacheParams);
             mRetainFragment.setObject(imageCache);
@@ -86,6 +65,19 @@ public class ImageCache {
 
         return imageCache;
     }
+
+    static RetainImageCacheFragment findOrCreateRetainFragment(FragmentManager fm) {
+        RetainImageCacheFragment fragment = (RetainImageCacheFragment) fm.findFragmentByTag(RetainImageCacheFragment.TAG);
+        if (null != fragment) {
+            return fragment;
+        }
+
+        fragment = new RetainImageCacheFragment();
+        fm.beginTransaction().add(fragment, RetainImageCacheFragment.TAG).commitAllowingStateLoss();
+
+        return fragment;
+    }
+
 
     /**
      * Initialize the cache, providing all parameters.

@@ -111,8 +111,7 @@ public abstract class ImageWorker {
      * @param fragmentManager
      * @param cacheParams     The cache parameters to use for the image cache.
      */
-    public void addImageCache(FragmentManager fragmentManager,
-                              ImageCacheParams cacheParams) {
+    public void addImageCache(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
         mImageCacheParams = cacheParams;
         mImageCache = ImageCache.getInstance(fragmentManager, mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
@@ -123,8 +122,7 @@ public abstract class ImageWorker {
      * caching.
      *
      * @param activity
-     * @param diskCacheDirectoryName See
-     *                               {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
+     * @param diskCacheDirectoryName See                              {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
      */
     public void addImageCache(FragmentActivity activity, String diskCacheDirectoryName) {
         mImageCacheParams = new ImageCacheParams(activity, diskCacheDirectoryName);
@@ -370,8 +368,7 @@ public abstract class ImageWorker {
 
         public AsyncDrawable(Resources res, Bitmap bitmap, BitmapWorkerTask bitmapWorkerTask) {
             super(res, bitmap);
-            bitmapWorkerTaskReference =
-                    new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
+            bitmapWorkerTaskReference = new WeakReference<>(bitmapWorkerTask);
         }
 
         public BitmapWorkerTask getBitmapWorkerTask() {

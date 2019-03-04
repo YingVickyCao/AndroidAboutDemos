@@ -37,11 +37,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * A simple subclass of {@link ImageResize} that fetches and resizes images fetched from a URL.
- */
 public class ImageFetcher extends ImageResize {
-    private static final String TAG = "ImageFetcher";
+    private static final String TAG = ImageFetcher.class.getSimpleName();
     private static final int HTTP_CACHE_SIZE = 10 * 1024 * 1024; // 10MB
     private static final String HTTP_CACHE_DIR = "http";
     private static final int IO_BUFFER_SIZE = 8 * 1024;
@@ -52,24 +49,11 @@ public class ImageFetcher extends ImageResize {
     private final Object mHttpDiskCacheLock = new Object();
     private static final int DISK_CACHE_INDEX = 0;
 
-    /**
-     * Initialize providing a target image width and height for the processing images.
-     *
-     * @param context
-     * @param imageWidth
-     * @param imageHeight
-     */
-    public ImageFetcher(Context context, int imageWidth, int imageHeight) {
-        super(context, imageWidth, imageHeight);
+    public ImageFetcher(Context context, int targetImageWidth, int targetImageHeight) {
+        super(context, targetImageWidth, targetImageHeight);
         init(context);
     }
 
-    /**
-     * Initialize providing a single target image size (used for both width and height);
-     *
-     * @param context
-     * @param imageSize
-     */
     public ImageFetcher(Context context, int imageSize) {
         super(context, imageSize);
         init(context);
@@ -164,10 +148,10 @@ public class ImageFetcher extends ImageResize {
     }
 
     /**
-    * Simple network connection check.
-    *
-    * @param context
-    */
+     * Simple network connection check.
+     *
+     * @param context
+     */
     private void checkConnection(Context context) {
         final ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -199,7 +183,8 @@ public class ImageFetcher extends ImageResize {
             while (mHttpDiskCacheStarting) {
                 try {
                     mHttpDiskCacheLock.wait();
-                } catch (InterruptedException e) {}
+                } catch (InterruptedException e) {
+                }
             }
 
             if (mHttpDiskCache != null) {
@@ -233,7 +218,8 @@ public class ImageFetcher extends ImageResize {
                     if (fileDescriptor == null && fileInputStream != null) {
                         try {
                             fileInputStream.close();
-                        } catch (IOException e) {}
+                        } catch (IOException e) {
+                        }
                     }
                 }
             }
@@ -247,7 +233,8 @@ public class ImageFetcher extends ImageResize {
         if (fileInputStream != null) {
             try {
                 fileInputStream.close();
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            }
         }
         return bitmap;
     }
@@ -293,7 +280,8 @@ public class ImageFetcher extends ImageResize {
                 if (in != null) {
                     in.close();
                 }
-            } catch (final IOException e) {}
+            } catch (final IOException e) {
+            }
         }
         return false;
     }
