@@ -27,13 +27,9 @@ import android.widget.ProgressBar;
 
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
-import com.example.android.displayingbitmaps.util.ImageWorker;
 import com.example.android.displayingbitmaps.util.OnImageLoadedListener;
 import com.example.android.displayingbitmaps.util.Utils;
 
-/**
- * This fragment will populate the children of the ViewPager from {@link ImageDetailActivity}.
- */
 public class ImageDetailFragment extends Fragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
     private String mImageUrl;
@@ -41,12 +37,6 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
     private ProgressBar mProgressBar;
     private ImageFetcher mImageFetcher;
 
-    /**
-     * Factory method to generate a new instance of the fragment given an image number.
-     *
-     * @param imageUrl The image url to load
-     * @return A new instance of ImageDetailFragment with imageNum extras
-     */
     public static ImageDetailFragment newInstance(String imageUrl) {
         final ImageDetailFragment f = new ImageDetailFragment();
 
@@ -57,16 +47,9 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
         return f;
     }
 
-    /**
-     * Empty constructor as per the Fragment documentation
-     */
     public ImageDetailFragment() {
     }
 
-    /**
-     * Populate image using a url from extras, use the convenience factory method
-     * {@link ImageDetailFragment#newInstance(String)} to create this fragment.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +57,10 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate and locate the main ImageView
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
-        mImageView = (ImageView) v.findViewById(R.id.imageView);
-        mProgressBar = (ProgressBar) v.findViewById(R.id.progressbar);
+        mImageView = v.findViewById(R.id.imageView);
+        mProgressBar = v.findViewById(R.id.progressbar);
         return v;
     }
 
@@ -104,12 +85,11 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
     public void onDestroy() {
         super.onDestroy();
         if (mImageView != null) {
-            // Cancel any pending image work
-            ImageWorker.cancelWork(mImageView);
+            mImageFetcher.cancelWork(mImageView);
             mImageView.setImageDrawable(null);
         }
     }
-    
+
     @Override
     public void onImageLoaded(boolean success) {
         if (success) {

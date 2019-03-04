@@ -31,13 +31,8 @@ import android.widget.ImageView;
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 
-/**
- * This class wraps up completing some arbitrary long running work when loading a bitmap to an
- * ImageView. It handles things like using a memory and disk cache, running the work in a background
- * thread and setting a placeholder image.
- */
 public abstract class ImageWorker {
-    private static final String TAG = "ImageWorker";
+    private static final String TAG = ImageWorker.class.getSimpleName();
     private static final int FADE_IN_TIME = 200;
 
     public ImageCache mImageCache;
@@ -48,12 +43,12 @@ public abstract class ImageWorker {
     protected boolean mPauseWork = false;
     public final Object mPauseWorkLock = new Object();
 
-    protected Resources mResources;
-
     private static final int MESSAGE_CLEAR = 0;
     private static final int MESSAGE_INIT_DISK_CACHE = 1;
     private static final int MESSAGE_FLUSH = 2;
     private static final int MESSAGE_CLOSE = 3;
+
+    protected Resources mResources;
 
     protected ImageWorker(Context context) {
         mResources = context.getResources();
@@ -75,17 +70,10 @@ public abstract class ImageWorker {
                 listener.onImageLoaded(true);
             }
         } else if (cancelPotentialWork(url, boundImageView)) {
-            //BEGIN_INCLUDE(execute_background_task)
             final BitmapWorkerTask task = new BitmapWorkerTask(this, url, boundImageView, listener);
-            final AsyncDrawable asyncDrawable =
-                    new AsyncDrawable(mResources, mLoadingBitmap, task);
+            final AsyncDrawable asyncDrawable = new AsyncDrawable(mResources, mLoadingBitmap, task);
             boundImageView.setImageDrawable(asyncDrawable);
-
-            // NOTE: This uses a custom version of AsyncTask that has been pulled from the
-            // framework and slightly modified. Refer to the docs at the top of the class
-            // for more info on what was changed.
             task.executeOnExecutor(AsyncTask.DUAL_THREAD_EXECUTOR);
-            //END_INCLUDE(execute_background_task)
         }
     }
 
@@ -101,35 +89,18 @@ public abstract class ImageWorker {
         mLoadingBitmap = BitmapFactory.decodeResource(mResources, resId);
     }
 
-    /**
-     * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
-     * caching.
-     *
-     * @param fragmentManager
-     * @param cacheParams     The cache parameters to use for the image cache.
-     */
     public void addImageCache(FragmentManager fragmentManager, ImageCacheParams cacheParams) {
         mImageCacheParams = cacheParams;
         mImageCache = ImageCache.getInstance(fragmentManager, mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
     }
 
-    /**
-     * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
-     * caching.
-     *
-     * @param activity
-     * @param diskCacheDirectoryName See                              {@link ImageCacheParams#ImageCacheParams(android.content.Context, String)}.
-     */
     public void addImageCache(FragmentActivity activity, String diskCacheDirectoryName) {
         mImageCacheParams = new ImageCacheParams(activity, diskCacheDirectoryName);
         mImageCache = ImageCache.getInstance(activity.getSupportFragmentManager(), mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
     }
 
-    /**
-     * If set to true, the image will fade-in once it has been loaded by the background thread.
-     */
     public void setImageFadeIn(boolean fadeIn) {
         mFadeInBitmap = fadeIn;
     }
@@ -144,25 +115,16 @@ public abstract class ImageWorker {
      * the final bitmap. This will be executed in a background thread and be long running. For
      * example, you could resize a large bitmap here, or pull down an image from the network.
      *
-     * @param data The data to identify which image to process, as provided by
-     *             {@link ImageWorker#loadImage(String, ImageView)}
+     * @param data The data to identify which image to process, as provided by {@link ImageWorker#loadImage(String, ImageView)}
      * @return The processed bitmap
      */
     protected abstract Bitmap processBitmap(Object data);
 
-    /**
-     * @return The {@link ImageCache} object currently being used by this ImageWorker.
-     */
     protected ImageCache getImageCache() {
         return mImageCache;
     }
 
-    /**
-     * Cancels any pending work attached to the provided ImageView.
-     *
-     * @param imageView
-     */
-    public static void cancelWork(ImageView imageView) {
+    public void cancelWork(ImageView imageView) {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
         if (bitmapWorkerTask != null) {
             bitmapWorkerTask.cancel(true);
@@ -173,16 +135,8 @@ public abstract class ImageWorker {
         }
     }
 
-    /**
-     * Returns true if the current work has been canceled or if there was no work in
-     * progress on this image view.
-     * Returns false if the work in progress deals with the same data. The work is not
-     * stopped in that case.
-     */
-    public static boolean cancelPotentialWork(Object data, ImageView imageView) {
-        //BEGIN_INCLUDE(cancel_potential_work)
+    public boolean cancelPotentialWork(Object data, ImageView imageView) {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
-
         if (bitmapWorkerTask != null) {
             final Object bitmapData = bitmapWorkerTask.mData;
             if (bitmapData == null || !bitmapData.equals(data)) {
@@ -191,20 +145,13 @@ public abstract class ImageWorker {
                     Log.d(TAG, "cancelPotentialWork - cancelled work for " + data);
                 }
             } else {
-                // The same work is already in progress.
                 return false;
             }
         }
         return true;
-        //END_INCLUDE(cancel_potential_work)
     }
 
-    /**
-     * @param imageView Any imageView
-     * @return Retrieve the currently active work task (if any) associated with this imageView.
-     * null if there is no such task.
-     */
-    public static BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
+    public BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
         if (imageView != null) {
             final Drawable drawable = imageView.getDrawable();
             if (drawable instanceof AsyncDrawable) {
@@ -215,23 +162,11 @@ public abstract class ImageWorker {
         return null;
     }
 
-    /**
-     * Called when the processing is complete and the final drawable should be
-     * set on the ImageView.
-     *
-     * @param imageView
-     * @param drawable
-     */
     public void setImageDrawable(ImageView imageView, Drawable drawable) {
         if (mFadeInBitmap) {
             // Transition drawable with a transparent drawable and the final drawable
-            final TransitionDrawable td =
-                    new TransitionDrawable(new Drawable[]{new ColorDrawable(android.R.color.transparent), drawable
-                    });
-            // Set background to loading bitmap
-            imageView.setBackgroundDrawable(
-                    new BitmapDrawable(mResources, mLoadingBitmap));
-
+            final TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(android.R.color.transparent), drawable});
+            imageView.setBackgroundDrawable(new BitmapDrawable(mResources, mLoadingBitmap));
             imageView.setImageDrawable(td);
             td.startTransition(FADE_IN_TIME);
         } else {
@@ -239,18 +174,6 @@ public abstract class ImageWorker {
         }
     }
 
-    /**
-     * Pause any ongoing background work. This can be used as a temporary
-     * measure to improve performance. For example background work could
-     * be paused when a ListView or GridView is being scrolled using a
-     * {@link android.widget.AbsListView.OnScrollListener} to keep
-     * scrolling smooth.
-     * <p>
-     * If work is paused, be sure setPauseWork(false) is called again
-     * before your fragment or activity is destroyed (for example during
-     * {@link android.app.Activity#onPause()}), or there is a risk the
-     * background thread will never finish.
-     */
     public void setPauseWork(boolean pauseWork) {
         synchronized (mPauseWorkLock) {
             mPauseWork = pauseWork;

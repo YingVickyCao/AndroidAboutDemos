@@ -9,9 +9,6 @@ import com.example.android.displayingbitmaps.BuildConfig;
 
 import java.lang.ref.WeakReference;
 
-/**
- * The actual AsyncTask that will asynchronously process the image.
- */
 class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
     private static final String TAG = BitmapWorkerTask.class.getSimpleName();
 
@@ -27,18 +24,15 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         mOnImageLoadedListener = null;
     }
 
-    public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView, OnImageLoadedListener listener) {
-        this.imageWorker = imageWorker;
-        mData = data;
-        imageViewReference = new WeakReference<ImageView>(imageView);
-        mOnImageLoadedListener = listener;
-    }
-
     /**
      * Background processing.
      */
     @Override
     protected BitmapDrawable doInBackground(Void... params) {
+        return backgroundProcessing(params);
+    }
+
+    private BitmapDrawable backgroundProcessing(Void... params) {
         //BEGIN_INCLUDE(load_bitmap_in_background)
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "doInBackground - starting work");
@@ -103,6 +97,13 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         //END_INCLUDE(load_bitmap_in_background)
     }
 
+    public BitmapWorkerTask(ImageWorker imageWorker, Object data, ImageView imageView, OnImageLoadedListener listener) {
+        this.imageWorker = imageWorker;
+        mData = data;
+        imageViewReference = new WeakReference<ImageView>(imageView);
+        mOnImageLoadedListener = listener;
+    }
+
     /**
      * Once the image is processed, associates it to the imageView
      */
@@ -143,7 +144,7 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
      */
     private ImageView getAttachedImageView() {
         final ImageView imageView = imageViewReference.get();
-        final BitmapWorkerTask bitmapWorkerTask = ImageWorker.getBitmapWorkerTask(imageView);
+        final BitmapWorkerTask bitmapWorkerTask = imageWorker.getBitmapWorkerTask(imageView);
 
         if (this == bitmapWorkerTask) {
             return imageView;

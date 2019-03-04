@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2012 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.displayingbitmaps.util;
 
 import android.content.Context;
@@ -164,9 +148,9 @@ public class ImageFetcher extends ImageResize {
      * @param data The data to load the bitmap, in this case, a regular http URL
      * @return The downloaded and resized bitmap
      */
-    private Bitmap processBitmap(String data) {
+    private Bitmap processBitmap4DownloadResize(String data) {
         if (BuildConfig.DEBUG) {
-            Log.d(TAG, "processBitmap - " + data);
+            Log.d(TAG, "processBitmap4DownloadResize - " + data);
         }
 
         final String key = LoadImageUtil.hashKeyForDisk(data);
@@ -187,7 +171,7 @@ public class ImageFetcher extends ImageResize {
                     snapshot = mHttpDiskCache.get(key);
                     if (snapshot == null) {
                         if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "processBitmap, not found in http cache, downloading...");
+                            Log.d(TAG, "processBitmap4DownloadResize, not found in http cache, downloading...");
                         }
                         DiskLruCache.Editor editor = mHttpDiskCache.edit(key);
                         if (editor != null) {
@@ -206,9 +190,9 @@ public class ImageFetcher extends ImageResize {
                         fileDescriptor = fileInputStream.getFD();
                     }
                 } catch (IOException e) {
-                    Log.e(TAG, "processBitmap - " + e);
+                    Log.e(TAG, "processBitmap4DownloadResize - " + e);
                 } catch (IllegalStateException e) {
-                    Log.e(TAG, "processBitmap - " + e);
+                    Log.e(TAG, "processBitmap4DownloadResize - " + e);
                 } finally {
                     if (fileDescriptor == null && fileInputStream != null) {
                         try {
@@ -236,7 +220,7 @@ public class ImageFetcher extends ImageResize {
 
     @Override
     protected Bitmap processBitmap(Object data) {
-        return processBitmap(String.valueOf(data));
+        return processBitmap4DownloadResize(String.valueOf(data));
     }
 
     /**
