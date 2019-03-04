@@ -8,22 +8,28 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.example.android.displayingbitmaps.util.IImageWorker;
+
 class ImageAdapter extends BaseAdapter {
     private static final String TAG = ImageAdapter.class.getSimpleName();
 
-    private ImageGridFragment imageGridFragment;
     private final Context mContext;
+    private IImageWorker mlistener;
+
     private int mItemHeight = 0;
     private int mNumColumns = 0;
     private GridView.LayoutParams mImageViewLayoutParams;
     private String[] mImageThumbUrls;
 
-    public ImageAdapter(ImageGridFragment imageGridFragment, Context context, String[] imageThumbUrls) {
+    public ImageAdapter(Context context, String[] imageThumbUrls) {
         super();
         mContext = context;
-        this.imageGridFragment = imageGridFragment;
         mImageThumbUrls = imageThumbUrls;
         mImageViewLayoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    }
+
+    public void setListener(IImageWorker listener) {
+        this.mlistener = listener;
     }
 
     @Override
@@ -62,7 +68,9 @@ class ImageAdapter extends BaseAdapter {
     }
 
     private void loadImageAsync2ImageView(int position, ImageView imageView) {
-        imageGridFragment.mImageFetcher.loadImage(mImageThumbUrls[position], imageView);
+        if (null != mlistener) {
+            mlistener.loadImage(mImageThumbUrls[position], imageView);
+        }
     }
 
     boolean setItemHeight(int height) {

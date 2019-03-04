@@ -32,7 +32,7 @@ import android.widget.ImageView;
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.BuildConfig;
 
-public abstract class ImageWorker {
+public abstract class ImageWorker implements IImageWorker{
     private static final String TAG = ImageWorker.class.getSimpleName();
     private static final int FADE_IN_TIME = 200;
 
@@ -79,6 +79,7 @@ public abstract class ImageWorker {
         }
     }
 
+    @Override
     public void loadImage(String url, ImageView boundImageView) {
         loadImage(url, boundImageView, null);
     }

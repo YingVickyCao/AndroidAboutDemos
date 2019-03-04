@@ -32,16 +32,18 @@ import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
 import com.example.android.displayingbitmaps.R;
 import com.example.android.displayingbitmaps.provider.Images;
+import com.example.android.displayingbitmaps.util.IImageWorker;
 import com.example.android.displayingbitmaps.util.ImageCacheParams;
 import com.example.android.displayingbitmaps.util.ImageFetcher;
 import com.example.android.displayingbitmaps.util.Utils;
 
-public class ImageGridFragment extends Fragment {
+public class ImageGridFragment extends Fragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();
     private static final String IMAGE_CACHE_DIR = "thumbs";
 
@@ -59,7 +61,7 @@ public class ImageGridFragment extends Fragment {
         mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
         mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_spacing);
 
-        mAdapter = new ImageAdapter(this, getActivity(), Images.imageThumbUrls);
+        mAdapter = new ImageAdapter(getActivity(), Images.imageThumbUrls);
 
         mImageFetcher = new ImageFetcher(getActivity(), mImageThumbSize);
         mImageFetcher.setLoadingImage(R.drawable.empty_photo);
@@ -156,11 +158,13 @@ public class ImageGridFragment extends Fragment {
         super.onResume();
         mImageFetcher.setExitTasksEarly(false);
         mAdapter.notifyDataSetChanged();
+        mAdapter.setListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mAdapter.setListener(null);
         mImageFetcher.setPauseWork(false);
         mImageFetcher.setExitTasksEarly(true);
         mImageFetcher.flushCache();
@@ -192,4 +196,8 @@ public class ImageGridFragment extends Fragment {
         Toast.makeText(getActivity(), R.string.clear_cache_complete_toast, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void loadImage(String url, ImageView boundImageView) {
+        mImageFetcher.loadImage(url, boundImageView);
+    }
 }
