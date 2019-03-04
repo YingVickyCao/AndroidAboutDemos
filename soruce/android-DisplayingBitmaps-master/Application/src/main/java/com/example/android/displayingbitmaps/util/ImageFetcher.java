@@ -26,12 +26,13 @@ public class ImageFetcher extends ImageResize {
     private static final int HTTP_CACHE_SIZE = 10 * 1024 * 1024; // 10MB
     private static final String HTTP_CACHE_DIR = "http";
     private static final int IO_BUFFER_SIZE = 8 * 1024;
+    private static final int DISK_CACHE_INDEX = 0;
 
     private DiskLruCache mHttpDiskCache;
     private File mHttpCacheDir;
     private boolean mHttpDiskCacheStarting = true;
     private final Object mHttpDiskCacheLock = new Object();
-    private static final int DISK_CACHE_INDEX = 0;
+
     private FileUtil fileUtil = new FileUtil();
     private ImageUtil imageUtil = new ImageUtil();
 
@@ -177,8 +178,7 @@ public class ImageFetcher extends ImageResize {
                         }
                         DiskLruCache.Editor editor = mHttpDiskCache.edit(key);
                         if (editor != null) {
-                            if (downloadUrlToStream(data,
-                                    editor.newOutputStream(DISK_CACHE_INDEX))) {
+                            if (downloadUrlToStream(data, editor.newOutputStream(DISK_CACHE_INDEX))) {
                                 editor.commit();
                             } else {
                                 editor.abort();
@@ -187,8 +187,7 @@ public class ImageFetcher extends ImageResize {
                         snapshot = mHttpDiskCache.get(key);
                     }
                     if (snapshot != null) {
-                        fileInputStream =
-                                (FileInputStream) snapshot.getInputStream(DISK_CACHE_INDEX);
+                        fileInputStream = (FileInputStream) snapshot.getInputStream(DISK_CACHE_INDEX);
                         fileDescriptor = fileInputStream.getFD();
                     }
                 } catch (IOException e) {
@@ -214,6 +213,7 @@ public class ImageFetcher extends ImageResize {
             try {
                 fileInputStream.close();
             } catch (IOException e) {
+                Log.e(TAG, "processBitmap4DownloadResize: " + e);
             }
         }
         return bitmap;
@@ -232,6 +232,7 @@ public class ImageFetcher extends ImageResize {
      */
     public boolean downloadUrlToStream(String urlString, OutputStream outputStream) {
         disableConnectionReuseIfNecessary();
+        // TODO: 2019/3/4  HttpsURLConnection
         HttpURLConnection urlConnection = null;
         BufferedOutputStream out = null;
         BufferedInputStream in = null;
@@ -261,6 +262,7 @@ public class ImageFetcher extends ImageResize {
                     in.close();
                 }
             } catch (final IOException e) {
+                Log.e(TAG, "downloadUrlToStream: " + e);
             }
         }
         return false;

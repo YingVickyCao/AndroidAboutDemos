@@ -10,6 +10,7 @@ import com.example.android.displayingbitmaps.BuildConfig;
 
 import java.lang.ref.WeakReference;
 
+// TODO: AsyncTask
 class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
     private static final String TAG = BitmapWorkerTask.class.getSimpleName();
 

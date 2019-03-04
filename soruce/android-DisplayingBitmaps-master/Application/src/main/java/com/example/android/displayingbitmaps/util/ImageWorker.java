@@ -112,14 +112,6 @@ public abstract class ImageWorker {
         setPauseWork(false);
     }
 
-    /**
-     * Subclasses should override this to define any processing or work that must happen to produce
-     * the final bitmap. This will be executed in a background thread and be long running. For
-     * example, you could resize a large bitmap here, or pull down an image from the network.
-     *
-     * @param data The data to identify which image to process, as provided by {@link ImageWorker#loadImage(String, ImageView)}
-     * @return The processed bitmap
-     */
     protected abstract Bitmap processBitmap(Object data);
 
     protected ImageCache getImageCache() {
@@ -167,7 +159,7 @@ public abstract class ImageWorker {
     public void setImageDrawable(ImageView imageView, Drawable drawable) {
         if (mFadeInBitmap) {
             // Transition drawable with a transparent drawable and the final drawable
-            final TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(android.R.color.transparent), drawable});
+            final TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(mResources.getColor(android.R.color.transparent)), drawable});
             imageView.setBackgroundDrawable(new BitmapDrawable(mResources, mLoadingBitmap));
             imageView.setImageDrawable(td);
             td.startTransition(FADE_IN_TIME);

@@ -17,6 +17,7 @@ public class ImageCacheParams {
     public boolean memoryCacheEnabled = MemoryCache.DEFAULT_MEMORY_CACHE_ENABLED;
     public boolean diskCacheEnabled = DiskCache.DEFAULT_DISK_CACHE_ENABLED;
     public boolean initDiskCacheOnCreate = DiskCache.DEFAULT_INIT_DISK_CACHE_ON_CREATE;
+
     FileUtil fileUtil = new FileUtil();
 
     /**
