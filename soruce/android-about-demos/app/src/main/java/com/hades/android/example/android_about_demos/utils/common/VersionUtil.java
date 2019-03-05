@@ -33,6 +33,7 @@ public class VersionUtil {
                     new StrictMode.ThreadPolicy.Builder()
                             .detectAll()
                             .penaltyLog();
+
             StrictMode.VmPolicy.Builder vmPolicyBuilder =
                     new StrictMode.VmPolicy.Builder()
                             .detectAll()

@@ -4,12 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.TrafficStats;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCacheParams;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.disk.DiskLruCache;
 import com.hades.android.example.android_about_demos.utils.common.FileUtil;
 import com.hades.android.example.android_about_demos.utils.common.ImageUtil;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class ImageFetcher extends ImageResize {
     private static final String TAG = ImageFetcher.class.getSimpleName();
@@ -227,23 +230,37 @@ public class ImageFetcher extends ImageResize {
         return processBitmap4DownloadResize(String.valueOf(data));
     }
 
+    private URLConnection createConnection(URL url) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.addRequestProperty("User-Agent", ImageCacheParams.SDK_USER_AGENT);
+        connection.setInstanceFollowRedirects(true);
+        return connection;
+    }
+
     /**
      * Download a bitmap from a URL and write the content to an output stream.
      *
-     * @param urlString The URL to fetch
+     * @param url The URL to fetch
      * @return true if successful, false otherwise
      */
-    public boolean downloadUrlToStream(String urlString, OutputStream outputStream) {
+    public boolean downloadUrlToStream(String url, OutputStream outputStream) {
         disableConnectionReuseIfNecessary();
         // TODO: 2019/3/4  HttpsURLConnection
-        HttpURLConnection urlConnection = null;
+        HttpURLConnection connection = null;
         BufferedOutputStream out = null;
         BufferedInputStream in = null;
 
         try {
-            final URL url = new URL(urlString);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            in = new BufferedInputStream(urlConnection.getInputStream(), IO_BUFFER_SIZE);
+            /**
+             ERROR:java.lang.Throwable: Untagged socket detected; use TrafficStats.setThreadSocketTag() to track all network usage at android.os.StrictMode.onUntaggedSocket(StrictMode.java:2010)
+             */
+//            final URL url = new URL(url);
+//            connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) createConnection(new URL(url));
+            TrafficStats.setThreadStatsTag(ImageCacheParams.THREAD_STATS_TAG);
+            connection.connect();
+
+            in = new BufferedInputStream(connection.getInputStream(), IO_BUFFER_SIZE);
             out = new BufferedOutputStream(outputStream, IO_BUFFER_SIZE);
 
             int b;
@@ -254,8 +271,8 @@ public class ImageFetcher extends ImageResize {
         } catch (final IOException e) {
             Log.e(TAG, "Error in downloadBitmap - " + e);
         } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
+            if (connection != null) {
+                connection.disconnect();
             }
             try {
                 if (out != null) {

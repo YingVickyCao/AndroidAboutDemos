@@ -3,6 +3,7 @@ package com.hades.android.example.android_about_demos.utils.bitmap.cache;
 import android.content.Context;
 import android.graphics.Bitmap;
 
+import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.disk.DiskCache;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.mememory.MemoryCache;
 import com.hades.android.example.android_about_demos.utils.common.FileUtil;
@@ -13,6 +14,10 @@ import java.io.File;
  * A holder class that contains cache parameters.
  */
 public class ImageCacheParams {
+    public static final String SDK_NAME = "bitmap_three_level_cache";
+    public static final String SDK_USER_AGENT = SDK_NAME + BuildConfig.VERSION_NAME;
+    public static final int THREAD_STATS_TAG = SDK_NAME.hashCode();
+
     public int memCacheSize = MemoryCache.DEFAULT_MEMORY_CACHE_KILOBYTES_SIZE;
     public int diskCacheSize = DiskCache.DEFAULT_DISK_CACHE_BYTES_SIZE;
     public File diskCacheDir;
