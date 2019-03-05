@@ -79,8 +79,17 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
 
     private Bitmap findBitmapInDishCache(String url) {
         if (imageWorker.mImageCache != null && !isCancelled() && getAttachedImageView() != null && !imageWorker.mExitTasksEarly) {
-            return imageWorker.mImageCache.getBitmapFromDiskCache(url);
+            Bitmap bitmap = imageWorker.mImageCache.getBitmapFromDiskCache(url);
+            if (BuildConfig.DEBUG) {
+                if (null == bitmap) {
+                    Log.d(TAG, "findBitmapInDishCache: [1]url=" + url + ",bitmap = null");
+                } else {
+                    Log.d(TAG, "findBitmapInDishCache: [2]url=" + url + ",bitmap hashcode=" + bitmap.hashCode());
+                }
+            }
+            return bitmap;
         }
+        Log.d(TAG, "findBitmapInDishCache: [3]url=" + url + ",bitmap = null");
         return null;
     }
 

@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -31,7 +32,7 @@ public class ImageFetcher extends ImageResize {
     private static final String TAG = ImageFetcher.class.getSimpleName();
     private static final int HTTP_CACHE_SIZE = 10 * 1024 * 1024; // 10MB
     private static final String HTTP_CACHE_DIR = "http";
-    private static final int IO_BUFFER_SIZE = 8 * 1024;
+    private static final int IO_BUFFER_SIZE = 10 * 1024;
     private static final int DISK_CACHE_INDEX = 0;
 
     private DiskLruCache mHttpDiskCache;
@@ -247,12 +248,14 @@ public class ImageFetcher extends ImageResize {
         disableConnectionReuseIfNecessary();
         // TODO: 2019/3/4  HttpsURLConnection
         HttpURLConnection connection = null;
-        BufferedOutputStream out = null;
-        BufferedInputStream in = null;
+
+        InputStream in = null;
+        OutputStream out = null;
 
         try {
             /**
              ERROR:java.lang.Throwable: Untagged socket detected; use TrafficStats.setThreadSocketTag() to track all network usage at android.os.StrictMode.onUntaggedSocket(StrictMode.java:2010)
+             https://github.com/bitstadium/HockeySDK-Android/blob/5649d6e4e951eeb6d0d050d0563c645800b5e631/hockeysdk/src/main/java/net/hockeyapp/android/tasks/DownloadFileTask.java
              */
 //            final URL url = new URL(url);
 //            connection = (HttpURLConnection) url.openConnection();
@@ -260,14 +263,36 @@ public class ImageFetcher extends ImageResize {
             TrafficStats.setThreadStatsTag(ImageCacheParams.THREAD_STATS_TAG);
             connection.connect();
 
+            int lengthOfFile = connection.getContentLength();
+            Log.d(TAG, "downloadUrlToStream: lengthOfFile=" + lengthOfFile);
+            String status = connection.getHeaderField("Status");
+
+            if (status != null) {
+                if (!status.startsWith("200")) {
+                    return false;
+                }
+            }
+
             in = new BufferedInputStream(connection.getInputStream(), IO_BUFFER_SIZE);
             out = new BufferedOutputStream(outputStream, IO_BUFFER_SIZE);
 
-            int b;
-            while ((b = in.read()) != -1) {
-                out.write(b);
+            byte data[] = new byte[1024];
+            int count;
+            long total = 0;
+            while ((count = in.read(data)) != -1) {
+                total += count;
+//                publishProgress((int) (total * 100 / lengthOfFile));
+                // TODO:ImageFetcher: downloadUrlToStream: thread name= AsyncTask #3,thread id=13869,write 437916
+                // TODO:use threadpool fetch data.
+                if (BuildConfig.DEBUG) {
+                    Log.d(TAG, "downloadUrlToStream: thread name= " + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",write " + total);
+                }
+                out.write(data, 0, count);
             }
-            return true;
+
+            out.flush();
+            return (total > 0);
+//            return true;
         } catch (final IOException e) {
             Log.e(TAG, "Error in downloadBitmap - " + e);
         } finally {

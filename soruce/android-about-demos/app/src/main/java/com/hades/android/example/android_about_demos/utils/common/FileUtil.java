@@ -5,12 +5,17 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+import android.util.Log;
+
+import com.hades.android.example.android_about_demos.BuildConfig;
 
 import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileUtil {
+    private static final String TAG = FileUtil.class.getSimpleName();
+
     /**
      * Get the external app cache directory.
      *
@@ -76,6 +81,9 @@ public class FileUtil {
             cacheKey = bytesToHexString(mDigest.digest());
         } catch (NoSuchAlgorithmException e) {
             cacheKey = String.valueOf(key.hashCode());
+        }
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "hashKeyForDisk: key=" + key + ",cacheKey=" + cacheKey);
         }
         return cacheKey;
     }

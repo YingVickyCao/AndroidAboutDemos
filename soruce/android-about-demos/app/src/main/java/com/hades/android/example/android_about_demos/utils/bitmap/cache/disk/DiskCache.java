@@ -115,7 +115,7 @@ public class DiskCache {
                     final DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
                     if (snapshot != null) {
                         if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "Disk cache hit");
+                            Log.d(TAG, "getBitmap: Disk cache hit. ,url" + url + ",key=" + key);
                         }
                         inputStream = snapshot.getInputStream(DISK_CACHE_INDEX);
                         if (inputStream != null) {
