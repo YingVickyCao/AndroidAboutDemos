@@ -152,8 +152,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
                 return true;
             case R.id.clear_cache:
                 mImageFetcher.clearCache();
-                Toast.makeText(
-                        this, R.string.clear_cache_complete_toast,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.clear_cache_complete_toast, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
