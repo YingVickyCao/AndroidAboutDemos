@@ -3,7 +3,6 @@ package com.example.android.displayingbitmaps.util.bitmap.cache;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.example.android.displayingbitmaps.util.bitmap.fetch.ImageWorker;
 import com.example.android.displayingbitmaps.util.bitmap.cache.disk.DiskCache;
 import com.example.android.displayingbitmaps.util.bitmap.cache.mememory.MemoryCache;
 import com.example.android.displayingbitmaps.util.common.FileUtil;
@@ -25,15 +24,6 @@ public class ImageCacheParams {
 
     FileUtil fileUtil = new FileUtil();
 
-    /**
-     * Create a set of image cache parameters that can be provided to
-     * {@link ImageCache#getInstance(android.support.v4.app.FragmentManager, ImageCacheParams)} or
-     * {@link ImageWorker#addImageCache(android.support.v4.app.FragmentManager, ImageCacheParams)}.
-     *
-     * @param diskCacheDirectoryName A unique subdirectory name that will be appended to the
-     *                               application cache directory. Usually "cache" or "images"
-     *                               is sufficient.
-     */
     public ImageCacheParams(Context context, String diskCacheDirectoryName) {
         diskCacheDir = fileUtil.getDiskCacheDir(context, diskCacheDirectoryName);
     }

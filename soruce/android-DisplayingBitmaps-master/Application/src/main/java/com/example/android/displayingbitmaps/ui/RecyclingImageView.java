@@ -17,8 +17,6 @@
 package com.example.android.displayingbitmaps.ui;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -37,22 +35,4 @@ public class RecyclingImageView extends ImageView {
         setImageDrawable(null);
         super.onDetachedFromWindow();
     }
-
-    @Override
-    public void setImageDrawable(Drawable drawable) {
-        final Drawable previousDrawable = getDrawable();
-        super.setImageDrawable(drawable);
-        notifyDrawableDisplayedStatusChanged(drawable, true);
-        notifyDrawableDisplayedStatusChanged(previousDrawable, false);
-    }
-
-    private static void notifyDrawableDisplayedStatusChanged(Drawable drawable, final boolean isDisplayed) {
-        if (drawable instanceof LayerDrawable) {
-            LayerDrawable layerDrawable = (LayerDrawable) drawable;
-            for (int i = 0, z = layerDrawable.getNumberOfLayers(); i < z; i++) {
-                notifyDrawableDisplayedStatusChanged(layerDrawable.getDrawable(i), isDisplayed);
-            }
-        }
-    }
-
 }
