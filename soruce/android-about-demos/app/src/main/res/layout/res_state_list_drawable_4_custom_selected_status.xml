@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--android:src="@drawable/message_read_status_2"-->
+        <!--android:src="@drawable/drawable_selector_4_message_read_status_2"-->
         <com.hades.android.example.android_about_demos.resource.drawable.state_list.custom_selector_drawable.CustomImageView
             android:id="@+id/message_read_status"
             android:layout_width="32dp"
@@ -18,7 +18,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true" />
 
-        <!--android:src="@drawable/message_read_status_3"-->
+        <!--android:src="@drawable/drawable_selector_4_message_read_status_3"-->
 
         <com.hades.android.example.android_about_demos.resource.drawable.state_list.custom_selector_drawable.CustomTextView
             android:id="@+id/selectedStatus"

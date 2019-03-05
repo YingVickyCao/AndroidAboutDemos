@@ -10,15 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:src="@drawable/vd"
-        app:srcCompat="@drawable/vd" />
+        android:src="@drawable/drawable_vector_4_vd"
+        app:srcCompat="@drawable/drawable_vector_4_vd" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/avd" />
+        android:src="@drawable/drawable_animated_vector_4_avd" />
 
     <!--android:tint="@color/colorAccent"-->
     <ImageView
@@ -27,9 +27,9 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_adjust_48px"
+        android:src="@drawable/drawable_vector_4_ic_adjust_48px"
         android:tint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_adjust_48px" />
+        app:srcCompat="@drawable/drawable_vector_4_ic_adjust_48px" />
 
     <!--android:tint="@color/colorAccent"-->
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_centerInParent="true"
         android:src="@drawable/ic_adjust_black_18dp"
         android:tint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_adjust_48px" />
+        app:srcCompat="@drawable/drawable_vector_4_ic_adjust_48px" />
 
     <Button
         android:id="@+id/startAnimation"

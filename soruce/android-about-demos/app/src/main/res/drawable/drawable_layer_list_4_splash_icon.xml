@@ -4,9 +4,9 @@
 
     <item
         android:id="@+id/red"
-        android:drawable="@drawable/shape_red_oval" />
+        android:drawable="@drawable/drawable_shape_4_shape_red_oval" />
 
     <item
         android:id="@+id/green"
-        android:drawable="@drawable/shape_red_oval" />
+        android:drawable="@drawable/drawable_shape_4_shape_red_oval" />
 </layer-list>

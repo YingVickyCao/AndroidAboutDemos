@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_memory_cache_bitmap" />
+        android:text="@string/page_bitmap_three_level_cache" />
 
     <ListView
         android:id="@+id/list"

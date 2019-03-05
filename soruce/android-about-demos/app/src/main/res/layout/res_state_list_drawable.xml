@@ -8,11 +8,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@drawable/drawable_state_list" />
+        android:textColor="@drawable/drawable_selector_4_state_list" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@drawable/drawable_state_list" />
+        android:textColor="@drawable/drawable_selector_4_state_list" />
 
 </LinearLayout>

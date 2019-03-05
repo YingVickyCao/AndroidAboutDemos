@@ -122,6 +122,11 @@
     <string name="check_sharedPreferences_is_same_instance">Check SharedPreferences Is same instance</string>
     <string name="check_gone_view_size">Check gone view size </string>
 
+    <string name="clear_cache_menu">Clear Caches</string>
+    <string name="clear_cache_complete_toast">Caches have been cleared</string>
+    <string name="imageview_description">Image Thumbnail</string>
+    <string name="no_network_connection_toast">No network connection found</string>
+
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
         <item>设备编号</item>

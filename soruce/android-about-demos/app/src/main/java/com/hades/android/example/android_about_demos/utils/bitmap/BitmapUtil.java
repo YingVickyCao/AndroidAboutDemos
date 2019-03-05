@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.component.bitmap;
+package com.hades.android.example.android_about_demos.utils.bitmap;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;

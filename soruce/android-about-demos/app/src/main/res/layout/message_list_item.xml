@@ -9,7 +9,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
         android:duplicateParentState="true"
-        android:src="@drawable/message_read_status" />
+        android:src="@drawable/drawable_selector_4_message_read_status" />
 
     <TextView
         android:id="@+id/message_subject"

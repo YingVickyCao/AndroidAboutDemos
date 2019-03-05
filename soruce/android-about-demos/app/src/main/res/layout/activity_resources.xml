@@ -88,12 +88,12 @@
             <Button
                 android:id="@+id/pageLoadBitmapPo"
                 style="@style/btn.small"
-                android:text="@string/page_decode_bitmap" />
+                android:text="@string/page_decode_sampled_bitmap" />
 
             <Button
                 android:id="@+id/pageMemoryCacheBitmap"
                 style="@style/btn.small"
-                android:text="@string/page_memory_cache_bitmap" />
+                android:text="@string/page_bitmap_three_level_cache" />
 
         </LinearLayout>
     </ScrollView>
