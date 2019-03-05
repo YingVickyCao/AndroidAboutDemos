@@ -15,13 +15,18 @@ public class ImageUtil {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public int getBitmapBytesSizeAtBitmapDrawable(BitmapDrawable value) {
+        // PO:[Bitmap] get bitmap bytes size - bitmap.getAllocationByteCount()
         Bitmap bitmap = value.getBitmap();
         if (VersionUtil.isVersionNoLessThan4_4()) {
             return bitmap.getAllocationByteCount();
         }
+
+        // PO:[Bitmap] get bitmap bytes size - bitmap.getByteCount()
         if (VersionUtil.isVersionNoLessThan3_1()) {
             return bitmap.getByteCount();
         }
+
+        // PO:[Bitmap] get bitmap bytes size - bitmap.getRowBytes() * bitmap.getHeight()
         return bitmap.getRowBytes() * bitmap.getHeight();
     }
 
@@ -89,6 +94,9 @@ public class ImageUtil {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void addInBitmapOptions(BitmapFactory.Options options, IInBitmapListener listener) {
+        if (!VersionUtil.isNoLessThanV3()) {
+            return;
+        }
         Bitmap inBitmap = listener.checkReusableBitmapsPopulatedIntoInBitmap(options);
         if (inBitmap != null) {
             options.inMutable = true;
