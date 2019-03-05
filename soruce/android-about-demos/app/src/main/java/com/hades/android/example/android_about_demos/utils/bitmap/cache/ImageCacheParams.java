@@ -2,6 +2,7 @@ package com.hades.android.example.android_about_demos.utils.bitmap.cache;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.disk.DiskCache;
@@ -14,6 +15,8 @@ import java.io.File;
  * A holder class that contains cache parameters.
  */
 public class ImageCacheParams {
+    private static final String TAG = ImageCacheParams.class.getSimpleName();
+
     public static final String SDK_NAME = "bitmap_three_level_cache";
     public static final String SDK_USER_AGENT = SDK_NAME + BuildConfig.VERSION_NAME;
     public static final int THREAD_STATS_TAG = SDK_NAME.hashCode();
@@ -31,10 +34,11 @@ public class ImageCacheParams {
 
     public ImageCacheParams(Context context, String diskCacheDirectoryName) {
         diskCacheDir = fileUtil.getDiskCacheDir(context, diskCacheDirectoryName);
+        Log.i(TAG, "ImageCacheParams: diskCacheDir=" + diskCacheDir.getPath());
     }
 
     public ImageCacheParams(Context context, String diskCacheDirectoryName, float percentOfAppMemory) {
-        diskCacheDir = fileUtil.getDiskCacheDir(context, diskCacheDirectoryName);
+        this(context, diskCacheDirectoryName);
         memCacheSize = setMemCacheSizePercent(percentOfAppMemory);
     }
 
