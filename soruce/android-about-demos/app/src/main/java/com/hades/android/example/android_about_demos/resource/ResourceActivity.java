@@ -10,9 +10,9 @@ import com.hades.android.example.android_about_demos.resource.adapter_screen.Dis
 import com.hades.android.example.android_about_demos.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.android.example.android_about_demos.resource.array.ArrayFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.BitmapDrawableFragment;
-import com.hades.android.example.android_about_demos.resource.drawable.bitmap.DecodeBitmapPOFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.bitmap.DecodeSampledBitmapFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
-import com.hades.android.example.android_about_demos.resource.drawable.bitmap.MemoryCacheBitmapFragment;
+import com.hades.android.example.android_about_demos.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.android.example.android_about_demos.resource.i18n.InternationalizationFragment;
@@ -46,12 +46,12 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
         findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
-        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageMemoryCacheBitmap());
+        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageMemoryCacheBitmap();
+        pageBitmapThreeLevelCache();
     }
 
     private void parseXml() {
@@ -99,10 +99,10 @@ public class ResourceActivity extends BaseActivity {
     }
 
     private void pageLoadBitmapPo() {
-        showFragment(new DecodeBitmapPOFragment());
+        showFragment(new DecodeSampledBitmapFragment());
     }
 
-    private void pageMemoryCacheBitmap() {
-        showFragment(new MemoryCacheBitmapFragment());
+    private void pageBitmapThreeLevelCache() {
+        showActivity(ImageGridActivity.class);
     }
 }

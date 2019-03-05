@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.component.bitmap;
+package com.hades.android.example.android_about_demos.utils.bitmap;
 
 import android.graphics.Bitmap;
 import android.util.LruCache;

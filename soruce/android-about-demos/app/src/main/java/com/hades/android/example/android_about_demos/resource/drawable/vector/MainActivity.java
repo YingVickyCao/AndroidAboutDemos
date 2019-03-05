@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void vectorDrawableSelected() {
-        mMeasurableImageView.setImageResource(R.drawable.placeholder_svg);
+        mMeasurableImageView.setImageResource(R.drawable.drawable_vector_4_placeholder_svg);
     }
 
     private void pngSelected() {

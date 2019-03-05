@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,11 +9,10 @@
     </style>
 
     <style name="AppTheme.FullScreen">
-        <!--<item name="windowNoTitle">true</item>-->
-        <!--<item name="android:windowFullscreen">true</item>-->
-        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
-
 
     <!-- APPLY_THEME_START -->
     <style name="AppTheme.Red">
@@ -26,7 +25,7 @@
     <!-- APPLY_THEME_END -->
 
     <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <item name="android:progressDrawable">@drawable/drawable_layer_list_4_ratingbar_drawable</item>
         <item name="android:minHeight">48dip</item>
         <item name="android:maxHeight">48dip</item>
     </style>
@@ -49,4 +48,23 @@
         <!-- 为特定子视图重写垂直间距 -->
         <attr name="layout_vertical_spacing" format="dimension" />
     </declare-styleable>
+
+    <style name="Widget" />
+
+    <style name="Widget.SampleMessage">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+
+    <style name="Widget.SampleMessageTile">
+        <item name="android:background">@drawable/tile</item>
+        <item name="android:shadowColor">#7F000000</item>
+        <item name="android:shadowDy">-3.5</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="PhotoGridLayout">
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:listSelector">@drawable/drawable_selector_4_photo_grid_list</item>
+    </style>
 </resources>

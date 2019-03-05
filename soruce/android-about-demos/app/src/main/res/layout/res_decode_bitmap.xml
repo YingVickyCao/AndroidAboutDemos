@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_decode_bitmap" />
+        android:text="@string/page_decode_sampled_bitmap" />
 
     <ImageView
         android:id="@+id/imageView"

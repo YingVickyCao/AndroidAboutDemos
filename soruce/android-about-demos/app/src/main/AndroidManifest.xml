@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.hades.android.example.android_about_demos">
 
     <!-- START_CONTENT_PROVIDER -->
@@ -26,6 +27,8 @@
     <!-- END_CONTENT_PROVIDER -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="false"
@@ -33,7 +36,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <!--<activity android:namAActivityvity">-->
         <!--<intent-filter>-->
@@ -133,6 +137,19 @@
         <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
         <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
         <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
+
+        <activity
+            android:name=".resource.drawable.bitmap.three_level_cache.ImageGridActivity"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name=".resource.drawable.bitmap.three_level_cache.ImageDetailActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".resource.drawable.bitmap.three_level_cache.ImageGridActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".resource.drawable.bitmap.three_level_cache.ImageGridActivity" />
+        </activity>
         <!-- END_RESOURCES -->
 
         <!-- START_CONTENT_PROVIDER -->

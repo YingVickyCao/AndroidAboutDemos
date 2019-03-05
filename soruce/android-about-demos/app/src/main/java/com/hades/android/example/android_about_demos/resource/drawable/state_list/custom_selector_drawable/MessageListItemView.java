@@ -48,7 +48,7 @@ public class MessageListItemView extends RelativeLayout {
 
         setPadding(fiveDPInPixels, fiveDPInPixels, fiveDPInPixels, fiveDPInPixels);
         setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, fiftyDPInPixels));
-        setBackgroundResource(R.drawable.message_list_item_background);
+        setBackgroundResource(R.drawable.drawable_selector_4_message_list_item_background);
 
         messageSubject = (TextView) findViewById(R.id.message_subject);
     }

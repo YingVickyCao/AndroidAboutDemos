@@ -98,7 +98,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
         @Override
         public void onItemClear() {
-            root.setBackgroundResource(R.drawable.item_view_selected_status);
+            root.setBackgroundResource(R.drawable.drawable_selector_4_item_view_selected_status);
         }
     }
 

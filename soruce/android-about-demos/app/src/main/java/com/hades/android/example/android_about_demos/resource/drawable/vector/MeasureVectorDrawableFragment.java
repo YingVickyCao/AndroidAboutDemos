@@ -44,7 +44,7 @@ public class MeasureVectorDrawableFragment extends BaseFragment {
     }
 
     private void vectorDrawableSelected() {
-        mImageView.setImageResource(R.drawable.placeholder_svg);
+        mImageView.setImageResource(R.drawable.drawable_vector_4_placeholder_svg);
     }
 
     private void pngSelected() {

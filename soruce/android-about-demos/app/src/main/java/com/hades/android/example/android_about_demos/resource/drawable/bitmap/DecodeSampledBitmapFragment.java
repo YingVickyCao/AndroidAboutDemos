@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.component.bitmap.BitmapUtil;
+import com.hades.android.example.android_about_demos.utils.bitmap.BitmapUtil;
 
-public class DecodeBitmapPOFragment extends Fragment {
-    private static final String TAG = DecodeBitmapPOFragment.class.getSimpleName();
+public class DecodeSampledBitmapFragment extends Fragment {
+    private static final String TAG = DecodeSampledBitmapFragment.class.getSimpleName();
 
     private ImageView mImageView;
     private BitmapUtil bitmapUtil = new BitmapUtil();
