@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.mock.DummyContent;
+import com.hades.android.example.android_about_demos.mock.DummyItem;
 
 /**
  * A fragment representing a list of Items.

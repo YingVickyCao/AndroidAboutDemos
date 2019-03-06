@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
+import com.hades.android.example.android_about_demos.mock.DummyItem;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyRecyclerViewFragment.OnListFragmentInteractionListener;
 
 import java.util.List;

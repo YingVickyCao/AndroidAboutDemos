@@ -254,7 +254,7 @@ public class ImageFetcher extends ImageResize {
 
         try {
             /**
-             ERROR:java.lang.Throwable: Untagged socket detected; use TrafficStats.setThreadSocketTag() to track all network usage at android.os.StrictMode.onUntaggedSocket(StrictMode.java:2010)
+             FIXED_ERROR:java.lang.Throwable: Untagged socket detected; use TrafficStats.setThreadSocketTag() to track all network usage at android.os.StrictMode.onUntaggedSocket(StrictMode.java:2010)
              https://github.com/bitstadium/HockeySDK-Android/blob/5649d6e4e951eeb6d0d050d0563c645800b5e631/hockeysdk/src/main/java/net/hockeyapp/android/tasks/DownloadFileTask.java
              */
 //            final URL url = new URL(url);
@@ -283,7 +283,7 @@ public class ImageFetcher extends ImageResize {
                 total += count;
 //                publishProgress((int) (total * 100 / lengthOfFile));
                 // TODO:ImageFetcher: downloadUrlToStream: thread name= AsyncTask #3,thread id=13869,write 437916
-                // TODO:use threadpool fetch data.
+                // use threadpool fetch data.
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "downloadUrlToStream: thread name= " + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",write " + total);
                 }

@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy;
+package com.hades.android.example.android_about_demos.mock;
 
 /**
  * A dummy item representing a piece of content.

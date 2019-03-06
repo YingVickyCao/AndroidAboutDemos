@@ -79,7 +79,7 @@ public class ImageDetailFragment extends Fragment implements OnImageLoadedListen
         if (success) {
             mProgressBar.setVisibility(View.GONE);
         } else {
-            // TODO: 2019/3/4 ERROR
+            // TODO: ERROR
             mProgressBar.setVisibility(View.GONE);
         }
     }

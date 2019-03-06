@@ -22,7 +22,7 @@ import com.hades.android.example.android_about_demos.widget.imageview.TestImageV
 import com.hades.android.example.android_about_demos.widget.layout.ConstraintLayoutFragment;
 import com.hades.android.example.android_about_demos.widget.layout.linearlayout.LinearLayoutActivity;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
-import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyItem;
+import com.hades.android.example.android_about_demos.mock.DummyItem;
 import com.hades.android.example.android_about_demos.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.CalendarViewFragment;
 import com.hades.android.example.android_about_demos.widget.pickers.DateTimePickerFragment;
