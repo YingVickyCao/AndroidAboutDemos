@@ -30,40 +30,76 @@ public class ImageUtil {
         return bitmap.getRowBytes() * bitmap.getHeight();
     }
 
+    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight) {
+        return decodeSampledBitmapFromDescriptor(fileDescriptor, reqWidth, reqHeight);
+    }
+
     public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        useInBitmap(options, listener);
+        if (null != listener) {
+            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+            useInBitmap(options, listener);
+        }
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
     }
+
+    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        return decodeSampledBitmapFromResource(res, resId, reqWidth, reqHeight, null);
+    }
+
+//    public Bitmap decodeSampledBitmapFromResource(Resources res, int id, int requireWidth, int requireHeight) {
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeResource(res, id, options);
+//        options.inSampleSize = calculateInSampleSize(options, requireWidth, requireHeight);
+//        options.inJustDecodeBounds = false;
+//        return BitmapFactory.decodeResource(res, id, options);
+//    }
+
 
     public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
-        // PO:[Bitmap] BitmapFactory.Options.inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        useInBitmap(options, listener);
+        if (null != listener) {
+            // PO:[Bitmap] BitmapFactory.Options.inSampleSize
+            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+            useInBitmap(options, listener);
+        }
         options.inJustDecodeBounds = false;
 
         return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight) {
+        return decodeSampledBitmapFromFile(filename, reqWidth, reqHeight, null);
     }
 
     public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filename, options);
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        useInBitmap(options, listener);
+        if (null != listener) {
+            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+            useInBitmap(options, listener);
+        }
         options.inJustDecodeBounds = false;
 
         return BitmapFactory.decodeFile(filename, options);
     }
 
-    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public int getRequireHeight(Resources res, int id, int originImageViewWidth) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, id, options);
+        options.inJustDecodeBounds = false;
+        return originImageViewWidth * options.outHeight / options.outWidth;
+    }
+
+    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;
