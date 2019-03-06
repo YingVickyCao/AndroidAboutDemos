@@ -25,7 +25,7 @@ public class MemoryCache {
 
     ImageUtil imageUtil = new ImageUtil();
 
-    private LruCache<String, BitmapDrawable> mMemoryCache;
+    private LruCache<String, BitmapDrawable> mCachedBitmapDrawableLruCache;
     private Set<SoftReference<Bitmap>> mReusableBitmapsPopulatedIntoInBitmap;
 
     public void init(ImageCacheParams cacheParams) {
@@ -33,7 +33,7 @@ public class MemoryCache {
             mReusableBitmapsPopulatedIntoInBitmap = Collections.synchronizedSet(new HashSet<SoftReference<Bitmap>>());
         }
 
-        mMemoryCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
+        mCachedBitmapDrawableLruCache = new LruCache<String, BitmapDrawable>(cacheParams.memCacheSize) {
             @Override
             protected void entryRemoved(boolean evicted, String key, BitmapDrawable oldValue, BitmapDrawable newValue) {
                 if (VersionUtil.isNoLessThanV3()) {
@@ -54,23 +54,23 @@ public class MemoryCache {
             return;
         }
 
-        if (mMemoryCache != null) {
-            mMemoryCache.put(data, value);
+        if (mCachedBitmapDrawableLruCache != null) {
+            mCachedBitmapDrawableLruCache.put(data, value);
         }
     }
 
     public BitmapDrawable getBitmapFromMemoryCache(String url) {
         BitmapDrawable bitmapDrawable = null;
 
-        if (mMemoryCache != null) {
-            bitmapDrawable = mMemoryCache.get(url);
+        if (mCachedBitmapDrawableLruCache != null) {
+            bitmapDrawable = mCachedBitmapDrawableLruCache.get(url);
         }
         return bitmapDrawable;
     }
 
     public void clearCache() {
-        if (mMemoryCache != null) {
-            mMemoryCache.evictAll();
+        if (mCachedBitmapDrawableLruCache != null) {
+            mCachedBitmapDrawableLruCache.evictAll();
             if (BuildConfig.DEBUG) {
                 Log.d(TAG, "Memory cache cleared");
             }
