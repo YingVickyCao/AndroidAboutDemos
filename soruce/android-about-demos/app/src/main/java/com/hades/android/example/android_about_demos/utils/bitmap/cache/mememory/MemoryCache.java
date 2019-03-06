@@ -77,7 +77,7 @@ public class MemoryCache {
         }
     }
 
-    public Bitmap getBitmapUsed4InBitmapFromReusableSet(BitmapFactory.Options options) {
+    public Bitmap getReusableBitmap4InBitmap(BitmapFactory.Options options) {
         Bitmap bitmap = null;
         if (mReusableBitmapsPopulatedIntoInBitmap != null && !mReusableBitmapsPopulatedIntoInBitmap.isEmpty()) {
             synchronized (mReusableBitmapsPopulatedIntoInBitmap) {

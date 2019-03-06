@@ -110,6 +110,12 @@ public class ImageCache implements IInBitmapListener {
         return mDiskCache.getBitmap(url, this);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Override
+    public Bitmap getReusableBitmap4InBitmap(BitmapFactory.Options options) {
+        return mMemoryCache.getReusableBitmap4InBitmap(options);
+    }
+
     public void clearCache() {
         mMemoryCache.clearCache();
         mDiskCache.clearCache();
@@ -121,11 +127,5 @@ public class ImageCache implements IInBitmapListener {
 
     public void close() {
         mDiskCache.close();
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    @Override
-    public Bitmap checkReusableBitmapsPopulatedIntoInBitmap(BitmapFactory.Options options) {
-        return mMemoryCache.getBitmapUsed4InBitmapFromReusableSet(options);
     }
 }

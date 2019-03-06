@@ -36,7 +36,7 @@ public class FileUtil {
     /**
      * Check how much usable space is available at a given path.
      *
-     * @param path The path to checkReusableBitmapsPopulatedIntoInBitmap
+     * @param path The path to getReusableBitmap4InBitmap
      * @return The space available in bytes
      */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)

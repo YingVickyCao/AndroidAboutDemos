@@ -133,7 +133,7 @@ public class ImageUtil {
         if (!VersionUtil.isNoLessThanV3()) {
             return;
         }
-        Bitmap inBitmap = listener.checkReusableBitmapsPopulatedIntoInBitmap(options);
+        Bitmap inBitmap = listener.getReusableBitmap4InBitmap(options);
         if (inBitmap != null) {
             options.inMutable = true;
             // PO:[Bitmap] BitmapFactory.Options.inBitmap

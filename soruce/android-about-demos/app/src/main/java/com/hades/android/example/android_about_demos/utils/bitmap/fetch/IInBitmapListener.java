@@ -4,5 +4,5 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public interface IInBitmapListener {
-    Bitmap checkReusableBitmapsPopulatedIntoInBitmap(BitmapFactory.Options options);
+    Bitmap getReusableBitmap4InBitmap(BitmapFactory.Options options);
 }
