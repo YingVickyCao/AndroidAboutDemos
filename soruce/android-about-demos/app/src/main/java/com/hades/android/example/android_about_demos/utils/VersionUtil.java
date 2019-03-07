@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hades.android.example.android_about_demos.utils.common;
+package com.hades.android.example.android_about_demos.utils;
 
 import android.annotation.TargetApi;
 import android.os.Build;
