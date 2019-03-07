@@ -41,7 +41,7 @@ import com.hades.android.example.android_about_demos.mock.Images;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCacheParams;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.IImageWorker;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.ImageFetcher;
-import com.hades.android.example.android_about_demos.utils.common.VersionUtil;
+import com.hades.android.example.android_about_demos.utils.VersionUtil;
 
 public class ImageGridFragment extends Fragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();

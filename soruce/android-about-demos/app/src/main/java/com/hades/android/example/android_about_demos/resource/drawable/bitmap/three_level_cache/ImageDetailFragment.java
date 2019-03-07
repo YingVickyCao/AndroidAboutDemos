@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.ImageFetcher;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.OnImageLoadedListener;
-import com.hades.android.example.android_about_demos.utils.common.VersionUtil;
+import com.hades.android.example.android_about_demos.utils.VersionUtil;
 
 public class ImageDetailFragment extends Fragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";

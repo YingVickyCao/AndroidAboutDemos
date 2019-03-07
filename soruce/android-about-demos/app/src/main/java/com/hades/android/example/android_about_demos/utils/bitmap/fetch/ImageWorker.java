@@ -33,7 +33,7 @@ import android.widget.ImageView;
 import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCache;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCacheParams;
-import com.hades.android.example.android_about_demos.utils.common.ImageUtil;
+import com.hades.android.example.android_about_demos.utils.ImageUtil;
 
 public abstract class ImageWorker implements IImageWorker {
     private static final String TAG = ImageWorker.class.getSimpleName();
