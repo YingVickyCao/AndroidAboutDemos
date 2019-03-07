@@ -30,8 +30,8 @@ public class BaseActivity extends BaseActivity4Permission {
         }
 
         if (null != topic) {
-            topic.setVisibility(View.VISIBLE);
-        }
+        topic.setVisibility(View.VISIBLE);
+    }
 
         if (null != mFragmentRoot) {
             mFragmentRoot.setVisibility(View.GONE);

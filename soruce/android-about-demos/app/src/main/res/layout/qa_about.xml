@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/topic.orange"
+        style="@style/topic"
         android:text="@string/page_qa_about_view" />
 
     <ScrollView
