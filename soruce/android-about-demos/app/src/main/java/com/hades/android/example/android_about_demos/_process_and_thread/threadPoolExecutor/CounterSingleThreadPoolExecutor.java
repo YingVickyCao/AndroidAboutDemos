@@ -1,6 +1,5 @@
 package com.hades.android.example.android_about_demos._process_and_thread.threadPoolExecutor;
 
-import android.app.Fragment;
 import android.util.Log;
 
 import java.util.concurrent.Executors;
