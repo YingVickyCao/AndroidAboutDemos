@@ -94,6 +94,19 @@ ExecutorService.shutdownNow():
 - 实际测试：  
 不生效：不能立刻取消。需要手动设定条件来取消线程
 
+
+## ThreadPoolExecutor 使用场景
+
+ThreadPoolExecutor|使用场景
+---|---
+newFixedThreadPool|可预测或可限制线程个数
+newCachedThreadPool|execute many short-lived asynchronous tasks
+newScheduledThreadPool|延时执行、定期执行、执行周期任务
+newWorkStealingPool|并发执行、大量task，
+newSingleThreadExecutor|顺序执行tasks，每次仅执行一个task
+
+---
+
 # Ref
 - https://www.jianshu.com/p/135c89001b61
 - https://blog.csdn.net/holmofy/article/details/82714665
