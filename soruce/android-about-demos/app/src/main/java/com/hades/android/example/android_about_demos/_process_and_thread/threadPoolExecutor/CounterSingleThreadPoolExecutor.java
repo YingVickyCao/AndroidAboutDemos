@@ -1,5 +1,6 @@
 package com.hades.android.example.android_about_demos._process_and_thread.threadPoolExecutor;
 
+import android.app.Fragment;
 import android.util.Log;
 
 import java.util.concurrent.Executors;
@@ -47,38 +48,41 @@ public class CounterSingleThreadPoolExecutor {
         if (null != mRunnable) {
             return;
         }
-        mRunnable = new Thread(() -> {
-            for (int i = (0 == mCount ? 0 : mCount - 1); i < mMax; i++) {
-                if (mCount >= mMax) {
-                    if (null != mProgressListener) {
-                        mProgressListener.update(String.valueOf(mCount));
+
+        mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                for (int i = (0 == mCount ? 0 : mCount - 1); i < mMax; i++) {
+                    if (mCount >= mMax) {
+                        if (null != mProgressListener) {
+                            mProgressListener.update(String.valueOf(mCount));
+                        }
+                        break;
                     }
-                    break;
-                }
-                if (null == mProgressListener) {
-                    mCount = 0;
-                    break;
-                }
-                mCount++;
-                if (null != mRunnable) {
-                    Log.d(TAG, "initRunnable: count=" + mCount + ",Runnable@" + mRunnable.hashCode());
-                }
-                mProgressListener.update(String.valueOf(mCount));
-                if (null == mProgressListener){
-                    return;
-                }
-                try {
-                    if (Thread.currentThread().isInterrupted()) {
-                    } else {
-                        Thread.currentThread().sleep(1000);
+                    if (null == mProgressListener) {
+                        mCount = 0;
+                        break;
+                    }
+                    mCount++;
+                    if (null != mRunnable) {
+                        Log.d(TAG, "initRunnable: count=" + mCount + ",Runnable@" + mRunnable.hashCode());
                     }
 
-                } catch (InterruptedException e) {
-                    // ERROR:run: java.lang.InterruptedException
-                    Log.e(TAG, "run: " + e);
+                    if (mCount % 9 == 0) {
+                        mProgressListener.update(String.valueOf(mCount));
+                    }
+                    if (null == mProgressListener) {
+                        return;
+                    }
+//                try {
+//                    Thread.currentThread().sleep(1000);
+//                } catch (InterruptedException e) {
+//                    // ERROR:run: java.lang.InterruptedException
+//                    Log.e(TAG, "run: " + e);
+//                }
                 }
             }
-        });
+        };
     }
 
     public void cancel() {
@@ -110,7 +114,7 @@ public class CounterSingleThreadPoolExecutor {
     }
 
     public void end() {
-        mCount = 0;
+//        mCount = 0;
         if (null != mRunnable) {
             Log.d(TAG, "end: Runnable-[1] set null");
         } else {
@@ -132,12 +136,14 @@ public class CounterSingleThreadPoolExecutor {
         }
 
         if (null != mExecutorService) {
-            if (!mExecutorService.isShutdown()) {
-                mExecutorService.shutdown();
-                Log.d(TAG, "end: ExecutorService-[1] shutdownNow && null");
-            } else {
-                Log.d(TAG, "end: ExecutorService-[2] set null");
-            }
+            // TODO: 2019/3/7 Not work: not shutdown, I don not know why.
+            mExecutorService.shutdownNow();
+//            if (!mExecutorService.isShutdown()) {
+//                mExecutorService.shutdownNow();
+//                Log.d(TAG, "end: ExecutorService-[1] shutdownNow && null");
+//            } else {
+//                Log.d(TAG, "end: ExecutorService-[2] set null");
+//            }
             mExecutorService = null;
         } else {
             Log.d(TAG, "end: ExecutorService-[3] is already null");
@@ -145,7 +151,7 @@ public class CounterSingleThreadPoolExecutor {
 
         if (null != mProgressListener) {
             mProgressListener.update("");
-            mProgressListener = null;
+//            mProgressListener = null;
         }
     }
 }

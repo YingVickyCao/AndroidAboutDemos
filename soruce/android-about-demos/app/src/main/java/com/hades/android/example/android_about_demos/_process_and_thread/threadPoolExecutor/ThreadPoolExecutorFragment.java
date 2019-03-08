@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class ThreadPoolExecutorFragment extends BaseFragment implements IProgressListener {
     private final int START_NUM = 0;
-    private final int END_NUM = 10;
+    private final int END_NUM = Integer.MAX_VALUE;
     private TextView mProgressInfo;
     CounterSingleThreadPoolExecutor mExecutor;
 
@@ -31,6 +31,7 @@ public class ThreadPoolExecutorFragment extends BaseFragment implements IProgres
         view.findViewById(R.id.pause).setOnClickListener(v -> pause());
         view.findViewById(R.id.cancel).setOnClickListener(v -> cancel());
         view.findViewById(R.id.end).setOnClickListener(v -> end());
+        
         return view;
     }
 
