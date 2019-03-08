@@ -7,7 +7,7 @@ import android.util.Log;
 import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.disk.DiskCache;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.mememory.MemoryCache;
-import com.hades.android.example.android_about_demos.utils.common.FileUtil;
+import com.hades.android.example.android_about_demos.utils.FileUtil;
 
 import java.io.File;
 

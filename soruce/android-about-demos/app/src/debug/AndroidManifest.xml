@@ -3,7 +3,7 @@
     package="com.hades.android.example.android_about_demos">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name="._process_and_thread.TestProcessAndThreadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

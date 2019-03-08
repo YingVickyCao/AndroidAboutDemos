@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.utils.common.ImageUtil;
+import com.hades.android.example.android_about_demos.utils.ImageUtil;
 
 public class DecodeSampledBitmapFragment extends Fragment {
     private static final String TAG = DecodeSampledBitmapFragment.class.getSimpleName();

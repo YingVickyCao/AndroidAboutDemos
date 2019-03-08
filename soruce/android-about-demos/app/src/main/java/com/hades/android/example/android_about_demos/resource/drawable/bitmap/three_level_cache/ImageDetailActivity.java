@@ -39,7 +39,7 @@ import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.mock.Images;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCacheParams;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.ImageFetcher;
-import com.hades.android.example.android_about_demos.utils.common.VersionUtil;
+import com.hades.android.example.android_about_demos.utils.VersionUtil;
 
 public class ImageDetailActivity extends FragmentActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";

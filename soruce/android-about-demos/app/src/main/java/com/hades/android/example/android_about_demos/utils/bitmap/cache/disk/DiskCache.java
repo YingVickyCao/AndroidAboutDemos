@@ -7,8 +7,8 @@ import android.util.Log;
 import com.hades.android.example.android_about_demos.BuildConfig;
 import com.hades.android.example.android_about_demos.utils.bitmap.cache.ImageCacheParams;
 import com.hades.android.example.android_about_demos.utils.bitmap.fetch.IInBitmapListener;
-import com.hades.android.example.android_about_demos.utils.common.FileUtil;
-import com.hades.android.example.android_about_demos.utils.common.ImageUtil;
+import com.hades.android.example.android_about_demos.utils.FileUtil;
+import com.hades.android.example.android_about_demos.utils.ImageUtil;
 
 import java.io.File;
 import java.io.FileDescriptor;

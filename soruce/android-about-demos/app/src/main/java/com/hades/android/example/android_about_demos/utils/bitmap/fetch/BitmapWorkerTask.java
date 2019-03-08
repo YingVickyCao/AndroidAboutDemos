@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.hades.android.example.android_about_demos.BuildConfig;
-import com.hades.android.example.android_about_demos.utils.common.VersionUtil;
+import com.hades.android.example.android_about_demos.utils.VersionUtil;
 
 import java.lang.ref.WeakReference;
 

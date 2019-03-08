@@ -228,6 +228,10 @@
 
         <activity android:name=".po.security.SecurityActivity" />
 
+        <!-- BACKGROUND_TASK_START -->
+        <activity android:name="._process_and_thread.TestProcessAndThreadActivity" />
+        <!-- BACKGROUND_TASK_END -->
+
     </application>
 
 </manifest>

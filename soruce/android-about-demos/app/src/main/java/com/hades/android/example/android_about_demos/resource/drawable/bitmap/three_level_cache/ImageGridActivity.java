@@ -21,7 +21,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hades.android.example.android_about_demos.BuildConfig;
-import com.hades.android.example.android_about_demos.utils.common.VersionUtil;
+import com.hades.android.example.android_about_demos.utils.VersionUtil;
 
 public class ImageGridActivity extends AppCompatActivity {
     private static final String TAG = "ImageGridActivity";

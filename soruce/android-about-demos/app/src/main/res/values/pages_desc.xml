@@ -30,4 +30,6 @@
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
 
+    <string name="page_process_and_thread">Process and thread</string>
+    <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>
 </resources>
