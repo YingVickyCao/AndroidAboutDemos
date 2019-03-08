@@ -4,13 +4,14 @@
 => reuse pooled thread -> impormance ↑
 
 ## How work?
-BlockingQueue:FIFO – First in first out
-
+BlockingQueue:FIFO – First in first out   
 ![ThreadPool](https://cdn1.howtodoinjava.com/wp-content/uploads/2015/03/Thread_pool.png)
 
 ---
 
-# ThreadPoolExecutor: Thread Pool in Java
+# ThreadPoolExecutor: Thread Pool in Java 
+A manager for multiple threads
+
 ## How Work?  
 ![ScheduledThreadPoolExecutor and ThreadPoolExecutor](http://ww1.sinaimg.cn/large/bda5cd74gy1ft9rdddpi7j20sg0fwgno.jpg)
 
