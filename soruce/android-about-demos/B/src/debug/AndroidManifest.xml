@@ -4,7 +4,8 @@
     package="com.hades.android.example.android_about_demos.po.security.b">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".bound_service.TestBoundServiceActivity2">
+
+        <activity android:name=".bound_service.TestBoundServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

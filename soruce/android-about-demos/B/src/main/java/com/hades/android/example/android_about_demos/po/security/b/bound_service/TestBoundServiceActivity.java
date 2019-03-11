@@ -21,6 +21,7 @@ public class TestBoundServiceActivity extends Activity {
     BoundedService.MyBinder mBinder;
     // 定义一个ServiceConnection对象
     private ServiceConnection mConn;
+    boolean mIsBounded = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class TestBoundServiceActivity extends Activity {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
                 mBinder = (BoundedService.MyBinder) service;  // ①
+                mIsBounded = true;
             }
 
             // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
@@ -57,6 +59,8 @@ public class TestBoundServiceActivity extends Activity {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 Log.d(TAG, "onServiceDisconnected: ");
+                mBinder = null;
+                mIsBounded = false;
             }
         };
     }
@@ -82,11 +86,12 @@ public class TestBoundServiceActivity extends Activity {
     }
 
     private void unbindService() {
-        if (null == mBinder || !mBinder.isBounded()) {
+        if (null == mBinder || !mIsBounded) {
             return;
         }
         Log.d(TAG, "unbindService: ");
         unbindService(mConn);
+        mIsBounded = false;
     }
 
     private void startService() {

@@ -12,7 +12,6 @@ public class BoundedService extends Service {
     private static final String TAG = BoundedService.class.getSimpleName();
     private int mCount;
     private boolean mQuit;
-    private boolean mIsBounded = false;
 
     // 定义onBinder方法所返回的
     private MyBinder binder = new MyBinder();
@@ -22,10 +21,6 @@ public class BoundedService extends Service {
         public int getCount() {
             // 获取Service的运行状态：mCount
             return mCount;
-        }
-
-        public boolean isBounded() {
-            return mIsBounded;
         }
     }
 
@@ -44,7 +39,6 @@ public class BoundedService extends Service {
     @Override
     public void onRebind(Intent intent) {
         Log.d(TAG, "onRebind: " + LogHelper.getThreadInfo());
-        mIsBounded = true;
         super.onRebind(intent);
     }
 
@@ -52,7 +46,6 @@ public class BoundedService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(TAG, "onBind: " + LogHelper.getThreadInfo());
-        mIsBounded = true;
 
         // 返回IBinder对象
         // 启动一条线程，动态地修改count状态值
@@ -76,7 +69,6 @@ public class BoundedService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.d(TAG, "onUnbind: " + LogHelper.getThreadInfo());
-        mIsBounded = false;
         return true;
     }
 

@@ -61,7 +61,6 @@ public class TestBoundServiceActivity2 extends Activity implements IResponse {
                 bindService(new Intent(TestBoundServiceActivity2.this, BoundedService2.class), mConnection, Context.BIND_AUTO_CREATE);
             }
         }).start();
-
     }
 
     @Override
