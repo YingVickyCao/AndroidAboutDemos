@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_asynctask" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_centerInParent="true"
+        android:max="100"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/result"
+        style="@style/tv"
+        android:layout_below="@+id/progressbar" />
+
+    <Button
+        android:id="@+id/sum"
+        style="@style/btn.small"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sum" />
+</RelativeLayout>

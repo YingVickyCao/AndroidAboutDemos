@@ -72,8 +72,8 @@
     <string name="start_animation">Start animation</string>
     <string name="stop_animation">Stop animation</string>
     <string name="jump">Jump</string>
-    <string name="bind">绑定Service</string>
-    <string name="unbind">解除绑定</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">unBind</string>
     <string name="getServiceStatus">获取Service状态</string>
     <string name="start_service">启动普通Service</string>
     <string name="start_intent_service">启动IntentService</string>
@@ -90,9 +90,9 @@
     <string name="normal">静音</string>
     <string name="mute">正常</string>
     <string name="click">click</string>
-
     <string name="read">Read</string>
     <string name="write">Write</string>
+    <string name="sum">Sum</string>
 
     <string name="read_internal_storage">Read Internal Storage</string>
     <string name="write_Internal_storage">Write Internal Storage</string>
@@ -115,7 +115,7 @@
 
     <string name="cancel">Cancel</string>
     <string name="pause">Pause</string>
-
+    <string name="check">Check</string>
     <string name="msg">Hello , Android!</string>
     <string name="check_if_have_added_view">Check if have added view</string>
     <string name="frameLayout_layout_gravity">FrameLayout layout_gravity</string>

@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.service.bindservice;
+package com.hades.android.example.android_about_demos.app_component.service.boundservice;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,15 +6,15 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 
-public class BoundedService extends Service {
-    private static final String TAG = BoundedService.class.getSimpleName();
+public class LocalBoundedService extends Service {
+    private static final String TAG = LocalBoundedService.class.getSimpleName();
     private int mCount;
     private boolean mQuit;
     private boolean mIsBounded = false;
 
-    // 定义onBinder方法所返回的对象
+    // 定义onBinder方法所返回的
     private MyBinder binder = new MyBinder();
 
     // 通过继承Binder来实现IBinder类
@@ -32,20 +32,18 @@ public class BoundedService extends Service {
     // Service被创建时回调该方法
     @Override
     public void onCreate() {
-//        Log.d(TAG, "onCreate: ");
-        LogHelper.printThreadInfo(TAG, "onCreate");
+        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo());
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand: ");
+        Log.d(TAG, "onStartCommand: " + LogHelper.getThreadInfo());
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onRebind(Intent intent) {
-        Log.d(TAG, "onRebind: ");
-//        LogHelper.printThreadInfo(TAG, "onRebind");
+        Log.d(TAG, "onRebind: " + LogHelper.getThreadInfo());
         mIsBounded = true;
         super.onRebind(intent);
     }
@@ -53,12 +51,10 @@ public class BoundedService extends Service {
     // 必须实现的方法，绑定该Service时回调该方法
     @Override
     public IBinder onBind(Intent intent) {
-//        Log.d(TAG, "onBind: ");
-        LogHelper.printThreadInfo(TAG, "onBind");
+        Log.d(TAG, "onBind: " + LogHelper.getThreadInfo());
         mIsBounded = true;
 
         // 返回IBinder对象
-
         // 启动一条线程，动态地修改count状态值
         new Thread() {
             @Override
@@ -78,8 +74,7 @@ public class BoundedService extends Service {
     // Service被断开连接时回调该方法
     @Override
     public boolean onUnbind(Intent intent) {
-//        Log.d(TAG, "onUnbind: ");
-        LogHelper.printThreadInfo(TAG, "onUnbind");
+        Log.d(TAG, "onUnbind: " + LogHelper.getThreadInfo());
         mIsBounded = false;
         return true;
     }
@@ -88,7 +83,6 @@ public class BoundedService extends Service {
     @Override
     public void onDestroy() {
         this.mQuit = true;
-//        Log.d(TAG, "onDestroy: ");
-        LogHelper.printThreadInfo(TAG, "onDestroy");
+        Log.d(TAG, "onDestroy: " + LogHelper.getThreadInfo());
     }
 }

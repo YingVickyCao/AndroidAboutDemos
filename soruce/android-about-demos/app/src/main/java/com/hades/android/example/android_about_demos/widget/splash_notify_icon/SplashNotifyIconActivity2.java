@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.splash_notify_icon;
+package com.hades.android.example.android_about_demos.widget.splash_notify_icon;
 
 import android.app.Activity;
 import android.os.Bundle;

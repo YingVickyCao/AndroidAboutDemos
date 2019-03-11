@@ -50,17 +50,14 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".QAActivity" />
 
-        <!-- ACTIVITY_START -->
-        <!-- ACTIVITY_LIFECYCLE_START -->
+        <activity android:name=".app_component.TestAppComponentActivity" />
 
         <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
         <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component.activity._life_cycle.A"
             android:configChanges="orientation" />
-
         <activity android:name=".app_component.activity._life_cycle.B" />
-
         <activity
             android:name=".app_component.activity._life_cycle.TranslucentB"
             android:theme="@android:style/Theme.Translucent" />
@@ -68,12 +65,74 @@
             android:name=".app_component.activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".app_component.activity._life_cycle.C" />
-        <!-- ACTIVITY_LIFECYCLE_END -->
-
         <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
         <activity android:name=".app_component.activity._launch_modes.DActivity" />
         <activity android:name=".app_component.activity._launch_modes.EActivity" />
-        <!-- ACTIVITY_END -->
+
+        <provider
+            android:name=".app_component.cp.dict.DictContentProvider"
+            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider"
+            android:exported="true" />
+
+        <activity android:name=".app_component.cp.dict.DictActivity" />
+        <activity
+            android:name=".app_component.cp.dict.DictSearchResultActivity"
+            android:theme="@android:style/Theme.Material.Dialog" />
+        <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
+        <activity android:name=".app_component.cp.system.media.MediaActivity" />
+        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
+
+        <service android:name=".app_component.service.unbounservice.FirstService" />
+        <service android:name=".app_component.service.boundservice.LocalBoundedService" />
+        <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
+        <service android:name=".app_component.service.unbounservice.intent_service.MyIntentService" />
+
+        <activity android:name=".app_component.service.boundservice.TestLocalBoundServiceActivity" />
+        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity" />
+        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity2" />
+        <activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity" />
+        <activity android:name=".app_component.service.unbounservice.StartServiceTest2Activity" />
+        <activity android:name=".app_component.service.unbounservice.intent_service.TestIntentServiceActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
+        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
+        <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
+        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
+        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragment" />
+
+        <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
+        <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
+
+        <!-- ERROR:
+        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
+        to com.hades.android.example.android_about_demos/.app_component.broadcast.SimpleReceiver
+        -->
+        <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
+        <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
+        <!--<intent-filter>-->
+        <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
+        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to com.hades.android.example.android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
+        <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2">-->
+        <!--<intent-filter android:priority="1">-->
+        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3">-->
+        <!--<intent-filter android:priority="2">-->
+        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!-- END_BROADCAST -->
 
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
@@ -91,8 +150,8 @@
 
         <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
-        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity" />
-        <activity android:name=".app_component.splash_notify_icon.SplashNotifyIconActivity2" />
+        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
+        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" />
         <!-- SPLASH_NOTIFY_ICON_END -->
 
         <!-- START_SCROLL_VIEW -->
@@ -152,74 +211,6 @@
         </activity>
         <!-- END_RESOURCES -->
 
-        <!-- START_CONTENT_PROVIDER -->
-        <provider
-            android:name=".app_component.cp.dict.DictContentProvider"
-            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider"
-            android:exported="true" />
-
-        <activity android:name=".app_component.cp.dict.DictActivity" />
-        <activity
-            android:name=".app_component.cp.dict.DictSearchResultActivity"
-            android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
-        <activity android:name=".app_component.cp.system.media.MediaActivity" />
-        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
-        <!-- END_CONTENT_PROVIDER -->
-
-        <!-- START_SERVICE -->
-        <service android:name=".app_component.service.unbounservice.FirstService" />
-        <service android:name=".app_component.service.bindservice.BoundedService" />
-        <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
-        <service android:name=".app_component.service.unbounservice.intent_service.MyIntentService" />
-
-        <activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity" />
-        <activity android:name=".app_component.service.unbounservice.StartServiceTest2Activity" />
-        <activity android:name=".app_component.service.bindservice.BoundedServiceTestActivity" />
-        <activity android:name=".app_component.service.unbounservice.intent_service.TestIntentServiceActivity" />
-        <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
-        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
-        <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
-        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragment" />
-        <!-- END_SERVICE -->
-
-        <!-- START_BROADCAST -->
-        <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
-        <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
-
-        <!-- ERROR:
-        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
-        to com.hades.android.example.android_about_demos/.app_component.broadcast.SimpleReceiver
-        -->
-        <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
-        <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
-        <!--<intent-filter>-->
-        <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to com.hades.android.example.android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
-        <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2">-->
-        <!--<intent-filter android:priority="1">-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3">-->
-        <!--<intent-filter android:priority="2">-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-        <!-- END_BROADCAST -->
-
         <!-- DATA_STORAGE_START -->
         <activity android:name=".data_storage.DataStorageActivity" />
         <activity android:name=".data_storage.db.TestDBActivity" />
@@ -229,7 +220,7 @@
         <activity android:name=".po.security.SecurityActivity" />
 
         <!-- BACKGROUND_TASK_START -->
-        <activity android:name="._process_and_thread.TestProcessAndThreadActivity" />
+        <activity android:name="._bg_tasks.TestBackgroundTasksActivity" />
         <!-- BACKGROUND_TASK_END -->
 
     </application>
