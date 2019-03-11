@@ -8,17 +8,17 @@ import android.util.Log;
 
 import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
 
-public class BoundedService extends Service {
-    private static final String TAG = BoundedService.class.getSimpleName();
+public class LocalBoundedService extends Service {
+    private static final String TAG = LocalBoundedService.class.getSimpleName();
     private int mCount;
     private boolean mQuit;
 
     // 定义onBinder方法所返回的
-    private MyBinder binder = new MyBinder();
+    private LocalBinder binder = new LocalBinder();
 
     // 通过继承Binder来实现IBinder类
-    public class MyBinder extends Binder {
-        public int getCount() {
+    class LocalBinder extends Binder {
+        int getCount() {
             // 获取Service的运行状态：mCount
             return mCount;
         }

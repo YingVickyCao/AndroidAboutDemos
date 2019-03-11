@@ -54,7 +54,7 @@
             android:permission="${applicationId}.CUSTOM_PERMISSION_TEST" />
 
         <service
-            android:name=".bound_service.BoundedService"
+            android:name=".bound_service.LocalBoundedService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService" />

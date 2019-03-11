@@ -18,7 +18,7 @@ public class TestBoundServiceActivity extends Activity {
     private static final String TAG = TestBoundServiceActivity.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
-    BoundedService.MyBinder mBinder;
+    LocalBoundedService.LocalBinder mBinder;
     // 定义一个ServiceConnection对象
     private ServiceConnection mConn;
     boolean mIsBounded = false;
@@ -50,7 +50,7 @@ public class TestBoundServiceActivity extends Activity {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
-                mBinder = (BoundedService.MyBinder) service;  // ①
+                mBinder = (LocalBoundedService.LocalBinder) service;  // ①
                 mIsBounded = true;
             }
 
@@ -67,20 +67,20 @@ public class TestBoundServiceActivity extends Activity {
 
     private void bindService() {
         Log.d(TAG, "bindService: ");
-        Intent intent = new Intent(this, BoundedService.class);
+        Intent intent = new Intent(this, LocalBoundedService.class);
         bindService(intent, mConn, 0);
     }
 
     private void bindAutoCreate() {
         Log.d(TAG, "bindService: ");
-        Intent intent = new Intent(this, BoundedService.class);
+        Intent intent = new Intent(this, LocalBoundedService.class);
         bindService(intent, mConn, Service.BIND_AUTO_CREATE);
     }
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
-            Intent intent = new Intent(TestBoundServiceActivity.this, BoundedService.class);
+            Intent intent = new Intent(TestBoundServiceActivity.this, LocalBoundedService.class);
             bindService(intent, mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }
@@ -96,12 +96,12 @@ public class TestBoundServiceActivity extends Activity {
 
     private void startService() {
         Log.d(TAG, "startService: ");
-        startService(new Intent(this, BoundedService.class));
+        startService(new Intent(this, LocalBoundedService.class));
     }
 
     private void stopService() {
         Log.d(TAG, "stopService: ");
-        stopService(new Intent(this, BoundedService.class));
+        stopService(new Intent(this, LocalBoundedService.class));
     }
 
     private void getServiceStatus() {
