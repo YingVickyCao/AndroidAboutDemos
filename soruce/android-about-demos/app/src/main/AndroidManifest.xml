@@ -83,7 +83,7 @@
         <activity android:name=".app_component.cp.system.sms.SMSActivity" />
 
         <service android:name=".app_component.service.unbounservice.FirstService" />
-        <service android:name=".app_component.service.boundservice.BoundedService" />
+        <service android:name=".app_component.service.boundservice.LocalBoundedService" />
         <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
         <service android:name=".app_component.service.unbounservice.intent_service.MyIntentService" />
 

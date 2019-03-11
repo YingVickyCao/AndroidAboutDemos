@@ -18,7 +18,7 @@ public class TestLocalBoundServiceActivity extends Activity {
     private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
-    BoundedService.MyBinder mBinder;
+    LocalBoundedService.MyBinder mBinder;
     // 定义一个ServiceConnection对象
     private ServiceConnection mConn;
 
@@ -49,7 +49,7 @@ public class TestLocalBoundServiceActivity extends Activity {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
-                mBinder = (BoundedService.MyBinder) service;  // ①
+                mBinder = (LocalBoundedService.MyBinder) service;  // ①
             }
 
             // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
@@ -61,23 +61,29 @@ public class TestLocalBoundServiceActivity extends Activity {
         };
     }
 
+    private Intent buildIntent() {
+        // OK
+        Intent intent = new Intent(this, LocalBoundedService.class);
+        // OK
+//        Intent intent = new Intent();
+//        intent.setComponent(new ComponentName("com.hades.android.example.android_about_demos", "com.hades.android.example.android_about_demos.app_component.service.boundservice.LocalBoundedService"));
+        return intent;
+    }
+
     private void bindService() {
         Log.d(TAG, "bindService: ");
-        Intent intent = new Intent(this, BoundedService.class);
-        bindService(intent, mConn, 0);
+        bindService(buildIntent(), mConn, 0);
     }
 
     private void bindAutoCreate() {
         Log.d(TAG, "bindService: ");
-        Intent intent = new Intent(this, BoundedService.class);
-        bindService(intent, mConn, Service.BIND_AUTO_CREATE);
+        bindService(buildIntent(), mConn, Service.BIND_AUTO_CREATE);
     }
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
-            Intent intent = new Intent(TestLocalBoundServiceActivity.this, BoundedService.class);
-            bindService(intent, mConn, Service.BIND_AUTO_CREATE);
+            bindService(buildIntent(), mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }
 
@@ -91,12 +97,12 @@ public class TestLocalBoundServiceActivity extends Activity {
 
     private void startService() {
         Log.d(TAG, "startService: ");
-        startService(new Intent(this, BoundedService.class));
+        startService(buildIntent());
     }
 
     private void stopService() {
         Log.d(TAG, "stopService: ");
-        stopService(new Intent(this, BoundedService.class));
+        stopService(buildIntent());
     }
 
     private void getServiceStatus() {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.hades.android.example.android_about_demos">
 
-    <application>
-        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity">
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.hades.android.example.android_about_demos.app_component.service.boundservice.TestLocalBoundServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

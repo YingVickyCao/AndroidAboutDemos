@@ -8,8 +8,8 @@ import android.util.Log;
 
 import com.hades.android.example.android_about_demos.utils.LogHelper;
 
-public class BoundedService extends Service {
-    private static final String TAG = BoundedService.class.getSimpleName();
+public class LocalBoundedService extends Service {
+    private static final String TAG = LocalBoundedService.class.getSimpleName();
     private int mCount;
     private boolean mQuit;
     private boolean mIsBounded = false;
