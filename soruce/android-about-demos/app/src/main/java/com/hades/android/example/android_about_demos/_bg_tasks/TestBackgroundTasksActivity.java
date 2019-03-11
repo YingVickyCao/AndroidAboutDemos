@@ -1,18 +1,18 @@
-package com.hades.android.example.android_about_demos._process_and_thread;
+package com.hades.android.example.android_about_demos._bg_tasks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos._process_and_thread._asynctask.TestAsyncTaskTestFragment;
-import com.hades.android.example.android_about_demos._process_and_thread.threadPoolExecutor.ThreadPoolExecutorFragment;
+import com.hades.android.example.android_about_demos._bg_tasks._asynctask.TestAsyncTaskTestFragment;
+import com.hades.android.example.android_about_demos._bg_tasks.threadPoolExecutor.ThreadPoolExecutorFragment;
 import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 
-public class TestProcessAndThreadActivity extends BaseActivity {
+public class TestBackgroundTasksActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_process_and_thread_layout);
+        setContentView(R.layout.activity_bckground_tasks_layout);
 
         initViews();
 

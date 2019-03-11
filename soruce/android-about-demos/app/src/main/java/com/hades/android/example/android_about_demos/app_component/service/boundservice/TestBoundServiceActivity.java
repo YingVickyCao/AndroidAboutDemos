@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.app_component.service.bindservice;
+package com.hades.android.example.android_about_demos.app_component.service.boundservice;
 
 
 import android.app.Activity;
@@ -12,10 +12,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 
-public class BoundedServiceTestActivity extends Activity {
-    private static final String TAG = BoundedServiceTestActivity.class.getSimpleName();
+public class TestBoundServiceActivity extends Activity {
+    private static final String TAG = TestBoundServiceActivity.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
     BoundedService.MyBinder mBinder;
@@ -30,6 +30,8 @@ public class BoundedServiceTestActivity extends Activity {
         initServiceConnection();
 
         findViewById(R.id.bind).setOnClickListener(v -> bindService());
+        findViewById(R.id.bindAutoCreate).setOnClickListener(v -> bindAutoCreate());
+        findViewById(R.id.bindAutoCreateInThread).setOnClickListener(v -> bindAutoCreateInThread());
         findViewById(R.id.unbind).setOnClickListener(v -> unbindService());
         findViewById(R.id.getServiceStatus).setOnClickListener(v -> getServiceStatus());
 
@@ -60,40 +62,23 @@ public class BoundedServiceTestActivity extends Activity {
     }
 
     private void bindService() {
-//        Log.d(TAG, "bindService: ");
-        bindServiceWithAutoCreate();
-//        bindServiceWithAutoCreateInThread();
-//        bindServiceWithNoAutoCreate();
-    }
-
-    private void bindServiceWithAutoCreate() {
         Log.d(TAG, "bindService: ");
         Intent intent = new Intent(this, BoundedService.class);
-        // Flags:指定绑定时如果Service仍未创建时是否自动创建Service。
-        // auto create service
+        bindService(intent, mConn, 0);
+    }
+
+    private void bindAutoCreate() {
+        Log.d(TAG, "bindService: ");
+        Intent intent = new Intent(this, BoundedService.class);
         bindService(intent, mConn, Service.BIND_AUTO_CREATE);
     }
 
-    private void bindServiceWithAutoCreateInThread() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                LogHelper.printThreadInfo(TAG, "bindServiceWithAutoCreateInThread");
-                Intent intent = new Intent(BoundedServiceTestActivity.this, BoundedService.class);
-                // Flags:指定绑定时如果Service仍未创建时是否自动创建Service。
-                // auto create service
-                bindService(intent, mConn, Service.BIND_AUTO_CREATE);
-            }
+    private void bindAutoCreateInThread() {
+        new Thread(() -> {
+            Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
+            Intent intent = new Intent(TestBoundServiceActivity.this, BoundedService.class);
+            bindService(intent, mConn, Service.BIND_AUTO_CREATE);
         }).start();
-    }
-
-    private void bindServiceWithNoAutoCreate() {
-        Log.d(TAG, "bindService: ");
-        Intent intent = new Intent(this, BoundedService.class);
-
-        // Flags:指定绑定时如果Service仍未创建时是否自动创建Service。
-        // 0 = 不自动创建，
-        bindService(intent, mConn, 0);
     }
 
     private void unbindService() {
@@ -104,11 +89,6 @@ public class BoundedServiceTestActivity extends Activity {
         unbindService(mConn);
     }
 
-    private void getServiceStatus() {
-        Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
-        Toast.makeText(BoundedServiceTestActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
-    }
-
     private void startService() {
         Log.d(TAG, "startService: ");
         startService(new Intent(this, BoundedService.class));
@@ -117,5 +97,10 @@ public class BoundedServiceTestActivity extends Activity {
     private void stopService() {
         Log.d(TAG, "stopService: ");
         stopService(new Intent(this, BoundedService.class));
+    }
+
+    private void getServiceStatus() {
+        Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
+        Toast.makeText(TestBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
     }
 }

@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 
 import java.util.Arrays;

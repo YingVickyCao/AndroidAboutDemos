@@ -72,8 +72,8 @@
     <string name="start_animation">Start animation</string>
     <string name="stop_animation">Stop animation</string>
     <string name="jump">Jump</string>
-    <string name="bind">绑定Service</string>
-    <string name="unbind">解除绑定</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">unBind</string>
     <string name="getServiceStatus">获取Service状态</string>
     <string name="start_service">启动普通Service</string>
     <string name="start_intent_service">启动IntentService</string>

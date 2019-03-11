@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 
 public class MyService extends Service {
     private static final String TAG = MyService.class.getSimpleName();

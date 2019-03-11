@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos._process_and_thread._asynctask;
+package com.hades.android.example.android_about_demos._bg_tasks._asynctask;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +21,7 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pt_asynctask, container, false);
+        View view = inflater.inflate(R.layout.bt_asynctask, container, false);
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hades.android.example.android_about_demos.po.security.a"
     android:sharedUserId="android_about_demos.test.AcrossAPPJump">
-    <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
 
     <uses-permission android:name="com.hades.android.example.android_about_demos.po.security.b.CUSTOM_PERMISSION_TEST" />
 

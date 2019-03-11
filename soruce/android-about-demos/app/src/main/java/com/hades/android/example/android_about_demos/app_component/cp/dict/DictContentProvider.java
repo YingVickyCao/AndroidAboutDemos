@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 
 import java.util.Arrays;
 

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.mock.LogHelper;
+import com.hades.android.example.android_about_demos.utils.LogHelper;
 import com.hades.android.example.android_about_demos.mock.MockHeavyWork;
 
 /**

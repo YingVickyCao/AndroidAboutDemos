@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.mock;
+package com.hades.android.example.android_about_demos.po.security.b;
 
 import android.util.Log;
 
@@ -10,4 +10,9 @@ public class LogHelper {
     public static void printThreadInfo(final String TAG, final String funcInfo) {
         Log.d(TAG, funcInfo + ",thread =" + Thread.currentThread().getId() + "," + Thread.currentThread().getName());
     }
+
+    public static String getThreadInfo() {
+        return "[thread =" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
+    }
+
 }

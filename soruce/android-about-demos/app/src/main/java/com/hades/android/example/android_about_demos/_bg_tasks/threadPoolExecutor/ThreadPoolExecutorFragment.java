@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos._process_and_thread.threadPoolExecutor;
+package com.hades.android.example.android_about_demos._bg_tasks.threadPoolExecutor;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +21,7 @@ public class ThreadPoolExecutorFragment extends BaseFragment implements IProgres
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pt_threadpoolexecutor, container, false);
+        View view = inflater.inflate(R.layout.bt_threadpoolexecutor, container, false);
 
         mExecutor = new CounterSingleThreadPoolExecutor(END_NUM, this);
         ((TextView) view.findViewById(R.id.numInfo)).setText(String.format(Locale.getDefault(), "%d:%d", START_NUM, END_NUM));

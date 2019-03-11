@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos._process_and_thread._asynctask;
+package com.hades.android.example.android_about_demos._bg_tasks._asynctask;
 
 import android.os.AsyncTask;
 import android.util.Log;
