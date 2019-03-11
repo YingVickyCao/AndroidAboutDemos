@@ -6,17 +6,22 @@ import android.util.Log;
 class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     private static final String TAG = SumAsyncTask.class.getSimpleName();
 
-    private TestAsyncTaskTestFragment mTestAsyncTaskTestFragment;
+    private ISum mISum;
 
-    public SumAsyncTask(TestAsyncTaskTestFragment testAsyncTaskTestFragment) {
-        mTestAsyncTaskTestFragment = testAsyncTaskTestFragment;
+    SumAsyncTask() {
+    }
+
+    void setISum(ISum sum) {
+        mISum = sum;
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {// UI Thread
         // TODO Auto-generated method stub
-        //super.onProgressUpdate(values);
-        mTestAsyncTaskTestFragment.progressBar.setProgress(values[0]);
+        super.onProgressUpdate(values);
+        if (null != mISum) {
+            mISum.setProgress(values[0]);
+        }
         Log.d(TAG, "onProgressUpdate: progress=" + values[0] + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }
 
@@ -43,7 +48,9 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     protected void onPostExecute(Long result) {// UI Thread
         // TODO Auto-generated method stub
         super.onPostExecute(result);
-//        mTestAsyncTaskTestFragment.mResult.setText(String.valueOf(result));
+        if (null != mISum) {
+            mISum.setResult(result);
+        }
         Log.d(TAG, "onPostExecute: result=" + result + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }
 }
