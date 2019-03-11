@@ -5,7 +5,7 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".bound_service.TestRemtoteBoundServiceActivity">
+        <activity android:name=".bound_service.TestRemoteBoundServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

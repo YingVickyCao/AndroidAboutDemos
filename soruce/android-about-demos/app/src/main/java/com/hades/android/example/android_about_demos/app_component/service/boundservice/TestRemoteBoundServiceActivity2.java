@@ -12,20 +12,21 @@ import android.util.Log;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.utils.LogHelper;
 
-public class TestBoundServiceActivity2 extends Activity {
-    private static final String TAG = TestBoundServiceActivity2.class.getSimpleName();
+public class TestRemoteBoundServiceActivity2 extends Activity {
+    private static final String TAG = TestRemoteBoundServiceActivity2.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
     IBinder mBinder;
     // 定义一个ServiceConnection对象
-    private ServiceConnection mConn;
+    private ServiceConnection mConnection;
+    boolean bound;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
 
-        initServiceConnection();
+        setServiceConnection();
 
         findViewById(R.id.bind).setOnClickListener(v -> bindService());
         findViewById(R.id.bindAutoCreate).setOnClickListener(v -> bindAutoCreate());
@@ -37,41 +38,10 @@ public class TestBoundServiceActivity2 extends Activity {
         findViewById(R.id.stop).setOnClickListener(v -> stopService());
     }
 
-    /*
-    ComponentName componentName = new ComponentName("com.hades.android.example.android_about_demos.po.security.b",
-                "com.hades.android.example.android_about_demos.po.security.b.DActivity");
-        Intent intent = new Intent();
-        intent.setComponent(componentName);
-        intent.putExtra("NUM", 100);
-        startActivity(intent);
-     */
-
-    private void initServiceConnection() {
-        /**
-         * ServiceConnection 用于监听访问者与Service之间的连接情况
-         */
-        mConn = new ServiceConnection() {
-            // 当该Activity与Service连接成功时回调该方法
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                Log.d(TAG, "onServiceConnected: ");
-                // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
-                mBinder =service;  // ①
-            }
-
-            // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
-            // 当调用者主动使用unbindService()时，不回调该方法。
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                Log.d(TAG, "onServiceDisconnected: ");
-            }
-        };
-    }
-
     private Intent buildIntent() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.hades.android.example.android_about_demos.po.security.b", "com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService"));
-        intent.setAction("com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService");
+        intent.setComponent(new ComponentName("com.hades.android.example.android_about_demos.po.security.b", "com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService"));
+        intent.setAction("com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         return intent;
     }
@@ -79,29 +49,29 @@ public class TestBoundServiceActivity2 extends Activity {
     private void bindService() {
         Log.d(TAG, "bindService: ");
         Intent intent = buildIntent();
-        bindService(intent, mConn, 0);
+        bindService(intent, mConnection, 0);
     }
 
     private void bindAutoCreate() {
         Log.d(TAG, "bindService: ");
         Intent intent = buildIntent();
-        bindService(intent, mConn, Service.BIND_AUTO_CREATE);
+        bindService(intent, mConnection, Service.BIND_AUTO_CREATE);
     }
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
             Intent intent = buildIntent();
-            bindService(intent, mConn, Service.BIND_AUTO_CREATE);
+            bindService(intent, mConnection, Service.BIND_AUTO_CREATE);
         }).start();
     }
 
     private void unbindService() {
-        if (null == mBinder || !mBinder.isBinderAlive()) {
+        if (null == mBinder || !bound) {
             return;
         }
         Log.d(TAG, "unbindService: ");
-        unbindService(mConn);
+        unbindService(mConnection);
     }
 
     private void startService() {
@@ -115,4 +85,29 @@ public class TestBoundServiceActivity2 extends Activity {
         Intent intent = buildIntent();
         stopService(intent);
     }
+
+    private void setServiceConnection() {
+        /**
+         * ServiceConnection 用于监听访问者与Service之间的连接情况
+         */
+        mConnection = new ServiceConnection() {
+            // 当该Activity与Service连接成功时回调该方法
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                Log.d(TAG, "onServiceConnected: ");
+                // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
+                mBinder = service;  // ①
+                bound = true;
+            }
+
+            // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
+            // 当调用者主动使用unbindService()时，不回调该方法。
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                Log.d(TAG, "onServiceDisconnected: ");
+                bound = false;
+            }
+        };
+    }
+
 }

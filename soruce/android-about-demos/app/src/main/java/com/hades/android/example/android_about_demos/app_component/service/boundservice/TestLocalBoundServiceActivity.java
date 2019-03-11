@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.hades.android.example.android_about_demos.R;
 import com.hades.android.example.android_about_demos.utils.LogHelper;
 
-public class TestBoundServiceActivity extends Activity {
-    private static final String TAG = TestBoundServiceActivity.class.getSimpleName();
+public class TestLocalBoundServiceActivity extends Activity {
+    private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
     BoundedService.MyBinder mBinder;
@@ -33,7 +33,7 @@ public class TestBoundServiceActivity extends Activity {
         findViewById(R.id.bindAutoCreate).setOnClickListener(v -> bindAutoCreate());
         findViewById(R.id.bindAutoCreateInThread).setOnClickListener(v -> bindAutoCreateInThread());
         findViewById(R.id.unbind).setOnClickListener(v -> unbindService());
-        findViewById(R.id.getServiceStatus).setOnClickListener(v -> getServiceStatus());
+        findViewById(R.id.check).setOnClickListener(v -> getServiceStatus());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stop).setOnClickListener(v -> stopService());
@@ -76,7 +76,7 @@ public class TestBoundServiceActivity extends Activity {
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
-            Intent intent = new Intent(TestBoundServiceActivity.this, BoundedService.class);
+            Intent intent = new Intent(TestLocalBoundServiceActivity.this, BoundedService.class);
             bindService(intent, mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }
@@ -101,6 +101,6 @@ public class TestBoundServiceActivity extends Activity {
 
     private void getServiceStatus() {
         Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
-        Toast.makeText(TestBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
+        Toast.makeText(TestLocalBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
     }
 }

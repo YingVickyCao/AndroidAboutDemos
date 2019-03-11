@@ -87,10 +87,11 @@
         <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
         <service android:name=".app_component.service.unbounservice.intent_service.MyIntentService" />
 
+        <activity android:name=".app_component.service.boundservice.TestLocalBoundServiceActivity" />
+        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity" />
+        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity2" />
         <activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity" />
         <activity android:name=".app_component.service.unbounservice.StartServiceTest2Activity" />
-        <activity android:name=".app_component.service.boundservice.TestBoundServiceActivity" />
-        <activity android:name=".app_component.service.boundservice.TestBoundServiceActivity2" />
         <activity android:name=".app_component.service.unbounservice.intent_service.TestIntentServiceActivity" />
         <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />

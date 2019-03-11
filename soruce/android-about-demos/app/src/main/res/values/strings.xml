@@ -115,7 +115,7 @@
 
     <string name="cancel">Cancel</string>
     <string name="pause">Pause</string>
-
+    <string name="check">Check</string>
     <string name="msg">Hello , Android!</string>
     <string name="check_if_have_added_view">Check if have added view</string>
     <string name="frameLayout_layout_gravity">FrameLayout layout_gravity</string>

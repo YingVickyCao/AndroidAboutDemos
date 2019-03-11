@@ -57,18 +57,18 @@
             android:name=".bound_service.LocalBoundedService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService" />
+                <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".bound_service.TestRemtoteBoundServiceActivity" />
+        <activity android:name=".bound_service.TestRemoteBoundServiceActivity" />
 
         <service
             android:name=".bound_service.RemoteBoundedService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService2" />
+                <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.RemoteBoundedService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>

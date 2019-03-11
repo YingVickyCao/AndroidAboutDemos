@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.android.example.android_about_demos.R;
-import com.hades.android.example.android_about_demos.app_component.service.boundservice.TestBoundServiceActivity;
-import com.hades.android.example.android_about_demos.app_component.service.boundservice.TestBoundServiceActivity2;
+import com.hades.android.example.android_about_demos.app_component.service.boundservice.TestLocalBoundServiceActivity;
+import com.hades.android.example.android_about_demos.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.android.example.android_about_demos.base.ver1.BaseActivity;
 
 public class TestAppComponentActivity extends BaseActivity {
@@ -27,10 +27,10 @@ public class TestAppComponentActivity extends BaseActivity {
 
 
     private void pageBondService() {
-        startActivity(TestBoundServiceActivity.class);
+        startActivity(TestLocalBoundServiceActivity.class);
     }
 
     private void pageBondService2() {
-        startActivity(TestBoundServiceActivity2.class);
+        startActivity(TestRemoteBoundServiceActivity2.class);
     }
 }
