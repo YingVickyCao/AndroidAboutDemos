@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
 import com.hades.android.example.android_about_demos.po.security.b.R;
 
-public class TestBoundServiceActivity extends Activity {
-    private static final String TAG = TestBoundServiceActivity.class.getSimpleName();
+public class TestLocalBoundServiceActivity extends Activity {
+    private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
     LocalBoundedService.LocalBinder mBinder;
@@ -80,7 +80,7 @@ public class TestBoundServiceActivity extends Activity {
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
-            Intent intent = new Intent(TestBoundServiceActivity.this, LocalBoundedService.class);
+            Intent intent = new Intent(TestLocalBoundServiceActivity.this, LocalBoundedService.class);
             bindService(intent, mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }
@@ -106,6 +106,6 @@ public class TestBoundServiceActivity extends Activity {
 
     private void getServiceStatus() {
         Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
-        Toast.makeText(TestBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
+        Toast.makeText(TestLocalBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
     }
 }

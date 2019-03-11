@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.po.security.b.R;
 
-public class TestBoundServiceActivity2 extends Activity implements IResponse {
+public class TestRemtoteBoundServiceActivity extends Activity implements IResponse {
     static final int MSG_REQUEST = 1;
     static final int MSG_RESPONSE = 2;
 
@@ -54,11 +54,11 @@ public class TestBoundServiceActivity2 extends Activity implements IResponse {
     protected void onStart() {
         super.onStart();
         // Bind to the service
-//        bindService(new Intent(this, BoundedService2.class), mConnection, Context.BIND_AUTO_CREATE);
+//        bindService(new Intent(this, RemoteBoundedService.class), mConnection, Context.BIND_AUTO_CREATE);
         new Thread(new Runnable() {
             @Override
             public void run() {
-                bindService(new Intent(TestBoundServiceActivity2.this, BoundedService2.class), mConnection, Context.BIND_AUTO_CREATE);
+                bindService(new Intent(TestRemtoteBoundServiceActivity.this, RemoteBoundedService.class), mConnection, Context.BIND_AUTO_CREATE);
             }
         }).start();
     }
@@ -81,7 +81,7 @@ public class TestBoundServiceActivity2 extends Activity implements IResponse {
             // This is called when the connection with the service has been established, giving us the object we can use to interact with the service.
             // We are communicating with the service using a Messenger, so here we get a client-side representation of that from the raw IBinder object.
             mBoundServiceMessenger = new Messenger(service);
-            mActivityMessenger = new Messenger(new ActivityHandler(TestBoundServiceActivity2.this));
+            mActivityMessenger = new Messenger(new ActivityHandler(TestRemtoteBoundServiceActivity.this));
             bound = true;
         }
 

@@ -16,8 +16,8 @@ import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
 
 import java.lang.ref.WeakReference;
 
-public class BoundedService2 extends Service {
-    private static final String TAG = BoundedService2.class.getSimpleName();
+public class RemoteBoundedService extends Service {
+    private static final String TAG = RemoteBoundedService.class.getSimpleName();
     /**
      * Command to the service to display a message
      */
@@ -74,9 +74,9 @@ public class BoundedService2 extends Service {
      * Handler of incoming messages from clients.
      */
     static class IncomingHandler extends Handler {
-        private final WeakReference<BoundedService2> mService;
+        private final WeakReference<RemoteBoundedService> mService;
 
-        public IncomingHandler(BoundedService2 service) {
+        public IncomingHandler(RemoteBoundedService service) {
             mService = new WeakReference<>(service);
         }
 

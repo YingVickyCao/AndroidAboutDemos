@@ -62,10 +62,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".bound_service.TestBoundServiceActivity2" />
+        <activity android:name=".bound_service.TestRemtoteBoundServiceActivity" />
 
         <service
-            android:name=".bound_service.BoundedService2"
+            android:name=".bound_service.RemoteBoundedService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.BoundedService2" />
