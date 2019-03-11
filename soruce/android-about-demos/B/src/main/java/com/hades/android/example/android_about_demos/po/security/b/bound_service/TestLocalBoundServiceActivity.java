@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
@@ -28,13 +29,15 @@ public class TestLocalBoundServiceActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
 
+        ((TextView)findViewById(R.id.topic)).setText("Remote BoundService");
+
         initServiceConnection();
 
         findViewById(R.id.bind).setOnClickListener(v -> bindService());
         findViewById(R.id.bindAutoCreate).setOnClickListener(v -> bindAutoCreate());
         findViewById(R.id.bindAutoCreateInThread).setOnClickListener(v -> bindAutoCreateInThread());
         findViewById(R.id.unbind).setOnClickListener(v -> unbindService());
-        findViewById(R.id.getServiceStatus).setOnClickListener(v -> getServiceStatus());
+        findViewById(R.id.check).setOnClickListener(v -> check());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stop).setOnClickListener(v -> stopService());
@@ -104,8 +107,8 @@ public class TestLocalBoundServiceActivity extends Activity {
         stopService(new Intent(this, LocalBoundedService.class));
     }
 
-    private void getServiceStatus() {
-        Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
+    private void check() {
+        Log.d(TAG, "check: mBinder.getCount()=" + mBinder.getCount());
         Toast.makeText(TestLocalBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
     }
 }

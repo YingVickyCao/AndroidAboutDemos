@@ -4,10 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/bind"
@@ -17,12 +21,12 @@
         <Button
             android:id="@+id/bindAutoCreate"
             style="@style/btn.small"
-            android:text="BIND_AUTO_CREATE" />
+            android:text="Bind auto create" />
 
         <Button
             android:id="@+id/bindAutoCreateInThread"
             style="@style/btn.small"
-            android:text="BIND_AUTO_CREATE In Thread" />
+            android:text="Bind auto create In Thread" />
 
     </LinearLayout>
 
@@ -30,6 +34,11 @@
         android:id="@+id/unbind"
         style="@style/btn.small"
         android:text="@string/unbind" />
+
+    <Button
+        android:id="@+id/check"
+        style="@style/btn.small"
+        android:text="Check" />
 
     <View style="@style/div" />
 
@@ -49,10 +58,5 @@
             android:text="@string/stop" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/getServiceStatus"
-        style="@style/btn.small"
-        android:text="@string/getServiceStatus" />
 
 </LinearLayout>

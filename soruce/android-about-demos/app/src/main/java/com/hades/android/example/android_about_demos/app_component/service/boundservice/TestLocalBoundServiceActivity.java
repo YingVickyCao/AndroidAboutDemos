@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.R;
@@ -26,6 +27,8 @@ public class TestLocalBoundServiceActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
+
+        ((TextView)findViewById(R.id.topic)).setText("Local BoundService");
 
         initServiceConnection();
 

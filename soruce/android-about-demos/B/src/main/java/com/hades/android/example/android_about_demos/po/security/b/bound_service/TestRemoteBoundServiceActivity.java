@@ -12,6 +12,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.android.example.android_about_demos.po.security.b.R;
@@ -37,7 +38,9 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.service_bounded_service_test2);
+        setContentView(R.layout.service_bounded_service_test);
+
+        ((TextView)findViewById(R.id.topic)).setText("Remote BoundService");
 
         setServiceConnection();
 
