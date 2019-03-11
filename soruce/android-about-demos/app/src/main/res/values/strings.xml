@@ -90,9 +90,9 @@
     <string name="normal">静音</string>
     <string name="mute">正常</string>
     <string name="click">click</string>
-
     <string name="read">Read</string>
     <string name="write">Write</string>
+    <string name="sum">Sum</string>
 
     <string name="read_internal_storage">Read Internal Storage</string>
     <string name="write_Internal_storage">Write Internal Storage</string>

@@ -32,4 +32,5 @@
 
     <string name="page_process_and_thread">Process and thread</string>
     <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>
+    <string name="page_asynctask">AsyncTask</string>
 </resources>
