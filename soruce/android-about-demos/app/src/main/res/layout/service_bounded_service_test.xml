@@ -58,4 +58,9 @@
         style="@style/btn.small"
         android:text="@string/check" />
 
+    <Button
+        android:id="@+id/jump"
+        style="@style/btn.small"
+        android:text="@string/jump"
+        android:visibility="gone" />
 </LinearLayout>

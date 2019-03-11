@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +23,15 @@ public class TestLocalBoundServiceActivity extends Activity {
     LocalBoundedService.MyBinder mBinder;
     // 定义一个ServiceConnection对象
     private ServiceConnection mConn;
+    private boolean bound;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
 
-        ((TextView)findViewById(R.id.topic)).setText("Local BoundService");
+        ((TextView) findViewById(R.id.topic)).setText("Local BoundService");
+        findViewById(R.id.jump).setVisibility(View.VISIBLE);
 
         initServiceConnection();
 
@@ -36,10 +39,12 @@ public class TestLocalBoundServiceActivity extends Activity {
         findViewById(R.id.bindAutoCreate).setOnClickListener(v -> bindAutoCreate());
         findViewById(R.id.bindAutoCreateInThread).setOnClickListener(v -> bindAutoCreateInThread());
         findViewById(R.id.unbind).setOnClickListener(v -> unbindService());
-        findViewById(R.id.check).setOnClickListener(v -> getServiceStatus());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stop).setOnClickListener(v -> stopService());
+
+        findViewById(R.id.check).setOnClickListener(v -> getServiceStatus());
+        findViewById(R.id.jump).setOnClickListener(v -> jump());
     }
 
     private void initServiceConnection() {
@@ -53,6 +58,7 @@ public class TestLocalBoundServiceActivity extends Activity {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
                 mBinder = (LocalBoundedService.MyBinder) service;  // ①
+                bound = true;
             }
 
             // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
@@ -60,6 +66,8 @@ public class TestLocalBoundServiceActivity extends Activity {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 Log.d(TAG, "onServiceDisconnected: ");
+                mBinder = null;
+                bound = false;
             }
         };
     }
@@ -91,11 +99,13 @@ public class TestLocalBoundServiceActivity extends Activity {
     }
 
     private void unbindService() {
-        if (null == mBinder || !mBinder.isBounded()) {
+        if (null == mBinder || !bound) {
             return;
         }
         Log.d(TAG, "unbindService: ");
         unbindService(mConn);
+        bound = false;
+        mBinder = null;
     }
 
     private void startService() {
@@ -111,5 +121,9 @@ public class TestLocalBoundServiceActivity extends Activity {
     private void getServiceStatus() {
         Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
         Toast.makeText(TestLocalBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
+    }
+
+    private void jump() {
+        startActivity(new Intent(this, TestLocalBoundServiceActivity.class));
     }
 }
