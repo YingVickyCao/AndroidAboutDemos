@@ -36,10 +36,10 @@
         <activity
             android:name=".CActivity"
             android:exported="true">
-            <!--<intent-filter>-->
-            <!--<action android:name="com.hades.android.example.android_about_demos.po.security.b.c" />-->
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--</intent-filter>-->
+            <intent-filter>
+                <action android:name="com.hades.android.example.android_about_demos.po.security.b.c" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <!-- END_ALLOW_OTHER_APP_ACCESS_YOUR_ACTIVITIES -->
 

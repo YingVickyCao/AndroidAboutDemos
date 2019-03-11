@@ -62,6 +62,138 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private Intent buildIntent() {
@@ -83,6 +215,12 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     }
 
     private void bindAutoCreate() {
+        /*
+        Intent intent = new Intent();
+        intent.setClassName("com.hades.android.example.android_about_demos.po.security.b", "com.hades.android.example.android_about_demos.po.security.b.CActivity");
+        intent.putExtra("NUM1", 100);
+        startActivity(intent);
+        */
         bindService(buildIntent(), mConnection, Context.BIND_AUTO_CREATE);
     }
 
