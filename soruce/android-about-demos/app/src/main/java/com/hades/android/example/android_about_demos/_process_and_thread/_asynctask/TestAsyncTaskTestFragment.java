@@ -26,11 +26,13 @@ public class TestAsyncTaskTestFragment extends BaseFragment {
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 
-        view.findViewById(R.id.result).setOnClickListener(v -> sum());
+        view.findViewById(R.id.sum).setOnClickListener(v -> sum());
         return view;
     }
 
     private void sum() {
+        mResult.setText("");
+        progressBar.setProgress(0);
         new SumAsyncTask().execute(5);
     }
 
