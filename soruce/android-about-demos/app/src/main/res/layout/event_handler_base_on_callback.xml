@@ -13,7 +13,7 @@
         android:textSize="12pt" />
 
     <!-- 事件源 -->
-    <com.hades.android.example.android_about_demos.event_handle.base_on_callback.MyButton
+    <com.hades.example.android.android_about_demos.event_handle.base_on_callback.MyButton
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

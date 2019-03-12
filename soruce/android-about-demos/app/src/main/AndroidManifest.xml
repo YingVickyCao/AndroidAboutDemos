@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos">
+    package="com.hades.example.android.android_about_demos">
 
     <!-- START_CONTENT_PROVIDER -->
     <!-- 授予读联系人ContentProvider的权限 -->
@@ -71,7 +71,7 @@
 
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"
-            android:authorities="com.hades.android.example.android_about_demos.app_component.cp.dict.DictContentProvider"
+            android:authorities="com.hades.example.android.android_about_demos.app_component.cp.dict.DictContentProvider"
             android:exported="true" />
 
         <activity android:name=".app_component.cp.dict.DictActivity" />
@@ -103,18 +103,18 @@
         <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
 
         <!-- ERROR:
-        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
-        to com.hades.android.example.android_about_demos/.app_component.broadcast.SimpleReceiver
+        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.example.android.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
+        to com.hades.example.android.android_about_demos/.app_component.broadcast.SimpleReceiver
         -->
         <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
         <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
         <!--<intent-filter>-->
         <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
+        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
 
-        <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to com.hades.android.example.android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
+        <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to com.hades.example.android.android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
         <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -123,13 +123,13 @@
 
         <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2">-->
         <!--<intent-filter android:priority="1">-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
 
         <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3">-->
         <!--<intent-filter android:priority="2">-->
-        <!--<action android:name="com.hades.android.example.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
         <!-- END_BROADCAST -->
@@ -139,7 +139,7 @@
         <activity android:name=".runtime_permission.RuntTimePermissionTestActivity" />
         <activity android:name=".runtime_permission.RxPermissionsTestActivity" />
 
-        <!--<receiver android:name="com.hades.android.example.android_about_demos.runtime_permission.SMSReceiver">-->
+        <!--<receiver android:name="com.hades.example.android.android_about_demos.runtime_permission.SMSReceiver">-->
         <!--<intent-filter android:priority="1000">-->
         <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
         <!--</intent-filter>-->

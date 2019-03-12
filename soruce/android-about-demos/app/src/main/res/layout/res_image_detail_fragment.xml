@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <com.hades.android.example.android_about_demos.resource.drawable.bitmap.three_level_cache.RecyclingImageView
+    <com.hades.example.android.android_about_demos.resource.drawable.bitmap.three_level_cache.RecyclingImageView
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

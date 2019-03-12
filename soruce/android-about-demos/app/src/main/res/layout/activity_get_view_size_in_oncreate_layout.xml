@@ -9,7 +9,7 @@
         style="@style/topic"
         android:text="@string/page_get_view_size_in_activity_oncreate" />
 
-    <com.hades.android.example.android_about_demos.app_component.activity.MyTextView
+    <com.hades.example.android.android_about_demos.app_component.activity.MyTextView
         android:id="@+id/my_text_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"

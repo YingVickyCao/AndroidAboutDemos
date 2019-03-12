@@ -11,7 +11,7 @@ android {
     }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.hades.android.example.android_about_demos"
+        applicationId "com.hades.example.android"
 //        minSdkVersion 21
 //        minSdkVersion 20
         minSdkVersion 23

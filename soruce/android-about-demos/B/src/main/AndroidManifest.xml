@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos.b"
+    package="com.hades.example.android.android_about_demos.b"
     android:sharedUserId="android_about_demos.test.AcrossAPPJump">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
     <!--android:protectionLevel="normal"-->
@@ -26,9 +26,9 @@
 
         <!--
         ERROR: android:exported="false"
-        Process: com.hades.android.example.android_about_demos.a, PID: 30624
-        java.lang.SecurityException: Permission Denial: starting Intent { typ=text/plain cmp=com.hades.android.example.android_about_demos.b/.BActivity (has extras) }
-        from ProcessRecord{15c37b8 30624:com.hades.android.example.android_about_demos.a/u0a236} (pid=30624, uid=10236) not exported from uid 10237
+        Process: com.hades.example.android.android_about_demos.a, PID: 30624
+        java.lang.SecurityException: Permission Denial: starting Intent { typ=text/plain cmp=com.hades.example.android.android_about_demos.b/.BActivity (has extras) }
+        from ProcessRecord{15c37b8 30624:com.hades.example.android.android_about_demos.a/u0a236} (pid=30624, uid=10236) not exported from uid 10237
 
         Solution:
         android:exported="false" -> android:exported="true"   or same android:sharedUserId
@@ -37,7 +37,7 @@
             android:name=".CActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.b.c" />
+                <action android:name="com.hades.example.android.android_about_demos.b.c" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -58,7 +58,7 @@
             android:name=".bound_service.LocalBoundedService"
             android:exported="true">
             <!--<intent-filter>-->
-            <!--<action android:name="com.hades.android.example.android_about_demos.b.bound_service.LocalBoundedService" />-->
+            <!--<action android:name="com.hades.example.android.android_about_demos.b.bound_service.LocalBoundedService" />-->
             <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </service>
@@ -67,14 +67,42 @@
 
         <!-- Even add intent-filter, it can not be accessed from other app -->
         <service
-            android:name="com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService"
+            android:name="com.hades.example.android.android_about_demos.b.bound_service.RemoteBoundedService"
             android:exported="true"
             android:process=":remote">
             <!--<intent-filter>-->
-            <!--<action android:name="com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService" />-->
+            <!--<action android:name="com.hades.example.android.android_about_demos.b.bound_service.RemoteBoundedService" />-->
             <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </service>
+
+        <activity
+            android:name=".Intent_and_intent_filter.TestIntentFilterActivity"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.category.BROWSABLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="jump"
+                    android:scheme="android_about_demos.b" />
+
+            </intent-filter>
+
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.category.BROWSABLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="www.android_about_demos.b.com"
+                    android:pathPrefix="/folder/sub/etc"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

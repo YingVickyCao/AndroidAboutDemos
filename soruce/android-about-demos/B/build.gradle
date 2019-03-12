@@ -12,7 +12,7 @@ android {
 
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.hades.android.example.android_about_demos.b"
+        applicationId "com.hades.example.android.android_about_demos.b"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
