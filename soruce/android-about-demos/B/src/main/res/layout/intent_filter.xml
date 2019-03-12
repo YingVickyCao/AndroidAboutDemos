@@ -3,6 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        style="@style/topic"
+        android:text="Receive Implicit Intent" />
 
-    <TextView style="@style/topic" />
+    <TextView
+        android:id="@+id/result"
+        style="@style/tv"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
