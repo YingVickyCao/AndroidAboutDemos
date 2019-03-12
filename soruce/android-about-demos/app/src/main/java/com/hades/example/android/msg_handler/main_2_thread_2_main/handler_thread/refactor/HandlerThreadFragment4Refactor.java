@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hades.example.android.android_about_demos.R;
-import com.hades.example.android.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 import static com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
 import static com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_SUM;

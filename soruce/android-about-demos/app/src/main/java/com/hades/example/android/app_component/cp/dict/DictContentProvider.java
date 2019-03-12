@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
-import com.hades.example.android.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 import java.util.Arrays;
 

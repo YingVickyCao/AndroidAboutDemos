@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hades.example.android.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 /**
  *

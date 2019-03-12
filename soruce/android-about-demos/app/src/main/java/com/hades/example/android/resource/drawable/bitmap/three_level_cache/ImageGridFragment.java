@@ -38,10 +38,10 @@ import android.widget.Toast;
 
 import com.hades.example.android.android_about_demos.R;
 import com.hades.example.android.mock.Images;
-import com.hades.example.android.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.utils.bitmap.fetch.IImageWorker;
-import com.hades.example.android.utils.bitmap.fetch.ImageFetcher;
-import com.hades.example.android.utils.VersionUtil;
+import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
+import com.hades.example.android.lib.utils.bitmap.fetch.IImageWorker;
+import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
+import com.hades.example.android.lib.utils.VersionUtil;
 
 public class ImageGridFragment extends Fragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();

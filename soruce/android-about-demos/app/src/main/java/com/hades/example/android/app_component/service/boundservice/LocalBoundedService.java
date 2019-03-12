@@ -6,7 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.example.android.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 public class LocalBoundedService extends Service {
     private static final String TAG = LocalBoundedService.class.getSimpleName();
