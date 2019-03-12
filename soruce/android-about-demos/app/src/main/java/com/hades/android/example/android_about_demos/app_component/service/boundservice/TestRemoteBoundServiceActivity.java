@@ -15,6 +15,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hades.android.example.android_about_demos.BConstant;
 import com.hades.android.example.android_about_demos.R;
 
 public class TestRemoteBoundServiceActivity extends Activity implements IResponse {
@@ -39,7 +40,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
-        ((TextView)findViewById(R.id.topic)).setText("Remote BoundService");
+        ((TextView) findViewById(R.id.topic)).setText("Remote BoundService");
 
         setServiceConnection();
 
@@ -67,9 +68,9 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     }
 
     private Intent buildIntent() {
-        Intent intent = new Intent("com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService");
-        intent.setPackage("com.hades.android.example.android_about_demos.b");
-//        intent.setClassName(this, "com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService");
+//        Intent intent = new Intent(B_REMOTEBOUNDEDSERVICE_CLASS_ACTION); // Can not access B RemoteBoundedService
+        Intent intent = new Intent(); // Can not access B RemoteBoundedService
+        intent.setComponent(new ComponentName(BConstant.B_PACKAGE, BConstant.B_REMOTEBOUNDEDSERVICE_CLASS));
         return intent;
     }
 
@@ -86,7 +87,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     private void bindAutoCreate() {
         /*
         Intent intent = new Intent();
-        intent.setClassName("com.hades.android.example.android_about_demos.b", "com.hades.android.example.android_about_demos.b.CActivity");
+        intent.setClassName(B_PACKAGE, "com.hades.android.example.android_about_demos.b.CActivity");
         intent.putExtra("NUM1", 100);
         startActivity(intent);
         */
