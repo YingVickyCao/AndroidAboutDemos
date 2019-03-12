@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.po.security.b.bound_service;
+package com.hades.android.example.android_about_demos.b.bound_service;
 
 
 import android.app.Activity;
@@ -12,8 +12,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
-import com.hades.android.example.android_about_demos.po.security.b.R;
+import com.hades.android.example.android_about_demos.b.LogHelper;
+import com.hades.android.example.android_about_demos.b.R;
 
 public class TestLocalBoundServiceActivity extends Activity {
     private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();

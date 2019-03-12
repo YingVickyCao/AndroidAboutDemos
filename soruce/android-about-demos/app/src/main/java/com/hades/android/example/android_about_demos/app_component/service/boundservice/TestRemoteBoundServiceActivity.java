@@ -67,8 +67,9 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     }
 
     private Intent buildIntent() {
-        Intent intent = new Intent();
-        intent.setClassName(this, "com.hades.android.example.android_about_demos.po.security.b.bound_service.RemoteBoundedService");
+        Intent intent = new Intent("com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService");
+        intent.setPackage("com.hades.android.example.android_about_demos.b");
+//        intent.setClassName(this, "com.hades.android.example.android_about_demos.b.bound_service.RemoteBoundedService");
         return intent;
     }
 
@@ -85,7 +86,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     private void bindAutoCreate() {
         /*
         Intent intent = new Intent();
-        intent.setClassName("com.hades.android.example.android_about_demos.po.security.b", "com.hades.android.example.android_about_demos.po.security.b.CActivity");
+        intent.setClassName("com.hades.android.example.android_about_demos.b", "com.hades.android.example.android_about_demos.b.CActivity");
         intent.putExtra("NUM1", 100);
         startActivity(intent);
         */

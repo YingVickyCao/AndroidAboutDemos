@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.po.security.b;
+package com.hades.android.example.android_about_demos.b;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class CActivity extends AppCompatActivity {
 
     private void buildResult(int plusNum, int baseNum, String label) {
         Intent intent2 = new Intent();
-        intent2.setAction("com.hades.android.example.android_about_demos.po.security.a");
+        intent2.setAction("com.hades.android.example.android_about_demos.a");
         intent2.addCategory(Intent.CATEGORY_DEFAULT);
         intent2.putExtra(label, baseNum + plusNum);
         setResult(2000, intent2);

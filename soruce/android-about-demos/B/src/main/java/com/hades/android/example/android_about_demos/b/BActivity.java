@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.po.security.b;
+package com.hades.android.example.android_about_demos.b;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

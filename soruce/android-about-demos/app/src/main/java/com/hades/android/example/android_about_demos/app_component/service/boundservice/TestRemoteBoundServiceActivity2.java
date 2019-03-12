@@ -43,8 +43,8 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
 
     private Intent buildIntent() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.hades.android.example.android_about_demos.po.security.b", "com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService"));
-        intent.setAction("com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService");
+        intent.setComponent(new ComponentName("com.hades.android.example.android_about_demos.b", "com.hades.android.example.android_about_demos.b.bound_service.LocalBoundedService"));
+        intent.setAction("com.hades.android.example.android_about_demos.b.bound_service.LocalBoundedService");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         return intent;
     }

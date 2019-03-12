@@ -1,4 +1,4 @@
-package com.hades.android.example.android_about_demos.po.security.b.bound_service;
+package com.hades.android.example.android_about_demos.b.bound_service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Chronometer;
 
-import com.hades.android.example.android_about_demos.po.security.b.LogHelper;
+import com.hades.android.example.android_about_demos.b.LogHelper;
 
 import java.lang.ref.WeakReference;
 
