@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import com.hades.example.android.b.R;
 
-public class TestIntentFilterActivity extends Activity {
+public class TestReceiveImplicitIntentActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.intent_filter);
+        setContentView(R.layout.intent_filter_4_receive_implicit_intent);
 
         String result = getIntent().getDataString();
         ((TextView) findViewById(R.id.result)).setText(result);

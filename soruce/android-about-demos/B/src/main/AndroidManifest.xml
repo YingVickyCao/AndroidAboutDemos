@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.example.android.b"
-    android:sharedUserId="android_about_demos.test.AcrossAPPJump">
+    package="com.hades.example.android.b">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
     <!--android:protectionLevel="normal"-->
-    <permission
-        android:name="${applicationId}.CUSTOM_PERMISSION_TEST"
-        android:description="@string/app_name"
-        android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"
-        android:protectionLevel="signature" />
+    <!--<permission-->
+    <!--android:name="${applicationId}.CUSTOM_PERMISSION_TEST"-->
+    <!--android:description="@string/app_name"-->
+    <!--android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"-->
+    <!--android:protectionLevel="signature" />-->
 
     <application
         android:allowBackup="false"
@@ -76,29 +75,36 @@
             <!--</intent-filter>-->
         </service>
 
+        <!--  android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+        ==
+        com.hades.example.android.b.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
+        -->
         <activity
-            android:name=".app_component.Intent_and_intent_filter.TestIntentFilterActivity"
-            android:launchMode="singleTask">
+            android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+            android:launchMode="singleInstance"
+            android:noHistory="true">
 
+            <!-- Case 1 -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.category.BROWSABLE" />
 
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="jump"
-                    android:scheme="android_about_demos.b" />
-
+                    android:scheme="android_about_demos_b" />
             </intent-filter>
 
+            <!-- Case 2 -->
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.category.BROWSABLE" />
 
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="www.android_about_demos.b.com"
+                    android:host="www.android_about_demos_b.com"
                     android:pathPrefix="/folder/sub/etc"
                     android:scheme="https" />
             </intent-filter>
