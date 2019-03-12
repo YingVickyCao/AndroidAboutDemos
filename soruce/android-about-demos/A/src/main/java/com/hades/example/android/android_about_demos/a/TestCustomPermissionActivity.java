@@ -13,7 +13,7 @@ public class TestCustomPermissionActivity extends BaseActivity4Permission {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manifest_cusotom_permission_layout);
 
-        checkPermission("Request custom permission", "com.hades.example.android.android_about_demos.b.CUSTOM_PERMISSION_TEST");
+        checkPermission("Request custom permission", "com.hades.example.android.b.CUSTOM_PERMISSION_TEST");
         findViewById(R.id.jump).setOnClickListener(v -> jump());
     }
 
@@ -23,8 +23,8 @@ public class TestCustomPermissionActivity extends BaseActivity4Permission {
     }
 
     private void jump() {
-        ComponentName componentName = new ComponentName("com.hades.example.android.android_about_demos.b",
-                "com.hades.example.android.android_about_demos.b.DActivity");
+        ComponentName componentName = new ComponentName("com.hades.example.android.b",
+                "com.hades.example.android.b.DActivity");
         Intent intent = new Intent();
         intent.setComponent(componentName);
         intent.putExtra("NUM", 100);

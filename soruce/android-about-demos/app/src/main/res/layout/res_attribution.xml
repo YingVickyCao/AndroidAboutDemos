@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hades.example.android.android_about_demos.resource.drawable.alpha.AlphaImageView
+    <com.hades.example.android.resource.drawable.alpha.AlphaImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher"

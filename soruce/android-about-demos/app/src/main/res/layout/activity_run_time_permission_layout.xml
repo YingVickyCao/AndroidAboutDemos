@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hades.example.android.android_about_demos.runtime_permission.RuntTimePermissionTestActivity">
+    tools:context="com.hades.example.android.runtime_permission.RuntTimePermissionTestActivity">
 
     <TextView
         style="@style/topic"

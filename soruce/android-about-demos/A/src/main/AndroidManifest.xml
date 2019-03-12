@@ -4,7 +4,7 @@
     package="com.hades.example.android.android_about_demos.a"
     android:sharedUserId="android_about_demos.test.AcrossAPPJump">
 
-    <uses-permission android:name="com.hades.example.android.android_about_demos.b.CUSTOM_PERMISSION_TEST" />
+    <uses-permission android:name="com.hades.example.android.b.CUSTOM_PERMISSION_TEST" />
 
     <application
         android:allowBackup="false"

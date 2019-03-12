@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hades.example.android.android_about_demos.app_component.assist">
+    package="com.hades.example.android.app_component.assist">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.hades.example.android.android_about_demos.app_component.assist.cp.cr.DictUserActivity">
+        <activity android:name="com.hades.example.android.app_component.assist.cp.cr.DictUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,7 +16,7 @@
         </activity>
 
         <activity
-            android:name="com.hades.example.android.android_about_demos.app_component.assist.cp.cr.DictUserSearchResultActivity"
+            android:name="com.hades.example.android.app_component.assist.cp.cr.DictUserSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
     </application>
 

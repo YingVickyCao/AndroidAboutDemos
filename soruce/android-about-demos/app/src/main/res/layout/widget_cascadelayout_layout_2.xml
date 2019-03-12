@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hades.example.android.android_about_demos.widget.custom_view.cascadelayout.CascadeLayout
+    <com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:horizontal_spacing="30dp"
@@ -34,6 +34,6 @@
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:background="#0000FF" />
-    </com.hades.example.android.android_about_demos.widget.custom_view.cascadelayout.CascadeLayout>
+    </com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayout>
 
 </FrameLayout>

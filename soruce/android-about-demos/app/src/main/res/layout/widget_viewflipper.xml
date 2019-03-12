@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hades.example.android.android_about_demos.widget.view_animator.CustomViewFlipper
+    <com.hades.example.android.widget.view_animator.CustomViewFlipper
         android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:background="@android:color/holo_blue_dark"
             android:text="C" />
 
-    </com.hades.example.android.android_about_demos.widget.view_animator.CustomViewFlipper>
+    </com.hades.example.android.widget.view_animator.CustomViewFlipper>
 
     <LinearLayout
         android:id="@+id/btns"

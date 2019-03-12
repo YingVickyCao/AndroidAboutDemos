@@ -47,75 +47,75 @@
         <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name=".MainActivity" />
-        <activity android:name=".QAActivity" />
+        <activity android:name="com.hades.example.android.MainActivity" />
+        <activity android:name="com.hades.example.android.QAActivity" />
 
-        <activity android:name=".app_component.TestAppComponentActivity" />
+        <activity android:name="com.hades.example.android.app_component.TestAppComponentActivity" />
 
-        <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
-        <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
+        <activity android:name="com.hades.example.android.app_component.activity.ActivityTestHomeActivity" />
+        <activity android:name="com.hades.example.android.app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
-            android:name=".app_component.activity._life_cycle.A"
+            android:name="com.hades.example.android.app_component.activity._life_cycle.A"
             android:configChanges="orientation" />
-        <activity android:name=".app_component.activity._life_cycle.B" />
+        <activity android:name="com.hades.example.android.app_component.activity._life_cycle.B" />
         <activity
-            android:name=".app_component.activity._life_cycle.TranslucentB"
+            android:name="com.hades.example.android.app_component.activity._life_cycle.TranslucentB"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".app_component.activity._life_cycle.FloatB"
+            android:name="com.hades.example.android.app_component.activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".app_component.activity._life_cycle.C" />
-        <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
-        <activity android:name=".app_component.activity._launch_modes.DActivity" />
-        <activity android:name=".app_component.activity._launch_modes.EActivity" />
+        <activity android:name="com.hades.example.android.app_component.activity._life_cycle.C" />
+        <activity android:name="com.hades.example.android.app_component.activity.GetViewSizeInOncreateActivity" />
+        <activity android:name="com.hades.example.android.app_component.activity._launch_modes.DActivity" />
+        <activity android:name="com.hades.example.android.app_component.activity._launch_modes.EActivity" />
 
         <provider
-            android:name=".app_component.cp.dict.DictContentProvider"
-            android:authorities="com.hades.example.android.android_about_demos.app_component.cp.dict.DictContentProvider"
+            android:name="com.hades.example.android.app_component.cp.dict.DictContentProvider"
+            android:authorities="com.hades.example.android.app_component.cp.dict.DictContentProvider"
             android:exported="true" />
 
-        <activity android:name=".app_component.cp.dict.DictActivity" />
+        <activity android:name="com.hades.example.android.app_component.cp.dict.DictActivity" />
         <activity
-            android:name=".app_component.cp.dict.DictSearchResultActivity"
+            android:name="com.hades.example.android.app_component.cp.dict.DictSearchResultActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
-        <activity android:name=".app_component.cp.system.media.MediaActivity" />
-        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
+        <activity android:name="com.hades.example.android.app_component.cp.system.contact.ContactContentProviderActivity" />
+        <activity android:name="com.hades.example.android.app_component.cp.system.media.MediaActivity" />
+        <activity android:name="com.hades.example.android.app_component.cp.system.sms.SMSActivity" />
 
-        <service android:name=".app_component.service.unbounservice.FirstService" />
-        <service android:name=".app_component.service.boundservice.LocalBoundedService" />
-        <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
-        <service android:name=".app_component.service.unbounservice.intent_service.MyIntentService" />
+        <service android:name="com.hades.example.android.app_component.service.unbounservice.FirstService" />
+        <service android:name="com.hades.example.android.app_component.service.boundservice.LocalBoundedService" />
+        <service android:name="com.hades.example.android.app_component.service.unbounservice.intent_service.MyService" />
+        <service android:name="com.hades.example.android.app_component.service.unbounservice.intent_service.MyIntentService" />
 
-        <activity android:name=".app_component.service.boundservice.TestLocalBoundServiceActivity" />
-        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity" />
-        <activity android:name=".app_component.service.boundservice.TestRemoteBoundServiceActivity2" />
-        <activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity" />
-        <activity android:name=".app_component.service.unbounservice.StartServiceTest2Activity" />
-        <activity android:name=".app_component.service.unbounservice.intent_service.TestIntentServiceActivity" />
-        <activity android:name=".app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
-        <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
-        <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
-        <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragment" />
+        <activity android:name="com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2" />
+        <activity android:name="com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity" />
+        <activity android:name="com.hades.example.android.app_component.service.unbounservice.StartServiceTest2Activity" />
+        <activity android:name="com.hades.example.android.app_component.service.unbounservice.intent_service.TestIntentServiceActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.system.telephony_service.CheckNetworkAndSIMInfoActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.system.telephony_service.MonitorPhoneActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.system.sms_manager.SendSmsActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.system.audio_manager.AudioServiceActivity" />
+        <activity android:name="com.hades.example.android.app_component.service.system.vibrator.VibratorActivityWithFragment" />
 
-        <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
-        <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
+        <activity android:name="com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity" />
+        <activity android:name="com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
 
         <!-- ERROR:
-        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.example.android.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
+        BroadcastQueue: Background execution not allowed: receiving Intent { act=com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
         to com.hades.example.android.android_about_demos/.app_component.broadcast.SimpleReceiver
         -->
         <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
         <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
         <!--<intent-filter>-->
         <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
-        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
+        <!--<action android:name="com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ONE" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
 
         <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to com.hades.example.android.android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
-        <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
+        <receiver android:name="com.hades.example.android.app_component.broadcast.normal.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -123,104 +123,104 @@
 
         <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2">-->
         <!--<intent-filter android:priority="1">-->
-        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--<action android:name="com.hades.example.android.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
 
         <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3">-->
         <!--<intent-filter android:priority="2">-->
-        <!--<action android:name="com.hades.example.android.android_about_demos.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
+        <!--<action android:name="com.hades.example.android.app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
         <!-- END_BROADCAST -->
 
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
-        <activity android:name=".runtime_permission.RuntTimePermissionTestActivity" />
-        <activity android:name=".runtime_permission.RxPermissionsTestActivity" />
+        <activity android:name="com.hades.example.android.runtime_permission.RuntTimePermissionTestActivity" />
+        <activity android:name="com.hades.example.android.runtime_permission.RxPermissionsTestActivity" />
 
-        <!--<receiver android:name="com.hades.example.android.android_about_demos.runtime_permission.SMSReceiver">-->
+        <!--<receiver android:name="com.hades.example.android.runtime_permission.SMSReceiver">-->
         <!--<intent-filter android:priority="1000">-->
         <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
-        <activity android:name=".widget.WidgetActivity" />
+        <activity android:name="com.hades.example.android.widget.WidgetActivity" />
 
         <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
-        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
-        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" />
+        <activity android:name="com.hades.example.android.widget.splash_notify_icon.SplashNotifyIconActivity" />
+        <activity android:name="com.hades.example.android.widget.splash_notify_icon.SplashNotifyIconActivity2" />
         <!-- SPLASH_NOTIFY_ICON_END -->
 
         <!-- START_SCROLL_VIEW -->
-        <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
+        <activity android:name="com.hades.example.android.widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <!-- END_SCROLL_VIEW -->
 
         <!-- START_OTHER_UI -->
         <activity
-            android:name=".other_ui.dialog.DialogStyleActivity"
+            android:name="com.hades.example.android.other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
+        <activity android:name="com.hades.example.android.other_ui.notifiaction.NotificationDescActivity" />
         <!-- START_OTHER_UI -->
 
-        <activity android:name=".widget.layout.linearlayout.LinearLayoutActivity" />
+        <activity android:name="com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivity" />
 
-        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
-        <activity android:name=".widget.imageview.KenBurnsImageActivity" />
-        <activity android:name=".widget.button.UseButton2AvoidCheckEditInputDateActivity" />
-        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
+        <activity android:name="com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity" />
+        <activity android:name="com.hades.example.android.widget.imageview.KenBurnsImageActivity" />
+        <activity android:name="com.hades.example.android.widget.button.UseButton2AvoidCheckEditInputDateActivity" />
+        <activity android:name="com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
 
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".event_handle.EventHandlerActivity" />
-        <activity android:name=".event_handle.base_on_listener.plane.PlaneViewActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
-        <activity android:name=".event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" />
+        <activity android:name="com.hades.example.android.event_handle.EventHandlerActivity" />
+        <activity android:name="com.hades.example.android.event_handle.base_on_listener.plane.PlaneViewActivity" />
+        <activity android:name="com.hades.example.android.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
+        <activity android:name="com.hades.example.android.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
+        <activity android:name="com.hades.example.android.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
+        <activity android:name="com.hades.example.android.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" />
         <!-- END_EVENT_HANDLER -->
 
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".msg_handler.MessageHandlerActivity" />
+        <activity android:name="com.hades.example.android.msg_handler.MessageHandlerActivity" />
         <!-- END_EVENT_HANDLER -->
 
         <!-- START_RESOURCES -->
         <activity
-            android:name=".resource.ResourceActivity"
+            android:name="com.hades.example.android.resource.ResourceActivity"
             android:theme="@style/AppTheme.FullScreen" />
-        <activity android:name=".resource.adapter_screen.DipTestActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
-        <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
+        <activity android:name="com.hades.example.android.resource.adapter_screen.DipTestActivity" />
+        <activity android:name="com.hades.example.android.resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
+        <activity android:name="com.hades.example.android.resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
+        <activity android:name="com.hades.example.android.resource.adapter_screen.DisableRotateActivity" />
+        <activity android:name="com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageAActivity" />
+        <activity android:name="com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageBActivity" />
 
         <activity
-            android:name=".resource.drawable.bitmap.three_level_cache.ImageGridActivity"
+            android:name="com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name=".resource.drawable.bitmap.three_level_cache.ImageDetailActivity"
+            android:name="com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageDetailActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".resource.drawable.bitmap.three_level_cache.ImageGridActivity">
+            android:parentActivityName="com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".resource.drawable.bitmap.three_level_cache.ImageGridActivity" />
+                android:value="com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity" />
         </activity>
         <!-- END_RESOURCES -->
 
         <!-- DATA_STORAGE_START -->
-        <activity android:name=".data_storage.DataStorageActivity" />
-        <activity android:name=".data_storage.db.TestDBActivity" />
-        <activity android:name=".data_storage.db.ResultActivity" />
+        <activity android:name="com.hades.example.android.data_storage.DataStorageActivity" />
+        <activity android:name="com.hades.example.android.data_storage.db.TestDBActivity" />
+        <activity android:name="com.hades.example.android.data_storage.db.ResultActivity" />
         <!-- DATA_STORAGE_END -->
 
-        <activity android:name=".po.security.SecurityActivity" />
+        <activity android:name="com.hades.example.android.po.security.SecurityActivity" />
 
         <!-- BACKGROUND_TASK_START -->
-        <activity android:name="._bg_tasks.TestBackgroundTasksActivity" />
+        <activity android:name="com.hades.example.android._bg_tasks.TestBackgroundTasksActivity" />
         <!-- BACKGROUND_TASK_END -->
 
     </application>

@@ -20,8 +20,8 @@ public class AActivity extends AppCompatActivity {
     }
 
     private void jumpB() {
-        ComponentName componentName = new ComponentName("com.hades.example.android.android_about_demos.b",
-                "com.hades.example.android.android_about_demos.b.BActivity");
+        ComponentName componentName = new ComponentName("com.hades.example.android.b",
+                "com.hades.example.android.b.BActivity");
         Intent intent = new Intent();
         intent.setComponent(componentName);
         intent.putExtra("NUM", 100);
@@ -31,13 +31,13 @@ public class AActivity extends AppCompatActivity {
     private void jumpC4ExplicitIntent() {
         Intent intent = new Intent();
         // setComponent
-        ComponentName componentName = new ComponentName("com.hades.example.android.android_about_demos.b",
-                "com.hades.example.android.android_about_demos.b.CActivity");
+        ComponentName componentName = new ComponentName("com.hades.example.android.b",
+                "com.hades.example.android.b.CActivity");
 //        intent.setComponent(componentName);
 
         // setClassName
-        intent.setClassName("com.hades.example.android.android_about_demos.b",
-                "com.hades.example.android.android_about_demos.b.CActivity");
+        intent.setClassName("com.hades.example.android.b",
+                "com.hades.example.android.b.CActivity");
         intent.putExtra("NUM1", 100);
 //        startActivity(intent);
         startActivityForResult(intent, 1000);
@@ -46,11 +46,11 @@ public class AActivity extends AppCompatActivity {
     /*
     In B App, C :
     android:exported="true", and no <intent-filter>
-     ERROR: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=com.hades.example.android.android_about_demos.b.c cat=[android.intent.category.DEFAULT] (has extras) }
+     ERROR: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=com.hades.example.android.b.c cat=[android.intent.category.DEFAULT] (has extras) }
      */
     private void jumpC4ImplicitIntent() {
         Intent intent = new Intent();
-        intent.setAction("com.hades.example.android.android_about_demos.b.c");
+        intent.setAction("com.hades.example.android.b.c");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.putExtra("NUM2", 200);
 //        startActivity(intent);

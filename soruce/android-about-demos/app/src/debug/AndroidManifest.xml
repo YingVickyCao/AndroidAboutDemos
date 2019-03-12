@@ -4,7 +4,7 @@
     package="com.hades.example.android.android_about_demos">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.hades.example.android.android_about_demos.app_component.service.boundservice.TestRemoteBoundServiceActivity">
+        <activity android:name="com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
