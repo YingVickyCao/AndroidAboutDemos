@@ -36,7 +36,7 @@ public class CActivity extends AppCompatActivity {
 
     private void buildResult(int plusNum, int baseNum, String label) {
         Intent intent2 = new Intent();
-        intent2.setAction("com.hades.example.android.android_about_demos.a");
+        intent2.setAction("com.hades.example.android.a");
         intent2.addCategory(Intent.CATEGORY_DEFAULT);
         intent2.putExtra(label, baseNum + plusNum);
         setResult(2000, intent2);

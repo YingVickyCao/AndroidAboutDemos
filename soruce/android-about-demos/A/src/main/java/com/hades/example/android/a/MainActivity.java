@@ -1,4 +1,4 @@
-package com.hades.example.android.android_about_demos.a;
+package com.hades.example.android.a;
 
 import android.content.Intent;
 import android.os.Bundle;

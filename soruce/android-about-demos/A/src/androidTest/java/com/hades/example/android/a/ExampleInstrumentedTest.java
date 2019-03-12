@@ -1,4 +1,4 @@
-package com.hades.example.android.android_about_demos.a;
+package com.hades.example.android.a;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hades.example.android.android_about_demos.a", appContext.getPackageName());
+        assertEquals("com.hades.example.android.a", appContext.getPackageName());
     }
 }
