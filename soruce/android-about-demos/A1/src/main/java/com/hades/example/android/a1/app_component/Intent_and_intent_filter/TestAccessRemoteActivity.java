@@ -1,4 +1,4 @@
-package com.hades.example.android.a.app_component.Intent_and_intent_filter;
+package com.hades.example.android.a1.app_component.Intent_and_intent_filter;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -7,8 +7,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
+import android.widget.Toast;
 
-import com.hades.example.android.a.R;
+import com.hades.example.android.a1.R;
 
 /*
     Mock OpenApp: Open link url from Chrome App to open Other App Activity.
@@ -16,9 +17,7 @@ import com.hades.example.android.a.R;
        String url ="intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"
     Then
       String url =android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
-
      window.location=url
-
    */
 public class TestAccessRemoteActivity extends AppCompatActivity {
 
@@ -168,7 +167,15 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
     private void test7() {
         Intent intent = new Intent();
         intent.setData(Uri.parse("intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"));
-        startActivity(intent);
+
+//        startActivity(intent);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Activity Not Found", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*
