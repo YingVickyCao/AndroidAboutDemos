@@ -1,13 +1,25 @@
 package com.hades.example.android.a.app_component.Intent_and_intent_filter;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.hades.example.android.a.R;
 
+/*
+    Mock OpenApp: Open link url from Chrome App to open Other App Activity.
+    If not Good Access
+       String url ="intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"
+    Then
+      String url =android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
+
+     window.location=url
+
+   */
 public class TestAccessRemoteActivity extends AppCompatActivity {
 
     @Override
@@ -16,7 +28,13 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
 
         setContentView(R.layout.intent_filter_4_access_remote_activity_with_implicit_intent);
 
-        ((WebView) findViewById(R.id.webView)).loadUrl("file:///android_asset/web/web_open_app.html");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)) {
+                WebView.setWebContentsDebuggingEnabled(true);
+            }
+        }
+        WebView webView = findViewById(R.id.webView);
+        webView.loadUrl("file:///android_asset/web/web_open_app.html");
 
         findViewById(R.id.test1).setOnClickListener(v -> test1());
         findViewById(R.id.test2).setOnClickListener(v -> test2());
@@ -25,6 +43,7 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         findViewById(R.id.test5).setOnClickListener(v -> test5());
         findViewById(R.id.test6).setOnClickListener(v -> test6());
         findViewById(R.id.test7).setOnClickListener(v -> test7());
+        findViewById(R.id.test8).setOnClickListener(v -> test8());
     }
 
     /*
@@ -149,6 +168,24 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
     private void test7() {
         Intent intent = new Intent();
         intent.setData(Uri.parse("intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"));
+        startActivity(intent);
+    }
+
+    /*
+    Match case1
+    Intent {
+        dat=android_about_demos_b://jump?anything
+        flg=0x10000000
+        cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity }
+
+     mData= android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
+            scheme= android_about_demos_b
+            uriString=android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
+            host=NOT CACHED
+     */
+    private void test8() {
+        Intent intent = new Intent();
+        intent.setData(Uri.parse("android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"));
         startActivity(intent);
     }
 }

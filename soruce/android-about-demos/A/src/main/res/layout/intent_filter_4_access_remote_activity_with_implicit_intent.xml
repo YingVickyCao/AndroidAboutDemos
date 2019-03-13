@@ -49,6 +49,16 @@
             style="@style/btn.small"
             android:text="Test 7" />
 
+        <Button
+            android:id="@+id/test8"
+            style="@style/btn.small"
+            android:text="Test 8" />
+
+        <TextView style="@style/div" />
+
+        <TextView style="@style/tv"
+            android:text="Below is WebView:"/>
+
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
