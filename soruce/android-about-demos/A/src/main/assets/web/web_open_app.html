@@ -1,19 +1,17 @@
 <!Doctype html>
 <html>
 
-<head>
-    Web access app
+    <head>
+        <title>Web access app</title>
+        <script>
+            function openApp() {
+                window.location="intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"
+            }
+        </script>
+    </head>
 
-    <script>
-        function openApp() {
-            window.location="intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"
-        }
-    </script>
-
-</head>
-
-<body>
-    <button onclick="openApp()" value="Open App">Open app</button>
-</body>
+    <body>
+        <button onclick="openApp()" value="Open App">Open app</button>
+    </body>
 
 </html>
