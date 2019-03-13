@@ -37,7 +37,7 @@
 
                 <data
                     android:host="jump"
-                    android:scheme="android_about_demos_b" />
+                    android:scheme="android_about_demos_b1" />
             </intent-filter>
 
             <!-- Case 2 -->
@@ -48,7 +48,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="www.android_about_demos_b.com"
+                    android:host="www.android_about_demos_b1.com"
                     android:pathPrefix="/folder/sub/etc"
                     android:scheme="https" />
             </intent-filter>
