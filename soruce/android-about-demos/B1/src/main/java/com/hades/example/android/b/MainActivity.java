@@ -1,4 +1,4 @@
-package com.hades.example.android.a1;
+package com.hades.example.android.b;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
