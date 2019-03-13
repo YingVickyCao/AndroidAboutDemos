@@ -74,41 +74,6 @@
             <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </service>
-
-        <!--  android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
-        ==
-        com.hades.example.android.b.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
-        -->
-        <activity
-            android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
-            android:launchMode="singleInstance"
-            android:noHistory="true">
-
-            <!-- Case 1 -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="jump"
-                    android:scheme="android_about_demos_b" />
-            </intent-filter>
-
-            <!-- Case 2 -->
-            <intent-filter tools:ignore="AppLinkUrlError">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="www.android_about_demos_b.com"
-                    android:pathPrefix="/folder/sub/etc"
-                    android:scheme="https" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
