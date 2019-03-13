@@ -1,4 +1,4 @@
-package com.hades.example.android.b;
+package com.hades.example.android.b1;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hades.example.android.b", appContext.getPackageName());
+        assertEquals("com.hades.example.android.b1", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.hades.example.android.b;
+package com.hades.example.android.b1;
 
 import org.junit.Test;
 
