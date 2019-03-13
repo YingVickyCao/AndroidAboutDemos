@@ -19,10 +19,5 @@
             android:id="@+id/pageCustomPermission"
             style="@style/btn.small"
             android:text="@string/page_custom_permission" />
-
-        <Button
-            android:id="@+id/pageAccessRemoteActivityUseImplicitIntent"
-            style="@style/btn.small"
-            android:text="@string/page_access_remote_activity_use_implicit_intent" />
     </LinearLayout>
 </ScrollView>

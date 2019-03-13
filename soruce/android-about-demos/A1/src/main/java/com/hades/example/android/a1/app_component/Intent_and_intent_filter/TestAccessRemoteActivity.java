@@ -1,4 +1,4 @@
-package com.hades.example.android.a.app_component.Intent_and_intent_filter;
+package com.hades.example.android.a1.app_component.Intent_and_intent_filter;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -7,18 +7,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
+import android.widget.Toast;
 
-import com.hades.example.android.a.R;
+import com.hades.example.android.a1.R;
 
 /*
     Mock OpenApp: Open link url from Chrome App to open Other App Activity.
     If not Good Access
-       String url ="intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"
+       String url ="intent://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end"
     Then
-      String url =android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
-
+      String url =android_about_demos_b1://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end
      window.location=url
-
    */
 public class TestAccessRemoteActivity extends AppCompatActivity {
 
@@ -66,9 +65,9 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
     flg=0x18080000
     cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity }
 
-    mData= android_about_demos_b://jump
-        scheme= android_about_demos_b
-        uriString=android_about_demos_b://jump
+    mData= android_about_demos_b1://jump
+        scheme= android_about_demos_b1
+        uriString=android_about_demos_b1://jump
         host=NOT CACHED
      */
     private void test2() {
@@ -76,7 +75,7 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("android_about_demos_b://jump"));
+        intent.setData(Uri.parse("android_about_demos_b1://jump"));
         startActivity(intent);
     }
 
@@ -85,14 +84,14 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
       Intent {
           act=android.intent.action.VIEW
           cat=[android.intent.category.DEFAULT,android.intent.category.BROWSABLE]
-          dat=android_about_demos_b://jump?anything
+          dat=android_about_demos_b1://jump?anything
           flg=0x10400000
           cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
       }
 
-      mData= android_about_demos_b://jump?anything
-        scheme= android_about_demos_b
-        uriString=android_about_demos_b://jump?anything
+      mData= android_about_demos_b1://jump?anything
+        scheme= android_about_demos_b1
+        uriString=android_about_demos_b1://jump?anything
         host=NOT CACHED
      */
     private void test3() {
@@ -100,7 +99,7 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("android_about_demos_b://jump?anything"));
+        intent.setData(Uri.parse("android_about_demos_b1://jump?anything"));
         startActivity(intent);
     }
 
@@ -109,22 +108,22 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
      Intent {
          act=android.intent.action.VIEW
          cat=[android.intent.category.DEFAULT,android.intent.category.BROWSABLE]
-         dat=https://www.android_about_demos_b.com/folder/sub/etc
+         dat=https://www.android_about_demos_b1.com/folder/sub/etc
          flg=0x18080000
          cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
      }
 
-     mData= https://www.android_about_demos_b.com/folder/sub/etc
+     mData= https://www.android_about_demos_b1.com/folder/sub/etc
         scheme= https
-        uriString=https://www.android_about_demos_b.com/folder/sub/etc
-        host=www.android_about_demos_b.com
+        uriString=https://www.android_about_demos_b1.com/folder/sub/etc
+        host=www.android_about_demos_b1.com
      */
     private void test4() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("https://www.android_about_demos_b.com/folder/sub/etc"));
+        intent.setData(Uri.parse("https://www.android_about_demos_b1.com/folder/sub/etc"));
         startActivity(intent);
     }
 
@@ -132,21 +131,21 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
      Intent {
      act=android.intent.action.VIEW
      cat=[android.intent.category.DEFAULT,android.intent.category.BROWSABLE]
-     dat=https://www.android_about_demos_b.com/folder/sub/etc/abc
+     dat=https://www.android_about_demos_b1.com/folder/sub/etc/abc
      flg=0x18080000 cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity }
 
 
-     mData= https://www.android_about_demos_b.com/folder/sub/etc/abc
+     mData= https://www.android_about_demos_b1.com/folder/sub/etc/abc
         scheme= https
-        uriString=https://www.android_about_demos_b.com/folder/sub/etc/abc
-        host=www.android_about_demos_b.com
+        uriString=https://www.android_about_demos_b1.com/folder/sub/etc/abc
+        host=www.android_about_demos_b1.com
      */
     private void test5() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("https://www.android_about_demos_b.com/folder/sub/etc/abc"));
+        intent.setData(Uri.parse("https://www.android_about_demos_b1.com/folder/sub/etc/abc"));
         startActivity(intent);
     }
 
@@ -158,7 +157,7 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("https://www.android_about_demos_b.com/folder/subFolder/etc"));
+        intent.setData(Uri.parse("https://www.android_about_demos_b1.com/folder/subFolder/etc"));
         startActivity(intent);
     }
 
@@ -167,25 +166,33 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
      */
     private void test7() {
         Intent intent = new Intent();
-        intent.setData(Uri.parse("intent://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"));
-        startActivity(intent);
+        intent.setData(Uri.parse("intent://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end"));
+
+//        startActivity(intent);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Activity Not Found", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*
     Match case1
     Intent {
-        dat=android_about_demos_b://jump?anything
+        dat=android_about_demos_b1://jump?anything
         flg=0x10000000
         cmp=com.hades.example.android.b/.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity }
 
-     mData= android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
-            scheme= android_about_demos_b
-            uriString=android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end
+     mData= android_about_demos_b1://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end
+            scheme= android_about_demos_b1
+            uriString=android_about_demos_b1://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end
             host=NOT CACHED
      */
     private void test8() {
         Intent intent = new Intent();
-        intent.setData(Uri.parse("android_about_demos_b://jump?anything#Intent;scheme=android_about_demos_b;package=com.hades.example.android.b;end"));
+        intent.setData(Uri.parse("android_about_demos_b1://jump?anything#Intent;scheme=android_about_demos_b1;package=com.hades.example.android.b1;end"));
         startActivity(intent);
     }
 }

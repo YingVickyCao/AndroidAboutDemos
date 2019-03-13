@@ -32,7 +32,7 @@
         </activity>
 
         <activity android:name=".TestCustomPermissionActivity" />
-        <activity android:name=".app_component.Intent_and_intent_filter.TestAccessRemoteActivity" />
+        <activity android:name="com.hades.example.android.a1.app_component.Intent_and_intent_filter.TestAccessRemoteActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">A1</string>
+
+    <string name="page_access_remote_activity_use_implicit_intent">Access Remote Activity using ImplicitIntent</string>
+</resources>
