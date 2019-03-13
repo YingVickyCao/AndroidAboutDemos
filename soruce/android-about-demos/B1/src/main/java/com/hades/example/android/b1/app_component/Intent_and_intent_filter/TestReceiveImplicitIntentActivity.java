@@ -1,13 +1,13 @@
-package com.hades.example.android.b.app_component.Intent_and_intent_filter;
+package com.hades.example.android.b1.app_component.Intent_and_intent_filter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.hades.example.android.b.R;
+import com.hades.example.android.b1.R;
 
-public class TestReceiveImplicitIntentActivity extends Activity {
+public class TestReceiveImplicitIntentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

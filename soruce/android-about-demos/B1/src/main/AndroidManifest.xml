@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hades.example.android.b1">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--  android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+       ==
+       com.hades.example.android.b1.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
+       -->
+        <activity
+            android:name="com.hades.example.android.b1.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+            android:launchMode="singleInstance"
+            android:noHistory="true">
+
+            <!-- Case 1 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="jump"
+                    android:scheme="android_about_demos_b1" />
+            </intent-filter>
+
+            <!-- Case 2 -->
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="www.android_about_demos_b1.com"
+                    android:pathPrefix="/folder/sub/etc"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
