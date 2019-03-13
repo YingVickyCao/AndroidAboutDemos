@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebView;
 
 import com.hades.example.android.a.R;
 
@@ -14,6 +15,8 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.intent_filter_4_access_remote_activity_with_implicit_intent);
+
+        ((WebView) findViewById(R.id.webView)).loadUrl("file:///android_asset/web/web_open_app.html");
 
         findViewById(R.id.test1).setOnClickListener(v -> test1());
         findViewById(R.id.test2).setOnClickListener(v -> test2());
