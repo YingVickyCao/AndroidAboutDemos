@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:id="@+id/root"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.hades.example.android.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"

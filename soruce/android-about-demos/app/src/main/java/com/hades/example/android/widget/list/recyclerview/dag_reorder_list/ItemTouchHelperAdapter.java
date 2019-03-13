@@ -1,0 +1,105 @@
+package com.hades.example.android.widget.list.recyclerview.dag_reorder_list;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.hades.example.android.android_about_demos.R;
+
+import java.util.Collections;
+import java.util.List;
+
+public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemViewHolder> implements IItemTouchHelperAdapter {
+    private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
+
+    List<Message> list;
+    private StartDragListener mStartDragListener;
+
+    public ItemTouchHelperAdapter(List<Message> list) {
+        this.list = list;
+    }
+
+    public void setStartDragListener(StartDragListener startDragListener) {
+        this.mStartDragListener = startDragListener;
+    }
+
+    @Override
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view, parent, false);
+        return new ItemViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(final ItemViewHolder holder, int position) {
+        Message bean = list.get(position);
+        holder.info.setText(bean.getInfo());
+        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
+
+        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
+        holder.root.setOnLongClickListener(v -> true);
+        holder.drag.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (null != mStartDragListener) {
+                    mStartDragListener.startDrag(holder);
+                }
+            }
+            return false;
+        });
+
+    }
+
+    private void updateCheckStatus(final Message bean) {
+        bean.setChecked(!bean.isChecked());
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    @Override
+    public boolean onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(list, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+        return true;
+    }
+
+    @Override
+    public void onItemDismiss(int position) {
+        list.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
+        private View root;
+        private TextView info;
+        private Button drag;
+        private ImageView check;
+
+        ItemViewHolder(View itemView) {
+            super(itemView);
+            root = itemView.findViewById(R.id.root);
+            info = itemView.findViewById(R.id.phone);
+            drag = itemView.findViewById(R.id.drag);
+            check = itemView.findViewById(R.id.check);
+        }
+
+        // QA: onItemSelected - show item view bg when drag dragBtn
+        @Override
+        public void onItemSelected() {
+            root.setBackgroundResource(R.color.item_view_highlight_bg);
+        }
+
+        @Override
+        public void onItemClear() {
+            root.setBackgroundResource(R.drawable.drawable_selector_4_item_view_selected_status);
+        }
+    }
+
+}

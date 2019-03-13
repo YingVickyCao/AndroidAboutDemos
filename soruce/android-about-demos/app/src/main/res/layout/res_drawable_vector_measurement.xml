@@ -8,7 +8,7 @@
         style="@style/topic"
         android:text="@string/page_check_vector_rendering_time" />
 
-    <com.hades.android.example.android_about_demos.resource.drawable.vector.MeasurableImageView
+    <com.hades.example.android.resource.drawable.vector.MeasurableImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

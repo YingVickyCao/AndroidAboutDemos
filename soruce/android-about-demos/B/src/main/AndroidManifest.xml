@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos.po.security.b"
-    android:sharedUserId="android_about_demos.test.AcrossAPPJump">
+    package="com.hades.example.android.b">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
     <!--android:protectionLevel="normal"-->
-    <permission
-        android:name="${applicationId}.CUSTOM_PERMISSION_TEST"
-        android:description="@string/app_name"
-        android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"
-        android:protectionLevel="signature" />
+    <!--<permission-->
+    <!--android:name="${applicationId}.CUSTOM_PERMISSION_TEST"-->
+    <!--android:description="@string/app_name"-->
+    <!--android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"-->
+    <!--android:protectionLevel="signature" />-->
 
     <application
         android:allowBackup="false"
@@ -26,9 +25,9 @@
 
         <!--
         ERROR: android:exported="false"
-        Process: com.hades.android.example.android_about_demos.po.security.a, PID: 30624
-        java.lang.SecurityException: Permission Denial: starting Intent { typ=text/plain cmp=com.hades.android.example.android_about_demos.po.security.b/.BActivity (has extras) }
-        from ProcessRecord{15c37b8 30624:com.hades.android.example.android_about_demos.po.security.a/u0a236} (pid=30624, uid=10236) not exported from uid 10237
+        Process: com.hades.example.android.a, PID: 30624
+        java.lang.SecurityException: Permission Denial: starting Intent { typ=text/plain cmp=com.hades.example.android.b/.BActivity (has extras) }
+        from ProcessRecord{15c37b8 30624:com.hades.example.android.a/u0a236} (pid=30624, uid=10236) not exported from uid 10237
 
         Solution:
         android:exported="false" -> android:exported="true"   or same android:sharedUserId
@@ -37,7 +36,7 @@
             android:name=".CActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.po.security.b.c" />
+                <action android:name="com.hades.example.android.b.c" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -53,21 +52,63 @@
             android:exported="true"
             android:permission="${applicationId}.CUSTOM_PERMISSION_TEST" />
 
+        <!-- Even add intent-filter, it can not be accessed from other app -->
         <service
             android:name=".bound_service.LocalBoundedService"
             android:exported="true">
             <!--<intent-filter>-->
-                <!--<action android:name="com.hades.android.example.android_about_demos.po.security.b.bound_service.LocalBoundedService" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--<action android:name="com.hades.example.android.b.bound_service.LocalBoundedService" />-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </service>
 
         <activity android:name=".bound_service.TestRemoteBoundServiceActivity" />
 
+        <!-- Even add intent-filter, it can not be accessed from other app -->
         <service
-            android:name=".bound_service.RemoteBoundedService"
+            android:name="com.hades.example.android.b.bound_service.RemoteBoundedService"
             android:exported="true"
-            android:process=":remote"></service>
+            android:process=":remote">
+            <!--<intent-filter>-->
+            <!--<action android:name="com.hades.example.android.b.bound_service.RemoteBoundedService" />-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        </service>
+
+        <!--  android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+        ==
+        com.hades.example.android.b.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity
+        -->
+        <activity
+            android:name=".app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+            android:launchMode="singleInstance"
+            android:noHistory="true">
+
+            <!-- Case 1 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="jump"
+                    android:scheme="android_about_demos_b" />
+            </intent-filter>
+
+            <!-- Case 2 -->
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="www.android_about_demos_b.com"
+                    android:pathPrefix="/folder/sub/etc"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.android.example.android_about_demos.po.security.a"
-    android:sharedUserId="android_about_demos.test.AcrossAPPJump">
+    package="com.hades.example.android.a">
 
-    <uses-permission android:name="com.hades.android.example.android_about_demos.po.security.b.CUSTOM_PERMISSION_TEST" />
+    <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
+    <uses-permission android:name="com.hades.example.android.b.CUSTOM_PERMISSION_TEST" />
 
     <application
         android:allowBackup="false"
@@ -25,13 +25,14 @@
 
         <activity android:name=".AActivity">
             <intent-filter>
-                <action android:name="com.hades.android.example.android_about_demos.po.security.a" />
+                <action android:name="com.hades.example.android.a" />
                 <data android:mimeType="text/plain" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity android:name=".TestCustomPermissionActivity" />
+        <activity android:name=".app_component.Intent_and_intent_filter.TestAccessRemoteActivity" />
     </application>
 
 </manifest>

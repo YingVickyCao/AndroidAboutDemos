@@ -8,7 +8,7 @@
         android:text="@string/page_highlight_digital_clock" />
 
     <!-- 设置较浅的颜色，以便使文本看起来透明些 -->
-    <com.hades.android.example.android_about_demos.widget.textview.LedTextView
+    <com.hades.example.android.widget.textview.LedTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -21,7 +21,7 @@
     使用shadowRadius改变阴影半径可以使其看起来更亮
     使用android:alpha属性指定透明度。
     修改shadowDx和shadowDy的值可以改变阴影与文本之间的偏移。这里为了产生一种发亮效果，我们把shadowDx和shadowDy设置为0。-->
-    <com.hades.android.example.android_about_demos.widget.textview.LedTextView
+    <com.hades.example.android.widget.textview.LedTextView
         android:id="@+id/main_clock_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
