@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.app_component.cp.dict.DictSearchResultActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.example.android.base.ver1.BaseActivity;
@@ -18,6 +19,7 @@ public class TestAppComponentActivity extends BaseActivity {
 
         findViewById(R.id.pageBondService).setOnClickListener(v -> pageBondService());
         findViewById(R.id.pageBondService2).setOnClickListener(v -> pageBondService2());
+        findViewById(R.id.pageContentProvider).setOnClickListener(v -> pageContentProvider());
     }
 
     @Override
@@ -32,5 +34,9 @@ public class TestAppComponentActivity extends BaseActivity {
 
     private void pageBondService2() {
         startActivity(TestRemoteBoundServiceActivity2.class);
+    }
+
+    private void pageContentProvider() {
+        startActivity(DictSearchResultActivity.class);
     }
 }
