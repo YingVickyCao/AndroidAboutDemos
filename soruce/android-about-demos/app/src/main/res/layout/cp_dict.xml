@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/subject"
+        style="@style/topic"
         android:text="@string/test_ContentProvider" />
 
     <EditText
@@ -19,8 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Query word by ID" />
-
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

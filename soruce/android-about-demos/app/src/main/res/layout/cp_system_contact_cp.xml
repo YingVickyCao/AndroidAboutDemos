@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/subject"
+        style="@style/topic"
         android:text="@string/test_system_ContactContentProvider" />
 
     <LinearLayout

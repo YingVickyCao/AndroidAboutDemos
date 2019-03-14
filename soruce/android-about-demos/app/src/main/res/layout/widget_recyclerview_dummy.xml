@@ -5,7 +5,7 @@
 
     <TextView
         android:id="@+id/subject"
-        style="@style/subject"
+        style="@style/topic"
         android:text="@string/test_recyclerView" />
 
     <!-- QA: app:layoutManager 不起作用?
