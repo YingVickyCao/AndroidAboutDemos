@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 /**
  * https://developer.android.google.cn/guide/topics/resources/animation-resource

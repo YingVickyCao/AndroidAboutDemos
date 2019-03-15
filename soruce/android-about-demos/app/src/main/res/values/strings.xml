@@ -93,7 +93,6 @@
     <string name="read">Read</string>
     <string name="write">Write</string>
     <string name="sum">Sum</string>
-
     <string name="read_internal_storage">Read Internal Storage</string>
     <string name="write_Internal_storage">Write Internal Storage</string>
     <string name="read_sd_card">Read SD card</string>
@@ -108,11 +107,9 @@
     <string name="vector_drawable">Vector Drawable</string>
     <string name="png">PNG</string>
     <string name="duration">Rendering duration: %.3f</string>
-
     <string name="big_str">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non metus et ligula dignissim imperdiet vitae nec diam. Fusce sit amet lorem quam, feugiat fermentum odio. Nam ante eros, luctus a laoreet a, placerat non lectus. Phasellus nec dui vel tellus imperdiet facilisis. In eu leo neque, at auctor lacus. Ut et sapien tellus, eget suscipit ante. Suspendisse nec arcu nisi, a hendrerit tortor. Pellentesque ullamcorper, lacus in congue feugiat, velit tellus congue turpis, et volutpat sapien nibh vitae ante. Mauris eget erat id elit rutrum tempor quis sed nibh. Donec tristique, leo eu placerat bibendum, ante turpis pellentesque nisl, non commodo nibh enim sit amet felis.</string>
     <string name="big_str2">Quisque ultrices est justo, non aliquet libero.
         Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit. Quisque ultrices est justo, non aliquet libero. Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit.</string>
-
     <string name="cancel">Cancel</string>
     <string name="pause">Pause</string>
     <string name="check">Check</string>
@@ -124,7 +121,6 @@
     <string name="linearLayout_layout_gravity_center">LinearLayout layout_gravity=center</string>
     <string name="check_sharedPreferences_is_same_instance">Check SharedPreferences Is same instance</string>
     <string name="check_gone_view_size">Check gone view size </string>
-
     <string name="clear_cache_menu">Clear Caches</string>
     <string name="clear_cache_complete_toast">Caches have been cleared</string>
     <string name="imageview_description">Image Thumbnail</string>

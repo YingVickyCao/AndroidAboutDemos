@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.base.ver1.BaseActivity;
 import com.hades.example.android.other_ui.PopupWindowFragment;
 import com.hades.example.android.other_ui.ToastFragment;

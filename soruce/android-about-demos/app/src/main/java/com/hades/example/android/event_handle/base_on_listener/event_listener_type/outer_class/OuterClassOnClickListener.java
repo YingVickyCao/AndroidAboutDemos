@@ -3,7 +3,7 @@ package com.hades.example.android.event_handle.base_on_listener.event_listener_t
 import android.view.View;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class OuterClassOnClickListener implements View.OnClickListener {
     @Override

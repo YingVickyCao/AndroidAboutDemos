@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class RatingBarFragment extends Fragment {
     private static final String TAG = RatingBarFragment.class.getSimpleName();

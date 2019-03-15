@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 import static com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ACTION_ONE;
 import static com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.KEY_ONE;

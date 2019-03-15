@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.example.android.android_about_demos">
+    package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity">
+        <activity android:name="com.hades.example.android.data_storage.DataStorageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class TestWebViewFragment extends Fragment {
     private WebView mWebView;

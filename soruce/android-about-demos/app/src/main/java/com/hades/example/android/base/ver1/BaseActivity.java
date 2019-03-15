@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class BaseActivity extends BaseActivity4Permission {
     protected void startActivity(Class<?> cls) {

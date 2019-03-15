@@ -2,7 +2,7 @@ package com.hades.example.android;
 
 import android.os.Bundle;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.base.ver1.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.po.security.SecurityActivity;

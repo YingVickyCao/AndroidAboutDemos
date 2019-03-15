@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
 import com.hades.example.android.lib.utils.bitmap.fetch.OnImageLoadedListener;
 import com.hades.example.android.lib.utils.VersionUtil;

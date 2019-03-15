@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 /**
  * 基于回调的事件处理

@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.HandlerThreadFragment;
 import com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.refactor.HandlerThreadFragment4Refactor;
 import com.hades.example.android.msg_handler.main_2_thread_2_main.SumFragment;

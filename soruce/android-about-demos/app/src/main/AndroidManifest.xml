@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.example.android.android_about_demos">
+    package="com.hades.example.android">
 
     <!-- START_CONTENT_PROVIDER -->
     <!-- 授予读联系人ContentProvider的权限 -->

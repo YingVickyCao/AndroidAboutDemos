@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class PlaneView extends View {
     public float currentX;

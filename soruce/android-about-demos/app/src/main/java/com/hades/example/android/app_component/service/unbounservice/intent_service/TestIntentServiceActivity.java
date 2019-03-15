@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 
 public class TestIntentServiceActivity extends Activity {

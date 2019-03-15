@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class ViewFlipperFragment extends Fragment implements View.OnTouchListener {
     private static final String TAG = ViewFlipperFragment.class.getSimpleName();

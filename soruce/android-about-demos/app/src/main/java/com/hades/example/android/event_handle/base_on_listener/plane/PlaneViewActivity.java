@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class PlaneViewActivity extends Activity {
     private static final String TAG = PlaneViewActivity.class.getSimpleName();

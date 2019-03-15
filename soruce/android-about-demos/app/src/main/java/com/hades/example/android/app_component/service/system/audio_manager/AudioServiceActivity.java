@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.ToggleButton;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 
 public class AudioServiceActivity extends Activity {

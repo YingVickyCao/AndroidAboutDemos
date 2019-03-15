@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 
 /**
