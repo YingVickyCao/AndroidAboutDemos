@@ -26,14 +26,13 @@ public class DictActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cp_dict);
 
-        // data/data/com.xxx.xxx/databases.db
-        dbHelper = new MyDatabaseHelper(this, "myDict.db3", 1);
+        dbHelper = new MyDatabaseHelper(this, 1);
 
         mInputWorldView = findViewById(R.id.word);
         mInputIdView = findViewById(R.id.key);
 
         findViewById(R.id.insertBtnClick).setOnClickListener(source -> insert());
-        findViewById(R.id.search).setOnClickListener(source -> search());
+        findViewById(R.id.query).setOnClickListener(source -> search());
     }
 
     @Override
@@ -97,6 +96,17 @@ public class DictActivity extends Activity {
     }
 
     private Cursor queryDictById(String key) {
-        return dbHelper.getReadableDatabase().rawQuery("select * from dict where word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"});
+        /**
+         * FIXED_ERROR:
+         * 2019-03-15 11:22:16.590 19002-19002/com.hades.example.android E/AndroidRuntime: FATAL EXCEPTION: main
+         *     Process: com.hades.example.android, PID: 19002
+         *     android.database.sqlite.SQLiteException: no such table: dict (code 1): , while compiling: select * from dict where word like ? or detail like ?
+         *     #################################################################
+         *     Error Code : 1 (SQLITE_ERROR)
+         *     Caused By : SQL(query) error or missing database.
+         *     	(no such table: dict (code 1): , while compiling: select * from dict where word like ? or detail like ?)
+         *     #################################################################
+         */
+        return dbHelper.getReadableDatabase().rawQuery("select * from table1 where col2 like ? or colo3 like 1", new String[]{"%" + key + "%", "%" + key + "%"});
     }
 }

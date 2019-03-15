@@ -30,7 +30,7 @@ public class TestDBActivity extends Activity {
         // 数据库文件自动会保存在程序的数据文件夹的databases目录下
         dbHelper = new MyDatabaseHelper(this, "myDict2.db", 1);
         insert = (Button) findViewById(R.id.insertBtnClick);
-        search = (Button) findViewById(R.id.search);
+        search = (Button) findViewById(R.id.query);
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View source) {

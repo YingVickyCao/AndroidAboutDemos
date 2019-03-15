@@ -32,10 +32,10 @@
             android:text="@string/insert_dict" />
 
         <Button
-            android:id="@+id/search"
+            android:id="@+id/query"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search" />
+            android:text="@string/query" />
     </LinearLayout>
 
 

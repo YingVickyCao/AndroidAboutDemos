@@ -56,7 +56,7 @@ public class ContactContentProviderActivity extends Activity {
         rxPermissions.setLogging(true);
 
         findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
-        findViewById(R.id.search).setOnClickListener(v -> search());
+        findViewById(R.id.query).setOnClickListener(v -> search());
         findViewById(R.id.add).setOnClickListener(v -> add());
     }
 
