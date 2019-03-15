@@ -33,7 +33,7 @@ public class DataStorageActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageSharedPreferences();
+        pageDatabase();
     }
 
     private void pageSharedPreferences() {
