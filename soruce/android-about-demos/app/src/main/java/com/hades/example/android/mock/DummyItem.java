@@ -5,21 +5,21 @@ package com.hades.example.android.mock;
  */
 public class DummyItem {
     public final String id;
-    public final String content;
-    public final String details;
+    public final String colo2;
+    public final String col3;
 
     public DummyItem(String id, String content, String details) {
         this.id = id;
-        this.content = content;
-        this.details = details;
+        this.colo2 = content;
+        this.col3 = details;
     }
 
     @Override
     public String toString() {
         return "{" +
                 "id='" + id + '\'' +
-                ", content='" + content + '\'' +
-                ", details='" + details + '\'' +
+                ", colo2='" + colo2 + '\'' +
+                ", col3='" + col3 + '\'' +
                 '}';
     }
 }

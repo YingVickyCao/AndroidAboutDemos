@@ -44,7 +44,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
 
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).colo2);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
