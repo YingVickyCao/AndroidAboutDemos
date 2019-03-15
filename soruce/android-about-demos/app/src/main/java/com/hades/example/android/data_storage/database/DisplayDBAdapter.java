@@ -66,9 +66,9 @@ public class DisplayDBAdapter extends BaseAdapter {
 
         // 填充视图
         // 使用 model 中的数据填充该视图
-        viewHolder._id.setText(model.getId());
+        viewHolder._id.setText(String.valueOf(model.getId()));
         viewHolder.col2.setText(model.getColo2());
-        viewHolder.col3.setText(model.getCol3());
+        viewHolder.col3.setText(String.valueOf(model.getCol3()));
         return convertView;
     }
 

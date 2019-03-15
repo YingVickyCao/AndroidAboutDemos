@@ -8,24 +8,24 @@ import java.io.Serializable;
 /**
  * A dummy item representing a piece of content.
  */
-public class DummyItem implements Serializable , Parcelable {
-    public final String id;
+public class DummyItem implements Serializable, Parcelable {
+    public final int id;
     public final String colo2;
-    public final String col3;
+    public final int col3;
 
-    public DummyItem(String id, String content, String details) {
-        this.id = id;
+    public DummyItem(int _id, String content, int details) {
+        this.id = _id;
         this.colo2 = content;
         this.col3 = details;
     }
 
     protected DummyItem(Parcel in) {
-        id = in.readString();
+        id = in.readInt();
         colo2 = in.readString();
-        col3 = in.readString();
+        col3 = in.readInt();
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -33,7 +33,7 @@ public class DummyItem implements Serializable , Parcelable {
         return colo2;
     }
 
-    public String getCol3() {
+    public int getCol3() {
         return col3;
     }
 
@@ -66,8 +66,8 @@ public class DummyItem implements Serializable , Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
+        dest.writeInt(id);
         dest.writeString(colo2);
-        dest.writeString(col3);
+        dest.writeInt(col3);
     }
 }

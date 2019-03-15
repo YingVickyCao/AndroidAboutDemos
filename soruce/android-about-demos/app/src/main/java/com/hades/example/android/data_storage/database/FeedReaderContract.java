@@ -7,8 +7,8 @@ public class FeedReaderContract {
     }
 
     public static class FeedEntry implements BaseColumns {
-        public static final String TABLE_NAME = "entry";
-        public static final String COLUMN_NAME_TITLE = "title";
-        public static final String COLUMN_NAME_SUBTITLE = "subtitle";
+        public static final String TABLE_NAME = "table1";
+        public static final String COL2 = "col2";
+        public static final String COL3 = "col3";
     }
 }
