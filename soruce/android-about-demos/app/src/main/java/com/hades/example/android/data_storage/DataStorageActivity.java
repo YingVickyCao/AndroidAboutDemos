@@ -6,8 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.ver1.BaseActivity;
-import com.hades.example.android.data_storage.database.TestSQLiteFragment;
-import com.hades.example.android.data_storage.db.TestDBFragment;
+import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 
@@ -43,7 +42,7 @@ public class DataStorageActivity extends BaseActivity {
 
     private void pageDatabase() {
 //        showFragment(new TestDBFragment());
-        showFragment(new TestSQLiteFragment());
+        showActivity(TestSQLiteActivity.class);
     }
 
     private void pageIO() {

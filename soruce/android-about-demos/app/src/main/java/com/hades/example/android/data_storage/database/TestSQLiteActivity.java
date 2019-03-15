@@ -1,40 +1,40 @@
 package com.hades.example.android.data_storage.database;
 
+import android.app.Fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.mock.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSQLiteFragment extends BaseFragment {
-    private static final String TAG = TestSQLiteFragment.class.getSimpleName();
-
+public class TestSQLiteActivity extends AppCompatActivity {
+    private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
     // FIXED_ERROR: java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(java.lang.String, int,
 //    private FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
     private FeedReaderDbHelper dbHelper;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.data_storage_sqlite, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        dbHelper = new FeedReaderDbHelper(getActivity());
+        setContentView(R.layout.data_storage_sqlite);
 
-        view.findViewById(R.id.insert).setOnClickListener(v -> insert());
-        view.findViewById(R.id.query).setOnClickListener(v -> query());
-        view.findViewById(R.id.update).setOnClickListener(v -> update());
-        view.findViewById(R.id.delete).setOnClickListener(v -> delete());
-        return view;
+        dbHelper = new FeedReaderDbHelper(this);
+
+        findViewById(R.id.insert).setOnClickListener(v -> insert());
+        findViewById(R.id.query).setOnClickListener(v -> query2());
+        findViewById(R.id.update).setOnClickListener(v -> update());
+        findViewById(R.id.delete).setOnClickListener(v -> delete());
     }
 
     private void insert() {
@@ -87,6 +87,28 @@ public class TestSQLiteFragment extends BaseFragment {
             itemIds.add(itemId);
         }
         cursor.close();
+    }
+
+    private void query2() {
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedReaderDbHelper.SQL_RETRIEVE_ENTRIES, null);
+        ArrayList<DummyItem> list = cursor2BeanList(cursor);
+        // TODO: 2019/3/15 refactor
+        Fragment fragment = getFragmentManager().findFragmentByTag(DisplayDBFragment.TAG);
+        if (null == fragment) {
+            fragment = DisplayDBFragment.getInstance(list);
+            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DisplayDBFragment.TAG).commit();
+        } else {
+            ((DisplayDBFragment) fragment).setList(list);
+        }
+    }
+
+    protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
+        ArrayList<DummyItem> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            DummyItem dummyItem = new DummyItem(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+            list.add(dummyItem);
+        }
+        return list;
     }
 
     private void update() {
