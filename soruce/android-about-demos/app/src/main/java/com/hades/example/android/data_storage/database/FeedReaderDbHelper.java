@@ -1,10 +1,13 @@
-package com.hades.example.android.data_storage;
+package com.hades.example.android.data_storage.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
+    private static final String TAG = FeedReaderDbHelper.class.getSimpleName();
+
     // TODO: 2019/3/15
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
@@ -20,19 +23,23 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
 
     public FeedReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.d(TAG, "FeedReaderDbHelper: ");
     }
 
     public void onCreate(SQLiteDatabase db) {
+        Log.d(TAG, "onCreate: ");
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is to simply to discard the data and start over
+        Log.d(TAG, "onUpgrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion);
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d(TAG, "onDowngrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion);
         onUpgrade(db, oldVersion, newVersion);
     }
 }

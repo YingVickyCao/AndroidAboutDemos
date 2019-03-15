@@ -34,7 +34,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.BuildConfig;
+import com.hades.example.android.BuildConfig;
 import com.hades.example.android.R;
 import com.hades.example.android.mock.Images;
 import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;

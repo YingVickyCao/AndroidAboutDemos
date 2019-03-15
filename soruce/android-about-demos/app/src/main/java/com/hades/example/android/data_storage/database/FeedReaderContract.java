@@ -1,4 +1,4 @@
-package com.hades.example.android.data_storage;
+package com.hades.example.android.data_storage.database;
 
 import android.provider.BaseColumns;
 

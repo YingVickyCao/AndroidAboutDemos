@@ -1,10 +1,11 @@
-package com.hades.example.android.data_storage;
+package com.hades.example.android.data_storage.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestSQLiteFragment extends BaseFragment {
-    private FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+    private static final String TAG = TestSQLiteFragment.class.getSimpleName();
 
+
+    // FIXED_ERROR: java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(java.lang.String, int,
+//    private FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+    private FeedReaderDbHelper dbHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.data_storage_sqlite, container, false);
+
+        dbHelper = new FeedReaderDbHelper(getActivity());
+
+        view.findViewById(R.id.insert).setOnClickListener(v -> insert());
+        view.findViewById(R.id.query).setOnClickListener(v -> query());
+        view.findViewById(R.id.update).setOnClickListener(v -> update());
+        view.findViewById(R.id.delete).setOnClickListener(v -> delete());
         return view;
     }
 
@@ -37,6 +49,7 @@ public class TestSQLiteFragment extends BaseFragment {
         // Insert the new row, returning the primary key value of the new row
         // The second argument tells the framework what to do in the event that the ContentValues is empty
         long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
+        Log.d(TAG, "insert: newRowId=" + newRowId);
     }
 
     private void query() {
@@ -74,6 +87,10 @@ public class TestSQLiteFragment extends BaseFragment {
             itemIds.add(itemId);
         }
         cursor.close();
+    }
+
+    private void update() {
+
     }
 
     private void delete() {
