@@ -45,11 +45,12 @@
             </LinearLayout>
         </ScrollView>
 
+        <View style="@style/div.vertical" />
+
         <FrameLayout
             android:id="@+id/fragmentRoot"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@color/background_color" />
+            android:layout_weight="10" />
     </LinearLayout>
 </RelativeLayout>
