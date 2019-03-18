@@ -57,6 +57,8 @@ public class TestSQLiteActivity extends AppCompatActivity {
     private void insertMultiple() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME, DummyContent.ITEMS_1);
+//        insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME_2, DummyContent.ITEMS_2);
+//        insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME_3, DummyContent.ITEMS_3);
     }
 
     // TODO: 2019/3/15 refactor:move DummyItem,DummyContent -> lib
@@ -97,8 +99,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         String[] selectionArgs = {"My Title"};
 
         // How you want the results sorted in the resulting Cursor
-        String orderBy =
-                FeedReaderContract.FeedEntry.COL3 + " DESC";
+        String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
 
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
@@ -122,12 +123,12 @@ public class TestSQLiteActivity extends AppCompatActivity {
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedReaderDbHelper.SQL_RETRIEVE_ENTRIES, null);
         ArrayList<DummyItem> list = cursor2BeanList(cursor);
         // TODO: 2019/3/15 refactor
-        Fragment fragment = getFragmentManager().findFragmentByTag(DisplayDBFragment.TAG);
+        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
         if (null == fragment) {
-            fragment = DisplayDBFragment.getInstance(list);
-            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DisplayDBFragment.TAG).commit();
+            fragment = DummyContentFragment.getInstance(list);
+            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
         } else {
-            ((DisplayDBFragment) fragment).setList(list);
+            ((DummyContentFragment) fragment).setList(list);
         }
     }
 

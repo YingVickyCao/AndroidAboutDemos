@@ -16,15 +16,15 @@ import java.util.ArrayList;
 
 import static com.hades.example.android.app_component.cp.dict.DictActivity.KEY_SEARCH_RESULT;
 
-public class DisplayDBFragment extends BaseFragment {
-    public static final String TAG = DisplayDBFragment.class.getSimpleName();
+public class DummyContentFragment extends BaseFragment {
+    public static final String TAG = DummyContentFragment.class.getSimpleName();
 
     ArrayList<DummyItem> mList = new ArrayList<>();
     private ListView mListView;
-    private DisplayDBAdapter mAdapter;
+    private DummyContentAdapter mAdapter;
 
     public static Fragment getInstance(ArrayList<DummyItem> list) {
-        Fragment fragment = new DisplayDBFragment();
+        Fragment fragment = new DummyContentFragment();
 
         Bundle data = new Bundle();
         data.putParcelableArrayList(KEY_SEARCH_RESULT, list);
@@ -36,14 +36,14 @@ public class DisplayDBFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.data_storage_sqlite_display_db, container, false);
+        View view = inflater.inflate(R.layout.dummy_content, container, false);
 
         if (null != getArguments()) {
             mList.addAll(getArguments().getParcelableArrayList(KEY_SEARCH_RESULT)) ;
         }
         mListView = view.findViewById(R.id.listView);
 
-        mAdapter = new DisplayDBAdapter(mList, getActivity());
+        mAdapter = new DummyContentAdapter(mList, getActivity());
         mListView.setAdapter(mAdapter);
         return view;
     }

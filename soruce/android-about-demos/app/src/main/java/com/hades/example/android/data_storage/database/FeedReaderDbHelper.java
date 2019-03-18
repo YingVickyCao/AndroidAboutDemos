@@ -19,6 +19,19 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeedReaderContract.FeedEntry.COL2 + " TEXT," +
                     FeedReaderContract.FeedEntry.COL3 + " TEXT)";
 
+    private static final String SQL_CREATE_ENTRIES_2 =
+            "CREATE TABLE " + FeedReaderContract.FeedEntry.TABLE_NAME_2 + " (" +
+                    FeedReaderContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
+                    FeedReaderContract.FeedEntry.COL2 + " TEXT," +
+                    FeedReaderContract.FeedEntry.COL3 + " TEXT)";
+
+
+    private static final String SQL_CREATE_ENTRIES_3 =
+            "CREATE TABLE " + FeedReaderContract.FeedEntry.TABLE_NAME_3 + " (" +
+                    FeedReaderContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
+                    FeedReaderContract.FeedEntry.COL2 + " TEXT," +
+                    FeedReaderContract.FeedEntry.COL3 + " TEXT)";
+
     public static final String SQL_RETRIEVE_ENTRIES = "SELECT * FROM " + FeedReaderContract.FeedEntry.TABLE_NAME;
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + FeedReaderContract.FeedEntry.TABLE_NAME;
 
@@ -30,6 +43,8 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate: ");
         db.execSQL(SQL_CREATE_ENTRIES);
+//        db.execSQL(SQL_CREATE_ENTRIES_2);
+//        db.execSQL(SQL_CREATE_ENTRIES_3);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

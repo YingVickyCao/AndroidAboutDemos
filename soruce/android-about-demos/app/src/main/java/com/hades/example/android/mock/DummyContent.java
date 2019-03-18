@@ -53,7 +53,13 @@ public class DummyContent {
         list.add(new DummyItem(1, "ABC", 2));
         list.add(new DummyItem(2, "hello", 204));
         list.add(new DummyItem(3, "Book", 9));
-        list.add(new DummyItem(3, "OP", 15));
+        /**
+         * FIXED_ERROR:
+         * 2019-03-18 17:56:23.276 2700-2700/com.hades.example.android E/SQLiteDatabase: Error inserting col2=Book _id=3 col3=9
+            android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: table3._id (code 1555)
+         */
+//        list.add(new DummyItem(3, "OP", 15));
+        list.add(new DummyItem(4, "OP", 15));
         return list;
     }
 

@@ -12,11 +12,11 @@ import com.hades.example.android.mock.DummyItem;
 
 import java.util.List;
 
-public class DisplayDBAdapter extends BaseAdapter {
+public class DummyContentAdapter extends BaseAdapter {
     private List<DummyItem> mList;
     private Context mContext;
 
-    public DisplayDBAdapter(List<DummyItem> list, Context context) {
+    public DummyContentAdapter(List<DummyItem> list, Context context) {
         mList = list;
         mContext = context;
     }
@@ -42,7 +42,7 @@ public class DisplayDBAdapter extends BaseAdapter {
         // 如果 convertView 为 null，就填充视图
         if (convertView == null) {
             // 创建视图
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.data_storage_sqlite_db_item_view, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.dummy_content_item_view, null);
 
             viewHolder = new ViewHolder();
             // 获取视图中各个控件的引用，并存入viewHolder中
