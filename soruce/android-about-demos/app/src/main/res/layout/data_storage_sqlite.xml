@@ -39,6 +39,11 @@
                     android:text="@string/query" />
 
                 <Button
+                    android:id="@+id/queryAll"
+                    style="@style/btn.small"
+                    android:text="@string/query" />
+
+                <Button
                     android:id="@+id/update"
                     style="@style/btn.small"
                     android:text="@string/update" />

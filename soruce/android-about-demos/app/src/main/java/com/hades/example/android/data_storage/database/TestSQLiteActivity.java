@@ -34,7 +34,10 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
         findViewById(R.id.insert).setOnClickListener(v -> insert());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
-        findViewById(R.id.query).setOnClickListener(v -> query2());
+        findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
+        findViewById(R.id.query).setOnClickListener(v -> query());
+
+
         findViewById(R.id.update).setOnClickListener(v -> update());
         findViewById(R.id.delete).setOnClickListener(v -> delete());
     }
@@ -82,6 +85,27 @@ public class TestSQLiteActivity extends AppCompatActivity {
         return value;
     }
 
+    private void queryAll() {
+        // PO: getReadableDatabase()
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedReaderDbHelper.SQL_RETRIEVE_ENTRIES, null);
+        handleQueryResult(cursor);
+    }
+
+    private void handleQueryResult(Cursor cursor) {
+        ArrayList<DummyItem> list = cursor2BeanList(cursor);
+        // PO: Cursor.close
+        if (null != cursor) {
+            cursor.close();
+        }
+        // TODO: 2019/3/15 refactor
+        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
+        if (null == fragment) {
+            fragment = DummyContentFragment.getInstance(list);
+            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
+        } else {
+            ((DummyContentFragment) fragment).setList(list);
+        }
+    }
 
     private void query() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -96,7 +120,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
         // Filter results WHERE "title" = 'My Title'
         String selection = FeedReaderContract.FeedEntry.COL2 + " = ?";
-        String[] selectionArgs = {"My Title"};
+        String[] selectionArgs = {"c"};
 
         // How you want the results sorted in the resulting Cursor
         String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
@@ -111,31 +135,14 @@ public class TestSQLiteActivity extends AppCompatActivity {
                 orderBy               // The sort order
         );
 
-        List itemIds = new ArrayList<>();
-        while (cursor.moveToNext()) {
-            long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID));
-            itemIds.add(itemId);
-        }
-        cursor.close();
-    }
-
-    private void query2() {
-        Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedReaderDbHelper.SQL_RETRIEVE_ENTRIES, null);
-        ArrayList<DummyItem> list = cursor2BeanList(cursor);
-        // TODO: 2019/3/15 refactor
-        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
-        if (null == fragment) {
-            fragment = DummyContentFragment.getInstance(list);
-            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
-        } else {
-            ((DummyContentFragment) fragment).setList(list);
-        }
+        handleQueryResult(cursor);
     }
 
     protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
         ArrayList<DummyItem> list = new ArrayList<>();
         while (cursor.moveToNext()) {
-            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
+//            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
+            DummyItem dummyItem = new DummyItem(cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID)), cursor.getString(1), cursor.getInt(2));
             list.add(dummyItem);
         }
         return list;
