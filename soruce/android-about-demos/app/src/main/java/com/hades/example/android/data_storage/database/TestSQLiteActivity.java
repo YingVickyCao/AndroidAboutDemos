@@ -59,6 +59,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME, DummyContent.ITEMS_1);
     }
 
+    // TODO: 2019/3/15 refactor:move DummyItem,DummyContent -> lib
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
         /**
          * FIXED_ERROR:java.lang.IllegalStateException: getDatabase called recursively
