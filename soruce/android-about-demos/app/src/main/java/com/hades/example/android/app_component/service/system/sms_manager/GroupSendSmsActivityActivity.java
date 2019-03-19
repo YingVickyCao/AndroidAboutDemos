@@ -39,8 +39,8 @@ public class GroupSendSmsActivityActivity extends PermissionActivity {
 
         initViews();
 
-        numbers = (EditText) findViewById(R.id.numbers);
-        content = (EditText) findViewById(R.id.content);
+        numbers = findViewById(R.id.numbers);
+        content = findViewById(R.id.content);
         setRoot(findViewById(R.id.root));
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());

@@ -11,9 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.DummyContentFragment;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.android.lib.utils.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,8 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
     private void insertOne() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
+            Log.d(TAG, "insertOne: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
             ContentValues rowInitColumnValues = new ContentValues();
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL2, "A");
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL3, "100");
@@ -65,7 +66,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
     private void insertMultiple() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
             insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1);
         }).start();
     }
@@ -87,7 +88,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     private void queryAll() {
         new Thread(() -> {
             // PO: getReadableDatabase()/getWritableDatabase()
-            Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
             handleQueryResult(cursor);
         }).start();
     }
@@ -95,7 +96,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     // Search : colo2 content = D
     private void query() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            SQLiteDatabase db = getReadableDatabase();
 
             String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
@@ -111,7 +112,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     }
 
     private void fuzzySearch() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
         String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
@@ -128,7 +129,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
     // colo3 任意位置含有1
     private void fuzzySearch2() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         String keyword = "i";
         String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
                 + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
@@ -145,7 +146,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     // colo3 任意位置含有1
     private void update() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
 
             String title = "MyNewTitle";
             ContentValues values = new ContentValues();
@@ -164,7 +165,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     // col2 任意位置包含e
     private void delete() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
             String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
             String keyword = "e";
             String[] whereArgs = {"%" + keyword + "%"};
@@ -204,5 +205,17 @@ public class TestSQLiteActivity extends AppCompatActivity {
             list.add(dummyItem);
         }
         return list;
+    }
+
+    private SQLiteDatabase getWritableDatabase() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Log.d(TAG, "getWritableDatabase: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
+        return db;
+    }
+
+    private SQLiteDatabase getReadableDatabase() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Log.d(TAG, "getReadableDatabase : " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
+        return db;
     }
 }

@@ -1,6 +1,7 @@
 package com.hades.example.android.lib.base;
 
 import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.widget.Toast;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -12,7 +13,12 @@ import io.reactivex.disposables.Disposable;
  * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
  */
 public class RxPermissionsActivity extends BaseActivity {
+    protected View mRoot;
     private RxPermissions rxPermissions;
+
+    public void setRoot(View root) {
+        mRoot = root;
+    }
 
     protected void needCheckPermission() {
         if (isNeedCheckPermission()) {

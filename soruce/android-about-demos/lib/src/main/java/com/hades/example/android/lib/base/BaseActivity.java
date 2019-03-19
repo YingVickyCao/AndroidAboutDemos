@@ -11,7 +11,6 @@ import android.widget.ScrollView;
 import com.hades.example.android.lib.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    protected View mRoot;
     private View topic;
     private ScrollView mScrollView;
     private View mFragmentRoot;
@@ -30,14 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract boolean isNeedCheckPermission();
-
-    public void setRoot(View root) {
-        mRoot = root;
-    }
-
-    protected void startActivity(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-    }
 
     protected void initViews() {
         topic = findViewById(R.id.topic);
@@ -78,12 +69,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean isShowDetail() {
-        return null != mFragmentRoot && mFragmentRoot.getVisibility() == View.VISIBLE;
+        return (null != mFragmentRoot)
+                && (mFragmentRoot.getVisibility() == View.VISIBLE)
+                && (null != getFragmentManager().findFragmentById(R.id.fragmentRoot));
     }
 
     protected void removeDetailFragment() {
         Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentRoot);
-        getFragmentManager().beginTransaction().remove(fragment).commit();
+        if (null != fragment) {
+            getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
     }
 
     protected void showFragment(Fragment fragment) {

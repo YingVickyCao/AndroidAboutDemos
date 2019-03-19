@@ -112,7 +112,7 @@ public class WidgetActivityActivity extends NoNeedPermissionActivity implements 
     }
 
     private void pageKenBurnsImage() {
-        startActivity(KenBurnsImageActivity.class);
+        showActivity(KenBurnsImageActivity.class);
     }
 
     private void pageImageViewScaleType() {

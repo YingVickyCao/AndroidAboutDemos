@@ -27,10 +27,10 @@ public class TestAppComponentActivityActivity extends NoNeedPermissionActivity {
 
 
     private void pageBondService() {
-        startActivity(TestLocalBoundServiceActivity.class);
+        showActivity(TestLocalBoundServiceActivity.class);
     }
 
     private void pageBondService2() {
-        startActivity(TestRemoteBoundServiceActivity2.class);
+        showActivity(TestRemoteBoundServiceActivity2.class);
     }
 }
