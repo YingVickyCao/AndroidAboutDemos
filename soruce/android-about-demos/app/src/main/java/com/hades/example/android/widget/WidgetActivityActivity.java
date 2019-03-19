@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui.PopupWindowFragment;
 import com.hades.example.android.other_ui.ToastFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
@@ -22,7 +22,7 @@ import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment
 import com.hades.example.android.widget.layout.ConstraintLayoutFragment;
 import com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivityActivity;
 import com.hades.example.android.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;

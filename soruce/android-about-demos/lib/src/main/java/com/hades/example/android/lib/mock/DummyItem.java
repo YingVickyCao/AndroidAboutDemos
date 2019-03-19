@@ -1,4 +1,4 @@
-package com.hades.example.android.mock;
+package com.hades.example.android.lib.mock;
 
 import android.os.Parcel;
 import android.os.Parcelable;

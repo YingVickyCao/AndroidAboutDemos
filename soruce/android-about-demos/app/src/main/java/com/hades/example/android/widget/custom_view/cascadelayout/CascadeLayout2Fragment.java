@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * Created by hades on 17/03/2018.

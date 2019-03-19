@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 public class SecurityActivityActivity extends NoNeedPermissionActivity {
     @Override

@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hades.example.android.lib.R;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.List;
 

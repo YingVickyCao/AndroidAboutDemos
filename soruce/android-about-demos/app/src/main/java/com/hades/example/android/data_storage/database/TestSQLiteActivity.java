@@ -12,8 +12,8 @@ import android.util.Log;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.DummyContentFragment;
-import com.hades.example.android.mock.DummyContent;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +47,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // PO:SQLiteOpenHelper.close()
         dbHelper.close();
     }
 
@@ -119,6 +120,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
         String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
+        // PO: SQLiteDatabase Use query instead of rawQuery
         Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
 
         handleQueryResult(cursor);

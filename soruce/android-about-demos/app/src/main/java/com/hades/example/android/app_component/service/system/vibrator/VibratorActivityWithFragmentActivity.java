@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 
 
 /*

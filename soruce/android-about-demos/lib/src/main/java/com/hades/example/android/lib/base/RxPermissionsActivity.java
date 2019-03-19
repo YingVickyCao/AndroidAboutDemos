@@ -1,4 +1,4 @@
-package com.hades.example.android.base;
+package com.hades.example.android.lib.base;
 
 import android.support.design.widget.Snackbar;
 import android.widget.Toast;

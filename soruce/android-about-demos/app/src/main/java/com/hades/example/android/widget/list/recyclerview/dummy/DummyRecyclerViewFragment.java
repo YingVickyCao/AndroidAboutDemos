@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hades.example.android.R;
-import com.hades.example.android.mock.DummyContent;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.android.lib.mock.DummyItem;
 
 /**
  * A fragment representing a list of Items.

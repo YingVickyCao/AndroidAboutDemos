@@ -1,4 +1,4 @@
-package com.hades.example.android.base;
+package com.hades.example.android.lib.base;
 
 public class NoNeedPermissionActivity extends BaseActivity {
     @Override

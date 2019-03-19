@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.array.ArrayFragment;

@@ -5,7 +5,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 
 import com.hades.example.android.lib.utils.LogHelper;
-import com.hades.example.android.mock.MockHeavyWork;
+import com.hades.example.android.lib.mock.MockHeavyWork;
 
 import java.util.Arrays;
 import java.util.List;

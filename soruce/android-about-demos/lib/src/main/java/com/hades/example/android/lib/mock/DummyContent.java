@@ -1,4 +1,4 @@
-package com.hades.example.android.mock;
+package com.hades.example.android.lib.mock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
