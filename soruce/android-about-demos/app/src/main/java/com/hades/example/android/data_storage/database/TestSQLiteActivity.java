@@ -104,6 +104,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
             String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
             Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+
             handleQueryResult(cursor);
         }).start();
     }
@@ -123,6 +124,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         handleQueryResult(cursor);
     }
 
+    // colo3 任意位置含有1
     private void fuzzySearch2() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String keyword = "i";
@@ -138,6 +140,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         handleQueryResult(cursor);
     }
 
+    // colo3 任意位置含有1
     private void update() {
         new Thread(() -> {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -156,6 +159,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         }).start();
     }
 
+    // col2 任意位置包含e
     private void delete() {
         new Thread(() -> {
             SQLiteDatabase db = dbHelper.getWritableDatabase();

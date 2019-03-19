@@ -24,11 +24,11 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
 
     public FeedSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        Log.d(TAG, "FeedSQLiteOpenHelper() " + LogHelper.getThreadInfo()); // [thread =2,main]
+        Log.d(TAG, "FeedSQLiteOpenHelper() " + LogHelper.getThreadInfo());
     }
 
     public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo()); // ,[thread =2,main]
+        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo());
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
