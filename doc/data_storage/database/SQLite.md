@@ -165,21 +165,6 @@ SQL模糊查询，使用like比较字，加上SQL里的通配符，请参考以�
 - Thread = = Thread runing `getWritableDatabase()`/`getReadableDatabase()`
 - Called when the database is created for the first time
 
-- ERROR:java.lang.IllegalStateException: getDatabase called recursively  
-https://blog.csdn.net/adayabetter/article/details/44516217
-
-```
-public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo()); // ,[thread =2,main]
-        db.execSQL(SQL_CREATE_ENTRIES);
-
-        // FIX_ERROR:java.lang.IllegalStateException: getDatabase called recursively
-        // Use db instread of db2
-        // SQLiteDatabase db2 = getReadableDatabase();
-  
-    }
-```
-
 ## `void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) `
 
 ### How to update DB?
@@ -199,6 +184,11 @@ void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 ## `getWritableDatabase()`/ `getReadableDatabase()`
 - can be long-running => called in background thread.
 
+- 同一个/不同Context实例，每次通过SQLiteOpenHelper..getWritableDatabase() / getReadableDatabase()拿到的SQLiteDatabase 同一个实例吗?  
+    1 SQLiteOpenHelper保存的SQLiteDatabase实例存在，且满足判定条件时，才不会重新=.  
+    2 SQLiteOpenHelper 不是单例  
+
+
 # close()
 - called in onDestroy() of Activity/Fragment/Application subclass
 
@@ -206,6 +196,44 @@ void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 ## cursor.getColumnIndexOrThrow
 ## cursor.getColumnIndex
 ## cursor.getInt(int) // int: colum index. >=0
+
+# ERROR
+## FIXED_ERROR:`java.lang.IllegalStateException: getDatabase called recursively`  
+https://blog.csdn.net/adayabetter/article/details/44516217
+
+```
+public void onCreate(SQLiteDatabase db) {
+        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo()); // ,[thread =2,main]
+        db.execSQL(SQL_CREATE_ENTRIES);
+
+        // Use db instread of db2
+        // SQLiteDatabase db2 = getReadableDatabase();
+  
+    }
+```
+
+## FIXED_ERROR: `java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(...)` 
+
+Reason:  
+Context is prepared well until onCreate() finished.
+
+```
+public class TestSQLiteActivity extends Activity {
+
+//  private FeedSQLiteOpenHelper dbHelper = new FeedSQLiteOpenHelper(getContext());
+    private FeedSQLiteOpenHelper dbHelper;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbHelper = new FeedSQLiteOpenHelper(this);
+    }
+```
+ 
+## FIXED_ERROR: `SQLiteDatabase: Error inserting _id=1 col2=City col3=1 android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: table1._id (code 1555)`
+
+Reason:  
+插入数据时，主键重复.
 
 # Refs
 - [Room](https://developer.android.google.cn/training/data-storage/room)

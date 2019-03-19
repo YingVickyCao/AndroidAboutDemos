@@ -207,6 +207,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
     private SQLiteDatabase getWritableDatabase() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        /**
+         * TestSQLiteActivity@2527639,SQLiteDatabase@256491584
+         * TestSQLiteActivity@127308036,SQLiteDatabase@6779339
+         */
         Log.d(TAG, "getWritableDatabase: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
         return db;
     }
