@@ -23,6 +23,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/usedTime"
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
                 <Button
                     android:id="@+id/insertOne"
                     style="@style/btn.small"
@@ -32,6 +38,11 @@
                     android:id="@+id/insertMultiple"
                     style="@style/btn.small"
                     android:text="@string/insert_multiple" />
+
+                <Button
+                    android:id="@+id/insertMultipleWithTransaction"
+                    style="@style/btn.small"
+                    android:text="@string/insert_multiple_with_Transaction" />
 
                 <Button
                     android:id="@+id/query"
@@ -62,10 +73,27 @@
                     android:id="@+id/delete"
                     style="@style/btn.small"
                     android:text="@string/delete" />
+
+                <Button
+                    android:id="@+id/deleteAll"
+                    style="@style/btn.small"
+                    android:text="@string/delete_all" />
             </LinearLayout>
         </ScrollView>
 
         <View style="@style/div.vertical" />
+
+        <FrameLayout
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
 
         <FrameLayout
             android:id="@+id/fragmentRoot"

@@ -90,8 +90,9 @@ public abstract class BaseTable {
      * 获取所有键名
      * */
     public abstract String[] getAllKey();
-
+    
     /**
+     * 
      * @return
      * @author kenzhang 查询表中元素数量,比原有的cursor.getCount()更高效
      */
@@ -100,6 +101,7 @@ public abstract class BaseTable {
         try {
             SQLiteDatabase sqliteDb = getSqliteDB();
             if (sqliteDb != null) {
+                // TODO: 2019/3/19
                 cursor = sqliteDb.rawQuery("select count(*) from " + getTableName(), null);
                 if (cursor != null && cursor.moveToFirst()) {
                     int i = cursor.getInt(0);

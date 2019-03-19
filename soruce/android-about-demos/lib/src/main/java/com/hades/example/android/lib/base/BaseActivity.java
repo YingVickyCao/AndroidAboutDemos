@@ -13,7 +13,7 @@ import com.hades.example.android.lib.R;
 public abstract class BaseActivity extends AppCompatActivity {
     private View topic;
     private ScrollView mScrollView;
-    private View mFragmentRoot;
+    protected View mFragmentRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +62,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (null != topic) {
             topic.setVisibility(View.GONE);
         }
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.VISIBLE);
+        }
+    }
+
+    protected void showFragmentRoot(){
         if (null != mFragmentRoot) {
             mFragmentRoot.setVisibility(View.VISIBLE);
         }

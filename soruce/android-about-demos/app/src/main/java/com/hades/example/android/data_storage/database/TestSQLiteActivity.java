@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.android.lib.utils.DateUtil;
 import com.hades.example.android.lib.utils.DummyContentFragment;
 
 import java.util.ArrayList;
@@ -22,24 +25,38 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
     private FeedSQLiteOpenHelper dbHelper;
+    private DateUtil mDateUtil = new DateUtil();
+
+    private TextView mUsedTimeTv;
+    private View mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.data_storage_sqlite);
+        initViews();
+        showFragmentRoot();
+
+        mUsedTimeTv = findViewById(R.id.usedTime);
+        mProgressBar = findViewById(R.id.progressBar);
 
         dbHelper = new FeedSQLiteOpenHelper(this);
 
         findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
+        findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
+
         findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
         findViewById(R.id.query).setOnClickListener(v -> query());
+
         findViewById(R.id.fuzzySearch).setOnClickListener(v -> fuzzySearch());
         findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
 
         findViewById(R.id.update).setOnClickListener(v -> update());
+
         findViewById(R.id.delete).setOnClickListener(v -> delete());
+        findViewById(R.id.deleteAll).setOnClickListener(v -> deleteAll());
     }
 
     @Override
@@ -50,6 +67,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void insertOne() {
+        showProgressBar();
         new Thread(() -> {
             SQLiteDatabase db = getWritableDatabase();
             Log.d(TAG, "insertOne: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
@@ -59,13 +77,31 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
             long insertedNewRowId = db.insert(Table1ReaderContract.TableEntry.TABLE_NAME, null, rowInitColumnValues);
             Log.d(TAG, "insertOne: newRowId=" + insertedNewRowId);
+
+            queryAll(db);
         }).start();
     }
 
+    /**
+     * 10000=
+     * 0h:0m:13s:86ms
+     * 0h:0m:13s:351ms
+     * 0h:0m:12s:744ms
+     * 0h:0m:12s:856ms
+     */
     private void insertMultiple() {
+        showProgressBar();
         new Thread(() -> {
+
+            long start = System.currentTimeMillis();
             SQLiteDatabase db = getWritableDatabase();
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1);
+            // insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_10000);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+
+            queryAll(db);
         }).start();
     }
 
@@ -73,6 +109,33 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         for (int i = 0; i < list.size(); i++) {
             db.insert(tableName, null, convertBean2ContentValues(list.get(i)));
         }
+    }
+
+    /**
+     * 10000=
+     * 0h:0m:0s:518ms
+     * 0h:0m:0s:338ms
+     * 0h:0m:0s:333ms
+     */
+    private void insertMultipleWithTransaction() {
+        showProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+
+            SQLiteDatabase db = getWritableDatabase();
+            try {
+                db.beginTransaction();
+                //            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_10000);
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+            queryAll(db);
+        }).start();
     }
 
     private ContentValues convertBean2ContentValues(DummyItem info) {
@@ -89,6 +152,11 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
             handleQueryResult(cursor);
         }).start();
+    }
+
+    private void queryAll(SQLiteDatabase db) {
+        Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+        handleQueryResult(cursor);
     }
 
     // Search : colo2 content = D
@@ -173,6 +241,19 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }).start();
     }
 
+    private void deleteAll() {
+        showProgressBar();
+        new Thread(() -> {
+            SQLiteDatabase db = getWritableDatabase();
+            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
+            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+
+            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            handleQueryResult(cursor);
+
+        }).start();
+    }
+
     private void handleQueryResult(Cursor cursor) {
         ArrayList<DummyItem> list = cursor2BeanList(cursor);
         // PO: Cursor.close
@@ -181,6 +262,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }
 
         runOnUiThread(() -> {
+            hideProgressBar();
             // TODO: 2019/3/15 refactor
             Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
             if (null == fragment) {
@@ -219,5 +301,25 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Log.d(TAG, "getReadableDatabase : " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
         return db;
+    }
+
+    private void updateUsedTime(long start, long end) {
+        String duringTime = mDateUtil.compareDate(start, end);
+        Log.d(TAG, "updateUsedTime: " + start + "-" + end + " = " + duringTime);
+        runOnUiThread(() -> {
+            mUsedTimeTv.setText(duringTime);
+            hideProgressBar();
+        });
+    }
+
+    private void showProgressBar() {
+        mUsedTimeTv.setText("");
+        mProgressBar.setVisibility(View.VISIBLE);
+        mFragmentRoot.setVisibility(View.GONE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+        mFragmentRoot.setVisibility(View.VISIBLE);
     }
 }

@@ -52,7 +52,9 @@
     <string name="insert">Insert</string>
     <string name="insert_one">Insert one</string>
     <string name="insert_multiple">Insert multiple</string>
+    <string name="insert_multiple_with_Transaction">Insert multiple with Transaction</string>
     <string name="delete">Delete</string>
+    <string name="delete_all">Delete all</string>
     <string name="create_table">create table</string>
     <string name="delete_table">delete table</string>
     <string name="delete_table_data">delete table all data</string>

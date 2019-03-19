@@ -35,7 +35,7 @@ public class DateUtil {
         compareDate(t1, t2);
     }
 
-    public void compareDate(long start, long end) {
+    public String compareDate(long start, long end) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         System.out.println(sdf.format(start) + "," + sdf.format(end));
 
@@ -52,6 +52,9 @@ public class DateUtil {
 
         int s = (int) (t3 / ms_s);
         t3 = t3 - s * ms_s;
-        System.out.println(h + "h:" + m + "m:" + s+"s");
+
+        String duringTime = h + "h:" + m + "m:" + s+"s:" + t3  + "ms";
+        System.out.println(duringTime);
+        return duringTime;
     }
 }
