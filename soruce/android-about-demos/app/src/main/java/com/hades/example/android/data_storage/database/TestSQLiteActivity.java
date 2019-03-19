@@ -47,6 +47,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // PO:SQLiteOpenHelper.close()
         dbHelper.close();
     }
 
@@ -119,6 +120,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
         String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
+        // PO: SQLiteDatabase Use query instead of rawQuery
         Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
 
         handleQueryResult(cursor);
