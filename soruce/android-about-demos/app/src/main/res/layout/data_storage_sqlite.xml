@@ -24,9 +24,9 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/insert"
+                    android:id="@+id/insertOne"
                     style="@style/btn.small"
-                    android:text="@string/insert" />
+                    android:text="@string/insert_one" />
 
                 <Button
                     android:id="@+id/insertMultiple"

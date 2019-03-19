@@ -50,6 +50,7 @@
     <string name="insert_dict">添加单词</string>
     <string name="insert_bundles">Insert bundles</string>
     <string name="insert">Insert</string>
+    <string name="insert_one">Insert one</string>
     <string name="insert_multiple">Insert multiple</string>
     <string name="delete">Delete</string>
     <string name="create_table">create table</string>

@@ -22,8 +22,8 @@ public class TestSQLiteActivity extends AppCompatActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
     // FIXED_ERROR: java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(java.lang.String, int,
-//    private FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
-    private FeedReaderDbHelper dbHelper;
+//    private FeedSQLiteOpenHelper dbHelper = new FeedSQLiteOpenHelper(getContext());
+    private FeedSQLiteOpenHelper dbHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
         setContentView(R.layout.data_storage_sqlite);
 
-        dbHelper = new FeedReaderDbHelper(this);
+        dbHelper = new FeedSQLiteOpenHelper(this);
 
-        findViewById(R.id.insert).setOnClickListener(v -> insert());
+        findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
         findViewById(R.id.query).setOnClickListener(v -> query());
@@ -50,36 +50,26 @@ public class TestSQLiteActivity extends AppCompatActivity {
         dbHelper.close();
     }
 
-    private void insert() {
-        // Gets the data repository in write mode
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    private void insertOne() {
+        new Thread(() -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues rowInitColumnValues = new ContentValues();
+            rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL2, "A");
+            rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL3, "100");
 
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(FeedReaderContract.FeedEntry.COL2, "A");
-        values.put(FeedReaderContract.FeedEntry.COL3, "ABCDE");
-
-        // Insert the new row, returning the primary key value of the new row
-        // The second argument tells the framework what to do in the event that the ContentValues is empty
-        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
-        Log.d(TAG, "insert: newRowId=" + newRowId);
+            long insertedNewRowId = db.insert(Table1ReaderContract.TableEntry.TABLE_NAME, null, rowInitColumnValues);
+            Log.d(TAG, "insertOne: newRowId=" + insertedNewRowId);
+        }).start();
     }
 
     private void insertMultiple() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME, DummyContent.ITEMS_1);
-//        insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME_2, DummyContent.ITEMS_2);
-//        insertMultiple(db, FeedReaderContract.FeedEntry.TABLE_NAME_3, DummyContent.ITEMS_3);
+        new Thread(() -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1);
+        }).start();
     }
 
-    // TODO: 2019/3/15 refactor:move DummyItem,DummyContent -> lib
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
-        /**
-         * FIXED_ERROR:java.lang.IllegalStateException: getDatabase called recursively
-         *
-         * https://blog.csdn.net/adayabetter/article/details/44516217
-         */
-//        SQLiteDatabase database = getWritableDatabase();
         for (int i = 0; i < list.size(); i++) {
             db.insert(tableName, null, convertBean2ContentValues(list.get(i)));
         }
@@ -87,61 +77,48 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
     private ContentValues convertBean2ContentValues(DummyItem info) {
         ContentValues value = new ContentValues();
-        value.put(FeedReaderContract.FeedEntry._ID, info.getId());
-        value.put(FeedReaderContract.FeedEntry.COL2, info.getColo2());
-        value.put(FeedReaderContract.FeedEntry.COL3, info.getCol3());
+        value.put(Table1ReaderContract.TableEntry._ID, info.getId());
+        value.put(Table1ReaderContract.TableEntry.COL2, info.getColo2());
+        value.put(Table1ReaderContract.TableEntry.COL3, info.getCol3());
         return value;
     }
 
     private void queryAll() {
-        // PO: getReadableDatabase()
-        Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedReaderDbHelper.SQL_RETRIEVE_ENTRIES, null);
-        handleQueryResult(cursor);
+        new Thread(() -> {
+            // PO: getReadableDatabase()/getWritableDatabase()
+            Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            handleQueryResult(cursor);
+        }).start();
     }
 
+    // Search : colo2 content = D
     private void query() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] columns = {BaseColumns._ID, FeedReaderContract.FeedEntry.COL2, FeedReaderContract.FeedEntry.COL3};
+        new Thread(() -> {
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        // Filter results WHERE "title" = 'My Title'
-        String selection = FeedReaderContract.FeedEntry.COL2 + " = ?";
-        String[] selectionArgs = {"D"};
+            String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
-        // How you want the results sorted in the resulting Cursor
-        String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
+            String selection = Table1ReaderContract.TableEntry.COL2 + " = ?";
+            String[] selectionArgs = {"D"};
 
-        Cursor cursor = db.query(
-                FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
-                columns,             // The array of columns to return (pass null to get all)
-                selection,              // The columns for the WHERE clause
-                selectionArgs,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                orderBy               // The sort order
-        );
+            String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
-        handleQueryResult(cursor);
+            Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+            handleQueryResult(cursor);
+        }).start();
     }
 
     private void fuzzySearch() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] columns = {BaseColumns._ID, FeedReaderContract.FeedEntry.COL2, FeedReaderContract.FeedEntry.COL3};
+        String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
-        String selection = FeedReaderContract.FeedEntry.COL2 + " LIKE ?";
+        String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
         String keyword = "i";
         String[] selectionArgs = {"%" + keyword + "%"};
 
-        String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
+        String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
-        Cursor cursor = db.query(
-                FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
-                columns,             // The array of columns to return (pass null to get all)
-                selection,              // The columns for the WHERE clause
-                selectionArgs,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                orderBy               // The sort order
-        );
+        Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
 
         handleQueryResult(cursor);
     }
@@ -149,11 +126,11 @@ public class TestSQLiteActivity extends AppCompatActivity {
     private void fuzzySearch2() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String keyword = "i";
-        String sql = "SELECT " + BaseColumns._ID + "," + FeedReaderContract.FeedEntry.COL2 + "," + FeedReaderContract.FeedEntry.COL3
-                + " FROM " + FeedReaderContract.FeedEntry.TABLE_NAME
-                + " WHERE " + FeedReaderContract.FeedEntry.COL2
+        String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
+                + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
+                + " WHERE " + Table1ReaderContract.TableEntry.COL2
                 + " LIKE '%" + keyword + "%'"
-                + " ORDER BY " + FeedReaderContract.FeedEntry.COL3 + " DESC";
+                + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " DESC";
 
 
         Cursor cursor = db.rawQuery(sql, null);
@@ -162,29 +139,33 @@ public class TestSQLiteActivity extends AppCompatActivity {
     }
 
     private void update() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        new Thread(() -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String title = "MyNewTitle";
-        ContentValues values = new ContentValues();
-        values.put(FeedReaderContract.FeedEntry.COL2, title);
+            String title = "MyNewTitle";
+            ContentValues values = new ContentValues();
+            values.put(Table1ReaderContract.TableEntry.COL2, title);
 
-        String whereClause = FeedReaderContract.FeedEntry.COL3 + " LIKE ?";
-        String keyword = "1";
-        String[] whereArgs = {"%" + keyword + "%"};
+            String whereClause = Table1ReaderContract.TableEntry.COL3 + " LIKE ?";
+            String keyword = "1";
+            String[] whereArgs = {"%" + keyword + "%"};
 
-        int count = db.update(FeedReaderContract.FeedEntry.TABLE_NAME, values, whereClause, whereArgs);
+            int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
 
-        Log.d(TAG, "update:count=" + count);
+            Log.d(TAG, "update:count=" + count);
+        }).start();
     }
 
     private void delete() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String whereClause = FeedReaderContract.FeedEntry.COL2 + " LIKE ?";
-        String keyword = "e";
-        String[] whereArgs = {"%" + keyword + "%"};
+        new Thread(() -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+            String keyword = "e";
+            String[] whereArgs = {"%" + keyword + "%"};
 
-        int deletedRowNum = db.delete(FeedReaderContract.FeedEntry.TABLE_NAME, whereClause, whereArgs);
-        Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
+            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+        }).start();
     }
 
     private void handleQueryResult(Cursor cursor) {
@@ -193,14 +174,17 @@ public class TestSQLiteActivity extends AppCompatActivity {
         if (null != cursor) {
             cursor.close();
         }
-        // TODO: 2019/3/15 refactor
-        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
-        if (null == fragment) {
-            fragment = DummyContentFragment.getInstance(list);
-            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
-        } else {
-            ((DummyContentFragment) fragment).setList(list);
-        }
+
+        runOnUiThread(() -> {
+            // TODO: 2019/3/15 refactor
+            Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
+            if (null == fragment) {
+                fragment = DummyContentFragment.getInstance(list);
+                getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
+            } else {
+                ((DummyContentFragment) fragment).setList(list);
+            }
+        });
     }
 
     protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
@@ -208,9 +192,9 @@ public class TestSQLiteActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
 //            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
             // cursor..getColumnIndexOrThrow
-            DummyItem dummyItem = new DummyItem(cursor.getInt(cursor.getColumnIndex(FeedReaderContract.FeedEntry._ID))
-                    , cursor.getString(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COL2))
-                    , cursor.getInt(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COL3)));
+            DummyItem dummyItem = new DummyItem(cursor.getInt(cursor.getColumnIndex(Table1ReaderContract.TableEntry._ID))
+                    , cursor.getString(cursor.getColumnIndex(Table1ReaderContract.TableEntry.COL2))
+                    , cursor.getInt(cursor.getColumnIndex(Table1ReaderContract.TableEntry.COL3)));
             list.add(dummyItem);
         }
         return list;
