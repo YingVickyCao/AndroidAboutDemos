@@ -18,7 +18,6 @@ public class PermissionActivity extends BaseActivity {
     private static final int REQUEST_CODE_4_REQUEST_PERMISSIONS = 2000;
     protected View mRoot;
 
-
     public void setRoot(View root) {
         mRoot = root;
     }

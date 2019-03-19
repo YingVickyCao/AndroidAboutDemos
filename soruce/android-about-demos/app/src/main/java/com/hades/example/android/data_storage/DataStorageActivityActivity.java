@@ -31,11 +31,6 @@ public class DataStorageActivityActivity extends PermissionActivity {
         checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
-    @Override
-    protected void showCurrentTest() {
-//        pageDatabase();
-    }
-
     private void pageSharedPreferences() {
         showFragment(new TestSharedPreferencesFragment());
     }

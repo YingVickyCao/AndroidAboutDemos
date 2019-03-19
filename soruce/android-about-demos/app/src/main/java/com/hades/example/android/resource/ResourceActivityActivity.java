@@ -52,11 +52,6 @@ public class ResourceActivityActivity extends PermissionActivity {
         checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
-    @Override
-    protected void showCurrentTest() {
-        pageBitmapThreeLevelCache();
-    }
-
     private void parseXml() {
         showFragment(new MaterialFragment());
     }

@@ -82,11 +82,6 @@ public class WidgetActivityActivity extends NoNeedPermissionActivity implements 
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
     }
 
-    @Override
-    protected void showCurrentTest() {
-            pageVideoviewRotateScreenTip();
-    }
-
     private void pageConstraintLayout() {
         showFragment(new ConstraintLayoutFragment());
     }

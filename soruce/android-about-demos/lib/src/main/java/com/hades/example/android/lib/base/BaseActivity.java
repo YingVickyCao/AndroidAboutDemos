@@ -34,8 +34,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
-
         showCurrentTest();
+    }
+
+    protected void showCurrentTest() {
+        showBtns();
     }
 
     protected void showBtns() {
@@ -62,10 +65,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (null != mFragmentRoot) {
             mFragmentRoot.setVisibility(View.VISIBLE);
         }
-    }
-
-    protected void showCurrentTest() {
-        hideBtns();
     }
 
     protected boolean isShowDetail() {
