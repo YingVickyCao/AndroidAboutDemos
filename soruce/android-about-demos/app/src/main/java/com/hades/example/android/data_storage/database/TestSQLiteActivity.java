@@ -44,6 +44,12 @@ public class TestSQLiteActivity extends AppCompatActivity {
         findViewById(R.id.delete).setOnClickListener(v -> delete());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
+    }
+
     private void insert() {
         // Gets the data repository in write mode
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -145,8 +151,11 @@ public class TestSQLiteActivity extends AppCompatActivity {
     private void fuzzySearch2() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String keyword = "i";
-        String sql = "SELECT " + BaseColumns._ID + "," + FeedReaderContract.FeedEntry.COL2 + "," + FeedReaderContract.FeedEntry.COL3 + " FROM " + FeedReaderContract.FeedEntry.TABLE_NAME
-                + " WHERE " + FeedReaderContract.FeedEntry.COL2 + " like '%" + keyword + "%'" +" ORDER BY " +FeedReaderContract.FeedEntry.COL3 + " DESC";
+        String sql = "SELECT " + BaseColumns._ID + "," + FeedReaderContract.FeedEntry.COL2 + "," + FeedReaderContract.FeedEntry.COL3
+                + " FROM " + FeedReaderContract.FeedEntry.TABLE_NAME
+                + " WHERE " + FeedReaderContract.FeedEntry.COL2
+                + " LIKE '%" + keyword + "%'"
+                + " ORDER BY " + FeedReaderContract.FeedEntry.COL3 + " DESC";
 
 
         Cursor cursor = db.rawQuery(sql, null);
@@ -155,11 +164,29 @@ public class TestSQLiteActivity extends AppCompatActivity {
     }
 
     private void update() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        String title = "MyNewTitle";
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COL2, title);
+
+        String whereClause = FeedReaderContract.FeedEntry.COL3 + " LIKE ?";
+        String keyword = "1";
+        String[] whereArgs = {"%" + keyword + "%"};
+
+        int count = db.update(FeedReaderContract.FeedEntry.TABLE_NAME, values, whereClause, whereArgs);
+
+        Log.d(TAG, "update:count=" + count);
     }
 
     private void delete() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String whereClause = FeedReaderContract.FeedEntry.COL2 + " LIKE ?";
+        String keyword = "e";
+        String[] whereArgs = {"%" + keyword + "%"};
 
+        int deletedRowNum = db.delete(FeedReaderContract.FeedEntry.TABLE_NAME, whereClause, whereArgs);
+        Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
     }
 
     private void handleQueryResult(Cursor cursor) {
