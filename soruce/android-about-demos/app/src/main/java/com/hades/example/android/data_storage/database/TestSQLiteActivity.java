@@ -36,6 +36,8 @@ public class TestSQLiteActivity extends AppCompatActivity {
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
         findViewById(R.id.query).setOnClickListener(v -> query());
+        findViewById(R.id.fuzzySearch).setOnClickListener(v -> fuzzySearch());
+        findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
 
 
         findViewById(R.id.update).setOnClickListener(v -> update());
@@ -91,36 +93,13 @@ public class TestSQLiteActivity extends AppCompatActivity {
         handleQueryResult(cursor);
     }
 
-    private void handleQueryResult(Cursor cursor) {
-        ArrayList<DummyItem> list = cursor2BeanList(cursor);
-        // PO: Cursor.close
-        if (null != cursor) {
-            cursor.close();
-        }
-        // TODO: 2019/3/15 refactor
-        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
-        if (null == fragment) {
-            fragment = DummyContentFragment.getInstance(list);
-            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
-        } else {
-            ((DummyContentFragment) fragment).setList(list);
-        }
-    }
-
     private void query() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        // Define a columns that specifies which columns from the database
-        // you will actually use after this query.
-        String[] columns = {
-                BaseColumns._ID,
-                FeedReaderContract.FeedEntry.COL2,
-                FeedReaderContract.FeedEntry.COL3
-        };
+        String[] columns = {BaseColumns._ID, FeedReaderContract.FeedEntry.COL2, FeedReaderContract.FeedEntry.COL3};
 
         // Filter results WHERE "title" = 'My Title'
         String selection = FeedReaderContract.FeedEntry.COL2 + " = ?";
-        String[] selectionArgs = {"c"};
+        String[] selectionArgs = {"D"};
 
         // How you want the results sorted in the resulting Cursor
         String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
@@ -138,14 +117,41 @@ public class TestSQLiteActivity extends AppCompatActivity {
         handleQueryResult(cursor);
     }
 
-    protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
-        ArrayList<DummyItem> list = new ArrayList<>();
-        while (cursor.moveToNext()) {
-//            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
-            DummyItem dummyItem = new DummyItem(cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID)), cursor.getString(1), cursor.getInt(2));
-            list.add(dummyItem);
-        }
-        return list;
+    private void fuzzySearch() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = {BaseColumns._ID, FeedReaderContract.FeedEntry.COL2, FeedReaderContract.FeedEntry.COL3};
+
+        String selection = FeedReaderContract.FeedEntry.COL2 + " LIKE ?";
+        // Where like '%i%' = Any position having i.
+        String keyword = "i";
+        String[] selectionArgs = {"%" + keyword + "%"};
+
+        // How you want the results sorted in the resulting Cursor
+        String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
+
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
+                columns,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                orderBy               // The sort order
+        );
+
+        handleQueryResult(cursor);
+    }
+
+    private void fuzzySearch2() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String keyword = "i";
+        String sql = "SELECT " + BaseColumns._ID + "," + FeedReaderContract.FeedEntry.COL2 + "," + FeedReaderContract.FeedEntry.COL3 + " FROM " + FeedReaderContract.FeedEntry.TABLE_NAME
+                + " WHERE " + FeedReaderContract.FeedEntry.COL2 + " like '%" + keyword + "%'" +" ORDER BY " +FeedReaderContract.FeedEntry.COL3 + " DESC";
+
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        handleQueryResult(cursor);
     }
 
     private void update() {
@@ -154,5 +160,34 @@ public class TestSQLiteActivity extends AppCompatActivity {
 
     private void delete() {
 
+    }
+
+    private void handleQueryResult(Cursor cursor) {
+        ArrayList<DummyItem> list = cursor2BeanList(cursor);
+        // PO: Cursor.close
+        if (null != cursor) {
+            cursor.close();
+        }
+        // TODO: 2019/3/15 refactor
+        Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
+        if (null == fragment) {
+            fragment = DummyContentFragment.getInstance(list);
+            getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
+        } else {
+            ((DummyContentFragment) fragment).setList(list);
+        }
+    }
+
+    protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
+        ArrayList<DummyItem> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
+//            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
+            // cursor..getColumnIndexOrThrow
+            DummyItem dummyItem = new DummyItem(cursor.getInt(cursor.getColumnIndex(FeedReaderContract.FeedEntry._ID))
+                    , cursor.getString(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COL2))
+                    , cursor.getInt(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COL3)));
+            list.add(dummyItem);
+        }
+        return list;
     }
 }
