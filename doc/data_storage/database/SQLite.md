@@ -1,5 +1,5 @@
 
-# DataBase
+# SQLite
 
 # When use  DB?
 Saving data to a database is ideal for repeating or structured data
