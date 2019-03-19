@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import org.xmlpull.v1.XmlPullParserException;
 

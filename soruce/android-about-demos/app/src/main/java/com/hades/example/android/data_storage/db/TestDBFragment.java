@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import static android.content.Context.MODE_PRIVATE;
 

@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.R;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
 

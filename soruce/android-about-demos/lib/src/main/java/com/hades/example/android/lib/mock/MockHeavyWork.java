@@ -1,4 +1,4 @@
-package com.hades.example.android.mock;
+package com.hades.example.android.lib.mock;
 
 public class MockHeavyWork {
     public static long sum() {

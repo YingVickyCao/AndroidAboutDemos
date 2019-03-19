@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 public class TestAppComponentActivityActivity extends NoNeedPermissionActivity {
     @Override

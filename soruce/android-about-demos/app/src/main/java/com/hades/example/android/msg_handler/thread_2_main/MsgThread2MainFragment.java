@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.LogHelper;
-import com.hades.example.android.mock.MockHeavyWork;
+import com.hades.example.android.lib.mock.MockHeavyWork;
 
 import java.util.Timer;
 import java.util.TimerTask;

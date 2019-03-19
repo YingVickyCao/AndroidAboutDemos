@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.LogHelper;
-import com.hades.example.android.mock.MockHeavyWork;
+import com.hades.example.android.lib.mock.MockHeavyWork;
 
 /**
  * main -> thread -> main

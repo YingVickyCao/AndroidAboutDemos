@@ -1,4 +1,4 @@
-package com.hades.example.android.base;
+package com.hades.example.android.lib.base;
 
 import android.content.pm.PackageManager;
 import android.os.Build;

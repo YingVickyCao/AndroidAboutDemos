@@ -12,8 +12,8 @@ import android.util.Log;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.DummyContentFragment;
-import com.hades.example.android.mock.DummyContent;
-import com.hades.example.android.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;

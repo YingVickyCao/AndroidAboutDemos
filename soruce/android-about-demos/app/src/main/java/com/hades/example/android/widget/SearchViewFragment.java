@@ -13,7 +13,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * SearchView 监听输入，ListView为SearchView显示自动补齐列表
