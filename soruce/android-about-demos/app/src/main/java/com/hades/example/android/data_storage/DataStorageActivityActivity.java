@@ -5,19 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.HasPermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 
-public class DataStorageActivityActivity extends HasPermissionActivity {
+public class DataStorageActivityActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_data_storage_layout);
-
-        checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         initViews();
 
@@ -27,13 +25,15 @@ public class DataStorageActivityActivity extends HasPermissionActivity {
     }
 
     @Override
-    protected boolean isNeedCheckPermission() {
-        return true;
+    protected void requestPermission() {
+        super.requestPermission();
+
+        checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override
     protected void showCurrentTest() {
-        pageDatabase();
+//        pageDatabase();
     }
 
     private void pageSharedPreferences() {

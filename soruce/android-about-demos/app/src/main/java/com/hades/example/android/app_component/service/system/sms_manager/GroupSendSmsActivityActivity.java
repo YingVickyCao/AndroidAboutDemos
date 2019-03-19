@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.HasPermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 	<!-- 授予发送短信的权限 -->
 	<uses-permission android:name="android.permission.SEND_SMS"/>
  */
-public class GroupSendSmsActivityActivity extends HasPermissionActivity {
+public class GroupSendSmsActivityActivity extends PermissionActivity {
     EditText numbers, content;
     ArrayList<String> toSendPhoneList = new ArrayList<String>();
 
@@ -41,13 +41,15 @@ public class GroupSendSmsActivityActivity extends HasPermissionActivity {
 
         numbers = (EditText) findViewById(R.id.numbers);
         content = (EditText) findViewById(R.id.content);
-
-        checkPermission("Request permission for group send sms", Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
-
         setRoot(findViewById(R.id.root));
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());
         findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> groupSendSms());
+    }
+
+    @Override
+    protected void requestPermission() {
+        checkPermission("Request permission for group send sms", Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
     }
 
     private void selectContacts() {

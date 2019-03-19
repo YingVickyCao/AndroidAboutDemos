@@ -1,4 +1,4 @@
-package com.hades.example.android.base.ver1;
+package com.hades.example.android.base;
 
 import android.support.design.widget.Snackbar;
 import android.widget.Toast;
@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
  */
-public class HasPermissionActivity extends BaseActivity {
+public class PermissionActivity extends BaseActivity {
     private RxPermissions rxPermissions;
 
     protected void needCheckPermission() {
@@ -22,8 +22,9 @@ public class HasPermissionActivity extends BaseActivity {
     }
 
     protected boolean isNeedCheckPermission() {
-        return false;
+        return true;
     }
+
 
     /**
      * @param permissions new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}
@@ -64,9 +65,9 @@ public class HasPermissionActivity extends BaseActivity {
             @Override
             public void onNext(Boolean granted) {
                 if (granted) {
-                    Toast.makeText(HasPermissionActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PermissionActivity.this, "permission available", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(HasPermissionActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PermissionActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
                 }
             }
 

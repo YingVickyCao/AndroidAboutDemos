@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.HasPermissionActivity;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 
-public class LinearLayoutActivityActivity extends HasPermissionActivity {
+public class LinearLayoutActivityActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

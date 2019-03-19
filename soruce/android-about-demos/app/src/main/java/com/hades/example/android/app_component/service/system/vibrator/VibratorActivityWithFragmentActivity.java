@@ -8,14 +8,14 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.HasPermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 
 
 /*
  <!-- 授予程序访问振动器的权限 -->
  <uses-permission android:name="android.permission.VIBRATE"/>
  */
-public class VibratorActivityWithFragmentActivity extends HasPermissionActivity {
+public class VibratorActivityWithFragmentActivity extends PermissionActivity {
     Vibrator vibrator;
 
     @Override
@@ -27,9 +27,14 @@ public class VibratorActivityWithFragmentActivity extends HasPermissionActivity 
 
         // 获取系统的Vibrator服务
         vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
+    }
 
+    @Override
+    protected void requestPermission() {
+        super.requestPermission();
         checkPermission("Request VIBRATE permission", Manifest.permission.VIBRATE);
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

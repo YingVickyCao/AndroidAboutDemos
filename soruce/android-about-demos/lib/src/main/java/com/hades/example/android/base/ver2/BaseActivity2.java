@@ -7,18 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.hades.example.android.lib.R;
 
-/**
- * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
- */
-public class BaseActivity4Permission extends AppCompatActivity {
-    private static final String TAG = BaseActivity4Permission.class.getSimpleName();
+public class BaseActivity2 extends BaseActivity {
+    private static final String TAG = BaseActivity2.class.getSimpleName();
 
     protected void startActivity(Class<?> cls) {
         startActivity(new Intent(this, cls));
@@ -105,9 +101,9 @@ public class BaseActivity4Permission extends AppCompatActivity {
         boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
         if (granted) {
-            Toast.makeText(BaseActivity4Permission.this, "permission available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BaseActivity2.this, "permission available", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(BaseActivity4Permission.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BaseActivity2.this, "permission not granted", Toast.LENGTH_SHORT).show();
         }
     }
 

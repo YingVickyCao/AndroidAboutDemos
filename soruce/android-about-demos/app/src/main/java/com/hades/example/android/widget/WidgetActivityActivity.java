@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.HasPermissionActivity;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui.PopupWindowFragment;
 import com.hades.example.android.other_ui.ToastFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
@@ -37,7 +37,7 @@ import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android.widget.webview.TestWebViewFragment;
 
-public class WidgetActivityActivity extends HasPermissionActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
+public class WidgetActivityActivity extends NoNeedPermissionActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
     private static final String TAG = WidgetActivityActivity.class.getSimpleName();
 
     @Override
@@ -80,11 +80,6 @@ public class WidgetActivityActivity extends HasPermissionActivity implements Dum
         findViewById(R.id.testTimePickerDialog).setOnClickListener(v -> testTimePickerDialog());
         findViewById(R.id.testNotification).setOnClickListener(v -> testNotification());
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
-    }
-
-    @Override
-    protected boolean isNeedCheckPermission() {
-        return false;
     }
 
     @Override

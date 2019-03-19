@@ -1,15 +1,32 @@
-package com.hades.example.android.base.ver1;
+package com.hades.example.android.base;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ScrollView;
 
 import com.hades.example.android.lib.R;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected View mRoot;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (isNeedCheckPermission()) {
+            requestPermission();
+        }
+    }
+
+    protected void requestPermission() {
+
+    }
+
+    protected abstract boolean isNeedCheckPermission();
 
     public void setRoot(View root) {
         mRoot = root;
