@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
  */
-public class PermissionActivity2 extends BaseActivity {
+public class RxPermissionsActivity extends BaseActivity {
     private RxPermissions rxPermissions;
 
     protected void needCheckPermission() {
@@ -65,9 +65,9 @@ public class PermissionActivity2 extends BaseActivity {
             @Override
             public void onNext(Boolean granted) {
                 if (granted) {
-                    Toast.makeText(PermissionActivity2.this, "permission available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RxPermissionsActivity.this, "permission available", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(PermissionActivity2.this, "permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RxPermissionsActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
                 }
             }
 
