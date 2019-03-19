@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.utils.DummyContentFragment;
 import com.hades.example.android.mock.DummyContent;
 import com.hades.example.android.mock.DummyItem;
 
@@ -38,7 +39,6 @@ public class TestSQLiteActivity extends AppCompatActivity {
         findViewById(R.id.query).setOnClickListener(v -> query());
         findViewById(R.id.fuzzySearch).setOnClickListener(v -> fuzzySearch());
         findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
-
 
         findViewById(R.id.update).setOnClickListener(v -> update());
         findViewById(R.id.delete).setOnClickListener(v -> delete());
@@ -128,11 +128,9 @@ public class TestSQLiteActivity extends AppCompatActivity {
         String[] columns = {BaseColumns._ID, FeedReaderContract.FeedEntry.COL2, FeedReaderContract.FeedEntry.COL3};
 
         String selection = FeedReaderContract.FeedEntry.COL2 + " LIKE ?";
-        // Where like '%i%' = Any position having i.
         String keyword = "i";
         String[] selectionArgs = {"%" + keyword + "%"};
 
-        // How you want the results sorted in the resulting Cursor
         String orderBy = FeedReaderContract.FeedEntry.COL3 + " DESC";
 
         Cursor cursor = db.query(

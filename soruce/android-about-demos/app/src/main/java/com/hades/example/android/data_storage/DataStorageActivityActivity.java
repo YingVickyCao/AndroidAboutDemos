@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 
-public class DataStorageActivity extends BaseActivity {
+public class DataStorageActivityActivity extends HasPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

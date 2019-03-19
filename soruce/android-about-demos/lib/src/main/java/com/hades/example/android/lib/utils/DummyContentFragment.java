@@ -1,4 +1,4 @@
-package com.hades.example.android.data_storage.database;
+package com.hades.example.android.lib.utils;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,16 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.lib.R;
 import com.hades.example.android.mock.DummyItem;
 
 import java.util.ArrayList;
 
-import static com.hades.example.android.app_component.cp.dict.DictActivity.KEY_SEARCH_RESULT;
-
 public class DummyContentFragment extends BaseFragment {
     public static final String TAG = DummyContentFragment.class.getSimpleName();
+    public static final String KEY_SEARCH_RESULT = "search_result";
 
     ArrayList<DummyItem> mList = new ArrayList<>();
     private ListView mListView;
@@ -39,7 +38,7 @@ public class DummyContentFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.dummy_content, container, false);
 
         if (null != getArguments()) {
-            mList.addAll(getArguments().getParcelableArrayList(KEY_SEARCH_RESULT)) ;
+            mList.addAll(getArguments().getParcelableArrayList(KEY_SEARCH_RESULT));
         }
         mListView = view.findViewById(R.id.listView);
 

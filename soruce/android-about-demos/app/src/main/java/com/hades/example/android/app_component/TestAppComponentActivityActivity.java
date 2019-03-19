@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 
-public class TestAppComponentActivity extends BaseActivity {
+public class TestAppComponentActivityActivity extends HasPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

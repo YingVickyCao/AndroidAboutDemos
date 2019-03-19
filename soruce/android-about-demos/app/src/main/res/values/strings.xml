@@ -18,7 +18,6 @@
     <string name="permissions_not_granted">Permissions were not granted.</string>
     <string name="request_permission_by_permission_group">Request SMS permission by permission_group</string>
     <string name="min_api_4_group_permission">When use permission_group to request group permission, require API >= 23</string>
-    <string name="ok">OK</string>
     <string name="screen">normal</string>
     <string name="activity_disable_Rotate">Disable rotate</string>
     <string name="change_view_visibility">Change view visibility</string>

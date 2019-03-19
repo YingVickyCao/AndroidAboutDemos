@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.utils.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +19,6 @@ public class DictActivity extends Activity {
 
     private EditText mInputWorldView;
     private EditText mInputIdView;
-
-    public static final String KEY_SEARCH_RESULT = "search_result";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +75,7 @@ public class DictActivity extends Activity {
         Cursor cursor = queryDictById(getInputQueryUsedId());
 
         Bundle data = new Bundle();
-        data.putSerializable(KEY_SEARCH_RESULT, convertCursorResultToList(cursor));
+        data.putSerializable(DummyContentFragment.KEY_SEARCH_RESULT, convertCursorResultToList(cursor));
 
         Intent intent = new Intent(DictActivity.this, DictSearchResultActivity.class);
         intent.putExtras(data);

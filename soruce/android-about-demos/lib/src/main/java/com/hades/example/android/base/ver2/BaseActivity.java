@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.hades.example.android.R;
+import com.hades.example.android.lib.R;
 
 public class BaseActivity extends BaseActivity4Permission {
     private static final String TAG = BaseActivity.class.getSimpleName();

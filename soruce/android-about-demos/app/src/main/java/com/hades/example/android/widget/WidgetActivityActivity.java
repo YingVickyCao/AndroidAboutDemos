@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 import com.hades.example.android.other_ui.PopupWindowFragment;
 import com.hades.example.android.other_ui.ToastFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
@@ -15,12 +15,12 @@ import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
 import com.hades.example.android.widget.button.UseButton2AvoidCheckEditInputDateActivity;
-import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
+import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.layout.ConstraintLayoutFragment;
-import com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivity;
+import com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivityActivity;
 import com.hades.example.android.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.example.android.mock.DummyItem;
 import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
@@ -37,8 +37,8 @@ import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android.widget.webview.TestWebViewFragment;
 
-public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
-    private static final String TAG = WidgetActivity.class.getSimpleName();
+public class WidgetActivityActivity extends HasPermissionActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
+    private static final String TAG = WidgetActivityActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -125,11 +125,11 @@ public class WidgetActivity extends BaseActivity implements DummyRecyclerViewFra
     }
 
     private void customview() {
-        showActivity(CascadeLayoutActivity.class);
+        showActivity(CascadeLayoutActivityActivity.class);
     }
 
     private void linearlayout() {
-        showActivity(LinearLayoutActivity.class);
+        showActivity(LinearLayoutActivityActivity.class);
     }
 
     private void testRatingBar() {

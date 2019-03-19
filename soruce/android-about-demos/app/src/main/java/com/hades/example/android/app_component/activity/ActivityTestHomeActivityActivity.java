@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.app_component.activity._sate.TestSaveAndRestoreStateActivity;
 import com.hades.example.android.app_component.activity._life_cycle.A;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 
-public class ActivityTestHomeActivity extends BaseActivity {
+public class ActivityTestHomeActivityActivity extends HasPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

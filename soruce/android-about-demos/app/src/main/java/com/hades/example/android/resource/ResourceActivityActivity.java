@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.array.ArrayFragment;
@@ -23,8 +23,8 @@ import com.hades.example.android.resource.xml.ParseXMLFragment;
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivity extends BaseActivity {
-    private static final String TAG = ResourceActivity.class.getSimpleName();
+public class ResourceActivityActivity extends HasPermissionActivity {
+    private static final String TAG = ResourceActivityActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

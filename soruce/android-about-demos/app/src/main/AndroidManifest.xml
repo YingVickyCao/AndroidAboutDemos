@@ -50,9 +50,9 @@
         <activity android:name="com.hades.example.android.MainActivity" />
         <activity android:name="com.hades.example.android.QAActivity" />
 
-        <activity android:name=".app_component.TestAppComponentActivity" />
+        <activity android:name=".app_component.TestAppComponentActivityActivity" />
 
-        <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
+        <activity android:name=".app_component.activity.ActivityTestHomeActivityActivity" />
         <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component.activity._life_cycle.A"
@@ -97,7 +97,7 @@
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
         <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragment" />
+        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragmentActivity" />
 
         <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
         <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
@@ -146,7 +146,7 @@
         <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
-        <activity android:name="com.hades.example.android.widget.WidgetActivity" />
+        <activity android:name="com.hades.example.android.widget.WidgetActivityActivity" />
 
         <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
@@ -165,9 +165,9 @@
         <activity android:name="com.hades.example.android.other_ui.notifiaction.NotificationDescActivity" />
         <!-- START_OTHER_UI -->
 
-        <activity android:name="com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivity" />
+        <activity android:name="com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivityActivity" />
 
-        <activity android:name="com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity" />
+        <activity android:name="com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
         <activity android:name="com.hades.example.android.widget.imageview.KenBurnsImageActivity" />
         <activity android:name="com.hades.example.android.widget.button.UseButton2AvoidCheckEditInputDateActivity" />
         <activity android:name="com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity" />
@@ -188,7 +188,7 @@
 
         <!-- START_RESOURCES -->
         <activity
-            android:name="com.hades.example.android.resource.ResourceActivity"
+            android:name="com.hades.example.android.resource.ResourceActivityActivity"
             android:theme="@style/AppTheme.FullScreen" />
         <activity android:name="com.hades.example.android.resource.adapter_screen.DipTestActivity" />
         <activity android:name="com.hades.example.android.resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
@@ -212,16 +212,16 @@
         <!-- END_RESOURCES -->
 
         <!-- DATA_STORAGE_START -->
-        <activity android:name=".data_storage.DataStorageActivity" />
+        <activity android:name=".data_storage.DataStorageActivityActivity" />
         <activity android:name=".data_storage.db.TestDBActivity" />
         <activity android:name=".data_storage.db.ResultActivity" />
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <!-- DATA_STORAGE_END -->
 
-        <activity android:name="com.hades.example.android.po.security.SecurityActivity" />
+        <activity android:name="com.hades.example.android.po.security.SecurityActivityActivity" />
 
         <!-- BACKGROUND_TASK_START -->
-        <activity android:name="com.hades.example.android._bg_tasks.TestBackgroundTasksActivity" />
+        <activity android:name="com.hades.example.android._bg_tasks.TestBackgroundTasksActivityActivity" />
         <!-- BACKGROUND_TASK_END -->
 
     </application>

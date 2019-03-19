@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.hades.example.android.R;
+import com.hades.example.android.lib.R;
 
 /**
  * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -117,12 +117,7 @@ public class BaseActivity4Permission extends AppCompatActivity {
     private void askUser2GrantPermissions(final String permissionRationale, final String... permissions) {
         if (shouldShowRequestPermissionRationale(permissions)) {
             Snackbar.make(mRoot, permissionRationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.ok, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            requestPermission(permissions);
-                        }
-                    })
+                    .setAction(R.string.ok, view -> requestPermission(permissions))
                     .show();
         } else {
             requestPermission(permissions);

@@ -1,9 +1,6 @@
 package com.hades.example.android.base.ver1;
 
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -14,12 +11,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
  */
-public class BaseActivity4Permission extends AppCompatActivity {
-    protected void startActivity(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-    }
-
-    private View mRoot;
+public class HasPermissionActivity extends BaseActivity {
     private RxPermissions rxPermissions;
 
     protected void needCheckPermission() {
@@ -31,10 +23,6 @@ public class BaseActivity4Permission extends AppCompatActivity {
 
     protected boolean isNeedCheckPermission() {
         return false;
-    }
-
-    public void setRoot(View root) {
-        mRoot = root;
     }
 
     /**
@@ -76,9 +64,9 @@ public class BaseActivity4Permission extends AppCompatActivity {
             @Override
             public void onNext(Boolean granted) {
                 if (granted) {
-                    Toast.makeText(BaseActivity4Permission.this, "permission available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HasPermissionActivity.this, "permission available", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(BaseActivity4Permission.this, "permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HasPermissionActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -98,21 +86,13 @@ public class BaseActivity4Permission extends AppCompatActivity {
      * @param permissions Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION
      */
     protected void askUser2GrantPermissions(final String permissionRationale, final String... permissions) {
-        rxPermissions.shouldShowRequestPermissionRationale(this, permissions).subscribe(new io.reactivex.functions.Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
-                if (shouldShowRequestPermissionRationale) {
-                    Snackbar.make(mRoot, permissionRationale, Snackbar.LENGTH_INDEFINITE)
-                            .setAction("OK", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    requestPermission(permissions);
-                                }
-                            })
-                            .show();
-                } else {
-                    requestPermission(permissions);
-                }
+        rxPermissions.shouldShowRequestPermissionRationale(this, permissions).subscribe(shouldShowRequestPermissionRationale -> {
+            if (shouldShowRequestPermissionRationale) {
+                Snackbar.make(mRoot, permissionRationale, Snackbar.LENGTH_INDEFINITE)
+                        .setAction("OK", view -> requestPermission(permissions))
+                        .show();
+            } else {
+                requestPermission(permissions);
             }
         });
     }

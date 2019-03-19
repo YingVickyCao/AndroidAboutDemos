@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android._bg_tasks._asynctask.TestAsyncTaskTestFragment;
 import com.hades.example.android._bg_tasks.threadPoolExecutor.ThreadPoolExecutorFragment;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.base.ver1.HasPermissionActivity;
 
-public class TestBackgroundTasksActivity extends BaseActivity {
+public class TestBackgroundTasksActivityActivity extends HasPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
