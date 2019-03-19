@@ -12,6 +12,9 @@ import com.hades.example.android.lib.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected View mRoot;
+    private View topic;
+    private ScrollView mScrollView;
+    private View mFragmentRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,43 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void startActivity(Class<?> cls) {
         startActivity(new Intent(this, cls));
     }
-
-    protected void showFragment(Fragment fragment) {
-        hideBtns();
-        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
-    }
-
-    protected void showFragment(Fragment fragment, String tag) {
-        hideBtns();
-        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, tag).commit();
-    }
-
-    protected void showActivity(Class<?> dest) {
-        startActivity(new Intent(this, dest));
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (isIgnoreBack()) {
-            super.onBackPressed();
-            return;
-        }
-
-        if (isShowDetail()) {
-            showBtns();
-            removeDetailFragment();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    protected boolean isIgnoreBack() {
-        return false;
-    }
-
-    private View topic;
-    private ScrollView mScrollView;
-    private View mFragmentRoot;
 
     protected void initViews() {
         topic = findViewById(R.id.topic);
@@ -118,5 +84,38 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void removeDetailFragment() {
         Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentRoot);
         getFragmentManager().beginTransaction().remove(fragment).commit();
+    }
+
+    protected void showFragment(Fragment fragment) {
+        hideBtns();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
+    protected void showFragment(Fragment fragment, String tag) {
+        hideBtns();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, tag).commit();
+    }
+
+    protected void showActivity(Class<?> dest) {
+        startActivity(new Intent(this, dest));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isIgnoreBack()) {
+            super.onBackPressed();
+            return;
+        }
+
+        if (isShowDetail()) {
+            showBtns();
+            removeDetailFragment();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    protected boolean isIgnoreBack() {
+        return false;
     }
 }
