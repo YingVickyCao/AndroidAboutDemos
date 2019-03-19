@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.lib.utils.DummyContentFragment;
@@ -18,11 +18,9 @@ import com.hades.example.android.lib.utils.DummyContentFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSQLiteActivity extends AppCompatActivity {
+public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
-    // FIXED_ERROR: java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(java.lang.String, int,
-//    private FeedSQLiteOpenHelper dbHelper = new FeedSQLiteOpenHelper(getContext());
     private FeedSQLiteOpenHelper dbHelper;
 
     @Override

@@ -14,7 +14,8 @@ public class QAActivity extends NoNeedPermissionActivity {
 
         initViews();
 
-//        pageQAAboutView();
+        findViewById(R.id.temp).setOnClickListener(v -> temp());
+        findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
     }
 
     @Override
@@ -28,6 +29,10 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     protected void showCurrentTest() {
+        temp();
+    }
+
+    private void temp() {
         showActivity(TestSQLiteActivity.class);
     }
 }
