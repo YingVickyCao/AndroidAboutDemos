@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.hades.example.android.app_component.cp.dict.DictActivity.KEY_SEARCH_RESULT;
+import static com.hades.example.android.lib.utils.DummyContentFragment.KEY_SEARCH_RESULT;
 
 public class DictSearchResultActivity extends Activity {
     private ListView listView;

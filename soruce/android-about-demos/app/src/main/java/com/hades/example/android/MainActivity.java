@@ -2,14 +2,13 @@ package com.hades.example.android;
 
 import android.os.Bundle;
 
-import com.hades.example.android.android_about_demos.R;
-import com.hades.example.android.base.ver1.BaseActivity;
-import com.hades.example.android.data_storage.DataStorageActivity;
-import com.hades.example.android.po.security.SecurityActivity;
-import com.hades.example.android.resource.ResourceActivity;
-import com.hades.example.android.widget.WidgetActivity;
+import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.data_storage.DataStorageActivityActivity;
+import com.hades.example.android.po.security.SecurityActivityActivity;
+import com.hades.example.android.resource.ResourceActivityActivity;
+import com.hades.example.android.widget.WidgetActivityActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +25,23 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageResource();
+//        pageResource();
     }
 
     private void pageSecurity() {
-        showActivity(SecurityActivity.class);
+        showActivity(SecurityActivityActivity.class);
     }
 
     private void pageWidget() {
-        showActivity(WidgetActivity.class);
+        showActivity(WidgetActivityActivity.class);
     }
 
     private void pageDateStorage() {
-        showActivity(DataStorageActivity.class);
+        showActivity(DataStorageActivityActivity.class);
     }
 
     private void pageResource() {
-        showActivity(ResourceActivity.class);
+        showActivity(ResourceActivityActivity.class);
     }
 
     private void pageQAAboutView() {

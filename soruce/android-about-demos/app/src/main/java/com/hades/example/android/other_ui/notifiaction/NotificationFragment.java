@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

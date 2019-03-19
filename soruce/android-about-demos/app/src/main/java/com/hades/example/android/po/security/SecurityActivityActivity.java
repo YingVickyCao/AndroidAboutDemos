@@ -3,10 +3,10 @@ package com.hades.example.android.po.security;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.hades.example.android.android_about_demos.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.R;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 
-public class SecurityActivity extends BaseActivity {
+public class SecurityActivityActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

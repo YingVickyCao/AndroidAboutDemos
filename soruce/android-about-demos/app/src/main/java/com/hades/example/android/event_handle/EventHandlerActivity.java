@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
 import com.hades.example.android.event_handle.base_on_listener.EventHandlerBaseOnListenFragment;
 import com.hades.example.android.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;

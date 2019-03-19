@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.data_storage.database.bean.ContactInfo;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class TestDBFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_db_layout_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_db_layout, container, false);
 
         view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());

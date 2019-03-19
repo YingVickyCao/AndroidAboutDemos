@@ -36,7 +36,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.mock.Images;
 import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
 import com.hades.example.android.lib.utils.bitmap.fetch.IImageWorker;

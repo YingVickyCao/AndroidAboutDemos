@@ -1,22 +1,43 @@
-package com.hades.example.android.base.ver2;
+package com.hades.example.android.base;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.lib.R;
 
-public class BaseActivity extends BaseActivity4Permission {
-    private static final String TAG = BaseActivity.class.getSimpleName();
+public abstract class BaseActivity extends AppCompatActivity {
+    protected View mRoot;
+    private View topic;
+    private ScrollView mScrollView;
+    private View mFragmentRoot;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (isNeedCheckPermission()) {
+            requestPermission();
+        }
+    }
+
+    protected void requestPermission() {
+
+    }
+
+    protected abstract boolean isNeedCheckPermission();
+
+    public void setRoot(View root) {
+        mRoot = root;
+    }
 
     protected void startActivity(Class<?> cls) {
         startActivity(new Intent(this, cls));
     }
-
-    private View topic;
-    private ScrollView mScrollView;
-    private View mFragmentRoot;
 
     protected void initViews() {
         topic = findViewById(R.id.topic);

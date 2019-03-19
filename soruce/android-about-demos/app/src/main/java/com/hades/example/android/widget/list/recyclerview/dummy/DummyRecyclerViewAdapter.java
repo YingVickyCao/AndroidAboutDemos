@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.mock.DummyItem;
 import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerViewFragment.OnListFragmentInteractionListener;
 
@@ -44,7 +44,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
 
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).colo2);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class WrongSwipeWhoPageActivity extends Activity implements View.OnClickListener {
     View mContent;

@@ -36,8 +36,8 @@ public class CustomSelectedStatusActivity extends ListActivity {
 
     private static class ExampleListAdapter extends BaseAdapter {
 
+        // TODO: 2019/3/15
         private Message[] messages;
-
         private ExampleListAdapter() {
             messages = new Message[]{
                     new Message("Gas bill overdue", true),

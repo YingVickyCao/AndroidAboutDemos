@@ -10,7 +10,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.LogHelper;
 
 public class TestRemoteBoundServiceActivity2 extends Activity {

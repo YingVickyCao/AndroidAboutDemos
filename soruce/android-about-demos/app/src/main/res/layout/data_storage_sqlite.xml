@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_sqlitedatabase" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size_topic"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/insertOne"
+                    style="@style/btn.small"
+                    android:text="@string/insert_one" />
+
+                <Button
+                    android:id="@+id/insertMultiple"
+                    style="@style/btn.small"
+                    android:text="@string/insert_multiple" />
+
+                <Button
+                    android:id="@+id/query"
+                    style="@style/btn.small"
+                    android:text="@string/query" />
+
+                <Button
+                    android:id="@+id/queryAll"
+                    style="@style/btn.small"
+                    android:text="@string/query_all" />
+
+                <Button
+                    android:id="@+id/fuzzySearch"
+                    style="@style/btn.small"
+                    android:text="@string/fuzzy_search" />
+
+                <Button
+                    android:id="@+id/fuzzySearch2"
+                    style="@style/btn.small"
+                    android:text="@string/fuzzy_search" />
+
+                <Button
+                    android:id="@+id/update"
+                    style="@style/btn.small"
+                    android:text="@string/update" />
+
+                <Button
+                    android:id="@+id/delete"
+                    style="@style/btn.small"
+                    android:text="@string/delete" />
+            </LinearLayout>
+        </ScrollView>
+
+        <View style="@style/div.vertical" />
+
+        <FrameLayout
+            android:id="@+id/fragmentRoot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10" />
+    </LinearLayout>
+</RelativeLayout>

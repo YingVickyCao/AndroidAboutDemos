@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class A extends AppCompatActivity implements View.OnClickListener {
 

@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

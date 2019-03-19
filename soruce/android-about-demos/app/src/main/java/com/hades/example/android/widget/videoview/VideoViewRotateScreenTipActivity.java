@@ -11,7 +11,7 @@ import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class VideoViewRotateScreenTipActivity extends Activity {
     private static final String TAG = VideoViewRotateScreenTipActivity.class.getSimpleName();

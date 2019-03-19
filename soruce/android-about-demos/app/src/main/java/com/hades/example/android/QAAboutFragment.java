@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class QAAboutFragment extends Fragment {
     private static final String TAG = QAAboutFragment.class.getSimpleName();

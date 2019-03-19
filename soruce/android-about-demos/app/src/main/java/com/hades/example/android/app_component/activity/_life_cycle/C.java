@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class C extends AppCompatActivity {
     private static final String TAG = "C";

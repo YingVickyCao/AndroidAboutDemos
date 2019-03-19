@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 /**
  * Activity that allows choosing between a VectorDrawable and a PNG resource as a source for

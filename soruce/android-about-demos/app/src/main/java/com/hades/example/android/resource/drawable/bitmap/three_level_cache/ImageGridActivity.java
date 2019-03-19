@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hades.example.android.android_about_demos.BuildConfig;
+import com.hades.example.android.BuildConfig;
 import com.hades.example.android.lib.utils.VersionUtil;
 
 public class ImageGridActivity extends AppCompatActivity {

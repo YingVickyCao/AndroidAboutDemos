@@ -4,8 +4,8 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.hades.example.android.android_about_demos.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.R;
+import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.array.ArrayFragment;
@@ -23,16 +23,14 @@ import com.hades.example.android.resource.xml.ParseXMLFragment;
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivity extends BaseActivity {
-    private static final String TAG = ResourceActivity.class.getSimpleName();
+public class ResourceActivityActivity extends PermissionActivity {
+    private static final String TAG = ResourceActivityActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resources);
         initViews();
-
-        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.theme).setOnClickListener(v -> theme());
@@ -47,6 +45,11 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+    }
+
+    @Override
+    protected void requestPermission() {
+        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override

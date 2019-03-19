@@ -3,14 +3,14 @@ package com.hades.example.android.widget.custom_view.cascadelayout;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.hades.example.android.android_about_demos.R;
-import com.hades.example.android.base.ver1.BaseActivity;
+import com.hades.example.android.R;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 
 /**
  * Created by hades on 17/03/2018.
  * 扑克牌游戏中的玩家手牌
  */
-public class CascadeLayoutActivity extends BaseActivity {
+public class CascadeLayoutActivityActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

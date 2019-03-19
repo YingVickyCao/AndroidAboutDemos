@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.BConstant;
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class TestRemoteBoundServiceActivity extends Activity implements IResponse {
     private static final String TAG = TestRemoteBoundServiceActivity.class.getSimpleName();

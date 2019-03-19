@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 /**
  * todo 自定义添加view

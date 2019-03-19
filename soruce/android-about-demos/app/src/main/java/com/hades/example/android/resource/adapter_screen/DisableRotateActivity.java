@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 public class DisableRotateActivity extends AppCompatActivity {
     private static final String TAG = DisableRotateActivity.class.getSimpleName();

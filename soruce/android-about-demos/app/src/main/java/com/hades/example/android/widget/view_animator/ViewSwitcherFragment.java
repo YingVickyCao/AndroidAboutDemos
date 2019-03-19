@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.R;
 
 import java.util.ArrayList;
 

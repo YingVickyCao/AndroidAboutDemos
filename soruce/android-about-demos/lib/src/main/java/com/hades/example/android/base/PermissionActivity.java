@@ -1,40 +1,20 @@
-package com.hades.example.android.base.ver2;
+package com.hades.example.android.base;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import com.hades.example.android.android_about_demos.R;
+import com.hades.example.android.lib.R;
 
-/**
- * checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
- */
-public class BaseActivity4Permission extends AppCompatActivity {
-    private static final String TAG = BaseActivity4Permission.class.getSimpleName();
-
-    protected void startActivity(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-    }
+public class PermissionActivity extends BaseActivity {
+    private static final String TAG = PermissionActivity.class.getSimpleName();
 
     private static final int REQUEST_CODE_4_REQUEST_PERMISSIONS = 2000;
-
-    private View mRoot;
-
-    protected boolean isNeedCheckPermission() {
-        return false;
-    }
-
-    public void setRoot(View root) {
-        mRoot = root;
-    }
 
     /**
      * @param permissions new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}
@@ -105,9 +85,9 @@ public class BaseActivity4Permission extends AppCompatActivity {
         boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
         if (granted) {
-            Toast.makeText(BaseActivity4Permission.this, "permission available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PermissionActivity.this, "permission available", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(BaseActivity4Permission.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PermissionActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -117,12 +97,7 @@ public class BaseActivity4Permission extends AppCompatActivity {
     private void askUser2GrantPermissions(final String permissionRationale, final String... permissions) {
         if (shouldShowRequestPermissionRationale(permissions)) {
             Snackbar.make(mRoot, permissionRationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.ok, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            requestPermission(permissions);
-                        }
-                    })
+                    .setAction(R.string.ok, view -> requestPermission(permissions))
                     .show();
         } else {
             requestPermission(permissions);
@@ -136,6 +111,11 @@ public class BaseActivity4Permission extends AppCompatActivity {
                 return false;
             }
         }
+        return true;
+    }
+
+    @Override
+    protected boolean isNeedCheckPermission() {
         return true;
     }
 }
