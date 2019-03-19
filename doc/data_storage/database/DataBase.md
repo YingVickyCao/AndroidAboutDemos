@@ -4,6 +4,10 @@
 # When use  DB?
 Saving data to a database is ideal for repeating or structured data
 
+# Store data
+## How to store bitmap or large file?
+- save bitmap or large -> file, store path in db.
+
 ---
 
 # SQLite
