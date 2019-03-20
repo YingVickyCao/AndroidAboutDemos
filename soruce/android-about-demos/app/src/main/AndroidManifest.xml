@@ -213,8 +213,6 @@
 
         <!-- DATA_STORAGE_START -->
         <activity android:name=".data_storage.DataStorageActivityActivity" />
-        <activity android:name=".data_storage.db.TestDBActivity" />
-        <activity android:name=".data_storage.db.ResultActivity" />
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <!-- DATA_STORAGE_END -->
 
