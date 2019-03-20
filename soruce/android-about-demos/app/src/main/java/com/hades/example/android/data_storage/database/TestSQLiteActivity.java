@@ -356,16 +356,24 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
     }
 
-    // col2 任意位置包含e
+    // col2 任意位置包含A
     private void delete() {
         new Thread(() -> {
             SQLiteDatabase db = getWritableDatabase();
-            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-            String keyword = "e";
-            String[] whereArgs = {"%" + keyword + "%"};
 
-            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
-            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+            // Way1:
+//            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+//            String keyword = "A";
+//            String[] whereArgs = {"%" + keyword + "%"};
+//
+//            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
+//            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+
+            // Way2:
+            String sql = "DELETE FROM  table1 WHERE col2 LIKE '%A%' ";
+            db.execSQL(sql);
+            queryAll(db);
+
         }).start();
     }
 
@@ -373,11 +381,18 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         showProgressBar();
         new Thread(() -> {
             SQLiteDatabase db = getWritableDatabase();
+
+            // Way1:
             int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
             Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
 
             Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
             handleQueryResult(cursor);
+
+            // Way2:
+//            String sql = "DELETE FROM table1";
+//            db.execSQL(sql);
+//            queryAll(db);
 
         }).start();
     }
