@@ -91,13 +91,63 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * <pre>
      * db.insert():
      *
-     * 10000=
+     * 10000 =
      * 0h:0m:13s:86ms
      * 0h:0m:13s:351ms
      * 0h:0m:12s:744ms
      * 0h:0m:12s:856ms
+     *
+     * 100000 =
+     * After waiting long time, app crashed.
+     *
+     * zygote64: Background concurrent copying GC freed 367180(13MB) AllocSpace objects, 18(12MB) LOS objects, 49% free, 11MB/22MB, paused 463us total 155.723m
+     * zygote64: Background concurrent copying GC freed 307260(10MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 11MB/22MB, paused 304us total 108.584ms
+     * zygote64: Background concurrent copying GC freed 308157(10MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 11MB/22MB, paused 447us total 121.089ms
+     * zygote64: Background concurrent copying GC freed 308157(10MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 11MB/22MB, paused 508us total 116.254ms
+     * zygote64: Background concurrent copying GC freed 308157(10MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 11MB/22MB, paused 323us total 107.851ms
+     * ...
+     *
+     * Crash log:
+     * E/SQLiteLog: (1802) os_unix.c:35890: (2) stat(/data/user/0/com.hades.example.android/databases/FeedReader.db) -
+     * E/SQLiteLog: (1) Process example.android : Pid (30147) Uid (10503) Euid (10503) Gid (10503) Egid (10503)
+     * E/SQLiteLog: (1) osStat failed "/data/user/0/com.hades.example.android/databases/FeedReader.db" due to error (2)
+     * E/SQLiteLog: (1) Stat of /data/user/0/com.hades.example.android/databases : st_mode(40771) st_uid(10503) st_gid(10503) st_ino(918936)
+     * E/SQLiteLog: (1) Stat of /data/user/0/com.hades.example.android : st_mode(40700) st_uid(10503) st_gid(10503) st_ino(917526)
+     * E/SQLiteLog: (1) Stat of /data/user/0 : st_mode(40771) st_uid(1000) st_gid(1000) st_ino(917505)
+     * E/SQLiteLog: (1) Stat of /data/user : st_mode(40711) st_uid(1000) st_gid(1000) st_ino(1179650)
+     * E/SQLiteLog: (1) Stat of /data : st_mode(40771) st_uid(1000) st_gid(1000) st_ino(2)
+     * E/SQLiteLog: (1802) statement aborts at 21: [INSERT INTO table1(_id,col2,col3) VALUES (?,?,?)] disk I/O error
+     * E/SQLiteLog: (1) Force to rollback the active transaction caused by the special error (10), during 'INSERT INTO table1(_id,col2,col3) VALUES (?,?,?)'
+     * E/SQLiteDatabase: Error inserting _id=96503 col2=Dummy96503 col3=96503
+     *     android.database.sqlite.SQLiteDiskIOException: disk I/O error (code 1802)
+     *     #################################################################
+     *     Error Code : 1802 (SQLITE_IOERR_FSTAT)
+     *     Caused By : Failed to get database file information with system call stat(). Please confirm whether database file has been removed.
+     *     	(disk I/O error (code 1802))
+     *     #################################################################
+     *
+     * -------------------------------------------------------------------------
+     * execSQL insert:
+     * 100000 =
+     * 0h:10m:13s:960ms
+     *
+     * logs:
+     * I/zygote64: Do full code cache collection, code=252KB, data=192KB
+     * I/zygote64: After code cache collection, code=204KB, data=131KB
+     * I/zygote64: Background concurrent copying GC freed 182408(7MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 7MB/14MB, paused 297us total 102.899ms
+     * w/CursorWindow: Window is full: requested allocation 404 bytes, free space 321 bytes, window size 2097152 bytes
+     * w/CursorWindow: Window is full: requested allocation 404 bytes, free space 321 bytes, window size 2097152 bytes
+     * w/CursorWindow: Window is full: requested allocation 36 bytes, free space 21 bytes, window size 2097152 bytes
+     * w/CursorWindow: Window is full: requested allocation 36 bytes, free space 21 bytes, window size 2097152 bytes
+     *
+     * zygote64: Do partial code cache collection, code=246KB, data=210KB
+     * I/zygote64: After code cache collection, code=244KB, data=210KB
+     * I/zygote64: Increasing code cache capacity to 1024KB
+     * I/zygote64: Compiler allocated 9MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+     * <pre/>
      */
     private void insertMultiple() {
         showProgressBar();
@@ -105,7 +155,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
 
             SQLiteDatabase db = getWritableDatabase();
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3,DummyContent.ITEMS_100000
 
             long end = System.currentTimeMillis();
             setUsedTime(start, end);
@@ -115,8 +165,8 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
-        insertMultiple_way1(db, tableName, list);
-//        insertMultiple_way2(db, tableName, list);
+//        insertMultiple_way1(db, tableName, list);
+        insertMultiple_way2(db, tableName, list);
 //        insertMultiple_way3(db, tableName, list);
     }
 
@@ -159,12 +209,27 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * <pre>
      * db.insert() with Transaction:
      *
      * 10000=
      * 0h:0m:0s:518ms
      * 0h:0m:0s:338ms
      * 0h:0m:0s:333ms
+     *
+     * 100000 =
+     * 0h:0m:3s:447ms
+     * 0h:0m:3s:221ms
+     * 0h:0m:3s:248ms
+     * ----------------------------------
+     * execSQL insert with Transaction:
+     *
+     * 100000 =
+     * 0h:0m:2s:845ms
+     * 0h:0m:2s:616ms
+     * 0h:0m:2s:641ms
+     *
+     * <pre/>
      */
     private void insertMultipleWithTransaction() {
         showProgressBar();
@@ -174,7 +239,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getWritableDatabase();
             try {
                 db.beginTransaction();
-                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
