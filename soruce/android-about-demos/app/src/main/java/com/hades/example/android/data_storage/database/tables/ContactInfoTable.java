@@ -20,7 +20,6 @@ public class ContactInfoTable extends BaseTable {
 
     private SQLiteStatement mSQLiteStatement = null;
 
-    // TODO: 2019/3/19  
     public static final String TABLE_CREATE = "create table if not exists "
             + TABLE_NAME + " (" + KEY_CONTACT_ID
             + " LONG primary key , " + KEY_CONTACT_NAME + " TEXT," + KEY_CONTACT_PHONE + " TEXT "

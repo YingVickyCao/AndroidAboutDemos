@@ -35,13 +35,11 @@ public class ContactsManager {
     public ArrayList<ContactInfo> insertContactInfos() {
         long timeStart = System.currentTimeMillis();
 
-        // TODO: 2019/3/19
         mContactInfoTable.getSqliteDB().beginTransaction();
         try {
             for (int i = 1; i <= 10000; i++) {
                 ContactInfo info = new ContactInfo(i, "姓名" + i, "1389832" + (0000 + i));
                 contactInfos.add(info);
-                // TODO: 2019/3/19
                 boolean insert = mContactInfoTable.insertContactInfoForStat(info);
                 Log.d(TAG, "insert Contact phone :" + insert);
             }
