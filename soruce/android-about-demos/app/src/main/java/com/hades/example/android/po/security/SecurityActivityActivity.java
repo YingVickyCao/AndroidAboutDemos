@@ -17,11 +17,6 @@ public class SecurityActivityActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageAppChooser).setOnClickListener(v -> pageAppChooser());
     }
 
-    @Override
-    protected void showCurrentTest() {
-        pageAppChooser();
-    }
-
     private void pageAppChooser() {
         showFragment(new ShowAppChooserFragment());
     }

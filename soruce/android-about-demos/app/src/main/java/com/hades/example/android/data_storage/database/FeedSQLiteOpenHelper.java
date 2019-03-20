@@ -14,8 +14,8 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "FeedReader.db";
 
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + Table1ReaderContract.TableEntry.TABLE_NAME + " (" +
-                    Table1ReaderContract.TableEntry._ID + " INTEGER PRIMARY KEY," +
+            "CREATE TABLE IF NOT EXISTS " + Table1ReaderContract.TableEntry.TABLE_NAME + " (" +
+                    Table1ReaderContract.TableEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     Table1ReaderContract.TableEntry.COL2 + " TEXT," +
                     Table1ReaderContract.TableEntry.COL3 + " INTEGER)";
 

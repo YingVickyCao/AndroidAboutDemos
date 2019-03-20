@@ -25,7 +25,7 @@ public class ContactInfoTable extends BaseTable {
             + " LONG primary key , " + KEY_CONTACT_NAME + " TEXT," + KEY_CONTACT_PHONE + " TEXT "
             + ");";
 
-    public final String STR_INSERT_STATEMENT_CONTACTS = "insert into " + TABLE_NAME
+    public final String STR_INSERT_STATEMENT_CONTACTS = "INSERT INTO " + TABLE_NAME
             + "(" + KEY_CONTACT_ID
             + "," + KEY_CONTACT_NAME
             + "," + KEY_CONTACT_PHONE
@@ -52,6 +52,7 @@ public class ContactInfoTable extends BaseTable {
     @Override
     public SQLiteStatement getSQLiteStatement() {
         if (null == mSQLiteStatement) {
+            // TODO: 2019/3/19
             mSQLiteStatement = getSqliteDB().compileStatement(STR_INSERT_STATEMENT_CONTACTS);
         }
         return mSQLiteStatement;

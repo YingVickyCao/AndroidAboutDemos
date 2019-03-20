@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.hades.example.android.lib.R;
@@ -15,6 +16,11 @@ public class PermissionActivity extends BaseActivity {
     private static final String TAG = PermissionActivity.class.getSimpleName();
 
     private static final int REQUEST_CODE_4_REQUEST_PERMISSIONS = 2000;
+    protected View mRoot;
+
+    public void setRoot(View root) {
+        mRoot = root;
+    }
 
     /**
      * @param permissions new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}

@@ -11,7 +11,7 @@ import com.hades.example.android.data_storage.database.tables.ContactInfoTable;
 public class CustomSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = CustomSQLiteOpenHelper.class.getSimpleName();
 
-    // PO:Context must = ApplicationContext
+    // PO: Context cached by global DB Manager must = Application Context
     private Context mContext = null;
 
     public CustomSQLiteOpenHelper(Context context) {
@@ -19,12 +19,9 @@ public class CustomSQLiteOpenHelper extends SQLiteOpenHelper {
         mContext = context;
     }
 
-    // 数据库创建成功后回调的方法，后面的操作都是基于返回的db
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // 创建+读入歌曲数据库表
         Log.i(TAG, "CreateDB :");
-        // 创建表,如果有新增字段必须进入CreateTable里面来加入新的字段
         createTable(db);
     }
 

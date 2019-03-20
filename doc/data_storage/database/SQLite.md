@@ -92,7 +92,6 @@ Android stores your database in your app's private folder.
 Your data is secure, because by default this area is not accessible to other apps or the user.
 
 ---
----
 
 # `SQLiteDatabase.java`
 
@@ -112,9 +111,10 @@ public long insert(String table, String nullColumnHack, ContentValues values)
 ```
 ## Query
 
-`Cursor rawQuery(String sql, String[] selectionArgs)`
-
 ```
+Cursor rawQuery(String sql, String[] selectionArgs)
+
+
 // @2: The array of columns to return (pass null to get all)
 // @3 selection:The columns for the WHERE clause
 // @4 selectionArgs:The values for the WHERE clause
@@ -123,12 +123,17 @@ Cursor query(String table, String[] columns, String selection,  String[] selecti
 
 - WHERE = selection and selectionArgs
 - rawQuery vs query  
-rawQuery:   
-直接使用SQL语句进行查询  
-不推荐。拼接时容易拼错      
-query:   
-Android自己封装的查询API.    
-推荐。封装了拼接，简化了拼接，不易出错。    
+    rawQuery:   
+    直接使用SQL语句进行查询  
+    不推荐。拼接时容易拼错  
+    
+    query:   
+    Android封装的查询API.    
+    推荐。封装了拼接，简化了拼接，不易出错。  
+
+    PS:   
+    网上评测：rawQuery性能效率比query要快不少。   
+    实际测试：单表的10000条/100000条 SearchAll/FuzzySearch，使用时间几乎一样.=>不进行该条优化   
 
 - Cursor.close()  
 call close() on the cursor to release its resources
@@ -139,6 +144,12 @@ call close() on the cursor to release its resources
 ## Delete
 `int delete(String table, String whereClause, String[] whereArgs) `
 
+## execSQL
+Execute a single SQL statement that is NOT a SELECT/INSERT/UPDATE/DELETE
+```
+void execSQL(String sql) throws SQLException
+void execSQL(String sql, Object[] bindArgs) throws SQLException
+```
 
 ## Link 
 `CRUD` 操作中`RUD`
@@ -159,26 +170,39 @@ SQL模糊查询，使用like比较字，加上SQL里的通配符，请参考以�
 6、LIKE'[M-Z]inger' 将搜索以字符串 inger 结尾、以从 M 到 Z 的任何单个字母开头的所有名称（如 Ringer）。
 7、LIKE'M[^c]%' 将搜索以字母 M 开头，并且第二个字母不是 c 的所有名称（如MacFeather）。
 ```
+## Sqlite Transaction 事务处理
+```
+beginTransaction() // 开启一个事务
+setTransactionSuccessful() // 设置事务的标志为成功
+endTransaction() // 结束事务. 检查事务的标志是否为成功? Yes则提交事务，No则回滚事务。
+```
+### When use Transaction?
+- 批量的向Sqlite中插入大量数据.
+
+单独的使用添加方法导致应用响应缓慢.   
+原因：sqlite插入数据的时候默认一条语句就是一个事务，有多少条数据就有多少次磁盘操作。如初始8000条记录也就是要8000次读写磁盘操作。同时也是为了保证数据的一致性，避免出现数据缺失等情况。
+
+- 多个步骤要么同时成功,要么同时失败   
+经典例子：  
+升级数据库时，删除旧数据和添加新数据的操作必须一起完成，否则就还要继续保留原来的旧数据。
+
+```
+try{
+    db.beginTransaction();
+    db.execSQL(update_sql1);
+    db.execSQL(insert_sql2);
+    db.setTransactionSuccessful();
+}finally{
+    db.endTransaction();
+    db.close();
+}
+
+```
 ---
 # SQLiteOpenHelper
 ## `void onCreate(SQLiteDatabase db)`
 - Thread = = Thread runing `getWritableDatabase()`/`getReadableDatabase()`
 - Called when the database is created for the first time
-
-- ERROR:java.lang.IllegalStateException: getDatabase called recursively  
-https://blog.csdn.net/adayabetter/article/details/44516217
-
-```
-public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo()); // ,[thread =2,main]
-        db.execSQL(SQL_CREATE_ENTRIES);
-
-        // FIX_ERROR:java.lang.IllegalStateException: getDatabase called recursively
-        // Use db instread of db2
-        // SQLiteDatabase db2 = getReadableDatabase();
-  
-    }
-```
 
 ## `void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) `
 
@@ -199,7 +223,49 @@ void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 ## `getWritableDatabase()`/ `getReadableDatabase()`
 - can be long-running => called in background thread.
 
-# close()
+- 同一个/不同Context实例，每次通过SQLiteOpenHelper..getWritableDatabase() / getReadableDatabase()拿到的SQLiteDatabase 同一个实例吗?  
+    1 SQLiteOpenHelper保存的SQLiteDatabase实例存在，且满足判定条件时，才不会重新=.  
+    2 SQLiteOpenHelper 不是单例  
+
+- `getWritableDatabase()` vs  `getReadableDatabase()`  
+    getReadableDatabase:   
+    First 以读写方式打开DB.If 磁盘空间满了，重新尝试以只读方式打开DB。  
+    
+    getWritableDatabase:  
+    直接以读写方式打开DB. If 磁盘空间满了，直接报错。
+
+- 根据DB版本号,auto invork onDowngrade/onUpgrade to downgrade/upgrade db
+```
+SQLiteDatabase getDatabaseLocked(boolean writable){
+    ...
+    final File filePath = mContext.getDatabasePath(mName);
+    SQLiteDatabase.OpenParams params = mOpenParamsBuilder.build();
+    try {
+        db = SQLiteDatabase.openDatabase(filePath, params);
+        // Keep pre-O-MR1 behavior by resetting file permissions to 660
+        setFilePermissionsForDb(filePath.getPath());
+    } catch (SQLException ex) {
+        if (writable) {
+            throw ex;
+        }
+        Log.e(TAG, "Couldn't open " + mName
+                + " for writing (will try read-only):", ex);
+        params = params.toBuilder().addOpenFlags(SQLiteDatabase.OPEN_READONLY).build();
+        db = SQLiteDatabase.openDatabase(filePath, params);
+    }
+    
+    ...
+    
+    if (version > mNewVersion) {
+        onDowngrade(db, version, mNewVersion);
+    } else {
+        onUpgrade(db, version, mNewVersion);
+    }
+    ...
+}
+```
+
+## close()
 - called in onDestroy() of Activity/Fragment/Application subclass
 
 # `Cursor.java`
@@ -207,7 +273,49 @@ void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 ## cursor.getColumnIndex
 ## cursor.getInt(int) // int: colum index. >=0
 
-Ref:
+# ERROR
+## FIXED_ERROR:`java.lang.IllegalStateException: getDatabase called recursively`  
+https://blog.csdn.net/adayabetter/article/details/44516217
+
+```
+public void onCreate(SQLiteDatabase db) {
+        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo()); // ,[thread =2,main]
+        db.execSQL(SQL_CREATE_ENTRIES);
+
+        // Use db instread of db2
+        // SQLiteDatabase db2 = getReadableDatabase();
+  
+    }
+```
+
+## FIXED_ERROR: `java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(...)` 
+
+Reason:  
+Context is prepared well until onCreate() finished.
+
+```
+public class TestSQLiteActivity extends Activity {
+
+//  private FeedSQLiteOpenHelper dbHelper = new FeedSQLiteOpenHelper(getContext());
+    private FeedSQLiteOpenHelper dbHelper;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbHelper = new FeedSQLiteOpenHelper(this);
+    }
+```
+ 
+## FIXED_ERROR: `SQLiteDatabase: Error inserting _id=1 col2=City col3=1 android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: table1._id (code 1555)`
+
+Reason:  
+插入数据时，主键重复.
+
+## CursorWindow: Window is full: requested allocation 404 bytes, free space 321 bytes, window size 2097152 bytes
+100000条的单表：无条件查询时出现此wrong。   
+一般开发中会加很多条件，不会一次性查询这么多条数据。
+
+# Refs
 - [Room](https://developer.android.google.cn/training/data-storage/room)
 - [Save data using SQLite](https://developer.android.google.cn/training/data-storage/sqlite.html)
 - [Data and file storage overview-Database](https://developer.android.google.cn/guide/topics/data/data-storage#db)
@@ -219,3 +327,5 @@ Ref:
 - https://blog.csdn.net/fantianheyey/article/details/9199235
 - https://blog.csdn.net/qq_42672839/article/details/81584172
 - https://blog.csdn.net/adayabetter/article/details/44516217
+- [SQLite事务、升级数据库](https://www.cnblogs.com/orlion/p/5350683.html)
+- [SQLite数据库的增删改查和事务(transaction)调用](https://www.cnblogs.com/amosli/p/3784998.html)

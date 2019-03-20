@@ -82,11 +82,6 @@ public class WidgetActivityActivity extends NoNeedPermissionActivity implements 
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
     }
 
-    @Override
-    protected void showCurrentTest() {
-            pageVideoviewRotateScreenTip();
-    }
-
     private void pageConstraintLayout() {
         showFragment(new ConstraintLayoutFragment());
     }
@@ -112,7 +107,7 @@ public class WidgetActivityActivity extends NoNeedPermissionActivity implements 
     }
 
     private void pageKenBurnsImage() {
-        startActivity(KenBurnsImageActivity.class);
+        showActivity(KenBurnsImageActivity.class);
     }
 
     private void pageImageViewScaleType() {

@@ -7,41 +7,57 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.DummyContentFragment;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.android.lib.utils.DateUtil;
+import com.hades.example.android.lib.utils.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSQLiteActivity extends AppCompatActivity {
+public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
-    // FIXED_ERROR: java.lang.NullPointerException: Attempt to invoke virtual method 'android.database.sqlite.SQLiteDatabase android.content.Context.openOrCreateDatabase(java.lang.String, int,
-//    private FeedSQLiteOpenHelper dbHelper = new FeedSQLiteOpenHelper(getContext());
     private FeedSQLiteOpenHelper dbHelper;
+    private DateUtil mDateUtil = new DateUtil();
+
+    private TextView mUsedTimeTv;
+    private View mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.data_storage_sqlite);
+        initViews();
+        showFragmentRoot();
+
+        mUsedTimeTv = findViewById(R.id.usedTime);
+        mProgressBar = findViewById(R.id.progressBar);
 
         dbHelper = new FeedSQLiteOpenHelper(this);
 
         findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
-        findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
+        findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
+
         findViewById(R.id.query).setOnClickListener(v -> query());
+        findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
+        findViewById(R.id.rawQueryAll).setOnClickListener(v -> rawQueryAll());
+
         findViewById(R.id.fuzzySearch).setOnClickListener(v -> fuzzySearch());
         findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
 
         findViewById(R.id.update).setOnClickListener(v -> update());
+
         findViewById(R.id.delete).setOnClickListener(v -> delete());
+        findViewById(R.id.deleteAll).setOnClickListener(v -> deleteAll());
     }
 
     @Override
@@ -52,21 +68,41 @@ public class TestSQLiteActivity extends AppCompatActivity {
     }
 
     private void insertOne() {
+        showProgressBar();
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
+            Log.d(TAG, "insertOne: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
             ContentValues rowInitColumnValues = new ContentValues();
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL2, "A");
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL3, "100");
 
             long insertedNewRowId = db.insert(Table1ReaderContract.TableEntry.TABLE_NAME, null, rowInitColumnValues);
             Log.d(TAG, "insertOne: newRowId=" + insertedNewRowId);
+
+            queryAll(db);
         }).start();
     }
 
+    /**
+     * 10000=
+     * 0h:0m:13s:86ms
+     * 0h:0m:13s:351ms
+     * 0h:0m:12s:744ms
+     * 0h:0m:12s:856ms
+     */
     private void insertMultiple() {
+        showProgressBar();
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1);
+
+            long start = System.currentTimeMillis();
+            SQLiteDatabase db = getWritableDatabase();
+            // insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+
+            queryAll(db);
         }).start();
     }
 
@@ -74,6 +110,33 @@ public class TestSQLiteActivity extends AppCompatActivity {
         for (int i = 0; i < list.size(); i++) {
             db.insert(tableName, null, convertBean2ContentValues(list.get(i)));
         }
+    }
+
+    /**
+     * 10000=
+     * 0h:0m:0s:518ms
+     * 0h:0m:0s:338ms
+     * 0h:0m:0s:333ms
+     */
+    private void insertMultipleWithTransaction() {
+        showProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+
+            SQLiteDatabase db = getWritableDatabase();
+            try {
+                db.beginTransaction();
+                //            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+            queryAll(db);
+        }).start();
     }
 
     private ContentValues convertBean2ContentValues(DummyItem info) {
@@ -84,18 +147,66 @@ public class TestSQLiteActivity extends AppCompatActivity {
         return value;
     }
 
+    /**
+     * 10000 =
+     * 0h:0m:0s:57ms
+     * 0h:0m:0s:57ms
+     * 0h:0m:0s:57ms
+     * <p>
+     * 100000 =
+     * 0h:0m:1s:271ms
+     * 0h:0m:1s:274ms
+     * 0h:0m:1s:281ms
+     */
     private void queryAll() {
+        showProgressBar();
         new Thread(() -> {
-            // PO: getReadableDatabase()/getWritableDatabase()
-            Cursor cursor = dbHelper.getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            long start = System.currentTimeMillis();
+
+            Cursor cursor = getReadableDatabase().query(Table1ReaderContract.TableEntry.TABLE_NAME, null, null, null, null, null, null);
             handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
         }).start();
+    }
+
+    /**
+     * 10000=
+     * 0h:0m:0s:58ms
+     * 0h:0m:0s:58ms
+     * 0h:0m:0s:56ms
+     * 0h:0m:0s:61ms
+     * <p>
+     * 100000 =
+     * 0h:0m:1s:283ms
+     * 0h:0m:1s:271ms
+     * 0h:0m:1s:271ms
+     */
+    private void rawQueryAll() {
+        showProgressBar();
+
+        new Thread(() -> {
+            // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
+            long start = System.currentTimeMillis();
+
+            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
+    }
+
+    private void queryAll(SQLiteDatabase db) {
+        Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+        handleQueryResult(cursor);
     }
 
     // Search : colo2 content = D
     private void query() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            SQLiteDatabase db = getReadableDatabase();
 
             String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
@@ -110,42 +221,70 @@ public class TestSQLiteActivity extends AppCompatActivity {
         }).start();
     }
 
+    /**
+     * colo2 任意位置含有1
+     * 100000 =
+     * 0h:0m:0s:676ms
+     *  0h:0m:0s:591ms
+     *  0h:0m:0s:595ms
+     */
     private void fuzzySearch() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
+        hideProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
 
-        String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-        String keyword = "i";
-        String[] selectionArgs = {"%" + keyword + "%"};
+            SQLiteDatabase db = getReadableDatabase();
+            String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
-        String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
+            String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+            String keyword = "1";
+            String[] selectionArgs = {"%" + keyword + "%"};
 
-        // PO: SQLiteDatabase Use query instead of rawQuery
-        Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+            String orderBy = Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
-        handleQueryResult(cursor);
+            // PO: SQLiteDatabase Use query instead of rawQuery
+            Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+            handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
     }
 
-    // colo3 任意位置含有1
+    /**
+     * colo2 任意位置含有1
+     *
+     * 100000 =
+     *  0h:0m:0s:591ms
+     *  0h:0m:0s:594ms
+     *  0h:0m:0s:599ms
+     */
     private void fuzzySearch2() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String keyword = "i";
-        String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
-                + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
-                + " WHERE " + Table1ReaderContract.TableEntry.COL2
-                + " LIKE '%" + keyword + "%'"
-                + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " DESC";
+        hideProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+
+            SQLiteDatabase db = getReadableDatabase();
+            String keyword = "1";
+            String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
+                    + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
+                    + " WHERE " + Table1ReaderContract.TableEntry.COL2
+                    + " LIKE '%" + keyword + "%'"
+                    + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
 
-        Cursor cursor = db.rawQuery(sql, null);
+            Cursor cursor = db.rawQuery(sql, null);
+            handleQueryResult(cursor);
 
-        handleQueryResult(cursor);
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
     }
 
     // colo3 任意位置含有1
     private void update() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
 
             String title = "MyNewTitle";
             ContentValues values = new ContentValues();
@@ -164,13 +303,26 @@ public class TestSQLiteActivity extends AppCompatActivity {
     // col2 任意位置包含e
     private void delete() {
         new Thread(() -> {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
             String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
             String keyword = "e";
             String[] whereArgs = {"%" + keyword + "%"};
 
             int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
             Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+        }).start();
+    }
+
+    private void deleteAll() {
+        showProgressBar();
+        new Thread(() -> {
+            SQLiteDatabase db = getWritableDatabase();
+            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
+            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+
+            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            handleQueryResult(cursor);
+
         }).start();
     }
 
@@ -182,6 +334,7 @@ public class TestSQLiteActivity extends AppCompatActivity {
         }
 
         runOnUiThread(() -> {
+            hideProgressBar();
             // TODO: 2019/3/15 refactor
             Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
             if (null == fragment) {
@@ -204,5 +357,41 @@ public class TestSQLiteActivity extends AppCompatActivity {
             list.add(dummyItem);
         }
         return list;
+    }
+
+    private SQLiteDatabase getWritableDatabase() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        /**
+         * TestSQLiteActivity@2527639,SQLiteDatabase@256491584
+         * TestSQLiteActivity@127308036,SQLiteDatabase@6779339
+         */
+        Log.d(TAG, "getWritableDatabase: " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
+        return db;
+    }
+
+    private SQLiteDatabase getReadableDatabase() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Log.d(TAG, "getReadableDatabase : " + TAG + "@" + hashCode() + ",SQLiteDatabase@" + db.hashCode());
+        return db;
+    }
+
+    private void updateUsedTime(long start, long end) {
+        String duringTime = mDateUtil.compareDate(start, end);
+        Log.d(TAG, "updateUsedTime: " + start + "-" + end + " = " + duringTime);
+        runOnUiThread(() -> {
+            mUsedTimeTv.setText(duringTime);
+            hideProgressBar();
+        });
+    }
+
+    private void showProgressBar() {
+        mUsedTimeTv.setText("");
+        mProgressBar.setVisibility(View.VISIBLE);
+        mFragmentRoot.setVisibility(View.GONE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+        mFragmentRoot.setVisibility(View.VISIBLE);
     }
 }

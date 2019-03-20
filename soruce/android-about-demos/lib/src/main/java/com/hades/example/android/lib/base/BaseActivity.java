@@ -11,10 +11,9 @@ import android.widget.ScrollView;
 import com.hades.example.android.lib.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    protected View mRoot;
     private View topic;
     private ScrollView mScrollView;
-    private View mFragmentRoot;
+    protected View mFragmentRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,20 +30,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract boolean isNeedCheckPermission();
 
-    public void setRoot(View root) {
-        mRoot = root;
-    }
-
-    protected void startActivity(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-    }
-
     protected void initViews() {
         topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
         mFragmentRoot = findViewById(R.id.fragmentRoot);
-
         showCurrentTest();
+    }
+
+    protected void showCurrentTest() {
+        showBtns();
     }
 
     protected void showBtns() {
@@ -73,17 +67,23 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void showCurrentTest() {
-        hideBtns();
+    protected void showFragmentRoot(){
+        if (null != mFragmentRoot) {
+            mFragmentRoot.setVisibility(View.VISIBLE);
+        }
     }
 
     protected boolean isShowDetail() {
-        return null != mFragmentRoot && mFragmentRoot.getVisibility() == View.VISIBLE;
+        return (null != mFragmentRoot)
+                && (mFragmentRoot.getVisibility() == View.VISIBLE)
+                && (null != getFragmentManager().findFragmentById(R.id.fragmentRoot));
     }
 
     protected void removeDetailFragment() {
         Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentRoot);
-        getFragmentManager().beginTransaction().remove(fragment).commit();
+        if (null != fragment) {
+            getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
     }
 
     protected void showFragment(Fragment fragment) {

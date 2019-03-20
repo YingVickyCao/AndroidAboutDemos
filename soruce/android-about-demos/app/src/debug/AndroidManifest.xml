@@ -4,8 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <!--<activity android:name="com.hades.example.android.data_storage.DataStorageActivityActivity">-->
-        <activity android:name=".MainActivity">
+        <activity android:name=".QAActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

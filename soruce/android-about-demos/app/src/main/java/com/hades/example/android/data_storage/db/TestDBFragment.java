@@ -104,19 +104,7 @@ public class TestDBFragment extends BaseFragment {
         update();
         queryAll();
     }
-
-    /*
-    ERROR:
-    E/AndroidRuntime: FATAL EXCEPTION: main
-    Process: PID: 30518
-    android.database.sqlite.SQLiteException: no such table: news_info (code 1)
-
-    #################################################################
-    Error Code : 1 (SQLITE_ERROR)
-    Caused By : SQL(queryAll) error or missing database.
-    	(no such table: news_info (code 1))
-    #################################################################
-     */
+    
     private void queryBtnClick() {
         query();
     }
@@ -235,6 +223,7 @@ public class TestDBFragment extends BaseFragment {
                 adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_view_3, cursor, new String[]{"news_title", "news_content"}, new int[]{R.id.my_title, R.id.my_content}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
                 mTableContentListView.setAdapter(adapter);
             } else {
+                // TODO: 2019/3/20
                 adapter.swapCursor(cursor);
                 adapter.notifyDataSetChanged();
             }
