@@ -1,7 +1,9 @@
-
 # SQLite
-Test Android Device:Android 8.0
 
+- Test Android Device:`Android 8.0`
+- `android.xlsx` - DB page  
+- `TestSQLiteActivity.java`  
+    
 # When use  DB?
 Saving data to a database is ideal for repeating or structured data
 
@@ -96,21 +98,23 @@ Your data is secure, because by default this area is not accessible to other app
 
 # `SQLiteDatabase.java`
 
-- `CRUD`= create, retrieve,update, delete  
+- SQLiteDatabase的帮助类 SQLiteOpenHelper
+
+## `CRUD`
+`CRUD` = create, retrieve,update, delete  
+
 create = insert()  
 retrieve = rawQuery/query()  
 update = update()  
 delete = delete()  
 
-- SQLiteDatabase 帮助类 SQLiteOpenHelper
-
-## Insert
+### Insert
 ```
 // @1. Insert the new row, returning the primary key value of the new row
 // @2: Tells the framework what to do in the event that the ContentValues is empty
 public long insert(String table, String nullColumnHack, ContentValues values) 
 ```
-## Query
+### Query
 
 ```
 Cursor rawQuery(String sql, String[] selectionArgs)
@@ -139,18 +143,11 @@ Cursor query(String table, String[] columns, String selection,  String[] selecti
 - Cursor.close()  
 call close() on the cursor to release its resources
 
-## Update 
+### Update 
 `int update(String table, ContentValues values, String whereClause, String[] whereArgs)`
 
-## Delete
+### Delete
 `int delete(String table, String whereClause, String[] whereArgs) `
-
-## execSQL
-Execute a single SQL statement that is NOT a SELECT/INSERT/UPDATE/DELETE
-```
-void execSQL(String sql) throws SQLException
-void execSQL(String sql, Object[] bindArgs) throws SQLException
-```
 
 ## Link 
 `CRUD` 操作中`RUD`
@@ -199,6 +196,20 @@ try{
 }
 
 ```
+## execSQL
+```
+void execSQL(String sql) throws SQLException
+void execSQL(String sql, Object[] bindArgs) throws SQLException
+```
+- Execute a single SQL statement that is NOT a SELECT/INSERT/UPDATE/DELETE
+- execSQL vs CRUD？   
+    使用 Transaction 后，execSQL与CRUD的性能差不多，而CRUD的可读性和可维护性更高。  
+    So：  
+    Use Transaction + CRUD instead of Transaction + execSQL
+
+    测试结论：    
+    `android.xlsx` - DB page  
+    `TestSQLiteActivity.java`
 ---
 # SQLiteOpenHelper
 ## `void onCreate(SQLiteDatabase db)`
