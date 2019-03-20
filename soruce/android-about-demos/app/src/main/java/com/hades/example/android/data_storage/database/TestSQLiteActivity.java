@@ -337,9 +337,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         new Thread(() -> {
             SQLiteDatabase db = getWritableDatabase();
 
-            String title = "MyNewTitle";
+            // Way1:
+            String newCol2Value = "New";
             ContentValues values = new ContentValues();
-            values.put(Table1ReaderContract.TableEntry.COL2, title);
+            values.put(Table1ReaderContract.TableEntry.COL2, newCol2Value);
 
             String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
             String keyword = "A";
@@ -348,6 +349,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             // colo3 任意位置含有A
             int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
             Log.d(TAG, "update:count=" + count);
+
+            // Way2:
+//            String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' ";
+//            db.execSQL(sql);
         }).start();
 
     }
