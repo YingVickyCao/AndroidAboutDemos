@@ -279,12 +279,14 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getReadableDatabase();
             String keyword = "1";
 
+            // Way1:
             String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
                     + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
                     + " WHERE " + Table1ReaderContract.TableEntry.COL2
                     + " LIKE '%" + keyword + "%'"
                     + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
+            // Way2:
 //            String sql ="SELECT _id,col2, col3 FROM table1 WHERE col2 like '%1%' ORDER BY col3 ASC ";
 
             Cursor cursor = db.rawQuery(sql, null);
