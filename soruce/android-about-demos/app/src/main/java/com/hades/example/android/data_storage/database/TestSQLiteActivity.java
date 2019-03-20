@@ -353,7 +353,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 //            String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' "; // ok
 //            db.execSQL(sql);
         }).start();
-
     }
 
     // col2 任意位置包含A
@@ -376,7 +375,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
         }).start();
     }
-    
+
     private void deleteAll() {
         showProgressBar();
         new Thread(() -> {
