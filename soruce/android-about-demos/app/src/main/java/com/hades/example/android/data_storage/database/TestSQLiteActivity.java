@@ -346,12 +346,11 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             String keyword = "A";
             String[] whereArgs = {"%" + keyword + "%"};
 
-            // colo3 任意位置含有A
             int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
             Log.d(TAG, "update:count=" + count);
 
             // Way2:
-//            String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' ";
+//            String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' "; // ok
 //            db.execSQL(sql);
         }).start();
 
