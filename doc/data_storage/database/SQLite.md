@@ -1,5 +1,6 @@
 
 # SQLite
+Test Android Device:Android 8.0
 
 # When use  DB?
 Saving data to a database is ideal for repeating or structured data
@@ -314,6 +315,25 @@ Reason:
 ## CursorWindow: Window is full: requested allocation 404 bytes, free space 321 bytes, window size 2097152 bytes
 100000条的单表：无条件查询时出现此wrong。   
 一般开发中会加很多条件，不会一次性查询这么多条数据。
+
+## FIXED_ERROR:android.database.sqlite.SQLiteException: no such column: A (code 1): , while compiling: UPDATE table1 SET col2= 1553048517967 WHERE col2=A
+
+Reason:  
+String 在直接拼接时要用单引号
+
+```
+// String sql = "UPDATE table1 SET col2= 1553048517967 WHERE col2=A "; // error
+
+// Way1:
+String sql = "UPDATE table1 SET col2= '1553048517967' WHERE col2='A' "; // ok
+db.execSQL(sql);
+
+// Way2:
+db.execSQL("UPDATE table1  SET col2=?  WHERE col2 = ?", new Object[]{String.valueOf(System.currentTimeMillis()), "A"}); // ok
+```
+
+## FIXED_ERROR: android.database.sqlite.SQLiteException: no such table: news (code 1)
+在插入数据时 not 建立 table news
 
 # Refs
 - [Room](https://developer.android.google.cn/training/data-storage/room)
