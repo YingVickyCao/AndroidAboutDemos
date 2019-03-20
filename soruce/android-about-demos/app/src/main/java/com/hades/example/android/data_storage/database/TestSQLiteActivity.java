@@ -97,7 +97,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
             SQLiteDatabase db = getWritableDatabase();
             // insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
 
             long end = System.currentTimeMillis();
             updateUsedTime(start, end);
@@ -108,8 +108,23 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
         for (int i = 0; i < list.size(); i++) {
-            db.insert(tableName, null, convertBean2ContentValues(list.get(i)));
+            DummyItem dummyItem = list.get(i);
+            // Way1
+            db.insert(tableName, null, convertBean2ContentValues(dummyItem));
+
+            // Way2
+//            String sql = "INSERT INTO table1 VALUES(? , ? , ?)";
+//            Object[] bindArgs = new Object[]{dummyItem.getId(), dummyItem.getColo2(), dummyItem.getCol3()};
+//            db.execSQL(sql, bindArgs);
         }
+    }
+
+    private ContentValues convertBean2ContentValues(DummyItem info) {
+        ContentValues value = new ContentValues();
+        value.put(Table1ReaderContract.TableEntry._ID, info.getId());
+        value.put(Table1ReaderContract.TableEntry.COL2, info.getColo2());
+        value.put(Table1ReaderContract.TableEntry.COL3, info.getCol3());
+        return value;
     }
 
     /**
@@ -127,7 +142,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             try {
                 db.beginTransaction();
                 //            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
-                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -137,14 +152,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             updateUsedTime(start, end);
             queryAll(db);
         }).start();
-    }
-
-    private ContentValues convertBean2ContentValues(DummyItem info) {
-        ContentValues value = new ContentValues();
-        value.put(Table1ReaderContract.TableEntry._ID, info.getId());
-        value.put(Table1ReaderContract.TableEntry.COL2, info.getColo2());
-        value.put(Table1ReaderContract.TableEntry.COL3, info.getCol3());
-        return value;
     }
 
     /**
@@ -225,8 +232,8 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * colo2 任意位置含有1
      * 100000 =
      * 0h:0m:0s:676ms
-     *  0h:0m:0s:591ms
-     *  0h:0m:0s:595ms
+     * 0h:0m:0s:591ms
+     * 0h:0m:0s:595ms
      */
     private void fuzzySearch() {
         hideProgressBar();
@@ -252,12 +259,17 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * <pre>
+     * 模糊查询
+     *
      * colo2 任意位置含有1
+     * 通配符：任何位置包含1
      *
      * 100000 =
-     *  0h:0m:0s:591ms
-     *  0h:0m:0s:594ms
-     *  0h:0m:0s:599ms
+     * 0h:0m:0s:591ms
+     * 0h:0m:0s:594ms
+     * 0h:0m:0s:599ms
+     * <pre/>
      */
     private void fuzzySearch2() {
         hideProgressBar();
@@ -266,12 +278,14 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
             SQLiteDatabase db = getReadableDatabase();
             String keyword = "1";
+
             String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
                     + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
                     + " WHERE " + Table1ReaderContract.TableEntry.COL2
                     + " LIKE '%" + keyword + "%'"
                     + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
+//            String sql ="SELECT _id,col2, col3 FROM table1 WHERE col2 like '%1%' ORDER BY col3 ASC ";
 
             Cursor cursor = db.rawQuery(sql, null);
             handleQueryResult(cursor);
