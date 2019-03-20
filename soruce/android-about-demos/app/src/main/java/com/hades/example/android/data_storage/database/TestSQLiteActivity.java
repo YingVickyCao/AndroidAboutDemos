@@ -91,6 +91,8 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * db.insert():
+     *
      * 10000=
      * 0h:0m:13s:86ms
      * 0h:0m:13s:351ms
@@ -157,6 +159,8 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * db.insert() with Transaction:
+     *
      * 10000=
      * 0h:0m:0s:518ms
      * 0h:0m:0s:338ms
@@ -170,7 +174,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getWritableDatabase();
             try {
                 db.beginTransaction();
-                //            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
                 insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
                 db.setTransactionSuccessful();
             } finally {
@@ -184,15 +187,19 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * <pre>
+     * db.query():
+     *
      * 10000 =
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
-     * <p>
+     *
      * 100000 =
      * 0h:0m:1s:271ms
      * 0h:0m:1s:274ms
      * 0h:0m:1s:281ms
+     * <pre/>
      */
     private void queryAll() {
         showProgressBar();
@@ -208,16 +215,21 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     /**
+     * <pre>
+     * db.rawQuery():
+     *
      * 10000=
      * 0h:0m:0s:58ms
      * 0h:0m:0s:58ms
      * 0h:0m:0s:56ms
      * 0h:0m:0s:61ms
-     * <p>
+     *
      * 100000 =
      * 0h:0m:1s:283ms
      * 0h:0m:1s:271ms
      * 0h:0m:1s:271ms
+     *
+     * <pre/>
      */
     private void rawQueryAll() {
         showProgressBar();
