@@ -94,11 +94,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private void insertMultiple() {
         showProgressBar();
         new Thread(() -> {
-
             long start = System.currentTimeMillis();
+
             SQLiteDatabase db = getWritableDatabase();
-            // insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3
 
             long end = System.currentTimeMillis();
             setUsedTime(start, end);
@@ -108,21 +107,38 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
+        insertMultiple_way1(db, tableName, list);
+//        insertMultiple_way2(db, tableName, list);
+//        insertMultiple_way3(db, tableName, list);
+    }
+
+    private void insertMultiple_way1(SQLiteDatabase db, String tableName, List<DummyItem> list) {
         for (int i = 0; i < list.size(); i++) {
             DummyItem dummyItem = list.get(i);
             // Way1
             db.insert(tableName, null, convertBean2ContentValues(dummyItem));
+        }
+    }
+
+    private void insertMultiple_way2(SQLiteDatabase db, String tableName, List<DummyItem> list) {
+        for (int i = 0; i < list.size(); i++) {
+            DummyItem dummyItem = list.get(i);
 
             // Way2
-//            String sql = "INSERT INTO table1 VALUES(? , ? , ?)";
-//            Object[] bindArgs = new Object[]{dummyItem.getId(), dummyItem.getColo2(), dummyItem.getCol3()};
-//            db.execSQL(sql, bindArgs);
+            String sql = "INSERT INTO table1 VALUES(? , ? , ?)";
+            Object[] bindArgs = new Object[]{dummyItem.getId(), dummyItem.getColo2(), dummyItem.getCol3()};
+            db.execSQL(sql, bindArgs);
+        }
+    }
 
-            // TODO: 2019/3/20
+    private void insertMultiple_way3(SQLiteDatabase db, String tableName, List<DummyItem> list) {
+        for (int i = 0; i < list.size(); i++) {
+            DummyItem dummyItem = list.get(i);
+
             // Way3:
-            //            String sql = "INSERT INTO table1 VALUES(null , ? , ?)";
-//            Object[] bindArgs = new Object[]{dummyItem.getColo2(), dummyItem.getCol3()};
-//            db.execSQL(sql, bindArgs);
+            String sql = "INSERT INTO table1 VALUES(null , ? , ?)";
+            Object[] bindArgs = new Object[]{dummyItem.getColo2(), dummyItem.getCol3()};
+            db.execSQL(sql, bindArgs);
         }
     }
 
@@ -280,120 +296,168 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private void fuzzySearch2() {
         hideProgressBar();
         new Thread(() -> {
-            long start = System.currentTimeMillis();
-
-            SQLiteDatabase db = getReadableDatabase();
-            String keyword = "1";
-
-            // Way1:
-            String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
-                    + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
-                    + " WHERE " + Table1ReaderContract.TableEntry.COL2
-                    + " LIKE '%" + keyword + "%'"
-                    + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
-
-            // Way2:
-//            String sql ="SELECT _id,col2, col3 FROM table1 WHERE col2 like '%1%' ORDER BY col3 ASC ";
-
-            Cursor cursor = db.rawQuery(sql, null);
-            handleQueryResult(cursor);
-
-            long end = System.currentTimeMillis();
-            setUsedTime(start, end);
+            fuzzySearch2_way1();
+//            fuzzySearch2_way2();
         }).start();
+    }
+
+    private void fuzzySearch2_way1() {
+        long start = System.currentTimeMillis();
+
+        SQLiteDatabase db = getReadableDatabase();
+        String keyword = "1";
+
+        // Way1:
+        String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
+                + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
+                + " WHERE " + Table1ReaderContract.TableEntry.COL2
+                + " LIKE '%" + keyword + "%'"
+                + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
+
+        Cursor cursor = db.rawQuery(sql, null);
+        handleQueryResult(cursor);
+
+        long end = System.currentTimeMillis();
+        setUsedTime(start, end);
+    }
+
+    private void fuzzySearch2_way2() {
+        long start = System.currentTimeMillis();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        // Way2:
+        String sql = "SELECT _id,col2, col3 FROM table1 WHERE col2 like '%1%' ORDER BY col3 ASC ";
+
+        Cursor cursor = db.rawQuery(sql, null);
+        handleQueryResult(cursor);
+
+        long end = System.currentTimeMillis();
+        setUsedTime(start, end);
     }
 
     // col2 = A
     private void update() {
         new Thread(() -> {
-            SQLiteDatabase db = getWritableDatabase();
-
-            // String sql = "UPDATE table1 SET col2= 1553048517967 WHERE col2=A "; // error
-            // Way1:
-//            String sql = "UPDATE table1 SET col2= '1553048517967' WHERE col2='A' "; // ok
-//            db.execSQL(sql);
-
-            // Way2:
-//            db.execSQL("UPDATE table1  SET col2=?  WHERE col2 = ?", new Object[]{String.valueOf(System.currentTimeMillis()), "A"}); // ok
-
-            // way3
-            String title = "New";
-            ContentValues values = new ContentValues();
-            values.put(Table1ReaderContract.TableEntry.COL2, title);
-
-            String whereClause = Table1ReaderContract.TableEntry.COL2 + " = ?";
-            String keyword = "A";
-            String[] whereArgs = {keyword};
-
-            int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
-            Log.d(TAG, "update:count=" + count);
-
-
+            update_way1();
+//            update_way2();
+//            update_way3();
         }).start();
+    }
+
+    private void update_way1() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        // String sql = "UPDATE table1 SET col2= 1553048517967 WHERE col2=A "; // error
+        String sql = "UPDATE table1 SET col2= '1553048517967' WHERE col2='A' "; // ok
+        db.execSQL(sql);
+    }
+
+    private void update_way2() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.execSQL("UPDATE table1  SET col2=?  WHERE col2 = ?", new Object[]{String.valueOf(System.currentTimeMillis()), "A"}); // ok
+    }
+
+    private void update_way3() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String title = "New";
+        ContentValues values = new ContentValues();
+        values.put(Table1ReaderContract.TableEntry.COL2, title);
+
+        String whereClause = Table1ReaderContract.TableEntry.COL2 + " = ?";
+        String keyword = "A";
+        String[] whereArgs = {keyword};
+
+        int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
+        Log.d(TAG, "update:count=" + count);
     }
 
     // colo2 任意位置含有A
     private void updateFuzzy() {
         new Thread(() -> {
-            SQLiteDatabase db = getWritableDatabase();
-
-            // Way1:
-            String newCol2Value = "New";
-            ContentValues values = new ContentValues();
-            values.put(Table1ReaderContract.TableEntry.COL2, newCol2Value);
-
-            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-            String keyword = "A";
-            String[] whereArgs = {"%" + keyword + "%"};
-
-            int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
-            Log.d(TAG, "update:count=" + count);
-
-            // Way2:
-//            String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' "; // ok
-//            db.execSQL(sql);
+            updateFuzzy_way1();
+//            updateFuzzy_way2();
         }).start();
+    }
+
+    private void updateFuzzy_way1() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String newCol2Value = "New";
+        ContentValues values = new ContentValues();
+        values.put(Table1ReaderContract.TableEntry.COL2, newCol2Value);
+
+        String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+        String keyword = "A";
+        String[] whereArgs = {"%" + keyword + "%"};
+
+        int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
+        Log.d(TAG, "update:count=" + count);
+
+    }
+
+    private void updateFuzzy_way2() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "UPDATE table1 SET col2='New' WHERE col2 LIKE '%A%' "; // ok
+        db.execSQL(sql);
     }
 
     // col2 任意位置包含A
     private void delete() {
         new Thread(() -> {
-            SQLiteDatabase db = getWritableDatabase();
-
-            // Way1:
-            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-            String keyword = "A";
-            String[] whereArgs = {"%" + keyword + "%"};
-
-            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
-            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
-
-            // Way2:
-//            String sql = "DELETE FROM  table1 WHERE col2 LIKE '%A%' ";
-//            db.execSQL(sql);
-//            queryAll(db);
+            delete_way1();
+//            delete_way2();
 
         }).start();
+    }
+
+    private void delete_way1() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Way1:
+        String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+        String keyword = "A";
+        String[] whereArgs = {"%" + keyword + "%"};
+
+        int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
+        Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+    }
+
+    private void delete_way2() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "DELETE FROM  table1 WHERE col2 LIKE '%A%' ";
+        db.execSQL(sql);
+        queryAll(db);
     }
 
     private void deleteAll() {
         showProgressBar();
         new Thread(() -> {
-            SQLiteDatabase db = getWritableDatabase();
-
-            // Way1:
-            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
-            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
-
-            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
-            handleQueryResult(cursor);
-
-            // Way2:
-//            String sql = "DELETE FROM table1";
-//            db.execSQL(sql);
-//            queryAll(db);
-
+            deleteAll_way1();
+//            deleteAll_way2();
         }).start();
+    }
+
+    private void deleteAll_way1() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Way1:
+        int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
+        Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+
+        Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+        handleQueryResult(cursor);
+    }
+
+    private void deleteAll_way2() {
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "DELETE FROM table1";
+        db.execSQL(sql);
+        queryAll(db);
     }
 
     private void handleQueryResult(Cursor cursor) {
