@@ -55,6 +55,11 @@
                     android:text="@string/query_all" />
 
                 <Button
+                    android:id="@+id/rawQueryAll"
+                    style="@style/btn.small"
+                    android:text="@string/rawQuery_all" />
+
+                <Button
                     android:id="@+id/fuzzySearch"
                     style="@style/btn.small"
                     android:text="@string/fuzzy_search" />

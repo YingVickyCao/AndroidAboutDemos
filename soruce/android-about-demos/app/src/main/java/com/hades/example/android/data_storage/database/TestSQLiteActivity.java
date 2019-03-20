@@ -47,8 +47,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
 
-        findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
         findViewById(R.id.query).setOnClickListener(v -> query());
+        findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
+        findViewById(R.id.rawQueryAll).setOnClickListener(v -> rawQueryAll());
 
         findViewById(R.id.fuzzySearch).setOnClickListener(v -> fuzzySearch());
         findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
@@ -146,11 +147,44 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         return value;
     }
 
+    /**
+     * 10000 =
+     * 0h:0m:0s:57ms
+     * 0h:0m:0s:57ms
+     * 0h:0m:0s:57ms
+     */
     private void queryAll() {
+        showProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+
+            Cursor cursor = getReadableDatabase().query(Table1ReaderContract.TableEntry.TABLE_NAME, null, null, null, null, null, null);
+            handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
+    }
+
+    /**
+     * 10000=
+     * 0h:0m:0s:58ms
+     * 0h:0m:0s:58ms
+     * 0h:0m:0s:56ms
+     * 0h:0m:0s:61ms
+     */
+    private void rawQueryAll() {
+        showProgressBar();
+
         new Thread(() -> {
             // PO: getReadableDatabase()/getWritableDatabase()
+            long start = System.currentTimeMillis();
+
             Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
             handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
         }).start();
     }
 

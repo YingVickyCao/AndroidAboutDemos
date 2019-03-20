@@ -62,6 +62,7 @@
     <string name="update">Update</string>
     <string name="query">Query</string>
     <string name="query_all">Query all</string>
+    <string name="rawQuery_all">rawQuery all</string>
     <string name="fuzzy_search">Fuzzy Search</string>
     <string name="detail">解释</string>
     <string name="search">查询</string>
