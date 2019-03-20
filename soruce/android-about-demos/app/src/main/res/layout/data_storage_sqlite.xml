@@ -75,6 +75,11 @@
                     android:text="@string/update" />
 
                 <Button
+                    android:id="@+id/updateFuzzy"
+                    style="@style/btn.small"
+                    android:text="@string/update_Fuzzy" />
+
+                <Button
                     android:id="@+id/delete"
                     style="@style/btn.small"
                     android:text="@string/delete" />

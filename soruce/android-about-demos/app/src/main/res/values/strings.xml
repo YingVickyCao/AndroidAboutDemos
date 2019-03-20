@@ -59,7 +59,8 @@
     <string name="delete_table">delete table</string>
     <string name="delete_table_data">delete table all data</string>
     <string name="clear">clear</string>
-    <string name="update">Update</string>
+    <string name="update">Update =</string>
+    <string name="update_Fuzzy">Update Fuzzy</string>
     <string name="query">Query</string>
     <string name="rawQuery">rawQuery</string>
     <string name="query_all">Query all</string>

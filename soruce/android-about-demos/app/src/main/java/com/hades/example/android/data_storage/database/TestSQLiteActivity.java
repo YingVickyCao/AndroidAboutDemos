@@ -55,6 +55,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         findViewById(R.id.fuzzySearch2).setOnClickListener(v -> fuzzySearch2());
 
         findViewById(R.id.update).setOnClickListener(v -> update());
+        findViewById(R.id.updateFuzzy).setOnClickListener(v -> updateFuzzy());
 
         findViewById(R.id.delete).setOnClickListener(v -> delete());
         findViewById(R.id.deleteAll).setOnClickListener(v -> deleteAll());
@@ -115,6 +116,12 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             // Way2
 //            String sql = "INSERT INTO table1 VALUES(? , ? , ?)";
 //            Object[] bindArgs = new Object[]{dummyItem.getId(), dummyItem.getColo2(), dummyItem.getCol3()};
+//            db.execSQL(sql, bindArgs);
+
+            // TODO: 2019/3/20
+            // Way3:
+            //            String sql = "INSERT INTO table1 VALUES(null , ? , ?)";
+//            Object[] bindArgs = new Object[]{dummyItem.getColo2(), dummyItem.getCol3()};
 //            db.execSQL(sql, bindArgs);
         }
     }
@@ -223,7 +230,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
 
             Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
-
             handleQueryResult(cursor);
         }).start();
     }
@@ -297,8 +303,37 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }).start();
     }
 
-    // colo3 任意位置含有1
+    // col2 = A
     private void update() {
+        new Thread(() -> {
+            SQLiteDatabase db = getWritableDatabase();
+
+            // String sql = "UPDATE table1 SET col2= 1553048517967 WHERE col2=A "; // error
+            // Way1:
+//            String sql = "UPDATE table1 SET col2= '1553048517967' WHERE col2='A' "; // ok
+//            db.execSQL(sql);
+
+            // Way2:
+//            db.execSQL("UPDATE table1  SET col2=?  WHERE col2 = ?", new Object[]{String.valueOf(System.currentTimeMillis()), "A"}); // ok
+
+            // way3
+            String title = "New";
+            ContentValues values = new ContentValues();
+            values.put(Table1ReaderContract.TableEntry.COL2, title);
+
+            String whereClause = Table1ReaderContract.TableEntry.COL2 + " = ?";
+            String keyword = "A";
+            String[] whereArgs = {keyword};
+
+            int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
+            Log.d(TAG, "update:count=" + count);
+
+
+        }).start();
+    }
+
+    // colo2 任意位置含有A
+    private void updateFuzzy() {
         new Thread(() -> {
             SQLiteDatabase db = getWritableDatabase();
 
@@ -306,14 +341,15 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             ContentValues values = new ContentValues();
             values.put(Table1ReaderContract.TableEntry.COL2, title);
 
-            String whereClause = Table1ReaderContract.TableEntry.COL3 + " LIKE ?";
-            String keyword = "1";
+            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+            String keyword = "A";
             String[] whereArgs = {"%" + keyword + "%"};
 
+            // colo3 任意位置含有A
             int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
-
             Log.d(TAG, "update:count=" + count);
         }).start();
+
     }
 
     // col2 任意位置包含e
