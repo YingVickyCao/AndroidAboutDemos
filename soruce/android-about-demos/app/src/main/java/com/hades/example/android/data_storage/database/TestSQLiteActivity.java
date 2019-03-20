@@ -3,6 +3,7 @@ package com.hades.example.android.data_storage.database;
 import android.app.Fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
@@ -49,6 +50,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
 
+        findViewById(R.id.queryTotalCountOfOneTable).setOnClickListener(v -> queryTotalCountOfOneTable());
         findViewById(R.id.query).setOnClickListener(v -> query());
         findViewById(R.id.queryAll).setOnClickListener(v -> queryAll());
         findViewById(R.id.rawQueryAll).setOnClickListener(v -> rawQueryAll());
@@ -71,6 +73,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void clear() {
+        mUsedTimeTv.setText("");
         handleQueryResult(null);
     }
 
@@ -173,7 +176,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
 
             SQLiteDatabase db = getWritableDatabase();
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getInsertMultipleData());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3,DummyContent.ITEMS_100000
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getDummyItems());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3,DummyContent.ITEMS_100000
 
             long end = System.currentTimeMillis();
             setUsedTime(start, end);
@@ -182,9 +185,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }).start();
     }
 
-    private List<DummyItem> getInsertMultipleData() {
-//        return DummyContent.ITEMS_100000();
-        return DummyContent.ITEMS_10000();
+    private List<DummyItem> getDummyItems() {
+        return DummyContent.ITEMS_100000();
+//        return DummyContent.ITEMS_10000();
 //        return DummyContent.ITEMS_1000();
     }
 
@@ -279,7 +282,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getWritableDatabase();
             try {
                 db.beginTransaction();
-                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getInsertMultipleData());
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getDummyItems());
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -340,9 +343,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         showProgressBar();
 
         new Thread(() -> {
-            // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
             long start = System.currentTimeMillis();
 
+            // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
             Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
             handleQueryResult(cursor);
 
@@ -354,6 +357,79 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private void queryAll(SQLiteDatabase db) {
         Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
         handleQueryResult(cursor);
+    }
+
+    private void queryTotalCountOfOneTable() {
+        showProgressBar();
+        new Thread(() -> {
+            queryTotalCountOfOneTable_way1();
+            queryTotalCountOfOneTable_way2();
+            queryTotalCountOfOneTable_way3();
+
+            runOnUiThread(() -> hideProgressBar());
+        }).start();
+
+    }
+
+    /**
+     * 100000 =
+     * 0h:0m:0s:1ms
+     * 0h:0m:0s:1ms
+     * 0h:0m:0s:2ms
+     */
+    private void queryTotalCountOfOneTable_way1() {
+        long start = System.currentTimeMillis();
+
+        SQLiteDatabase db = getReadableDatabase();
+        // String sql = "SELECT count(*) FROM table1";
+        String sql = "SELECT count(*) FROM " + Table1ReaderContract.TableEntry.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0); // ok
+        cursor.close();
+
+        long end = System.currentTimeMillis();
+        String duringTime = mDateUtil.compareDate(start, end);
+        Log.d(TAG, "queryTotalCountOfOneTable_way1: duringTime=" + duringTime + ",size=" + count);
+    }
+
+    /**
+     * 100000 =
+     * 0h:0m:0s:188ms
+     * 0h:0m:0s:190ms
+     * 0h:0m:0s:190ms
+     */
+    private void queryTotalCountOfOneTable_way2() {
+        long start = System.currentTimeMillis();
+
+        SQLiteDatabase db = getReadableDatabase();
+        // String sql = "SELECT * FROM table1";
+        String sql = "SELECT * FROM " + Table1ReaderContract.TableEntry.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sql, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        long end = System.currentTimeMillis();
+        String duringTime = mDateUtil.compareDate(start, end);
+        Log.d(TAG, "queryTotalCountOfOneTable_way2: duringTime=" + duringTime + ",size=" + count);
+    }
+
+    /**
+     * 100000 =
+     * 0h:0m:0s:1ms
+     * 0h:0m:0s:1ms
+     * 0h:0m:0s:1ms
+     */
+    private void queryTotalCountOfOneTable_way3() {
+        long start = System.currentTimeMillis();
+
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = "SELECT count(*) FROM " + Table1ReaderContract.TableEntry.TABLE_NAME;
+        long numRows = DatabaseUtils.longForQuery(db, sql, null);
+
+        long end = System.currentTimeMillis();
+        String duringTime = mDateUtil.compareDate(start, end);
+        Log.d(TAG, "queryTotalCountOfOneTable_way3: duringTime=" + duringTime + ",size=" + numRows);
     }
 
     // Search : colo2 content = D

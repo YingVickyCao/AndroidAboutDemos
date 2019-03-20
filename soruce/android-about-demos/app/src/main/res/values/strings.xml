@@ -62,6 +62,7 @@
     <string name="update">Update =</string>
     <string name="update_Fuzzy">Update Fuzzy</string>
     <string name="query">Query</string>
+    <string name="query_total_count_of_one_table">Query total count of one table</string>
     <string name="rawQuery">rawQuery</string>
     <string name="query_all">Query all</string>
     <string name="rawQuery_all">rawQuery all</string>

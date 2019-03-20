@@ -50,6 +50,11 @@
                     android:text="@string/insert_multiple_with_Transaction" />
 
                 <Button
+                    android:id="@+id/queryTotalCountOfOneTable"
+                    style="@style/btn.small"
+                    android:text="@string/query_total_count_of_one_table" />
+
+                <Button
                     android:id="@+id/query"
                     style="@style/btn.small"
                     android:text="@string/query" />
@@ -93,6 +98,7 @@
                     android:id="@+id/deleteAll"
                     style="@style/btn.small"
                     android:text="@string/delete_all" />
+
             </LinearLayout>
         </ScrollView>
 
