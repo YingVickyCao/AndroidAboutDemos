@@ -152,7 +152,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
-     *
+     * <p>
      * 100000 =
      * 0h:0m:1s:271ms
      * 0h:0m:1s:274ms
@@ -177,7 +177,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * 0h:0m:0s:58ms
      * 0h:0m:0s:56ms
      * 0h:0m:0s:61ms
-     *
+     * <p>
      * 100000 =
      * 0h:0m:1s:283ms
      * 0h:0m:1s:271ms
@@ -187,7 +187,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         showProgressBar();
 
         new Thread(() -> {
-            // PO: getReadableDatabase()/getWritableDatabase()
+            // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
             long start = System.currentTimeMillis();
 
             Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
@@ -221,36 +221,64 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }).start();
     }
 
+    /**
+     * colo2 任意位置含有1
+     * 100000 =
+     * 0h:0m:0s:676ms
+     *  0h:0m:0s:591ms
+     *  0h:0m:0s:595ms
+     */
     private void fuzzySearch() {
-        SQLiteDatabase db = getReadableDatabase();
-        String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
+        hideProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
 
-        String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-        String keyword = "i";
-        String[] selectionArgs = {"%" + keyword + "%"};
+            SQLiteDatabase db = getReadableDatabase();
+            String[] returnedColumns = {BaseColumns._ID, Table1ReaderContract.TableEntry.COL2, Table1ReaderContract.TableEntry.COL3};
 
-        String orderBy = Table1ReaderContract.TableEntry.COL3 + " DESC";
+            String selection = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+            String keyword = "1";
+            String[] selectionArgs = {"%" + keyword + "%"};
 
-        // PO: SQLiteDatabase Use query instead of rawQuery
-        Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+            String orderBy = Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
-        handleQueryResult(cursor);
+            // PO: SQLiteDatabase Use query instead of rawQuery
+            Cursor cursor = db.query(Table1ReaderContract.TableEntry.TABLE_NAME, returnedColumns, selection, selectionArgs, null, null, orderBy);
+            handleQueryResult(cursor);
+
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
     }
 
-    // colo3 任意位置含有1
+    /**
+     * colo2 任意位置含有1
+     *
+     * 100000 =
+     *  0h:0m:0s:591ms
+     *  0h:0m:0s:594ms
+     *  0h:0m:0s:599ms
+     */
     private void fuzzySearch2() {
-        SQLiteDatabase db = getReadableDatabase();
-        String keyword = "i";
-        String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
-                + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
-                + " WHERE " + Table1ReaderContract.TableEntry.COL2
-                + " LIKE '%" + keyword + "%'"
-                + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " DESC";
+        hideProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+
+            SQLiteDatabase db = getReadableDatabase();
+            String keyword = "1";
+            String sql = "SELECT " + BaseColumns._ID + "," + Table1ReaderContract.TableEntry.COL2 + "," + Table1ReaderContract.TableEntry.COL3
+                    + " FROM " + Table1ReaderContract.TableEntry.TABLE_NAME
+                    + " WHERE " + Table1ReaderContract.TableEntry.COL2
+                    + " LIKE '%" + keyword + "%'"
+                    + " ORDER BY " + Table1ReaderContract.TableEntry.COL3 + " ASC";// DESC
 
 
-        Cursor cursor = db.rawQuery(sql, null);
+            Cursor cursor = db.rawQuery(sql, null);
+            handleQueryResult(cursor);
 
-        handleQueryResult(cursor);
+            long end = System.currentTimeMillis();
+            updateUsedTime(start, end);
+        }).start();
     }
 
     // colo3 任意位置含有1

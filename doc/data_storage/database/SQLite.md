@@ -133,7 +133,7 @@ Cursor query(String table, String[] columns, String selection,  String[] selecti
 
     PS:   
     网上评测：rawQuery性能效率比query要快不少。   
-    实际测试：单表的10000条/100000条 无条件查询，使用时间几乎一样.=>不进行该条优化   
+    实际测试：单表的10000条/100000条 SearchAll/FuzzySearch，使用时间几乎一样.=>不进行该条优化   
 
 - Cursor.close()  
 call close() on the cursor to release its resources
