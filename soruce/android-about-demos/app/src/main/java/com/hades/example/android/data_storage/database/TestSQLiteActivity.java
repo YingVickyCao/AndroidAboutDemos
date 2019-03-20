@@ -94,11 +94,18 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * <pre>
      * db.insert():
      *
+     * 1000 =
+     * 0h:0m:6s:258ms
+     * 0h:0m:5s:542ms
+     * 0h:0m:4s:836ms
+     *
      * 10000 =
-     * 0h:0m:13s:86ms
-     * 0h:0m:13s:351ms
-     * 0h:0m:12s:744ms
-     * 0h:0m:12s:856ms
+     * 0h:0m:6s:374ms
+     * 0h:0m:5s:119ms
+     * 0h:0m:4s:482ms
+     * 0h:0m:4s:559ms
+     * 0h:0m:4s:35ms
+     * 0h:0m:4s:58ms
      *
      * 100000 =
      * After waiting long time, app crashed.
@@ -131,6 +138,17 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      *
      * -------------------------------------------------------------------------
      * execSQL insert:
+     *
+     * 1000:
+     * 0h:0m:4s:792ms
+     * 0h:0m:5s:693ms
+     * 0h:0m:5s:425ms
+     *
+     * 10000 =
+     * 0h:0m:6s:40ms
+     * 0h:0m:5s:827ms
+     * 0h:0m:5s:920ms
+     *
      * 100000 =
      * 0h:10m:13s:960ms
      *
@@ -155,13 +173,19 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
 
             SQLiteDatabase db = getWritableDatabase();
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3,DummyContent.ITEMS_100000
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getInsertMultipleData());//DummyContent.ITEMS_1000,DummyContent.ITEMS_3,DummyContent.ITEMS_100000
 
             long end = System.currentTimeMillis();
             setUsedTime(start, end);
 
             queryAll(db);
         }).start();
+    }
+
+    private List<DummyItem> getInsertMultipleData() {
+//        return DummyContent.ITEMS_100000();
+        return DummyContent.ITEMS_10000();
+//        return DummyContent.ITEMS_1000();
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
@@ -212,7 +236,12 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * <pre>
      * db.insert() with Transaction:
      *
-     * 10000=
+     * 1000 =
+     * 0h:0m:0s:49ms
+     * 0h:0m:0s:53ms
+     * 0h:0m:0s:52ms
+     *
+     * 10000 =
      * 0h:0m:0s:518ms
      * 0h:0m:0s:338ms
      * 0h:0m:0s:333ms
@@ -223,6 +252,17 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * 0h:0m:3s:248ms
      * ----------------------------------
      * execSQL insert with Transaction:
+     *
+     * 1000=
+     * 0h:0m:0s:48ms
+     * 0h:0m:0s:42ms
+     * 0h:0m:0s:44ms
+     * 0h:0m:0s:48ms
+     *
+     * 10000=
+     * 0h:0m:0s:123ms
+     * 0h:0m:0s:59ms
+     * 0h:0m:0s:55ms
      *
      * 100000 =
      * 0h:0m:2s:845ms
@@ -239,7 +279,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getWritableDatabase();
             try {
                 db.beginTransaction();
-                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getInsertMultipleData());
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
