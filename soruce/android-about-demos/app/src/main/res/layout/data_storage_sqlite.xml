@@ -30,6 +30,11 @@
                     android:layout_height="wrap_content" />
 
                 <Button
+                    android:id="@+id/clear"
+                    style="@style/btn.small.red"
+                    android:text="@string/clear" />
+
+                <Button
                     android:id="@+id/insertOne"
                     style="@style/btn.small"
                     android:text="@string/insert_one" />

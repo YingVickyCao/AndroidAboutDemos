@@ -43,6 +43,8 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
         dbHelper = new FeedSQLiteOpenHelper(this);
 
+        findViewById(R.id.clear).setOnClickListener(v -> clear());
+
         findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
@@ -66,6 +68,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         super.onDestroy();
         // PO:SQLiteOpenHelper.close()
         dbHelper.close();
+    }
+
+    private void clear() {
+        handleQueryResult(null);
     }
 
     private void insertOne() {
@@ -482,6 +488,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
     protected ArrayList<DummyItem> cursor2BeanList(Cursor cursor) {
         ArrayList<DummyItem> list = new ArrayList<>();
+        if (null == cursor) {
+            return list;
+        }
         while (cursor.moveToNext()) {
 //            DummyItem dummyItem = new DummyItem(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
             // cursor..getColumnIndexOrThrow
