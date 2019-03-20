@@ -100,7 +100,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_1000());
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
 
             queryAll(db);
         }).start();
@@ -149,7 +149,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             }
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
             queryAll(db);
         }).start();
     }
@@ -174,7 +174,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
         }).start();
     }
 
@@ -201,7 +201,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
         }).start();
     }
 
@@ -254,7 +254,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
         }).start();
     }
 
@@ -293,7 +293,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
-            updateUsedTime(start, end);
+            setUsedTime(start, end);
         }).start();
     }
 
@@ -391,9 +391,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         return db;
     }
 
-    private void updateUsedTime(long start, long end) {
+    private void setUsedTime(long start, long end) {
         String duringTime = mDateUtil.compareDate(start, end);
-        Log.d(TAG, "updateUsedTime: " + start + "-" + end + " = " + duringTime);
+        Log.d(TAG, "setUsedTime: " + start + "-" + end + " = " + duringTime);
         runOnUiThread(() -> {
             mUsedTimeTv.setText(duringTime);
             hideProgressBar();
