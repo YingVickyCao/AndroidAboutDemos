@@ -321,7 +321,8 @@ public class TestSQLiteActivity extends Activity {
 ## FIXED_ERROR: `SQLiteDatabase: Error inserting _id=1 col2=City col3=1 android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: table1._id (code 1555)`
 
 Reason:  
-插入数据时，主键重复.
+插入数据时，主键重复.   
+正确的做法：插入数据时，不插入主键，主键为自动
 
 ## CursorWindow: Window is full: requested allocation 404 bytes, free space 321 bytes, window size 2097152 bytes
 100000条的单表：无条件查询时出现此wrong。   
@@ -345,6 +346,15 @@ db.execSQL("UPDATE table1  SET col2=?  WHERE col2 = ?", new Object[]{String.valu
 
 ## FIXED_ERROR: android.database.sqlite.SQLiteException: no such table: news (code 1)
 在插入数据时 not 建立 table news
+
+## java.lang.IllegalStateException: attempt to re-open an already-closed object: SQLiteQuery: SELECT * FROM table1
+
+```
+error use:
+Cusor.close();
+Cusor.get();
+```
+
 
 # Refs
 - [Room](https://developer.android.google.cn/training/data-storage/room)
