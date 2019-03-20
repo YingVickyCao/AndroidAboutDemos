@@ -97,7 +97,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
             SQLiteDatabase db = getWritableDatabase();
             // insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
-            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_10000);
+            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
 
             long end = System.currentTimeMillis();
             updateUsedTime(start, end);
@@ -127,7 +127,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             try {
                 db.beginTransaction();
                 //            insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_3);
-                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_10000);
+                insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, DummyContent.ITEMS_100000());
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -152,6 +152,11 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
      * 0h:0m:0s:57ms
+     *
+     * 100000 =
+     * 0h:0m:1s:271ms
+     * 0h:0m:1s:274ms
+     * 0h:0m:1s:281ms
      */
     private void queryAll() {
         showProgressBar();
@@ -172,6 +177,11 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
      * 0h:0m:0s:58ms
      * 0h:0m:0s:56ms
      * 0h:0m:0s:61ms
+     *
+     * 100000 =
+     * 0h:0m:1s:283ms
+     * 0h:0m:1s:271ms
+     * 0h:0m:1s:271ms
      */
     private void rawQueryAll() {
         showProgressBar();

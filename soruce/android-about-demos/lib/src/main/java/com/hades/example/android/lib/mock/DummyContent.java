@@ -16,6 +16,7 @@ public class DummyContent {
     public static final List<DummyItem> ITEMS_3 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_1000 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_10000 = new ArrayList<>();
+    public static final List<DummyItem> ITEMS_100000 = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -31,8 +32,27 @@ public class DummyContent {
         ITEMS_1.addAll(createList_1());
         ITEMS_3.addAll(createList_3());
         ITEMS_4.addAll(createList_4());
-        ITEMS_1000.addAll(createList_1000());
-        ITEMS_10000.addAll(createList_10000());
+    }
+
+    public static List<DummyItem> ITEMS_1000() {
+        if (ITEMS_1000.isEmpty()) {
+            ITEMS_1000.addAll(createList_1000());
+        }
+        return ITEMS_1000;
+    }
+
+    public static List<DummyItem> ITEMS_10000() {
+        if (ITEMS_10000.isEmpty()) {
+            ITEMS_10000.addAll(createList_1000());
+        }
+        return ITEMS_10000;
+    }
+
+    public static List<DummyItem> ITEMS_100000() {
+        if (ITEMS_100000.isEmpty()) {
+            ITEMS_100000.addAll(createList_100000());
+        }
+        return ITEMS_100000;
     }
 
     private static void addItem(DummyItem item) {
@@ -75,16 +95,20 @@ public class DummyContent {
     }
 
     private static List<DummyItem> createList_1000() {
-        List<DummyItem> list = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
-            list.add(new DummyItem(i + 1, "Dummy" + (i + 1), i + 1));
-        }
-        return list;
+        return createList(1000);
     }
 
     private static List<DummyItem> createList_10000() {
+        return createList(10000);
+    }
+
+    private static List<DummyItem> createList_100000() {
+        return createList(100000);
+    }
+
+    private static List<DummyItem> createList(int size) {
         List<DummyItem> list = new ArrayList<>();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < size; i++) {
             list.add(new DummyItem(i + 1, "Dummy" + (i + 1), i + 1));
         }
         return list;
