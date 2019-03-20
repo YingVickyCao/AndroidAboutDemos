@@ -362,21 +362,21 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             SQLiteDatabase db = getWritableDatabase();
 
             // Way1:
-//            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-//            String keyword = "A";
-//            String[] whereArgs = {"%" + keyword + "%"};
-//
-//            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
-//            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+            String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
+            String keyword = "A";
+            String[] whereArgs = {"%" + keyword + "%"};
+
+            int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
+            Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
 
             // Way2:
-            String sql = "DELETE FROM  table1 WHERE col2 LIKE '%A%' ";
-            db.execSQL(sql);
-            queryAll(db);
+//            String sql = "DELETE FROM  table1 WHERE col2 LIKE '%A%' ";
+//            db.execSQL(sql);
+//            queryAll(db);
 
         }).start();
     }
-
+    
     private void deleteAll() {
         showProgressBar();
         new Thread(() -> {
