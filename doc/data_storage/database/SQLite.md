@@ -143,6 +143,10 @@ Cursor query(String table, String[] columns, String selection,  String[] selecti
 - Cursor.close()  
 call close() on the cursor to release its resources
 
+#### Query total row num?  
+Use: `"SELECT count(*) FROM table_name"`    
+Not Use: `"SELECT * FROM table_name"` 
+
 ### Update 
 `int update(String table, ContentValues values, String whereClause, String[] whereArgs)`
 
@@ -210,6 +214,7 @@ void execSQL(String sql, Object[] bindArgs) throws SQLException
     测试结论：    
     `android.xlsx` - DB page  
     `TestSQLiteActivity.java`
+    
 ---
 # SQLiteOpenHelper
 ## `void onCreate(SQLiteDatabase db)`
