@@ -20,7 +20,7 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
                     Table1ReaderContract.TableEntry.COL3 + " INTEGER)";
 
     public static final String SQL_RETRIEVE_ENTRIES = "SELECT * FROM " + Table1ReaderContract.TableEntry.TABLE_NAME;
-    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + Table1ReaderContract.TableEntry.TABLE_NAME;
+    private static final String SQL_DROP_TABLE_ENTRIES = "DROP TABLE IF EXISTS " + Table1ReaderContract.TableEntry.TABLE_NAME;
 
     public FeedSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,7 +35,7 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is to simply to discard the data and start over
         Log.d(TAG, "onUpgrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + LogHelper.getThreadInfo());
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DROP_TABLE_ENTRIES);
         onCreate(db);
     }
 
