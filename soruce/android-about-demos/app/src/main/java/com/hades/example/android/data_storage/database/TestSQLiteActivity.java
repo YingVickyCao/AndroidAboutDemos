@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
@@ -186,9 +187,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private List<DummyItem> getDummyItems() {
-        return DummyContent.ITEMS_100000();
+//        return DummyContent.ITEMS_100000();
 //        return DummyContent.ITEMS_10000();
-//        return DummyContent.ITEMS_1000();
+        return DummyContent.ITEMS_1000();
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
@@ -294,43 +295,58 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         }).start();
     }
 
-    private void insertSQLiteStatementWithTransaction() {
-
-    }
-
     /**
-     * 使用SQLiteStatement的executeInsert方法插入数据
+     * <pre>
+     * SQLiteStatement.executeInsert() with Transaction
+     * 1000 =
+     * 0h:0m:0s:40ms
+     * 0h:0m:0s:44ms
+     * 0h:0m:0s:46ms
      *
-     * @return 返回执行所需要的时间
+     * 10000 =
+     * 0h:0m:0s:65ms
+     * 0h:0m:0s:48ms
+     * 0h:0m:0s:44ms
+     * 0h:0m:0s:45ms
+     *
+     * 100000 =
+     * 0h:0m:2s:931ms
+     * 0h:0m:2s:939ms
+     * 0h:0m:2s:928ms
+     *
+     * <pre/>
      */
+    private void insertSQLiteStatementWithTransaction() {
+        showProgressBar();
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
 
-    public void insertStatement() {
+            SQLiteDatabase db = getWritableDatabase();
+            try {
+                db.beginTransaction();
 
-//        long start = System.currentTimeMillis();
-//
-//        for (User user : users) {
-//
-//            SQLiteStatement statement = db.compileStatement(sql_insert.toString());
-//            statement.bindString(1, user.getName());
-//
-//            statement.bindLong(2, user.getGender());
-//
-//            statement.bindLong(3, user.getAge());
-//
-//            statement.bindString(4, user.getPhoneNumber());
-//
-//            statement.bindString(5, user.getAddress());
-//
-//            statement.executeInsert();
-//
-//        }
-//
-//        long
-//                end = System.currentTimeMillis();
-//
-//        return
-//                end - start;
+                StringBuffer sql_insert;
+                sql_insert = new StringBuffer();
+                sql_insert.append("INSERT INTO table1(col2,col3) ");
+                sql_insert.append(" VALUES(?, ?)");
 
+                List<DummyItem> items = getDummyItems();
+                for (DummyItem user : items) {
+
+                    SQLiteStatement statement = db.compileStatement(sql_insert.toString());
+                    statement.bindString(1, user.getColo2());
+                    statement.bindLong(2, user.getCol3());
+                    statement.executeInsert();
+                }
+
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+            long end = System.currentTimeMillis();
+            setUsedTime(start, end);
+            queryAll(db);
+        }).start();
     }
 
     /**

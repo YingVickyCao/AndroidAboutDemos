@@ -10,7 +10,6 @@ public class DummyContent {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<>();
     public static final List<DummyItem> ITEMS_1 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_4 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_3 = new ArrayList<>();
@@ -21,17 +20,48 @@ public class DummyContent {
     /**
      * A map of sample (dummy) items, by ID.
      */
+    public static final List<DummyItem> ITEMS = new ArrayList<>();
     public static final Map<Integer, DummyItem> ITEM_MAP = new HashMap<Integer, DummyItem>();
-
     private static final int COUNT = 50;
 
-    static {
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+    public static Map<Integer, DummyItem> ITEM_MAP() {
+        if (ITEM_MAP.isEmpty()) {
+            for (int i = 1; i <= COUNT; i++) {
+                DummyItem item = createDummyItem(i);
+                ITEM_MAP.put(item.id, item);
+            }
         }
-        ITEMS_1.addAll(createList_1());
-        ITEMS_3.addAll(createList_3());
-        ITEMS_4.addAll(createList_4());
+        return ITEM_MAP;
+    }
+
+    public static List<DummyItem> ITEMS() {
+        if (ITEMS.isEmpty()) {
+            for (int i = 1; i <= COUNT; i++) {
+                ITEMS.add(createDummyItem(i));
+            }
+        }
+        return ITEMS;
+    }
+
+    public static List<DummyItem> ITEMS_1() {
+        if (ITEMS_1.isEmpty()) {
+            ITEMS_1.addAll(createList_3());
+        }
+        return ITEMS_1;
+    }
+
+    public static List<DummyItem> ITEMS_3() {
+        if (ITEMS_3.isEmpty()) {
+            ITEMS_3.addAll(createList_3());
+        }
+        return ITEMS_3;
+    }
+
+    public static List<DummyItem> ITEMS_4() {
+        if (ITEMS_4.isEmpty()) {
+            ITEMS_4.addAll(createList_4());
+        }
+        return ITEMS_4;
     }
 
     public static List<DummyItem> ITEMS_1000() {
@@ -55,11 +85,6 @@ public class DummyContent {
         return ITEMS_100000;
     }
 
-    private static void addItem(DummyItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
-    }
-
     private static DummyItem createDummyItem(int position) {
         return new DummyItem(position, "Item " + position, position);
     }
@@ -75,15 +100,8 @@ public class DummyContent {
     private static List<DummyItem> createList_4() {
         List<DummyItem> list = new ArrayList<>();
         list.add(new DummyItem(1, "ABC", 2));
-        list.add(new DummyItem(2, "hello", 204));
-        list.add(new DummyItem(3, "Book", 9));
-        list.add(new DummyItem(4, "99%", 9));
-        /**
-         * FIXED_ERROR:
-         * 2019-03-18 17:56:23.276 2700-2700/com.hades.example.android E/SQLiteDatabase: Error inserting col2=Book _id=3 col3=9
-         android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: table3._id (code 1555)
-         */
-//        list.add(new DummyItem(3, "OP", 15));
+        list.add(new DummyItem(2, "Book", 9));
+        list.add(new DummyItem(3, "99%", 9));
         list.add(new DummyItem(4, "OP", 15));
         return list;
     }

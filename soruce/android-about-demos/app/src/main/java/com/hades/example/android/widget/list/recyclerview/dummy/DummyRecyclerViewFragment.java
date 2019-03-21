@@ -71,7 +71,7 @@ public class DummyRecyclerViewFragment extends Fragment {
         } else {
             mList.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        mList.setAdapter(new DummyRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        mList.setAdapter(new DummyRecyclerViewAdapter(DummyContent.ITEMS(), mListener));
     }
 
 
