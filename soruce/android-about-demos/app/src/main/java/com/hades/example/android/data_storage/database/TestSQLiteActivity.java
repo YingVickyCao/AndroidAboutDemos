@@ -401,7 +401,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
 
             // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
-            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
@@ -410,7 +410,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void queryAll(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+        Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
         handleQueryResult(cursor);
     }
 
@@ -703,7 +703,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
         Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
 
-        Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_ENTRIES, null);
+        Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
         handleQueryResult(cursor);
     }
 

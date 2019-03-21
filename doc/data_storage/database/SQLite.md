@@ -404,3 +404,6 @@ SQLiteDatabase db = dbHelper.getWritableDatabase()
 - https://blog.csdn.net/adayabetter/article/details/44516217
 - [SQLite事务、升级数据库](https://www.cnblogs.com/orlion/p/5350683.html)
 - [SQLite数据库的增删改查和事务(transaction)调用](https://www.cnblogs.com/amosli/p/3784998.html)
+- [Andrioid SQLite 操作与SQLiteStatement关系](https://blog.csdn.net/wangbole/article/details/43196067)
+- [SQLite之SQLiteStatement](https://blog.csdn.net/u012643122/article/details/45932157)
+- [Android入门(十二)SQLite事务、升级数据库](https://www.cnblogs.com/orlion/p/5350683.html)
