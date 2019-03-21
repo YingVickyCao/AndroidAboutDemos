@@ -214,7 +214,7 @@ void execSQL(String sql, Object[] bindArgs) throws SQLException
     测试结论：    
     `android.xlsx` - DB page  
     `TestSQLiteActivity.java`
-
+    
 ## Create table with PRIMARY KEY AUTOINCREMENT
 ```
 Case1:
@@ -228,6 +228,15 @@ insert key=1
 insert key=2
 Delete the DB file.
 insert key=1
+```
+
+## SQLiteStatement
+CRUD 最终调用方法？
+```
+SQLiteDatabase.insert() ->SQLiteStatement.executeInsert() 
+SQLiteDatabase.querry/rawQuery() -> .SQLiteCursorDriver.query()
+SQLiteDatabase.update() -> SQLiteStatement.executeUpdateDelete() 
+SQLiteDatabase.delete() -> SQLiteStatement.executeUpdateDelete()
 ```
 ---
 # SQLiteOpenHelper
