@@ -49,6 +49,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
         findViewById(R.id.insertMultipleWithTransaction).setOnClickListener(v -> insertMultipleWithTransaction());
+        findViewById(R.id.insertSQLiteStatementWithTransaction).setOnClickListener(v -> insertSQLiteStatementWithTransaction());
 
         findViewById(R.id.queryTotalCountOfOneTable).setOnClickListener(v -> queryTotalCountOfOneTable());
         findViewById(R.id.query).setOnClickListener(v -> query());
@@ -85,7 +86,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             ContentValues rowInitColumnValues = new ContentValues();
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL2, "A");
             rowInitColumnValues.put(Table1ReaderContract.TableEntry.COL3, "100");
-
             long insertedNewRowId = db.insert(Table1ReaderContract.TableEntry.TABLE_NAME, null, rowInitColumnValues);
             Log.d(TAG, "insertOne: newRowId=" + insertedNewRowId);
 
@@ -292,6 +292,45 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             setUsedTime(start, end);
             queryAll(db);
         }).start();
+    }
+
+    private void insertSQLiteStatementWithTransaction() {
+
+    }
+
+    /**
+     * 使用SQLiteStatement的executeInsert方法插入数据
+     *
+     * @return 返回执行所需要的时间
+     */
+
+    public void insertStatement() {
+
+//        long start = System.currentTimeMillis();
+//
+//        for (User user : users) {
+//
+//            SQLiteStatement statement = db.compileStatement(sql_insert.toString());
+//            statement.bindString(1, user.getName());
+//
+//            statement.bindLong(2, user.getGender());
+//
+//            statement.bindLong(3, user.getAge());
+//
+//            statement.bindString(4, user.getPhoneNumber());
+//
+//            statement.bindString(5, user.getAddress());
+//
+//            statement.executeInsert();
+//
+//        }
+//
+//        long
+//                end = System.currentTimeMillis();
+//
+//        return
+//                end - start;
+
     }
 
     /**

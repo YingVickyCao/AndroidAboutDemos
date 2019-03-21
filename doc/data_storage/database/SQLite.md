@@ -360,7 +360,14 @@ Cusor.close();
 Cusor.get();
 ```
 
+## java.lang.IllegalStateException: attempt to re-open an already-closed object: SQLiteDatabase: /data/user/0/com.hades.example.android/databases/FeedReader.db
 
+```
+error use:
+SQLiteDatabase.close()
+SQLiteDatabase db = dbHelper.getWritableDatabase()
+
+```
 # Refs
 - [Room](https://developer.android.google.cn/training/data-storage/room)
 - [Save data using SQLite](https://developer.android.google.cn/training/data-storage/sqlite.html)

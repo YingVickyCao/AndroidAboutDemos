@@ -53,6 +53,7 @@
     <string name="insert_one">Insert one</string>
     <string name="insert_multiple">Insert multiple</string>
     <string name="insert_multiple_with_Transaction">Insert multiple with Transaction</string>
+    <string name="insert_sqlitestatement_with_transaction">Insert SQLiteStatement with Transaction</string>
     <string name="delete">Delete</string>
     <string name="delete_all">Delete all</string>
     <string name="create_table">create table</string>

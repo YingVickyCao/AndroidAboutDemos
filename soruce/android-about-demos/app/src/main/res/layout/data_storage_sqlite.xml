@@ -50,6 +50,11 @@
                     android:text="@string/insert_multiple_with_Transaction" />
 
                 <Button
+                    android:id="@+id/insertSQLiteStatementWithTransaction"
+                    style="@style/btn.small"
+                    android:text="@string/insert_sqlitestatement_with_transaction" />
+
+                <Button
                     android:id="@+id/queryTotalCountOfOneTable"
                     style="@style/btn.small"
                     android:text="@string/query_total_count_of_one_table" />
