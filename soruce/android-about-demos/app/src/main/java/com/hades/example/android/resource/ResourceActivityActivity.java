@@ -33,10 +33,10 @@ public class ResourceActivityActivity extends PermissionActivity {
         initViews();
 
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
-        findViewById(R.id.theme).setOnClickListener(v -> theme());
-        findViewById(R.id.internationalization).setOnClickListener(v -> internationalization());
-        findViewById(R.id.array).setOnClickListener(v -> array());
-        findViewById(R.id.parseXML).setOnClickListener(v -> parseXML());
+        findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
+        findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
+        findViewById(R.id.pageArray).setOnClickListener(v -> pageArray());
+        findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
@@ -56,19 +56,19 @@ public class ResourceActivityActivity extends PermissionActivity {
         showFragment(new MaterialFragment());
     }
 
-    private void theme() {
+    private void pageTheme() {
         showActivity(ThemeChoosePageAActivity.class);
     }
 
-    private void internationalization() {
+    private void pageInternationalization() {
         showFragment(new InternationalizationFragment());
     }
 
-    private void array() {
+    private void pageArray() {
         showFragment(new ArrayFragment());
     }
 
-    private void parseXML() {
+    private void pageParseXML() {
         showFragment(new ParseXMLFragment());
     }
 

@@ -27,22 +27,22 @@
                 android:text="原始资源" />
 
             <Button
-                android:id="@+id/theme"
+                android:id="@+id/pageTheme"
                 style="@style/btn.small"
                 android:text="Theme" />
 
             <Button
-                android:id="@+id/internationalization"
+                android:id="@+id/pageInternationalization"
                 style="@style/btn.small"
                 android:text="国际化" />
 
             <Button
-                android:id="@+id/array"
+                android:id="@+id/pageArray"
                 style="@style/btn.small"
                 android:text="数组" />
 
             <Button
-                android:id="@+id/parseXML"
+                android:id="@+id/pageParseXML"
                 style="@style/btn.small"
                 android:text="XML" />
 

@@ -2,8 +2,8 @@ package com.hades.example.android;
 
 import android.os.Bundle;
 
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.data_storage.DataStorageActivityActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.po.security.SecurityActivityActivity;
 import com.hades.example.android.resource.ResourceActivityActivity;
 import com.hades.example.android.widget.WidgetActivityActivity;
@@ -21,11 +21,6 @@ public class MainActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
-    }
-
-    @Override
-    protected void showCurrentTest() {
-//        pageResource();
     }
 
     private void pageSecurity() {
@@ -47,5 +42,4 @@ public class MainActivity extends NoNeedPermissionActivity {
     private void pageQAAboutView() {
         showActivity(QAActivity.class);
     }
-
 }
