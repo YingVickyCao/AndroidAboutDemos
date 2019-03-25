@@ -16,7 +16,8 @@
 
     <!-- APPLY_THEME_START -->
     <style name="AppTheme.Red">
-        <item name="pageRootBg">@android:color/holo_red_dark</item>
+        <!--<item name="pageRootBg">@android:color/holo_red_dark</item>-->
+        <item name="pageRootBg">#ffcc0000</item>
     </style>
 
     <style name="AppTheme.Green">
