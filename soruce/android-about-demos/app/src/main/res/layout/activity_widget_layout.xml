@@ -174,6 +174,11 @@
                 android:id="@+id/testPopupWindow"
                 style="@style/btn.small"
                 android:text="@string/test_PopupWindow" />
+
+            <Button
+                android:id="@+id/pageSpinner"
+                style="@style/btn.small"
+                android:text="@string/spinner" />
         </LinearLayout>
     </ScrollView>
 

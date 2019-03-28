@@ -146,7 +146,7 @@
         <!--</receiver>-->
         <!-- END_RUNTIME_PERMISSION -->
 
-        <activity android:name="com.hades.example.android.widget.WidgetActivityActivity" />
+        <activity android:name="com.hades.example.android.widget.WidgetActivity" />
 
         <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->

@@ -6,7 +6,7 @@ import com.hades.example.android.data_storage.DataStorageActivityActivity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.po.security.SecurityActivityActivity;
 import com.hades.example.android.resource.ResourceActivityActivity;
-import com.hades.example.android.widget.WidgetActivityActivity;
+import com.hades.example.android.widget.WidgetActivity;
 
 public class MainActivity extends NoNeedPermissionActivity {
 
@@ -28,7 +28,7 @@ public class MainActivity extends NoNeedPermissionActivity {
     }
 
     private void pageWidget() {
-        showActivity(WidgetActivityActivity.class);
+        showActivity(WidgetActivity.class);
     }
 
     private void pageDateStorage() {
