@@ -39,4 +39,6 @@
     <string name="page_bond_service">Bound service</string>
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
 
+    <string name="page_spinner">Spinner</string>
+
 </resources>

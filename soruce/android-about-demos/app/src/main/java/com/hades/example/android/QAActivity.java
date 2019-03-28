@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageAActivity;
+import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -28,11 +28,17 @@ public class QAActivity extends NoNeedPermissionActivity {
         getFragmentManager().beginTransaction().replace(R.id.root, fragment, fragment.getClass().getSimpleName()).commit();
     }
 
+    @Override
+    protected boolean isShowDetail() {
+        return true;
+    }
+
     protected void showCurrentTest() {
         temp();
     }
 
     private void temp() {
-        showActivity(ThemeChoosePageAActivity.class);
+//        showActivity(ThemeChoosePageAActivity.class);
+        showFragment(new TestSpinnerFragment());
     }
 }

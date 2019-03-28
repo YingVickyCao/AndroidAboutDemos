@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/spinner" />
+        android:text="@string/page_spinner" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,11 +14,85 @@
         android:layout_below="@+id/topic"
         android:orientation="vertical">
 
+        <!--
+        FIXED_ERROR::
+        java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.Object.toString()' on a null object reference
+
+        android:entries="@array/int_array"
+        =>
+        android:entries="@array/phoneType"
+        -->
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/default_spinner" />
+
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_100"
-            android:entries="@array/string_array"
-            android:popupBackground="@android:color/holo_red_dark" />
+            android:layout_height="@dimen/size_50"
+            android:entries="@array/phoneType" />
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/custom_spinner_bg" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:background="@android:color/holo_blue_bright"
+            android:entries="@array/phoneType" />
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/custom_spinner_popup_bg" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:entries="@array/phoneType"
+            android:popupBackground="@android:color/holo_green_light" />
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/custom_spinner_not_cover_action_bar" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:dropDownVerticalOffset="@dimen/size_50"
+            android:entries="@array/phoneType"
+            android:spinnerMode="dropdown" />
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/spinner_showed_as_dialog" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:entries="@array/phoneType"
+            android:spinnerMode="dialog" />
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/spinner_custom_dropdown" />
+
+        <Spinner
+            android:id="@+id/spinnerWithCustomDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50" />
+
     </LinearLayout>
 
 </RelativeLayout>

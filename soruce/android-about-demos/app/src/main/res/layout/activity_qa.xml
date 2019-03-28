@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/topic"
         style="@style/topic"
         android:text="Temp Test Code" />
 
@@ -33,4 +34,9 @@
                 android:text="Temp" />
         </LinearLayout>
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragmentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>

@@ -2,7 +2,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/drawable_selector_4_item_view_selected_status"
+    android:background="@drawable/drawable_selector_4_state_pressed"
     android:orientation="vertical">
 
     <!-- QA: android:foreground / android:background - show bg when click item view -->

@@ -16,6 +16,7 @@ public class DummyContent {
     public static final List<DummyItem> ITEMS_1000 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_10000 = new ArrayList<>();
     public static final List<DummyItem> ITEMS_100000 = new ArrayList<>();
+    public static final ArrayList<String> ITEMS_STRING_3 = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -85,6 +86,13 @@ public class DummyContent {
         return ITEMS_100000;
     }
 
+    public static ArrayList<String> ITEMS_STRING_3() {
+        if (ITEMS_STRING_3.isEmpty()) {
+            ITEMS_STRING_3.addAll(createStringList_3());
+        }
+        return ITEMS_STRING_3;
+    }
+
     private static DummyItem createDummyItem(int position) {
         return new DummyItem(position, "Item " + position, position);
     }
@@ -122,6 +130,14 @@ public class DummyContent {
 
     private static List<DummyItem> createList_100000() {
         return createList(100000);
+    }
+
+    private static ArrayList<String> createStringList_3() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Item 1");
+        list.add("Item 2");
+        list.add("Item 3");
+        return list;
     }
 
     private static List<DummyItem> createList(int size) {

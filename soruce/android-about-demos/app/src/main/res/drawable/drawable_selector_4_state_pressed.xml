@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <color android:color="@color/item_view_highlight_bg" />
+        <color android:color="@color/grid_state_pressed" />
     </item>
 
-    <item android:drawable="@color/item_view_default_bg" />
+    <item android:drawable="@android:color/holo_orange_light" />
 </selector>
