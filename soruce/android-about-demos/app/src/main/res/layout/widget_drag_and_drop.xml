@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/subject"
-        style="@style/subject"
+        style="@style/topic"
         android:text="@string/test_drag_and_drop" />
 
     <RelativeLayout

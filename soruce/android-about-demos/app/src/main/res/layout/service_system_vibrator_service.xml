@@ -3,7 +3,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/subject"
+        style="@style/topic"
         android:layout_alignParentTop="true"
         android:text="Vibrator" />
 

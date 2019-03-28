@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextClock
-        style="@style/subject"
+        style="@style/topic"
         android:text="@string/subject_sms_group_send_sms" />
 
     <TextView
