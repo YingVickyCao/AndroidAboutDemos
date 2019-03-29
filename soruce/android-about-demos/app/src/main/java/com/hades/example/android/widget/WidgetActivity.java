@@ -16,7 +16,7 @@ import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
-import com.hades.example.android.widget.button.UseButton2AvoidCheckEditInputDateActivity;
+import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
@@ -105,7 +105,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageUseButton2AvoidCheckEditInputDate() {
-        showActivity(UseButton2AvoidCheckEditInputDateActivity.class);
+        showActivity(TestButtonActivity.class);
     }
 
     private void pageKenBurnsImage() {

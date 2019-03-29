@@ -141,5 +141,6 @@
     <string name="spinner_custom_dropdown">Spinner custom dropdown</string>
     <string name="useButton2AvoidCheckEditedInputDate">Use Button to avoid check edited input date</string>
     <string name="remove_button_shadow">Remove button shadow</string>
+    <string name="custom_button_shadow">Custom button shadow</string>
     <string name="normal_button">Normal button</string>
 </resources>

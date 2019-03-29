@@ -25,5 +25,5 @@
         style="@style/btn"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
-        android:background="@drawable/drawable_shape_4_btn_rounded_bg" />
+        android:background="@drawable/drawable_shape_4_rounded_bg" />
 </LinearLayout>
