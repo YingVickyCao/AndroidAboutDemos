@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
+import com.hades.example.android.widget.button.UseButton2AvoidCheckEditInputDateActivity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -39,6 +40,8 @@ public class QAActivity extends NoNeedPermissionActivity {
 
     private void temp() {
 //        showActivity(ThemeChoosePageAActivity.class);
-        showFragment(new TestSpinnerFragment());
+        showActivity(UseButton2AvoidCheckEditInputDateActivity.class);
+//        showFragment(new TestSpinnerFragment());
+//        showFragment(new TestSpinnerFragment());
     }
 }

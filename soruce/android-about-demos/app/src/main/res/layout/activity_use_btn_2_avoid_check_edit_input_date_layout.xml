@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  Copyright (c) 2012 Manning
-  See the file license.txt for copying permission.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,11 +12,35 @@
         android:layout_height="wrap_content"
         android:text="@string/date" />
 
+    <TextView
+        style="@style/tv"
+        android:text="@string/normal_button" />
+
+    <Button style="@style/btn.red" />
+
+    <TextView
+        style="@style/tv"
+        android:layout_marginTop="@dimen/margin_tiny"
+        android:text="@string/useButton2AvoidCheckEditedInputDate" />
+
     <Button
         android:id="@+id/details_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:gravity="center_vertical" />
+
+    <TextView
+        style="@style/tv"
+        android:layout_marginTop="@dimen/margin_tiny"
+        android:text="@string/remove_button_shadow" />
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_tiny"
+        android:background="@android:color/holo_red_light"
+        android:textAllCaps="false" />
 
 </LinearLayout>
