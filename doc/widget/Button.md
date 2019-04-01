@@ -2,7 +2,8 @@
 API >= 21
 
 ## 1. 阴影
-### 阴影是Z轴相关属性决定的
+- 阴影是Z轴相关属性决定的
+
 
 ```
 1. 视图的Z值由两个分量表示：
@@ -15,15 +16,17 @@ android:stateListAnimator => 动画drawable 中 android:propertyName="translatio
 Z = elevation + translationZ
 ```
 
-##  android:elevation
-elevation 值决定了Z轴方向阴影大小
-- android:stateListAnimator="@null"时，设置android:elevation无效，android:background（RippleDrawable）有效：   
-即android:stateListAnimator="@null"时，底部无阴影，有水波效果。
+- 阴影的颜色是默认，没有找到API修改
 
-- android:stateListAnimator="@animator"时，设置android:elevation有效，android:background（RippleDrawable）有效：     
-即android:stateListAnimator="@animator"时，底部阴影，有水波效果。
+## `android:elevation`
+`android:elevation` 值决定了阴影大小
+
+##  `android:stateListAnimator`
+`android:stateListAnimator` 决定底部是否有阴影
 
 ## 2. 水波涟漪效果
+android:background（RippleDrawable）决定水波涟漪效果。
+
 ### 带约束的ripple
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,6 +54,7 @@ shape属性是可以兼容的，并且涟漪的显示效果会因为Drawable的�
 ```
 
 - 涟漪可以超出当前设置的View进行展示，整个涟漪其实会显示成一个逐渐放大的园，最大为当前布局的父容器边界
+- 不带背景色 => 不带阴影 + 带无边界水波
 
 ### 带对比色的ripple
 
@@ -68,6 +72,25 @@ shape属性是可以兼容的，并且涟漪的显示效果会因为Drawable的�
 
 - 背景不是真实可见的，只是起到范围约束和涟漪效果影响的功能，在触发涟漪之前不会被显示出来。并且可以和普通的背景搭配使用，也就是普通的背景用于视图的显示，这种背景用于约束涟漪效果。
 
+## 3. Summary
+```
+1）android:stateListAnimator="@null" -> android:elevation无效:底部无阴影
+2）android:stateListAnimator="@animator" -> android:elevation有效:底部阴影，阴影变高
+3）android:background（RippleDrawable 没有<Item> 背景)时 -> 没有背景色： 
+没有背景 -> 没有阴影，点击带水波
+4）android:background（RippleDrawable 带有 <Item> 背景)时：
+有背景->有阴影，点击带水波
+
+因此：
+带阴影的条件：
+android:stateListAnimator="@animator" &&  android:background（RippleDrawable 带有 <Item> 背景)
+
+带水波的条件：
+android:background（RippleDrawable 带有 <Item> 背景)
+
+```
+
 ## Refs：
 - https://blog.csdn.net/ccw0054/article/details/72845347
 - https://www.jianshu.com/p/c1d17a39bc09
+- https://www.cnblogs.com/plokmju/p/7766076.html

@@ -42,58 +42,57 @@
             <TextView
                 style="@style/tv"
                 android:layout_marginTop="@dimen/margin_tiny"
-                android:text="@string/custom_button_shadow" />
+                android:text="Test Button 阴影以及点击时带水波效果" />
 
 
             <Button
                 style="@style/btn"
-                android:elevation="100dp"
-                android:text="Custom elevation Button" />
+                android:elevation="5dp"
+                android:text="Button - Custom shadow height" />
 
             <Button
                 style="@style/btn"
                 android:background="@drawable/btn_default_material"
                 android:stateListAnimator="@animator/button_state_list_anim_material"
-                android:text="Blue Button" />
+                android:text="Blue Button(Default Choose)" />
 
             <Button
                 style="@style/btn"
                 android:background="@drawable/btn_default_material_without_restriction"
                 android:stateListAnimator="@animator/button_state_list_anim_material"
-                android:text="Blue Button" />
+                android:text="Button - 无背景色，不带阴影、带无边界水波" />
 
             <Button
                 style="@style/btn"
-                android:elevation="@dimen/size_80"
                 android:background="@drawable/btn_default_material"
                 android:stateListAnimator="@null"
-                android:text="Blue Borderless Button" />
+                android:text="Button - 蓝色、不带阴影、带有边界水波" />
 
             <Button
                 style="@style/btn"
                 android:background="@drawable/btn_default_material_without_restriction"
                 android:stateListAnimator="@null"
-                android:text="Blue Borderless Button" />
+                android:text="Button - 无背景色，不带阴影、带无边界水波" />
 
             <Button
                 style="@style/btn"
                 android:background="@drawable/btn_borderless_material"
                 android:stateListAnimator="@null"
-                android:text="Borderless Button" />
+                android:text="Button - 无背景色、不带阴影、带有边界水波" />
 
 
             <Button
                 style="@android:style/Widget.Material.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Borderless Button"
+                android:text="Button - 无背景色、不带阴影、带有边界水波"
                 android:textAllCaps="false" />
 
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Borderless Button"
+                android:text="Button - 无背景色、不带阴影、带有边界水波"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>
