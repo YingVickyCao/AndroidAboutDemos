@@ -6,7 +6,7 @@
     android:insetBottom="6dp">
     <shape
         android:shape="rectangle"
-        android:tint="@color/btn_default_material_light_app">
+        android:tint="@color/btn_default_material_light">
 
         <corners android:radius="2dp" />
         <!--<solid android:color="@android:color/white" />-->
