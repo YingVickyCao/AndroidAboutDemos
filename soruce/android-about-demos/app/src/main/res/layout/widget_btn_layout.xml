@@ -58,7 +58,20 @@
 
             <Button
                 style="@style/btn"
+                android:background="@drawable/btn_default_material_without_restriction"
+                android:stateListAnimator="@animator/button_state_list_anim_material"
+                android:text="Blue Button" />
+
+            <Button
+                style="@style/btn"
+                android:elevation="@dimen/size_80"
                 android:background="@drawable/btn_default_material"
+                android:stateListAnimator="@null"
+                android:text="Blue Borderless Button" />
+
+            <Button
+                style="@style/btn"
+                android:background="@drawable/btn_default_material_without_restriction"
                 android:stateListAnimator="@null"
                 android:text="Blue Borderless Button" />
 
@@ -67,6 +80,7 @@
                 android:background="@drawable/btn_borderless_material"
                 android:stateListAnimator="@null"
                 android:text="Borderless Button" />
+
 
             <Button
                 style="@android:style/Widget.Material.Button.Borderless"
