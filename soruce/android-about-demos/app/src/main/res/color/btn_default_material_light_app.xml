@@ -3,6 +3,6 @@
     <!--<item android:alpha="?android:attr/disabledAlpha" android:color="#ffd6d7d7" android:state_enabled="false" />-->
     <!--<item android:color="#ffd6d7d7" />-->
 
-    <item android:alpha="?android:attr/disabledAlpha" android:color="#00bdf2" android:state_enabled="false" />
-    <item android:color="#00bdf2" />
+    <item android:alpha="?android:attr/disabledAlpha" android:color="@color/blue" android:state_enabled="false" />
+    <item android:color="@color/blue" />
 </selector>

@@ -37,72 +37,50 @@
                 android:background="@android:drawable/edit_text"
                 android:gravity="center_vertical" />
 
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_tiny"
-                android:text="@string/remove_button_shadow"
-                android:textAllCaps="false" />
+            <View style="@style/div" />
 
             <TextView
                 style="@style/tv"
                 android:layout_marginTop="@dimen/margin_tiny"
                 android:text="@string/custom_button_shadow" />
 
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="@drawable/btn_default_holo_light" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="@drawable/btn_default_holo_light_2"-->
-            <!--android:focusable="true" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="@drawable/btn_default_holo_light_3"-->
-            <!--android:elevation="4dp" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="?android:attr/selectableItemBackground"-->
-            <!--android:elevation="4dp" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="?android:attr/actionBarItemBackground"-->
-            <!--android:elevation="4dp" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="@drawable/btn_default_holo_light_4"-->
-            <!--android:stateListAnimator="@null" />-->
-
-            <!--<Button-->
-            <!--style="@style/btn"-->
-            <!--android:layout_marginTop="@dimen/margin_medium"-->
-            <!--android:background="?android:attr/selectableItemBackgroundBorderless" />-->
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/btn"
+                android:elevation="100dp"
+                android:text="Custom elevation Button" />
+
+            <Button
+                style="@style/btn"
                 android:background="@drawable/btn_default_material"
                 android:stateListAnimator="@animator/button_state_list_anim_material"
-                android:text="Button" />
+                android:text="Blue Button" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/btn"
+                android:background="@drawable/btn_default_material"
+                android:stateListAnimator="@null"
+                android:text="Blue Borderless Button" />
+
+            <Button
+                style="@style/btn"
                 android:background="@drawable/btn_borderless_material"
                 android:stateListAnimator="@null"
                 android:text="Borderless Button" />
+
+            <Button
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Borderless Button"
+                android:textAllCaps="false" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Borderless Button"
+                android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>
 

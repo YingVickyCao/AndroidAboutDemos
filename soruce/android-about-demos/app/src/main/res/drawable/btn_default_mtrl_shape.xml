@@ -7,9 +7,11 @@
     <shape
         android:shape="rectangle"
         android:tint="@color/btn_default_material_light_app">
+
         <corners android:radius="2dp" />
         <!--<solid android:color="@android:color/white" />-->
-        <solid android:color="#00bdf2" />
+        <solid android:color="@color/blue" />
+
         <padding
             android:bottom="4dp"
             android:left="8dp"
