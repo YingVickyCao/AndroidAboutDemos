@@ -82,6 +82,15 @@
             android:background="@android:color/holo_blue_bright"
             android:dropDownWidth="100.0dp"
             android:dropDownVerticalOffset="@dimen/size_50"
+            android:entries="@array/phoneType" />
+
+        <Spinner
+            android:id="@+id/spinnerWithCustomDropdown3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:background="@drawable/spinner_background_material"
+            android:dropDownWidth="100.0dp"
+            android:dropDownVerticalOffset="@dimen/size_50"
             android:dropDownSelector="@drawable/list_choice_background_material"
             android:entries="@array/phoneType"
             android:popupBackground="@drawable/popup_background_material" />
