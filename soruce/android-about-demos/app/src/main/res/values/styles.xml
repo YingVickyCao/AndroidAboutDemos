@@ -30,4 +30,12 @@
         <item name="android:drawSelectorOnTop">true</item>
         <item name="android:listSelector">@drawable/drawable_selector_4_photo_grid_list</item>
     </style>
+
+    <style name="Widget.Material.Light.DropDownItem.Spinner_app" parent="android:Widget.Material.Light.DropDownItem.Spinner">
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Widget.DropDownItem</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.DropDownItem_app" parent="@android:style/TextAppearance.Material.Widget.DropDownItem">
+        <item name="android:textColor">@color/primary_text_disable_only_material_light_app</item>
+    </style>
 </resources>

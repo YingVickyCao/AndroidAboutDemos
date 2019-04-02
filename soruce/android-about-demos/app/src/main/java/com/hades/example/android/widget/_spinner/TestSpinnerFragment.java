@@ -26,7 +26,7 @@ public class TestSpinnerFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_spinner, container, false);
-        gradeSpinner = view.findViewById(R.id.spinnerWithCustomDropdown);
+        gradeSpinner = view.findViewById(R.id.spinnerWithCustomDropdown3);
 
         test();
         return view;
@@ -78,25 +78,49 @@ public class TestSpinnerFragment extends BaseFragment {
 //            }
 
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                /*
-                 getView: convertView=null
-                 */
-                if (convertView == null) {
-                    Log.d(TAG, "getView: convertView=" + null);
-                    LayoutInflater inflater = LayoutInflater.from(getContext());
-                    convertView = inflater.inflate(android.R.layout.simple_spinner_item, parent, false);
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view;
+                if (null == convertView) {
+                    Log.d(TAG, "getDropDownView:" + ",position=" + position + ",convertView=null");
+//                    view = View.inflate(getContext(), android.R.layout.simple_spinner_dropdown_item, null);
+                    view = View.inflate(getContext(), R.layout.simple_spinner_dropdown_item, null);
+                } else {
+                    view = convertView;
+                    Log.d(TAG, "getDropDownView:" + ",position=" + position + ",convertView@" + convertView.hashCode());
                 }
-                TextView tv = convertView.findViewById(android.R.id.text1);
-                tv.setText(gradeList.get(position));
-                tv.setTextColor(getResources().getColor(android.R.color.holo_red_light, null));
 
-                return convertView;
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setText(gradeList.get(position));
+
+                if (gradeSpinner.getSelectedItemPosition() == position) {
+//                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light, null));
+                    tv.setTextColor(getResources().getColor(R.color.blue, null));
+                } else {
+//                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light, null));
+                    tv.setTextColor(getResources().getColor(android.R.color.white, null));
+                }
+                return view;
             }
+
+//            @Override
+//            public View getView(int position, View convertView, ViewGroup parent) {
+//                /*
+//                 getView: convertView=null
+//                 */
+//                if (convertView == null) {
+//                    Log.d(TAG, "getView: convertView=" + null);
+//                    LayoutInflater inflater = LayoutInflater.from(getContext());
+//                    convertView = inflater.inflate(android.R.layout.simple_spinner_item, parent, false);
+//                }
+//                TextView tv = convertView.findViewById(android.R.id.text1);
+//                tv.setText(gradeList.get(position));
+//                tv.setTextColor(getResources().getColor(android.R.color.holo_red_light, null));
+//
+//                return convertView;
+//            }
         };
 
         gradeSpinner.setAdapter(adapter);
 //        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// 自定义下拉菜单样式
-        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);// 自定义下拉菜单样式
     }
 }

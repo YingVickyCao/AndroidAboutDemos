@@ -4,7 +4,9 @@
     android:tint="@color/text_color_secondary_app"
     android:viewportWidth="24.0"
     android:viewportHeight="24.0">
+
+    <!--android:fillColor="@android:color/white"-->
     <path
-        android:fillColor="@android:color/white"
+        android:fillColor="@android:color/holo_blue_light"
         android:pathData="M7,10l5,5,5-5z" />
 </vector>
