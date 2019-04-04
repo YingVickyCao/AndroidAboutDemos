@@ -2,4 +2,7 @@
 <resources>
     <!--<attr name="pageRootBg" format="reference" />-->
     <attr name="pageRootBg" format="color" />
+    <attr name="seekThumbColor" format="color" />
+    <attr name="seekProgressDrawableColor" format="color" />
+    <attr name="seekBg" format="color" />
 </resources>

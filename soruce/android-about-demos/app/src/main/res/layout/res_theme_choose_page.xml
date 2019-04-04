@@ -30,6 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#26ABB4BA" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/seekBg"
+            android:progressDrawable="@drawable/seek_progress"
+            android:thumb="@drawable/seek_thumb" />
     </LinearLayout>
 
     <Button

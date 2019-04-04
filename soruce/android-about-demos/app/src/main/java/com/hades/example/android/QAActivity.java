@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.widget._spinner.TestSpinnerFragment;
-import com.hades.example.android.widget.button.TestButtonActivity;
+import com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageAActivity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -41,6 +40,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     private void temp() {
 //        showActivity(ThemeChoosePageAActivity.class);
 //        showActivity(TestButtonActivity.class);
-        showFragment(new TestSpinnerFragment());
+//        showFragment(new TestSpinnerFragment());
+        showActivity(ThemeChoosePageAActivity.class);
     }
 }

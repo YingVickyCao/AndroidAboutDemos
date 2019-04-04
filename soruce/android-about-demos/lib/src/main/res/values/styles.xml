@@ -18,10 +18,16 @@
     <style name="AppTheme.Red">
         <!--<item name="pageRootBg">@android:color/holo_red_dark</item>-->
         <item name="pageRootBg">#ffcc0000</item>
+        <item name="seekThumbColor">#4CAF50</item>
+        <item name="seekProgressDrawableColor">#2196F3</item>
+        <item name="seekBg">#fff</item>
     </style>
 
     <style name="AppTheme.Green">
         <item name="pageRootBg">@android:color/holo_green_dark</item>
+        <item name="seekThumbColor">#FF5722</item>
+        <item name="seekProgressDrawableColor">#9C27B0</item>
+        <item name="seekBg">#000</item>
     </style>
     <!-- APPLY_THEME_END -->
 
