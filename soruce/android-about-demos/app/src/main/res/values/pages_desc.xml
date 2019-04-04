@@ -38,7 +38,7 @@
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
-
     <string name="page_spinner">Spinner</string>
+    <string name="page_content_provider">Content Provider</string>
 
 </resources>

@@ -33,4 +33,5 @@ public class TestAppComponentActivityActivity extends NoNeedPermissionActivity {
     private void pageBondService2() {
         showActivity(TestRemoteBoundServiceActivity2.class);
     }
+
 }

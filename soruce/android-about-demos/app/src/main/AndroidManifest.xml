@@ -75,9 +75,6 @@
             android:exported="true" />
 
         <activity android:name=".app_component.cp.dict.DictActivity" />
-        <activity
-            android:name=".app_component.cp.dict.DictSearchResultActivity"
-            android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
         <activity android:name=".app_component.cp.system.sms.SMSActivity" />

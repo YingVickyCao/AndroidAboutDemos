@@ -65,7 +65,6 @@
     <string name="query">Query</string>
     <string name="query_total_count_of_one_table">Query total count of one table</string>
     <string name="rawQuery">rawQuery</string>
-    <string name="query_all">Query all</string>
     <string name="rawQuery_all">rawQuery all</string>
     <string name="fuzzy_search">Fuzzy Search</string>
     <string name="detail">解释</string>
