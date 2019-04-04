@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!-- 点击不同tab能切换画面的管理页面 -->
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <!-- 用FrameLayout管理页面 -->
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dp"
+                android:layout_weight="1" >
+            </FrameLayout>
+
+            <!-- 用TabWidget管理tab。如果TabWidget在FrameLayout下面，则导航在下面（这是本次情况） 。如果在FrameLayout上面，则导航在上面 -->
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/tabwidget_height"
+                android:gravity="center"
+                android:showDividers="none" >
+            </TabWidget>
+        </LinearLayout>
+    </TabHost>
+
+</FrameLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JavaForAndroid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- 颜色 -->
+    <string-array name="color_array">
+        <item>#ffff00</item>
+        <item>#ff0099</item>
+        <item>#33ff00</item>
+    </string-array>
+
+    <string name="network_wlan">WLAN</string>
+    <string name="network_monet">移动网路</string>
+
+    <!-- Network settings layout -->
+    <string name="user_network_tip1">已开启移动网络，再按一次关闭</string>
+    <string name="user_network_tip2">已关闭移动网络，再按一次开启</string>
+    <string name="user_network_tip3">！设置移动网络失败：\nSIM未找到，或SIM卡暂时不可用 。\n请检查或插入SIM卡</string>
+
+</resources>

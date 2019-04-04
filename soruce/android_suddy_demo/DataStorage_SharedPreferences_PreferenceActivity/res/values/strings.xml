@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DataStorage_SharedPreferences_PreferenceActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="pf_city_entries">
+        <item>上海</item>
+        <item>北京</item>
+        <item>山东</item>
+    </string-array>
+    
+    <string-array name="pf_city_entryValues">
+        <item>shanghai</item>
+        <item>beijing</item>
+        <item>shandong</item>
+    </string-array>
+    
+    <string-array name="pf_city_defaultValue">
+        <item>浦东新区</item>
+        <item>青浦区</item>
+    </string-array>
+
+     <string-array name="pf_hobby_entries">
+        <item>看电影</item>
+        <item>逛街</item>
+        <item>看书</item>
+    </string-array>
+    
+    <string-array name="pf_hobby_entryValues">
+        <item>movie</item>
+        <item>shppping</item>
+        <item>reading</item>
+    </string-array>
+    
+</resources>

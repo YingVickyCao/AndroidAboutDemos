@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UI_Dialog_AlertDialog</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="colors_array">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,42 @@
+程序C1_7_Activity_lifecycle：
+测试Activity的7个生命周期函数。
+
+// 打开了该程序，进入了主界面。
+05-14 14:20:13.068: I/NLOG(28075): MainActivity->onCreate func called!
+05-14 14:20:13.068: I/NLOG(28075): MainActivity->onStart func called!
+05-14 14:20:13.068: I/NLOG(28075): MainActivity->onResume func called!
+// 按下了按钮，弹出了dialog。
+05-14 14:20:21.078: I/NLOG(28075): MainActivity->diagLsn click performed!	
+// 按下了在主画面中按跳转按钮，跳入到第二个界面。
+05-14 14:20:24.518: I/NLOG(28075): MainActivity->nextLsn click performed!
+05-14 14:20:24.558: I/NLOG(28075): MainActivity->onPause func called!
+05-14 14:20:24.588: I/NLOG(28075): NextActivity->onCreate func called!
+05-14 14:20:24.588: I/NLOG(28075): NextActivity->onStart func called!
+05-14 14:20:24.588: I/NLOG(28075): NextActivity->onResume func called!
+05-14 14:20:24.998: I/NLOG(28075): MainActivity->onStop func called!
+// 在第二个界中按下了返回键，返回到主界面
+05-14 14:20:33.888: I/NLOG(28075): NextActivity->finish func called!
+05-14 14:20:33.888: I/NLOG(28075): NextActivity->onPause func called!
+05-14 14:20:33.898: I/NLOG(28075): MainActivity->onRestart func called!
+05-14 14:20:33.898: I/NLOG(28075): MainActivity->onStart func called!
+05-14 14:20:33.898: I/NLOG(28075): MainActivity->onResume func called!
+05-14 14:20:34.308: I/NLOG(28075): NextActivity->onStop func called!
+05-14 14:20:34.308: I/NLOG(28075): NextActivity->onDestroy func called!
+// 在主界面时，按下了Menu导航键
+05-14 14:20:45.708: I/NLOG(28075): MainActivity->onPause func called!
+05-14 14:20:46.358: I/NLOG(28075): MainActivity->onStop func called!
+// 重新打开了该程序
+05-14 14:20:52.638: I/NLOG(28075): MainActivity->onRestart func called!
+05-14 14:20:52.638: I/NLOG(28075): MainActivity->onStart func called!
+05-14 14:20:52.638: I/NLOG(28075): MainActivity->onResume func called!
+// 按下了锁屏键
+05-14 14:24:01.948: I/NLOG(28075): MainActivity->onPause func called!
+05-14 14:24:01.958: I/NLOG(28075): MainActivity->onStop func called!
+05-14 14:24:05.298: I/NLOG(28075): MainActivity->onRestart func called!
+05-14 14:24:05.298: I/NLOG(28075): MainActivity->onStart func called!
+05-14 14:24:05.308: I/NLOG(28075): MainActivity->onResume func called!
+// 按下了返回键
+05-14 14:24:12.608: I/NLOG(28075): MainActivity->finish func called!
+05-14 14:24:12.608: I/NLOG(28075): MainActivity->onPause func called!
+05-14 14:24:13.178: I/NLOG(28075): MainActivity->onStop func called!
+05-14 14:24:13.178: I/NLOG(28075): MainAc

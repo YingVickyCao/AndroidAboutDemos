@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabwidget_item_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/tabwidget_height"
+    android:orientation="vertical" 
+    android:gravity="center" 
+    android:background="@drawable/selector_cmb_tabitem_bg"
+   >
+    <RelativeLayout 
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content"
+    >
+      <ImageView 
+          android:id="@+id/tabwidget_item_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:contentDescription="@null"
+          android:scaleType="fitCenter"
+       />  
+       <ImageView 
+          android:id="@+id/tabwidget_item_dot"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_toRightOf="@id/tabwidget_item_image"
+          android:contentDescription="@null"
+          android:scaleType="fitCenter"
+          android:visibility="invisible"
+          android:src="@drawable/red_dot"
+       />  
+    </RelativeLayout>
+    
+    <TextView 
+       android:id="@+id/tabwidget_item_text"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:gravity="center_vertical"
+       android:layout_marginTop="3dp"
+       android:textSize="12sp"
+       android:textColor="@drawable/selector_cmb_tabitem_text"
+    />
+
+</LinearLayout>

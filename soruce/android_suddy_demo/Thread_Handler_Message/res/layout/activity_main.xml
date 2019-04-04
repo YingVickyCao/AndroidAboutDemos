@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="demo.thread_handler_message.MainActivity" >
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_send1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_content"
+        android:onClick="doSendMsg"
+        android:text="点击按钮1发送消息" />
+
+    <Button
+        android:id="@+id/btn_send2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send1"
+        android:onClick="doSendMsg"
+        android:text="点击按钮2发送消息" />
+
+    <Button
+        android:id="@+id/btn_send3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send2"
+        android:onClick="doSendMsg"
+        android:text="点击按钮3发送消息" />
+
+    <Button
+        android:id="@+id/btn_send4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send3"
+        android:onClick="doSendMsg"
+        android:text="点击按钮4发送消息" />
+
+    <Button
+        android:id="@+id/btn_send5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send4"
+        android:onClick="doSendMsg"
+        android:text="点击按钮5发送消息" />
+
+    <Button
+        android:id="@+id/btn_send6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send5"
+        android:onClick="doSendMsg"
+        android:text="点击按钮6发送消息" />
+
+    <Button
+        android:id="@+id/btn_send7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send6"
+        android:onClick="doSendMsg"
+        android:text="点击按钮7发送消息" />
+
+</RelativeLayout>

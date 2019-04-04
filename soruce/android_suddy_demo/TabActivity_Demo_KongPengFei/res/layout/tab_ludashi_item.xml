@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabwidget_item_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/tabwidget_height"
+    android:background="@drawable/selector_ludashi_tabitem_bg"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <!-- 组织导航菜单，类似于QQ -->
+    <!-- 用来显示底部导航的图标 -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- 用来显示底部导航的图标，正常图标 -->
+
+        <ImageView
+            android:id="@+id/tabwidget_item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+        <!-- 用来显示底部导航的图标，消息图标，是一个红色的小红点，可以显示消息数量 -->
+
+        <ImageView
+            android:id="@+id/tabwidget_item_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/tabwidget_item_image"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/red_dot"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <!-- 用来显示底部导航的文字 -->
+
+    <TextView
+        android:id="@+id/tabwidget_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center_vertical"
+        android:textColor="@drawable/selector_ludashi_tabitem_text"
+        android:textSize="12sp" />
+
+</LinearLayout>

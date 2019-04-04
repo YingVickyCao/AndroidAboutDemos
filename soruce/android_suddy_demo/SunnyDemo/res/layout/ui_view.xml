@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web|phone"
+        android:capitalize="words"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="这是一个txt为空时的提示信息，一般用在EditText中"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="摘要 : 集齐5种以上不同机构的证件才能开设账户，实际上就是考察用户的种种社会关系，已经超出了验证其为本人的需求范围，蜕变为限制社会阶层流动，造成阶层歧视的因素。15568441245央行《非银行支付机构网络支付业务管理办法》征求意见稿，http://a.hiphotos.baidu.com/news/crop%3D0%2C34%2C877%2C526%3Bw%3D638/sign=89293f69504e9258b27bdcaea1b2fd6b/9213b07eca8065388cdd731e91dda144ad34828c.jpg有多项规定引发人们的关注。最开始，人们关注的重点主要集中于每天5000元和每年20万元的手机支付限额。不过后来，大家很快发现这不是重点，新注册用户和现有用户的身份验证才是最大的问题。"
+        android:textSize="15sp" />
+
+  
+
+    <!-- CheckBox -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/checkbox_meat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"
+            android:text="meat" />
+
+        <CheckBox
+            android:id="@+id/checkbox_cheese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"
+            android:text="cheese" />
+    </LinearLayout>
+
+  
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showFileInputStream"
+        android:text="字节流：使用FileInputStream读取文件" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showByteArrayOutputStream"
+        android:text="字节流：缓冲区" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showObjectInputStream"
+        android:text="字节流：读写对象" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showDataInputStream"
+        android:text="字节流：基础数据类型存储" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showBufferedReader"
+        android:text="字符流：缓冲区" />
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+</LinearLayout>

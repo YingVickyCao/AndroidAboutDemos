@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tabnavigation</string>
+    
+    <string name="button1">招商银行</string>
+    <string name="button2">鲁大师</string>
+    <string name="button3">上海公积金</string>
+    
+    
+    <string name="tab1">tab1</string>
+    <string name="tab2">tab2</string>
+    <string name="tab3">tab3</string>
+    <string name="tab4">tab4</string>
+    
+    <string name="cmb_tab1">最爱</string>
+    <string name="cmb_tab2">生活</string>
+    <string name="cmb_tab3">助手</string>
+    <string name="cmb_tab4">银行</string>
+     
+    <string name="ludashi_tab1">我的手机</string>
+    <string name="ludashi_tab2">评测</string>
+    <string name="ludashi_tab3">优化</string>
+    <string name="ludashi_tab4">发现</string>
+     
+     
+    <string name="gjj_tab1">新闻动态</string>
+    <string name="gjj_tab2">账户查询</string>
+    <string name="gjj_tab3">便民工具</string>
+    <string name="gjj_tab4">关于我们</string>
+    
+    
+</resources>

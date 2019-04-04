@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.demo.SunnyDemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <!--
+    <uses-sdk
+        android:minSdkVersion="22"
+        android:targetSdkVersion="22" />
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!--
+        <activity
+            android:name=".MainActivity"
+            android:label="这是一个主界面" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+
+        <activity android:name=".MainActivity" />
+
+        <!-- 关于Activity的跳转、值传递 -->
+        <activity
+            android:name=".activity.FirstActivity"
+            android:configChanges="locale|orientation|screenSize"
+            android:label="有关Activity的demo" >
+        </activity>
+        <activity android:name=".activity.JumpActivity" />
+        <activity android:name=".activity.JumpWithBackValueActivity" />
+        <activity android:name=".activity.JumpWithValueActivity" />
+
+        <!-- 关于Activity的跳转到不同画面时能否共用Intent -->
+        <activity android:name=".activity.Intent_Class" >
+        </activity>
+>
+
+        <!-- 关于Activity的launchMode -->
+        <activity android:name=".activity.A" >
+        </activity>
+        <!-- android:launchMode="standard" -->
+        <!-- android:launchMode="singleTop" -->
+        <!-- android:launchMode="singleTask" -->
+        <!-- android:launchMode="singleInstance" -->
+        <activity
+            android:name=".activity.B"
+            android:launchMode="singleInstance" />
+
+        <!-- 关于Activity的生命周期 -->
+        <activity
+            android:name=".activity.FloatActivity"
+            android:theme="@style/Theme.FloatActivity" />
+
+      
+
+        <!-- Lesson6:神奇的UI，我来了 -->
+        <!-- 动态加载控件 -->
+        <activity android:name=".ui.AddCustomViewActivity" >
+        </activity>
+
+        <!-- 动态加载控件 -->
+        <activity android:name=".ui.AddCustomView2Activity" >
+        </activity>
+
+        <!-- 动态加载自定义控件 -->
+        <activity android:name=".ui.AddCustomView3Activity" >
+        </activity>
+
+        <!-- 点9图 -->
+        <activity android:name=".ui.UINinePatchActivity" >
+        </activity>
+
+        <!-- BitmapDrawable使用 -->
+        <activity android:name=".ui.BitmapDrawableActivity" >
+        </activity>
+
+        <!-- 常见控件使用 -->
+        <!-- ToggleButton 、CheckBox、RadioButton、CheckBox -->
+        <activity android:name=".ui.UIViewActivity" >
+        </activity>
+        <!-- Spinner -->
+        <activity android:name=".ui.SpinnerActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

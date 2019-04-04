@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- WLAN -->
+
+    <Button
+        android:id="@+id/btn_wlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/network_wlan" />
+
+    <!-- MONET -->
+
+    <Button
+        android:id="@+id/btn_monet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/network_monet" />
+
+</LinearLayout>

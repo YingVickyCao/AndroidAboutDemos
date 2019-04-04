@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 填写登录信息 -->
+    <PreferenceCategory
+        android:key="pc_login"
+        android:title="登录信息" >
+        <SwitchPreference
+            android:key="sp_editEnable"
+            android:title="是否可以编辑" />
+
+        <EditTextPreference
+            android:key="ep_id"
+            android:title="用户名：" />
+        <EditTextPreference
+            android:key="ep_pwd"
+            android:title="密码：" />
+    </PreferenceCategory>
+
+    <CheckBoxPreference
+        android:key="cp_saveAutpPwd"
+        android:summary="登录时是否记住密码"
+        android:title="是否记住密码" />
+
+    <RingtonePreference
+        android:key="rp_notify"
+        android:ringtoneType="notification"
+        android:title="设置通知铃声" />
+
+    <!-- 填写联系方式 -->
+    <PreferenceCategory
+        android:key="pc_conn"
+        android:title="联系方式" >
+        <EditTextPreference
+            android:key="rp_qq"
+            android:summary="填写QQ号，用于密码找回"
+            android:title="QQ：" />
+    </PreferenceCategory>
+
+    <!-- 填写其他信息 -->
+    <PreferenceCategory
+        android:key="pc_otherInfo"
+        android:title="其他信息" >
+        <MultiSelectListPreference
+            android:entries="@array/pf_hobby_entries"
+            android:entryValues="@array/pf_hobby_entryValues"
+            android:key="mlp_hobby"
+            android:summary="设置爱好。设置爱好后，可以定期收到推送信息"
+            android:title="选择爱好" >
+        </MultiSelectListPreference>
+
+        <ListPreference
+            android:defaultValue="@array/pf_city_defaultValue"
+            android:dialogTitle="所住城市是什么"
+            android:entries="@array/pf_city_entries"
+            android:entryValues="@array/pf_city_entryValues"
+            android:key="lp_city"
+            android:summary="设置城市。设置城市后，可以选择性地收到推送信息"
+            android:title="选择城市" >
+        </ListPreference>
+    </PreferenceCategory>
+
+     <!-- 填写官方文档中喜欢部分 -->
+    <PreferenceScreen
+        android:key="ps_interest"
+        android:persistent="false"
+        android:title="官方文档中喜欢部分" >
+        <CheckBoxPreference
+            android:key="lf_Training"
+            android:summary="Training讲述的开发中常见遇到的问题"
+            android:title="Training" />
+        <CheckBoxPreference
+            android:key="cp_api_guides"
+            android:summary="API Guides讲述的如何成为一名合格的Android开发人员"
+            android:title="API Guides" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

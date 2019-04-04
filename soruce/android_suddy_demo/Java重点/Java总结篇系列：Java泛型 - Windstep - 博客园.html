@@ -1,0 +1,495 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Java总结篇系列：Java泛型 - Windstep - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=VDh8zSH1vx51MDqRT7hK220akQ58FjlaaeGuWBPhfOA1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/BOOK/bundle-BOOK.css?v=DaIdaa-2GlCJY57BeysMEAHbKkfdzZNJbosbSdqmsv41"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lwbqqyumidi/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lwbqqyumidi/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lwbqqyumidi/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'lwbqqyumidi', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=vbkaXm5avsr2WtvnKxjUcV8vZqhUAnl9Uw7BdP992a81" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<script type="text/javascript">
+	try {
+		if (screen.availWidth > 1200) {
+			document.getElementById("MainCss").href = '/Skins/BOOK/style2.css';
+		}
+	} catch (e) { }
+</script>
+
+<div id="header">
+<div id="HeaderTitle">
+<div id="Title">
+<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/lwbqqyumidi/">Windstep</a>
+</div>
+<div id="subTitle">专注Android领域开发。
+仰望星空，同时需要脚踏实地。
+——好记性不如烂博客</div>
+</div>
+</div>
+
+<div id="main">
+	
+<div id="post_detail">
+	<div class="post">
+		<h2>
+			<a id="cb_post_title_url" href="http://www.cnblogs.com/lwbqqyumidi/p/3837629.html">Java总结篇系列：Java泛型</a>
+		</h2>
+		<div id="cnblogs_post_body"><p><span style="font-size: 14px;"><strong>一. 泛型概念的提出（为什么需要泛型）？</strong></span></p>
+<p><span style="font-size: 14px;">首先，我们看下下面这段简短的代码:</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span>         List list = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ArrayList();
+</span><span style="color: #008080;"> 5</span>         list.add("qqyumidi"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         list.add("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 7</span>         list.add(100<span style="color: #000000;">);
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; list.size(); i++<span style="color: #000000;">) {
+</span><span style="color: #008080;">10</span>             String name = (String) list.get(i); <span style="color: #008000;">//</span><span style="color: #008000;"> 1</span>
+<span style="color: #008080;">11</span>             System.out.println("name:" +<span style="color: #000000;"> name);
+</span><span style="color: #008080;">12</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">13</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">14</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">定义了一个List类型的集合，先向其中加入了两个字符串类型的值，随后加入一个Integer类型的值。这是完全允许的，因为此时list默认的类型为Object类型。在之后的循环中，由于忘记了之前在list中也加入了Integer类型的值或其他编码原因，很容易出现类似于//1中的错误。因为编译阶段正常，而运行时会出现&ldquo;java.lang.ClassCastException&rdquo;异常。因此，导致此类错误编码过程中不易发现。</span></p>
+<p><span style="font-size: 14px;">&nbsp;在如上的编码过程中，我们发现主要存在两个问题：</span></p>
+<p><span style="font-size: 14px;">1.当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</span></p>
+<p><span style="font-size: 14px;">2.因此，//1处取出集合元素时需要人为的强制类型转化到具体的目标类型，且很容易出现&ldquo;java.lang.ClassCastException&rdquo;异常。</span></p>
+<p><span style="font-size: 14px;"><strong><span style="color: #008080;">那么有没有什么办法可以使集合能够记住集合内元素各类型，且能够达到只要编译时不出现问题，运行时就不会出现&ldquo;java.lang.ClassCastException&rdquo;异常呢？答案就是使用泛型。</span></strong></span></p>
+<p><span style="font-size: 14px;">&nbsp;</span></p>
+<p><span style="font-size: 14px;"><strong>二.什么是泛型？</strong></span></p>
+<p><span style="font-size: 14px;"><strong><span style="color: #008080;">泛型，即&ldquo;参数化类型&rdquo;。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。</span></strong></span></p>
+<p><span style="font-size: 14px;">&nbsp;看着好像有点复杂，首先我们看下上面那个例子采用泛型的写法。</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span>         <span style="color: #008000;">/*</span>
+<span style="color: #008080;"> 5</span> <span style="color: #008000;">        List list = new ArrayList();
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">        list.add("qqyumidi");
+</span><span style="color: #008080;"> 7</span> <span style="color: #008000;">        list.add("corn");
+</span><span style="color: #008080;"> 8</span> <span style="color: #008000;">        list.add(100);
+</span><span style="color: #008080;"> 9</span>         <span style="color: #008000;">*/</span>
+<span style="color: #008080;">10</span> 
+<span style="color: #008080;">11</span>         List&lt;String&gt; list = <span style="color: #0000ff;">new</span> ArrayList&lt;String&gt;<span style="color: #000000;">();
+</span><span style="color: #008080;">12</span>         list.add("qqyumidi"<span style="color: #000000;">);
+</span><span style="color: #008080;">13</span>         list.add("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;">14</span>         <span style="color: #008000;">//</span><span style="color: #008000;">list.add(100);   </span><span style="color: #008000;">//</span><span style="color: #008000;"> 1  提示编译错误</span>
+<span style="color: #008080;">15</span> 
+<span style="color: #008080;">16</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; list.size(); i++<span style="color: #000000;">) {
+</span><span style="color: #008080;">17</span>             String name = list.get(i); <span style="color: #008000;">//</span><span style="color: #008000;"> 2</span>
+<span style="color: #008080;">18</span>             System.out.println("name:" +<span style="color: #000000;"> name);
+</span><span style="color: #008080;">19</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">20</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">21</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">采用泛型写法后，在//1处想加入一个Integer类型的对象时会出现编译错误，通过List&lt;String&gt;，直接限定了list集合中只能含有String类型的元素，从而在//2处无须进行强制类型转换，因为此时，集合能够记住元素的类型信息，编译器已经能够确认它是String类型了。</span></p>
+<p><span style="font-size: 14px;">结合上面的泛型定义，我们知道在List&lt;String&gt;中，String是类型实参，也就是说，相应的List接口中肯定含有类型形参。且get()方法的返回结果也直接是此形参类型（也就是对应的传入的类型实参）。下面就来看看List接口的的具体定义：</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">interface</span> List&lt;E&gt; <span style="color: #0000ff;">extends</span> Collection&lt;E&gt;<span style="color: #000000;"> {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> size();
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> isEmpty();
+</span><span style="color: #008080;"> 6</span> 
+<span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> contains(Object o);
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span>     Iterator&lt;E&gt;<span style="color: #000000;"> iterator();
+</span><span style="color: #008080;">10</span> 
+<span style="color: #008080;">11</span> <span style="color: #000000;">    Object[] toArray();
+</span><span style="color: #008080;">12</span> 
+<span style="color: #008080;">13</span>     &lt;T&gt;<span style="color: #000000;"> T[] toArray(T[] a);
+</span><span style="color: #008080;">14</span> 
+<span style="color: #008080;">15</span>     <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> add(E e);
+</span><span style="color: #008080;">16</span> 
+<span style="color: #008080;">17</span>     <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> remove(Object o);
+</span><span style="color: #008080;">18</span> 
+<span style="color: #008080;">19</span>     <span style="color: #0000ff;">boolean</span> containsAll(Collection&lt;?&gt;<span style="color: #000000;"> c);
+</span><span style="color: #008080;">20</span> 
+<span style="color: #008080;">21</span>     <span style="color: #0000ff;">boolean</span> addAll(Collection&lt;? <span style="color: #0000ff;">extends</span> E&gt;<span style="color: #000000;"> c);
+</span><span style="color: #008080;">22</span> 
+<span style="color: #008080;">23</span>     <span style="color: #0000ff;">boolean</span> addAll(<span style="color: #0000ff;">int</span> index, Collection&lt;? <span style="color: #0000ff;">extends</span> E&gt;<span style="color: #000000;"> c);
+</span><span style="color: #008080;">24</span> 
+<span style="color: #008080;">25</span>     <span style="color: #0000ff;">boolean</span> removeAll(Collection&lt;?&gt;<span style="color: #000000;"> c);
+</span><span style="color: #008080;">26</span> 
+<span style="color: #008080;">27</span>     <span style="color: #0000ff;">boolean</span> retainAll(Collection&lt;?&gt;<span style="color: #000000;"> c);
+</span><span style="color: #008080;">28</span> 
+<span style="color: #008080;">29</span>     <span style="color: #0000ff;">void</span><span style="color: #000000;"> clear();
+</span><span style="color: #008080;">30</span> 
+<span style="color: #008080;">31</span>     <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> equals(Object o);
+</span><span style="color: #008080;">32</span> 
+<span style="color: #008080;">33</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> hashCode();
+</span><span style="color: #008080;">34</span> 
+<span style="color: #008080;">35</span>     E get(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index);
+</span><span style="color: #008080;">36</span> 
+<span style="color: #008080;">37</span>     E set(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index, E element);
+</span><span style="color: #008080;">38</span> 
+<span style="color: #008080;">39</span>     <span style="color: #0000ff;">void</span> add(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index, E element);
+</span><span style="color: #008080;">40</span> 
+<span style="color: #008080;">41</span>     E remove(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index);
+</span><span style="color: #008080;">42</span> 
+<span style="color: #008080;">43</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> indexOf(Object o);
+</span><span style="color: #008080;">44</span> 
+<span style="color: #008080;">45</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> lastIndexOf(Object o);
+</span><span style="color: #008080;">46</span> 
+<span style="color: #008080;">47</span>     ListIterator&lt;E&gt;<span style="color: #000000;"> listIterator();
+</span><span style="color: #008080;">48</span> 
+<span style="color: #008080;">49</span>     ListIterator&lt;E&gt; listIterator(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index);
+</span><span style="color: #008080;">50</span> 
+<span style="color: #008080;">51</span>     List&lt;E&gt; subList(<span style="color: #0000ff;">int</span> fromIndex, <span style="color: #0000ff;">int</span><span style="color: #000000;"> toIndex);
+</span><span style="color: #008080;">52</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">我们可以看到，在List接口中采用泛型化定义之后，&lt;E&gt;中的E表示类型形参，可以接收具体的类型实参，并且此接口定义中，凡是出现E的地方均表示相同的接受自外部的类型实参。</span></p>
+<p><span style="font-size: 14px;">自然的，ArrayList作为List接口的实现类，其定义形式是：</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> ArrayList&lt;E&gt; <span style="color: #0000ff;">extends</span> AbstractList&lt;E&gt; 
+<span style="color: #008080;"> 2</span>         <span style="color: #0000ff;">implements</span> List&lt;E&gt;<span style="color: #000000;">, RandomAccess, Cloneable, java.io.Serializable {
+</span><span style="color: #008080;"> 3</span>     
+<span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> add(E e) {
+</span><span style="color: #008080;"> 5</span>         ensureCapacityInternal(size + 1);  <span style="color: #008000;">//</span><span style="color: #008000;"> Increments modCount!!</span>
+<span style="color: #008080;"> 6</span>         elementData[size++] =<span style="color: #000000;"> e;
+</span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 8</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 9</span>     
+<span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> E get(<span style="color: #0000ff;">int</span><span style="color: #000000;"> index) {
+</span><span style="color: #008080;">11</span> <span style="color: #000000;">        rangeCheck(index);
+</span><span style="color: #008080;">12</span> <span style="color: #000000;">        checkForComodification();
+</span><span style="color: #008080;">13</span>         <span style="color: #0000ff;">return</span> ArrayList.<span style="color: #0000ff;">this</span>.elementData(offset +<span style="color: #000000;"> index);
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">15</span>     
+<span style="color: #008080;">16</span>     <span style="color: #008000;">//</span><span style="color: #008000;">...省略掉其他具体的定义过程</span>
+<span style="color: #008080;">17</span> 
+<span style="color: #008080;">18</span> }</span></pre>
+</div>
+<p><span style="line-height: 1.5; font-size: 14px;">由此，我们从源代码角度明白了为什么//1处加入Integer类型对象编译错误，且//2处get()到的类型直接就是String类型了。</span></p>
+<p><span style="font-size: 14px;">&nbsp;</span></p>
+<p><span style="font-size: 14px;"><strong><span style="line-height: 1.5;">三.自定义泛型接口、泛型类和泛型方法</span></strong></span></p>
+<p><span style="font-size: 14px;">从上面的内容中，大家已经明白了泛型的具体运作过程。也知道了接口、类和方法也都可以使用泛型去定义，以及相应的使用。是的，在具体使用时，可以分为泛型接口、泛型类和泛型方法。</span></p>
+<p><span style="font-size: 14px;">自定义泛型接口、泛型类和泛型方法与上述Java源码中的List、ArrayList类似。如下，我们看一个最简单的泛型类和方法定义：</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;String&gt; name = <span style="color: #0000ff;">new</span> Box&lt;String&gt;("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         System.out.println("name:" +<span style="color: #000000;"> name.getData());
+</span><span style="color: #008080;"> 7</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">10</span> 
+<span style="color: #008080;">11</span> <span style="color: #0000ff;">class</span> Box&lt;T&gt;<span style="color: #000000;"> {
+</span><span style="color: #008080;">12</span> 
+<span style="color: #008080;">13</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> T data;
+</span><span style="color: #008080;">14</span> 
+<span style="color: #008080;">15</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Box() {
+</span><span style="color: #008080;">16</span> 
+<span style="color: #008080;">17</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">18</span> 
+<span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Box(T data) {
+</span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">this</span>.data =<span style="color: #000000;"> data;
+</span><span style="color: #008080;">21</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">22</span> 
+<span style="color: #008080;">23</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> T getData() {
+</span><span style="color: #008080;">24</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> data;
+</span><span style="color: #008080;">25</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">26</span> 
+<span style="color: #008080;">27</span> }<span style="line-height: 1.5;">&nbsp;</span></span></pre>
+</div>
+<p><span style="font-size: 14px;">在泛型接口、泛型类和泛型方法的定义过程中，我们常见的如T、E、K、V等形式的参数常用于表示泛型形参，由于接收来自外部使用时候传入的类型实参。<strong>那么对于不同传入的类型实参，生成的相应对象实例的类型是不是一样的呢？</strong></span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;String&gt; name = <span style="color: #0000ff;">new</span> Box&lt;String&gt;("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         Box&lt;Integer&gt; age = <span style="color: #0000ff;">new</span> Box&lt;Integer&gt;(712<span style="color: #000000;">);
+</span><span style="color: #008080;"> 7</span> 
+<span style="color: #008080;"> 8</span>         System.out.println("name class:" + name.getClass());      <span style="color: #008000;">//</span><span style="color: #008000;"> com.qqyumidi.Box</span>
+<span style="color: #008080;"> 9</span>         System.out.println("age class:" + age.getClass());        <span style="color: #008000;">//</span><span style="color: #008000;"> com.qqyumidi.Box</span>
+<span style="color: #008080;">10</span>         System.out.println(name.getClass() == age.getClass());    <span style="color: #008000;">//</span><span style="color: #008000;"> true</span>
+<span style="color: #008080;">11</span> 
+<span style="color: #008080;">12</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">13</span> 
+<span style="color: #008080;">14</span> }</span></pre>
+</div>
+<p><span style="color: #008080; font-size: 14px;">由此，我们发现，在使用泛型类时，虽然传入了不同的泛型实参，但并没有真正意义上生成不同的类型，传入不同泛型实参的泛型类在内存上只有一个，即还是原来的最基本的类型（本实例中为Box），当然，在逻辑上我们可以理解成多个不同的泛型类型。</span></p>
+<p><span style="color: #008080; font-size: 14px;">究其原因，在于Java中的泛型这一概念提出的目的，导致其只是作用于代码编译阶段，在编译过程中，对于正确检验泛型结果后，会将泛型的相关信息擦出，也就是说，成功编译过后的class文件中是不包含任何泛型信息的。泛型信息不会进入到运行时阶段。</span></p>
+<p><span style="font-size: 14px;"><strong><span style="color: #008080;">对此总结成一句话：泛型类型在逻辑上看以看成是多个不同的类型，实际上都是相同的基本类型。</span></strong></span></p>
+<p><span style="font-size: 14px;">&nbsp;</span></p>
+<p><span style="font-size: 14px;"><strong><span style="color: #000000;">四.类型通配符</span></strong></span></p>
+<p><span style="font-size: 14px;">接着上面的结论，我们知道，<span style="color: #008080;">Box&lt;Number&gt;和Box&lt;Integer&gt;实际上都是Box类型，现在需要继续探讨一个问题，那么在逻辑上，类似于Box&lt;Number&gt;和Box&lt;Integer&gt;是否可以看成具有父子关系的泛型类型呢？</span></span></p>
+<p><span style="font-size: 14px;">为了弄清这个问题，我们继续看下下面这个例子:</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;Number&gt; name = <span style="color: #0000ff;">new</span> Box&lt;Number&gt;(99<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         Box&lt;Integer&gt; age = <span style="color: #0000ff;">new</span> Box&lt;Integer&gt;(712<span style="color: #000000;">);
+</span><span style="color: #008080;"> 7</span> 
+<span style="color: #008080;"> 8</span> <span style="color: #000000;">        getData(name);
+</span><span style="color: #008080;"> 9</span>         
+<span style="color: #008080;">10</span>         <span style="color: #008000;">//</span><span style="color: #008000;">The method getData(Box&lt;Number&gt;) in the type GenericTest is 
+</span><span style="color: #008080;">11</span>         <span style="color: #008000;">//</span><span style="color: #008000;">not applicable for the arguments (Box&lt;Integer&gt;)</span>
+<span style="color: #008080;">12</span> <span style="color: #000000;">        getData(age);   // 1
+</span><span style="color: #008080;">13</span> 
+<span style="color: #008080;">14</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">15</span>     
+<span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> getData(Box&lt;Number&gt;<span style="color: #000000;"> data){
+</span><span style="color: #008080;">17</span>         System.out.println("data :" +<span style="color: #000000;"> data.getData());
+</span><span style="color: #008080;">18</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">19</span> 
+<span style="color: #008080;">20</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">我们发现，在代码//1处出现了错误提示信息：The method getData(Box&lt;Number&gt;) in the t ype GenericTest is&nbsp;not applicable for the arguments (Box&lt;Integer&gt;)。显然，通过提示信息，我们知道Box&lt;Number&gt;在逻辑上不能视为Box&lt;Integer&gt;的父类。那么，原因何在呢？</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;Integer&gt; a = <span style="color: #0000ff;">new</span> Box&lt;Integer&gt;(712<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         Box&lt;Number&gt; b = a;  <span style="color: #008000;">//</span><span style="color: #008000;"> 1</span>
+<span style="color: #008080;"> 7</span>         Box&lt;Float&gt; f = <span style="color: #0000ff;">new</span> Box&lt;Float&gt;(3.14f<span style="color: #000000;">);
+</span><span style="color: #008080;"> 8</span>         b.setData(f);        <span style="color: #008000;">//</span><span style="color: #008000;"> 2</span>
+<span style="color: #008080;"> 9</span> 
+<span style="color: #008080;">10</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">11</span> 
+<span style="color: #008080;">12</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> getData(Box&lt;Number&gt;<span style="color: #000000;"> data) {
+</span><span style="color: #008080;">13</span>         System.out.println("data :" +<span style="color: #000000;"> data.getData());
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">15</span> 
+<span style="color: #008080;">16</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">17</span> 
+<span style="color: #008080;">18</span> <span style="color: #0000ff;">class</span> Box&lt;T&gt;<span style="color: #000000;"> {
+</span><span style="color: #008080;">19</span> 
+<span style="color: #008080;">20</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> T data;
+</span><span style="color: #008080;">21</span> 
+<span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Box() {
+</span><span style="color: #008080;">23</span> 
+<span style="color: #008080;">24</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">25</span> 
+<span style="color: #008080;">26</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Box(T data) {
+</span><span style="color: #008080;">27</span> <span style="color: #000000;">        setData(data);
+</span><span style="color: #008080;">28</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">29</span> 
+<span style="color: #008080;">30</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> T getData() {
+</span><span style="color: #008080;">31</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> data;
+</span><span style="color: #008080;">32</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">33</span> 
+<span style="color: #008080;">34</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setData(T data) {
+</span><span style="color: #008080;">35</span>         <span style="color: #0000ff;">this</span>.data =<span style="color: #000000;"> data;
+</span><span style="color: #008080;">36</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">37</span> 
+<span style="color: #008080;">38</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">这个例子中，显然//1和//2处肯定会出现错误提示的。在此我们可以使用反证法来进行说明。</span></p>
+<p><span style="font-size: 14px;">假设Box&lt;Number&gt;在逻辑上可以视为Box&lt;Integer&gt;的父类，那么//1和//2处将不会有错误提示了，那么问题就出来了，通过getData()方法取出数据时到底是什么类型呢？Integer? Float? 还是Number？且由于在编程过程中的顺序不可控性，导致在必要的时候必须要进行类型判断，且进行强制类型转换。显然，这与泛型的理念矛盾，因此，<span style="color: #008080;"><strong>在逻辑上Box&lt;Number&gt;不能视为Box&lt;Integer&gt;的父类。</strong></span></span></p>
+<p><span style="font-size: 14px;">好，那我们回过头来继续看&ldquo;类型通配符&rdquo;中的第一个例子，我们知道其具体的错误提示的深层次原因了。那么如何解决呢？总部能再定义一个新的函数吧。这和Java中的多态理念显然是违背的，<span style="color: #008080;">因此，我们需要一个在逻辑上可以用来表示同时是Box&lt;Integer&gt;和Box&lt;Number&gt;的父类的一个引用类型，由此，类型通配符应运而生。</span></span></p>
+<p><span style="font-size: 14px;"><strong>类型通配符一般是使用 ? 代替具体的类型实参。注意了，此处是类型实参，而不是类型形参！且Box&lt;?&gt;在逻辑上是Box&lt;Integer&gt;、Box&lt;Number</strong><strong>&gt;...等所有Box&lt;具体类型实参&gt;的父类。由此，我们依然可以定义泛型方法，来完成此类需求。</strong></span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;String&gt; name = <span style="color: #0000ff;">new</span> Box&lt;String&gt;("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         Box&lt;Integer&gt; age = <span style="color: #0000ff;">new</span> Box&lt;Integer&gt;(712<span style="color: #000000;">);
+</span><span style="color: #008080;"> 7</span>         Box&lt;Number&gt; number = <span style="color: #0000ff;">new</span> Box&lt;Number&gt;(314<span style="color: #000000;">);
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span> <span style="color: #000000;">        getData(name);
+</span><span style="color: #008080;">10</span> <span style="color: #000000;">        getData(age);
+</span><span style="color: #008080;">11</span> <span style="color: #000000;">        getData(number);
+</span><span style="color: #008080;">12</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">13</span> 
+<span style="color: #008080;">14</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> getData(Box&lt;?&gt;<span style="color: #000000;"> data) {
+</span><span style="color: #008080;">15</span>         System.out.println("data :" +<span style="color: #000000;"> data.getData());
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">17</span> 
+<span style="color: #008080;">18</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">有时候，我们还可能听到<span style="color: #008080;"><strong>类型通配符上限和类型通配符下限</strong></span>。具体有是怎么样的呢？</span></p>
+<p><span style="font-size: 14px;">在上面的例子中，如果需要定义一个功能类似于getData()的方法，但对类型实参又有进一步的限制：只能是Number类及其子类。此时，需要用到类型通配符上限。</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 14px;"><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GenericTest {
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span>         Box&lt;String&gt; name = <span style="color: #0000ff;">new</span> Box&lt;String&gt;("corn"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 6</span>         Box&lt;Integer&gt; age = <span style="color: #0000ff;">new</span> Box&lt;Integer&gt;(712<span style="color: #000000;">);
+</span><span style="color: #008080;"> 7</span>         Box&lt;Number&gt; number = <span style="color: #0000ff;">new</span> Box&lt;Number&gt;(314<span style="color: #000000;">);
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span> <span style="color: #000000;">        getData(name);
+</span><span style="color: #008080;">10</span> <span style="color: #000000;">        getData(age);
+</span><span style="color: #008080;">11</span> <span style="color: #000000;">        getData(number);
+</span><span style="color: #008080;">12</span>         
+<span style="color: #008080;">13</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getUpperNumberData(name); </span><span style="color: #008000;">//</span><span style="color: #008000;"> 1</span>
+<span style="color: #008080;">14</span>         getUpperNumberData(age);    <span style="color: #008000;">//</span><span style="color: #008000;"> 2</span>
+<span style="color: #008080;">15</span>         getUpperNumberData(number); <span style="color: #008000;">//</span><span style="color: #008000;"> 3</span>
+<span style="color: #008080;">16</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">17</span> 
+<span style="color: #008080;">18</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> getData(Box&lt;?&gt;<span style="color: #000000;"> data) {
+</span><span style="color: #008080;">19</span>         System.out.println("data :" +<span style="color: #000000;"> data.getData());
+</span><span style="color: #008080;">20</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">21</span>     
+<span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> getUpperNumberData(Box&lt;? <span style="color: #0000ff;">extends</span> Number&gt;<span style="color: #000000;"> data){
+</span><span style="color: #008080;">23</span>         System.out.println("data :" +<span style="color: #000000;"> data.getData());
+</span><span style="color: #008080;">24</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">25</span> 
+<span style="color: #008080;">26</span> }</span></pre>
+</div>
+<p><span style="font-size: 14px;">此时，显然，在代码//1处调用将出现错误提示，而//2 //3处调用正常。</span></p>
+<p><span style="font-size: 14px;"><span style="color: #008080;"><strong>类型通配符上限通过形如<strong>Box&lt;? extends Number&gt;形式定义，</strong>相对应的，类型通配符下限为Box&lt;? super Number&gt;形式，其含义与类型通配符上限正好相反</strong></span>，在此不作过多阐述了。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>五.话外篇</strong></span></p>
+<p><span style="font-size: 14px;">本文中的例子主要是为了阐述泛型中的一些思想而简单举出的，并不一定有着实际的可用性。另外，一提到泛型，相信大家用到最多的就是在集合中，其实，在实际的编程过程中，自己可以使用泛型去简化开发，且能很好的保证代码质量。<strong>并且还要注意的一点是，Java中没有所谓的泛型数组一说。</strong></span></p>
+<p><span style="font-size: 14px; color: #ff0000;">对于泛型，最主要的还是需要理解其背后的思想和目的。</span></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		<p class="postfoot">
+			posted on <span id="post-date">2014-07-12 23:39</span> <a href='http://www.cnblogs.com/lwbqqyumidi/'>Windstep</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=3837629" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(3837629);return false;">收藏</a>
+		</p>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=122301,cb_entryId=3837629,cb_blogApp=currentBlogApp,cb_blogUserGuid='e6cf342b-cfcb-e111-aa3f-842b2b196315',cb_entryCreatedDate='2014/7/12 23:39:00';loadViewCount(cb_entryId);</script>
+	
+	</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="开发者的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); 
+    fixPostBodyFormat();
+</script>
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+    (function () {
+        if (enableGoogleAd) {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+              '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        }
+  })();
+</script>
+<script type='text/javascript'>
+    try {
+        if (enableGoogleAd) {
+            googletag.cmd.push(function() {
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C2', [468, 60], 'div-gpt-ad-1433581717989-0').addService(googletag.pubads());
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C1_sitehome', [300, 250], 'div-gpt-ad-1433581717989-1').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+            });
+        };
+    } catch (e) { }
+</script>
+<div id="google_ad_c1" class="c_ad_block">
+    <div id='div-gpt-ad-1433581717989-1' style='height:250px; width:300px;'>
+    <script type='text/javascript'>
+        try {
+            if (enableGoogleAd) {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1433581717989-1'); });
+            } else {
+                $('#div-gpt-ad-1433581717989-1').hide();
+            }
+    } catch (e) { }
+    </script>
+    </div>
+</div>
+<div id="under_post_news"></div>
+<div id="google_ad_c2" class="c_ad_block">
+<div id='div-gpt-ad-1433581717989-0' style='height:60px; width:468px;'>
+<script type='text/javascript'>
+try {
+    if (enableGoogleAd) {
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1433581717989-0'); });
+    } else {
+        $('#div-gpt-ad-1433581717989-0').hide();
+    }
+} catch (e) { }
+</script>
+</div>
+</div>
+<div id="under_post_kb"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+	
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br />
+	Copyright &copy; Windstep
+</p>
+</div>
+<div id="rightmenu">
+	
+		<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>导航</h3>
+<ul>
+			<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+			<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/lwbqqyumidi/">首页</a></li>
+			<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+			<li><a id="MyLinks1_ContactLink" accesskey="9" rel="nofollow" href="http://msg.cnblogs.com/send/Windstep">联系</a></li>
+			<li>
+			<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		
+		
+<h3>公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+
+		<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+	
+</div>
+			
+			
+			
+			
+			 
+
+	
+
+</body>
+</html>

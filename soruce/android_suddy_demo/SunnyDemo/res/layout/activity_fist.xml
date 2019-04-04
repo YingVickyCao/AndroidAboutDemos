@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="activity的有关测试" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="读取assets下 的txt文件" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="读取assets的子目录test下 的txt文件" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="读取raw下 的txt文件" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="测试跳转到Activity不在manifest中配置" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="如何杀死杀死进程" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="界面跳转" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="传值" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="回传值" />
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="弹出一个对话框，看看对生命周期函数有何影响" />
+
+        <Button
+            android:id="@+id/btn10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="跳转到一个局部窗体，看看对生命周期函数有何影响" />
+
+        <Button
+            android:id="@+id/btn11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="跳转到一个窗体，看看对生命周期函数有何影响" />
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入后杀死程序再重启，看内容是否保存" />
+
+        <Button
+            android:id="@+id/btn12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="动态修改控件属性" />
+
+        <Button
+            android:id="@+id/btn13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="动态添加控件" />
+    </LinearLayout>
+
+</ScrollView>

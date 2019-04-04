@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="demo.ui_menu_popmenu.MainActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_tel"
+        android:icon="@android:drawable/ic_dialog_dialer"
+        android:orderInCategory="100"
+        android:title="Tel"
+        app:showAsAction="never"/>
+
+</menu>
