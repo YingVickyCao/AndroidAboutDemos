@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Define dependencies way2:
+apply from: "config.gradle"
+
+buildscript {
+    // Define dependencies way1:
+    ext.kotlin_version = '1.2.50' // Support Kotlin
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"  // Support Kotlin
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        // Use .jar by putting local maven repository
+        maven { url = "$rootProject.projectDir/calculator-sdk" }
+    }
+}
+
+/**
+ FIX_ERROR:Conflict with dependency 'com.google.code.findbugs:jsr305' in project ':dragger'.
+ Resolved versions for app (3.0.1) and test app (2.0.1) differ. See http://g.co/androidstudio/app-test-app-conflict for details.
+ REF:
+ http://www.itwendao.com/article/detail/476943.html
+ */
+//configurations.all {
+//    resolutionStrategy {
+//        force 'com.google.guava:guava:25.0-jre'
+//    }
+//}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
