@@ -28,6 +28,10 @@ Saving data to a database is ideal for repeating or structured data
 通过数据库级的共享锁来独立处理事务。对于同一个数据库，多个进程可以同时读，但只能有一个写。
 - 事务处理
 
+## SQLite  database file formart is B Tree
+- 多个多重Btree => .db file 
+- 索引采用B-tree, 表采用B+tree
+
 ## SQLite VS Other SQL database
 **Other SQL database:**
 - Most SQL database engines uses static, rigid typing. 
