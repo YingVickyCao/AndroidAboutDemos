@@ -1,0 +1,22 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+package com.example.hades.androidpo.temp._12_use_static_final_for_constants.bad;
+
+public class Constants {
+    static int intVal = 42;
+    static String strVal = "Hello, world!";
+
+    public Constants() {
+    }
+
+    public void printInt() {
+        System.out.println(intVal);
+    }
+
+    public void printString() {
+        System.out.println(strVal);
+    }
+}

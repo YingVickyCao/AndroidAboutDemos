@@ -1,0 +1,7 @@
+Compiled from "Foo.java"
+public class com.example.hades.androidpo._2_memory_op.memory_leak.non_static_inner_class.bad.Foo {
+  int mValue;
+  public com.example.hades.androidpo._2_memory_op.memory_leak.non_static_inner_class.bad.Foo();
+  public void run();
+  static void access$000(com.example.hades.androidpo._2_memory_op.memory_leak.non_static_inner_class.bad.Foo, int);
+}

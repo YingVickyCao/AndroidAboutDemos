@@ -1,0 +1,110 @@
+Classfile /Users/hades/Documents/GitHub/AndroidPO/source/AndroidPOCode/app/src/main/java/com/example/hades/androidpo/_12_use_static_final_for_constants/bad/Constants.class
+  Last modified May 31, 2018; size 698 bytes
+  MD5 checksum 34e5c3f121066c7761a48fa9ea47d726
+  Compiled from "Constants.java"
+public class com.example.hades.androidpo.temp._12_use_static_final_for_constants.bad.Constants
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #9.#23         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #24.#25        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = Fieldref           #8.#26         // com/example/hades/androidpo/_12_use_static_final_for_constants/bad/Constants.intVal:I
+   #4 = Methodref          #27.#28        // java/io/PrintStream.println:(I)V
+   #5 = Fieldref           #8.#29         // com/example/hades/androidpo/_12_use_static_final_for_constants/bad/Constants.strVal:Ljava/lang/String;
+   #6 = Methodref          #27.#30        // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #7 = String             #31            // Hello, world!
+   #8 = Class              #32            // com/example/hades/androidpo/_12_use_static_final_for_constants/bad/Constants
+   #9 = Class              #33            // java/lang/Object
+  #10 = Utf8               intVal
+  #11 = Utf8               I
+  #12 = Utf8               strVal
+  #13 = Utf8               Ljava/lang/String;
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = Utf8               Code
+  #17 = Utf8               LineNumberTable
+  #18 = Utf8               printInt
+  #19 = Utf8               printString
+  #20 = Utf8               <clinit>
+  #21 = Utf8               SourceFile
+  #22 = Utf8               Constants.java
+  #23 = NameAndType        #14:#15        // "<init>":()V
+  #24 = Class              #34            // java/lang/System
+  #25 = NameAndType        #35:#36        // out:Ljava/io/PrintStream;
+  #26 = NameAndType        #10:#11        // intVal:I
+  #27 = Class              #37            // java/io/PrintStream
+  #28 = NameAndType        #38:#39        // println:(I)V
+  #29 = NameAndType        #12:#13        // strVal:Ljava/lang/String;
+  #30 = NameAndType        #38:#40        // println:(Ljava/lang/String;)V
+  #31 = Utf8               Hello, world!
+  #32 = Utf8               com/example/hades/androidpo/_12_use_static_final_for_constants/bad/Constants
+  #33 = Utf8               java/lang/Object
+  #34 = Utf8               java/lang/System
+  #35 = Utf8               out
+  #36 = Utf8               Ljava/io/PrintStream;
+  #37 = Utf8               java/io/PrintStream
+  #38 = Utf8               println
+  #39 = Utf8               (I)V
+  #40 = Utf8               (Ljava/lang/String;)V
+{
+  static int intVal;
+    descriptor: I
+    flags: ACC_STATIC
+
+  static java.lang.String strVal;
+    descriptor: Ljava/lang/String;
+    flags: ACC_STATIC
+
+  public com.example.hades.androidpo.temp._12_use_static_final_for_constants.bad.Constants();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 3: 0
+
+  public void printInt();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: getstatic     #3                  // Field intVal:I
+         6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+         9: return
+      LineNumberTable:
+        line 8: 0
+        line 9: 9
+
+  public void printString();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: getstatic     #5                  // Field strVal:Ljava/lang/String;
+         6: invokevirtual #6                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         9: return
+      LineNumberTable:
+        line 12: 0
+        line 13: 9
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: bipush        42
+         2: putstatic     #3                  // Field intVal:I
+         5: ldc           #7                  // String Hello, world!
+         7: putstatic     #5                  // Field strVal:Ljava/lang/String;
+        10: return
+      LineNumberTable:
+        line 4: 0
+        line 5: 5
+}
+SourceFile: "Constants.java"

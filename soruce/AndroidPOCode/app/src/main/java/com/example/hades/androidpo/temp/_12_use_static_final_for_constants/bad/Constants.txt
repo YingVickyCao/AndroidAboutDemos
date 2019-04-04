@@ -1,0 +1,76 @@
+Compiled from "Constants.java"
+public class com.example.hades.androidpo.temp._12_use_static_final_for_constants.bad.Constants {
+  static int intVal;
+
+  static java.lang.String strVal;
+
+  public com.example.hades.androidpo.temp._12_use_static_final_for_constants.bad.Constants();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void printInt();
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: getstatic     #3                  // Field intVal:I
+       6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       9: return
+
+  public void printString();
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: getstatic     #5                  // Field strVal:Ljava/lang/String;
+       6: invokevirtual #6                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       9: return
+
+  static {};
+    Code:
+       0: bipush        42
+       2: putstatic     #3                  // Field intVal:I
+       5: ldc           #7                  // String Hello, world!
+       7: putstatic     #5                  // Field strVal:Ljava/lang/String;
+      10: return
+}
+
+=>
+
+public class Constants {
+  static int intVal;
+
+  static java.lang.String strVal;
+
+  public Constants();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void printInt();
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: getstatic     #3                  // Field intVal:I
+       6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       9: return
+
+  public void printString();
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: getstatic     #5                  // Field strVal:Ljava/lang/String;
+       6: invokevirtual #6                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       9: return
+
+  static {};
+    Code:
+       // static int intVal = 42; bipush 将常量42压入栈bipush 将常量压入栈
+       0: bipush        42
+
+       // pustatic:设置类的静态字段
+       2: putstatic     #3                  // Field intVal:I
+
+
+       // static String strVal = "Hello, world!";
+       5: ldc           #7                  // String Hello, world!
+       7: putstatic     #5                  // Field strVal:Ljava/lang/String;
+      10: return
+}

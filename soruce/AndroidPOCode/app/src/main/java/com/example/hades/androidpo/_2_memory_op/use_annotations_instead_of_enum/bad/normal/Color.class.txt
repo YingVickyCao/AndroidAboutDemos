@@ -1,0 +1,89 @@
+Compiled from "Color.java"
+public final class com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color extends java.lang.Enum<com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color> {
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color RED;
+
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color GREEN;
+
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color YELLOW;
+
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color BLUE;
+
+  public static com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color[] values();
+    Code:
+       0: getstatic     #1                  // Field $VALUES:[Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+       3: invokevirtual #2                  // Method "[Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;".clone:()Ljava/lang/Object;
+       6: checkcast     #3                  // class "[Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;"
+       9: areturn
+
+  public static com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color valueOf(java.lang.String);
+    Code:
+       0: ldc           #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+       2: aload_0
+       3: invokestatic  #5                  // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+       9: areturn
+
+  public java.lang.String getType();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field mType:Ljava/lang/String;
+       4: areturn
+
+  public void setType(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #7                  // Field mType:Ljava/lang/String;
+       5: return
+
+  static {};
+    Code:
+       0: new           #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+       3: dup
+       4: ldc           #8                  // String RED
+       6: iconst_0
+       7: ldc           #8                  // String RED
+       9: invokespecial #9                  // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+      12: putstatic     #10                 // Field RED:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      15: new           #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+      18: dup
+      19: ldc           #11                 // String GREEN
+      21: iconst_1
+      22: ldc           #11                 // String GREEN
+      24: invokespecial #9                  // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+      27: putstatic     #12                 // Field GREEN:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      30: new           #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+      33: dup
+      34: ldc           #13                 // String YELLOW
+      36: iconst_2
+      37: ldc           #13                 // String YELLOW
+      39: invokespecial #9                  // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+      42: putstatic     #14                 // Field YELLOW:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      45: new           #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+      48: dup
+      49: ldc           #15                 // String BLUE
+      51: iconst_3
+      52: ldc           #15                 // String BLUE
+      54: invokespecial #9                  // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+      57: putstatic     #16                 // Field BLUE:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      60: iconst_4
+      61: anewarray     #4                  // class com/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color
+      64: dup
+      65: iconst_0
+      66: getstatic     #10                 // Field RED:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      69: aastore
+      70: dup
+      71: iconst_1
+      72: getstatic     #12                 // Field GREEN:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      75: aastore
+      76: dup
+      77: iconst_2
+      78: getstatic     #14                 // Field YELLOW:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      81: aastore
+      82: dup
+      83: iconst_3
+      84: getstatic     #16                 // Field BLUE:Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      87: aastore
+      88: putstatic     #1                  // Field $VALUES:[Lcom/example/hades/androidpo/_2_memory_op/use_annotations_instead_of_enum/bad/type1/normal/Color;
+      91: return
+}

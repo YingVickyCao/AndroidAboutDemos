@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.hades.androidpo">
+
+    <!--
+    ERROR:
+    Caused by: java.lang.RuntimeException: Manifest merger failed :
+    Attribute application@name value=(com.example.hades.androidpo.DebugExampleApplication)
+    from AndroidManifest.xml:10:9-43 s also present at AndroidManifest.xml:10:9-43 value=(com.example.hades.androidpo.ExampleApplication).
+
+    FIX:
+    tools:replace="android:name"
+	-->
+    <application
+        android:name="com.example.hades.androidpo.DebugExampleApplication"
+        tools:replace="android:name">
+        <service android:name="com.example.hades.androidpo.monitor.memory.leak.MemoryLeakUploadService" />
+
+        <activity android:name="._1_render_op.DrawLayoutOPActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

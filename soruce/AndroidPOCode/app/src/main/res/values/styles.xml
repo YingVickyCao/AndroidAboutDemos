@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoBackground">
+        <!--Remove unneeded Window default background-->
+        <item name="android:windowBackground">@null</item>
+        <!-- Use android:windowNoTitle来移除标题栏 -->
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <!-- SESSION:启动时，先显示黑屏页面，后显示welcome page -->
+    <style name="AppTheme.Launcher">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <!-- SESSION:启动时，先显示浅绿色页面，显示welcome page -->
+    <style name="AppTheme.Launcher2">
+        <item name="android:windowBackground">@drawable/launcher</item>
+    </style>
+
+    <style name="topic">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/topic_height</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/holo_orange_dark</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="btn.small">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="btn.small.red">
+        <item name="android:background">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="bg">
+        <item name="android:background">@android:color/white</item>
+    </style>
+</resources>

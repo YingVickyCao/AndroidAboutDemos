@@ -1,0 +1,12 @@
+Compiled from "Color.java"
+public final class com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color extends java.lang.Enum<com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color> {
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color RED;
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color GREEN;
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color YELLOW;
+  public static final com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color BLUE;
+  public static com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color[] values();
+  public static com.example.hades.androidpo._2_memory_op.use_annotations_instead_of_enum.bad.normal.Color valueOf(java.lang.String);
+  public java.lang.String getType();
+  public void setType(java.lang.String);
+  static {};
+}

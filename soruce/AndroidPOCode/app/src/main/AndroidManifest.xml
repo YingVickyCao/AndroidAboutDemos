@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.hades.androidpo">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.example.hades.androidpo.ExampleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
+
+        <!--<activity android:name="._1_render_op.startup.WelcomeActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <activity android:name=".MainActivity" />
+        <!--<activity android:name="._1_render_op.startup.WelcomeActivity" />-->
+        <activity android:name="._1_render_op.DrawLayoutOPActivity" />
+        <activity
+            android:name="._1_render_op.layout._reduce_hierachy.WindowNoTitleActivity"
+            android:theme="@style/AppTheme.NoBackground" />
+        <activity android:name="._1_render_op.overdraw.ReduceOverdrawActivity" />
+
+        <activity android:name="._2_memory_op.MemoryOPActivity" />
+        <activity android:name="._2_memory_op.memory_leak.monitor.MockLeakMemoryActivity" />
+
+        <activity android:name="._4_stability_op.StabilityOPActivity" />
+
+        <activity android:name="._5_storage_op.DataStorageActivity" />
+
+        <service android:name="._1_render_op._not_block_ui.UnboundServce.PLayMusicService">
+            <intent-filter>
+                <action android:name="COUNTER" />
+                <action android:name="INVISIBLE" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

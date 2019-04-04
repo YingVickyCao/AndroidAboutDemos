@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_reduce_overdraw_4_Reduce_transparent_animations" />
+
+    <!--android:alpha="0.2"-->
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/getTransparentImage"
+        style="@style/btn"
+        android:layout_alignParentBottom="true"
+        android:text="Show transparent image" />
+
+</RelativeLayout>
