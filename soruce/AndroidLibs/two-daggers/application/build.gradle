@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion Integer.parseInt(project.compileSdkVersion)
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        versionName project.version
+        minSdkVersion Integer.parseInt(project.minSdkVersion)
+        targetSdkVersion Integer.parseInt(project.targetSdkVersion)
+    }
+}
+
+dependencies {
+    //Dagger 1
+    annotationProcessor "com.squareup.dagger:dagger-compiler:$project.dagger1Version"
+    implementation "com.squareup.dagger:dagger:$project.dagger1Version"
+
+    //Dagger 2
+    annotationProcessor project(path: ':two-daggers-compiler', transitive: false)
+    implementation project(path: ':two-daggers-library', transitive: false)
+
+    implementation "com.jakewharton:butterknife:$project.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife:$project.butterKnifeVersion"
+
+    testImplementation "junit:junit:$project.junitVersion"
+}

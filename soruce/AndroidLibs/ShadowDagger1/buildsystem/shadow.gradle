@@ -1,0 +1,15 @@
+shadowJar {
+  relocate 'javax.inject.Inject', 'javax.inject.Inject1'
+  relocate 'javax.inject.Named', 'javax.inject.Named1'
+  relocate 'javax.inject.Provider', 'javax.inject.Provider1'
+  relocate 'javax.inject.Qualifier', 'javax.inject.Qualifier1'
+  relocate 'javax.inject.Scope', 'javax.inject.Scope1'
+  relocate 'javax.inject.Singleton', 'javax.inject.Singleton1'
+  relocate 'dagger.Lazy', 'dagger.Lazy1'
+  relocate 'dagger.MembersInjector', 'dagger.MembersInjector1'
+  relocate 'dagger.Module', 'dagger.Module1'
+  relocate 'dagger.Provides', 'dagger.Provides1'
+  relocate 'dagger.Provides$Type', 'dagger.Provides$Type1'
+  relocate 'dagger.internal', 'dagger.internal1'
+  relocate 'dagger.producers', 'dagger.producers1'
+}

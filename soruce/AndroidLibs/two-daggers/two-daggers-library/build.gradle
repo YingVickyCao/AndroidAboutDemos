@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+def buildSrcDir = '../buildsystem'
+apply from: "${buildSrcDir}/shadow.gradle"
+
+shadowJar {
+  classifier = ''
+}
+
+dependencies {
+  implementation "com.google.dagger:dagger:$project.dagger2Version"
+}

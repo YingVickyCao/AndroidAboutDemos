@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+def buildSrcDir = '../buildsystem'
+apply from: "${buildSrcDir}/shadow.gradle"
+
+import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer
+
+shadowJar {
+    transform(ServiceFileTransformer)
+    classifier = ''
+    version = '1.2.2'
+    group = "com.squareup.dagger" // group
+    baseName = "dagger-compiler-shadowed" // module
+}
+
+dependencies {
+    compile("com.squareup.dagger:dagger-compiler:$project.dagger1Version", {
+        exclude group: 'com.google.guava', module: 'guava'
+    })
+    compile 'com.google.guava:guava:25.0-jre'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

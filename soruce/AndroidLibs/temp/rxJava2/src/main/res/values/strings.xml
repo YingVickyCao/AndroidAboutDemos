@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidLibsDemo</string>
+
+    <string name="checkIfNumNotMax">Check if num is not MAX</string>
+    <string name="setNumMax">Set num MAX</string>
+    <string name="resetNum">Reset num</string>
+
+    <string name="subscribeInThread">Subscribe in Thread</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="connect">CONNECT</string>
+    <string name="disconnect">DISCONNECT</string>
+</resources>

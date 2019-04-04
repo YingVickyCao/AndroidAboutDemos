@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+def buildSrcDir = '../buildsystem'
+apply from: "${buildSrcDir}/shadow.gradle"
+
+import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer
+shadowJar {
+  transform(ServiceFileTransformer)
+  classifier = ''
+}
+
+dependencies {
+  implementation "com.google.dagger:dagger-compiler:$project.dagger2Version"
+}

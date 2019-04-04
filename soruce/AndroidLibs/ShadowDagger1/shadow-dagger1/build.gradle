@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+def buildSrcDir = '../buildsystem'
+apply from: "${buildSrcDir}/shadow.gradle"
+
+shadowJar {
+    classifier = ''
+    version = '1.2.2'
+    group = "com.squareup.dagger"
+    baseName = "dagger-shadowed"
+}
+
+dependencies {
+    /**
+     * FIXED:
+     * When shadowed dagger/daggerCompiler excluding javax.inject, and then use renamed dagger1, it has error:
+     * ERROR: Unable to load class 'javax.inject:Inject1'
+     */
+//    compile("com.squareup.dagger:dagger:$project.dagger1Version", {
+//        exclude group: 'javax.inject', module: 'javax.inject'
+//    })
+
+    compile("com.squareup.dagger:dagger:$project.dagger1Version", {
+        exclude group: 'com.google.guava', module: 'guava'
+    })
+    compile 'com.google.guava:guava:25.0-jre'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

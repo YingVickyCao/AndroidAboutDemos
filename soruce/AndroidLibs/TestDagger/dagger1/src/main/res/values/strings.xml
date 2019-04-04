@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">dagger1</string>
+
+    <string name="get_instance_1">Instance:Module Provide - new</string>
+    <string name="get_instance_2">Instance:Module Provide - Inject -> Inject constructor</string>
+    <string name="get_instance_3">Instance:Module Provide - includes modules - ? </string>
+    <string name="singleton">Singleton</string>
+    <string name="object_graph_plus">ObjectGraph.plus()</string>
+    <string name="lazy_injections">Lazy Injections</string>
+</resources>

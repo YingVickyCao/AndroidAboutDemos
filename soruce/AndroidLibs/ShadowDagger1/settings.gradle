@@ -1,0 +1,1 @@
+include ':app', ':shadow-dagger1', ':shadow-dagger-compiler1'
