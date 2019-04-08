@@ -52,7 +52,7 @@
 
         <activity android:name=".app_component.TestAppComponentActivityActivity" />
 
-        <activity android:name=".app_component.activity.ActivityTestHomeActivityActivity" />
+        <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
         <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component.activity._life_cycle.A"
@@ -75,6 +75,7 @@
             android:exported="true" />
 
         <activity android:name=".app_component.cp.dict.DictActivity" />
+        <activity android:name=".app_component.cp.dict.DictSearchResultActivity"/>
         <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
         <activity android:name=".app_component.cp.system.media.MediaActivity" />
         <activity android:name=".app_component.cp.system.sms.SMSActivity" />
@@ -161,8 +162,6 @@
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name="com.hades.example.android.other_ui.notifiaction.NotificationDescActivity" />
         <!-- START_OTHER_UI -->
-
-        <activity android:name="com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivityActivity" />
 
         <activity android:name="com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
         <activity android:name="com.hades.example.android.widget.imageview.KenBurnsImageActivity" />

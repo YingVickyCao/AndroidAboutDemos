@@ -67,7 +67,7 @@
                 <Button
                     android:id="@+id/queryAll"
                     style="@style/btn.small"
-                    android:text="@string/query_all" />
+                    android:text="Query All" />
 
                 <Button
                     android:id="@+id/rawQueryAll"

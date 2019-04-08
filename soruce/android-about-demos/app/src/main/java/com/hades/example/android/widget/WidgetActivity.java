@@ -22,7 +22,7 @@ import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.layout.ConstraintLayoutFragment;
-import com.hades.example.android.widget.layout.linearlayout.LinearLayoutActivityActivity;
+import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget.list.recyclerview.dag_reorder_list.DragReorderListFragment;
 import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
@@ -121,7 +121,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void linearlayout() {
-        showActivity(LinearLayoutActivityActivity.class);
+        showFragment(new TestLinearLayoutFragment());
     }
 
     private void testRatingBar() {

@@ -237,9 +237,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <FrameLayout
-        android:id="@+id/fragmentRoot"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
 </FrameLayout>
