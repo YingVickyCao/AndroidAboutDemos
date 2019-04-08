@@ -4,6 +4,7 @@
     <!-- 设置填充颜色 -->
     <solid android:color="#dfa2a2" />
     <!-- 设置四周的内边距 -->
+
     <padding
         android:bottom="7dp"
         android:left="7dp"

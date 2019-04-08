@@ -6,9 +6,15 @@
 
     <Button
         style="@style/btn"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/drawable_layer_list_4_btn"
+        android:text="LayerDrawable" />
+
+    <Button
+        style="@style/btn"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="LayerDrawable" />
 
     <!-- 定义一个拖动条，并改变轨道外观 -->
