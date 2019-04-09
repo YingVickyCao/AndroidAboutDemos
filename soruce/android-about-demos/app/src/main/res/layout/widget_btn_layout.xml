@@ -94,6 +94,13 @@
                 android:layout_height="wrap_content"
                 android:text="Button - 无背景色、不带阴影、带有边界水波"
                 android:textAllCaps="false" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button - Active blue背景，带border"
+                android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>
 

@@ -12,10 +12,10 @@
         <!--<solid android:color="@android:color/white" />-->
         <solid android:color="@color/blue" />
 
-        <padding
-            android:bottom="4dp"
-            android:left="8dp"
-            android:right="8dp"
-            android:top="4dp" />
+        <!--<padding-->
+            <!--android:bottom="4dp"-->
+            <!--android:left="8dp"-->
+            <!--android:right="8dp"-->
+            <!--android:top="4dp" />-->
     </shape>
 </inset>
