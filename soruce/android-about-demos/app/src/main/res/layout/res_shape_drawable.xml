@@ -3,27 +3,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/drawable_shape_4_1" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/drawable_shape_4_2" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/drawable_shape_4_3" />
-
-    <Button
-        style="@style/btn"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/drawable_shape_4_rounded_bg" />
 </LinearLayout>

@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:divider="@drawable/drawable_shape_4_vertical_divider"
+                android:divider="@drawable/drawable_shape_4_divider_vertical"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:showDividers="middle">
@@ -113,7 +113,7 @@
                 android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/image_thumbnail_spacing"
-                android:background="@drawable/drawable_shape_4_rounded_bg"
+                android:background="@drawable/drawable_shape_4_btn_corners_4_state_focused"
                 android:gravity="center"
                 android:orientation="horizontal">
 

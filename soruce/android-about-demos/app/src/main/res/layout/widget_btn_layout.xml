@@ -107,8 +107,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/drawable_selector_4_status_border_btn"
+                android:background="@drawable/drawable_selector_4_btn_status_border"
                 android:text="Button - with status and border"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/drawable_shape_4_btn_stroke"
+                android:text="Button - with stroke bg"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/drawable_shape_4_btn_gradient"
+                android:text="Button - with gradient bg"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/drawable_shape_4_btn_gradient_sweep"
+                android:text="Button - with sweep gradient  bg"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/btn"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/drawable_shape_4_btn_corners_4_state_pressed"
+                android:text="Button - with stroke"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>

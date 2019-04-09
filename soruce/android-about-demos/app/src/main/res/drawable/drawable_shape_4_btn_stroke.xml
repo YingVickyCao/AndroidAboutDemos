@@ -5,11 +5,11 @@
     <solid android:color="#dfa2a2" />
     <!-- 设置四周的内边距 -->
 
-    <padding
-        android:bottom="7dp"
-        android:left="7dp"
-        android:right="7dp"
-        android:top="7dp" />
+    <!--<padding-->
+        <!--android:bottom="7dp"-->
+        <!--android:left="7dp"-->
+        <!--android:right="7dp"-->
+        <!--android:top="7dp" />-->
     <!-- 设置边框 -->
     <stroke
         android:width="3dip"

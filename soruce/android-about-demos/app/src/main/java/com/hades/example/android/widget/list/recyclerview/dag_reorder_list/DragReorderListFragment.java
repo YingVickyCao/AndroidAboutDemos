@@ -48,7 +48,7 @@ public class DragReorderListFragment extends Fragment implements StartDragListen
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
-        rv.addItemDecoration(new MyDecoration(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.drawable_shape_4_vertical_divider));
+        rv.addItemDecoration(new MyDecoration(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.drawable_shape_4_divider_vertical));
 
         mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
         mItemTouchHelper.attachToRecyclerView(rv);
