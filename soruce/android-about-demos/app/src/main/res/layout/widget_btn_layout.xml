@@ -150,7 +150,6 @@
                 android:text="Button - with stroke"
                 android:textAllCaps="false" />
 
-
             <Button
                 style="@style/btn"
                 android:layout_marginStart="20dp"
@@ -159,6 +158,16 @@
                 android:text="Button - text color changes with status"
                 android:textAllCaps="false"
                 android:textColor="@color/color_selector_4_btn_status" />
+
+            <!-- ERROR: color only can be used in android:textColor, can not android:background-->
+            <!--<Button-->
+                <!--style="@style/btn"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_marginTop="@dimen/margin_small"-->
+                <!--android:layout_marginEnd="20dp"-->
+                <!--android:text="Button - text color changes with status"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:background="@color/color_selector_4_btn_status" />-->
         </LinearLayout>
     </ScrollView>
 
