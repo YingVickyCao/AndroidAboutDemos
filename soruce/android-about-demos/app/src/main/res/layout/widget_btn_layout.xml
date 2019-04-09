@@ -95,11 +95,20 @@
                 android:text="Button - 无背景色、不带阴影、带有边界水波"
                 android:textAllCaps="false" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/drawable_selector_4_status_btn"
+                android:text="Button - with status"
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button - Active blue背景，带border"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/drawable_selector_4_status_border_btn"
+                android:text="Button - with status and border"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>
