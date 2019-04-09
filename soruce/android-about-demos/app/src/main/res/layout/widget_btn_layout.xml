@@ -52,6 +52,12 @@
 
             <Button
                 style="@style/btn"
+                android:background="@color/blue"
+                android:stateListAnimator="@animator/button_state_list_anim_material"
+                android:text="Blue Button(Default Choose)" />
+
+            <Button
+                style="@style/btn"
                 android:background="@drawable/btn_default_material"
                 android:stateListAnimator="@animator/button_state_list_anim_material"
                 android:text="Blue Button(Default Choose)" />
@@ -107,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/drawable_selector_4_btn_status_border"
+                android:background="@drawable/drawable_selector_4_btn_status"
                 android:text="Button - with status and border"
                 android:textAllCaps="false" />
 
@@ -143,6 +149,16 @@
                 android:background="@drawable/drawable_shape_4_btn_corners_4_state_pressed"
                 android:text="Button - with stroke"
                 android:textAllCaps="false" />
+
+
+            <Button
+                style="@style/btn"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="20dp"
+                android:text="Button - text color changes with status"
+                android:textAllCaps="false"
+                android:textColor="@color/color_selector_4_btn_status" />
         </LinearLayout>
     </ScrollView>
 
