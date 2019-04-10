@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:name="seekbar_thumb_unpressed_to_pressed"
+    android:name="seekbar_thumb_unpressed_to_pressed_app"
     android:width="@dimen/seekbar_thumb_width"
     android:height="@dimen/seekbar_thumb_width"
-    android:tint="?attr/colorControlActivated"
+    android:tint="@android:color/holo_green_light"
     android:viewportWidth="@integer/seek_viewportWidth"
     android:viewportHeight="@integer/seek_viewportWidth">
     <group
