@@ -15,62 +15,33 @@
     <!-- progress_horizontal.xml
      progress_horizontal_material.xml-->
 
-
-    <RelativeLayout
-        android:id="@+id/seekBar1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_topic"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--android:background="@drawable/control_background_32dp_material_app"-->
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:max="100"
             android:progress="40"
             android:progressDrawable="@drawable/progress_horizontal"
             android:secondaryProgress="60"
             android:thumb="@drawable/seek_thumb" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/seekBar2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar1">
-
-        <RelativeLayout
+        <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="#fff">
-
-            <!--android:background="@drawable/control_background_32dp_material_app"-->
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:max="100"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:progress="40"
-                android:progressDrawable="@drawable/progress_horizontal_holo_light"
-                android:secondaryProgress="60"
-                android:thumb="@drawable/scrubber_control_selector_holo"
-                android:thumbOffset="7dp" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/seekBar3"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#fff"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2">
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/progress_horizontal_holo_light"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/scrubber_control_selector_holo"
+            android:thumbOffset="7dp" />
 
         <SeekBar
             android:layout_width="match_parent"
@@ -82,8 +53,19 @@
             android:progress="40"
             android:progressDrawable="@drawable/progress_horizontal_material"
             android:secondaryProgress="60"
+            android:splitTrack="true"
             android:thumb="@drawable/seekbar_thumb_material_anim"
             android:thumbOffset="7dp" />
 
-    </RelativeLayout>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:max="100"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:secondaryProgress="60"
+            android:splitTrack="true"
+            android:thumbTint="@color/green" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -6,8 +6,12 @@
     android:tint="@android:color/holo_green_light"
     android:viewportWidth="@integer/seek_viewportWidth"
     android:viewportHeight="@integer/seek_viewportWidth">
+
+    <!--android:scaleX="1.0"-->
     <group
         android:name="thumb_0"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:translateX="@integer/seek_translateX"
         android:translateY="@integer/seek_translateX">
         <path
