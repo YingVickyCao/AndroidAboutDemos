@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="10"
-        android:progressDrawable="@drawable/drawable_layer_list_4_bar" />
+        android:progressDrawable="@drawable/drawable_layer_list_4_seek_bar_progress_drawable" />
 
     <ImageView
         android:layout_width="wrap_content"

@@ -2,7 +2,7 @@
 <resources>
 
     <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/drawable_layer_list_4_ratingbar_drawable</item>
+        <item name="android:progressDrawable">@drawable/drawable_layer_list_4_ratingbar_progress_drawable</item>
         <item name="android:minHeight">48dip</item>
         <item name="android:maxHeight">48dip</item>
     </style>
