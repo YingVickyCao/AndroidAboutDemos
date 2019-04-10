@@ -165,7 +165,7 @@
 
         <activity android:name="com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
         <activity android:name="com.hades.example.android.widget.imageview.KenBurnsImageActivity" />
-        <activity android:name="com.hades.example.android.widget.button.TestButtonActivity" />
+        <activity android:name="com.hades.example.android.widget._button.TestButtonActivity" />
         <activity android:name="com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
 

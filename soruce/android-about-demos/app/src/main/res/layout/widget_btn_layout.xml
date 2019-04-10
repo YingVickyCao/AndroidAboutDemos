@@ -155,19 +155,30 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="20dp"
+                android:enabled="false"
+                android:text="Button - text color changes with status"
+                android:textAllCaps="false"
+                android:textColor="@color/color_selector_4_btn_status" />
+
+            <TextView
+                style="@style/btn"
+                android:layout_height="@dimen/size_45"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="20dp"
                 android:text="Button - text color changes with status"
                 android:textAllCaps="false"
                 android:textColor="@color/color_selector_4_btn_status" />
 
             <!-- ERROR: color only can be used in android:textColor, can not android:background-->
             <!--<Button-->
-                <!--style="@style/btn"-->
-                <!--android:layout_marginStart="20dp"-->
-                <!--android:layout_marginTop="@dimen/margin_small"-->
-                <!--android:layout_marginEnd="20dp"-->
-                <!--android:text="Button - text color changes with status"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:background="@color/color_selector_4_btn_status" />-->
+            <!--style="@style/btn"-->
+            <!--android:layout_marginStart="20dp"-->
+            <!--android:layout_marginTop="@dimen/margin_small"-->
+            <!--android:layout_marginEnd="20dp"-->
+            <!--android:text="Button - text color changes with status"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:background="@color/color_selector_4_btn_status" />-->
         </LinearLayout>
     </ScrollView>
 

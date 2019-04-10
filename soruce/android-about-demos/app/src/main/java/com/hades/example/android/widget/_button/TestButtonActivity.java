@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.button;
+package com.hades.example.android.widget._button;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;

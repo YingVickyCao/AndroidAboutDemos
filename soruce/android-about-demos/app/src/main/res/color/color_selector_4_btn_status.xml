@@ -3,5 +3,6 @@
     <item android:color="@color/red" android:state_pressed="true" />
     <item android:color="@color/green" android:state_focused="true" />
     <item android:color="@color/blue" android:state_hovered="true" />
+    <item android:color="#FF5722" android:state_enabled="false" />
     <item android:color="@color/yellow" />
 </selector>

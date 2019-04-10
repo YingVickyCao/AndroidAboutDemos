@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape
+            android:innerRadius="2dp"
+            android:shape="ring"
+            android:thickness="2dp"
+            android:tint="@color/text_color_secondary_app"
+            android:useLevel="false">
+            <solid android:color="@android:color/white" />
+            <size
+                android:width="18dp"
+                android:height="18dp" />
+        </shape>
+    </item>
+    <item
+        android:id="@+id/pressed"
+        android:drawable="@drawable/seekbar_thumb_pressed_to_unpressed_app"
+        android:state_pressed="true" />
+    <item
+        android:id="@+id/unpressed"
+        android:drawable="@drawable/seekbar_thumb_unpressed_to_pressed_app" />
+    <transition
+        android:drawable="@drawable/seekbar_thumb_unpressed_to_pressed_animation_app"
+        android:fromId="@+id/unpressed"
+        android:toId="@+id/pressed" />
+    <transition
+        android:drawable="@drawable/seekbar_thumb_pressed_to_unpressed_animation_app"
+        android:fromId="@+id/pressed"
+        android:toId="@+id/unpressed" />
+</animated-selector>

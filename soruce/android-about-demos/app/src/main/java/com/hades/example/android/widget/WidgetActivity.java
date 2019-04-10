@@ -15,8 +15,9 @@ import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
+import com.hades.example.android.widget._seekbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
-import com.hades.example.android.widget.button.TestButtonActivity;
+import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
@@ -59,6 +60,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
+        findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(v -> testViewSwitcher());
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(v -> testImageSwitcher());
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(v -> testTextSwitcher());
@@ -126,6 +128,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void testRatingBar() {
         showFragment(RatingBarFragment.newInstance(), RatingBarFragment.class.getSimpleName());
+    }
+
+    private void pageSeekBar() {
+        showFragment(new TestSeekBarFragment());
     }
 
     private void testViewSwitcher() {

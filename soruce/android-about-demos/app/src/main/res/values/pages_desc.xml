@@ -40,5 +40,7 @@
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
     <string name="page_spinner">Spinner</string>
     <string name="page_content_provider">Content Provider</string>
+    <string name="page_seekbar">SeekBar</string>
+
 
 </resources>
