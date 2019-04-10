@@ -9,10 +9,11 @@
             android:useLevel="false">
             <solid android:color="@android:color/white" />
             <size
-                android:width="18dp"
-                android:height="18dp" />
+                android:width="@dimen/seekbar_thumb_width"
+                android:height="@dimen/seekbar_thumb_width" />
         </shape>
     </item>
+
     <item
         android:id="@+id/pressed"
         android:drawable="@drawable/seekbar_thumb_pressed_to_unpressed_app"
@@ -20,6 +21,7 @@
     <item
         android:id="@+id/unpressed"
         android:drawable="@drawable/seekbar_thumb_unpressed_to_pressed_app" />
+
     <transition
         android:drawable="@drawable/seekbar_thumb_unpressed_to_pressed_animation_app"
         android:fromId="@+id/unpressed"

@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_spinner"
+        android:text="@string/page_seekbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -15,13 +15,75 @@
     <!-- progress_horizontal_material.xml
      progress_horizontal_material.xml-->
     <SeekBar
+        android:id="@+id/seekBar1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
+        android:background="@drawable/control_background_32dp_material_app"
+        android:max="100"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
+        android:progress="40"
         android:progressDrawable="@drawable/progress_horizontal_material_app"
+        android:secondaryProgress="60"
         android:thumb="@drawable/seekbar_thumb_material_anim_app"
         android:thumbOffset="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/seekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar1">
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/control_background_32dp_material_app"
+            android:max="100"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/progress_horizontal_material_app"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/seekbar_thumb_material_anim_app"
+            android:thumbOffset="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/seekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#22272c"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="#2e3438">
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#171a1c"
+                android:max="100"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:progress="40"
+                android:progressDrawable="@drawable/progress_horizontal_material_app"
+                android:secondaryProgress="60"
+                android:thumb="@drawable/seekbar_thumb_material_anim_app"
+                android:thumbOffset="7dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

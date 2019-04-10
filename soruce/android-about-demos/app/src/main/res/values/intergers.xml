@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="seek_viewportWidth">18</integer>
+    <integer name="seek_translateX">9</integer>
+</resources>
