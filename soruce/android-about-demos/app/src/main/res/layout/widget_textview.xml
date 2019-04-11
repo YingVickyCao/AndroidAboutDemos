@@ -56,24 +56,94 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/switchTextViewTextColor"
+                    android:id="@+id/switchTextViewTextColor11"
                     style="@style/btn.small"
-                    android:text="Switch text color 1" />
+                    android:text="@string/switch_text_color_1" />
 
                 <Button
-                    android:id="@+id/switchTextViewTextColor2"
+                    android:id="@+id/switchTextViewTextColor12"
                     style="@style/btn.small"
                     android:layout_alignParentEnd="true"
-                    android:text="Switch text color 2" />
+                    android:text="@string/switch_text_color_2" />
             </RelativeLayout>
 
             <View style="@style/div" />
 
+            <!--
+                    Whether  Add android:clickable="true" or not,
+                   it both works.
+                 -->
             <LinearLayout
                 android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/drawable_selector_4_text_view_v1_1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_height="@dimen/size_45"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:duplicateParentState="true"
+                    android:text="@string/switch_textview_text_and_bg_color"
+                    android:textColor="@color/textview_text_color_selector_v1" />
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_height="@dimen/size_45"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@drawable/drawable_selector_4_text_view_v1_2"
+                    android:duplicateParentState="true"
+                    android:text="@string/switch_textview_text_and_bg_color"
+                    android:textColor="@color/textview_text_color_selector_v1" />
+
+                <!--
+                    Whether  Add android:clickable="true" or not,
+                   it both works.
+                 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor21"
+                        style="@style/btn.small"
+                        android:text="@string/switch_text_color_1" />
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor22"
+                        style="@style/btn.small"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/switch_text_color_2" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View style="@style/div.big" />
+
+            <!--
+                Must Add android:clickable="true".
+                Or it does not work.
+            -->
+            <TextView
+                android:id="@+id/switchedBgColor"
+                style="@style/tv"
+                android:layout_height="@dimen/size_45"
+                android:background="@drawable/drawable_selector_4_text_view_v2_1"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                android:textColor="@color/textview_text_color_selector_v2" />
+
+            <View style="@style/div" />
+
+            <!--
+                Must Add android:clickable="true".
+                Or it does not work.
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/drawable_selector_4_text_view_v2_1"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="vertical">
@@ -83,47 +153,18 @@
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
                     android:duplicateParentState="true"
-                    android:text="Switch TextView text and bg color"
-                    android:textColor="@color/textview_text_color_selector_v1" />
+                    android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                    android:textColor="@color/textview_text_color_selector_v2" />
 
                 <TextView
                     style="@style/tv"
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:background="@drawable/drawable_selector_4_text_view_v1_2"
+                    android:background="@drawable/drawable_selector_4_text_view_v2_2"
                     android:duplicateParentState="true"
-                    android:text="Switch TextView text and bg color"
-                    android:textColor="@color/textview_text_color_selector_v1" />
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/switchTextViewTextColor21"
-                        style="@style/btn.small"
-                        android:text="Switch text color 1" />
-
-                    <Button
-                        android:id="@+id/switchTextViewTextColor22"
-                        style="@style/btn.small"
-                        android:layout_alignParentEnd="true"
-                        android:text="Switch text color 2" />
-                </RelativeLayout>
+                    android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                    android:textColor="@color/textview_text_color_selector_v2" />
             </LinearLayout>
-
-            <View style="@style/div.big" />
-
-            <TextView
-                android:id="@+id/switchedBgColor"
-                style="@style/tv"
-                android:layout_height="@dimen/size_45"
-                android:background="@drawable/drawable_selector_4_text_view_v2"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="TextView change text and bg color with click status action"
-                android:textColor="@color/textview_text_color_selector_v2" />
 
             <View style="@style/div" />
         </LinearLayout>

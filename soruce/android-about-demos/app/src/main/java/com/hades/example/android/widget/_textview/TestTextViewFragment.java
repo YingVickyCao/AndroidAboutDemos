@@ -30,11 +30,11 @@ public class TestTextViewFragment extends BaseFragment {
         mSwitchedTextColorTextView = view.findViewById(R.id.switchedTextColor);
         mLinearLayout = view.findViewById(R.id.ll);
 
-        view.findViewById(R.id.switchTextViewTextColor).setOnClickListener(v -> switchTextViewTextColor());
-        view.findViewById(R.id.switchTextViewTextColor2).setOnClickListener(v -> switchTextViewTextColor2());
+        view.findViewById(R.id.switchTextViewTextColor11).setOnClickListener(v -> switchTextViewTextColor1_1());
+        view.findViewById(R.id.switchTextViewTextColor12).setOnClickListener(v -> switchTextViewTextColor1_2());
 
-        view.findViewById(R.id.switchTextViewTextColor21).setOnClickListener(v -> switchTextViewTextColor21());
-        view.findViewById(R.id.switchTextViewTextColor22).setOnClickListener(v -> switchTextViewTextColor22());
+        view.findViewById(R.id.switchTextViewTextColor21).setOnClickListener(v -> switchTextViewTextColor2_1());
+        view.findViewById(R.id.switchTextViewTextColor22).setOnClickListener(v -> switchTextViewTextColor2_2());
 
         format1(view);
         format2(view);
@@ -54,19 +54,19 @@ public class TestTextViewFragment extends BaseFragment {
         ((TextView) view.findViewById(R.id.my_text_view_spannable)).setText(text2);
     }
 
-    private void switchTextViewTextColor() {
+    private void switchTextViewTextColor1_1() {
         mSwitchedTextColorTextView.setSelected(true);
     }
 
-    private void switchTextViewTextColor2() {
+    private void switchTextViewTextColor1_2() {
         mSwitchedTextColorTextView.setSelected(false);
     }
 
-    private void switchTextViewTextColor21() {
+    private void switchTextViewTextColor2_1() {
         mLinearLayout.setSelected(true);
     }
 
-    private void switchTextViewTextColor22() {
+    private void switchTextViewTextColor2_2() {
         mLinearLayout.setSelected(false);
     }
 }
