@@ -217,6 +217,88 @@
                 android:progressDrawable="@drawable/progress_horizontal_material"
                 android:secondaryProgress="60" />
 
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="indeterminate" />
+
+            <ProgressBar
+                style="@style/progressbar_h"
+                android:layout_marginTop="@dimen/margin_small"
+                android:indeterminate="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    style="@style/progressbar"
+                    android:layout_marginTop="@dimen/margin_small" />
+
+                <ProgressBar
+                    style="@style/progressbar"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:indeterminate="true" />
+            </LinearLayout>
+
+            <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:text="TBD:Inverse" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLargeInverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small" />
+            </LinearLayout>
+
+            <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:text="incrementProgress" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/progressbar_h"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/reduce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="-" />
+                </RelativeLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
