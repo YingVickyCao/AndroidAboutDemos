@@ -15,6 +15,7 @@ import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
+import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._button.TestButtonActivity;
@@ -59,8 +60,9 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
         findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
-        findViewById(R.id.jumpRatingBar).setOnClickListener(v -> testRatingBar());
+        findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
+        findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
         findViewById(R.id.jumpViewSwitcher).setOnClickListener(v -> testViewSwitcher());
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(v -> testImageSwitcher());
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(v -> testTextSwitcher());
@@ -126,12 +128,16 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         showFragment(new TestLinearLayoutFragment());
     }
 
-    private void testRatingBar() {
+    private void pageRatingBar() {
         showFragment(TestRatingBarFragment.newInstance(), TestRatingBarFragment.class.getSimpleName());
     }
 
     private void pageSeekBar() {
         showFragment(new TestSeekBarFragment());
+    }
+
+    private void pageProgressbar() {
+        showFragment(new TestProgressBarFragment());
     }
 
     private void testViewSwitcher() {

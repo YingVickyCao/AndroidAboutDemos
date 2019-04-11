@@ -10,6 +10,9 @@
 
     <string name="page_widget">Widget</string>
     <string name="page_Button">Button</string>
+    <string name="page_SeekBar">SeekBar</string>
+    <string name="page_RatingBar">SeekBar</string>
+    <string name="page_Progressbar">ProgressBar</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_customview">CustomView</string>
     <string name="page_ken_burns_image">Ken Burns Image</string>
@@ -40,7 +43,6 @@
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
     <string name="page_spinner">Spinner</string>
     <string name="page_content_provider">Content Provider</string>
-    <string name="page_seekbar">SeekBar</string>
 
 
 </resources>
