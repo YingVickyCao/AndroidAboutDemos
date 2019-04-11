@@ -85,11 +85,23 @@
     <style name="div">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/holo_red_dark</item>
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:layout_marginBottom">@dimen/margin_small</item>
+    </style>
+
+    <style name="div.big">
+        <item name="android:layout_height">5dp</item>
     </style>
 
     <style name="div.vertical">
         <item name="android:layout_width">1dp</item>
         <item name="android:background">@android:color/holo_red_dark</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+    </style>
+
+    <style name="div.vertical.big">
+        <item name="android:layout_width">5dp</item>
     </style>
 </resources>
