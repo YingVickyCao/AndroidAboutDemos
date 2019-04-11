@@ -12,6 +12,7 @@
     <string name="page_Button">Button</string>
     <string name="page_TextView">TextView</string>
     <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
+    <string name="page_TextView_4_click_action">TextView - Click Action</string>
     <string name="page_SeekBar">SeekBar</string>
     <string name="page_RatingBar">SeekBar</string>
     <string name="page_Progressbar">ProgressBar</string>

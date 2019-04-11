@@ -147,4 +147,5 @@
     <string name="switch_text_color_1">Switch text color 1</string>
     <string name="switch_text_color_2">Switch text color 2</string>
     <string name="textview_change_text_and_bg_color_with_click_status_action">TextView change text and bg color with click status action</string>
+    <string name="click_this_textview">Click this TextView</string>
 </resources>

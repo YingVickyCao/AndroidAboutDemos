@@ -19,6 +19,7 @@ import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
@@ -55,6 +56,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
+        findViewById(R.id.pageTextView4ClickAction).setOnClickListener(v -> pageTextView4ClickAction());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
@@ -106,6 +108,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void pageTextView() {
         showFragment(new TestTextViewFragment());
+    }
+
+    private void pageTextView4ClickAction() {
+        showFragment(new TestTextViewClickFragment());
     }
 
     private void pageButton() {

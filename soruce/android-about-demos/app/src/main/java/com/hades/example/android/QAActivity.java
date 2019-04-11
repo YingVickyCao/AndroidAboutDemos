@@ -7,6 +7,7 @@ import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
+import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 
 public class QAActivity extends NoNeedPermissionActivity {
@@ -41,7 +42,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showFragment(new TestTextViewFragment());
+        showFragment(new TestTextViewClickFragment());
 //        showActivity(TestButtonActivity.class);
     }
 }
