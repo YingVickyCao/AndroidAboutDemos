@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/date" />
+        android:text="@string/page_Button" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             <TextView
                 style="@style/tv"
                 android:layout_marginTop="@dimen/margin_tiny"
-                android:text="@string/useButton2AvoidCheckEditedInputDate" />
+                android:text="@string/use_btn_to_avoid_check_edit_input_date_layout" />
 
             <Button
                 android:id="@+id/details_date"

@@ -54,7 +54,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
-        findViewById(R.id.pageUseButton2AvoidCheckEditInputDate).setOnClickListener(v -> pageUseButton2AvoidCheckEditInputDate());
+        findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
@@ -106,7 +106,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         showFragment(new TextViewFormatHTMLFragment());
     }
 
-    private void pageUseButton2AvoidCheckEditInputDate() {
+    private void pageButton() {
         showActivity(TestButtonActivity.class);
     }
 
