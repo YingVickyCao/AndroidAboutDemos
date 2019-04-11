@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.view_animator;
+package com.hades.example.android.widget._progressbar;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import android.widget.RatingBar;
 
 import com.hades.example.android.R;
 
-public class RatingBarFragment extends Fragment {
-    private static final String TAG = RatingBarFragment.class.getSimpleName();
+public class TestRatingBarFragment extends Fragment {
+    private static final String TAG = TestRatingBarFragment.class.getSimpleName();
 
-    public static RatingBarFragment newInstance() {
-        return new RatingBarFragment();
+    public static TestRatingBarFragment newInstance() {
+        return new TestRatingBarFragment();
     }
 
     private ImageView image;

@@ -15,7 +15,7 @@ import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
-import com.hades.example.android.widget._seekbar.TestSeekBarFragment;
+import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
@@ -33,7 +33,7 @@ import com.hades.example.android.widget.textview.HighlightDigitalClockFragment;
 import com.hades.example.android.widget.textview.TextViewFormatHTMLFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
-import com.hades.example.android.widget.view_animator.RatingBarFragment;
+import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
@@ -127,7 +127,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void testRatingBar() {
-        showFragment(RatingBarFragment.newInstance(), RatingBarFragment.class.getSimpleName());
+        showFragment(TestRatingBarFragment.newInstance(), TestRatingBarFragment.class.getSimpleName());
     }
 
     private void pageSeekBar() {

@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._seekbar;
+package com.hades.example.android.widget._progressbar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
