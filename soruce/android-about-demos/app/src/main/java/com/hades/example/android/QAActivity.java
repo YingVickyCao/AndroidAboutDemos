@@ -39,7 +39,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showFragment(new TestProgressBarFragment());
+        showFragment(new TestSeekBarFragment());
 //        showActivity(TestButtonActivity.class);
     }
 }

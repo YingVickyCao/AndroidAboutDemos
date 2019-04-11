@@ -206,6 +206,20 @@
                     android:splitTrack="true"
                     android:thumb="@drawable/seekbar_thumb_with_status" />
 
+                <SeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:max="100"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:mirrorForRtl="true"
+                    android:progress="40"
+                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:secondaryProgress="60"
+                    android:splitTrack="true"
+                    android:thumb="@drawable/seekbar_thumb_with_status_v2" />
+
             </LinearLayout>
 
             <LinearLayout
