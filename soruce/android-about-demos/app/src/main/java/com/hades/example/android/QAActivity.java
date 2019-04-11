@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 
@@ -39,7 +40,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showFragment(new TestSeekBarFragment());
-//        showActivity(TestButtonActivity.class);
+//        showFragment(new TestSeekBarFragment());
+        showActivity(TestButtonActivity.class);
     }
 }

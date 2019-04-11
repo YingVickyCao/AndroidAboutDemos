@@ -167,9 +167,11 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="20dp"
-                android:text="Button - text color changes with status"
+                android:gravity="center"
+                android:text="TextView - text color changes with status"
                 android:textAllCaps="false"
-                android:textColor="@color/color_selector_4_btn_status" />
+                android:textColor="@color/color_selector_4_btn_status"
+                android:textSize="16sp" />
 
             <!-- ERROR: color only can be used in android:textColor, can not android:background-->
             <!--<Button-->
@@ -180,7 +182,6 @@
             <!--android:text="Button - text color changes with status"-->
             <!--android:textAllCaps="false"-->
             <!--android:background="@color/color_selector_4_btn_status" />-->
-
 
             <Button
                 android:layout_width="match_parent"
