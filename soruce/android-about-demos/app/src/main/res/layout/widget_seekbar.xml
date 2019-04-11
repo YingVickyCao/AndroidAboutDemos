@@ -72,7 +72,7 @@
                     android:progressDrawable="@drawable/progress_horizontal_material"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_material_anim" />
+                    android:thumb="@drawable/drawable_animated_selector_4_seekbar_thumb_material_anim" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                     android:progressDrawable="@drawable/progress_horizontal_material"
                     android:secondaryProgress="60"
                     android:splitTrack="false"
-                    android:thumb="@drawable/seekbar_thumb_material_anim" />
+                    android:thumb="@drawable/drawable_animated_selector_4_seekbar_thumb_material_anim" />
             </LinearLayout>
 
             <View
@@ -123,7 +123,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular" />
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular" />
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular" />
 
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular" />
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular" />
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular" />
             </LinearLayout>
 
             <LinearLayout
@@ -204,7 +204,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_with_status" />
+                    android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -218,7 +218,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_with_status_v2" />
+                    android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status_v2" />
 
             </LinearLayout>
 
@@ -247,7 +247,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular"
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular"
                     android:thumbOffset="10dp" />
 
                 <SeekBar
@@ -264,7 +264,7 @@
                     android:progressDrawable="@drawable/seekbar_progress"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
-                    android:thumb="@drawable/seekbar_thumb_shape_point_circular"
+                    android:thumb="@drawable/drawable_shape_4_seekbar_thumb_circular"
                     android:thumbOffset="5dp" />
                 <!-- android:thumbOffset="0dp" 也可以-->
 
