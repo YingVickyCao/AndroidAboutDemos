@@ -20,7 +20,7 @@ public class TestButtonActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_btn_layout);
+        setContentView(R.layout.widget_btn);
 
         detailsDate = findViewById(R.id.details_date);
 
