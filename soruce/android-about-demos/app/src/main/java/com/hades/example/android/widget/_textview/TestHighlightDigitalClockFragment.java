@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.textview;
+package com.hades.example.android.widget._textview;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.hades.example.android.R;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class HighlightDigitalClockFragment extends Fragment {
+public class TestHighlightDigitalClockFragment extends Fragment {
     private static final String DATE_FORMAT = "%02d:%02d:%02d";
     private static final int REFRESH_DELAY = 500;
     private final Handler mHandler = new Handler();
@@ -24,7 +24,7 @@ public class HighlightDigitalClockFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_hack_11, container, false);
+        View view = inflater.inflate(R.layout.widget_textview_4_highlight_digital_clock, container, false);
         mTextView = view.findViewById(R.id.main_clock_time);
         return view;
     }

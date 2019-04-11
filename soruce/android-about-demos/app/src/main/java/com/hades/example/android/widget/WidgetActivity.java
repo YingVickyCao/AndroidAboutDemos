@@ -19,6 +19,7 @@ import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
@@ -30,8 +31,7 @@ import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerVie
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
-import com.hades.example.android.widget.textview.HighlightDigitalClockFragment;
-import com.hades.example.android.widget.textview.TextViewFormatHTMLFragment;
+import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
@@ -54,7 +54,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
-        findViewById(R.id.pageFormatHtml).setOnClickListener(v -> pageFormatHtml());
+        findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
@@ -101,11 +101,11 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageHighlightDigitalClock() {
-        showFragment(new HighlightDigitalClockFragment());
+        showFragment(new TestHighlightDigitalClockFragment());
     }
 
-    private void pageFormatHtml() {
-        showFragment(new TextViewFormatHTMLFragment());
+    private void pageTextView() {
+        showFragment(new TestTextViewFragment());
     }
 
     private void pageButton() {

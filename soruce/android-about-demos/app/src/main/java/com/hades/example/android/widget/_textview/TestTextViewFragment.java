@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.textview;
+package com.hades.example.android.widget._textview;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,12 +17,11 @@ import android.widget.TextView;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
-public class TextViewFormatHTMLFragment extends BaseFragment {
+public class TestTextViewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_textview_layout, container, false);
-
+        View view = inflater.inflate(R.layout.widget_textview, container, false);
         format1(view);
         format2(view);
         return view;

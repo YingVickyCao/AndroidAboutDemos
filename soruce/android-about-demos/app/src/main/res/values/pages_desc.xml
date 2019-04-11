@@ -10,14 +10,14 @@
 
     <string name="page_widget">Widget</string>
     <string name="page_Button">Button</string>
+    <string name="page_TextView">TextView</string>
+    <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
     <string name="page_SeekBar">SeekBar</string>
     <string name="page_RatingBar">SeekBar</string>
     <string name="page_Progressbar">ProgressBar</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_customview">CustomView</string>
     <string name="page_ken_burns_image">Ken Burns Image</string>
-    <string name="page_format_html">Format HTML</string>
-    <string name="page_highlight_digital_clock">Highlight Digital Clock</string>
     <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
     <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
     <string name="page_provide_screen_density_bitmaps">屏幕分辨率 —— bitmaps</string>

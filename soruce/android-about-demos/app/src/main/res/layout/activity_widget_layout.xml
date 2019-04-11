@@ -38,12 +38,12 @@
             <Button
                 android:id="@+id/pageHighlightDigitalClock"
                 style="@style/btn.small"
-                android:text="@string/page_highlight_digital_clock" />
+                android:text="@string/page_TextView_4_highlight_digital_clock" />
 
             <Button
-                android:id="@+id/pageFormatHtml"
+                android:id="@+id/pageTextView"
                 style="@style/btn.small"
-                android:text="@string/page_format_html" />
+                android:text="@string/page_TextView" />
 
             <Button
                 android:id="@+id/pageButton"
