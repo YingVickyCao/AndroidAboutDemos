@@ -38,4 +38,12 @@
     <style name="TextAppearance.Material.Widget.DropDownItem_app" parent="@android:style/TextAppearance.Material.Widget.DropDownItem">
         <item name="android:textColor">@color/primary_text_disable_only_material_light_app</item>
     </style>
+
+    <style name="seekbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:max">100</item>
+        <item name="android:progress">40</item>
+        <item name="android:secondaryProgress">60</item>
+    </style>
 </resources>

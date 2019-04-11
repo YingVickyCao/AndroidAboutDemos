@@ -142,4 +142,5 @@
     <string name="remove_button_shadow">Remove button shadow</string>
     <string name="custom_button_shadow">Custom button shadow</string>
     <string name="normal_button">Normal button</string>
+    <string name="default_seekbar">Default SeekBar</string>
 </resources>

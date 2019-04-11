@@ -43,6 +43,9 @@
             android:thumb="@drawable/scrubber_control_selector_holo"
             android:thumbOffset="7dp" />
 
+        <!-- 解决thumb和progress相接有间隔?
+            android:splitTrack="true" -> false
+        -->
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -57,15 +60,35 @@
             android:thumb="@drawable/seekbar_thumb_material_anim"
             android:thumbOffset="7dp" />
 
+        <View
+            style="@style/div"
+            android:layout_height="5dp"
+            android:background="@color/red" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/default_seekbar" />
+
+        <SeekBar style="@style/seekbar" />
+
+        <!-- 如何调整seekbar的高度?
+            android:maxHeight="1dp"
+            android:minHeight="1dp"
+            android:layout_height="60dp" -->
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/margin_medium"
             android:max="100"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:progress="40"
+            android:progressDrawable="@drawable/seekbar_progress"
             android:secondaryProgress="60"
             android:splitTrack="true"
+            android:thumb="@drawable/seekbar_thumb_shape_point_circular"
             android:thumbTint="@color/green" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
