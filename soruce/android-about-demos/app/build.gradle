@@ -23,6 +23,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         vectorDrawables.useSupportLibrary = true
+
+        ndk{
+            // FIXED_Warning:ABIs [arm64-v8a,armeabi-v7a,armeabi] set by 'android.injected.build.abi' gradle flag contained 'ARMEABI, ARM64_V8A' not targeted by this project.
+            abiFilters "arm64-v8a","armeabi-v7a","x86_84","x86"
+        }
     }
 
     buildTypes {
