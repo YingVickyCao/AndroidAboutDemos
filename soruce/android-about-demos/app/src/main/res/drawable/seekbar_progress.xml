@@ -8,7 +8,8 @@
             <corners android:radius="2dp" />
         </shape>
     </item>
-    <item android:id="@android:id/progress">
+
+    <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape android:shape="rectangle">
                 <corners android:radius="2dp" />
@@ -18,8 +19,7 @@
         </clip>
     </item>
 
-
-    <item android:id="@android:id/secondaryProgress">
+    <item android:id="@android:id/progress">
         <clip>
             <shape android:shape="rectangle">
                 <corners android:radius="2dp" />
