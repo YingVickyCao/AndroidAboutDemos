@@ -629,7 +629,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=add" />
+                    android:text="backgroundTintMode=add" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -642,7 +642,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=multiply" />
+                    android:text="backgroundTintMode=multiply" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -656,7 +656,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=screen" />
+                    android:text="backgroundTintMode=screen" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -670,7 +670,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=src_atop" />
+                    android:text="backgroundTintMode=src_atop" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -684,7 +684,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=src_in" />
+                    android:text="backgroundTintMode=src_in" />
 
                 <SeekBar
                     android:layout_width="match_parent"
@@ -711,7 +711,7 @@
 
                 <TextView
                     style="@style/tv"
-                    android:text="backgroundMode=src_over" />
+                    android:text="backgroundTintMode=src_over" />
 
                 <SeekBar
                     android:layout_width="match_parent"

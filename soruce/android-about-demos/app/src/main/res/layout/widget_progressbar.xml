@@ -30,12 +30,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
 
+            <TextView
+                style="@style/tv"
+                android:text="style = Middle(Default)" />
+
             <ProgressBar
+                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/red" />
+                android:layout_marginTop="@dimen/margin_small" />
+
+            <TextView
+                style="@style/tv"
+                android:text="style = Small" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyleSmall"
@@ -44,6 +52,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_small" />
 
+            <TextView
+                style="@style/tv"
+                android:text="style = Large" />
+
             <ProgressBar
                 style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
@@ -51,6 +63,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_small" />
 
+            <View style="@style/div" />
+
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
@@ -61,29 +75,108 @@
                 android:progress="20"
                 android:secondaryProgress="60" />
 
+            <TextView
+                style="@style/tv"
+                android:text="style = Horizontal" />
+
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:backgroundTint="@color/yellow"
                 android:max="100"
                 android:progress="20"
-                android:progressTint="@color/green"
+                android:secondaryProgress="60" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="background" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/red" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="进度条 Height" />
+
+            <ProgressBar
+                style="@style/progressbar_h"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@android:color/holo_blue_light"
+                android:maxHeight="2dp"
+                android:minHeight="2dp" />
+
+            <ProgressBar
+                style="@style/progressbar_h"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@android:color/holo_blue_light"
+                android:maxHeight="2dp"
+                android:minHeight="2dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:maxHeight="20dp"
+                android:minHeight="20dp" />
+
+            <ProgressBar
+                style="@style/progressbar_h"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@android:color/holo_blue_light"
+                android:maxHeight="2dp"
+                android:minHeight="2dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Tint" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:backgroundTint="@color/green"
+                android:max="100"
+                android:progress="20"
+                android:progressTint="@android:color/holo_orange_dark"
                 android:secondaryProgress="60"
                 android:secondaryProgressTint="@color/blue" />
 
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Custom 进度条的背景色、progress and secondaryProgress bg color" />
+
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/yellow"
                 android:max="100"
                 android:progress="20"
-                android:progressTint="@color/green"
+                android:progressDrawable="@drawable/progress_horizontal_material"
                 android:secondaryProgress="60" />
 
             <ProgressBar
@@ -92,6 +185,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
+                android:backgroundTint="@color/green"
+                android:max="100"
+                android:progress="20"
+                android:progressDrawable="@drawable/progress_horizontal_material"
+                android:secondaryProgress="60" />
+
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/green"
+                android:max="100"
+                android:progress="20"
+                android:progressDrawable="@drawable/progress_horizontal_material"
+                android:secondaryProgress="60" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/green"
+                android:backgroundTint="@color/red"
                 android:max="100"
                 android:progress="20"
                 android:progressDrawable="@drawable/progress_horizontal_material"
