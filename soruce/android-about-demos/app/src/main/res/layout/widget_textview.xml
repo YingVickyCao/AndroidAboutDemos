@@ -129,6 +129,10 @@
 
             <View style="@style/div.big" />
 
+            <TextView
+                style="@style/tv"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/textview_change_text_and_bg_color_with_click_status_action" />
             <!--
                 Must Add android:clickable="true".
                 Or it does not work.
@@ -140,7 +144,7 @@
                 android:background="@drawable/drawable_selector_4_text_view_v2_1"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                android:text="TextView 1"
                 android:textColor="@color/textview_text_color_selector_v2" />
 
             <View style="@style/div" />
@@ -151,27 +155,32 @@
             -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:background="@drawable/drawable_selector_4_text_view_v2_1"
                 android:clickable="true"
                 android:focusable="true"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
                     style="@style/tv"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
+                    android:layout_weight="1"
                     android:duplicateParentState="true"
-                    android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                    android:text="TextView 1"
                     android:textColor="@color/textview_text_color_selector_v2" />
 
                 <TextView
                     style="@style/tv"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
+                    android:layout_weight="1"
                     android:background="@drawable/drawable_selector_4_text_view_v2_2"
                     android:duplicateParentState="true"
-                    android:text="@string/textview_change_text_and_bg_color_with_click_status_action"
+                    android:text="TextView 2"
                     android:textColor="@color/textview_text_color_selector_v2" />
             </LinearLayout>
 
