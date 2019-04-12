@@ -69,6 +69,11 @@
 
             <View style="@style/div" />
 
+            <TextView
+                style="@style/tv"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/switch_textview_text_and_bg_color" />
+
             <!--
                     Whether  Add android:clickable="true" or not,
                    it both works.
@@ -78,45 +83,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/drawable_selector_4_text_view_v1_1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv"
+                    style="@style/tv.small"
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
                     android:duplicateParentState="true"
-                    android:text="@string/switch_textview_text_and_bg_color"
+                    android:text="TextViw 1"
                     android:textColor="@color/textview_text_color_selector_v1" />
 
                 <TextView
-                    style="@style/tv"
+                    style="@style/tv.small"
                     android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
                     android:background="@drawable/drawable_selector_4_text_view_v1_2"
                     android:duplicateParentState="true"
-                    android:text="@string/switch_textview_text_and_bg_color"
+                    android:text="TextViw 2"
                     android:textColor="@color/textview_text_color_selector_v1" />
-
-                <!--
-                    Whether  Add android:clickable="true" or not,
-                   it both works.
-                 -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/switchTextViewTextColor21"
-                        style="@style/btn.small"
-                        android:text="@string/switch_text_color_1" />
-
-                    <Button
-                        android:id="@+id/switchTextViewTextColor22"
-                        style="@style/btn.small"
-                        android:layout_alignParentEnd="true"
-                        android:text="@string/switch_text_color_2" />
-                </RelativeLayout>
             </LinearLayout>
+
+            <!-- Whether  Add android:clickable="true" or not,it both works. -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/switchTextViewTextColor21"
+                    style="@style/btn.small"
+                    android:text="@string/switch_text_color_1" />
+
+                <Button
+                    android:id="@+id/switchTextViewTextColor22"
+                    style="@style/btn.small"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/switch_text_color_2" />
+            </RelativeLayout>
 
             <View style="@style/div.big" />
 

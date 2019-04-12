@@ -42,8 +42,9 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showFragment(new TestProgressBarFragment());
+//        showFragment(new TestProgressBarFragment());
 //        showFragment(new TestSeekBarFragment());
+        showFragment(new TestTextViewFragment());
 //        showActivity(TestButtonActivity.class);
     }
 }
