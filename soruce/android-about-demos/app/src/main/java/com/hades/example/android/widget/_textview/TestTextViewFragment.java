@@ -21,14 +21,21 @@ import com.hades.example.android.lib.base.BaseFragment;
 public class TestTextViewFragment extends BaseFragment {
 
     private TextView mSwitchedTextColorTextView;
-    private LinearLayout mLinearLayout;
+    private LinearLayout mll1;
+    private LinearLayout mll2;
+    private TextView mDownload2;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_textview, container, false);
 
         mSwitchedTextColorTextView = view.findViewById(R.id.switchedTextColor);
-        mLinearLayout = view.findViewById(R.id.ll);
+
+        mll1 = view.findViewById(R.id.ll);
+        mll2 = view.findViewById(R.id.ll2);
+
+        mDownload2 = view.findViewById(R.id.download);
 
         view.findViewById(R.id.switchTextViewTextColor11).setOnClickListener(v -> switchTextViewTextColor1_1());
         view.findViewById(R.id.switchTextViewTextColor12).setOnClickListener(v -> switchTextViewTextColor1_2());
@@ -36,8 +43,13 @@ public class TestTextViewFragment extends BaseFragment {
         view.findViewById(R.id.switchTextViewTextColor21).setOnClickListener(v -> switchTextViewTextColor2_1());
         view.findViewById(R.id.switchTextViewTextColor22).setOnClickListener(v -> switchTextViewTextColor2_2());
 
+        view.findViewById(R.id.reset).setOnClickListener(v -> reset());
+        view.findViewById(R.id.ll2).setOnClickListener(v -> download());
+
         format1(view);
         format2(view);
+
+        mll2.setSelected(true);
         return view;
     }
 
@@ -63,10 +75,25 @@ public class TestTextViewFragment extends BaseFragment {
     }
 
     private void switchTextViewTextColor2_1() {
-        mLinearLayout.setSelected(true);
+        mll1.setSelected(true);
     }
 
     private void switchTextViewTextColor2_2() {
-        mLinearLayout.setSelected(false);
+        mll1.setSelected(false);
+    }
+
+    private void reset() {
+        mll2.setClickable(true);
+        mll2.setEnabled(true);
+
+        mDownload2.setText(R.string.download);
+    }
+
+    private void download() {
+        showToast("Click download btn");
+        mll2.setClickable(false);
+        mll2.setEnabled(false);
+
+        mDownload2.setText(R.string.downloaded);
     }
 }

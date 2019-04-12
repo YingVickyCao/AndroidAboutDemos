@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/drawable_selector_4_text_view_v1_1"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     style="@style/tv.small"
@@ -126,6 +126,41 @@
                     android:layout_alignParentEnd="true"
                     android:text="@string/switch_text_color_2" />
             </RelativeLayout>
+
+            <View style="@style/div" />
+
+            <!-- When text = download, can be clicked, and changes color with state_pressed.
+             After clicked, text = download, can not be clicked
+             Background switch: ok
+             TextColor switch: not work
+             -->
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawable_selector_4_text_view_v1_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/download"
+                    style="@style/tv.small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_45"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:background="@drawable/drawable_selector_4_text_view_v1_3"
+                    android:duplicateParentState="true"
+                    android:text="@string/download"
+                    android:textColor="@color/textview_text_color_selector_v1_3"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/reset"
+                style="@style/btn.small"
+                android:text="Reset" />
 
             <View style="@style/div.big" />
 
