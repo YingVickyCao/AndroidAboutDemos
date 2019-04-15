@@ -11,6 +11,7 @@ public class DragAndReorderListActivity extends NoNeedPermissionActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme_Green);
+
         setContentView(R.layout.activity_only_fragemnt);
 
         getFragmentManager().beginTransaction().replace(R.id.root, new DragAndReorderListFragment(), DragAndReorderListFragment.class.getSimpleName()).commit();

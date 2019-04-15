@@ -154,6 +154,7 @@
 
         <!-- START_SCROLL_VIEW -->
         <activity android:name="com.hades.example.android.widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
+        <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity"/>
         <!-- END_SCROLL_VIEW -->
 
         <!-- START_OTHER_UI -->

@@ -15,7 +15,7 @@ android {
         applicationId "com.hades.example.android"
 //        minSdkVersion 21
 //        minSdkVersion 20
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

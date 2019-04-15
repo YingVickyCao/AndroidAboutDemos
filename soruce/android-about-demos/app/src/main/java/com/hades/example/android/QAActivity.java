@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListFragment;
 
 public class QAActivity extends NoNeedPermissionActivity {
@@ -41,7 +42,8 @@ public class QAActivity extends NoNeedPermissionActivity {
 //        showFragment(new TestProgressBarFragment());
 //        showFragment(new TestSeekBarFragment());
 //        showFragment(new TestTextViewFragment());
-        showFragment(new DragAndReorderListFragment());
+//        showFragment(new DragAndReorderListFragment());
+        showActivity(DragAndReorderListActivity.class);
 //        showActivity(TestButtonActivity.class);
     }
 }
