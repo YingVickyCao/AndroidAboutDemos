@@ -28,7 +28,6 @@ import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.layout.ConstraintLayoutFragment;
 import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutFragment;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
@@ -70,7 +69,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.jumpImageSwitcher).setOnClickListener(v -> testImageSwitcher());
         findViewById(R.id.jumpTextSwitcher).setOnClickListener(v -> testTextSwitcher());
 
-        findViewById(R.id.recyclerView).setOnClickListener(v -> recyclerView());
+        findViewById(R.id.pageRecyclerView).setOnClickListener(v -> pageRecyclerView());
         findViewById(R.id.recyclerView2).setOnClickListener(v -> recyclerView2());
         findViewById(R.id.pageRecyclerView4DragReorderList).setOnClickListener(v -> pageRecyclerView4DragReorderList());
         findViewById(R.id.testDragAndDrop).setOnClickListener(v -> testDragAndDrop());
@@ -159,7 +158,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
     }
 
-    private void recyclerView() {
+    private void pageRecyclerView() {
         showFragment(DummyRecyclerViewFragment.newInstance(1), DummyRecyclerViewFragment.class.getSimpleName());
     }
 

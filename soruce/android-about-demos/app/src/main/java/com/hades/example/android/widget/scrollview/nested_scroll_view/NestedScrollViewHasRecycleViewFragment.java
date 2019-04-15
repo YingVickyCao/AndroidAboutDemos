@@ -34,7 +34,7 @@ public class NestedScrollViewHasRecycleViewFragment extends Fragment {
 
         mAdapter = new NumAdapter(getListData());
         
-        mRecyclerView = view.findViewById(R.id.recyclerView);
+        mRecyclerView = view.findViewById(R.id.pageRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);

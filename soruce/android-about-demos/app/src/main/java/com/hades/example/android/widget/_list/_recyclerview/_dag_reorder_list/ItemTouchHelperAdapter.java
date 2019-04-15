@@ -1,6 +1,7 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,18 +31,19 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view, parent, false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: position=" + position);
         Message bean = list.get(position);
         holder.info.setText(bean.getInfo());
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
         holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.root.setOnLongClickListener(v -> true);// num -> Drag row
         holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 if (null != mStartDragListener) {
@@ -50,7 +52,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             }
             return false;
         });
-
     }
 
     private void updateCheckStatus(final Message bean) {
@@ -101,5 +102,4 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             root.setSelected(false);
         }
     }
-
 }
