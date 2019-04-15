@@ -5,4 +5,6 @@
     <attr name="seekThumbColor" format="color" />
     <attr name="seekProgressDrawableColor" format="color" />
     <attr name="seekBg" format="color" />
+    <attr name="itemViewHighlightBg" format="reference" />
+    <attr name="itemViewDefaultBg" format="reference" />
 </resources>

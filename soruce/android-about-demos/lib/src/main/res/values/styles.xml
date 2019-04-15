@@ -28,6 +28,8 @@
         <item name="seekThumbColor">#FF5722</item>
         <item name="seekProgressDrawableColor">#9C27B0</item>
         <item name="seekBg">#000</item>
+        <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
+        <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
     </style>
     <!-- APPLY_THEME_END -->
 

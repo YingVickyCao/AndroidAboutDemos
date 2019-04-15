@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="item_view_highlight_bg">@android:color/holo_green_dark</color>
+    <color name="item_view_default_bg">@android:color/holo_orange_light</color>
 </resources>
