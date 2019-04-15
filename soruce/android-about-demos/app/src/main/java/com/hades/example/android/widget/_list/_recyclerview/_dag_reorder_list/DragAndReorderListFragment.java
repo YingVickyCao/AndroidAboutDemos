@@ -33,10 +33,6 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
     private List<Message> list;
     private ItemTouchHelper mItemTouchHelper;
 
-    public static DragAndReorderListFragment newInstance() {
-        return new DragAndReorderListFragment();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

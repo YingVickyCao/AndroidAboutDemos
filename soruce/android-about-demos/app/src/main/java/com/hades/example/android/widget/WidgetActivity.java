@@ -15,6 +15,7 @@ import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
@@ -167,7 +168,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageRecyclerView4DragReorderList() {
-        showFragment(new DragAndReorderListFragment());
+        showActivity(DragAndReorderListActivity.class);
     }
 
     private void testDragAndDrop() {
