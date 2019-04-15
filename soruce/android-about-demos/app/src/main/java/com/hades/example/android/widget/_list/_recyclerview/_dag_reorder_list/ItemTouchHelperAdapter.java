@@ -41,8 +41,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
         holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.root.setOnLongClickListener(v -> true);
-        holder.drag.setOnTouchListener((v, event) -> {
+        holder.root.setOnLongClickListener(v -> true);// num -> Drag row
+        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 if (null != mStartDragListener) {
                     mStartDragListener.startDrag(holder);
