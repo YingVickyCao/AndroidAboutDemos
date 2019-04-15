@@ -93,12 +93,12 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         // QA: onItemSelected - show item view bg when drag dragBtn
         @Override
         public void onItemSelected() {
-            root.setBackgroundResource(R.color.item_view_highlight_bg);
+            root.setSelected(true);
         }
 
         @Override
         public void onItemClear() {
-            root.setBackgroundResource(R.drawable.drawable_selector_4_state_pressed);
+            root.setSelected(false);
         }
     }
 

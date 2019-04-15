@@ -23,8 +23,8 @@ import java.util.List;
  * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
  */
-public class DragReorderListFragment extends Fragment implements StartDragListener {
-    private static final String TAG = DragReorderListFragment.class.getSimpleName();
+public class DragAndReorderListFragment extends Fragment implements StartDragListener {
+    private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
     private final static int NUM = 5;
 
@@ -33,8 +33,8 @@ public class DragReorderListFragment extends Fragment implements StartDragListen
     private List<Message> list;
     private ItemTouchHelper mItemTouchHelper;
 
-    public static DragReorderListFragment newInstance() {
-        return new DragReorderListFragment();
+    public static DragAndReorderListFragment newInstance() {
+        return new DragAndReorderListFragment();
     }
 
     @Nullable

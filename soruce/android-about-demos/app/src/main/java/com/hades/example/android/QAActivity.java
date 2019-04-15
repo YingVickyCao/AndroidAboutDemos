@@ -9,6 +9,7 @@ import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
+import com.hades.example.android.widget.list.recyclerview.dag_reorder_list.DragAndReorderListFragment;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -44,7 +45,8 @@ public class QAActivity extends NoNeedPermissionActivity {
     private void temp() {
 //        showFragment(new TestProgressBarFragment());
 //        showFragment(new TestSeekBarFragment());
-        showFragment(new TestTextViewFragment());
+//        showFragment(new TestTextViewFragment());
+        showFragment(new DragAndReorderListFragment());
 //        showActivity(TestButtonActivity.class);
     }
 }
