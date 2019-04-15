@@ -4,12 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.widget._button.TestButtonActivity;
-import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
-import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
-import com.hades.example.android.widget._textview.TestTextViewClickFragment;
-import com.hades.example.android.widget._textview.TestTextViewFragment;
-import com.hades.example.android.widget.list.recyclerview.dag_reorder_list.DragAndReorderListFragment;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListFragment;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override

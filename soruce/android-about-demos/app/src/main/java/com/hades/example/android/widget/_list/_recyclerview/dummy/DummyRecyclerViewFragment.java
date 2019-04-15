@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.list.recyclerview.dummy;
+package com.hades.example.android.widget._list._recyclerview.dummy;
 
 import android.app.Fragment;
 import android.content.Context;

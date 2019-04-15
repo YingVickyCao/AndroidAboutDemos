@@ -2,5 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/item_view_highlight_bg" android:state_pressed="true" />
     <item android:drawable="@color/item_view_highlight_bg" android:state_selected="true" />
-    <item android:drawable="@android:color/holo_orange_light" />
+    <item android:drawable="@color/item_view_default_bg" />
 </selector>

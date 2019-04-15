@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.list.recyclerview.dummy;
+package com.hades.example.android.widget._list._recyclerview.dummy;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.widget.list.recyclerview.dummy.DummyRecyclerViewFragment.OnListFragmentInteractionListener;
+import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
