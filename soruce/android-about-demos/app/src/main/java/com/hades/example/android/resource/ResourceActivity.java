@@ -13,6 +13,7 @@ import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
 import com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
+import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
@@ -23,8 +24,8 @@ import com.hades.example.android.resource.xml.ParseXMLFragment;
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivityActivity extends PermissionActivity {
-    private static final String TAG = ResourceActivityActivity.class.getSimpleName();
+public class ResourceActivity extends PermissionActivity {
+    private static final String TAG = ResourceActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class ResourceActivityActivity extends PermissionActivity {
         findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+        findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
     }
 
     @Override
@@ -102,5 +104,9 @@ public class ResourceActivityActivity extends PermissionActivity {
 
     private void pageBitmapThreeLevelCache() {
         showActivity(ImageGridActivity.class);
+    }
+
+    private void pageShapeDrawable() {
+        showFragment(new TestShapeDrawableFragment());
     }
 }

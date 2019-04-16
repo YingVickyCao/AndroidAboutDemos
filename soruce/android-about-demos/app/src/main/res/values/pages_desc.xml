@@ -6,7 +6,9 @@
     <string name="page_shared_preferences">SharedPreferences</string>
     <string name="page_sqlite">Sqlite</string>
     <string name="page_io">IO</string>
+
     <string name="page_resource">Resource</string>
+    <string name="page_ShapeDrawable">ShapeDrawable</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_Button">Button</string>

@@ -51,8 +51,7 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
 //        rv.addItemDecoration(itemDecoration);
 
         // Worked.But when drag, div can swipe together with dragged item.
-//        rv.addItemDecoration(new SimpleDividerItemDecoration(rv.getContext(), R.drawable.drawable_shape_4_divider_vertical, (int) getResources().getDimension(R.dimen.size_1)) {
-//        });
+//        rv.addItemDecoration(new SimpleDividerItemDecoration(rv.getContext(), R.drawable.drawable_shape_4_divider_vertical));
 
         mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
         mItemTouchHelper.attachToRecyclerView(rv);

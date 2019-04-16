@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- progress_horizontal.xml
-     progress_horizontal_material.xml-->
+     progress_horizontal_material.xml -->
 
     <ScrollView
         android:layout_width="0dp"

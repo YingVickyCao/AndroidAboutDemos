@@ -185,7 +185,7 @@
 
         <!-- START_RESOURCES -->
         <activity
-            android:name="com.hades.example.android.resource.ResourceActivityActivity"
+            android:name="com.hades.example.android.resource.ResourceActivity"
             android:theme="@style/AppTheme.FullScreen" />
         <activity android:name="com.hades.example.android.resource.adapter_screen.DipTestActivity" />
         <activity android:name="com.hades.example.android.resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />

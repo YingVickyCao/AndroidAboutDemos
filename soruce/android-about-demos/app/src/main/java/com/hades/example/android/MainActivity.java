@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.hades.example.android.data_storage.DataStorageActivityActivity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.po.security.SecurityActivityActivity;
-import com.hades.example.android.resource.ResourceActivityActivity;
+import com.hades.example.android.resource.ResourceActivity;
 import com.hades.example.android.widget.WidgetActivity;
 
 public class MainActivity extends NoNeedPermissionActivity {
@@ -36,7 +36,7 @@ public class MainActivity extends NoNeedPermissionActivity {
     }
 
     private void pageResource() {
-        showActivity(ResourceActivityActivity.class);
+        showActivity(ResourceActivity.class);
     }
 
     private void pageQAAboutView() {
