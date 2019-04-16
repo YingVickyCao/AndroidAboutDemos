@@ -12,6 +12,7 @@ import com.hades.example.android.resource.array.ArrayFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
+import com.hades.example.android.resource.drawable.bitmap.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
@@ -47,6 +48,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
+        findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
     }
 
     @Override
@@ -108,5 +110,9 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageShapeDrawable() {
         showFragment(new TestShapeDrawableFragment());
+    }
+
+    private void pageDrawableFolder() {
+        showFragment(new TestDrawableFolderFragment());
     }
 }
