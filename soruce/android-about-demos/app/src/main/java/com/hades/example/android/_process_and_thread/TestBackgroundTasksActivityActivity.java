@@ -1,11 +1,11 @@
-package com.hades.example.android._bg_tasks;
+package com.hades.example.android._process_and_thread;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android._bg_tasks._asynctask.TestAsyncTaskTestFragment;
-import com.hades.example.android._bg_tasks.threadPoolExecutor.ThreadPoolExecutorFragment;
+import com.hades.example.android._process_and_thread._asynctask.TestAsyncTaskTestFragment;
+import com.hades.example.android._process_and_thread.threadPoolExecutor.ThreadPoolExecutorFragment;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 public class TestBackgroundTasksActivityActivity extends NoNeedPermissionActivity {

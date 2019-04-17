@@ -3,8 +3,8 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.widget.WidgetActivity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -22,7 +22,6 @@ public class QAActivity extends NoNeedPermissionActivity {
         return false;
     }
 
-
     @Override
     protected boolean isShowDetail() {
         return true;
@@ -33,6 +32,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showActivity(WidgetActivity.class);
+        showActivity(StartServiceTest1Activity.class);
     }
 }

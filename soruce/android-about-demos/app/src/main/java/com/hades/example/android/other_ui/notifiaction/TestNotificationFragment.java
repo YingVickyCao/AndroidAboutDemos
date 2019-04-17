@@ -1,7 +1,7 @@
 package com.hades.example.android.other_ui.notifiaction;
 
-import android.app.Fragment;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,14 +16,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.lib.utils.VersionUtil;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * https://blog.csdn.net/w804518214/article/details/51231946
  */
-public class NotificationFragment extends Fragment {
-    private static final String TAG = NotificationFragment.class.getSimpleName();
+public class TestNotificationFragment extends BaseFragment {
+    private static final String TAG = TestNotificationFragment.class.getSimpleName();
 
     NotificationManager mNotificationManager;
 
@@ -42,10 +44,25 @@ public class NotificationFragment extends Fragment {
         mNotificationManager = (NotificationManager) getUsedContext().getSystemService(NOTIFICATION_SERVICE);
 
         view.findViewById(R.id.simpleNotify).setOnClickListener(this::simpleNotify);
-        view.findViewById(R.id.progressNotification).setOnClickListener(this::sendProgressNotification);
+        view.findViewById(R.id.progressNotification).setOnClickListener(source -> sendProgressNotification());
 
         view.findViewById(R.id.del).setOnClickListener(this::delete);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (VersionUtil.isAndroid8()) {
+            NotificationChannel channel = new NotificationChannel(PROGRESS_NOTIFICATION_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     private Context getUsedContext() {
@@ -91,6 +108,12 @@ public class NotificationFragment extends Fragment {
                 //number设计用来显示同种通知的数量和ContentInfo的位置一样，如果设置了ContentInfo,则number会被隐藏
                 .setNumber(10); // ①;
 
+        if (VersionUtil.isAndroid8()) {
+            // FIXED_ERROR: Android 8.0 can not send notification success?
+            // Run on Android 8.0, must add setChannelId, or it won't send notification success.
+            builder.setChannelId(PROGRESS_NOTIFICATION_CHANNEL_ID);
+        }
+
         /**
          * 通过NotificationManager发送通知。
          *
@@ -119,11 +142,11 @@ public class NotificationFragment extends Fragment {
         //builder.setContentInfo(mProgress+"%");
 
         builder.setShowWhen(false);
-
+        
         mNotificationManager.notify(PROGRESS_NOTIFICATION_ID, builder.build());
     }
 
-    private void sendProgressNotification(View source) {
+    private void sendProgressNotification() {
         if (isOnProgressNotification) {
             return;
         }
@@ -132,22 +155,19 @@ public class NotificationFragment extends Fragment {
 
     private void mockDoHeavyWork() {
         isOnProgressNotification = true;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 1; i <= 10; i++) {
-                    Log.d(TAG, "mockDoHeavyWork,run: i=" + i);
-                    mProgress = i * 10;
-                    try {
-                        Thread.sleep(500);
-                        progressNotification();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        new Thread(() -> {
+            for (int i = 1; i <= 10; i++) {
+                Log.d(TAG, "mockDoHeavyWork,run: i=" + i);
+                mProgress = i * 10;
+                try {
+                    Thread.sleep(500);
+                    progressNotification();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-
-                isOnProgressNotification = false;
             }
+
+            isOnProgressNotification = false;
         }).start();
     }
 

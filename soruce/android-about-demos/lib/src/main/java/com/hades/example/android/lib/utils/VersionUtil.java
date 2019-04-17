@@ -69,4 +69,8 @@ public class VersionUtil {
     public static boolean isVersionNoLessThan4_4() {
         return Build.VERSION.SDK_INT >= VERSION_CODES.KITKAT; // >=4.4
     }
+
+    public static boolean isAndroid8() {
+        return Build.VERSION.SDK_INT >= VERSION_CODES.O;
+    }
 }

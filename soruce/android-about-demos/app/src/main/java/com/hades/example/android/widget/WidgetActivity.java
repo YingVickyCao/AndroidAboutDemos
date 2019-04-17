@@ -14,31 +14,30 @@ import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
-import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
+import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
 import com.hades.example.android.widget._layout._linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
+import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
+import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
+import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
-import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
-import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
-import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
-import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
-import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
-import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
@@ -91,7 +90,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testProgressDialog).setOnClickListener(v -> testProgressDialog());
         findViewById(R.id.testDatePickerDialog).setOnClickListener(v -> testDatePickerDialog());
         findViewById(R.id.testTimePickerDialog).setOnClickListener(v -> testTimePickerDialog());
-        findViewById(R.id.testNotification).setOnClickListener(v -> testNotification());
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
     }
@@ -234,10 +232,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void testTimePickerDialog() {
         showFragment(TimePickerDialogFragment.newInstance());
-    }
-
-    private void testNotification() {
-        showFragment(new NotificationFragment());
     }
 
     private void testPopupWindow() {

@@ -196,11 +196,6 @@
                 android:text="@string/test_TimePickerDialog" />
 
             <Button
-                android:id="@+id/testNotification"
-                style="@style/btn.small"
-                android:text="@string/test_Notification" />
-
-            <Button
                 android:id="@+id/testPopupWindow"
                 style="@style/btn.small"
                 android:text="@string/test_PopupWindow" />

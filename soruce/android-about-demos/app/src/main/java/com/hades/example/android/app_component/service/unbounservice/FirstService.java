@@ -1,18 +1,26 @@
 package com.hades.example.android.app_component.service.unbounservice;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.android.lib.utils.VersionUtil;
+
+import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 
 public class FirstService extends Service {
     private static final String TAG = FirstService.class.getSimpleName();
     private int mNum = 0;
-    //    private int MAX_NUM = 1000;
-    private int MAX_NUM = 10;
+    private int MAX_NUM = 1000;
+    //    private int MAX_NUM = 100;
     private boolean mIsForceStop;
+    private final static String FIRST_SERVICE_CHANNEL_ID = "FIRST_SERVICE_CHANNEL_ID";
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -25,34 +33,51 @@ public class FirstService extends Service {
     public void onCreate() {
 //        Log.d(TAG, "onCreate");
         LogHelper.printThreadInfo(TAG, "onCreate");
+
+        if (VersionUtil.isAndroid8()) {
+            NotificationChannel channel = new NotificationChannel(FIRST_SERVICE_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
+            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+        }
     }
 
-    // Service被启动时回调该方法
+    /**
+     * Background Execution Limits
+     */
+    private void startForegroundWhenAndroid8() {
+        if (!VersionUtil.isAndroid8()) {
+            return;
+        }
+        Notification.Builder builder = new Notification.Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID).setSmallIcon(R.drawable.ic_launcher_round);
+        startForeground(1000, builder.build());
+    }
+
+//    // Service被启动时回调该方法
+//    @Override
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//        Log.d(TAG, "onStartCommand");
+////        LogHelper.printThreadInfo(TAG, "onStartCommand");
+//        return START_STICKY;
+//    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
-//        LogHelper.printThreadInfo(TAG, "onStartCommand");
+        LogHelper.printThreadInfo(TAG, "onStartCommand");
+        int num = intent.getIntExtra(KEY_COUNT, 0);
+        Log.d(TAG, "onStartCommand," + num);
+        mNum = num;
+        startForegroundWhenAndroid8();
+        mockHeavyWorkInThread();
+        ////        mockHeavyWorkInUIThread();
+//        mockHeavyWorkInThread4CheckStop();
         return START_STICKY;
     }
 
 //    @Override
 //    public int onStartCommand(Intent intent, int flags, int startId) {
 ////        Log.d(TAG, "onStartCommand");
-////        LogHelper.printThreadInfo(TAG, "onStartCommand");
-//        int num = intent.getIntExtra(KEY_COUNT, 0);
-//        Log.d(TAG, "onStartCommand," + num);
-//        mNum = num;
-//        mockHeavyWorkInThread();
-//        return START_STICKY;
-//    }
-
-//    @Override
-//    public int onStartCommand(Intent intent, int flags, int startId) {
-////        Log.d(TAG, "onStartCommand");
 //        LogHelper.printThreadInfo(TAG, "onStartCommand");
-////        mockHeavyWorkInUIThread();
-////        mockHeavyWorkInThread();
-//        mockHeavyWorkInThread4CheckStop();
+
 //        return START_STICKY;
 //    }
 
@@ -119,5 +144,9 @@ public class FirstService extends Service {
 //        Log.d(TAG, "onDestroy");
 //        mIsForceStop = true;
         LogHelper.printThreadInfo(TAG, "onDestroy");
+
+        if (VersionUtil.isAndroid8()) {
+            stopForeground(true);
+        }
     }
 }

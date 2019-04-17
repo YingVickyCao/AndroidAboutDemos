@@ -1,4 +1,4 @@
-package com.hades.example.android._bg_tasks.threadPoolExecutor;
+package com.hades.example.android._process_and_thread.threadPoolExecutor;
 
 import android.util.Log;
 

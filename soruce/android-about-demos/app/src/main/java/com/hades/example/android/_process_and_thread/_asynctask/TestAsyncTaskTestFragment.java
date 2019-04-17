@@ -1,4 +1,4 @@
-package com.hades.example.android._bg_tasks._asynctask;
+package com.hades.example.android._process_and_thread._asynctask;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
