@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.layout;
+package com.hades.example.android.widget._layout._constraintlayout;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.hades.example.android.R;
 
-public class ConstraintLayoutFragment extends Fragment {
+public class TestConstraintLayoutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

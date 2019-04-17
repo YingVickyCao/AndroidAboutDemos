@@ -122,8 +122,8 @@
     <string name="check">Check</string>
     <string name="msg">Hello , Android!</string>
     <string name="check_if_have_added_view">Check if have added view</string>
-    <string name="frameLayout_layout_gravity">FrameLayout layout_gravity</string>
-    <string name="frameLayout_layout_gravity_center">FrameLayout layout_gravity=center</string>
+    <string name="set_position_center_in_parent_and_text_is_center">Set position is center in parent and text is center</string>
+    <string name="layout_gravity_and_gravity_center">layout_gravity=center,gravity = center</string>
     <string name="linearLayout_layout_gravity">LinearLayout layout_gravity</string>
     <string name="linearLayout_layout_gravity_center">LinearLayout layout_gravity=center</string>
     <string name="check_sharedPreferences_is_same_instance">Check SharedPreferences Is same instance</string>

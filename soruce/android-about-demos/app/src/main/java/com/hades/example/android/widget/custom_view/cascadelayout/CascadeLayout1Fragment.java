@@ -18,6 +18,6 @@ public class CascadeLayout1Fragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.widget_cascadelayout_layout_1, container, false);
+        return inflater.inflate(R.layout.widget_layout_cascadelayout_layout_1, container, false);
     }
 }

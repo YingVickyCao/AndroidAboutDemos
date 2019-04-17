@@ -12,6 +12,11 @@
     <string name="page_DrawableFolder">Drawable Folder</string>
 
     <string name="page_widget">Widget</string>
+    <string name="page_ConstraintLayout">ConstraintLayout</string>
+    <string name="page_linearLayout">LinearLayout</string>
+    <string name="page_linearLayout_LayoutGravityAndGravity">LinearLayout - LayoutGravity And Gravity</string>
+    <string name="page_ViewGroup">ViewGroup</string>
+    <string name="page_FrameLayout">FrameLayout</string>
     <string name="page_Button">Button</string>
     <string name="page_TextView">TextView</string>
     <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
@@ -19,7 +24,6 @@
     <string name="page_SeekBar">SeekBar</string>
     <string name="page_RatingBar">SeekBar</string>
     <string name="page_Progressbar">ProgressBar</string>
-    <string name="page_linearLayout">LinearLayout</string>
     <string name="page_customview">CustomView</string>
     <string name="page_ken_burns_image">Ken Burns Image</string>
     <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
@@ -30,7 +34,6 @@
     <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_qa_about_view">QA about view</string>
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
-    <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_webView">WebView</string>
     <string name="page_app_chooser">Show an app chooser</string>
     <string name="page_recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>

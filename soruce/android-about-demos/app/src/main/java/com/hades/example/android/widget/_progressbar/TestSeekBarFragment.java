@@ -13,6 +13,6 @@ public class TestSeekBarFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.widget_seekbar, container, false);
+        return inflater.inflate(R.layout.widget_progressbar_seekbar, container, false);
     }
 }

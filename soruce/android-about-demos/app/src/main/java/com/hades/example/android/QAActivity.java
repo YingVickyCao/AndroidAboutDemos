@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.resource.ResourceActivity;
+import com.hades.example.android.widget.WidgetActivity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -15,7 +15,6 @@ public class QAActivity extends NoNeedPermissionActivity {
         initViews();
 
         findViewById(R.id.temp).setOnClickListener(v -> temp());
-        findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
     }
 
     @Override
@@ -23,10 +22,6 @@ public class QAActivity extends NoNeedPermissionActivity {
         return false;
     }
 
-    private void pageQAAboutView() {
-        QAAboutFragment fragment = new QAAboutFragment();
-        getFragmentManager().beginTransaction().replace(R.id.root, fragment, fragment.getClass().getSimpleName()).commit();
-    }
 
     @Override
     protected boolean isShowDetail() {
@@ -38,7 +33,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-//        showFragment(new TestSeekBarFragment());
-        showActivity(ResourceActivity.class);
+        showActivity(WidgetActivity.class);
     }
 }

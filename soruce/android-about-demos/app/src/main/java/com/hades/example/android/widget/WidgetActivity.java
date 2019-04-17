@@ -15,6 +15,9 @@ import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
 import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
 import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
 import com.hades.example.android.other_ui.notifiaction.NotificationFragment;
+import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
+import com.hades.example.android.widget._layout._linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
+import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
@@ -26,8 +29,8 @@ import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutA
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
-import com.hades.example.android.widget.layout.ConstraintLayoutFragment;
-import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutFragment;
+import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
+import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
@@ -52,6 +55,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         initViews();
 
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
+        findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
+        findViewById(R.id.pageLinearLayout4LayoutGravityAndGravity).setOnClickListener(v -> pageLinearLayout4LayoutGravityAndGravity());
+        findViewById(R.id.pageViewGroup).setOnClickListener(v -> pageViewGroup());
+        findViewById(R.id.pageFrameLayout).setOnClickListener(v -> pageFrameLayout());
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
@@ -61,7 +68,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_customview).setOnClickListener(v -> customview());
-        findViewById(R.id.linearlayout).setOnClickListener(v -> linearlayout());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
@@ -91,7 +97,23 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageConstraintLayout() {
-        showFragment(new ConstraintLayoutFragment());
+        showFragment(new TestConstraintLayoutFragment());
+    }
+
+    private void pageLinearLayout() {
+        showFragment(new TestLinearLayoutFragment());
+    }
+
+    private void pageLinearLayout4LayoutGravityAndGravity() {
+        showFragment(new TestLinearLayout4LayoutGravityAndGravityFragment());
+    }
+
+    private void pageViewGroup() {
+        showFragment(new TestViewGroupFragment());
+    }
+
+    private void pageFrameLayout() {
+        showFragment(new TestFrameLayoutFragment());
     }
 
     private void pageWebView() {
@@ -128,10 +150,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void customview() {
         showActivity(CascadeLayoutActivityActivity.class);
-    }
-
-    private void linearlayout() {
-        showFragment(new TestLinearLayoutFragment());
     }
 
     private void pageRatingBar() {

@@ -24,7 +24,7 @@ public class TestRatingBarFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_ratingbar, container, false);
+        View view = inflater.inflate(R.layout.widget_progressbar_ratingbar, container, false);
 
         image = view.findViewById(R.id.text);
 
