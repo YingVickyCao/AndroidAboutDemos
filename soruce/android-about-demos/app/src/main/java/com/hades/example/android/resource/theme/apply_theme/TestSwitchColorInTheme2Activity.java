@@ -109,12 +109,12 @@ public class TestSwitchColorInTheme2Activity extends ThemeChoosePageAActivity {
         }
 
         Log.d(TAG, "tabClick:position=" + position + ",getSelectedTabPosition=" + tabLayout.getSelectedTabPosition());
-        if (isAllowReClick() && (position == tabLayout.getSelectedTabPosition())) {
+//        if (isAllowReClick() && (position == tabLayout.getSelectedTabPosition())) {
             TabLayout.Tab tab = tabLayout.getTabAt(position);
             if (null != tab) {
                 tab.select();
             }
-        }
+//        }
     }
 
     private boolean isAllowReClick() {
