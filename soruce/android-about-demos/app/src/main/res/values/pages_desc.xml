@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="page_app_component">App Components</string>
+    <string name="page_bond_service">Bound service</string>
+    <string name="page_content_provider">Content Provider</string>
     <string name="page_activity">Activity</string>
     <string name="page_activity_save_and_restore_state">Saving and restoring transient UI state</string>
+
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
     <string name="page_sqlite">Sqlite</string>
     <string name="page_io">IO</string>
+    <string name="page_sqlitedatabase">SQLiteDatabase</string>
 
     <string name="page_resource">Resource</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_switch_color_in_theme">Switch Color in Theme</string>
+    <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
+    <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
@@ -38,24 +45,18 @@
     <string name="page_webView">WebView</string>
     <string name="page_app_chooser">Show an app chooser</string>
     <string name="page_recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
+    <string name="page_spinner">Spinner</string>
 
     <string name="page_security">Security</string>
-    <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
-    <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
 
     <string name="page_background_tasks">Background tasks</string>
     <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>
     <string name="page_asynctask">AsyncTask</string>
 
-    <string name="page_app_component">App Components</string>
-    <string name="page_bond_service">Bound service</string>
-    <string name="page_sqlitedatabase">SQLiteDatabase</string>
-    <string name="page_spinner">Spinner</string>
-    <string name="page_content_provider">Content Provider</string>
-
     <string name="page_OtherUI">Other UI</string>
     <string name="page_Notification">Notification</string>
     <string name="page_Toast">Toast</string>
+    <string name="page_ActionBar">ActionBar</string>
 
 
 </resources>

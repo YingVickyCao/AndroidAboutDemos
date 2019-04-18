@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.widget.WidgetActivity;
+import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -32,6 +32,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showActivity(WidgetActivity.class);
+        showActivity(TestActionBarActivity.class);
     }
 }

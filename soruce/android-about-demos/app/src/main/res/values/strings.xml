@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">Android-About-Project</string>
+    <string name="app_name">Android Demos</string>
 
     <string name="runt_time_permission">Runtime Permission</string>
     <string name="runt_time_permission_topic">通过发送和接收短信测试Runtime Permission</string>
