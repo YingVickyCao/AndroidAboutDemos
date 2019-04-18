@@ -5,7 +5,8 @@ import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.other_ui.notifiaction.TestNotificationFragment;
+import com.hades.example.android.other_ui._toast.ToastFragment;
+import com.hades.example.android.other_ui._notifiaction.TestNotificationFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
     @Override
@@ -15,10 +16,15 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
         initViews();
 
-        findViewById(R.id.testNotification).setOnClickListener(v -> testNotification());
+        findViewById(R.id.pageNotification).setOnClickListener(v -> pageNotification());
+        findViewById(R.id.pageToast).setOnClickListener(v -> pageToast());
     }
 
-    private void testNotification() {
+    private void pageNotification() {
         showFragment(new TestNotificationFragment());
+    }
+
+    private void pageToast() {
+        showFragment(ToastFragment.newInstance(), ToastFragment.class.getSimpleName());
     }
 }

@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_Toast" />
+
     <Button
         android:id="@+id/showNormalToast"
         style="@style/btn.small"
@@ -12,10 +17,10 @@
     <Button
         android:id="@+id/showCustomToast"
         style="@style/btn.small"
-        android:text="@string/show_normal_toast" />
+        android:text="@string/show_custom_toast" />
 
     <Button
         android:id="@+id/showCustomToast2"
         style="@style/btn.small"
-        android:text="@string/show_normal_toast" />
+        android:text="@string/show_custom_toast" />
 </LinearLayout>

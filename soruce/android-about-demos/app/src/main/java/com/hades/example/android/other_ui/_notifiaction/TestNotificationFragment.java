@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui.notifiaction;
+package com.hades.example.android.other_ui._notifiaction;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -172,7 +172,7 @@ public class TestNotificationFragment extends BaseFragment {
     }
 
     private PendingIntent getPendingIntent4Click() {
-        Intent intent = new Intent(getUsedContext(), NotificationDescActivity.class);
+        Intent intent = new Intent(getUsedContext(), TestNotificationDescActivity.class);
         return PendingIntent.getActivity(getActivity(), 0, intent, 0);
     }
 

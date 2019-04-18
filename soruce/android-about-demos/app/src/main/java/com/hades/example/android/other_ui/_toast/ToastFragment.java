@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui;
+package com.hades.example.android.other_ui._toast;
 
 import android.app.Fragment;
 import android.content.Context;

@@ -161,7 +161,7 @@
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
+        <activity android:name=".other_ui._notifiaction.TestNotificationDescActivity" />
 
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />

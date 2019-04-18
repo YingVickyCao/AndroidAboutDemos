@@ -53,7 +53,9 @@
     <string name="page_spinner">Spinner</string>
     <string name="page_content_provider">Content Provider</string>
 
+    <string name="page_OtherUI">Other UI</string>
     <string name="page_Notification">Notification</string>
+    <string name="page_Toast">Toast</string>
 
 
 </resources>

@@ -1,11 +1,11 @@
-package com.hades.example.android.other_ui.notifiaction;
+package com.hades.example.android.other_ui._notifiaction;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import com.hades.example.android.R;
 
-public class NotificationDescActivity extends Activity {
+public class TestNotificationDescActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

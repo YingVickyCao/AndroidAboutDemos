@@ -8,7 +8,6 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.other_ui.PopupWindowFragment;
-import com.hades.example.android.other_ui.ToastFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
 import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
@@ -80,7 +79,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testDragAndDrop).setOnClickListener(v -> testDragAndDrop());
 
         findViewById(R.id.testViewFlipper).setOnClickListener(v -> testViewFlipper());
-        findViewById(R.id.testToast).setOnClickListener(v -> testToast());
         findViewById(R.id.testCalendarView).setOnClickListener(v -> testCalendarView());
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(v -> testDatePickerAndTimePicker());
         findViewById(R.id.testNumberPicker).setOnClickListener(v -> testNumberPicker());
@@ -192,10 +190,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void testViewFlipper() {
         showFragment(ViewFlipperFragment.newInstance(), ViewFlipperFragment.class.getSimpleName());
-    }
-
-    private void testToast() {
-        showFragment(ToastFragment.newInstance(), ToastFragment.class.getSimpleName());
     }
 
     private void testCalendarView() {
