@@ -1,19 +1,22 @@
 package com.hades.example.android.widget.imageview;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 
 import java.util.Random;
 
-public class KenBurnsImageActivity extends Activity implements Animator.AnimatorListener {
+public class KenBurnsImageFragment extends BaseFragment implements Animator.AnimatorListener {
 
     private static final int ANIM_COUNT = 4;
     private static final int[] PHOTOS = new int[]{R.drawable.photo1, R.drawable.photo2, R.drawable.photo3, R.drawable.photo4, R.drawable.photo5, R.drawable.photo6};
@@ -22,22 +25,22 @@ public class KenBurnsImageActivity extends Activity implements Animator.Animator
     private Random mRandom = new Random();
     private int mIndex = 0;
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         mView = createNewView();
 
         // 创建布局容器
-        mContainer = new FrameLayout(this);
+        mContainer = new FrameLayout(getActivity());
         mContainer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mContainer.addView(mView);
 
-        setContentView(mContainer);
+        return mContainer;
     }
 
     private ImageView createNewView() {
 //        ImageView ret = new ImageView(this);
-        ImageView ret = (null == mView) ? new ImageView(this) : mView;
+        ImageView ret = (null == mView) ? new ImageView(getActivity()) : mView;
         ret.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         ret.setScaleType(ImageView.ScaleType.FIT_XY);
         // 设置要显示的图片，并设置下一个要显示的图片的索引
@@ -47,7 +50,7 @@ public class KenBurnsImageActivity extends Activity implements Animator.Animator
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         nextAnimation();
     }

@@ -164,7 +164,6 @@
         <activity android:name=".other_ui.notifiaction.NotificationDescActivity" />
 
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
-        <activity android:name=".widget.imageview.KenBurnsImageActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->

@@ -31,7 +31,7 @@ import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
-import com.hades.example.android.widget.imageview.KenBurnsImageActivity;
+import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
@@ -139,7 +139,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageKenBurnsImage() {
-        showActivity(KenBurnsImageActivity.class);
+        showFragment(new KenBurnsImageFragment());
     }
 
     private void pageImageViewScaleType() {
