@@ -21,13 +21,16 @@
         <item name="seekThumbColor">#4CAF50</item>
         <item name="seekProgressDrawableColor">#2196F3</item>
         <item name="seekBg">#fff</item>
-        <item name="textColorOne">@color/color_one_4_light</item>
-        <item name="textColorTwo">@color/color_two_4_light</item>
 
-        <item name="textColorEnable">@android:color/holo_red_light</item>
-        <item name="textColorDisable">@android:color/holo_blue_bright</item>
-        <item name="textColorEnableV2">@android:color/holo_red_dark</item>
-        <item name="textColorDisableV2">@android:color/holo_blue_dark</item>
+        <item name="textColorOneSelected">@android:color/holo_red_light</item>
+        <item name="textColorOneUnSelected">@android:color/holo_blue_bright</item>
+        <item name="textColorTwoSelected">@android:color/holo_red_dark</item>
+        <item name="textColorTwoUnSelected">@android:color/holo_blue_dark</item>
+
+        <item name="textColorEnableSelected">@android:color/holo_red_light</item>
+        <item name="textColorEnableUnSelected">@android:color/holo_blue_bright</item>
+        <item name="textColorDisableSelected">@android:color/holo_red_dark</item>
+        <item name="textColorDisableUnSelected">@android:color/holo_blue_dark</item>
     </style>
 
     <style name="AppTheme.Green">
@@ -37,13 +40,16 @@
         <item name="seekBg">#000</item>
         <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
         <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
-        <item name="textColorOne">@color/color_one_4_dark</item>
-        <item name="textColorTwo">@color/color_two_4_dark</item>
 
-        <item name="textColorEnable">@android:color/holo_green_light</item>
-        <item name="textColorDisable">@android:color/holo_orange_light</item>
-        <item name="textColorEnableV2">@android:color/holo_green_dark</item>
-        <item name="textColorDisableV2">@android:color/holo_orange_dark</item>
+        <item name="textColorOneSelected">@android:color/holo_green_light</item>
+        <item name="textColorOneUnSelected">@android:color/holo_orange_light</item>
+        <item name="textColorTwoSelected">@android:color/holo_green_dark</item>
+        <item name="textColorTwoUnSelected">@android:color/holo_orange_dark</item>
+
+        <item name="textColorEnableSelected">@android:color/holo_green_light</item>
+        <item name="textColorEnableUnSelected">@android:color/holo_orange_light</item>
+        <item name="textColorDisableSelected">@android:color/holo_green_dark</item>
+        <item name="textColorDisableUnSelected">@android:color/holo_orange_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
 

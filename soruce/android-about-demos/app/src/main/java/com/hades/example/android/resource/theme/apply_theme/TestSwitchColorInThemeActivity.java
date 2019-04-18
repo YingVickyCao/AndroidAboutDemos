@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 
-public class TestColorSwitchInThemeActivity extends ThemeChoosePageAActivity {
+public class TestSwitchColorInThemeActivity extends ThemeChoosePageAActivity {
     TextView textView;
 
     @Override
@@ -29,12 +29,12 @@ public class TestColorSwitchInThemeActivity extends ThemeChoosePageAActivity {
     }
 
     private void colorOne() {
-        ColorStateList colorStateList = AppCompatResources.getColorStateList(this, R.color.color_one);
+        ColorStateList colorStateList = AppCompatResources.getColorStateList(this, R.color.color_v1_one);
         textView.setTextColor(colorStateList);
     }
 
     private void colorTwo() {
-        ColorStateList colorStateList = AppCompatResources.getColorStateList(this, R.color.color_two);
+        ColorStateList colorStateList = AppCompatResources.getColorStateList(this, R.color.color_v1_two);
         textView.setTextColor(colorStateList);
     }
 

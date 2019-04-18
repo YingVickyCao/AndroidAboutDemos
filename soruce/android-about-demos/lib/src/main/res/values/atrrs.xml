@@ -10,8 +10,14 @@
 
     <attr name="textColorOne" format="reference" />
     <attr name="textColorTwo" format="reference" />
-    <attr name="textColorEnable" format="reference" />
-    <attr name="textColorDisable" format="reference" />
-    <attr name="textColorEnableV2" format="reference" />
-    <attr name="textColorDisableV2" format="reference" />
+
+    <attr name="textColorOneSelected" format="reference" />
+    <attr name="textColorOneUnSelected" format="reference" />
+    <attr name="textColorTwoSelected" format="reference" />
+    <attr name="textColorTwoUnSelected" format="reference" />
+
+    <attr name="textColorEnableSelected" format="reference" />
+    <attr name="textColorEnableUnSelected" format="reference" />
+    <attr name="textColorDisableSelected" format="reference" />
+    <attr name="textColorDisableUnSelected" format="reference" />
 </resources>
