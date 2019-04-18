@@ -7,4 +7,11 @@
     <attr name="seekBg" format="color" />
     <attr name="itemViewHighlightBg" format="reference" />
     <attr name="itemViewDefaultBg" format="reference" />
+
+    <attr name="textColorOne" format="reference" />
+    <attr name="textColorTwo" format="reference" />
+    <attr name="textColorEnable" format="reference" />
+    <attr name="textColorDisable" format="reference" />
+    <attr name="textColorEnableV2" format="reference" />
+    <attr name="textColorDisableV2" format="reference" />
 </resources>

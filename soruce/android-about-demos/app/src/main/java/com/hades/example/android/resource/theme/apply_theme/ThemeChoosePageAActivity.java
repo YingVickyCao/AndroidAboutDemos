@@ -21,11 +21,6 @@ public class ThemeChoosePageAActivity extends Activity {
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
     }
 
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-    }
-
     protected void doSetRedThemeBtnClick() {
         boolean isRedTheme = SFMock.getInstance().isRedTheme();
         if (isRedTheme) {

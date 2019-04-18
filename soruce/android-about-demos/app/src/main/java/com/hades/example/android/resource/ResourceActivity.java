@@ -19,6 +19,7 @@ import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableF
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.MaterialFragment;
+import com.hades.example.android.resource.theme.apply_theme.TestColorSwitchInThemeActivity;
 import com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.xml.ParseXMLFragment;
 
@@ -36,6 +37,7 @@ public class ResourceActivity extends PermissionActivity {
 
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
+        findViewById(R.id.pageSwitchColorInTheme).setOnClickListener(v -> pageColorSwitchInTheme());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageArray).setOnClickListener(v -> pageArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
@@ -62,6 +64,10 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageTheme() {
         showActivity(ThemeChoosePageAActivity.class);
+    }
+
+    private void pageColorSwitchInTheme() {
+        showActivity(TestColorSwitchInThemeActivity.class);
     }
 
     private void pageInternationalization() {

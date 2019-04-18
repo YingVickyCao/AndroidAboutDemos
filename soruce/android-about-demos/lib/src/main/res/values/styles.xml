@@ -17,19 +17,33 @@
     <!-- APPLY_THEME_START -->
     <style name="AppTheme.Red">
         <!--<item name="pageRootBg">@android:color/holo_red_dark</item>-->
-        <item name="pageRootBg">#ffcc0000</item>
+        <item name="pageRootBg">@android:color/holo_red_light</item>
         <item name="seekThumbColor">#4CAF50</item>
         <item name="seekProgressDrawableColor">#2196F3</item>
         <item name="seekBg">#fff</item>
+        <item name="textColorOne">@color/color_one_4_light</item>
+        <item name="textColorTwo">@color/color_two_4_light</item>
+
+        <item name="textColorEnable">@android:color/holo_red_light</item>
+        <item name="textColorDisable">@android:color/holo_blue_bright</item>
+        <item name="textColorEnableV2">@android:color/holo_red_dark</item>
+        <item name="textColorDisableV2">@android:color/holo_blue_dark</item>
     </style>
 
     <style name="AppTheme.Green">
-        <item name="pageRootBg">@android:color/holo_green_dark</item>
+        <item name="pageRootBg">@android:color/holo_green_light</item>
         <item name="seekThumbColor">#FF5722</item>
         <item name="seekProgressDrawableColor">#9C27B0</item>
         <item name="seekBg">#000</item>
         <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
         <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
+        <item name="textColorOne">@color/color_one_4_dark</item>
+        <item name="textColorTwo">@color/color_two_4_dark</item>
+
+        <item name="textColorEnable">@android:color/holo_green_light</item>
+        <item name="textColorDisable">@android:color/holo_orange_light</item>
+        <item name="textColorEnableV2">@android:color/holo_green_dark</item>
+        <item name="textColorDisableV2">@android:color/holo_orange_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
 
