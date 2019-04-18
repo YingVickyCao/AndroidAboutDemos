@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.resource.theme.apply_theme.TestSwitchColorInThemeActivity;
+import com.hades.example.android.resource.theme.apply_theme.TestSwitchColorInTheme2Activity;
 
 public class QAActivity extends NoNeedPermissionActivity {
     @Override
@@ -32,6 +32,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showActivity(TestSwitchColorInThemeActivity.class);
+        showActivity(TestSwitchColorInTheme2Activity.class);
     }
 }

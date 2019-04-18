@@ -20,15 +20,11 @@
             android:backgroundTint="?attr/pageRootBg"
             android:gravity="center" />
 
-        <TextView
-            android:id="@+id/textView"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:gravity="center"
-            android:text="Label"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
 
     </LinearLayout>
 
@@ -66,19 +62,13 @@
             <Button
                 android:id="@+id/selectTab1"
                 style="@style/btn.small"
-                android:text="Color One" />
-
-            <Button
-                android:id="@+id/toggleEnable"
-                style="@style/btn.small"
-                android:layout_centerInParent="true"
-                android:text="Toggle Enable" />
+                android:text="Select tab 1" />
 
             <Button
                 android:id="@+id/selectTab2"
                 style="@style/btn.small"
                 android:layout_alignParentEnd="true"
-                android:text="Color Two" />
+                android:text="Select tab 2" />
 
         </RelativeLayout>
 

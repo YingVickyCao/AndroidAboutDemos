@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.hades.example.android.lib.R;
 
@@ -67,7 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void showFragmentRoot(){
+    protected void showFragmentRoot() {
         if (null != mFragmentRoot) {
             mFragmentRoot.setVisibility(View.VISIBLE);
         }
@@ -117,5 +118,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected boolean isIgnoreBack() {
         return false;
+    }
+
+    protected void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

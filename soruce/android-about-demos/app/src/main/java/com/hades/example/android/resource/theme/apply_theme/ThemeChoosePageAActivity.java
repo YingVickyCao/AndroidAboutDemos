@@ -1,15 +1,15 @@
 package com.hades.example.android.resource.theme.apply_theme;
 
-import android.app.Activity;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.SFMock;
 
-public class ThemeChoosePageAActivity extends Activity {
+public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
