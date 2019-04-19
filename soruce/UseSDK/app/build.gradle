@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     defaultConfig {
         applicationId "com.hades.android.example.usesdk"
         minSdkVersion 11
-        targetSdkVersion 19
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
