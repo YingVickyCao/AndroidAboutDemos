@@ -12,7 +12,7 @@ public class ActivityTestHomeActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_test_home_layout);
+        setContentView(R.layout.activity_test_home_layout);
         initViews();
 
         findViewById(R.id.pageActivityLifecycle).setOnClickListener(v -> pageActivityLifecycle());

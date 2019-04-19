@@ -2,30 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hades.example.android">
-
     <!-- START_CONTENT_PROVIDER -->
     <!-- 授予读联系人ContentProvider的权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!-- 授予写联系人ContentProvider的权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 授予写联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- 添加访问手机位置的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- 添加访问手机状态的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 添加访问手机位置的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 添加访问手机状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-
-    <!-- 授予程序访问振动器的权限 -->
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- END_CONTENT_PROVIDER -->
-
+    <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 授予程序访问振动器的权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- END_CONTENT_PROVIDER -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -38,20 +26,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <!--<activity android:namAActivityvity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-
+        <activity
+            android:name=".app_component.activity.TestBottomNavigationActivity"
+            android:label="@string/bottom_navigation" />
+        <!-- <activity android:namAActivityvity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN"/> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity android:name=".MainActivity" />
         <activity android:name=".QAActivity" />
-
         <activity android:name=".app_component.TestAppComponentActivityActivity" />
-
         <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
         <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
@@ -96,93 +82,71 @@
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
         <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
         <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragmentActivity" />
-
         <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
         <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
-
-        <!-- ERROR:
+        <!--
+ ERROR:
         BroadcastQueue: Background execution not allowed: receiving Intent { act=.app_component.broadcast.normal.SimpleReceiver.ONE flg=0x10 (has extras) }
         to .android_about_demos/.app_component.broadcast.SimpleReceiver
         -->
-        <!--<receiver android:name=".app_component.broadcast.SimpleReceiver">-->
-        <!--&lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt;-->
-        <!--<intent-filter>-->
-        <!--&lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt;-->
-        <!--<action android:name=".app_component.broadcast.normal.SimpleReceiver.ONE" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to .android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)-->
+        <!-- <receiver android:name=".app_component.broadcast.SimpleReceiver"> -->
+        <!-- &lt;!&ndash; If no intent-filter, can not receive anything. &ndash;&gt; -->
+        <!-- <intent-filter> -->
+        <!-- &lt;!&ndash; 指定该BroadcastReceiver所响应的Intent的Action &ndash;&gt; -->
+        <!-- <action android:name=".app_component.broadcast.normal.SimpleReceiver.ONE" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <!-- W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to .android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000) -->
         <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver>
-
-        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2">-->
-        <!--<intent-filter android:priority="1">-->
-        <!--<action android:name=".app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3">-->
-        <!--<intent-filter android:priority="2">-->
-        <!--<action android:name=".app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
+        </receiver> <!-- <receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2"> -->
+        <!-- <intent-filter android:priority="1"> -->
+        <!-- <action android:name=".app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <!-- <receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver3"> -->
+        <!-- <intent-filter android:priority="2"> -->
+        <!-- <action android:name=".app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <!-- END_BROADCAST -->
-
         <!-- START_RUNTIME_PERMISSION -->
-        <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing-->
+        <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing -->
         <activity android:name=".runtime_permission.RuntTimePermissionTestActivity" />
-        <activity android:name=".runtime_permission.RxPermissionsTestActivity" />
-
-        <!--<receiver android:name=".runtime_permission.SMSReceiver">-->
-        <!--<intent-filter android:priority="1000">-->
-        <!--<action android:name="android.provider.Telephony.SMS_RECEIVED" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
+        <activity android:name=".runtime_permission.RxPermissionsTestActivity" /> <!-- <receiver android:name=".runtime_permission.SMSReceiver"> -->
+        <!-- <intent-filter android:priority="1000"> -->
+        <!-- <action android:name="android.provider.Telephony.SMS_RECEIVED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <!-- END_RUNTIME_PERMISSION -->
-
-        <activity android:name=".widget.WidgetActivity" />
-
-        <!-- START_WIDGET -->
+        <activity android:name=".widget.WidgetActivity" /> <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
-        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" />
-        <!-- SPLASH_NOTIFY_ICON_END -->
-
+        <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" /> <!-- SPLASH_NOTIFY_ICON_END -->
         <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
-        <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity" />
-        <!-- END_SCROLL_VIEW -->
-
+        <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
         <activity android:name=".other_ui.OtherUIActivity" />
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
         <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
         <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
-        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity"/>
-
+        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity" />
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
-        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
-        <!-- END_WIDGET -->
-
+        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" /> <!-- END_WIDGET -->
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".event_handle.EventHandlerActivity" />
         <activity android:name=".event_handle.base_on_listener.plane.PlaneViewActivity" />
         <activity android:name=".event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
         <activity android:name=".event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
         <activity android:name=".event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
-        <activity android:name=".event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" />
-        <!-- END_EVENT_HANDLER -->
-
+        <activity android:name=".event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" /> <!-- END_EVENT_HANDLER -->
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".msg_handler.MessageHandlerActivity" />
-        <!-- END_EVENT_HANDLER -->
-
+        <activity android:name=".msg_handler.MessageHandlerActivity" /> <!-- END_EVENT_HANDLER -->
         <!-- START_RESOURCES -->
         <activity
             android:name=".resource.ResourceActivity"
@@ -195,11 +159,9 @@
         <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
         <activity android:name=".resource.theme.apply_theme.TestSwitchColorInThemeActivity" />
         <activity android:name=".resource.theme.apply_theme.TestSwitchColorInTheme2Activity" />
-
         <activity
             android:name=".resource.drawable.bitmap.three_level_cache.ImageGridActivity"
             android:label="@string/app_name" />
-
         <activity
             android:name=".resource.drawable.bitmap.three_level_cache.ImageDetailActivity"
             android:label="@string/app_name"
@@ -207,16 +169,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable.bitmap.three_level_cache.ImageGridActivity" />
-        </activity>
-        <!-- END_RESOURCES -->
-
+        </activity> <!-- END_RESOURCES -->
         <activity android:name=".data_storage.DataStorageActivityActivity" />
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
-
         <activity android:name=".po.security.SecurityActivityActivity" />
-
         <activity android:name="._process_and_thread.TestBackgroundTasksActivityActivity" />
-
     </application>
 
 </manifest>

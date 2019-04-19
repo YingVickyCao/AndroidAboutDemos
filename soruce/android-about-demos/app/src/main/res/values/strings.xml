@@ -155,4 +155,8 @@
     <string name="font_size">Font size</string>
     <string name="font_color">Font color</string>
     <string name="changed_textview_by_menu">Changed TextView by Menu</string>
+    <string name="bottom_navigation">Bottom Navigation</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="notifications">Notifications</string>
 </resources>

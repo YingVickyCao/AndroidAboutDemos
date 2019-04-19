@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity">
+        <activity android:name=".app_component.activity.TestBottomNavigationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

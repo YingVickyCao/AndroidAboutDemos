@@ -12,7 +12,7 @@ public class EActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_d_layout);
+        setContentView(R.layout.activity_d_layout);
 
         findViewById(R.id.openActivity).setOnClickListener(v -> openActivity());
         TextView name = findViewById(R.id.name);
