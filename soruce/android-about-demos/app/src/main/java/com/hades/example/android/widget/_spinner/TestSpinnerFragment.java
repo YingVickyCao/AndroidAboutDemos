@@ -94,10 +94,10 @@ public class TestSpinnerFragment extends BaseFragment {
 
                 if (gradeSpinner.getSelectedItemPosition() == position) {
 //                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light, null));
-                    tv.setTextColor(getResources().getColor(R.color.blue, null));
+                    tv.setTextColor(getResources().getColor(android.R.color.holo_blue_light, getContext().getTheme()));
                 } else {
 //                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light, null));
-                    tv.setTextColor(getResources().getColor(android.R.color.white, null));
+                    tv.setTextColor(getResources().getColor(android.R.color.white, getContext().getTheme()));
                 }
                 return view;
             }

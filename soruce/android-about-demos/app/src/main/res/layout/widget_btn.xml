@@ -59,7 +59,7 @@
 
             <Button
                 style="@style/btn"
-                android:background="@color/blue"
+                android:background="@android:color/holo_blue_light"
                 android:stateListAnimator="@animator/button_state_list_anim_material"
                 android:text="Button - 蓝色背景色，带阴影、不带水波" />
 
@@ -175,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:background="@color/blue"
+                android:background="@android:color/holo_blue_light"
                 android:foreground="#80FF0000"
                 android:text="Button - background, foreground" />
 

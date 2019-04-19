@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/red" />
+                android:background="@android:color/holo_red_light" />
 
             <View style="@style/div" />
 
@@ -155,12 +155,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
                 android:progressTint="@android:color/holo_orange_dark"
                 android:secondaryProgress="60"
-                android:secondaryProgressTint="@color/blue" />
+                android:secondaryProgressTint="@android:color/holo_blue_light" />
 
             <View style="@style/div" />
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
                 android:progressDrawable="@drawable/progress_horizontal_material"
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/green"
+                android:background="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
                 android:progressDrawable="@drawable/progress_horizontal_material"
@@ -210,8 +210,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/green"
-                android:backgroundTint="@color/red"
+                android:background="@android:color/holo_green_light"
+                android:backgroundTint="@android:color/holo_red_light"
                 android:max="100"
                 android:progress="20"
                 android:progressDrawable="@drawable/progress_horizontal_material"

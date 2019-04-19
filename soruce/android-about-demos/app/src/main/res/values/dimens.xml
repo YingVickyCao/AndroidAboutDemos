@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="seekbar_thumb_width">18dp</dimen>
+    <dimen name="font_size_5">5sp</dimen>
+    <dimen name="font_size_10">10sp</dimen>
+
 </resources>

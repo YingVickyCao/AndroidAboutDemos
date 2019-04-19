@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui._notifiaction;
+package com.hades.example.android.other_ui._notification;
 
 import android.app.Activity;
 import android.os.Bundle;

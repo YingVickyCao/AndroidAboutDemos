@@ -57,6 +57,7 @@
     <string name="page_Notification">Notification</string>
     <string name="page_Toast">Toast</string>
     <string name="page_ActionBar">ActionBar</string>
+    <string name="page_ActionBar_ShowMenu">ActionBar - Show Menu</string>
 
 
 </resources>

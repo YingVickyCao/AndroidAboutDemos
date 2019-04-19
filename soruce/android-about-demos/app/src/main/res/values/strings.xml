@@ -150,4 +150,9 @@
     <string name="click_this_textview">Click this TextView</string>
     <string name="download">Download</string>
     <string name="downloaded">Downloaded</string>
+    <string name="size_30">size 30</string>
+    <string name="size_10">size 10</string>
+    <string name="font_size">Font size</string>
+    <string name="font_color">Font color</string>
+    <string name="changed_textview_by_menu">Changed TextView by Menu</string>
 </resources>

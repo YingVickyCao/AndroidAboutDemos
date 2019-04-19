@@ -89,7 +89,7 @@
 
             <View
                 style="@style/div"
-                android:background="@color/red" />
+                android:background="@android:color/holo_red_light" />
 
             <TextView
                 style="@style/tv"
@@ -317,7 +317,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="add" />
 
                 <TextView
@@ -331,7 +331,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="multiply" />
 
                 <TextView
@@ -345,7 +345,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="screen" />
 
                 <TextView
@@ -359,7 +359,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="src_atop" />
 
                 <TextView
@@ -373,7 +373,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="src_in" />
 
                 <TextView
@@ -387,7 +387,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green" />
+                    android:thumbTint="@android:color/holo_green_light" />
 
                 <TextView
                     style="@style/tv"
@@ -400,7 +400,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:thumbTint="@color/green"
+                    android:thumbTint="@android:color/holo_green_light"
                     android:thumbTintMode="src_over" />
             </LinearLayout>
 
@@ -423,7 +423,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="add" />
 
                 <TextView
@@ -436,7 +436,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="multiply"
                     android:secondaryProgress="60" />
 
@@ -450,7 +450,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="screen"
                     android:secondaryProgress="60" />
 
@@ -464,7 +464,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="src_atop"
                     android:secondaryProgress="60" />
 
@@ -478,7 +478,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="src_in"
                     android:secondaryProgress="60" />
 
@@ -492,7 +492,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:secondaryProgress="60" />
 
                 <TextView
@@ -505,7 +505,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:progressTint="@color/green"
+                    android:progressTint="@android:color/holo_green_light"
                     android:progressTintMode="src_over"
                     android:secondaryProgress="60" />
 
@@ -530,7 +530,7 @@
                     android:layout_marginTop="@dimen/margin_medium"
                     android:max="100"
                     android:progress="40"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="add" />
 
                 <TextView
@@ -544,7 +544,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="multiply" />
 
                 <TextView
@@ -558,7 +558,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="screen" />
 
                 <TextView
@@ -572,7 +572,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="src_atop" />
 
                 <TextView
@@ -586,7 +586,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="src_in" />
 
                 <TextView
@@ -600,7 +600,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green" />
+                    android:secondaryProgressTint="@android:color/holo_green_light" />
 
                 <TextView
                     style="@style/tv"
@@ -613,7 +613,7 @@
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60"
-                    android:secondaryProgressTint="@color/green"
+                    android:secondaryProgressTint="@android:color/holo_green_light"
                     android:secondaryProgressTintMode="src_over" />
 
             </LinearLayout>
@@ -635,7 +635,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="add"
                     android:max="100"
                     android:progress="40" />
@@ -648,7 +648,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="multiply"
                     android:max="100"
                     android:progress="40"
@@ -662,7 +662,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="screen"
                     android:max="100"
                     android:progress="40"
@@ -676,7 +676,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="src_atop"
                     android:max="100"
                     android:progress="40"
@@ -690,7 +690,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="src_in"
                     android:max="100"
                     android:progress="40"
@@ -704,7 +704,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:max="100"
                     android:progress="40"
                     android:secondaryProgress="60" />
@@ -717,7 +717,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:backgroundTint="@color/green"
+                    android:backgroundTint="@android:color/holo_green_light"
                     android:backgroundTintMode="src_over"
                     android:max="100"
                     android:progress="40"

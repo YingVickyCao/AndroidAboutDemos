@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@android:drawable/arrow_down_float"
+        android:title="@string/font_size"
+        app:showAsAction="always|withText">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/font_10"
+                    android:title="@string/size_10" />
+
+                <item
+                    android:id="@+id/font_30"
+                    android:title="@string/size_30" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:icon="@android:drawable/checkbox_off_background"
+        android:title="@string/font_color"
+        app:showAsAction="ifRoom|withText">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/red"
+                    android:title="Red" />
+
+                <item
+                    android:id="@+id/green"
+                    android:title="Green" />
+            </group>
+        </menu>
+    </item>
+</menu>
