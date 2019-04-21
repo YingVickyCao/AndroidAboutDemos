@@ -5,7 +5,18 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 22
+        /**
+         * FIXED_ERROR:Manifest merger failed : uses-sdk:minSdkVersion 21 cannot be smaller than version 22 declared in library [:calculator2] /Users/hades/Documents/GitHub/AndroidAboutDemos/soruce/AndroidGradleConfigCode/calculator2/build/intermediates/library_manifest/debug/AndroidManifest.xml as the library might be using APIs not available in 21
+         * 	Suggestion: use a compatible library with a minSdk of at most 21,
+         * 		or increase this project's minSdk version to at least 22,
+         * 		or use tools:overrideLibrary="com.example.hades.calculator2" to force usage (may lead to runtime failures)
+         *
+         * 	minSdkVersion 22
+         *
+         * 	=>
+         * 	minSdkVersion 21
+         */
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
