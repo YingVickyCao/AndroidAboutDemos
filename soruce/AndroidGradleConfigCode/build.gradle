@@ -4,14 +4,14 @@ apply from: "config.gradle"
 
 buildscript {
     // Define dependencies way1:
-    ext.kotlin_version = '1.2.50' // Support Kotlin
+    ext.kotlin_version = '1.3.21' // Support Kotlin
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"  // Support Kotlin
 
         // NOTE: Do not place your application dependencies here; they belong
