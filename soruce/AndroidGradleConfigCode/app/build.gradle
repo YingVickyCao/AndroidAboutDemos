@@ -196,6 +196,7 @@ dependencies {
      exclude group: 'com.google.code.findbugs'，module: 'jsr305'})
      */
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     // Android Library
     implementation project(':calculator')
     implementation project(':calculator2')

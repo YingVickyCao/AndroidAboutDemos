@@ -1,7 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hades.calculator2">
-
-    <application>
-        <activity android:name=".SumActivity2" />
-    </application>
-</manifest>
+    package="com.example.hades.calculator2" />
