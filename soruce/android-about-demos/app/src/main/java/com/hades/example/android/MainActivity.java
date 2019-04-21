@@ -1,6 +1,7 @@
 package com.hades.example.android;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.hades.example.android.data_storage.DataStorageActivityActivity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
@@ -16,7 +17,12 @@ public class MainActivity extends NoNeedPermissionActivity {
         setContentView(R.layout.activity_main);
         initViews();
 
-        findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
+        findViewById(R.id.pageSecurity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pageSecurity();
+            }
+        });
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
