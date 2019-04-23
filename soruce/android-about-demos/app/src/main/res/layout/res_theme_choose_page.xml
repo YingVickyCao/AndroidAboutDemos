@@ -27,14 +27,14 @@
                 android:textAllCaps="false" />
 
             <Button
-                style="@style/GreenText.Large"
+                style="@style/GreenText2"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="@string/green_text"
                 android:textAllCaps="false" />
 
             <Button
-                style="@style/GreenText2"
+                style="@style/GreenText.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="@string/green_text"
