@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/pageRootBg">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/id"
@@ -14,35 +13,90 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <TextView
+        <Button
+            style="@style/GreenText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#CCABB4BA" />
+            android:text="Green Text"
+            android:textAllCaps="false" />
 
-        <TextView
+        <Button
+            style="@style/GreenText.Large"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#26ABB4BA" />
+            android:text="Green Text"
+            android:textAllCaps="false" />
+
+        <Button
+            style="@style/GreenText2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Green Text"
+            android:textAllCaps="false" />
 
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/seekBg"
-            android:progressDrawable="@drawable/theme_seekbar_progress"
-            android:thumb="@drawable/theme_seekbar_thumb" />
+            android:progressDrawable="@drawable/res_theme_seekbar_progress"
+            android:thumb="@drawable/res_theme_seekbar_thumb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/pageRootBg"
+                android:backgroundTint="?attr/pageRootBg"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/selectTab1"
+                style="@style/btn.small"
+                android:text="Color One" />
+
+            <Button
+                android:id="@+id/toggleEnable"
+                style="@style/btn.small"
+                android:text="Toggle Enable" />
+
+            <Button
+                android:id="@+id/selectTab2"
+                style="@style/btn.small"
+                android:text="Color Two" />
+        </LinearLayout>
+
+
     </LinearLayout>
+
 
     <Button
         android:id="@+id/setRedTheme"
         style="@style/btn.small"
         android:layout_alignParentBottom="true"
+        android:backgroundTint="@android:color/holo_red_light"
         android:text="@string/red_theme" />
 
     <Button
@@ -57,5 +111,6 @@
         style="@style/btn.small"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:backgroundTint="@android:color/holo_green_light"
         android:text="@string/green_theme" />
 </RelativeLayout>

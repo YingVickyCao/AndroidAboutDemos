@@ -2,7 +2,9 @@
 <resources>
 
     <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/drawable_layer_list_4_ratingbar_progress_drawable</item>
+        <item name="android:progressDrawable">
+            @drawable/drawable_layer_list_4_ratingbar_progress_drawable
+        </item>
         <item name="android:minHeight">48dip</item>
         <item name="android:maxHeight">48dip</item>
     </style>
@@ -32,7 +34,9 @@
     </style>
 
     <style name="Widget.Material.Light.DropDownItem.Spinner_app" parent="android:Widget.Material.Light.DropDownItem.Spinner">
-        <item name="android:textAppearance">@android:style/TextAppearance.Material.Widget.DropDownItem</item>
+        <item name="android:textAppearance">
+            @android:style/TextAppearance.Material.Widget.DropDownItem
+        </item>
     </style>
 
     <style name="TextAppearance.Material.Widget.DropDownItem_app" parent="@android:style/TextAppearance.Material.Widget.DropDownItem">
@@ -61,5 +65,19 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+
+    <!-- Extend and customize a style -->
+    <style name="GreenText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#00FF00</item>
+    </style>
+
+    <style name="GreenText2" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00FF00</item>
+    </style>
+
+    <style name="GreenText.Large">
+        <item name="android:textSize">22sp</item>
     </style>
 </resources>

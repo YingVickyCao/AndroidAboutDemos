@@ -52,8 +52,8 @@ public class TestSwitchColorInTheme2Activity extends ThemeChoosePageAActivity {
             tab.select();
         }
 
-        findViewById(R.id.setRedTheme).setOnClickListener(v -> doSetRedThemeBtnClick());
-        findViewById(R.id.setGreenTheme).setOnClickListener(v -> doSetGreenThemeBtnClick());
+        findViewById(R.id.setRedTheme).setOnClickListener(v -> setRedTheme());
+        findViewById(R.id.setGreenTheme).setOnClickListener(v -> setGreenTheme());
 
         findViewById(R.id.selectTab1).setOnClickListener(v -> selectTab1());
         findViewById(R.id.selectTab2).setOnClickListener(v -> selectTab2());

@@ -157,7 +157,6 @@
         <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
         <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
         <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
-        <activity android:name=".resource.theme.apply_theme.TestSwitchColorInThemeActivity" />
         <activity android:name=".resource.theme.apply_theme.TestSwitchColorInTheme2Activity" />
         <activity
             android:name=".resource.drawable.bitmap.three_level_cache.ImageGridActivity"
