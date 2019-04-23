@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/drawable_selector_4_text_view_v1_3_2_state" android:state_enabled="true" />
+    <item android:drawable="@android:color/background_dark" android:state_enabled="false" />
+</selector>

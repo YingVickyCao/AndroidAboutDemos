@@ -146,7 +146,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/drawable_selector_4_text_view_v1_3"
+                    android:background="@drawable/drawable_selector_4_text_view_v1_3_1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -158,7 +158,7 @@
                         android:layout_marginStart="@dimen/margin_small"
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginEnd="@dimen/margin_small"
-                        android:background="@drawable/drawable_selector_4_text_view_v1_3"
+                        android:background="@drawable/drawable_selector_4_text_view_v1_3_2"
                         android:duplicateParentState="true"
                         android:text="@string/download"
                         android:textColor="@color/textview_text_color_selector_v1_3" />
