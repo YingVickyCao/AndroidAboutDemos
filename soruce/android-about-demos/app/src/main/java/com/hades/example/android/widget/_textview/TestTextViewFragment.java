@@ -23,6 +23,7 @@ public class TestTextViewFragment extends BaseFragment {
     private TextView mSwitchedTextColorTextView;
     private LinearLayout mll1;
     private ViewGroup mll2;
+    private TextView mDownload1;
     private TextView mDownload2;
 
 
@@ -35,7 +36,8 @@ public class TestTextViewFragment extends BaseFragment {
         mll1 = view.findViewById(R.id.ll);
         mll2 = view.findViewById(R.id.ll2);
 
-        mDownload2 = view.findViewById(R.id.download);
+        mDownload1 = view.findViewById(R.id.download);
+        mDownload2 = view.findViewById(R.id.download2);
 
         view.findViewById(R.id.switchTextViewTextColor11).setOnClickListener(v -> switchTextViewTextColor1_1());
         view.findViewById(R.id.switchTextViewTextColor12).setOnClickListener(v -> switchTextViewTextColor1_2());
@@ -45,6 +47,8 @@ public class TestTextViewFragment extends BaseFragment {
 
         view.findViewById(R.id.reset).setOnClickListener(v -> reset());
         view.findViewById(R.id.ll2).setOnClickListener(v -> download());
+        view.findViewById(R.id.download2).setOnClickListener(v -> download2());
+        view.findViewById(R.id.reset2).setOnClickListener(v -> reset2());
 
         format1(view);
         format2(view);
@@ -86,13 +90,29 @@ public class TestTextViewFragment extends BaseFragment {
         mll2.setClickable(true);
         mll2.setEnabled(true);
 
-        mDownload2.setText(R.string.download);
+        mDownload1.setText(R.string.download);
     }
 
     private void download() {
         showToast("Click download btn");
         mll2.setClickable(false);
         mll2.setEnabled(false);
+
+        mDownload1.setText(R.string.downloaded);
+    }
+
+
+    private void reset2() {
+        mDownload2.setClickable(true);
+        mDownload2.setEnabled(true);
+
+        mDownload2.setText(R.string.download);
+    }
+
+    private void download2() {
+        showToast("Click download btn");
+        mDownload2.setClickable(false);
+        mDownload2.setEnabled(false);
 
         mDownload2.setText(R.string.downloaded);
     }
