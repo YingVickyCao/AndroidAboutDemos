@@ -22,7 +22,7 @@ public class TestTextViewFragment extends BaseFragment {
 
     private TextView mSwitchedTextColorTextView;
     private LinearLayout mll1;
-    private LinearLayout mll2;
+    private ViewGroup mll2;
     private TextView mDownload2;
 
 
