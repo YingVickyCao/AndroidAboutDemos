@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 
-public class TestLeveListDrawabeFragment extends Fragment {
+public class TestLevelListDrawableFragment extends Fragment {
 
     private TextView textView1_1;
     private TextView textView1_2;

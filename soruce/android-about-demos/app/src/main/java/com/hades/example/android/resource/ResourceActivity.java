@@ -9,7 +9,7 @@ import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.array.ArrayFragment;
-import com.hades.example.android.resource.drawable._level_list.TestLeveListDrawabeFragment;
+import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
@@ -116,7 +116,7 @@ public class ResourceActivity extends PermissionActivity {
     }
 
     private void pageLevelListDrawable() {
-        showFragment(new TestLeveListDrawabeFragment());
+        showFragment(new TestLevelListDrawableFragment());
     }
 
     private void pageDrawableFolder() {
