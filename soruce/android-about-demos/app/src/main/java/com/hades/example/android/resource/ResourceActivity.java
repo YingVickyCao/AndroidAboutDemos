@@ -9,6 +9,7 @@ import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.array.ArrayFragment;
+import com.hades.example.android.resource.drawable._level_list.TestLeveListDrawabeFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
@@ -47,7 +48,9 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
+        findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
     }
 
@@ -110,6 +113,10 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageShapeDrawable() {
         showFragment(new TestShapeDrawableFragment());
+    }
+
+    private void pageLevelListDrawable() {
+        showFragment(new TestLeveListDrawabeFragment());
     }
 
     private void pageDrawableFolder() {

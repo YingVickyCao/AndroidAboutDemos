@@ -20,4 +20,7 @@
     <attr name="textColorEnableUnSelected" format="reference" />
     <attr name="textColorDisableSelected" format="reference" />
     <attr name="textColorDisableUnSelected" format="reference" />
+
+    <attr name="drawable1" format="reference" />
+    <attr name="drawable2" format="reference" />
 </resources>

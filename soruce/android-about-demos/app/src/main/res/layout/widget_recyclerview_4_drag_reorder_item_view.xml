@@ -19,7 +19,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/drawable_level_list_4_item_view_check_icon" />
+            android:src="@drawable/drawable_level_list_1" />
 
         <!--android:background="@drawable/ic_launcher_round"-->
 

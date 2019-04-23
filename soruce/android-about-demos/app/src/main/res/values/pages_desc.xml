@@ -17,6 +17,8 @@
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
+    <string name="page_switch_color_in_theme">Switch Color in Theme</string>
+    <string name="page_LevelListDrawable">Level List Drawable</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>

@@ -4,41 +4,44 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/id"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/page_a"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_switch_color_in_theme" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/topic"
         android:orientation="vertical">
 
-        <Button
-            style="@style/GreenText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Green Text"
-            android:textAllCaps="false" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            style="@style/GreenText.Large"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Green Text"
-            android:textAllCaps="false" />
+            <Button
+                style="@style/GreenText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/green_text"
+                android:textAllCaps="false" />
 
-        <Button
-            style="@style/GreenText2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Green Text"
-            android:textAllCaps="false" />
+            <Button
+                style="@style/GreenText.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/green_text"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/GreenText2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/green_text"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <View style="@style/div" />
 
         <SeekBar
             android:layout_width="match_parent"
@@ -46,6 +49,8 @@
             android:background="?attr/seekBg"
             android:progressDrawable="@drawable/res_theme_seekbar_progress"
             android:thumb="@drawable/res_theme_seekbar_thumb" />
+
+        <View style="@style/div" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,6 +123,7 @@
 
             </RelativeLayout>
 
+            <View style="@style/div" />
         </LinearLayout>
     </LinearLayout>
 

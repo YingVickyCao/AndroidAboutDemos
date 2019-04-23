@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawable1">@drawable/wechat</item>
+        <item name="drawable2">@drawable/android</item>
+        <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
+        <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
     </style>
 
     <style name="AppTheme.FullScreen">
@@ -38,8 +42,6 @@
         <item name="seekThumbColor">#FF5722</item>
         <item name="seekProgressDrawableColor">#9C27B0</item>
         <item name="seekBg">#000</item>
-        <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
-        <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
 
         <item name="textColorOneSelected">@android:color/holo_green_light</item>
         <item name="textColorOneUnSelected">@android:color/holo_orange_light</item>

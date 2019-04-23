@@ -159,4 +159,7 @@
     <string name="home">Home</string>
     <string name="dashboard">Dashboard</string>
     <string name="notifications">Notifications</string>
+    <string name="green_text">Green Text</string>
+    <string name="set_max_level_0">Set Max Level 0</string>
+    <string name="set_max_level_1">Set Max Level 1</string>
 </resources>
