@@ -6,9 +6,10 @@ import android.support.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
-import com.hades.example.android.resource.array.ArrayFragment;
+import com.hades.example.android.resource._array.TestArrayFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
@@ -36,6 +37,7 @@ public class ResourceActivity extends PermissionActivity {
         initViews();
 
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
+        findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
         findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageArray).setOnClickListener(v -> pageArray());
@@ -59,6 +61,11 @@ public class ResourceActivity extends PermissionActivity {
         checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
+
+    private void pageColorStateListResource() {
+        showFragment(new TestColorStateListFragment());
+    }
+
     private void parseXml() {
         showFragment(new MaterialFragment());
     }
@@ -72,7 +79,7 @@ public class ResourceActivity extends PermissionActivity {
     }
 
     private void pageArray() {
-        showFragment(new ArrayFragment());
+        showFragment(new TestArrayFragment());
     }
 
     private void pageParseXML() {

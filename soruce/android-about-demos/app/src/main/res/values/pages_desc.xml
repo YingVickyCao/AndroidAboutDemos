@@ -13,6 +13,7 @@
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
 
     <string name="page_resource">Resource</string>
+    <string name="page_ColorStateListResource">Color state list resource</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>

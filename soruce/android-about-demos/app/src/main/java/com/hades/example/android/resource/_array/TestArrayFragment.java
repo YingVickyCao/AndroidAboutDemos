@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.array;
+package com.hades.example.android.resource._array;
 
 import android.app.Fragment;
 import android.content.res.TypedArray;
@@ -15,8 +15,8 @@ import com.hades.example.android.R;
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ArrayFragment extends Fragment {
-    private static final String TAG = ArrayFragment.class.getSimpleName();
+public class TestArrayFragment extends Fragment {
+    private static final String TAG = TestArrayFragment.class.getSimpleName();
 
     Button normalArrayBtn;
 
