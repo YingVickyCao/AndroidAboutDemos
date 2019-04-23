@@ -12,21 +12,22 @@ import com.hades.example.android.R;
 
 public class TestLeveListDrawabeFragment extends Fragment {
 
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
-    private TextView textView4;
+    private TextView textView1_1;
+    private TextView textView1_2;
 
+    private TextView textView2_1;
+    private TextView textView2_2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_level_iist, container, false);
 
-        textView1 = view.findViewById(R.id.textView1);
-        textView2 = view.findViewById(R.id.textView2);
-        textView3 = view.findViewById(R.id.textView3);
-        textView4 = view.findViewById(R.id.textView4);
+        textView1_1 = view.findViewById(R.id.textView1_1);
+        textView1_2 = view.findViewById(R.id.textView1_2);
+
+        textView2_1 = view.findViewById(R.id.textView2_1);
+        textView2_2 = view.findViewById(R.id.textView2_2);
 
         view.findViewById(R.id.setMaxLevel0).setOnClickListener(v -> setMaxLevel0());
         view.findViewById(R.id.setMaxLevel1).setOnClickListener(v -> setMaxLevel1());
@@ -42,9 +43,10 @@ public class TestLeveListDrawabeFragment extends Fragment {
     }
 
     private void setLevel(int level) {
-        textView1.getBackground().setLevel(level);
-        textView2.getBackground().setLevel(level);
-        textView3.getBackground().setLevel(level);
-        textView4.getBackground().setLevel(level);
+        textView1_1.getBackground().setLevel(level);
+        textView1_2.getBackground().setLevel(level);
+
+        textView2_1.getBackground().setLevel(level);
+        textView2_2.getBackground().setLevel(level);
     }
 }

@@ -6,10 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="drawable1">@drawable/wechat</item>
-        <item name="drawable2">@drawable/android</item>
-        <item name="itemViewHighlightBg">@color/item_view_highlight_bg</item>
-        <item name="itemViewDefaultBg">@color/item_view_default_bg</item>
+        <item name="color1">@android:color/holo_red_light</item>
+        <item name="color2">@android:color/holo_blue_bright</item>
+        <item name="drawable1">@android:drawable/star_big_off</item>
+        <item name="drawable2">@android:drawable/star_big_on</item>
     </style>
 
     <style name="AppTheme.FullScreen">

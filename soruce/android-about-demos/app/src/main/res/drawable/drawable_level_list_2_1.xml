@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <level-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/drawable_level_list_4_v2_level_0"
+        android:drawable="@android:color/holo_red_light"
         android:maxLevel="0" />
 
     <item
-        android:drawable="@drawable/drawable_level_list_4_v2_level_1"
+        android:drawable="@android:color/holo_blue_bright"
         android:maxLevel="1" />
 
 </level-list>

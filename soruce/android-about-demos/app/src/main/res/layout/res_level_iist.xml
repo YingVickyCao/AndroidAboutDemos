@@ -14,46 +14,48 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView1_1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_1" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_2" />
-
-        <!--<TextView-->
-        <!--android:id="@+id/textView3"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_margin="@dimen/margin_tiny"-->
-        <!--android:background="@drawable/drawable_level_list_3_v1" />-->
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_3_v2" />
+            android:background="@drawable/drawable_level_list_1_1" />
 
         <!--<TextView-->
         <!--android:id="@+id/textView4"-->
         <!--android:layout_width="40dp"-->
         <!--android:layout_height="40dp"-->
         <!--android:layout_margin="@dimen/margin_tiny"-->
-        <!--android:background="@drawable/drawable_level_list_4_v1" />-->
+        <!--android:background="@drawable/drawable_level_list_1_2_v1" />-->
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView1_2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_4_v2" />
+            android:background="@drawable/drawable_level_list_1_2_v2" />
+
+
+        <TextView
+            android:id="@+id/textView2_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/margin_tiny"
+            android:background="@drawable/drawable_level_list_2_1" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView2_v2"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_margin="@dimen/margin_tiny"-->
+        <!--android:background="@drawable/drawable_level_list_2_2_v1" />-->
+
+        <TextView
+            android:id="@+id/textView2_2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/margin_tiny"
+            android:background="@drawable/drawable_level_list_2_2_v2" />
+
     </LinearLayout>
 
 

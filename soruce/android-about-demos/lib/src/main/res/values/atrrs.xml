@@ -5,11 +5,6 @@
     <attr name="seekThumbColor" format="color" />
     <attr name="seekProgressDrawableColor" format="color" />
     <attr name="seekBg" format="color" />
-    <attr name="itemViewHighlightBg" format="reference" />
-    <attr name="itemViewDefaultBg" format="reference" />
-
-    <attr name="textColorOne" format="reference" />
-    <attr name="textColorTwo" format="reference" />
 
     <attr name="textColorOneSelected" format="reference" />
     <attr name="textColorOneUnSelected" format="reference" />
@@ -21,6 +16,8 @@
     <attr name="textColorDisableSelected" format="reference" />
     <attr name="textColorDisableUnSelected" format="reference" />
 
+    <attr name="color1" format="reference" />
+    <attr name="color2" format="reference" />
     <attr name="drawable1" format="reference" />
     <attr name="drawable2" format="reference" />
 </resources>
