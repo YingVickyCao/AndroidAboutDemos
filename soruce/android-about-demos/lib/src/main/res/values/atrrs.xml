@@ -20,4 +20,16 @@
     <attr name="color2" format="reference" />
     <attr name="drawable1" format="reference" />
     <attr name="drawable2" format="reference" />
+
+    <attr name="bg_0" format="reference" />
+    <attr name="m_0" format="reference" />
+    <attr name="m_0_with_opacity" format="reference" />
+
+    <declare-styleable name="CustomViews">
+        <attr name="MyViewStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyView">
+        <attr name="bgColor" format="reference" />
+    </declare-styleable>
 </resources>

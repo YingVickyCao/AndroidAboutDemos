@@ -92,8 +92,8 @@
     <!-- APPLY_THEME_START -->
     <string name="page_a">Page A</string>
     <string name="page_b">Page B</string>
-    <string name="red_theme">Red theme</string>
-    <string name="green_theme">Green theme</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
     <string name="jump_page_b">Jump page B</string>
     <!-- APPLY_THEME_END -->
     <string name="show">Show</string>

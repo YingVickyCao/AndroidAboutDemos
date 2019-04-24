@@ -10,12 +10,12 @@ import com.hades.example.android.lib.base.NoNeedPermissionActivity;
  * Created by hades on 17/03/2018.
  * 扑克牌游戏中的玩家手牌
  */
-public class CascadeLayoutActivityActivity extends NoNeedPermissionActivity {
+public class CascadeLayoutActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_cascadelayout_layout);
+        setContentView(R.layout.widget_customview_cascadelayout);
 
         initViews();
 

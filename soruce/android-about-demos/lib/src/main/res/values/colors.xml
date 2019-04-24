@@ -6,4 +6,12 @@
 
     <color name="item_view_highlight_bg">@android:color/holo_green_dark</color>
     <color name="item_view_default_bg">@android:color/holo_orange_light</color>
+
+    <color name="dark_bg_0">#22272c</color>
+    <color name="dark_m_0">#171A1C</color>
+    <color name="dark_m_0_opacity_80">#cc171a1c</color>
+
+    <color name="light_bg_0">#fff</color>
+    <color name="light_m_0">#abb4ba</color>
+    <color name="light_m_0_opacity_30">#4Dabb4ba</color>
 </resources>

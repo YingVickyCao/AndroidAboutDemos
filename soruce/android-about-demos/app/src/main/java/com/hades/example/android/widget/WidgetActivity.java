@@ -9,7 +9,6 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.other_ui.PopupWindowFragment;
-import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
 import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
@@ -30,7 +29,8 @@ import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
-import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivityActivity;
+import com.hades.example.android.widget.custom_view.TestCustomViewActivity;
+import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
@@ -153,11 +153,11 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageCustomView4CascadeLayout() {
-        showActivity(CascadeLayoutActivityActivity.class);
+        showActivity(CascadeLayoutActivity.class);
     }
 
     private void page_CustomVew() {
-        showFragment(new TestCustomViewFragment());
+        showActivity(TestCustomViewActivity.class);
     }
 
     private void pageRatingBar() {

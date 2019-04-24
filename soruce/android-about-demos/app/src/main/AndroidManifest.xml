@@ -128,16 +128,20 @@
         <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
+        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
+        <activity android:name=".widget.custom_view.TestCustomViewActivity" />
+        <activity android:name=".widget._button.TestButtonActivity" />
+        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
+        <!-- END_WIDGET -->
+
+        <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
+        <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
+        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity" />
         <activity android:name=".other_ui.OtherUIActivity" />
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
-        <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
-        <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
-        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity" />
-        <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivityActivity" />
-        <activity android:name=".widget._button.TestButtonActivity" />
-        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" /> <!-- END_WIDGET -->
+
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".event_handle.EventHandlerActivity" />
         <activity android:name=".event_handle.base_on_listener.plane.PlaneViewActivity" />

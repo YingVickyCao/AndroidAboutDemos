@@ -1,20 +1,19 @@
 package com.hades.example.android.resource.theme.apply_theme;
 
-import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
-import androidx.appcompat.content.res.AppCompatResources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+
+import com.google.android.material.tabs.TabLayout;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.lib.mock.SFMock;
 
 public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
     private static final String TAG = ThemeChoosePageAActivity.class.getSimpleName();
@@ -31,8 +30,8 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
         textView = findViewById(R.id.textView);
 
-        findViewById(R.id.setRedTheme).setOnClickListener(v -> setRedTheme());
-        findViewById(R.id.setGreenTheme).setOnClickListener(v -> setGreenTheme());
+        findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
+        findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
 
         findViewById(R.id.color1).setOnClickListener(v -> colorOne());
@@ -81,40 +80,6 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     private void toggleEnable() {
         textView.setSelected(!textView.isSelected());
-    }
-
-    protected void setRedTheme() {
-        boolean isRedTheme = SFMock.getInstance().isRedTheme();
-        if (isRedTheme) {
-            return;
-        }
-        SFMock.getInstance().useRedTheme(true);
-
-        applyTheme();
-    }
-
-    void setGreenTheme() {
-        boolean isRedTheme = SFMock.getInstance().isRedTheme();
-        if (!isRedTheme) {
-            return;
-        }
-        SFMock.getInstance().useRedTheme(false);
-
-        applyTheme();
-    }
-
-    private void applyTheme() {
-        finish();
-        TaskStackBuilder.create(this).addNextIntent(getIntent()).startActivities();
-    }
-
-    void setTheme() {
-        boolean isRedTheme = SFMock.getInstance().isRedTheme();
-        if (isRedTheme) {
-            setTheme(R.style.AppTheme_Red);
-        } else {
-            setTheme(R.style.AppTheme_Green);
-        }
     }
 
     private void jumpB() {

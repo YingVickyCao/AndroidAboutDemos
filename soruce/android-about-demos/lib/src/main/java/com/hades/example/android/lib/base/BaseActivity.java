@@ -1,6 +1,7 @@
 package com.hades.example.android.lib.base;
 
 import android.app.Fragment;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.lib.R;
+import com.hades.example.android.lib.mock.SFMock;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private View topic;
@@ -123,5 +125,40 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+    protected void setLightTheme() {
+        boolean isRedTheme = SFMock.getInstance().isRedTheme();
+        if (isRedTheme) {
+            return;
+        }
+        SFMock.getInstance().useRedTheme(true);
+
+        applyTheme();
+    }
+
+    protected void setDarkTheme() {
+        boolean isRedTheme = SFMock.getInstance().isRedTheme();
+        if (!isRedTheme) {
+            return;
+        }
+        SFMock.getInstance().useRedTheme(false);
+
+        applyTheme();
+    }
+
+    protected void applyTheme() {
+        finish();
+        TaskStackBuilder.create(this).addNextIntent(getIntent()).startActivities();
+    }
+
+    protected void setTheme() {
+        boolean isLightTheme = SFMock.getInstance().isRedTheme();
+        if (isLightTheme) {
+            setTheme(R.style.AppTheme_Light);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+        }
     }
 }
