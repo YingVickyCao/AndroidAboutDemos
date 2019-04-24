@@ -117,6 +117,14 @@
 
     <View style="@style/div.big" />
 
+    <TextView
+        style="@style/tv"
+        android:text="Test attr 顺序" />
+
+    <com.hades.example.android.widget.custom_view.RectView
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_100"
+        android:layout_gravity="center_horizontal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
