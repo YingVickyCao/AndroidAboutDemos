@@ -35,8 +35,8 @@
     </declare-styleable>
 
     <declare-styleable name="RectView">
-        <attr name="rvContent" format="string" />
+        <attr name="rvText" format="reference" />
     </declare-styleable>
-    <attr name="reactViewText" format="reference" />
+    <attr name="rectViewStyle" format="reference" />
     <!-- Custom View,end -->
 </resources>

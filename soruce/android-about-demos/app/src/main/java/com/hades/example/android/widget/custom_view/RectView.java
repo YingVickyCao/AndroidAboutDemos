@@ -17,24 +17,24 @@ public class RectView extends TextView {
 
     public RectView(Context context) {
         super(context);
-        Log.d(TAG, "CircleView: 1");
+        Log.d(TAG, "RectView: 1");
     }
 
     public RectView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        Log.d(TAG, "CircleView: 2");
-
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, R.attr.reactViewText, R.style.DefaultStyleRes);
-        if (null == typedArray) {
-            return;
-        }
-        String text = typedArray.getString(R.styleable.RectView_rvContent);
-        setText(text);
-        typedArray.recycle();
+        this(context, attrs, R.attr.rectViewStyle);
+        Log.d(TAG, "RectView: 2");
     }
 
     public RectView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Log.d(TAG, "CircleView: 3");
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, defStyleAttr, R.style.DefaultStyleInCustomView);
+        if (null == typedArray) {
+            return;
+        }
+        String text = typedArray.getString(R.styleable.RectView_rvText);
+        Log.d(TAG, "RectView: 3,text=" + text);
+        setText(text);
+        typedArray.recycle();
     }
 }

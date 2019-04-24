@@ -123,7 +123,6 @@
         android:text="Test attr 顺序" />
 
     <com.hades.example.android.widget.custom_view.RectView
-        style="@style/LayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -131,8 +130,9 @@
         android:gravity="center"
         android:minHeight="@dimen/size_100"
         android:text="@string/attribute_6_not_use"
-        android:textColor="@android:color/holo_red_light"
-        app:rvContent="@string/attribute_1_attribute_in_xml" />
+        android:textColor="@android:color/holo_red_light" />
+    <!--app:rvText="@string/attribute_1_attribute_in_xml"-->
+    <!--style="@style/LayoutStyle"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
