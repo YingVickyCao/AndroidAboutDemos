@@ -127,7 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@android:color/darker_gray"
+        android:background="@color/light_bg_0"
         android:gravity="center"
         android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_tiny"
-        android:background="@android:color/darker_gray"
+        android:background="@color/light_bg_0"
         android:gravity="center"
         android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
