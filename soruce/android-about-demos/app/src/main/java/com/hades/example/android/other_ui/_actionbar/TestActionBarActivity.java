@@ -1,8 +1,8 @@
 package com.hades.example.android.other_ui._actionbar;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;

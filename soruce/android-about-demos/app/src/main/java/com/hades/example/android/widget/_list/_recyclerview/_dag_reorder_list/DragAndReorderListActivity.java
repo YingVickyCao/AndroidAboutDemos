@@ -1,7 +1,7 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;

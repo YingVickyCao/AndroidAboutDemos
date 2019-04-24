@@ -1,7 +1,7 @@
 package com.hades.example.android.lib.utils.bitmap.fetch;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 public class RetainImageCacheFragment extends Fragment {
     public static final String TAG = RetainImageCacheFragment.class.getSimpleName();

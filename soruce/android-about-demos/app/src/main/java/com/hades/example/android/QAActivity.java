@@ -1,7 +1,7 @@
 package com.hades.example.android;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;

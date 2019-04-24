@@ -3,7 +3,7 @@ package com.hades.example.android.lib.utils.bitmap.cache.mememory;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 import android.util.Log;
 
 import com.hades.example.android.lib.BuildConfig;

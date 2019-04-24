@@ -21,6 +21,16 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/page_CustomVew4CascadeLayout"
+                style="@style/btn.small"
+                android:text="@string/page_CustomView4CascadeLayout" />
+
+            <Button
+                android:id="@+id/page_CustomVew"
+                style="@style/btn.small"
+                android:text="@string/page_CustomView" />
+
+            <Button
                 android:id="@+id/pageConstraintLayout"
                 style="@style/btn.small"
                 android:text="@string/page_ConstraintLayout" />
@@ -84,11 +94,6 @@
                 android:id="@+id/pageImageViewScaleType"
                 style="@style/btn.small"
                 android:text="@string/page_imageView_scaleType" />
-
-            <Button
-                android:id="@+id/page_customview"
-                style="@style/btn.small"
-                android:text="@string/page_customview" />
 
             <Button
                 android:id="@+id/pageRatingBar"

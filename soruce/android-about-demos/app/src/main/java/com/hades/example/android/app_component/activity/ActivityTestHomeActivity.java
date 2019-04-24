@@ -1,7 +1,7 @@
 package com.hades.example.android.app_component.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.app_component.activity._sate.TestSaveAndRestoreStateActivity;

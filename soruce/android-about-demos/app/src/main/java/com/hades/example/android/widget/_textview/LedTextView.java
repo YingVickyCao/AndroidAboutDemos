@@ -10,7 +10,7 @@ import java.io.File;
 public class LedTextView extends TextView {
 
     private static final String FONTS_FOLDER = "fonts";
-    private static final String FONT_DIGITAL_7 = FONTS_FOLDER + File.separator + "digital-7.ttf";
+    private static final String FONT_DIGITAL_7 = FONTS_FOLDER + File.separator + "digital_7.ttf";
 
     public LedTextView(Context context) {
         super(context);

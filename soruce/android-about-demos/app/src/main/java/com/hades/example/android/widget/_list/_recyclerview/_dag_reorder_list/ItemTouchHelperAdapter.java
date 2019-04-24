@@ -1,6 +1,6 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

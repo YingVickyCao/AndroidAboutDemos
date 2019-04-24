@@ -1,13 +1,15 @@
 package com.hades.example.android.widget;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.other_ui.PopupWindowFragment;
+import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
 import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
@@ -65,7 +67,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
-        findViewById(R.id.page_customview).setOnClickListener(v -> customview());
+        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
+        findViewById(R.id.page_CustomVew).setOnClickListener(v -> page_CustomVew());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
@@ -90,6 +93,11 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testTimePickerDialog).setOnClickListener(v -> testTimePickerDialog());
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
+    }
+
+    @Override
+    protected void showCurrentTest() {
+        page_CustomVew();
     }
 
     private void pageConstraintLayout() {
@@ -144,8 +152,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         showFragment(new TestImageViewScaleTypeFragment());
     }
 
-    private void customview() {
+    private void pageCustomView4CascadeLayout() {
         showActivity(CascadeLayoutActivityActivity.class);
+    }
+
+    private void page_CustomVew() {
+        showFragment(new TestCustomViewFragment());
     }
 
     private void pageRatingBar() {

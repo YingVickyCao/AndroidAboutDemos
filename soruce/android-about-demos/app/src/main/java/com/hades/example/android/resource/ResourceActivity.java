@@ -2,14 +2,14 @@ package com.hades.example.android.resource;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
-import com.hades.example.android.resource._array.TestArrayFragment;
+import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
@@ -40,7 +40,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
         findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
-        findViewById(R.id.pageArray).setOnClickListener(v -> pageArray());
+        findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
@@ -61,6 +61,10 @@ public class ResourceActivity extends PermissionActivity {
         checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
+    @Override
+    protected void showCurrentTest() {
+        pageStringIntegerArray();
+    }
 
     private void pageColorStateListResource() {
         showFragment(new TestColorStateListFragment());
@@ -78,8 +82,8 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new InternationalizationFragment());
     }
 
-    private void pageArray() {
-        showFragment(new TestArrayFragment());
+    private void pageStringIntegerArray() {
+        showFragment(new TestStringIntegerArrayFragment());
     }
 
     private void pageParseXML() {

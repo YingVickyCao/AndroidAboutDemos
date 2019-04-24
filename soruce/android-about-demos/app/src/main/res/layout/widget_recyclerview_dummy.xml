@@ -16,7 +16,7 @@
     If RecyclerView = root view, it works.  => Not need set by source.
      tools:listitem="@layout/widget_recyclerview_dummy_item"
      -->
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:nestedScrollingEnabled="true"
         android:layout_width="match_parent"

@@ -2,7 +2,7 @@ package com.hades.example.android.resource.drawable.vector;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.hades.example.android.R;

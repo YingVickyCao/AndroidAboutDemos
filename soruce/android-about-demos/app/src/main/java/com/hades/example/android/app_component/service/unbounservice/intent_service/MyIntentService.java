@@ -2,7 +2,7 @@ package com.hades.example.android.app_component.service.unbounservice.intent_ser
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.hades.example.android.lib.utils.LogHelper;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_color">#aa0000</color>
+    <color name="test_color">#4D899FAD</color>
 
     <color name="message_list_item_background_unread">#ff274172</color>
 
@@ -12,4 +12,13 @@
     <color name="btn_default_pressed_holo_light">#00BCD4</color>
     <color name="btn_default_focused_holo_light">#FFEB3B</color>
     <color name="btn_default_disabled_focused_holo_light">#3F51B5</color>
+
+
+    <color name="dark_bg_0">#22272c</color>
+    <color name="dark_m_0">#171A1C</color>
+    <color name="dark_m_0_opacity_80">#cc171a1c</color>
+
+    <color name="light_bg_0">#fff</color>
+    <color name="light_m_0">#abb4ba</color>
+    <color name="light_m_0_opacity_30">#4dabb4ba</color>
 </resources>

@@ -1,8 +1,8 @@
 package com.hades.example.android.app_component.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.hades.example.android.R;

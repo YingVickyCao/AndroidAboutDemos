@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_String_and_Integer_and_Array" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/format_html" />
+
+        <TextView
+            android:id="@+id/my_text_view_html"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
+
+        <TextView
+            android:id="@+id/my_text_view_spannable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
+
+        <TextView
+            android:id="@+id/formattingStrings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
+
+        <TextView
+            android:id="@+id/stylingWithAnnotations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
+
+
+        <TextView
+            android:id="@+id/stylingWithAnnotations2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="My spantastic text" />
+
+
+        <TextView
+            android:id="@+id/annotated_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/annotated_text" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/getStringArray"
+        style="@style/btn"
+        android:text="String array" />
+
+    <TextView
+        android:id="@+id/quantityStringsResult"
+        style="@style/tv" />
+
+    <Button
+        android:id="@+id/quantityStrings"
+        style="@style/btn"
+        android:text="Quantity strings" />
+
+    <Button
+        android:id="@+id/getNormalArray"
+        style="@style/btn"
+        android:text="普通数组" />
+
+    <Button
+        android:id="@+id/getIntArray"
+        style="@style/btn"
+        android:text="整型数组" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/string_array" />
+
+</LinearLayout>

@@ -2,7 +2,6 @@ package com.hades.example.android.other_ui;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

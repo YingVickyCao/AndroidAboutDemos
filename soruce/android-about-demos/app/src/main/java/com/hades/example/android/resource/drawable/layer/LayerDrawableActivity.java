@@ -2,7 +2,7 @@ package com.hades.example.android.resource.drawable.layer;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

@@ -1,7 +1,7 @@
 package com.hades.example.android.b;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DActivity extends AppCompatActivity {
 

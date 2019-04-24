@@ -1,7 +1,7 @@
 package com.hades.example.android.widget._layout._linearlayout;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

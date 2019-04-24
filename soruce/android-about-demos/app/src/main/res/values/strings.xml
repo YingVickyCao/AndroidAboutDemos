@@ -1,6 +1,71 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">Android Demos</string>
 
+    <string name="page_app_component">App Components</string>
+    <string name="page_bond_service">Bound service</string>
+    <string name="page_content_provider">Content Provider</string>
+    <string name="page_activity">Activity</string>
+    <string name="page_activity_save_and_restore_state">Saving and restoring transient UI state</string>
+
+    <string name="page_data_storage">Data Storage</string>
+    <string name="page_shared_preferences">SharedPreferences</string>
+    <string name="page_sqlite">Sqlite</string>
+    <string name="page_io">IO</string>
+    <string name="page_sqlitedatabase">SQLiteDatabase</string>
+
+    <string name="page_resource">Resource</string>
+    <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
+    <string name="page_ColorStateListResource">Color state list resource</string>
+    <string name="page_ShapeDrawable">ShapeDrawable</string>
+    <string name="page_DrawableFolder">Drawable Folder</string>
+    <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
+    <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
+    <string name="page_switch_color_in_theme">Switch Color in Theme</string>
+    <string name="page_LevelListDrawable">Level List Drawable</string>
+
+    <string name="page_widget">Widget</string>
+    <string name="page_CustomView">Custom View</string>
+    <string name="page_CustomView4CascadeLayout">Custom View 4 CascadeLayout</string>
+    <string name="page_ConstraintLayout">ConstraintLayout</string>
+    <string name="page_linearLayout">LinearLayout</string>
+    <string name="page_linearLayout_LayoutGravityAndGravity">LinearLayout - LayoutGravity And Gravity</string>
+    <string name="page_ViewGroup">ViewGroup</string>
+    <string name="page_FrameLayout">FrameLayout</string>
+    <string name="page_Button">Button</string>
+    <string name="page_TextView">TextView</string>
+    <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
+    <string name="page_TextView_4_click_action">TextView - Click Action</string>
+    <string name="page_SeekBar">SeekBar</string>
+    <string name="page_RatingBar">SeekBar</string>
+    <string name="page_Progressbar">ProgressBar</string>
+    <string name="page_ken_burns_image">Ken Burns Image</string>
+    <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
+    <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
+    <string name="page_provide_screen_density_bitmaps">屏幕分辨率 —— bitmaps</string>
+    <string name="page_imageView_scaleType">ImageView scaleType</string>
+    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
+    <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
+    <string name="page_qa_about_view">QA about view</string>
+    <string name="page_check_vector_rendering_time">Check vector rendering time</string>
+    <string name="page_webView">WebView</string>
+    <string name="page_app_chooser">Show an app chooser</string>
+    <string name="page_recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
+    <string name="page_spinner">Spinner</string>
+
+    <string name="page_security">Security</string>
+
+    <string name="page_background_tasks">Background tasks</string>
+    <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>
+    <string name="page_asynctask">AsyncTask</string>
+
+    <string name="page_OtherUI">Other UI</string>
+    <string name="page_Notification">Notification</string>
+    <string name="page_Toast">Toast</string>
+    <string name="page_ActionBar">ActionBar</string>
+    <string name="page_ActionBar_ShowMenu">ActionBar - Show Menu</string>
+
+    <!-- ========================= -->
+
     <string name="runt_time_permission">Runtime Permission</string>
     <string name="runt_time_permission_topic">通过发送和接收短信测试Runtime Permission</string>
     <string name="rxPermissions_topic">RxPermissions lib demo</string>
@@ -106,8 +171,6 @@
     <string name="write_sdc_ard">Write SD card</string>
     <string name="date">Date</string>
     <string name="picked_date_format">Picked date: %1$d/%2$d/%3$d</string>
-    <string name="text1"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]></string>
-    <string name="text2">Hello World, HomeActivity!</string>
     <string name="default_time">88:88:88</string>
     <string name="check_memory">Check memory</string>
     <string name="check_render_time">Check rendering time</string>
@@ -162,4 +225,12 @@
     <string name="green_text">Green Text</string>
     <string name="set_max_level_0">Set Max Level 0</string>
     <string name="set_max_level_1">Set Max Level 1</string>
+
+    <!-- Formatting strings -->
+    <string name="formatting_strings">Hello, %1$s! You have %2$d new messages.</string>
+    <string name="styling_with_html_markup"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]> Welcome to <u>Android</u>!  Android </string>
+    <string name="styling_with_spannables">Hello World</string>
+    <string name="title">Best practices for <annotation font="title_emphasis">text</annotation> on Android</string>
+    <string name="annotated_text">This is a string containing an <annotation format="bold">annotation</annotation> which we can use to <annotation format="italic">style</annotation> the substrings</string>
+
 </resources>
