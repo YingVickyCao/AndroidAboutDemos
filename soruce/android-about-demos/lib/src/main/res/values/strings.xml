@@ -3,4 +3,11 @@
 
     <string name="no_network_connection_toast">No network connection found</string>
     <string name="ok">OK</string>
+
+    <string name="attribute_1_attribute_in_xml">1-Attribute in XML</string>
+    <string name="attribute_2_style_in_xml">2-Style in XML</string>
+    <string name="attribute_3_style_in_theme">3-Style in Theme</string>
+    <string name="attribute_4_attribute_in_theme">4-Attribute in Theme</string>
+    <string name="attribute_5_default_style_in_custom_view">5-Default style in Custom View</string>
+    <string name="attribute_6_not_use">6-Not use theme </string>
 </resources>

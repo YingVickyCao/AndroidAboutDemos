@@ -21,6 +21,7 @@
     <attr name="drawable1" format="reference" />
     <attr name="drawable2" format="reference" />
 
+    <!-- Custom View,start -->
     <attr name="bg_0" format="reference" />
     <attr name="m_0" format="reference" />
     <attr name="m_0_with_opacity" format="reference" />
@@ -32,4 +33,10 @@
     <declare-styleable name="MyView">
         <attr name="bgColor" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="RectView">
+        <attr name="rvContent" format="string" />
+    </declare-styleable>
+    <attr name="reactViewText" format="reference" />
+    <!-- Custom View,end -->
 </resources>

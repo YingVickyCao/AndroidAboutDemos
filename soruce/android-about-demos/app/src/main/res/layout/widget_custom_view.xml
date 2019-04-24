@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -122,9 +123,16 @@
         android:text="Test attr 顺序" />
 
     <com.hades.example.android.widget.custom_view.RectView
-        android:layout_width="@dimen/size_100"
-        android:layout_height="@dimen/size_100"
-        android:layout_gravity="center_horizontal" />
+        style="@style/LayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:minHeight="@dimen/size_100"
+        android:text="@string/attribute_6_not_use"
+        android:textColor="@android:color/holo_red_light"
+        app:rvContent="@string/attribute_1_attribute_in_xml" />
 
     <RelativeLayout
         android:layout_width="match_parent"

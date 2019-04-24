@@ -19,6 +19,21 @@
         <!--<item name="android:windowBackground">@color/colorAccent</item>-->
 
         <item name="MyViewStyle">@style/MyView</item>
+
+        <item name="rvContent">@string/attribute_4_attribute_in_theme</item>
+        <item name="reactViewText">@style/DefaultStyleInAppTheme</item>
+    </style>
+
+    <style name="DefaultStyleInAppTheme">
+        <item name="rvContent">@string/attribute_3_style_in_theme</item>
+    </style>
+
+    <style name="DefaultStyleRes">
+        <item name="rvContent">@string/attribute_5_default_style_in_custom_view</item>
+    </style>
+
+    <style name="LayoutStyle">
+        <item name="rvContent">@string/attribute_2_style_in_xml</item>
     </style>
 
     <style name="AppTheme.FullScreen">
