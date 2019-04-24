@@ -18,12 +18,15 @@
         <!-- change the activity background  -->
         <!--<item name="android:windowBackground">@color/colorAccent</item>-->
 
+        <!-- Custom View, start -->
         <item name="MyViewStyle">@style/MyView</item>
 
-        <item name="rvText">@string/attribute_5_attribute_in_theme</item>
+        <!--<item name="rvText">@string/attribute_5_attribute_in_theme</item>-->
         <item name="rectViewStyle">@style/StyleInInTheme</item>
+        <!-- Custom View, end -->
     </style>
 
+    <!-- Custom View, start -->
     <style name="StyleInInTheme">
         <item name="rvText">@string/attribute_3_style_in_theme</item>
     </style>
@@ -35,6 +38,11 @@
     <style name="StyleInXml">
         <item name="rvText">@string/attribute_2_style_in_xml</item>
     </style>
+
+    <style name="StyleNoUseTheme">
+        <item name="rvText">@string/attribute_6_not_use_theme</item>
+    </style>
+    <!-- Custom View, end -->
 
     <style name="AppTheme.FullScreen">
         <item name="windowNoTitle">true</item>

@@ -129,10 +129,21 @@
         android:background="@android:color/darker_gray"
         android:gravity="center"
         android:minHeight="@dimen/size_100"
-        android:text="@string/attribute_6_not_use"
+        android:text="@string/attribute_6_not_use_theme"
         android:textColor="@android:color/holo_red_light" />
     <!--app:rvText="@string/attribute_1_attribute_in_xml"-->
     <!--style="@style/LayoutStyle"-->
+
+    <com.hades.example.android.widget.custom_view.RectView
+        style="@style/StyleNoUseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:minHeight="@dimen/size_100"
+        android:text="@string/attribute_6_not_use_theme"
+        android:textColor="@android:color/holo_red_light" />
 
     <RelativeLayout
         android:layout_width="match_parent"
