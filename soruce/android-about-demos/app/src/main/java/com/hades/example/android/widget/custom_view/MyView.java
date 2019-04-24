@@ -8,7 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 
 @SuppressLint("AppCompatCustomView")
-public class MyView extends View {
+public class MyView extends TextView {
     private static final String TAG = MyView.class.getSimpleName();
 
     private @ColorInt
