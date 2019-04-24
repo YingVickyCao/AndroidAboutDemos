@@ -2,7 +2,6 @@ package com.hades.example.android.widget.custom_view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
 
@@ -12,22 +11,20 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 
 @SuppressLint("AppCompatCustomView")
-public class MyView2 extends MyViewBase {
-    Paint paint = new Paint();
-
-    public MyView2(Context context) {
+public class DarkMyView extends MyViewBase {
+    public DarkMyView(Context context) {
         super(context);
     }
 
-    public MyView2(Context context, @Nullable AttributeSet attrs) {
+    public DarkMyView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyView2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DarkMyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public MyView2(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public DarkMyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
