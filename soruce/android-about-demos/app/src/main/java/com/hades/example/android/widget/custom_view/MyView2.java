@@ -37,7 +37,7 @@ public class MyView2 extends View {
         super.onDraw(canvas);
 
         paint.setColor(getColor()); //设置画笔颜色
-        paint.setAlpha((int) (0.3 * 255));
+        paint.setAlpha(77);
 
 //        paint.setColor(getColor2()); //设置画笔颜色
 
