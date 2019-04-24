@@ -19,57 +19,96 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_weight="1"
-            android:background="@color/dark_bg_0"
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.hades.example.android.widget.custom_view.LightMyView
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@color/dark_bg_0">
+
+                <com.hades.example.android.widget.custom_view.LightMyView
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
 
             <View style="@style/div" />
 
-            <TextView
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80"
-                android:background="@color/dark_m_0_opacity_80"
-                android:gravity="center" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@color/dark_bg_0">
+
+                <TextView
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_centerInParent="true"
+                    android:background="@color/dark_m_0_opacity_80"
+                    android:gravity="center" />
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_weight="1"
-            android:background="@color/light_bg_0"
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.hades.example.android.widget.custom_view.DarkMyView
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@color/light_bg_0">
+
+                <com.hades.example.android.widget.custom_view.DarkMyView
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
 
             <View style="@style/div" />
 
-            <TextView
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80"
-                android:background="@color/light_m_0_opacity_30"
-                android:gravity="center" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@color/light_bg_0">
+
+                <TextView
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_centerInParent="true"
+                    android:background="@color/light_m_0_opacity_30"
+                    android:gravity="center" />
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_weight="1"
-            android:background="?attr/bg_0"
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.hades.example.android.widget.custom_view.MyView
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="?attr/bg_0">
+
+                <com.hades.example.android.widget.custom_view.MyView
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
 
             <View style="@style/div" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="?attr/bg_0"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

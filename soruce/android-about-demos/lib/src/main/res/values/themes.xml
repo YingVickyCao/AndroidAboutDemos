@@ -74,5 +74,9 @@
     <style name="MyView">
         <item name="bgColor">?attr/m_0_with_opacity</item>
     </style>
+
+    <style name="MyView_Default">
+        <item name="bgColor">@android:color/holo_red_light</item>
+    </style>
     <!-- APPLY_THEME_END -->
 </resources>
