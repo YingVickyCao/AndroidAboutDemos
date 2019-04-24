@@ -28,7 +28,8 @@ public class RectView extends TextView {
     public RectView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, defStyleAttr, R.style.DefaultStyleInCustomView);
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, defStyleAttr, R.style.RectView_DefaultStyle);
         if (null == typedArray) {
             return;
         }
@@ -36,5 +37,19 @@ public class RectView extends TextView {
         Log.d(TAG, "RectView: 3,text=" + text);
         setText(text);
         typedArray.recycle();
+
+
+        int attributeCount = attrs.getAttributeCount();
+        Log.i(TAG, "RectView: 3,当前属性个数为：" + attributeCount);
+        for (int i = 0; i < attributeCount; i++) {
+            String attributeName = attrs.getAttributeName(i);
+            Log.i(TAG, String.format("当前属性索引为：%d,索引名为：%s", i, attributeName));
+            if (attributeName.equals("style")) {
+                String attributeValue = attrs.getAttributeValue(i);
+                Log.i(TAG, "当前属性值为：：" + attributeValue);
+
+            }
+
+        }
     }
 }

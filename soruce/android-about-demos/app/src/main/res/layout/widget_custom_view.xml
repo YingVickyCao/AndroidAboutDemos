@@ -122,27 +122,28 @@
         style="@style/tv"
         android:text="Test attr 顺序" />
 
+    <!-- Apply theme -->
     <com.hades.example.android.widget.custom_view.RectView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/darker_gray"
         android:gravity="center"
-        android:minHeight="@dimen/size_100"
-        android:text="@string/attribute_6_not_use_theme"
+        android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
     <!--app:rvText="@string/attribute_1_attribute_in_xml"-->
     <!--style="@style/LayoutStyle"-->
 
+    <!-- Not apply theme -->
     <com.hades.example.android.widget.custom_view.RectView
-        style="@style/StyleNoUseTheme"
+        style="@style/RectView_StyleNotUseTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_tiny"
         android:background="@android:color/darker_gray"
         android:gravity="center"
-        android:minHeight="@dimen/size_100"
-        android:text="@string/attribute_6_not_use_theme"
+        android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
 
     <RelativeLayout

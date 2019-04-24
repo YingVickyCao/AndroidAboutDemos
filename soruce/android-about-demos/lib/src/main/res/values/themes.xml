@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Custom View, start -->
+    <style name="RectView_StyleInTheme">
+        <item name="rvText">@string/attribute_3_style_in_theme</item>
+    </style>
+
+    <style name="RectView_DefaultStyle">
+        <item name="rvText">@string/attribute_4_default_style_in_custom_view</item>
+    </style>
+
+    <style name="RectView_StyleInXml">
+        <item name="rvText">@string/attribute_2_style_in_xml</item>
+    </style>
+
+    <style name="RectView_StyleNotUseTheme">
+        <item name="rvText">@string/attribute_6_not_use_theme</item>
+    </style>
+
+    <style name="MyView">
+        <item name="bgColor">?attr/m_0_with_opacity</item>
+    </style>
+
+    <style name="MyView_Default">
+        <item name="bgColor">@android:color/holo_red_light</item>
+    </style>
+    <!-- Custom View, end -->
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -22,27 +48,9 @@
         <item name="MyViewStyle">@style/MyView</item>
 
         <!--<item name="rvText">@string/attribute_5_attribute_in_theme</item>-->
-        <item name="rectViewStyle">@style/StyleInInTheme</item>
+        <item name="rectViewStyle">@style/RectView_StyleInTheme</item>
         <!-- Custom View, end -->
     </style>
-
-    <!-- Custom View, start -->
-    <style name="StyleInInTheme">
-        <item name="rvText">@string/attribute_3_style_in_theme</item>
-    </style>
-
-    <style name="DefaultStyleInCustomView">
-        <item name="rvText">@string/attribute_4_default_style_in_custom_view</item>
-    </style>
-
-    <style name="StyleInXml">
-        <item name="rvText">@string/attribute_2_style_in_xml</item>
-    </style>
-
-    <style name="StyleNoUseTheme">
-        <item name="rvText">@string/attribute_6_not_use_theme</item>
-    </style>
-    <!-- Custom View, end -->
 
     <style name="AppTheme.FullScreen">
         <item name="windowNoTitle">true</item>
@@ -92,14 +100,6 @@
         <item name="bg_0">@color/dark_bg_0</item>
         <item name="m_0">@color/dark_m_0</item>
         <item name="m_0_with_opacity">@color/dark_m_0_opacity_80</item>
-    </style>
-
-    <style name="MyView">
-        <item name="bgColor">?attr/m_0_with_opacity</item>
-    </style>
-
-    <style name="MyView_Default">
-        <item name="bgColor">@android:color/holo_red_light</item>
     </style>
     <!-- APPLY_THEME_END -->
 </resources>
