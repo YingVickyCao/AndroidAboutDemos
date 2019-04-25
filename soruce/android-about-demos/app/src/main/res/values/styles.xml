@@ -78,4 +78,16 @@
     <style name="GreenText.Large">
         <item name="android:textSize">22sp</item>
     </style>
+
+    <style name="ConstrainLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/constrain_layout_height</item>
+        <item name="android:background">@color/light_m_0_opacity_30</item>
+        <item name="android:layout_marginTop">@dimen/margin_tiny</item>
+    </style>
+
+    <style name="ConstrainLayoutStyle.Large">
+        <item name="android:layout_height">@dimen/constrain_layout_height2</item>
+    </style>
+
 </resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_ConstraintLayout" />
+
+    <!-- START_MARGIN -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv41"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <TextView
+            android:id="@+id/tv42"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv41" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv51"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv52"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv51" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv61"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <TextView
+            android:id="@+id/tv62"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="@id/tv61"
+            app:layout_goneMarginStart="40dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Margins when connected to a Gone Widget -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B" />
+    </LinearLayout>
+    <!-- END_MARGIN -->
+
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_ConstraintLayout" />
+
+    <!-- START_RELATIVE_POSITING -->
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle">
+
+        <Button
+            android:id="@+id/tv11"
+            style="@style/btn.small"
+            android:text="A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tv12"
+            style="@style/btn.small"
+            android:text="B"
+            app:layout_constraintLeft_toRightOf="@+id/tv11"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Large">
+
+        <Button
+            android:id="@+id/tv21"
+            style="@style/btn.small"
+            android:text="A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tv22"
+            style="@style/btn.small"
+            android:text="B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tv31"
+            style="@style/btn.small"
+            android:text="C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Baseline -->
+        <Button
+            android:id="@+id/tv32"
+            style="@style/btn.small"
+            android:text="D"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View style="@style/div" />
+    <!-- END_RELATIVE_POSITING -->
+</LinearLayout>

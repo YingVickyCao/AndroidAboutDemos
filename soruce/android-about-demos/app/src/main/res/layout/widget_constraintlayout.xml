@@ -9,185 +9,6 @@
         style="@style/topic"
         android:text="@string/page_ConstraintLayout" />
 
-    <!-- START_RELATIVE_POSITING -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv11"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A" />
-
-        <TextView
-            android:id="@+id/tv12"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv21"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <TextView
-            android:id="@+id/tv22"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv31"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A" />
-
-        <!-- Baseline -->
-        <TextView
-            android:id="@+id/tv32"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- END_RELATIVE_POSITING -->
-
-    <!-- START_MARGIN -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv41"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A" />
-
-        <TextView
-            android:id="@+id/tv42"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            app:layout_constraintStart_toStartOf="@id/tv41" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Margins when connected to a Gone Widget -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv51"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/tv52"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            app:layout_constraintStart_toStartOf="@id/tv51" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Margins when connected to a Gone Widget -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv61"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A" />
-
-        <TextView
-            android:id="@+id/tv62"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B"
-            app:layout_constraintStart_toStartOf="@id/tv61"
-            app:layout_goneMarginStart="40dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Margins when connected to a Gone Widget -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark"
-            android:gravity="center"
-            android:text="A" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="B" />
-    </LinearLayout>
-    <!-- END_MARGIN -->
 
     <!-- START_CENTER_POSITING_AND_BIAS -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -518,7 +339,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:layout_width="0dp"
@@ -531,7 +352,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <!--END_DIMENSION_CONSTRAINTS -->
 

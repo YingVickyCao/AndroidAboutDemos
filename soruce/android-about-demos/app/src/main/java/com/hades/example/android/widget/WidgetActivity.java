@@ -68,7 +68,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
-        findViewById(R.id.page_CustomVew).setOnClickListener(v -> page_CustomVew());
+        findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
@@ -97,7 +97,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     @Override
     protected void showCurrentTest() {
-        page_CustomVew();
+        pageConstraintLayout();
     }
 
     private void pageConstraintLayout() {
@@ -156,7 +156,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         showActivity(CascadeLayoutActivity.class);
     }
 
-    private void page_CustomVew() {
+    private void pageCustomVew() {
         showActivity(TestCustomViewActivity.class);
     }
 
