@@ -100,9 +100,9 @@
                 <com.hades.example.android.widget.custom_view.MyView
                     android:layout_width="@dimen/size_80"
                     android:layout_height="@dimen/size_80"
-                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:text="@string/textview" />
+                   />
             </RelativeLayout>
 
             <View style="@style/div" />

@@ -12,6 +12,8 @@
     <color name="dark_m_0_opacity_80">#cc171a1c</color>
 
     <color name="light_bg_0">#fff</color>
-    <color name="light_m_0">#abb4ba</color>
-    <color name="light_m_0_opacity_30">#4Dabb4ba</color>
+    <!--<color name="light_m_0">#abb4ba</color>-->
+    <!--<color name="light_m_0_opacity_30">#4Dabb4ba</color>-->
+    <color name="light_m_0">#ff0000</color>
+    <color name="light_m_0_opacity_30">#4Dff0000</color>
 </resources>

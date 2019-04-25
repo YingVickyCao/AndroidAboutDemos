@@ -53,6 +53,7 @@ public class MyView extends TextView {
         super.onDraw(canvas);
 
         paint.setColor(colorId); //设置画笔颜色
+//        paint.setAlpha(77);// colorId已经包含了透明度，再setAlpha()没有影响
 
         paint.setStyle(Paint.Style.FILL);   //设置画笔为空心 如果将这里改为Style.STROKE  这个图中的实线圆柱体就变成了空心的圆柱体
         canvas.drawRect(0, 0, getSize(), getSize(), paint); //绘制矩形
