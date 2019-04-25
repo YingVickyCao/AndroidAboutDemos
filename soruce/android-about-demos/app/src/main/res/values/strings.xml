@@ -225,13 +225,15 @@
     <string name="green_text">Green Text</string>
     <string name="set_max_level_0">Set Max Level 0</string>
     <string name="set_max_level_1">Set Max Level 1</string>
+    <string name="textview">TextView</string>
 
-    <!-- Formatting strings -->
+    <!-- Formatting strings,start -->
+    <string name="handle_special_characters">Handle special characters:&amp;</string>
     <string name="formatting_strings">Hello, %1$s! You have %2$d new messages.</string>
+    <!-- u 没有生效 -->
     <string name="styling_with_html_markup"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]> Welcome to <u>Android</u>!  Android </string>
     <string name="styling_with_spannables">Hello World</string>
     <string name="title">Best practices for <annotation font="title_emphasis">text</annotation> on Android</string>
-    <string name="annotated_text">This is a string containing an <annotation format="bold">annotation</annotation> which we can use to <annotation format="italic">style</annotation> the substrings</string>
-    <string name="textview">TextView</string>
+    <!-- Formatting strings,end -->
 
 </resources>

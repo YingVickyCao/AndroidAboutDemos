@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <array name="normal_array">
-        <item>@android:color/holo_red_dark</item>
-        <item>@android:color/holo_green_dark</item>
-        <item>@android:color/holo_blue_dark</item>
-    </array>
-
     <string-array name="string_array">
         <item>One</item>
         <item>Two</item>
@@ -24,6 +17,16 @@
         <item>2</item>
         <item>3</item>
     </integer-array>
+
+    <array name="icons">
+        <item>@android:drawable/btn_star_big_on</item>
+        <item>@android:drawable/btn_star_big_off</item>
+    </array>
+
+    <array name="colors">
+        <item>@android:color/holo_red_dark</item>
+        <item>@android:color/holo_blue_dark</item>
+    </array>
 
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
