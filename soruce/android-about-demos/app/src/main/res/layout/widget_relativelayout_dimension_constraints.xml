@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_ConstraintLayout" />
+
+    <!--START_DIMENSION_CONSTRAINTS -->
+
+    <!-- Case 1: Minimum dimensions on ConstraintLayout -->
+    <RelativeLayout style="@style/ConstrainLayoutStyle.Medium">
+
+        <!-- 1.required least size < height=wrap_content (✓)-->
+        <Button
+            android:id="@+id/btn1_1"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="1" />
+
+        <!-- 2. minHeight=1 < required least size(✓) < height=wrap_content -->
+        <Button
+            android:id="@+id/btn1_2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/btn1_1"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="1dp"
+            android:text="2" />
+
+        <!-- 3. minHeight=1 < required least size(✓) > height=wrap_content -->
+        <Button
+            android:id="@+id/btn1_2_2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn1_2"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="1dp"
+            android:text="33333333333" />
+
+
+        <!-- 4. minHeight=100 (✓) > height=wrap_content > required least size -->
+        <Button
+            android:id="@+id/btn1_3"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn1_2_2"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="100dp"
+            android:text="4" />
+
+        <!-- 5. maxHeight=1 < required least size < height=wrap_content(✓) -->
+        <Button
+            android:id="@+id/btn1_4"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn1_3"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="5" />
+
+        <!-- 6. maxHeight=1 < required least size > height=wrap_content(✓) -->
+        <Button
+            android:id="@+id/btn1_4_2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn1_4"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="6666666666666666666666666" />
+
+        <!-- 7. maxHeight=100 > height=wrap_content(✓) > required least size -->
+        <Button
+            android:id="@+id/btn1_7"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn1_4_2"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="100dp"
+            android:text="7" />
+
+        <!-- 8. minHeight=100 > height=30(✓) -->
+        <Button
+            android:id="@+id/btn1_8"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_toEndOf="@id/btn1_7"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="100dp"
+            android:text="8" />
+
+        <!-- 9. maxHeight=1 < height=20(✓) -->
+        <Button
+            android:id="@+id/btn1_9"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_toEndOf="@id/btn1_8"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="9" />
+
+    </RelativeLayout>
+</LinearLayout>
