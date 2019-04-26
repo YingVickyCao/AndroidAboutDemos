@@ -27,9 +27,14 @@
                 android:text="原始资源" />
 
             <Button
+                android:id="@+id/pageColor"
+                style="@style/btn.small"
+                android:text="@string/page_Color" />
+
+            <Button
                 android:id="@+id/pageColorStateListResource"
                 style="@style/btn.small"
-                android:text="@string/page_ColorStateListResource" />
+                android:text="@string/page_ColorStateList" />
 
             <Button
                 android:id="@+id/pageTheme"

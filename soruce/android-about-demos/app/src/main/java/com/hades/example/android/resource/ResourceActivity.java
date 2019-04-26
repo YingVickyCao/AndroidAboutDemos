@@ -2,10 +2,12 @@ package com.hades.example.android.resource;
 
 import android.Manifest;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
@@ -37,6 +39,7 @@ public class ResourceActivity extends PermissionActivity {
         initViews();
 
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
+        findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
         findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
@@ -64,6 +67,10 @@ public class ResourceActivity extends PermissionActivity {
     @Override
     protected void showCurrentTest() {
         pageStringIntegerArray();
+    }
+
+    private void pageColor() {
+        showFragment(new TestColorFragment());
     }
 
     private void pageColorStateListResource() {

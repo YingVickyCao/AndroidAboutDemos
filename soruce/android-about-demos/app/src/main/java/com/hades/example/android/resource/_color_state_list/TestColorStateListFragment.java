@@ -1,12 +1,13 @@
 package com.hades.example.android.resource._color_state_list;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
@@ -18,7 +19,8 @@ public class TestColorStateListFragment extends BaseFragment {
     private TextView mDownload1;
     private TextView mDownload2;
 
-
+    private int color_red_1 = 0x00FF0000;
+    private int color_red_2 = 0xFF0000;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_color_state_list, container, false);
