@@ -25,19 +25,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 2. minHeight=1 < required least size(✓) < height=wrap_content -->
-        <!--android:text="222222222222"-->
-        <!--android:text="2"-->
         <Button
             android:id="@+id/btn1_2"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="1dp"
-            android:text="2222222222222222"
+            android:text="2"
             app:layout_constraintStart_toEndOf="@id/btn1_1"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 3. minHeight=100 (✓) > height=wrap_content > required least size-->
+        <!-- 3. minHeight=1 < required least size(✓) > height=wrap_content -->
+        <Button
+            android:id="@+id/btn1_2_2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="1dp"
+            android:text="2222222222222222"
+            app:layout_constraintStart_toEndOf="@id/btn1_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- 4. minHeight=100 (✓) > height=wrap_content > required least size-->
         <Button
             android:id="@+id/btn1_3"
             android:layout_width="40dp"
@@ -45,23 +55,32 @@
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="100dp"
             android:text="3"
-            app:layout_constraintStart_toEndOf="@id/btn1_2"
+            app:layout_constraintStart_toEndOf="@id/btn1_2_2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 4. maxHeight=1 < required least size < height=wrap_content(✓) -->
-        <!--android:text="4"-->
-        <!--android:text="444444444444444444444444444444444444444"-->
+        <!-- 5. maxHeight=1 < required least size < height=wrap_content(✓) -->
         <Button
             android:id="@+id/btn1_4"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="1dp"
-            android:text="444444444444444444444444444444444444444"
+            android:text="4"
             app:layout_constraintStart_toEndOf="@id/btn1_3"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 5. maxHeight=100 > height=wrap_content(✓) > required least size-->
+        <!-- 6. maxHeight=1 < required least size > height=wrap_content(✓) -->
+        <Button
+            android:id="@+id/btn1_4_2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="444444444444444444444444444444444444444"
+            app:layout_constraintStart_toEndOf="@id/btn1_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 7. maxHeight=100 > height=wrap_content(✓) > required least size-->
         <Button
             android:id="@+id/btn1_5"
             android:layout_width="40dp"
@@ -69,10 +88,10 @@
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="100dp"
             android:text="5"
-            app:layout_constraintStart_toEndOf="@id/btn1_4"
+            app:layout_constraintStart_toEndOf="@id/btn1_4_2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 6. minHeight=100 > height=30(✓) -->
+        <!-- 8. minHeight=100 > height=30(✓) -->
         <Button
             android:id="@+id/btn1_6"
             android:layout_width="40dp"
@@ -83,7 +102,7 @@
             app:layout_constraintStart_toEndOf="@id/btn1_5"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 7. maxHeight=1 < height=20(✓) -->
+        <!-- 9. maxHeight=1 < height=20(✓) -->
         <Button
             android:id="@+id/btn1_8"
             android:layout_width="40dp"
