@@ -42,19 +42,19 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="1dp"
-            android:text="2222222222222222"
+            android:text="33333333333"
             app:layout_constraintStart_toEndOf="@id/btn1_2"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <!-- 4. minHeight=100 (✓) > height=wrap_content > required least size-->
+        <!-- 4. minHeight=100 (✓) > height=wrap_content > required least size -->
         <Button
             android:id="@+id/btn1_3"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="100dp"
-            android:text="3"
+            android:text="4"
             app:layout_constraintStart_toEndOf="@id/btn1_2_2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="1dp"
-            android:text="4"
+            android:text="5"
             app:layout_constraintStart_toEndOf="@id/btn1_3"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,41 +76,41 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="1dp"
-            android:text="444444444444444444444444444444444444444"
+            android:text="6666666666666666666666666"
             app:layout_constraintStart_toEndOf="@id/btn1_4"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 7. maxHeight=100 > height=wrap_content(✓) > required least size-->
+        <!-- 7. maxHeight=100 > height=wrap_content(✓) > required least size -->
         <Button
-            android:id="@+id/btn1_5"
+            android:id="@+id/btn1_7"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="100dp"
-            android:text="5"
+            android:text="7"
             app:layout_constraintStart_toEndOf="@id/btn1_4_2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 8. minHeight=100 > height=30(✓) -->
         <Button
-            android:id="@+id/btn1_6"
+            android:id="@+id/btn1_8"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="100dp"
-            android:text="6"
-            app:layout_constraintStart_toEndOf="@id/btn1_5"
+            android:text="8"
+            app:layout_constraintStart_toEndOf="@id/btn1_7"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 9. maxHeight=1 < height=20(✓) -->
         <Button
-            android:id="@+id/btn1_8"
+            android:id="@+id/btn1_9"
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:maxHeight="1dp"
-            android:text="7"
-            app:layout_constraintStart_toEndOf="@id/btn1_6"
+            android:text="9"
+            app:layout_constraintStart_toEndOf="@id/btn1_8"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
