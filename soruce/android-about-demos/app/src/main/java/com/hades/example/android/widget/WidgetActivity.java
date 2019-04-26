@@ -97,7 +97,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     @Override
     protected void showCurrentTest() {
-        pageConstraintLayout();
+        pageCustomVew();
     }
 
     private void pageConstraintLayout() {

@@ -14,6 +14,8 @@
     <dimen name="size_100">100dp</dimen>
     <dimen name="size_120">120dp</dimen>
     <dimen name="size_200">200dp</dimen>
+    <dimen name="size_300">300dp</dimen>
+    <dimen name="size_300_px">300px</dimen>
 
     <!-- 水平间距的默认值 -->
     <dimen name="cascade_horizontal_spacing">10dp</dimen>

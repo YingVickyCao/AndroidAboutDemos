@@ -3,18 +3,22 @@
     <!-- Custom View, start -->
     <style name="RectView_StyleInTheme">
         <item name="rvText">@string/attribute_3_style_in_theme</item>
+        <item name="rvSize">@dimen/size_300</item>
     </style>
 
     <style name="RectView_DefaultStyle">
         <item name="rvText">@string/attribute_4_default_style_in_custom_view</item>
+        <item name="rvSize">@dimen/size_300</item>
     </style>
 
     <style name="RectView_StyleInXml">
         <item name="rvText">@string/attribute_2_style_in_xml</item>
+        <item name="rvSize">@dimen/size_300</item>
     </style>
 
     <style name="RectView_StyleNotUseTheme">
         <item name="rvText">@string/attribute_6_not_use_theme</item>
+        <item name="rvSize">@dimen/size_300_px</item>
     </style>
 
     <style name="MyView">
