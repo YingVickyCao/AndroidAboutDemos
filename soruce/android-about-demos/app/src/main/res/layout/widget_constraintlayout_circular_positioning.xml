@@ -11,13 +11,11 @@
 
     <!-- START_CIRCULAR_POSITING -->
 
-    <!-- app:layout_constraintCircleAngle="45 degree， 右上方"
+    <!-- app:layout_constraintCircleAngle="45 degree，右上方"
          app:layout_constraintCircleRadius="70dp"
+         最后效果：B在A的
    -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/ConstrainLayoutStyle.Large"
-        android:layout_height="300dp"
-        android:visibility="gone">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Large">
 
         <Button
             android:id="@+id/btn1"
@@ -42,10 +40,7 @@
          app:layout_constraintCircleRadius="70dp"
     -->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/ConstrainLayoutStyle.Large"
-        android:layout_height="300dp"
-        android:visibility="visible">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Large">
 
         <Button
             android:id="@+id/btn2"
@@ -67,10 +62,7 @@
 
     <!-- app:layout_constraintCircleAngle="45 degree，右上方" -->
     <!-- app:layout_constraintCircleRadius="default  = 0"，最后效果：B与A重合 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/ConstrainLayoutStyle.Large"
-        android:layout_height="300dp"
-        android:visibility="visible">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Large">
 
         <Button
             android:id="@+id/btn3"
