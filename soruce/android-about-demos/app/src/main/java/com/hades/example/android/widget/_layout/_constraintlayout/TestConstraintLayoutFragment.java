@@ -16,6 +16,7 @@ public class TestConstraintLayoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.widget_constraintlayout, container, false);
 //        return inflater.inflate(R.layout.widget_constraintlayout_relative_positing, container, false);
-        return inflater.inflate(R.layout.widget_constraintlayout_margins, container, false);
+//        return inflater.inflate(R.layout.widget_constraintlayout_margins, container, false);
+        return inflater.inflate(R.layout.widget_constraintlayout_circular_positioning, container, false);
     }
 }
