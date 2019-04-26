@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,4 +8,300 @@
     <TextView
         style="@style/topic"
         android:text="@string/page_ConstraintLayout" />
+
+    <!--START_DIMENSION_CONSTRAINTS -->
+
+    <!-- Case 1: Minimum dimensions on ConstraintLayout -->
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Medium">
+
+        <Button
+            android:id="@+id/btn1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="1dp"
+            android:text="A"
+            app:layout_constraintStart_toEndOf="@id/btn1_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="100dp"
+            android:text="A"
+            app:layout_constraintStart_toEndOf="@id/btn1_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Case 2: Widgets dimension constraints -->
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle">
+
+        <TextView
+            android:id="@+id/btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <!-- android:layout_width="50dp" -->
+        <!-- android:layout_width="wrap_content" -->
+
+        <!-- Using 0dp, which is the equivalent of "MATCH_CONSTRAINT" -->
+        <!-- android:layout_width="0dp"  ===  android:layout_width="match_parent" -->
+        <!--<TextView-->
+            <!--android:id="@+id/tv9_1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@android:color/holo_red_dark"-->
+            <!--android:gravity="center"-->
+            <!--android:text="A"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- WRAP_CONTENT : enforcing constraints -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv10_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <!-- android:layout_width="wrap_content" && app:layout_constrainedWidth="true" 时， app:layout_constraintWidth_min = minWidth -->
+        <TextView
+            android:id="@+id/tv10_2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_min="200dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- MATCH_CONSTRAINT dimensions -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv11_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A" />
+
+        <!-- 当android:layout_width="0dp"，app:layout_constrainedWidth="false" 无效，app:layout_constraintWidth_min="100dp" == minWidth  -->
+        <TextView
+            android:id="@+id/tv11_2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="B"
+            app:layout_constrainedWidth="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_min="100dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- MATCH_CONSTRAINT dimensions -->
+    <!--Percent dimension-->
+    <!-- 居中，且宽=1/2 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- android:layout_width="0dp"时，默认 app:layout_constraintWidth_percent="1" （全宽）-->
+        <TextView
+            android:id="@+id/tv12_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Ratio -->
+    <!-- with:height -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- 以With约束height, With => height? -->
+        <!--app:layout_constraintDimensionRatio="1:2"-->
+        <!--app:layout_constraintDimensionRatio="H,1:2"-->
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="H,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width? <= Height-->
+        <!--app:layout_constraintDimensionRatio="1:2"-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="W,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="H,1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- Width(100%) => Height ？
+         200dp和ratio尺寸相比，200dp更具体，使用200dp
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="W,2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- With和Height  0dp 以外的具体尺寸（包括wrap_content），Ratio 失效 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintDimensionRatio="2:1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--END_DIMENSION_CONSTRAINTS -->
 </LinearLayout>

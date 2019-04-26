@@ -86,6 +86,10 @@
         <item name="android:layout_marginTop">@dimen/margin_tiny</item>
     </style>
 
+    <style name="ConstrainLayoutStyle.Medium">
+        <item name="android:layout_height">@dimen/size_120</item>
+    </style>
+
     <style name="ConstrainLayoutStyle.Large">
         <item name="android:layout_height">@dimen/constrain_layout_height2</item>
     </style>
