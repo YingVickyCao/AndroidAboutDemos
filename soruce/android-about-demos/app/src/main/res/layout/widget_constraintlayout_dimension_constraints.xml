@@ -14,50 +14,100 @@
     <!-- Case 1: Minimum dimensions on ConstraintLayout -->
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Medium">
 
+        <!-- 1.required least size < height=wrap_content (✓)-->
         <Button
             android:id="@+id/btn1_1"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
-            android:text="A"
+            android:text="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 2. minHeight=1 < required least size(✓) < height=wrap_content -->
+        <!--android:text="222222222222"-->
+        <!--android:text="2"-->
         <Button
             android:id="@+id/btn1_2"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="1dp"
-            android:text="A"
+            android:text="2222222222222222"
             app:layout_constraintStart_toEndOf="@id/btn1_1"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 3. minHeight=100 (✓) > height=wrap_content > required least size-->
         <Button
             android:id="@+id/btn1_3"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:minHeight="100dp"
-            android:text="A"
+            android:text="3"
             app:layout_constraintStart_toEndOf="@id/btn1_2"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 4. maxHeight=1 < required least size < height=wrap_content(✓) -->
+        <!--android:text="4"-->
+        <!--android:text="444444444444444444444444444444444444444"-->
+        <Button
+            android:id="@+id/btn1_4"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="444444444444444444444444444444444444444"
+            app:layout_constraintStart_toEndOf="@id/btn1_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 5. maxHeight=100 > height=wrap_content(✓) > required least size-->
+        <Button
+            android:id="@+id/btn1_5"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="100dp"
+            android:text="5"
+            app:layout_constraintStart_toEndOf="@id/btn1_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 6. minHeight=100 > height=30(✓) -->
+        <Button
+            android:id="@+id/btn1_6"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:minHeight="100dp"
+            android:text="6"
+            app:layout_constraintStart_toEndOf="@id/btn1_5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 7. maxHeight=1 < height=20(✓) -->
+        <Button
+            android:id="@+id/btn1_8"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:maxHeight="1dp"
+            android:text="7"
+            app:layout_constraintStart_toEndOf="@id/btn1_6"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Case 2: Widgets dimension constraints -->
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle">
 
-        <TextView
-            android:id="@+id/btn"
+        <Button
+            android:id="@+id/btn2_1"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_red_dark"
+            android:background="@android:color/holo_orange_dark"
             android:gravity="center"
             android:text="A"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <!-- android:layout_width="50dp" -->
@@ -66,14 +116,14 @@
         <!-- Using 0dp, which is the equivalent of "MATCH_CONSTRAINT" -->
         <!-- android:layout_width="0dp"  ===  android:layout_width="match_parent" -->
         <!--<TextView-->
-            <!--android:id="@+id/tv9_1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@android:color/holo_red_dark"-->
-            <!--android:gravity="center"-->
-            <!--android:text="A"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent" />-->
+        <!--android:id="@+id/tv9_1"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/holo_red_dark"-->
+        <!--android:gravity="center"-->
+        <!--android:text="A"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
