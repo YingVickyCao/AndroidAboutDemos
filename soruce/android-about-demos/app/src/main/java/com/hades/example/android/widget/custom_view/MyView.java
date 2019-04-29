@@ -29,19 +29,27 @@ public class MyView extends TextView {
     }
 
     public MyView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, R.attr.MyViewStyle);
         Log.d(TAG, "MyView: 2");
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyView, R.attr.MyViewStyle, R.style.MyView_Default);
-        if (null == typedArray) {
-            return;
-        }
-        colorId = typedArray.getColor(R.styleable.MyView_bgColor, Color.RED);
-        typedArray.recycle();
     }
 
     public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        Log.d(TAG, "MyView: 3");
+        super(context, attrs, defStyleAttr, defStyleAttr);
+        Log.d(TAG, "MyView: 3-------->");
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyView, defStyleAttr, R.style.MyView_Default);
+        if (null == typedArray) {
+            return;
+        }
+
+        CustomViewTools tools = new CustomViewTools();
+        tools.printAttributeSet(TAG, attrs);
+        tools.printTypedArray(TAG, typedArray);
+
+        colorId = typedArray.getColor(R.styleable.MyView_bgColor, Color.RED);
+        Log.d(TAG, "MyView: colorId=" + colorId);
+        typedArray.recycle();
+        Log.d(TAG, "MyView: 3<--------");
     }
 
     public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {

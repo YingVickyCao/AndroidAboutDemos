@@ -52,8 +52,8 @@ D/RectView: 当前属性索引为：7,索引名为：minHeight
 D/RectView: 当前属性索引为：8,索引名为：style,当前属性值为：：@2131951843
 D/RectView: RectView: 3,<-------
 D/RectView: RectView: 2
-
  */
+
 @SuppressLint("AppCompatCustomView")
 public class RectView extends TextView {
     private static final String TAG = RectView.class.getSimpleName();
@@ -89,34 +89,11 @@ public class RectView extends TextView {
         Log.d(TAG, "RectView: 3,text=" + text + ",size=" + size + ",size_300_dp=" + size_300_dp + ",size_300_px=" + size_300_px);
         setText(text);
 
-        printTypedArray(typedArray);
-        printAttributeSet(attrs);
+        CustomViewTools tools = new CustomViewTools();
+        tools.printAttributeSet(TAG, attrs);
+        tools.printTypedArray(TAG, typedArray);
 
         typedArray.recycle();
         Log.d(TAG, "RectView: 3,<-------");
-    }
-
-    private void printTypedArray(TypedArray typedArray) {
-        Log.d(TAG, "RectView: 3,typedArray.getIndexCount()=" + typedArray.getIndexCount());
-        for (int i = 0; i < typedArray.getIndexCount(); i++) {
-            int index = typedArray.getIndex(i);
-            Log.e(TAG, "RectView: 3,index=" + index);
-        }
-
-    }
-
-    private void printAttributeSet(AttributeSet attrs) {
-        int attributeCount = attrs.getAttributeCount();
-        Log.i(TAG, "RectView: 3,当前属性个数为：" + attributeCount);
-        for (int i = 0; i < attributeCount; i++) {
-            String attributeName = attrs.getAttributeName(i);
-
-            if (attributeName.equals("style")) {
-                String attributeValue = attrs.getAttributeValue(i);
-                Log.d(TAG, String.format("当前属性索引为：%d,索引名为：%s", i, attributeName) + ",当前属性值为：：" + attributeValue);
-            } else {
-                Log.d(TAG, String.format("当前属性索引为：%d,索引名为：%s", i, attributeName));
-            }
-        }
     }
 }

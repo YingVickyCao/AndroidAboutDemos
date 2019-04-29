@@ -86,32 +86,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/MyViewContainer"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_100"
-                android:background="?attr/bg_0">
-
-                <com.hades.example.android.widget.custom_view.MyView
-                    android:layout_width="@dimen/size_80"
-                    android:layout_height="@dimen/size_80"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                   />
-            </RelativeLayout>
+            <com.hades.example.android.widget.custom_view.MyView
+                android:layout_width="@dimen/size_80"
+                android:layout_height="@dimen/size_80"
+                android:gravity="center" />
 
             <View style="@style/div" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_100"
-                android:background="?attr/bg_0"
-                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

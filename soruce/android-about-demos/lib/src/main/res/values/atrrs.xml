@@ -28,6 +28,7 @@
 
     <declare-styleable name="CustomViews">
         <attr name="MyViewStyle" format="reference" />
+        <attr name="rectViewStyle" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="MyView">
@@ -38,6 +39,5 @@
         <attr name="rvText" format="reference" />
         <attr name="rvSize" format="dimension" />
     </declare-styleable>
-    <attr name="rectViewStyle" format="reference" />
     <!-- Custom View,end -->
 </resources>
