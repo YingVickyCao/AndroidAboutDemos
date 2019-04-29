@@ -23,6 +23,7 @@ import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableF
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.MaterialFragment;
+import com.hades.example.android.resource.theme.TestThemeAndStyleFragment;
 import com.hades.example.android.resource.theme.apply_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.xml.ParseXMLFragment;
 
@@ -41,7 +42,8 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
-        findViewById(R.id.pageTheme).setOnClickListener(v -> pageTheme());
+        findViewById(R.id.pageSwitchColorInTheme).setOnClickListener(v -> pageSwitchColorInTheme());
+        findViewById(R.id.pageThemeAndStyle).setOnClickListener(v -> pageThemeAndStyle());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
@@ -66,7 +68,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageStringIntegerArray();
+        pageThemeAndStyle();
     }
 
     private void pageColor() {
@@ -81,8 +83,12 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new MaterialFragment());
     }
 
-    private void pageTheme() {
+    private void pageSwitchColorInTheme() {
         showActivity(ThemeChoosePageAActivity.class);
+    }
+
+    private void pageThemeAndStyle() {
+        showFragment(new TestThemeAndStyleFragment());
     }
 
     private void pageInternationalization() {

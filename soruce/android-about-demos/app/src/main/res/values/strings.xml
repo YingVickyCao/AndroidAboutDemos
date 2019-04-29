@@ -22,6 +22,7 @@
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
     <string name="page_switch_color_in_theme">Switch Color in Theme</string>
+    <string name="page_theme_and_style">Theme and Style</string>
     <string name="page_LevelListDrawable">Level List Drawable</string>
 
     <string name="page_widget">Widget</string>
@@ -240,6 +241,9 @@
     <string name="center">Center</string>
     <string name="color_1">Color 1</string>
     <string name="color_2">Color 2</string>
+    <string name="load_color_from_integer_array">Load color from integer-array</string>
+    <string name="load_color_from_attr">Load color attr from attr </string>
+    <string name="load_attr_from_style">Load attr from style</string>
     <!-- Formatting strings,end -->
 
 </resources>

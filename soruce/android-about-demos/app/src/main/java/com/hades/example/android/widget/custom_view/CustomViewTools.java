@@ -20,6 +20,7 @@ public class CustomViewTools {
     public void printAttributeSet(String tag, AttributeSet attrs) {
         if (null == attrs) {
             Log.d(tag, "printAttributeSet, AttributeSet is null.");
+            return;
         }
 
         int attributeCount = attrs.getAttributeCount();

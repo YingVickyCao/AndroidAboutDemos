@@ -74,6 +74,7 @@ public class RectView extends TextView {
         Log.d(TAG, "RectView: 3,------->");
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, defStyleAttr, R.style.RectView_DefaultStyle);
+//        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RectView, defStyleAttr, 0);
         if (null == typedArray) {
             return;
         }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
@@ -19,12 +18,12 @@ public class TestCustomViewFragment extends ThemeBaseFragment {
         view.findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
         view.findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
 
-        LinearLayout MyViewContainer = view.findViewById(R.id.MyViewContainer);
-        MyView myView = new MyView(getActivity(), null, R.attr.MyViewStyle);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.size_80)
-                , (int) getResources().getDimension(R.dimen.size_80));
-        myView.setLayoutParams(layoutParams);
-        MyViewContainer.addView(myView);
+//        LinearLayout MyViewContainer = view.findViewById(R.id.MyViewContainer);
+//        MyView myView = new MyView(getActivity(), null, R.attr.MyViewStyle);
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.size_80)
+//                , (int) getResources().getDimension(R.dimen.size_80));
+//        myView.setLayoutParams(layoutParams);
+//        MyViewContainer.addView(myView);
         return view;
     }
 }

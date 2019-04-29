@@ -23,6 +23,7 @@
 
     <style name="MyView">
         <item name="bgColor">?attr/m_0_with_opacity</item>
+        <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
     </style>
 
     <style name="MyView_Default">
@@ -50,9 +51,8 @@
 
         <!-- Custom View, start -->
         <item name="MyViewStyle">@style/MyView</item>
-
-        <!--<item name="rvText">@string/attribute_5_attribute_in_theme</item>-->
-        <item name="rectViewStyle">@style/RectView_StyleInTheme</item>
+        <item name="rvText">@string/attribute_5_attribute_in_theme</item>
+        <!--<item name="rectViewStyle">@style/RectView_StyleInTheme</item>-->
 
         <item name="ColorsIntegerArray">@array/colors_integer_array</item>
         <!-- Custom View, end -->

@@ -37,9 +37,14 @@
                 android:text="@string/page_ColorStateList" />
 
             <Button
-                android:id="@+id/pageTheme"
+                android:id="@+id/pageSwitchColorInTheme"
                 style="@style/btn.small"
-                android:text="Theme" />
+                android:text="@string/page_switch_color_in_theme" />
+
+            <Button
+                android:id="@+id/pageThemeAndStyle"
+                style="@style/btn.small"
+                android:text="@string/page_theme_and_style" />
 
             <Button
                 android:id="@+id/pageInternationalization"

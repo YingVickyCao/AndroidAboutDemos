@@ -14,14 +14,12 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.ArrayRes;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
@@ -40,11 +38,6 @@ public class TestStringIntegerArrayFragment extends Fragment {
     TextView mTv_stylingWithAnnotations;
 
     TextView quantityStringsResult;
-
-    TextView color1;
-    TextView color2;
-    TextView color3;
-    TextView color4;
 
     Spannable spannable;
 
@@ -66,7 +59,6 @@ public class TestStringIntegerArrayFragment extends Fragment {
         stylingWithHtmlMarkup(view);
         stylingWithSpannables(view);
         stylingWithAnnotations(view);
-        colorInIntegerArray(view);
         return view;
     }
 
@@ -97,19 +89,6 @@ public class TestStringIntegerArrayFragment extends Fragment {
         spannableString.setSpan(annotation, 3, 7, 33);
 
         mTv_stylingWithAnnotations.setText(spannableString);
-    }
-
-    private void colorInIntegerArray(View view) {
-        color1 = view.findViewById(R.id.color1);
-        color2 = view.findViewById(R.id.color2);
-        color3 = view.findViewById(R.id.color3);
-        color4 = view.findViewById(R.id.color4);
-        getIntArray_colors(R.array.colors_integer_array, color1, color2);
-
-        TypedValue typedValue = new TypedValue();
-        getActivity().getTheme().resolveAttribute(R.attr.ColorsIntegerArray, typedValue, true);
-        int resourceId = typedValue.resourceId;
-        getIntArray_colors(resourceId, color3, color4);
     }
 
     private void checkTypedArray() {
@@ -162,14 +141,5 @@ public class TestStringIntegerArrayFragment extends Fragment {
             str.append(ints[i]).append(",");
         }
         Log.d(TAG, "getIntArray: " + str);
-    }
-
-    private void getIntArray_colors(@ArrayRes int id, TextView color1, TextView color2) {
-        /**
-         * getResources().getIntArray()
-         */
-        int[] ints = getResources().getIntArray(id);
-        color1.setBackgroundColor(ints[0]);
-        color2.setBackgroundColor(ints[1]);
     }
 }
