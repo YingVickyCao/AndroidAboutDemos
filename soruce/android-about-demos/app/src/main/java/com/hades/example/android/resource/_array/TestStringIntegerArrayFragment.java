@@ -39,6 +39,9 @@ public class TestStringIntegerArrayFragment extends Fragment {
 
     TextView quantityStringsResult;
 
+    TextView color1;
+    TextView color2;
+
     Spannable spannable;
 
     @Nullable
@@ -54,6 +57,9 @@ public class TestStringIntegerArrayFragment extends Fragment {
         quantityStringsResult = view.findViewById(R.id.quantityStringsResult);
 
         checkTypedArray = view.findViewById(R.id.checkTypedArray);
+        color1 = view.findViewById(R.id.color1);
+        color2 = view.findViewById(R.id.color2);
+        getIntArray_colors();
 
         checkTypedArray.setOnClickListener(v -> checkTypedArray());
         view.findViewById(R.id.getStringArray).setOnClickListener(v -> getStringArray());
@@ -133,5 +139,14 @@ public class TestStringIntegerArrayFragment extends Fragment {
             str.append(ints[i]).append(",");
         }
         Log.d(TAG, "getIntArray: " + str);
+    }
+
+    private void getIntArray_colors() {
+        /**
+         * getResources().getIntArray()
+         */
+        int[] ints = getResources().getIntArray(R.array.colors2);
+        color1.setBackgroundColor(ints[0]);
+        color2.setBackgroundColor(ints[1]);
     }
 }

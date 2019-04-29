@@ -28,6 +28,11 @@
         <item>@android:color/holo_blue_dark</item>
     </array>
 
+    <integer-array name="colors2">
+        <item>0xFFFF0000</item>
+        <item>0xFF00FF00</item>
+    </integer-array>
+
     <!-- 声明一个名为statusNames的字符串数组 -->
     <string-array name="statusNames">
         <item>设备编号</item>

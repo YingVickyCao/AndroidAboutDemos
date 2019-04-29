@@ -66,7 +66,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageColor();
+        pageStringIntegerArray();
     }
 
     private void pageColor() {
