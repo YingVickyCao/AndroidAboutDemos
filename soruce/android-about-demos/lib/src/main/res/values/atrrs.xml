@@ -29,6 +29,7 @@
     <declare-styleable name="CustomViews">
         <attr name="MyViewStyle" format="reference" />
         <attr name="rectViewStyle" format="reference" />
+        <attr name="ColorsIntegerArray" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="MyView">

@@ -53,6 +53,8 @@
 
         <!--<item name="rvText">@string/attribute_5_attribute_in_theme</item>-->
         <item name="rectViewStyle">@style/RectView_StyleInTheme</item>
+
+        <item name="ColorsIntegerArray">@array/colors_integer_array</item>
         <!-- Custom View, end -->
     </style>
 

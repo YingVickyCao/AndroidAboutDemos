@@ -14,12 +14,14 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.ArrayRes;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
@@ -41,6 +43,8 @@ public class TestStringIntegerArrayFragment extends Fragment {
 
     TextView color1;
     TextView color2;
+    TextView color3;
+    TextView color4;
 
     Spannable spannable;
 
@@ -49,44 +53,63 @@ public class TestStringIntegerArrayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_string_integer_array, container, false);
 
-        mTv_formattingStrings = view.findViewById(R.id.formattingStrings);
-        mTv_stylingWithHtmlMarkup = view.findViewById(R.id.styling_with_html_markup);
-        mTv_stylingWithSpannables = view.findViewById(R.id.styling_with_spannables);
-        mTv_stylingWithAnnotations = view.findViewById(R.id.stylingWithAnnotations);
-
         quantityStringsResult = view.findViewById(R.id.quantityStringsResult);
 
         checkTypedArray = view.findViewById(R.id.checkTypedArray);
-        color1 = view.findViewById(R.id.color1);
-        color2 = view.findViewById(R.id.color2);
-        getIntArray_colors();
-
         checkTypedArray.setOnClickListener(v -> checkTypedArray());
-        view.findViewById(R.id.getStringArray).setOnClickListener(v -> getStringArray());
+
+        view.findViewById(R.id.getStringArray).setOnClickListener(v -> stringArray());
         view.findViewById(R.id.quantityStrings).setOnClickListener(v -> quantityStrings());
         view.findViewById(R.id.getIntArray).setOnClickListener(v -> getIntArray());
 
-        mTv_formattingStrings.setText(getString(R.string.formatting_strings, "A", 10));
+        formattingStrings(view);
+        stylingWithHtmlMarkup(view);
+        stylingWithSpannables(view);
+        stylingWithAnnotations(view);
+        colorInIntegerArray(view);
+        return view;
+    }
 
+    private void formattingStrings(View view) {
+        mTv_formattingStrings = view.findViewById(R.id.formattingStrings);
+        mTv_formattingStrings.setText(getString(R.string.formatting_strings, "A", 10));
+    }
+
+    private void stylingWithHtmlMarkup(View view) {
+        mTv_stylingWithHtmlMarkup = view.findViewById(R.id.styling_with_html_markup);
         mTv_stylingWithHtmlMarkup.setText(Html.fromHtml(getString(R.string.styling_with_html_markup)));
         mTv_stylingWithHtmlMarkup.setMovementMethod(LinkMovementMethod.getInstance());
+    }
 
+    private void stylingWithSpannables(View view) {
+        mTv_stylingWithSpannables = view.findViewById(R.id.styling_with_spannables);
         spannable = new SpannableString(getString(R.string.styling_with_spannables));
         spannable.setSpan(new BackgroundColorSpan(Color.RED), 1, 4, 0);
         spannable.setSpan(new ForegroundColorSpan(Color.BLUE), 5, 9, 0);
         mTv_stylingWithSpannables.setText(spannable);
-
-        mTv_stylingWithAnnotations.setText(getmTv_stylingWithAnnotations());
-
-        return view;
     }
 
-    // TODO: 2019-04-24
-    private SpannableString getmTv_stylingWithAnnotations() {
+    private void stylingWithAnnotations(View view) {
+        mTv_stylingWithAnnotations = view.findViewById(R.id.stylingWithAnnotations);
+
         SpannableString spannableString = new SpannableString("Styling with annotations");
         Annotation annotation = new Annotation("font", "title_emphasis");
         spannableString.setSpan(annotation, 3, 7, 33);
-        return spannableString;
+
+        mTv_stylingWithAnnotations.setText(spannableString);
+    }
+
+    private void colorInIntegerArray(View view) {
+        color1 = view.findViewById(R.id.color1);
+        color2 = view.findViewById(R.id.color2);
+        color3 = view.findViewById(R.id.color3);
+        color4 = view.findViewById(R.id.color4);
+        getIntArray_colors(R.array.colors_integer_array, color1, color2);
+
+        TypedValue typedValue = new TypedValue();
+        getActivity().getTheme().resolveAttribute(R.attr.ColorsIntegerArray, typedValue, true);
+        int resourceId = typedValue.resourceId;
+        getIntArray_colors(resourceId, color3, color4);
     }
 
     private void checkTypedArray() {
@@ -117,16 +140,16 @@ public class TestStringIntegerArrayFragment extends Fragment {
         return getResources().getQuantityString(R.plurals.numberOfSongsAvailable, count, count);
     }
 
-    private void getStringArray() {
+    private void stringArray() {
         /**
-         * getResources().getStringArray()
+         * getResources().stringArray()
          */
         String[] strings = getResources().getStringArray(R.array.string_array);
         String str = "";
         for (int i = 0; i < strings.length; i++) {
             str += strings[i] + ",";
         }
-        Log.d(TAG, "getStringArray: " + str);
+        Log.d(TAG, "stringArray: " + str);
     }
 
     private void getIntArray() {
@@ -141,11 +164,11 @@ public class TestStringIntegerArrayFragment extends Fragment {
         Log.d(TAG, "getIntArray: " + str);
     }
 
-    private void getIntArray_colors() {
+    private void getIntArray_colors(@ArrayRes int id, TextView color1, TextView color2) {
         /**
          * getResources().getIntArray()
          */
-        int[] ints = getResources().getIntArray(R.array.colors2);
+        int[] ints = getResources().getIntArray(id);
         color1.setBackgroundColor(ints[0]);
         color2.setBackgroundColor(ints[1]);
     }
