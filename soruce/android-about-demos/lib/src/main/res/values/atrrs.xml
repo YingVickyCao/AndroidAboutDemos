@@ -6,16 +6,6 @@
     <attr name="seekProgressDrawableColor" format="color" />
     <attr name="seekBg" format="color" />
 
-    <attr name="textColorOneSelected" format="reference" />
-    <attr name="textColorOneUnSelected" format="reference" />
-    <attr name="textColorTwoSelected" format="reference" />
-    <attr name="textColorTwoUnSelected" format="reference" />
-
-    <attr name="textColorEnableSelected" format="reference" />
-    <attr name="textColorEnableUnSelected" format="reference" />
-    <attr name="textColorDisableSelected" format="reference" />
-    <attr name="textColorDisableUnSelected" format="reference" />
-
     <attr name="color1" format="reference" />
     <attr name="color2" format="reference" />
     <attr name="color3" format="reference" />

@@ -70,21 +70,10 @@
 
     <!-- APPLY_THEME_START -->
     <style name="AppTheme.Light">
-        <!--<item name="pageRootBg">@android:color/holo_red_dark</item>-->
         <item name="pageRootBg">@android:color/holo_red_light</item>
         <item name="seekThumbColor">#4CAF50</item>
         <item name="seekProgressDrawableColor">#2196F3</item>
         <item name="seekBg">#fff</item>
-
-        <item name="textColorOneSelected">@android:color/holo_red_light</item>
-        <item name="textColorOneUnSelected">@android:color/holo_blue_bright</item>
-        <item name="textColorTwoSelected">@android:color/holo_red_dark</item>
-        <item name="textColorTwoUnSelected">@android:color/holo_blue_dark</item>
-
-        <item name="textColorEnableSelected">@android:color/holo_red_light</item>
-        <item name="textColorEnableUnSelected">@android:color/holo_blue_bright</item>
-        <item name="textColorDisableSelected">@android:color/holo_red_dark</item>
-        <item name="textColorDisableUnSelected">@android:color/holo_blue_dark</item>
 
         <item name="bg_0">@color/light_bg_0</item>
         <item name="m_0">@color/light_m_0</item>
@@ -96,16 +85,6 @@
         <item name="seekThumbColor">#FF5722</item>
         <item name="seekProgressDrawableColor">#9C27B0</item>
         <item name="seekBg">#000</item>
-
-        <item name="textColorOneSelected">@android:color/holo_green_light</item>
-        <item name="textColorOneUnSelected">@android:color/holo_orange_light</item>
-        <item name="textColorTwoSelected">@android:color/holo_green_dark</item>
-        <item name="textColorTwoUnSelected">@android:color/holo_orange_dark</item>
-
-        <item name="textColorEnableSelected">@android:color/holo_green_light</item>
-        <item name="textColorEnableUnSelected">@android:color/holo_orange_light</item>
-        <item name="textColorDisableSelected">@android:color/holo_green_dark</item>
-        <item name="textColorDisableUnSelected">@android:color/holo_orange_dark</item>
 
         <item name="bg_0">@color/dark_bg_0</item>
         <item name="m_0">@color/dark_m_0</item>
