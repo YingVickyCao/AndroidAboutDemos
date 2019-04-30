@@ -26,6 +26,7 @@ import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
+import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
@@ -93,11 +94,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testTimePickerDialog).setOnClickListener(v -> testTimePickerDialog());
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
+        findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        pageTabLayout();
     }
 
     private void pageConstraintLayout() {
@@ -246,6 +248,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void pageSpinner() {
         showFragment(new TestSpinnerFragment());
+    }
+
+    private void pageTabLayout() {
+        showFragment(new TestTabLayoutFragment());
     }
 
     @Override

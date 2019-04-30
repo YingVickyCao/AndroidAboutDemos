@@ -1,6 +1,7 @@
 package com.hades.example.android;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;

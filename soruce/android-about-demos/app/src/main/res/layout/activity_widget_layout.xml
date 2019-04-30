@@ -204,6 +204,11 @@
                 android:id="@+id/pageSpinner"
                 style="@style/btn.small"
                 android:text="@string/page_spinner" />
+
+            <Button
+                android:id="@+id/pageTabLayout"
+                style="@style/btn.small"
+                android:text="@string/page_TabLayout" />
         </LinearLayout>
     </ScrollView>
 

@@ -136,7 +136,6 @@
 
         <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
         <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
-        <activity android:name=".other_ui._actionbar.TestUseActionBarsShowMenuItemActivity" />
         <activity android:name=".other_ui.OtherUIActivity" />
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
