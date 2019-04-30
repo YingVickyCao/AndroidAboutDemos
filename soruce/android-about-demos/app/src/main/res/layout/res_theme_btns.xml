@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/setLightTheme"
+        style="@style/btn.small"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="@string/light_theme" />
+
+    <Button
+        android:id="@+id/jumpB"
+        style="@style/btn.small"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/jump_page_b"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/setDarkTheme"
+        style="@style/btn.small"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="@string/dark_theme" />
+</RelativeLayout>

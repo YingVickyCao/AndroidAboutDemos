@@ -247,4 +247,7 @@
     <string name="load_attr_from_style">Load attr from style</string>
     <!-- Formatting strings,end -->
 
+    <string name="selector_color">Selector color</string>
+    <string name="selector_drawable">Selector drawable</string>
+
 </resources>

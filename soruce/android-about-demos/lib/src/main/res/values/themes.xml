@@ -43,6 +43,10 @@
 
         <item name="color1">@android:color/holo_red_light</item>
         <item name="color2">@android:color/holo_blue_bright</item>
+
+        <item name="color3">@android:color/holo_orange_dark</item>
+        <item name="color4">@android:color/holo_green_light</item>
+
         <item name="drawable1">@android:drawable/star_big_off</item>
         <item name="drawable2">@android:drawable/star_big_on</item>
 

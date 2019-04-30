@@ -18,6 +18,8 @@
 
     <attr name="color1" format="reference" />
     <attr name="color2" format="reference" />
+    <attr name="color3" format="reference" />
+    <attr name="color4" format="reference" />
     <attr name="drawable1" format="reference" />
     <attr name="drawable2" format="reference" />
 

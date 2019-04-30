@@ -133,23 +133,9 @@
         android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
 
-    <RelativeLayout
+    <include
+        layout="@layout/res_theme_btns"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/setLightTheme"
-            style="@style/btn.small"
-            android:layout_alignParentBottom="true"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:text="@string/light_theme" />
-
-        <Button
-            android:id="@+id/setDarkTheme"
-            style="@style/btn.small"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:text="@string/dark_theme" />
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 </LinearLayout>
