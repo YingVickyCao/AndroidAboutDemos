@@ -15,7 +15,6 @@ import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable.bitmap.ManagingBitmapMemoryFragment;
 import com.hades.example.android.resource.drawable.bitmap.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
@@ -52,7 +51,6 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
-        findViewById(R.id.pageManagingBitmapMemory).setOnClickListener(v -> pageManagingBitmapMemory());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
 
@@ -122,11 +120,6 @@ public class ResourceActivity extends PermissionActivity {
     private void pageMeasureVectorRenderingTime() {
         showFragment(new MeasureVectorDrawableFragment());
     }
-
-    private void pageManagingBitmapMemory() {
-        showFragment(new ManagingBitmapMemoryFragment());
-    }
-
     private void pageLoadBitmapPo() {
         showFragment(new DecodeSampledBitmapFragment());
     }
