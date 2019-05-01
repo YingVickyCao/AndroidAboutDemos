@@ -68,7 +68,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageSwitchColorInTheme();
+        pageDrawableFolder();
     }
 
     private void pageColor() {
