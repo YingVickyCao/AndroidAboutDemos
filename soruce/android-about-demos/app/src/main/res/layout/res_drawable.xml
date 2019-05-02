@@ -7,7 +7,6 @@
         style="@style/topic"
         android:text="@string/page_bitmap_4_screen_density_and_drawable_memory" />
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

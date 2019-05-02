@@ -55,6 +55,24 @@ public class TestBitmapMemoryAndScreenDensityFragment extends Fragment {
                 + ",scaledDensity=" + scaledDensity);
     }
 
+    /*
+     // HuaWei nova, 1080 x 1092 =>
+        // xxxh: bitmapWidth=203,bitmapHeight=360,byteCount=292320,width=203,height=360
+        // xxh:  bitmapWidth=270,bitmapHeight=480,byteCount=518400,width=270,height=480
+        // xh:   bitmapWidth=405,bitmapHeight=720,byteCount=1166400,width=405,height=720
+        // no:   bitmapWidth=270,bitmapHeight=480,byteCount=518400,width=270,height=480
+        // h:    bitmapWidth=540,bitmapHeight=960,byteCount=2073600,width=540,height=960
+        // m:    bitmapWidth=810,bitmapHeight=1440,byteCount=4665600,width=810,height=1440
+        // l:    bitmapWidth=1080,bitmapHeight=1920,byteCount=8294400,width=1080,height=1548
+
+
+        same image
+        in /drawable:
+        checkDrawableMemory: bitmapWidth=384,bitmapHeight=384,byteCount=589824,width=384,height=384
+
+        in /drawable-mdpi:
+        checkDrawableMemory: bitmapWidth=384,bitmapHeight=384,byteCount=589824,width=384,height=384
+     */
     private void checkDrawableMemory() {
         BitmapDrawable drawable = (BitmapDrawable) mImageView.getDrawable();
         if (null != drawable) {
@@ -64,14 +82,6 @@ public class TestBitmapMemoryAndScreenDensityFragment extends Fragment {
             int bitmapByteCount = bitmap.getByteCount();
             int width = mImageView.getWidth();
             int height = mImageView.getHeight();
-            // HuaWei nova, 1080 x 1092 =>
-            // xxxh: bitmapWidth=203,bitmapHeight=360,byteCount=292320,width=203,height=360
-            // xxh:  bitmapWidth=270,bitmapHeight=480,byteCount=518400,width=270,height=480
-            // xh:   bitmapWidth=405,bitmapHeight=720,byteCount=1166400,width=405,height=720
-            // no:   bitmapWidth=270,bitmapHeight=480,byteCount=518400,width=270,height=480
-            // h:    bitmapWidth=540,bitmapHeight=960,byteCount=2073600,width=540,height=960
-            // m:    bitmapWidth=810,bitmapHeight=1440,byteCount=4665600,width=810,height=1440
-            // l:    bitmapWidth=1080,bitmapHeight=1920,byteCount=8294400,width=1080,height=1548
             Log.d(TAG, "checkDrawableMemory: bitmapWidth=" + bitmapWidth + ",bitmapHeight=" + bitmapHeight + ",byteCount=" + bitmapByteCount + ",width=" + width + ",height=" + height);
         }
     }
