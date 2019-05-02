@@ -20,10 +20,13 @@
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
-    <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
     <string name="page_switch_color_in_theme">Switch Color in Theme</string>
     <string name="page_theme_and_style">Theme and Style</string>
     <string name="page_LevelListDrawable">Level List Drawable</string>
+    <string name="page_bitmap_4_screen_density_and_drawable_memory">Bitmap - Screen density and drawable memory</string>
+    <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
+    <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
+    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
@@ -43,10 +46,8 @@
     <string name="page_ken_burns_image">Ken Burns Image</string>
     <string name="page_get_view_size_in_activity_oncreate">get View width and height in onCreate()</string>
     <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
-    <string name="page_provide_screen_density_bitmaps">屏幕分辨率 —— bitmaps</string>
     <string name="page_imageView_scaleType">ImageView scaleType</string>
-    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
-    <string name="page_managing_bitmap_memory">Managing Bitmap Memory</string>
+
     <string name="page_qa_about_view">QA about view</string>
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
     <string name="page_webView">WebView</string>

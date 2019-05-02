@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
 
-public class BitmapDrawableFragment extends Fragment {
-    private static final String TAG = BitmapDrawableFragment.class.getSimpleName();
+public class TestBitmapMemoryAndScreenDensityFragment extends Fragment {
+    private static final String TAG = TestBitmapMemoryAndScreenDensityFragment.class.getSimpleName();
 
     private ImageView mImageView;
 

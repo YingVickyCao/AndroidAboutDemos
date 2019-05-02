@@ -13,8 +13,8 @@ import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
-import com.hades.example.android.resource.drawable.bitmap.BitmapDrawableFragment;
-import com.hades.example.android.resource.drawable.bitmap.DecodeSampledBitmapFragment;
+import com.hades.example.android.resource.drawable.bitmap.TestBitmapMemoryAndScreenDensityFragment;
+import com.hades.example.android.resource.drawable.bitmap.TestDecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable.bitmap.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
@@ -110,7 +110,7 @@ public class ResourceActivity extends PermissionActivity {
     }
 
     private void pageDrawableAndScreenDensity() {
-        showFragment(new BitmapDrawableFragment());
+        showFragment(new TestBitmapMemoryAndScreenDensityFragment());
     }
 
     private void pageVectorDrawable() {
@@ -121,7 +121,7 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new MeasureVectorDrawableFragment());
     }
     private void pageLoadBitmapPo() {
-        showFragment(new DecodeSampledBitmapFragment());
+        showFragment(new TestDecodeSampledBitmapFragment());
     }
 
     private void pageBitmapThreeLevelCache() {

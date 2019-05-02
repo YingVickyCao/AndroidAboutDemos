@@ -5,7 +5,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_provide_screen_density_bitmaps" />
+        android:text="@string/page_bitmap_4_screen_density_and_drawable_memory" />
 
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/micro_tip" />
+        android:src="@drawable/image" />
 
     <Button
         android:id="@+id/getScreenDensity"

@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.ImageUtil;
 
-public class DecodeSampledBitmapFragment extends Fragment {
-    private static final String TAG = DecodeSampledBitmapFragment.class.getSimpleName();
+public class TestDecodeSampledBitmapFragment extends Fragment {
+    private static final String TAG = TestDecodeSampledBitmapFragment.class.getSimpleName();
 
     private ImageView mImageView;
     private ImageUtil bitmapUtil = new ImageUtil();

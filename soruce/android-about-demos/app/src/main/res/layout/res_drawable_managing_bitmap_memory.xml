@@ -6,5 +6,5 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_managing_bitmap_memory" />
+        android:text="@string/page_bitmap_4_managing_bitmap_memory" />
 </RelativeLayout>
