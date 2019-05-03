@@ -1,6 +1,5 @@
 package com.hades.example.android.other_ui._toast;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,8 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
-public class ToastFragment extends Fragment {
+public class ToastFragment extends BaseFragment {
     public static ToastFragment newInstance() {
 
         Bundle args = new Bundle();

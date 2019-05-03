@@ -1,10 +1,11 @@
 package com.hades.example.android.app_component.activity;
 
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hades.example.android.R;
 
 public class TestBottomNavigationActivity extends AppCompatActivity {

@@ -1,11 +1,12 @@
 package com.hades.example.android._process_and_thread.threadPoolExecutor;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;

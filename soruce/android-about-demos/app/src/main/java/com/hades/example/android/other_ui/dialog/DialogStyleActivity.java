@@ -2,6 +2,7 @@ package com.hades.example.android.other_ui.dialog;
 
 import android.app.Activity;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;

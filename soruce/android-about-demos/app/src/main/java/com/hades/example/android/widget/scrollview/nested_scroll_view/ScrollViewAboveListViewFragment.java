@@ -1,19 +1,20 @@
 package com.hades.example.android.widget.scrollview.nested_scroll_view;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 
 /**
  * ScrollView 中嵌套一个ListView，仅仅ListView可以滑动，ScrollView不可以滑动。
  */
-public class ScrollViewAboveListViewFragment extends Fragment {
+public class ScrollViewAboveListViewFragment extends BaseFragment {
     public static ScrollViewAboveListViewFragment newInstance() {
         return new ScrollViewAboveListViewFragment();
     }

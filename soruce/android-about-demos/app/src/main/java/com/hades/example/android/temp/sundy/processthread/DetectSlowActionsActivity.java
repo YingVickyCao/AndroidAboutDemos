@@ -1,10 +1,10 @@
 package com.hades.example.android.temp.sundy.processthread;
 
-import java.io.OutputStream;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
+
+import java.io.OutputStream;
 
 public class DetectSlowActionsActivity extends Activity {
 	

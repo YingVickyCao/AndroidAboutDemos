@@ -21,7 +21,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,13 +36,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.Images;
+import com.hades.example.android.lib.utils.VersionUtil;
 import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
 import com.hades.example.android.lib.utils.bitmap.fetch.IImageWorker;
 import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
-import com.hades.example.android.lib.utils.VersionUtil;
 
-public class ImageGridFragment extends Fragment implements IImageWorker {
+public class ImageGridFragment extends BaseFragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();
     private static final String IMAGE_CACHE_DIR = "thumbs";
 

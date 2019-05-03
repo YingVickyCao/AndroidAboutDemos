@@ -20,12 +20,6 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.core.app.NavUtils;
-import androidx.viewpager.widget.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,12 +28,19 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
+import androidx.core.app.NavUtils;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.hades.example.android.BuildConfig;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.mock.Images;
+import com.hades.example.android.lib.utils.VersionUtil;
 import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
 import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
-import com.hades.example.android.lib.utils.VersionUtil;
 
 public class ImageDetailActivity extends FragmentActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";

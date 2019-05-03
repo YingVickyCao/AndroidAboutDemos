@@ -1,8 +1,6 @@
 package com.hades.example.android.widget.pickers;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +8,14 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class DateTimePickerFragment extends Fragment {
-
-    public static DateTimePickerFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        DateTimePickerFragment fragment = new DateTimePickerFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class DateTimePickerFragment extends BaseFragment {
 
     private TextView mShow;
 

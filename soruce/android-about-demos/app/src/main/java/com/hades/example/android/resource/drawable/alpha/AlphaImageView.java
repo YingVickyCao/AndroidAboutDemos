@@ -6,9 +6,10 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

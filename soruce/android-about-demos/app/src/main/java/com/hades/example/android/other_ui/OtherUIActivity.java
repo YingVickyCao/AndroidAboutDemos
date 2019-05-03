@@ -1,13 +1,14 @@
 package com.hades.example.android.other_ui;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
-import com.hades.example.android.other_ui._toast.ToastFragment;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
+import com.hades.example.android.other_ui._toast.ToastFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
     @Override
@@ -20,11 +21,12 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageNotification).setOnClickListener(v -> pageNotification());
         findViewById(R.id.pageToast).setOnClickListener(v -> pageToast());
         findViewById(R.id.pageActionBar).setOnClickListener(v -> pageActionBar());
+        findViewById(R.id.pagePopupWindow).setOnClickListener(v -> pagePopupWindow());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageActionBar();
+        pagePopupWindow();
     }
 
     private void pageNotification() {
@@ -37,6 +39,11 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     private void pageActionBar() {
         showActivity(TestActionBarActivity.class);
+    }
+
+
+    private void pagePopupWindow() {
+        showFragment(new TestPopupWindowFragment());
     }
 
 }

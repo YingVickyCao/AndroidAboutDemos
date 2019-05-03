@@ -3,9 +3,10 @@ package com.hades.example.android.app_component.activity._life_cycle;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 

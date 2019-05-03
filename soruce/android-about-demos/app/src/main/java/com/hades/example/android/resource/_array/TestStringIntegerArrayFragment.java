@@ -1,6 +1,5 @@
 package com.hades.example.android.resource._array;
 
-import android.app.Fragment;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -23,11 +22,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class TestStringIntegerArrayFragment extends Fragment {
+public class TestStringIntegerArrayFragment extends BaseFragment {
     private static final String TAG = TestStringIntegerArrayFragment.class.getSimpleName();
 
     Button checkTypedArray;

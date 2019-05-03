@@ -1,20 +1,21 @@
 package com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.MockHeavyWork;
+import com.hades.example.android.lib.utils.LogHelper;
 
 /**
  * main -> thread -> main
@@ -32,7 +33,7 @@ log:
  * https://blog.csdn.net/u011240877/article/details/72905631
  * https://blog.csdn.net/javazejian/article/details/52426353
  */
-public class HandlerThreadFragment extends Fragment {
+public class HandlerThreadFragment extends BaseFragment {
     private static final String TAG = HandlerThreadFragment.class.getSimpleName();
 
     private int uppers = 1000000;

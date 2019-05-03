@@ -1,6 +1,7 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
@@ -14,6 +15,6 @@ public class DragAndReorderListActivity extends NoNeedPermissionActivity {
 
         setContentView(R.layout.activity_only_fragemnt);
 
-        getFragmentManager().beginTransaction().replace(R.id.root, new DragAndReorderListFragment(), DragAndReorderListFragment.class.getSimpleName()).commit();
+        showFragment(new DragAndReorderListFragment());
     }
 }

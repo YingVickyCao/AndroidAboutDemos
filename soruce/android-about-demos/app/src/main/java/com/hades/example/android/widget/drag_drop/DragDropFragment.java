@@ -1,11 +1,9 @@
 package com.hades.example.android.widget.drag_drop;
 
-import android.app.Fragment;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -15,12 +13,15 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * todo 自定义添加view
  */
-public class DragDropFragment extends Fragment {
+public class DragDropFragment extends BaseFragment {
 
     private ImageView imageView;
     private FrameLayout frameLayout;
@@ -28,14 +29,6 @@ public class DragDropFragment extends Fragment {
 
     private static final String TAG_IMAGE_VIEW = "image_view";
 
-    public static DragDropFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        DragDropFragment fragment = new DragDropFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Nullable
     @Override

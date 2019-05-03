@@ -1,13 +1,14 @@
 package com.hades.example.android.resource.drawable.vector;
 
 import android.os.Bundle;
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;

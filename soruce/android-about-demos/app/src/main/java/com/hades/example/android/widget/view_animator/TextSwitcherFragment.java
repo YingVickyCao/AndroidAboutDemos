@@ -1,8 +1,6 @@
 package com.hades.example.android.widget.view_animator;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,12 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * TextSwitcher - 左右滑动浏览文本
  **/
-public class TextSwitcherFragment extends Fragment {
+public class TextSwitcherFragment extends BaseFragment {
     private TextSwitcher mTextSwitcher;
 
     private String[] mShowedTextArray = {"Android", "IOS", "MAC", "PC"};

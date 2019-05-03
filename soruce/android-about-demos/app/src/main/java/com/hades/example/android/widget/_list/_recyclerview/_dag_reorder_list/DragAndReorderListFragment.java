@@ -1,16 +1,17 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
  * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
  */
-public class DragAndReorderListFragment extends Fragment implements StartDragListener {
+public class DragAndReorderListFragment extends BaseFragment implements StartDragListener {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
     private final static int NUM = 5;

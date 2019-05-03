@@ -5,14 +5,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

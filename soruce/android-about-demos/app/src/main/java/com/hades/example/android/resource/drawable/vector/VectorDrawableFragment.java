@@ -2,11 +2,12 @@ package com.hades.example.android.resource.drawable.vector;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;

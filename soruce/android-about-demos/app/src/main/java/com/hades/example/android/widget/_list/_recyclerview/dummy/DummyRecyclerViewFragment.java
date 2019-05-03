@@ -1,16 +1,17 @@
 package com.hades.example.android.widget._list._recyclerview.dummy;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
 
@@ -20,7 +21,7 @@ import com.hades.example.android.lib.mock.DummyItem;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class DummyRecyclerViewFragment extends Fragment {
+public class DummyRecyclerViewFragment extends BaseFragment {
 
     private static final String ARG_COLUMN_COUNT = "column_count";
     private int mColumnCount = 1;

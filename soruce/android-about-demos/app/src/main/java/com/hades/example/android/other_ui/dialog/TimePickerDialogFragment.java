@@ -1,27 +1,22 @@
 package com.hades.example.android.other_ui.dialog;
 
-import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class TimePickerDialogFragment extends Fragment {
-    public static TimePickerDialogFragment newInstance() {
-        Bundle args = new Bundle();
-        TimePickerDialogFragment fragment = new TimePickerDialogFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class TimePickerDialogFragment extends BaseFragment {
 
     private TextView show;
 

@@ -3,8 +3,9 @@ package com.hades.example.android.app_component.activity._launch_modes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

@@ -1,19 +1,20 @@
 package com.hades.example.android.msg_handler.main_2_thread_2_main;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.MockHeavyWork;
+import com.hades.example.android.lib.utils.LogHelper;
 
 /**
  * main -> thread -> main
@@ -26,7 +27,7 @@ import com.hades.example.android.lib.mock.MockHeavyWork;
  SumFragment: updateResult(),msg=499500,thread =1,main
  */
 
-public class SumFragment extends Fragment {
+public class SumFragment extends BaseFragment {
     private static final String TAG = SumFragment.class.getSimpleName();
 
     static final String UPPER_NUM = "upper";

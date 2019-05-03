@@ -1,11 +1,12 @@
 package com.hades.example.android.widget._list._recyclerview.dummy;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.mock.DummyItem;

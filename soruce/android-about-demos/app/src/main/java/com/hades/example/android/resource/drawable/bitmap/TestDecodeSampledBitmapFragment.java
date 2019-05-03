@@ -1,6 +1,5 @@
 package com.hades.example.android.resource.drawable.bitmap;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,9 +14,10 @@ import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.utils.ImageUtil;
 
-public class TestDecodeSampledBitmapFragment extends Fragment {
+public class TestDecodeSampledBitmapFragment extends BaseFragment {
     private static final String TAG = TestDecodeSampledBitmapFragment.class.getSimpleName();
 
     private ImageView mImageView;

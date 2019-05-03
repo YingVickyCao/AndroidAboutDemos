@@ -1,8 +1,6 @@
 package com.hades.example.android.widget.view_animator;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,13 +9,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * ImageSwitcher
  * 一个左右滑动浏览图片的Demo
  */
-public class ImageSwitcherFragment extends Fragment {
+public class ImageSwitcherFragment extends BaseFragment {
 
     private ImageSwitcher imageSwicher;
 
@@ -30,10 +31,6 @@ public class ImageSwitcherFragment extends Fragment {
     private float touchDownX;
     // 左右滑动时手指松开的X坐标
     private float touchUpX;
-
-    public static ImageSwitcherFragment newInstance() {
-        return new ImageSwitcherFragment();
-    }
 
     @Nullable
     @Override

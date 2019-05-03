@@ -1,16 +1,17 @@
 package com.hades.example.android.widget.webview;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.hades.example.android.R;
+import androidx.annotation.Nullable;
 
-public class TestWebViewFragment extends Fragment {
+import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+
+public class TestWebViewFragment extends BaseFragment {
     private WebView mWebView;
 
     @Nullable

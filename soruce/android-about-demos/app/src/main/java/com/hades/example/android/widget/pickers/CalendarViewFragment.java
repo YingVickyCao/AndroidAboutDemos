@@ -1,27 +1,19 @@
 package com.hades.example.android.widget.pickers;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
-public class CalendarViewFragment extends Fragment {
-
-    public static CalendarViewFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        CalendarViewFragment fragment = new CalendarViewFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class CalendarViewFragment extends BaseFragment {
 
     @Nullable
     @Override

@@ -5,12 +5,13 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.os.Build;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

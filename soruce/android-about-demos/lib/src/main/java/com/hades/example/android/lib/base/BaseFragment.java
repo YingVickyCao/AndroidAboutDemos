@@ -1,7 +1,8 @@
 package com.hades.example.android.lib.base;
 
-import android.app.Fragment;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 public class BaseFragment extends Fragment {
     protected void showToast(String msg) {

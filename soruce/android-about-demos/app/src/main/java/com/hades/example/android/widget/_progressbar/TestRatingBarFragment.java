@@ -1,8 +1,6 @@
 package com.hades.example.android.widget._progressbar;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
-public class TestRatingBarFragment extends Fragment {
+public class TestRatingBarFragment extends BaseFragment {
     private static final String TAG = TestRatingBarFragment.class.getSimpleName();
-
-    public static TestRatingBarFragment newInstance() {
-        return new TestRatingBarFragment();
-    }
-
     private ImageView image;
 
     @Nullable

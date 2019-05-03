@@ -3,9 +3,10 @@ package com.hades.example.android.resource.drawable.vector;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 /**
  * ImageView that measures the time took to draw.

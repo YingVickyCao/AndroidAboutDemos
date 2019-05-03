@@ -1,20 +1,21 @@
 package com.hades.example.android.widget._textview;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.Calendar;
 import java.util.Locale;
 
-public class TestHighlightDigitalClockFragment extends Fragment {
+public class TestHighlightDigitalClockFragment extends BaseFragment {
     private static final String DATE_FORMAT = "%02d:%02d:%02d";
     private static final int REFRESH_DELAY = 500;
     private final Handler mHandler = new Handler();

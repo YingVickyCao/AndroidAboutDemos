@@ -4,10 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Parcelable;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 @SuppressLint("AppCompatCustomView")
 public class MyTextView extends TextView {

@@ -6,11 +6,11 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

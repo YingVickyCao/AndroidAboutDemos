@@ -1,28 +1,22 @@
 package com.hades.example.android.other_ui.dialog;
 
 import android.app.DatePickerDialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class DateTimePickerDialogFragment extends Fragment {
-    public static DateTimePickerDialogFragment newInstance() {
-        Bundle args = new Bundle();
-        DateTimePickerDialogFragment fragment = new DateTimePickerDialogFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+public class DateTimePickerDialogFragment extends BaseFragment {
     TextView show;
 
     @Nullable

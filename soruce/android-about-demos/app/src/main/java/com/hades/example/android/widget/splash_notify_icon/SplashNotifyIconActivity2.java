@@ -2,9 +2,10 @@ package com.hades.example.android.widget.splash_notify_icon;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

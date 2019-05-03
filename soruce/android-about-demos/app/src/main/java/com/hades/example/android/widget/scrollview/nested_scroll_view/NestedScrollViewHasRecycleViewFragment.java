@@ -1,16 +1,17 @@
 package com.hades.example.android.widget.scrollview.nested_scroll_view;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * ScrollView 中嵌套一个ListView，仅仅ListView可以滑动，ScrollView不可以滑动。
  */
-public class NestedScrollViewHasRecycleViewFragment extends Fragment {
+public class NestedScrollViewHasRecycleViewFragment extends BaseFragment {
     public static NestedScrollViewHasRecycleViewFragment newInstance() {
         return new NestedScrollViewHasRecycleViewFragment();
     }

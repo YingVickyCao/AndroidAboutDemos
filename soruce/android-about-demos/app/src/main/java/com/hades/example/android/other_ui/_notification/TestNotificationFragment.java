@@ -8,12 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;

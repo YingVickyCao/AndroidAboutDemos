@@ -1,9 +1,7 @@
 package com.hades.example.android.widget.view_animator;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,21 +14,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.hades.example.android.R;
+import androidx.annotation.Nullable;
 
-public class ViewFlipperFragment extends Fragment implements View.OnTouchListener {
+import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+
+public class ViewFlipperFragment extends BaseFragment implements View.OnTouchListener {
     private static final String TAG = ViewFlipperFragment.class.getSimpleName();
 
     private ViewFlipper viewFlipper;
     private float mTouchDownX;
     private float mTouchUpX;
-
-    public static ViewFlipperFragment newInstance() {
-        Bundle args = new Bundle();
-        ViewFlipperFragment fragment = new ViewFlipperFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Nullable
     @Override

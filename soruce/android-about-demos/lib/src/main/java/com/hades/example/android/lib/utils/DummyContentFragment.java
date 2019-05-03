@@ -1,15 +1,15 @@
 package com.hades.example.android.lib.utils;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.hades.example.android.lib.base.BaseFragment;
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.lib.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ public class DummyContentFragment extends BaseFragment {
     private ListView mListView;
     private DummyContentAdapter mAdapter;
 
-    public static Fragment getInstance(ArrayList<DummyItem> list) {
-        Fragment fragment = new DummyContentFragment();
+    public static DummyContentFragment getInstance(ArrayList<DummyItem> list) {
+        DummyContentFragment fragment = new DummyContentFragment();
 
         Bundle data = new Bundle();
         data.putParcelableArrayList(KEY_SEARCH_RESULT, list);

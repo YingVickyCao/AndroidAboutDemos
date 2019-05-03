@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -18,6 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

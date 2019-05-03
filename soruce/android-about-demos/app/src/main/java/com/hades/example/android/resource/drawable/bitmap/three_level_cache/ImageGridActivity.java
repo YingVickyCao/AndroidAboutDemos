@@ -17,8 +17,9 @@
 package com.hades.example.android.resource.drawable.bitmap.three_level_cache;
 
 import android.os.Bundle;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.BuildConfig;
 import com.hades.example.android.lib.utils.VersionUtil;

@@ -1,17 +1,18 @@
 package com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.refactor;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.utils.LogHelper;
 
 import static com.hades.example.android.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
@@ -45,7 +46,7 @@ HandlerThreadFragment4Refactor: mUIHandler,handleMessage,msg=num=1000,sum=499500
  * https://blog.csdn.net/u011240877/article/details/72905631
  * https://blog.csdn.net/javazejian/article/details/52426353
  */
-public class HandlerThreadFragment4Refactor extends Fragment implements Handler.Callback {
+public class HandlerThreadFragment4Refactor extends BaseFragment implements Handler.Callback {
     private static final String TAG = HandlerThreadFragment4Refactor.class.getSimpleName();
 
     private SumThread mSumThread;

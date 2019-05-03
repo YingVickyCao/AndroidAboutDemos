@@ -12,12 +12,12 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.RawContacts.Data;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

@@ -1,11 +1,9 @@
 package com.hades.example.android.other_ui.dialog;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.hades.example.android.R;
+import androidx.annotation.Nullable;
 
-public class AlertDialogFragment extends Fragment {
-    public static AlertDialogFragment newInstance() {
-        Bundle args = new Bundle();
-        AlertDialogFragment fragment = new AlertDialogFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+
+public class AlertDialogFragment extends BaseFragment {
 
     TextView mShow;
     String[] items = new String[]{"A", "B", "C", "D"};

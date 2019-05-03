@@ -7,11 +7,11 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
 import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
-import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable.bitmap.TestDecodeSampledBitmapFragment;

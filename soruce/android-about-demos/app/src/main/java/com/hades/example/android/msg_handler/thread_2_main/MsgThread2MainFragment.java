@@ -1,20 +1,21 @@
 package com.hades.example.android.msg_handler.thread_2_main;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.MockHeavyWork;
+import com.hades.example.android.lib.utils.LogHelper;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,7 +23,7 @@ import java.util.TimerTask;
 /**
  * Thread -> main
  */
-public class MsgThread2MainFragment extends Fragment {
+public class MsgThread2MainFragment extends BaseFragment {
     private static final String TAG = MsgThread2MainFragment.class.getSimpleName();
 
     String[] imageIds = new String[]{"java", "Android", "ajax", "swift"};

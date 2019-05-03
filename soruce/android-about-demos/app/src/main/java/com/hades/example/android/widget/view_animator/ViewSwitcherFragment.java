@@ -1,9 +1,7 @@
 package com.hades.example.android.widget.view_animator;
 
-import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  * 实例：模仿Android 系统的 Home launcher 界面
  * 使用 ViewSwitcher 组合多个 GridView，每个GridView代表一个屏幕的应用程序，GridView中每一个单元格显示一个应用程序的图标和程序名。
  */
-public class ViewSwitcherFragment extends Fragment {
+public class ViewSwitcherFragment extends BaseFragment {
     private static final String TAG = ViewSwitcherFragment.class.getSimpleName();
 
     public static final int NUMBER_PER_SCREEN = 8;
@@ -38,10 +39,6 @@ public class ViewSwitcherFragment extends Fragment {
 
     ViewSwitcher switcher;
     LayoutInflater inflater;
-
-    public static ViewSwitcherFragment newInstance() {
-        return new ViewSwitcherFragment();
-    }
 
     @Nullable
     @Override

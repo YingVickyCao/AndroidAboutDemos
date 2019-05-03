@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.other_ui.PopupWindowFragment;
+import com.hades.example.android.other_ui.TestPopupWindowFragment;
 import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
 import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
@@ -25,6 +25,7 @@ import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerV
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
+import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
@@ -95,11 +96,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
+        findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageTabLayout();
+        pageRadioButton();
     }
 
     private void pageConstraintLayout() {
@@ -163,7 +165,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageRatingBar() {
-        showFragment(TestRatingBarFragment.newInstance(), TestRatingBarFragment.class.getSimpleName());
+        showFragment(new TestRatingBarFragment());
     }
 
     private void pageSeekBar() {
@@ -175,15 +177,15 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void testViewSwitcher() {
-        showFragment(ViewSwitcherFragment.newInstance(), ViewSwitcherFragment.class.getSimpleName());
+        showFragment(new ViewSwitcherFragment());
     }
 
     private void testImageSwitcher() {
-        showFragment(ImageSwitcherFragment.newInstance(), ImageSwitcherFragment.class.getSimpleName());
+        showFragment(new ImageSwitcherFragment());
     }
 
     private void testTextSwitcher() {
-        showFragment(TextSwitcherFragment.newInstance(), TextSwitcherFragment.class.getSimpleName());
+        showFragment(new TextSwitcherFragment());
     }
 
     private void pageRecyclerView() {
@@ -199,23 +201,23 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void testDragAndDrop() {
-        showFragment(DragDropFragment.newInstance(), DragDropFragment.class.getSimpleName());
+        showFragment(new DragDropFragment());
     }
 
     private void testViewFlipper() {
-        showFragment(ViewFlipperFragment.newInstance(), ViewFlipperFragment.class.getSimpleName());
+        showFragment(new ViewFlipperFragment());
     }
 
     private void testCalendarView() {
-        showFragment(CalendarViewFragment.newInstance(), CalendarViewFragment.class.getSimpleName());
+        showFragment(new CalendarViewFragment());
     }
 
     private void testDatePickerAndTimePicker() {
-        showFragment(DateTimePickerFragment.newInstance(), DateTimePickerFragment.class.getSimpleName());
+        showFragment(new DateTimePickerFragment());
     }
 
     private void testNumberPicker() {
-        showFragment(NumberPickerFragment.newInstance(), NumberPickerFragment.class.getSimpleName());
+        showFragment(new NumberPickerFragment());
     }
 
     private void testSearchView() {
@@ -223,7 +225,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void testAlertDialog() {
-        showFragment(AlertDialogFragment.newInstance());
+        showFragment(new AlertDialogFragment());
     }
 
     private void testDialogStyleActivity() {
@@ -235,15 +237,15 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void testDatePickerDialog() {
-        showFragment(DateTimePickerDialogFragment.newInstance());
+        showFragment(new DateTimePickerDialogFragment());
     }
 
     private void testTimePickerDialog() {
-        showFragment(TimePickerDialogFragment.newInstance());
+        showFragment(new TimePickerDialogFragment());
     }
 
     private void testPopupWindow() {
-        showFragment(new PopupWindowFragment());
+        showFragment(new TestPopupWindowFragment());
     }
 
     private void pageSpinner() {
@@ -252,6 +254,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void pageTabLayout() {
         showFragment(new TestTabLayoutFragment());
+    }
+
+    private void pageRadioButton() {
+        showFragment(new TestRadioButtonFragment());
     }
 
     @Override

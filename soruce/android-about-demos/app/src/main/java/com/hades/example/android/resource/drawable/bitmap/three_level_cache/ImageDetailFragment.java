@@ -1,7 +1,6 @@
 package com.hades.example.android.resource.drawable.bitmap.three_level_cache;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.lib.utils.VersionUtil;
 import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
 import com.hades.example.android.lib.utils.bitmap.fetch.OnImageLoadedListener;
-import com.hades.example.android.lib.utils.VersionUtil;
 
-public class ImageDetailFragment extends Fragment implements OnImageLoadedListener {
+public class ImageDetailFragment extends BaseFragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
     private String mImageUrl;
     private ImageView mImageView;

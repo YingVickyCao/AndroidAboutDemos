@@ -2,9 +2,10 @@ package com.hades.example.android.app_component.activity._sate;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

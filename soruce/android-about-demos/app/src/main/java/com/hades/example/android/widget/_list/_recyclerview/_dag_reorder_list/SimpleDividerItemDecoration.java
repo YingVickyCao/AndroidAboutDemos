@@ -3,11 +3,12 @@ package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 
 import com.hades.example.android.R;
 

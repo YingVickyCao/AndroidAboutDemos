@@ -1,9 +1,10 @@
 package com.hades.example.android.resource.theme.apply_theme;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

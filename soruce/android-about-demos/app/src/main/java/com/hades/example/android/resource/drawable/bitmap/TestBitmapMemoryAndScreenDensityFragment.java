@@ -1,6 +1,5 @@
 package com.hades.example.android.resource.drawable.bitmap;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -14,8 +13,9 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
 
-public class TestBitmapMemoryAndScreenDensityFragment extends Fragment {
+public class TestBitmapMemoryAndScreenDensityFragment extends BaseFragment {
     private static final String TAG = TestBitmapMemoryAndScreenDensityFragment.class.getSimpleName();
 
     private ImageView mImageView;

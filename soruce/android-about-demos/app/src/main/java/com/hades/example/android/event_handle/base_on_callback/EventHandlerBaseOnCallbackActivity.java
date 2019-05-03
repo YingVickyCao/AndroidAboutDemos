@@ -2,10 +2,11 @@ package com.hades.example.android.event_handle.base_on_callback;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 

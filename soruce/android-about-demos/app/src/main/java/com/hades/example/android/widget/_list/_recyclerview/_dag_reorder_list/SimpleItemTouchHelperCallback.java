@@ -1,7 +1,7 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private ItemTouchHelperAdapter mAdapter;

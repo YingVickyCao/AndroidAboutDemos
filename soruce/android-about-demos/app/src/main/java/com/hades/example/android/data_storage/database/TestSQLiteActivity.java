@@ -1,6 +1,5 @@
 package com.hades.example.android.data_storage.database;
 
-import android.app.Fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -8,10 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.provider.BaseColumns;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
@@ -724,10 +725,10 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         runOnUiThread(() -> {
             hideProgressBar();
             // TODO: 2019/3/15 refactor
-            Fragment fragment = getFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(DummyContentFragment.TAG);
             if (null == fragment) {
                 fragment = DummyContentFragment.getInstance(list);
-                getFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentRoot, fragment, DummyContentFragment.TAG).commit();
             } else {
                 ((DummyContentFragment) fragment).setList(list);
             }

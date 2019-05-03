@@ -1,14 +1,14 @@
 package com.hades.example.android.widget.scrollview.qa_swipe_whole_page;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.View;
 
-import com.hades.example.android.R;
+import androidx.annotation.Nullable;
 
-public class WrongSwipeWhoPageActivity extends Activity implements View.OnClickListener {
+import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseActivity;
+
+public class WrongSwipeWhoPageActivity extends BaseActivity implements View.OnClickListener {
     View mContent;
     View mFragmentRoot;
 
@@ -25,6 +25,11 @@ public class WrongSwipeWhoPageActivity extends Activity implements View.OnClickL
     }
 
     @Override
+    protected boolean isNeedCheckPermission() {
+        return false;
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.detail:
@@ -33,35 +38,7 @@ public class WrongSwipeWhoPageActivity extends Activity implements View.OnClickL
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (isShowDetail()) {
-            hideDetailFragmentContainer();
-            removeDetailFragment();
-        }
-    }
-
-    private boolean isShowDetail() {
-        return mFragmentRoot.getVisibility() == View.VISIBLE;
-    }
-
-    private void hideDetailFragmentContainer() {
-        mContent.setVisibility(View.VISIBLE);
-        mFragmentRoot.setVisibility(View.GONE);
-    }
-
-    private void showDetailFragmentContainer() {
-        mContent.setVisibility(View.GONE);
-        mFragmentRoot.setVisibility(View.VISIBLE);
-    }
-
     private void openDetailFragment() {
-        showDetailFragmentContainer();
-        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, WrongSwipeWhoPageFragment.newInstance(), WrongSwipeWhoPageFragment.class.getSimpleName()).commit();
-    }
-
-    private void removeDetailFragment() {
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentRoot);
-        getFragmentManager().beginTransaction().remove(fragment).commit();
+        showFragment(new WrongSwipeWhoPageFragment());
     }
 }

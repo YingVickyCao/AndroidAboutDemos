@@ -5,12 +5,18 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView style="@style/topic"
-        android:text="@string/page_OtherUI"/>
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_PopupWindow" />
 
     <Button
         android:id="@+id/showPopupWindow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="弹出Popup窗口" />
+
+    <Button
+        android:id="@+id/showSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

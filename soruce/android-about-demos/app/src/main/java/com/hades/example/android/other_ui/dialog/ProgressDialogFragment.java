@@ -1,20 +1,21 @@
 package com.hades.example.android.other_ui.dialog;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hades.example.android.R;
+import androidx.annotation.Nullable;
 
-public class ProgressDialogFragment extends Fragment {
+import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseFragment;
+
+public class ProgressDialogFragment extends BaseFragment {
 
     final static int MAX_PROGRESS = 100;
     final static int UPDATE_PROGRESS = 1;

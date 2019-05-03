@@ -1,20 +1,19 @@
 package com.hades.example.android.event_handle;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ScrollView;
+
+import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
 import com.hades.example.android.event_handle.base_on_listener.EventHandlerBaseOnListenFragment;
 import com.hades.example.android.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
 import com.hades.example.android.event_handle.base_on_listener.plane.PlaneViewActivity;
+import com.hades.example.android.lib.base.BaseActivity;
 
-public class EventHandlerActivity extends Activity {
+public class EventHandlerActivity extends BaseActivity {
     private ScrollView mScrollView;
     private View mFragmentRoot;
 
@@ -36,27 +35,9 @@ public class EventHandlerActivity extends Activity {
 //        showCurrentTest();
     }
 
-    private void showBtns() {
-        mScrollView.setVisibility(View.VISIBLE);
-        mFragmentRoot.setVisibility(View.GONE);
-    }
-
-    private void hideBtns() {
-        mScrollView.setVisibility(View.GONE);
-        mFragmentRoot.setVisibility(View.VISIBLE);
-    }
-
-    private void showCurrentTest() {
-        test_event_handler_base_on_callback();
-    }
-
-    private void showFragment(Fragment fragment) {
-        hideBtns();
-        getFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
-    }
-
-    private void showActivity(Class<?> dest) {
-        startActivity(new Intent(this, dest));
+    @Override
+    protected boolean isNeedCheckPermission() {
+        return false;
     }
 
     private void testEventHandlerBaseOnListener() {
