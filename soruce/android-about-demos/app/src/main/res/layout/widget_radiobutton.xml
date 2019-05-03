@@ -31,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:backgroundTint="@color/btn_text_color_selector"
             android:buttonTint="@color/btn_text_color_selector"
             android:stateListAnimator="@null"
             android:text="A" />
