@@ -3,6 +3,7 @@
     <item android:drawable="@drawable/drawable_shape_4_btn_corners_4_state_pressed" android:state_pressed="true" />
     <item android:drawable="@drawable/drawable_shape_4_btn_corners_4_state_focused" android:state_focused="true" />
     <item android:drawable="@drawable/drawable_shape_4_btn_corners_4_state_hovered" android:state_hovered="true" />
+    <item android:drawable="@drawable/drawable_shape_4_btn_corners_4_state_hovered" android:state_checked="true" />
     <!--<item android:drawable="@drawable/drawable_shape_4_btn_corners_4_state_normal" />-->
     <item android:drawable="@drawable/drawable_layer_list_4_border_with_radius" />
 </selector>
