@@ -144,14 +144,14 @@
             android:theme="@android:style/Theme.Material.Dialog" />
 
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".event_handle.EventHandlerActivity" />
-        <activity android:name=".event_handle.base_on_listener.plane.PlaneViewActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
-        <activity android:name=".event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
-        <activity android:name=".event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" /> <!-- END_EVENT_HANDLER -->
+        <activity android:name=".android_mechanism.event_handle.EventHandlerActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.PlaneViewActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" /> <!-- END_EVENT_HANDLER -->
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".msg_handler.MessageHandlerActivity" /> <!-- END_EVENT_HANDLER -->
+        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity" /> <!-- END_EVENT_HANDLER -->
         <!-- START_RESOURCES -->
         <activity
             android:name=".resource.ResourceActivity"
