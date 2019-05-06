@@ -13,7 +13,7 @@
         android:id="@+id/progress"
         android:actionLayout="@layout/other_ui_action_bar_clock"
         android:orderInCategory="100"
-        android:title="@string/search"
+        android:title="@string/clock"
         app:showAsAction="always" />
 
     <item

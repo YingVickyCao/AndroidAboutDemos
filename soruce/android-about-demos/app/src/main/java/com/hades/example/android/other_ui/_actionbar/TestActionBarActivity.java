@@ -47,7 +47,7 @@ public class TestActionBarActivity extends NoNeedPermissionActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = new MenuInflater(this);
-        menuInflater.inflate(R.menu.actionbar_show_menu, menu);
+        menuInflater.inflate(R.menu.actionbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

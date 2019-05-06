@@ -26,7 +26,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pagePopupWindow();
+        pageActionBar();
     }
 
     private void pageNotification() {

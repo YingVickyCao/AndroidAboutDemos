@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".widget.WidgetActivity">
+        <activity android:name=".other_ui.OtherUIActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
