@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical">
 
     <TextView
@@ -9,18 +10,45 @@
         style="@style/topic"
         android:text="@string/page_Toast" />
 
-    <Button
+    <TextView
         android:id="@+id/showNormalToast"
-        style="@style/btn.small"
-        android:text="@string/show_normal_toast" />
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="@string/show_normal_toast"
+        android:textColor="#171a1c" />
 
-    <Button
+    <TextView
+        android:id="@+id/androidToast"
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="Android Toast"
+        android:textColor="#171a1c" />
+
+    <TextView
         android:id="@+id/showCustomToast"
-        style="@style/btn.small"
-        android:text="@string/show_custom_toast" />
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="@string/show_custom_toast"
+        android:textColor="#171a1c" />
 
-    <Button
+    <TextView
         android:id="@+id/showCustomToast2"
-        style="@style/btn.small"
-        android:text="@string/show_custom_toast" />
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="@string/show_custom_toast"
+        android:textColor="#171a1c" />
+
+    <TextView
+        android:id="@+id/devCustom"
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="Dev Toast"
+        android:textColor="#171a1c" />
+
+    <TextView
+        android:id="@+id/lightToast"
+        style="@style/tv"
+        android:minHeight="60dp"
+        android:text="Light Toast"
+        android:textColor="#171a1c" />
 </LinearLayout>

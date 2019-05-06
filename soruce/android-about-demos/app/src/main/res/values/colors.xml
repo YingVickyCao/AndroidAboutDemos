@@ -12,6 +12,7 @@
     <color name="btn_default_pressed_holo_light">#00BCD4</color>
     <color name="btn_default_focused_holo_light">#FFEB3B</color>
     <color name="btn_default_disabled_focused_holo_light">#3F51B5</color>
+    <color name="s_0">#26000000</color>
     <!--<color name="light_m_0">#FF0000</color>-->
     <!--<color name="light_m_0_opacity_30">#4DFF0000</color>-->
 </resources>

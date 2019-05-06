@@ -2,6 +2,8 @@
 <resources>
 
     <dimen name="size_small_text">10sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
     <dimen name="size_text_margin">16dp</dimen>
     <dimen name="size_topic">50dp</dimen>
     <dimen name="size_1">1dp</dimen>

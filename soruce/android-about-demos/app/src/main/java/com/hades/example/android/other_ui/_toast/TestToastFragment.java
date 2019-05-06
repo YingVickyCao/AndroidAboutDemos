@@ -17,12 +17,12 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
-public class ToastFragment extends BaseFragment {
-    public static ToastFragment newInstance() {
+public class TestToastFragment extends BaseFragment {
+    public static TestToastFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        ToastFragment fragment = new ToastFragment();
+        TestToastFragment fragment = new TestToastFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,8 +32,10 @@ public class ToastFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_toast, container, false);
         view.findViewById(R.id.showNormalToast).setOnClickListener(v -> showNormalToast());
+        view.findViewById(R.id.androidToast).setOnClickListener(v -> androidToast());
         view.findViewById(R.id.showCustomToast).setOnClickListener(v -> showCustomToast());
-        view.findViewById(R.id.showCustomToast2).setOnClickListener(v -> showCustomToast2());
+        view.findViewById(R.id.devCustom).setOnClickListener(v -> devCustom());
+        view.findViewById(R.id.lightToast).setOnClickListener(v -> lightToast());
         return view;
     }
 
@@ -43,6 +45,15 @@ public class ToastFragment extends BaseFragment {
 
     private void showNormalToast() {
         Toast.makeText(getUsedContext(), "简单的提示信息", Toast.LENGTH_SHORT).show();
+    }
+
+    private void androidToast() {
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_android, null));
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 
     private void showCustomToast() {
@@ -68,18 +79,21 @@ public class ToastFragment extends BaseFragment {
         return ll;
     }
 
-    private void showCustomToast2() {
+    private void devCustom() {
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
 
-        toast.setView(getToastView2());
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_custom_dev, null));
         toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
     }
 
-    private View getToastView2() {
-        View view = LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_custom, null);
-        view.findViewById(R.id.customToastBtn).setOnClickListener(v -> Toast.makeText(getUsedContext(), "Click custom Toast btn", Toast.LENGTH_SHORT).show());
-        return view;
+    private void lightToast() {
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_custom_light, null));
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 }

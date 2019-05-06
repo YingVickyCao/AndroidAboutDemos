@@ -8,7 +8,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
-import com.hades.example.android.other_ui._toast.ToastFragment;
+import com.hades.example.android.other_ui._toast.TestToastFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
     @Override
@@ -26,7 +26,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageActionBar();
+        pageToast();
     }
 
     private void pageNotification() {
@@ -34,7 +34,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
     }
 
     private void pageToast() {
-        showFragment(ToastFragment.newInstance(), ToastFragment.class.getSimpleName());
+        showFragment(TestToastFragment.newInstance(), TestToastFragment.class.getSimpleName());
     }
 
     private void pageActionBar() {
