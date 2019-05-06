@@ -26,9 +26,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".app_component.activity.TestBottomNavigationActivity"
-            android:label="@string/bottom_navigation" />
         <!-- <activity android:namAActivityvity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN"/> -->
@@ -134,11 +131,14 @@
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
 
+        <activity android:name=".other_ui.OtherUIActivity" />
         <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
         <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
-        <activity android:name=".other_ui._navigation.TestActionBarNavigationActivity"/>
+        <activity android:name=".other_ui._navigation.TestActionBarNavigationActivity" />
         <activity android:name=".other_ui._navigation.TestSwipeViewPagerActivity" />
-        <activity android:name=".other_ui.OtherUIActivity" />
+        <activity
+            android:name=".other_ui._navigation.TestBottomNavigationActivity"
+            android:label="@string/bottom_navigation" />
         <activity
             android:name=".other_ui.dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />

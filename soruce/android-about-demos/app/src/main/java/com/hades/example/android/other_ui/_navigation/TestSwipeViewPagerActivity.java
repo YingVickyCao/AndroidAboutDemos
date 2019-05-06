@@ -19,7 +19,7 @@ public class TestSwipeViewPagerActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.other_ui_navigation_swipe_tab);
+        setContentView(R.layout.other_ui_navigation_viewpager_swipe_tab);
 
         viewPager = findViewById(R.id.pager);
 

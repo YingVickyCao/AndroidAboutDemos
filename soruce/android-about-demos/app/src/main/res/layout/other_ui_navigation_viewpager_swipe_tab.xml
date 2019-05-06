@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_ActionBar_Navigation" />
+        android:text="@string/page_ViewPager_PagerTitleStrip" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
