@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui._actionbar;
+package com.hades.example.android.other_ui._navigation;
 
 import android.os.Bundle;
 
@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.mock.DummyFragment;
 
 public class TestActionBarNavigationActivity extends NoNeedPermissionActivity implements ActionBar.TabListener {
 
@@ -18,7 +19,7 @@ public class TestActionBarNavigationActivity extends NoNeedPermissionActivity im
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.other_ui_action_bar_navigation);
+        setContentView(R.layout.other_ui_navigation_action_bar);
 
         initActionBarNavigation();
     }

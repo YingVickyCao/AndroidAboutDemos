@@ -1,4 +1,4 @@
-package com.hades.example.android.lib.utils;
+package com.hades.example.android.lib.mock;
 
 import android.content.Context;
 import android.view.LayoutInflater;

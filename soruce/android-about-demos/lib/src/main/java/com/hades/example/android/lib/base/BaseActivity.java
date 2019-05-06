@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.lib.R;
 import com.hades.example.android.lib.mock.SFMock;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     private View topic;
     private ScrollView mScrollView;
     protected View mFragmentRoot;
@@ -32,7 +32,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected abstract boolean isNeedCheckPermission();
+    protected boolean isNeedCheckPermission() {
+        return false;
+    }
 
     protected void initViews() {
         topic = findViewById(R.id.topic);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_ActionBar_Navigation" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topic">
+
+        <androidx.viewpager.widget.PagerTitleStrip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#33b5e5"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="#fff" />
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

@@ -19,7 +19,7 @@ import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.lib.utils.DateUtil;
-import com.hades.example.android.lib.utils.DummyContentFragment;
+import com.hades.example.android.lib.mock.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;

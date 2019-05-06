@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui._actionbar;
+package com.hades.example.android.lib.mock;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.R;
+import com.hades.example.android.lib.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
 public class DummyFragment extends BaseFragment {

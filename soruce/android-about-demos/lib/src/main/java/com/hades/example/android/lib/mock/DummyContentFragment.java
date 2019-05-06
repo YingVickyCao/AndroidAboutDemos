@@ -1,4 +1,4 @@
-package com.hades.example.android.lib.utils;
+package com.hades.example.android.lib.mock;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.R;
 import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
 
