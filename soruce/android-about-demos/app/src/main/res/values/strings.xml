@@ -74,6 +74,8 @@
     <string name="page_ViewPager_PagerTitleStrip">ViewPager +PagerTitleStrip = Swipe Page Tab</string>
     <string name="page_PopupWindow">PopupWindow</string>
 
+    <string name="page_msg_handler">Handler消息处理机制</string>
+
     <!-- ========================= -->
 
     <string name="runt_time_permission">Runtime Permission</string>
@@ -261,5 +263,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="handler_main_thread"><![CDATA[Handler - main -> thread]]></string>
+
+    <string name="handler_thread_2_main">Handler - tread -> main </string>
+    <string name="handler_main_2_thread">Handler - maim -> tread</string>
+    <string name="handler_main_2_thread_2_main">Handler - main -> thread -> main </string>
+    <string name="handler_main_2_thread_2_main_HandlerThread">Handler - main -> thread -> main (HandlerThread)</string>
 
 </resources>

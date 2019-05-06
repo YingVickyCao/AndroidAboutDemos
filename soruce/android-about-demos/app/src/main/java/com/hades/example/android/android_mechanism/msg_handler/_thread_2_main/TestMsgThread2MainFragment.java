@@ -1,4 +1,4 @@
-package com.hades.example.android.android_mechanism.msg_handler.thread_2_main;
+package com.hades.example.android.android_mechanism.msg_handler._thread_2_main;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,8 +23,8 @@ import java.util.TimerTask;
 /**
  * Thread -> main
  */
-public class MsgThread2MainFragment extends BaseFragment {
-    private static final String TAG = MsgThread2MainFragment.class.getSimpleName();
+public class TestMsgThread2MainFragment extends BaseFragment {
+    private static final String TAG = TestMsgThread2MainFragment.class.getSimpleName();
 
     String[] imageIds = new String[]{"java", "Android", "ajax", "swift"};
     int currentImageId = 0;
@@ -37,7 +37,7 @@ public class MsgThread2MainFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.msg_handler_thread_2_main_update_text, container, false);
+        View view = inflater.inflate(R.layout.msg_handler_thread_2_main, container, false);
 
         final TextView show = view.findViewById(R.id.tableContentList);
         view.findViewById(R.id.startRecycleUpdateText).setOnClickListener(v -> startRecycleUpdateText());
@@ -74,6 +74,9 @@ public class MsgThread2MainFragment extends BaseFragment {
                  */
                 LogHelper.printThreadInfo(TAG, "Timer -> run()", String.valueOf(currentImageId));
 
+                /**
+                 * Thread -> UI
+                 */
                 uiHandler.sendEmptyMessage(HANDLER_MSG_KEY_1);
             }
         }, 0, 1200);
@@ -115,11 +118,11 @@ public class MsgThread2MainFragment extends BaseFragment {
 
             @Override
             public void run() {
-                Handler lab3Handler;
-                long result = new MockHeavyWork().sum();
+                Handler uiHandler;
+                long result = MockHeavyWork.sum(10);
                 LogHelper.printThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
 
-                lab3Handler = new Handler(Looper.getMainLooper()) {
+                uiHandler = new Handler(Looper.getMainLooper()) {
 
                     @Override
                     public void handleMessage(Message msg) {
@@ -127,13 +130,14 @@ public class MsgThread2MainFragment extends BaseFragment {
                         /**
                          * main
                          */
-                        LogHelper.printThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()->handleMessage()", "what=" + msg.what + ",obj=" + msg.obj);
+                        LogHelper.printThreadInfo(TAG, "uiHandler", "what=" + msg.what + ",obj=" + msg.obj);
+                        showToast(String.valueOf(msg.what));
                     }
                 };
                 /**
                  * thread -> main
                  */
-                lab3Handler.sendMessage(defineNewMessage(HANDLER_MSG_KEY_3, "getMainLooper"));
+                uiHandler.sendMessage(defineNewMessage(HANDLER_MSG_KEY_3, "getMainLooper"));
             }
 
         }).start();

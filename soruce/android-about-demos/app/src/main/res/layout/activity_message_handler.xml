@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_msg_handler" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -16,29 +21,26 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/test_thread_2_main_update_text"
+                android:id="@+id/pageHandler_thread_2_main"
                 style="@style/btn.small"
-                android:text="@string/test_msg_handler_thread_2_main_update_text"
-                android:visibility="gone" />
+                android:text="@string/handler_thread_2_main" />
 
             <Button
-
-                android:id="@+id/test_main_2_thread_sum"
+                android:id="@+id/pageHandler_main_2_thread_2_main"
                 style="@style/btn.small"
-                android:text="@string/test_msg_handler_main_2_thread_sum"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/test_main_2_thread_2_main_Sum"
-                style="@style/btn.small"
-                android:text="@string/test_msg_handler_main_2_thread_2_main_Sum"
+                android:text="@string/handler_main_2_thread_2_main"
                 android:visibility="visible" />
 
             <Button
-                android:id="@+id/test_main_2_thread_2_main_Sum2"
+                android:id="@+id/pageHandler_main_2_thread_2_main_HandlerThread"
                 style="@style/btn.small"
-                android:text="@string/test_msg_handler_main_2_thread_2_main_Sum"
-                android:visibility="gone" />
+                android:text="@string/handler_main_2_thread_2_main_HandlerThread"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/pageHandler_main_2_thread"
+                style="@style/btn.small"
+                android:text="@string/handler_main_thread" />
         </LinearLayout>
     </ScrollView>
 
@@ -46,4 +48,4 @@
         android:id="@+id/fragmentRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</FrameLayout>
+</LinearLayout>

@@ -5,6 +5,11 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/handler_main_2_thread_2_main_HandlerThread" />
+
+    <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package com.hades.example.android.android_mechanism.msg_handler.main_2_thread_2_main;
+package com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,13 +22,13 @@ import com.hades.example.android.lib.utils.LogHelper;
 
 /*
  log:
- SumFragment: sum(),msg=1000,thread =1,main
- SumFragment: SumThread -> handleMessage(),msg=1000,thread =4487,Thread-7
- SumFragment: updateResult(),msg=499500,thread =1,main
+ TestMsgMain2Thread2MainFragment: sum(),msg=1000,thread =1,main
+ TestMsgMain2Thread2MainFragment: SumThread -> handleMessage(),msg=1000,thread =4487,Thread-7
+ TestMsgMain2Thread2MainFragment: updateResult(),msg=499500,thread =1,main
  */
 
-public class SumFragment extends BaseFragment {
-    private static final String TAG = SumFragment.class.getSimpleName();
+public class TestMsgMain2Thread2MainFragment extends BaseFragment {
+    private static final String TAG = TestMsgMain2Thread2MainFragment.class.getSimpleName();
 
     static final String UPPER_NUM = "upper";
     private final int num = 1000;
@@ -41,7 +41,7 @@ public class SumFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.msg_handler_main_2_thread_sum, container, false);
+        View view = inflater.inflate(R.layout.msg_handler_main_2_thread_2_main, container, false);
 
         view.findViewById(R.id.sum).setOnClickListener(this::sum);
         result = view.findViewById(R.id.result);
@@ -56,7 +56,7 @@ public class SumFragment extends BaseFragment {
         /**
          * main -> thread
          */
-        calThread.mHandler.sendMessage(createMessage());
+        calThread.mHandlerOfThread.sendMessage(createMessage());
     }
 
     private Message createMessage() {
@@ -69,12 +69,12 @@ public class SumFragment extends BaseFragment {
     }
 
     class SumThread extends Thread {
-        public Handler mHandler;
+        public Handler mHandlerOfThread;
 
         public void run() {
             Looper.prepare();
 
-            mHandler = new Handler() {
+            mHandlerOfThread = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
                     /**

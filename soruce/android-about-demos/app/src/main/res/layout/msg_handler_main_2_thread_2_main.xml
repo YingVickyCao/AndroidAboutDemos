@@ -5,6 +5,11 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/handler_main_2_thread_2_main" />
+
+    <TextView
         android:id="@+id/etNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

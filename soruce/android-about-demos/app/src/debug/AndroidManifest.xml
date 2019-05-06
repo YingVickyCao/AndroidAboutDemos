@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".other_ui._navigation.TestBottomNavigationActivity">
+        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

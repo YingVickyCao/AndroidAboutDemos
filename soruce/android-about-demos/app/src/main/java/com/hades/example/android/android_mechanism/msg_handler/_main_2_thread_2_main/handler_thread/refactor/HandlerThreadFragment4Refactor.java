@@ -1,4 +1,4 @@
-package com.hades.example.android.android_mechanism.msg_handler.main_2_thread_2_main.handler_thread.refactor;
+package com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,8 +15,8 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.utils.LogHelper;
 
-import static com.hades.example.android.android_mechanism.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
-import static com.hades.example.android.android_mechanism.msg_handler.main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_SUM;
+import static com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
+import static com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_SUM;
 
 /**
  * main -> thread -> main
@@ -58,7 +58,7 @@ public class HandlerThreadFragment4Refactor extends BaseFragment implements Hand
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_handler_thread_4_refactor, container, false);
+        View view = inflater.inflate(R.layout.msg_handler_main_2_thread_2_main_4_handlerthread_4_refactor, container, false);
 
         result = view.findViewById(R.id.result);
         sumBtn = view.findViewById(R.id.sum);

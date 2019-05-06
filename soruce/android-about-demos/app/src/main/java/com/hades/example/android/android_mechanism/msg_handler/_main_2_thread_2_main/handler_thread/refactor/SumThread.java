@@ -1,4 +1,4 @@
-package com.hades.example.android.android_mechanism.msg_handler.main_2_thread_2_main.handler_thread.refactor;
+package com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor;
 
 import android.os.Handler;
 import android.os.HandlerThread;
