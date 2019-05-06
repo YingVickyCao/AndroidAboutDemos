@@ -3,9 +3,9 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
-import com.hades.example.android.data_storage.DataStorageActivityActivity;
+import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.po.security.SecurityActivityActivity;
+import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;
 import com.hades.example.android.widget.WidgetActivity;
 
@@ -30,7 +30,7 @@ public class MainActivity extends NoNeedPermissionActivity {
     }
 
     private void pageSecurity() {
-        showActivity(SecurityActivityActivity.class);
+        showActivity(SecurityActivity.class);
     }
 
     private void pageWidget() {
@@ -38,7 +38,7 @@ public class MainActivity extends NoNeedPermissionActivity {
     }
 
     private void pageDateStorage() {
-        showActivity(DataStorageActivityActivity.class);
+        showActivity(DataStorageActivity.class);
     }
 
     private void pageResource() {

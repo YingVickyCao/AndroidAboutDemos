@@ -9,7 +9,7 @@ import com.hades.example.android.app_component.service.boundservice.TestLocalBou
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
-public class TestAppComponentActivityActivity extends NoNeedPermissionActivity {
+public class TestAppComponentActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

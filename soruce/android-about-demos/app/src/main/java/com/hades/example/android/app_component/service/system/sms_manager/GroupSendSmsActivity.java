@@ -28,7 +28,7 @@ import java.util.ArrayList;
 	<!-- 授予发送短信的权限 -->
 	<uses-permission android:name="android.permission.SEND_SMS"/>
  */
-public class GroupSendSmsActivityActivity extends PermissionActivity {
+public class GroupSendSmsActivity extends PermissionActivity {
     EditText numbers, content;
     ArrayList<String> toSendPhoneList = new ArrayList<String>();
 
@@ -74,7 +74,7 @@ public class GroupSendSmsActivityActivity extends PermissionActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 cursor.moveToPosition(position);
-                CheckBox rb = new CheckBox(GroupSendSmsActivityActivity.this);
+                CheckBox rb = new CheckBox(GroupSendSmsActivity.this);
                 // 获取联系人的电话号码，并去掉中间的中画线、空格
                 String number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "");
                 rb.setText(number);
@@ -90,7 +90,7 @@ public class GroupSendSmsActivityActivity extends PermissionActivity {
         final ListView listView = selectView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
-        new AlertDialog.Builder(GroupSendSmsActivityActivity.this)
+        new AlertDialog.Builder(GroupSendSmsActivity.this)
                 .setView(selectView)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -123,10 +123,10 @@ public class GroupSendSmsActivityActivity extends PermissionActivity {
         }
         // TODO: 23/07/2018 主线程循环发送邮件，若多人数很多且网络延迟，群发短信可能变成一个耗时任务。 -> IntentService中发送短信，群发短信完成后，通过广播通知前台 Activity。
         for (String number : toSendPhoneList) {
-            PendingIntent pi = PendingIntent.getActivity(GroupSendSmsActivityActivity.this, 0, new Intent(), 0);
+            PendingIntent pi = PendingIntent.getActivity(GroupSendSmsActivity.this, 0, new Intent(), 0);
             getSmsManager().sendTextMessage(number, null, content.getText().toString(), pi, null);
         }
-        Toast.makeText(GroupSendSmsActivityActivity.this, "短信群发完成", Toast.LENGTH_SHORT).show();
+        Toast.makeText(GroupSendSmsActivity.this, "短信群发完成", Toast.LENGTH_SHORT).show();
     }
 
     private SmsManager getSmsManager() {

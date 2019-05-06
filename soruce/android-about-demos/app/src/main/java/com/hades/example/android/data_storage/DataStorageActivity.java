@@ -11,7 +11,7 @@ import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 import com.hades.example.android.lib.base.PermissionActivity;
 
-public class DataStorageActivityActivity extends PermissionActivity {
+public class DataStorageActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

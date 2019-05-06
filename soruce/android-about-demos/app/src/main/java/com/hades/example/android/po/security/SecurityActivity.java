@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
-public class SecurityActivityActivity extends NoNeedPermissionActivity {
+public class SecurityActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

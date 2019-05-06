@@ -34,7 +34,7 @@
         <!-- </activity> -->
         <activity android:name=".MainActivity" />
         <activity android:name=".QAActivity" />
-        <activity android:name=".app_component.TestAppComponentActivityActivity" />
+        <activity android:name=".app_component.TestAppComponentActivity" />
         <activity android:name=".app_component.activity.ActivityTestHomeActivity" />
         <activity android:name=".app_component.activity._sate.TestSaveAndRestoreStateActivity" />
         <activity
@@ -173,10 +173,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable.bitmap.three_level_cache.ImageGridActivity" />
         </activity> <!-- END_RESOURCES -->
-        <activity android:name=".data_storage.DataStorageActivityActivity" />
+        <activity android:name=".data_storage.DataStorageActivity" />
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
-        <activity android:name=".po.security.SecurityActivityActivity" />
-        <activity android:name="._process_and_thread.TestBackgroundTasksActivityActivity" />
+        <activity android:name=".po.security.SecurityActivity" />
+        <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
     </application>
 
 </manifest>
