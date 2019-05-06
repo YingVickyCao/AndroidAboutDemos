@@ -17,6 +17,9 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
+/*
+  https://www.jianshu.com/p/ca8d7dd6172e
+ */
 public class TestToastFragment extends BaseFragment {
     public static TestToastFragment newInstance() {
 

@@ -32,13 +32,6 @@
         android:textColor="#171a1c" />
 
     <TextView
-        android:id="@+id/showCustomToast2"
-        style="@style/tv"
-        android:minHeight="60dp"
-        android:text="@string/show_custom_toast"
-        android:textColor="#171a1c" />
-
-    <TextView
         android:id="@+id/devCustom"
         style="@style/tv"
         android:minHeight="60dp"

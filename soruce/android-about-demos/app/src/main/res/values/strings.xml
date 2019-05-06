@@ -69,6 +69,7 @@
     <string name="page_Toast">Toast</string>
     <string name="page_ActionBar">ActionBar</string>
     <string name="page_ActionBar_ShowMenu">ActionBar - Show Menu</string>
+    <string name="page_ActionBar_Navigation">ActionBar Navigation</string>
     <string name="page_PopupWindow">PopupWindow</string>
 
     <!-- ========================= -->
