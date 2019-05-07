@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.theme;
+package com.hades.example.android.resource._style_theme;
 
 import android.os.Build;
 import android.os.Bundle;

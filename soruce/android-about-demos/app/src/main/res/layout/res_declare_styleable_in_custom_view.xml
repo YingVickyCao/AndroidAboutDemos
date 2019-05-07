@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/size_100"
                 android:background="@color/dark_bg_0">
 
-                <com.hades.example.android.widget.custom_view.LightMyView
+                <com.hades.example.android.resource._style_theme.LightMyView
                     android:layout_width="@dimen/size_80"
                     android:layout_height="@dimen/size_80"
                     android:layout_centerInParent="true" />
@@ -63,7 +63,7 @@
                 android:layout_height="@dimen/size_100"
                 android:background="@color/light_bg_0">
 
-                <com.hades.example.android.widget.custom_view.DarkMyView
+                <com.hades.example.android.resource._style_theme.DarkMyView
                     android:layout_width="@dimen/size_80"
                     android:layout_height="@dimen/size_80"
                     android:layout_centerInParent="true" />
@@ -93,7 +93,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.hades.example.android.widget.custom_view.MyView
+            <com.hades.example.android.resource._style_theme.MyView
                 android:layout_width="@dimen/size_80"
                 android:layout_height="@dimen/size_80"
                 android:gravity="center" />
@@ -112,7 +112,7 @@
     <!-- Apply theme -->
     <!--app:rvText="@string/attribute_1_attribute_in_xml"-->
     <!-- style="@style/RectView_StyleInXml" -->
-    <com.hades.example.android.widget.custom_view.RectView
+    <com.hades.example.android.resource._style_theme.RectView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -122,7 +122,7 @@
         android:textColor="@android:color/holo_red_light" />
 
     <!-- Not apply theme -->
-    <com.hades.example.android.widget.custom_view.RectView
+    <com.hades.example.android.resource._style_theme.RectView
         style="@style/RectView_StyleNotUseTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

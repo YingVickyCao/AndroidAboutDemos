@@ -1,7 +1,6 @@
 package com.hades.example.android.android_mechanism.event_handle.base_on_listener.plane;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -10,10 +9,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseActivity;
 
-public class PlaneViewActivity extends Activity {
-    private static final String TAG = PlaneViewActivity.class.getSimpleName();
+public class TestPlaneActivity extends BaseActivity {
+    private static final String TAG = TestPlaneActivity.class.getSimpleName();
 
     // 定义飞机的移动速度
     private int speed = 10;
@@ -29,7 +28,7 @@ public class PlaneViewActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 创建PlaneView组件
         final PlaneView planeView = new PlaneView(this);
-        planeView.setBackgroundResource(R.drawable.bg);
+//        planeView.setBackgroundResource(R.drawable.bg);
 
         // 获取窗口管理器
         WindowManager windowManager = getWindowManager();
@@ -41,25 +40,23 @@ public class PlaneViewActivity extends Activity {
         planeView.currentX = metrics.widthPixels / 2;
         planeView.currentY = metrics.heightPixels - 100;
 
-        // 为planeView的Touch事件绑定监听器
-        planeView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        planeView.setOnTouchListener((v, event) -> onTouchPlaneView(v, event, planeView));
 
-                    return true;
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    planeView.currentX = event.getX();
-                    planeView.currentY = event.getY();
-                }
-
-                // 通知planeView组件重绘
-                planeView.invalidate();
-                return true;
-            }
-        });
 
         setContentView(planeView);
     }
+
+    private boolean onTouchPlaneView(View v, MotionEvent event, PlaneView planeView) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            planeView.currentX = event.getX();
+            planeView.currentY = event.getY();
+        }
+
+        // 通知planeView组件重绘
+        planeView.invalidate();
+        return true;
+    }
+
 }
 

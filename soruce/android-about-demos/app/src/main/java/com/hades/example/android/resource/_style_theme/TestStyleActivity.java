@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.resource._style_theme;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseActivity;
 
-public class TestCustomViewActivity extends BaseActivity {
+public class TestStyleActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,17 +5,13 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:cursorVisible="false"
-        android:textSize="12pt" />
+
+    <TextView style="@style/topic"
+        android:text="@string/event_handler_base_on_listener"/>
 
     <!-- 事件源 -->
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="单击我" />
+        style="@style/btn.small"
+        android:text="@string/click" />
 </LinearLayout>

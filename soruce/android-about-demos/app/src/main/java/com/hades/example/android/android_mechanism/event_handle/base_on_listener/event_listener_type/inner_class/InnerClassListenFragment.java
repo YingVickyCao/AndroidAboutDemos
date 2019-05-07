@@ -36,6 +36,6 @@ public class InnerClassListenFragment extends BaseFragment {
     }
 
     private void showTip() {
-        Toast.makeText(getActivity(), "Button clicked！" + getResources().getString(R.string.test_listener_4_inner_class), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Button clicked！" + getResources().getString(R.string.listener_type_inner_class), Toast.LENGTH_SHORT).show();
     }
 }

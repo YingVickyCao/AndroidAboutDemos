@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.resource._style_theme;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.widget.custom_view.MyViewBase;
 
 @SuppressLint("AppCompatCustomView")
 public class DarkMyView extends MyViewBase {

@@ -31,6 +31,6 @@ public class AnonymousInnerClassListenFragment extends BaseFragment {
     }
 
     private void showTip() {
-        Toast.makeText(getActivity(), "Button clicked！" + getResources().getString(R.string.test_listener_4_anonymous_inner_class), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Button clicked！" + getResources().getString(R.string.listener_type_4_anonymous_inner_class), Toast.LENGTH_SHORT).show();
     }
 }

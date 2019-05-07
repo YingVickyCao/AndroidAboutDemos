@@ -18,31 +18,31 @@
             <Button
                 android:id="@+id/test_listener_4_inner_class"
                 style="@style/btn.small"
-                android:text="@string/test_listener_4_inner_class"
+                android:text="@string/listener_type_inner_class"
                 android:visibility="visible" />
 
             <Button
                 android:id="@+id/test_listener_4_outer_class"
                 style="@style/btn.small"
-                android:text="@string/test_listener_4_outer_class"
+                android:text="@string/listener_type_outer_class"
                 android:visibility="visible" />
 
             <Button
                 android:id="@+id/test_listener_4_activity_itself"
                 style="@style/btn.small"
-                android:text="@string/test_listener_4_activity_itself"
+                android:text="@string/listener_type_activity_itself"
                 android:visibility="visible" />
 
             <Button
                 android:id="@+id/test_listener_4_anonymous_inner_class"
                 style="@style/btn.small"
-                android:text="@string/test_listener_4_anonymous_inner_class"
+                android:text="@string/listener_type_4_anonymous_inner_class"
                 android:visibility="visible" />
 
             <Button
                 android:id="@+id/test_listener_4_xml"
                 style="@style/btn.small"
-                android:text="@string/test_listener_4_xml"
+                android:text="@string/listener_type_4_xml"
                 android:visibility="visible" />
 
         </LinearLayout>

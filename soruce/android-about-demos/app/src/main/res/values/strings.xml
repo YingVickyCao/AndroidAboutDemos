@@ -270,4 +270,15 @@
     <string name="handler_main_2_thread_2_main">Handler - main -> thread -> main </string>
     <string name="handler_main_2_thread_2_main_HandlerThread">Handler - main -> thread -> main (HandlerThread)</string>
 
+    <string name="page_Android_Event_handler">Android事件处理</string>
+    <string name="event_handler_base_on_listener">基于监听的事件处理</string>
+    <string name="event_handler_base_on_listener_4_plane">基于监听的事件处理 - Plane</string>
+    <string name="event_handler_base_on_listener_types">基于监听的事件处理 - 事件处理器有5种形式</string>
+    <string name="listener_type_inner_class">内部类 作为事件监听器</string>
+    <string name="listener_type_outer_class">外部类 作为事件监听器</string>
+    <string name="listener_type_activity_itself">Activity 本身作为事件监听器类 </string>
+    <string name="listener_type_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
+    <string name="listener_type_4_xml">xml onClick 属性 作为事件监听器</string>
+    <string name="event_handler_base_on_callback">基于回调的事件处理</string>
+
 </resources>

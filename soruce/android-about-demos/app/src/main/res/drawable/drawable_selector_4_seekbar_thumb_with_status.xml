@@ -7,6 +7,6 @@
 
     <item android:drawable="@drawable/drawable_vector_4_seekbar_thumb_shape_circular_big" android:state_selected="true" android:state_window_focused="true" />
 
-    <item android:drawable="@drawable/drawable_shape_4_seekbar_thumb_circular" />
+    <item android:drawable="@drawable/drawable_shape_4_circular" />
 
 </selector>

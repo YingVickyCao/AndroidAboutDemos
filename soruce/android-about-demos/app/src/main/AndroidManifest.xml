@@ -126,7 +126,7 @@
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
-        <activity android:name=".widget.custom_view.TestCustomViewActivity" />
+        <activity android:name=".resource._style_theme.TestStyleActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
@@ -144,8 +144,8 @@
             android:theme="@android:style/Theme.Material.Dialog" />
 
         <!-- START_EVENT_HANDLER -->
-        <activity android:name=".android_mechanism.event_handle.EventHandlerActivity" />
-        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.PlaneViewActivity" />
+        <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.TestPlaneActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
@@ -160,8 +160,8 @@
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <activity android:name=".resource.adapter_screen.DisableRotateActivity" />
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageAActivity" />
-        <activity android:name=".resource.theme.apply_theme.ThemeChoosePageBActivity" />
+        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageAActivity" />
+        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageBActivity" />
         <activity
             android:name=".resource.drawable.bitmap.three_level_cache.ImageGridActivity"
             android:label="@string/app_name" />

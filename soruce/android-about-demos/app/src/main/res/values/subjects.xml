@@ -18,16 +18,6 @@
     <string name="test_TimePickerDialog">Test TimePickerDialog</string>
     <string name="test_Notification">Test Notification</string>
     <string name="test_PopupWindow">Test PopupWindow</string>
-    <string name="test_event_handler_base_on_listener">Test 基于监听的事件处理</string>
-    <string name="test_event_handler_base_on_listener_4_plane">Test 基于监听的事件处理 - Plane</string>
-    <string name="test_event_handler_base_on_listener_types">Test 基于监听的事件处理 - 事件处理器有5种形式</string>
-    <string name="test_event_handler_base_on_callback">Test 基于回调的事件处理</string>
-
-    <string name="test_listener_4_inner_class">内部类 作为事件监听器</string>
-    <string name="test_listener_4_outer_class">外部类 作为事件监听器</string>
-    <string name="test_listener_4_activity_itself">Activity 本身作为事件监听器类 </string>
-    <string name="test_listener_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
-    <string name="test_listener_4_xml">xml onClick 属性 作为事件监听器</string>
 
     <string name="test_ContentProvider">ContentProvider</string>
     <string name="test_system_ContactContentProvider">Test System Contact ContentProvider</string>

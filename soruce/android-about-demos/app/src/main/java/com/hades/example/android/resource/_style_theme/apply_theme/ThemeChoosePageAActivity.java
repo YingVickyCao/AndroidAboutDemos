@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.theme.apply_theme;
+package com.hades.example.android.resource._style_theme.apply_theme;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;

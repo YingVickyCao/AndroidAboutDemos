@@ -30,6 +30,6 @@ public class ActivityItselfListenerActivity extends Activity implements View.OnC
     }
 
     private void showTip() {
-        Toast.makeText(this, "Button clicked！" + getResources().getString(R.string.test_listener_4_activity_itself), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Button clicked！" + getResources().getString(R.string.listener_type_activity_itself), Toast.LENGTH_SHORT).show();
     }
 }

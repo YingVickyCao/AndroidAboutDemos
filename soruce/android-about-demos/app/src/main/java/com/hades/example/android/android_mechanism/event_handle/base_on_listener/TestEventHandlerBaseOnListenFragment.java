@@ -14,7 +14,7 @@ import com.hades.example.android.lib.base.BaseFragment;
 /**
  * 基于监听的事件处理
  */
-public class EventHandlerBaseOnListenFragment extends BaseFragment {
+public class TestEventHandlerBaseOnListenFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
