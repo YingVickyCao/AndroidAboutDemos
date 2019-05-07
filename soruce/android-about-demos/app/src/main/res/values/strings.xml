@@ -272,7 +272,7 @@
 
     <string name="page_Android_Event_handler">Android事件处理</string>
     <string name="event_handler_base_on_listener">基于监听的事件处理</string>
-    <string name="event_handler_base_on_listener_4_plane">基于监听的事件处理 - Plane</string>
+    <string name="event_handler_base_on_listener_4_PlaneView">基于监听的事件处理 - PlaneView</string>
     <string name="event_handler_base_on_listener_types">基于监听的事件处理 - 事件处理器有5种形式</string>
     <string name="listener_type_inner_class">内部类 作为事件监听器</string>
     <string name="listener_type_outer_class">外部类 作为事件监听器</string>

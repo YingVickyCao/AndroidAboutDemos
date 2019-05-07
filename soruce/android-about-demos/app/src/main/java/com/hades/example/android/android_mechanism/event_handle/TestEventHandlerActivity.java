@@ -8,7 +8,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.android_mechanism.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.TestEventHandlerBaseOnListenFragment;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
-import com.hades.example.android.android_mechanism.event_handle.base_on_listener.plane.TestPlaneActivity;
+import com.hades.example.android.android_mechanism.event_handle.base_on_listener.plane.TestCircleViewActivity;
 import com.hades.example.android.lib.base.BaseActivity;
 
 public class TestEventHandlerActivity extends BaseActivity {
@@ -35,7 +35,7 @@ public class TestEventHandlerActivity extends BaseActivity {
     }
 
     private void page_event_handler_base_on_listener_4_plane() {
-        showActivity(TestPlaneActivity.class);
+        showActivity(TestCircleViewActivity.class);
     }
 
     private void page_event_handler_base_on_listener_types() {

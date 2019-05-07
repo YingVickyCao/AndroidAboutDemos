@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/event_handler_base_on_listener_4_PlaneView" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/size_15">
+
+        <com.hades.example.android.android_mechanism.event_handle.base_on_listener.plane.CircleView1
+            android:id="@+id/circleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <com.hades.example.android.android_mechanism.event_handle.base_on_callback.CircleView2
+            android:id="@+id/circleView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</LinearLayout>

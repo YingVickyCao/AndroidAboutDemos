@@ -145,7 +145,7 @@
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />
-        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.TestPlaneActivity" />
+        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.TestCircleViewActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />

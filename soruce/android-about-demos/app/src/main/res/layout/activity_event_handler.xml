@@ -29,7 +29,7 @@
             <Button
                 android:id="@+id/page_event_handler_base_on_listener_4_plane"
                 style="@style/btn.small"
-                android:text="@string/event_handler_base_on_listener_4_plane" />
+                android:text="@string/event_handler_base_on_listener_4_PlaneView" />
 
             <Button
                 android:id="@+id/page_event_handler_base_on_listener_types"
