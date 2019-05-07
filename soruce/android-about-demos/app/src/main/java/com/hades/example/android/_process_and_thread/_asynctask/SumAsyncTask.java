@@ -16,9 +16,15 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     }
 
     @Override
+    protected void onPreExecute() {// UI Thread
+        if (null != mISum) {
+            mISum.onPreExecute("Start work");
+        }
+        Log.d(TAG, "onPreExecute: thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+    }
+
+    @Override
     protected void onProgressUpdate(Integer... values) {// UI Thread
-        // TODO Auto-generated method stub
-        super.onProgressUpdate(values);
         if (null != mISum) {
             mISum.setProgress(values[0]);
         }
@@ -31,13 +37,18 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
         int max = params[0];
         long result = 0;
         for (int i = 1; i <= max; i++) {
+            if (isCancelled()) {
+                Log.d(TAG, "doInBackground: isCancelled");
+                return result;
+            }
+
             try {
-                Thread.currentThread().sleep(1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             int progress = (int) ((i / (float) max) * 100);
-            Log.d(TAG, "doInBackground: progress=" + progress + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+            Log.d(TAG, "doInBackground: progress=" + progress + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName() + ",result=" + result);
             publishProgress(progress);
             result += i;
         }
@@ -46,11 +57,21 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
 
     @Override
     protected void onPostExecute(Long result) {// UI Thread
-        // TODO Auto-generated method stub
-        super.onPostExecute(result);
         if (null != mISum) {
             mISum.setResult(result);
         }
         Log.d(TAG, "onPostExecute: result=" + result + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+    }
+
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        Log.d(TAG, "onCancelled: thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+    }
+
+    @Override
+    protected void onCancelled(Long aLong) {
+        super.onCancelled(aLong);
+        Log.d(TAG, "onCancelled: aLong=" + aLong + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }
 }

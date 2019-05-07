@@ -5,14 +5,13 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.base.BaseActivity;
 
-public class TestConfigurationActivity extends AppCompatActivity {
+public class TestConfigurationActivity extends BaseActivity {
     private static final String TAG = TestConfigurationActivity.class.getSimpleName();
 
     private final String INSTANCE_STATE_KEY = "INSTANCE_STATE_KEY";
@@ -26,39 +25,53 @@ public class TestConfigurationActivity extends AppCompatActivity {
         setContentView(R.layout.res_configuration);
 
 
-        findViewById(R.id.printConfiguration).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                printConfiguration();
-            }
-        });
-
-
-        disableRotate();
+        findViewById(R.id.printConfiguration).setOnClickListener(v -> printConfiguration());
+        findViewById(R.id.switchConfiguration).setOnClickListener(v -> switchConfiguration());
+        findViewById(R.id.disableRotate).setOnClickListener(v -> disableRotate());
 
         mockDoHeavyWork();
     }
 
-    private void printConfiguration(){
-        // 获取系统的Configuration对象
+    /*
+    Configuration:
+     @fontScale=1.0  => Setting.app fontSize
+    ,@keyboard=2
+    ,@keyboardHidden=1
+    ,@locale=en_US
+    ,@mcc=310
+    ,@mnc=260
+    ,@navigation=1
+    ,@navigationHidden=2
+    ,@orientation=1
+    ,@touchscreen=3
+     */
+    private void printConfiguration() {
         Configuration configuration = getResources().getConfiguration();
-
-        Log.d(TAG, "printConfiguration:" +
-                " @fontScale=" + configuration.fontScale
-                + ",@keyboard="+configuration.keyboard
-                +",@keyboardHidden"+configuration.keyboardHidden
-                +",@locale"+configuration.locale.toString())
+        Log.d(TAG, "printConfiguration: Configuration:" + "\n"
+                + " @fontScale=" + configuration.fontScale + "\n"
+                + ",@keyboard=" + configuration.keyboard + "\n"
+                + ",@keyboardHidden=" + configuration.keyboardHidden + "\n"
+                + ",@locale=" + configuration.locale.toString() + "\n"
+                + ",@mcc=" + configuration.mcc + "\n"
+                + ",@mnc=" + configuration.mnc + "\n"
+                + ",@navigation=" + configuration.navigation + "\n"
+                + ",@navigationHidden=" + configuration.navigationHidden + "\n"
+                + ",@orientation=" + configuration.orientation + "\n"
+                + ",@touchscreen=" + configuration.touchscreen
+        )
         ;
+    }
 
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.locale.toString());
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.mcc);
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.mnc);
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.navigation);
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.navigationHidden);
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.orientation);
-        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.touchscreen);
-
-        Log.d(TAG, "onConfigurationChanged: " + configuration.orientation);
+    private void switchConfiguration() {
+        Configuration configuration = getResources().getConfiguration();
+        if (Configuration.ORIENTATION_LANDSCAPE == configuration.orientation) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            return;
+        }
+        if (Configuration.ORIENTATION_PORTRAIT == configuration.orientation) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            return;
+        }
     }
 
     private void disableRotate() {
@@ -111,14 +124,17 @@ public class TestConfigurationActivity extends AppCompatActivity {
         switch (newConfig.orientation) {
             case Configuration.ORIENTATION_LANDSCAPE:
                 Log.d(TAG, "onConfigurationChanged: ORIENTATION_LANDSCAPE");
+                showToast("Landscape");
                 break;
 
             case Configuration.ORIENTATION_PORTRAIT:
                 Log.d(TAG, "onConfigurationChanged: ORIENTATION_PORTRAIT");
+                showToast("Portrait");
                 break;
 
             case Configuration.ORIENTATION_UNDEFINED:
                 Log.d(TAG, "onConfigurationChanged: ORIENTATION_UNDEFINED");
+                showToast("Undefined:");
                 break;
         }
     }

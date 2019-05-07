@@ -15,7 +15,7 @@ import com.hades.example.android.lib.base.BaseFragment;
 public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     private static final String TAG = TestAsyncTaskTestFragment.class.getSimpleName();
 
-    ProgressBar progressBar = null;
+    ProgressBar progressBar;
     public TextView mResult;
     private SumAsyncTask mSumAsyncTask;
 
@@ -27,20 +27,25 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
         mResult = view.findViewById(R.id.result);
 
         view.findViewById(R.id.sum).setOnClickListener(v -> sum());
+        view.findViewById(R.id.cancel).setOnClickListener(v -> cancel());
         return view;
     }
 
     private void sum() {
-        mResult.setText("");
-        progressBar.setProgress(0);
 //        new SumAsyncTask().execute(5);
         /**
          * ERROR:
          * java.lang.IllegalStateException: Cannot execute task: the task has already been executed (a task can be executed only once)
          */
         mSumAsyncTask = new SumAsyncTask();
-        mSumAsyncTask.execute(5);
         mSumAsyncTask.setISum(this);
+        mSumAsyncTask.execute(100);
+    }
+
+    private void cancel() {
+        if (mSumAsyncTask != null) {
+            mSumAsyncTask.cancel(true);
+        }
     }
 
     /**
@@ -103,6 +108,14 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     }
 
     @Override
+    public void onPreExecute(String msg) {
+        showToast(msg);
+        mResult.setText("");
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgress(0);
+    }
+
+    @Override
     public void setProgress(int progress) {
         progressBar.setProgress(progress);
     }
@@ -110,5 +123,6 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     @Override
     public void setResult(long result) {
         mResult.setText(String.valueOf(result));
+        progressBar.setVisibility(View.GONE);
     }
 }

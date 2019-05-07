@@ -282,5 +282,6 @@
     <string name="listener_type_4_xml">xml onClick 属性 作为事件监听器</string>
     <string name="event_handler_base_on_callback">基于回调的事件处理</string>
     <string name="print_configuration">Print Configuration</string>
+    <string name="switch_configuration">switch configuration</string>
 
 </resources>

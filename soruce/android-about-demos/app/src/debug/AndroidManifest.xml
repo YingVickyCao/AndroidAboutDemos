@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageAActivity">
+        <activity android:name="._process_and_thread.TestBackgroundTasksActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
