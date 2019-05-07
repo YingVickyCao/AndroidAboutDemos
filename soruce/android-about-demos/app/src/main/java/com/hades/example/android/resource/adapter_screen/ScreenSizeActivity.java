@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.hades.example.android.R;
 
-
 public class ScreenSizeActivity extends Activity {
 
     @Override

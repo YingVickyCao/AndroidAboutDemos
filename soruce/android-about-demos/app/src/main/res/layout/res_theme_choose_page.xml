@@ -189,6 +189,14 @@
                 android:text="@string/selector_drawable" />
 
         </LinearLayout>
+
+        <View style="@style/div" />
+
+        <Button
+            style="@style/btn.small"
+            android:drawableEnd="@drawable/drawable_vector_4_vd"
+            android:text="Use attr for VectorDrawable" />
+
     </LinearLayout>
 
     <include

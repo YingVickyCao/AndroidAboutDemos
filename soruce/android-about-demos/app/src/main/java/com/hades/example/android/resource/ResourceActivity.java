@@ -10,7 +10,7 @@ import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
-import com.hades.example.android.resource.adapter_screen.DisableRotateActivity;
+import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.bitmap.TestBitmapMemoryAndScreenDensityFragment;
@@ -102,7 +102,7 @@ public class ResourceActivity extends PermissionActivity {
     }
 
     private void pageScreenOrientation() {
-        showActivity(DisableRotateActivity.class);
+        showActivity(TestConfigurationActivity.class);
     }
 
     private void pageScreenSize() {

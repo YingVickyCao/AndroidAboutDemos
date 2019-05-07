@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.TestCircleViewActivity">
+        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageAActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

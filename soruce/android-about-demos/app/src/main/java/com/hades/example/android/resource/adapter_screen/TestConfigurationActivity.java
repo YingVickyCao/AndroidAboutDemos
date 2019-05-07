@@ -5,14 +5,15 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 
-public class DisableRotateActivity extends AppCompatActivity {
-    private static final String TAG = DisableRotateActivity.class.getSimpleName();
+public class TestConfigurationActivity extends AppCompatActivity {
+    private static final String TAG = TestConfigurationActivity.class.getSimpleName();
 
     private final String INSTANCE_STATE_KEY = "INSTANCE_STATE_KEY";
     private Thread counter;
@@ -22,7 +23,45 @@ public class DisableRotateActivity extends AppCompatActivity {
         setTitle(R.string.activity_disable_Rotate);
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.res_configuration);
 
+
+        findViewById(R.id.printConfiguration).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printConfiguration();
+            }
+        });
+
+
+        disableRotate();
+
+        mockDoHeavyWork();
+    }
+
+    private void printConfiguration(){
+        // 获取系统的Configuration对象
+        Configuration configuration = getResources().getConfiguration();
+
+        Log.d(TAG, "printConfiguration:" +
+                " @fontScale=" + configuration.fontScale
+                + ",@keyboard="+configuration.keyboard
+                +",@keyboardHidden"+configuration.keyboardHidden
+                +",@locale"+configuration.locale.toString())
+        ;
+
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.locale.toString());
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.mcc);
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.mnc);
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.navigation);
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.navigationHidden);
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.orientation);
+        Log.d(TAG, "onConfigurationChanged: Configuration.fontScale=" + configuration.touchscreen);
+
+        Log.d(TAG, "onConfigurationChanged: " + configuration.orientation);
+    }
+
+    private void disableRotate() {
         // 禁止横竖屏转换，设置屏幕方向为竖屏
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -30,11 +69,15 @@ public class DisableRotateActivity extends AppCompatActivity {
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         // 手机时，竖屏； 平板时，允许转屏，允许重新创建Activity
-        //boolean isTablet = isTablet();
-        //Log.d(TAG, "onCreate: isTablet=" + isTablet);
-        //setRequestedOrientation(isTablet ? ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        boolean isTablet = isTablet();
+        Log.d(TAG, "onCreate: isTablet=" + isTablet);
+        setRequestedOrientation(isTablet ? ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
 
-        mockDoHeavyWork();
+    private boolean isTablet() {
+        String screen = getString(R.string.screen);
+        Log.d(TAG, "isTablet: screen=" + screen);
+        return ("xlarge-land".equalsIgnoreCase(screen) || "xlarge".equalsIgnoreCase(screen));
     }
 
     private void mockDoHeavyWork() {
@@ -61,16 +104,9 @@ public class DisableRotateActivity extends AppCompatActivity {
         counter.start();
     }
 
-    private boolean isTablet() {
-        String screen = getString(R.string.screen);
-        Log.d(TAG, "isTablet: screen=" + screen);
-        return ("xlarge-land".equalsIgnoreCase(screen) || "xlarge".equalsIgnoreCase(screen));
-    }
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.d(TAG, "onConfigurationChanged: " + newConfig.orientation);
 
         switch (newConfig.orientation) {
             case Configuration.ORIENTATION_LANDSCAPE:
@@ -119,7 +155,6 @@ public class DisableRotateActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //super.onSaveInstanceState(outState);
         Log.d(TAG, "onSaveInstanceState");
         outState.putString(INSTANCE_STATE_KEY, "test");
 
