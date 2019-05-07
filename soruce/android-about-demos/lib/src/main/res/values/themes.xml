@@ -41,9 +41,6 @@
         <!--   a secondary color for controls like checkboxes and text fields -->
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="color1">@android:color/holo_red_light</item>
-        <item name="color2">@android:color/holo_blue_bright</item>
-
         <item name="color3">@android:color/holo_orange_dark</item>
         <item name="color4">@android:color/holo_green_light</item>
 
@@ -78,6 +75,9 @@
         <item name="bg_0">@color/light_bg_0</item>
         <item name="m_0">@color/light_m_0</item>
         <item name="m_0_with_opacity">@color/light_m_0_opacity_30</item>
+
+        <item name="color1">@android:color/holo_red_light</item>
+        <item name="color2">@android:color/holo_blue_bright</item>
     </style>
 
     <style name="AppTheme.Dark">
@@ -89,6 +89,9 @@
         <item name="bg_0">@color/dark_bg_0</item>
         <item name="m_0">@color/dark_m_0</item>
         <item name="m_0_with_opacity">@color/dark_m_0_opacity_80</item>
+
+        <item name="color1">@android:color/holo_orange_dark</item>
+        <item name="color2">@android:color/holo_blue_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
 </resources>
