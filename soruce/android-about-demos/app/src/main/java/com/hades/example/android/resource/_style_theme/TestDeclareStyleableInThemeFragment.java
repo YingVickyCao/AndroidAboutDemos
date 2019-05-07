@@ -11,11 +11,11 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.ThemeBaseFragment;
 
-public class TestCustomViewFragment extends ThemeBaseFragment {
+public class TestDeclareStyleableInThemeFragment extends ThemeBaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_declare_styleable_in_custom_view, container, false);
+        View view = inflater.inflate(R.layout.res_theme_4_declare_styleable, container, false);
         view.findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
         view.findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
 

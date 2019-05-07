@@ -14,13 +14,13 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
-public class TestThemeAndStyleFragment extends BaseFragment {
-    private static final String TAG = TestThemeAndStyleFragment.class.getSimpleName();
+public class TestAttrInThemeFragment extends BaseFragment {
+    private static final String TAG = TestAttrInThemeFragment.class.getSimpleName();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_theme_and_style, container, false);
+        View view = inflater.inflate(R.layout.res_theme_4_attr, container, false);
 
         colorInIntegerArray(view);
         loadAttrFromStyle(view);

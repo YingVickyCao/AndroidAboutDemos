@@ -22,7 +22,7 @@ import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableF
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.MaterialFragment;
-import com.hades.example.android.resource._style_theme.TestThemeAndStyleFragment;
+import com.hades.example.android.resource._style_theme.TestAttrInThemeFragment;
 import com.hades.example.android.resource._style_theme.apply_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.xml.ParseXMLFragment;
 
@@ -86,7 +86,7 @@ public class ResourceActivity extends PermissionActivity {
     }
 
     private void pageThemeAndStyle() {
-        showFragment(new TestThemeAndStyleFragment());
+        showFragment(new TestAttrInThemeFragment());
     }
 
     private void pageInternationalization() {

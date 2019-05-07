@@ -31,7 +31,7 @@ import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
-import com.hades.example.android.resource._style_theme.TestStyleActivity;
+import com.hades.example.android.resource._style_theme.TestThemeActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
@@ -161,7 +161,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
     }
 
     private void pageCustomVew() {
-        showActivity(TestStyleActivity.class);
+        showActivity(TestThemeActivity.class);
     }
 
     private void pageRatingBar() {
