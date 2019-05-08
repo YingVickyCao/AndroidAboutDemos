@@ -24,6 +24,7 @@ public class TestAttrInThemeFragment extends BaseFragment {
 
         setTextColor(view);
         useStyle(view);
+
         return view;
     }
 
@@ -34,7 +35,7 @@ public class TestAttrInThemeFragment extends BaseFragment {
     }
 
     private void useStyle(View view) {
-        TextView result = view.findViewById(R.id.loadAttrFromStyle);
+        TextView result = view.findViewById(R.id.useStyle);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             result.setTextAppearance(R.style.GreenText_Large);
@@ -46,14 +47,14 @@ public class TestAttrInThemeFragment extends BaseFragment {
     private void setTextColor(View view) {
         TextView color1 = view.findViewById(R.id.color1);
         TextView color2 = view.findViewById(R.id.color2);
-        getIntArrayColors(R.array.colors_integer_array, color1, color2);
+        getTextColors(R.array.colors_integer_array, color1, color2);
 
         TextView color3 = view.findViewById(R.id.color3);
         TextView color4 = view.findViewById(R.id.color4);
-        getIntArrayColors(getAttr(), color3, color4);
+        getTextColors(getAttr(), color3, color4);
     }
 
-    private void getIntArrayColors(@ArrayRes int id, TextView color1, TextView color2) {
+    private void getTextColors(@ArrayRes int id, TextView color1, TextView color2) {
         /**
          * getResources().getIntArray()
          */

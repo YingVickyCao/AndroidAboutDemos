@@ -68,11 +68,15 @@
     </style>
 
     <style name="GreenText" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">#00FF00</item>
+        <item name="android:textColor">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="RedText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/holo_red_light</item>
     </style>
 
     <style name="GreenText2" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#00FF00</item>
+        <item name="android:textColor">@android:color/holo_green_dark</item>
     </style>
 
     <style name="GreenText.Large">

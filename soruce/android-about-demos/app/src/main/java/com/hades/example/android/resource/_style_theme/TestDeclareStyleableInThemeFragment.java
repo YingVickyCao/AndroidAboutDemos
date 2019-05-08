@@ -21,8 +21,7 @@ public class TestDeclareStyleableInThemeFragment extends ThemeBaseFragment {
 
         LinearLayout MyViewContainer = view.findViewById(R.id.MyViewContainer);
         MyView myView = new MyView(getActivity(), null, R.attr.MyViewStyle);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.size_80)
-                , (int) getResources().getDimension(R.dimen.size_80));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.size_80), (int) getResources().getDimension(R.dimen.size_80));
         myView.setLayoutParams(layoutParams);
         MyViewContainer.addView(myView);
         return view;
