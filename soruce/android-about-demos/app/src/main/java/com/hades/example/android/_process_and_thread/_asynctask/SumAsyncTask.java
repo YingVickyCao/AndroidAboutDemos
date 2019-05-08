@@ -3,7 +3,7 @@ package com.hades.example.android._process_and_thread._asynctask;
 import android.os.AsyncTask;
 import android.util.Log;
 
-class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
+public class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     private static final String TAG = SumAsyncTask.class.getSimpleName();
 
     private ISum mISum;
@@ -24,15 +24,6 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     }
 
     @Override
-    protected void onProgressUpdate(Integer... values) {// UI Thread
-        if (null != mISum) {
-            mISum.setProgress(values[0]);
-        }
-        Log.d(TAG, "onProgressUpdate: progress=" + values[0] + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
-    }
-
-
-    @Override
     protected Long doInBackground(Integer... params) {//work thread
         int max = params[0];
         long result = 0;
@@ -48,11 +39,19 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
                 e.printStackTrace();
             }
             int progress = (int) ((i / (float) max) * 100);
-            Log.d(TAG, "doInBackground: progress=" + progress + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName() + ",result=" + result);
+            Log.d(TAG, "doInBackground,SumAsyncTask@" + hashCode() + ",progress=" + progress + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName() + ",result=" + result);
             publishProgress(progress);
             result += i;
         }
         return result;
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {// UI Thread
+        if (null != mISum) {
+            mISum.setProgress(values[0]);
+        }
+        Log.d(TAG, "onProgressUpdate: progress=" + values[0] + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }
 
     @Override
@@ -64,13 +63,13 @@ class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     }
 
     @Override
-    protected void onCancelled() {
+    protected void onCancelled() {// UI Thread
         super.onCancelled();
         Log.d(TAG, "onCancelled: thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }
 
     @Override
-    protected void onCancelled(Long aLong) {
+    protected void onCancelled(Long aLong) {// UI Thread
         super.onCancelled(aLong);
         Log.d(TAG, "onCancelled: aLong=" + aLong + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
     }

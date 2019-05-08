@@ -39,7 +39,49 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
          */
         mSumAsyncTask = new SumAsyncTask();
         mSumAsyncTask.setISum(this);
-        mSumAsyncTask.execute(100);
+        // 串行
+        mSumAsyncTask.execute(10);
+        /*
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=10,thread id=3223,thread name=AsyncTask #1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=20,thread id=3223,thread name=AsyncTask #1,result=1
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=30,thread id=3223,thread name=AsyncTask #1,result=3
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=40,thread id=3223,thread name=AsyncTask #1,result=6
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=50,thread id=3223,thread name=AsyncTask #1,result=10
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=60,thread id=3223,thread name=AsyncTask #1,result=15
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=70,thread id=3223,thread name=AsyncTask #1,result=21
+         */
+
+
+        // 并行
+//        mSumAsyncTask.executeOnExecutor(Executors.newSingleThreadExecutor(), 10);
+        /*
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=10,thread id=3203,thread name=pool-1-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=20,thread id=3203,thread name=pool-1-thread-1,result=1
+            D/SumAsyncTask: doInBackground,SumAsyncTask@110942462,progress=10,thread id=3204,thread name=pool-2-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=30,thread id=3203,thread name=pool-1-thread-1,result=3
+         */
+
+        // 并行
+        //无限制的Executor
+//        mSumAsyncTask.executeOnExecutor(Executors.newCachedThreadPool(), 10);
+        /*
+            D/SumAsyncTask: doInBackground,SumAsyncTask@237993390,progress=10,thread id=2572,thread name=pool-4-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@85440335,progress=10,thread id=2573,thread name=pool-5-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@237993390,progress=20,thread id=2572,thread name=pool-4-thread-1,result=1
+            D/SumAsyncTask: doInBackground,SumAsyncTask@85440335,progress=20,thread id=2573,thread name=pool-5-thread-1,result=1
+         */
+
+
+        // 并行
+        //同时执行数目为10的Executor
+//        mSumAsyncTask.executeOnExecutor(Executors.newFixedThreadPool(10), 10);
+        /*
+            D/SumAsyncTask: doInBackground,SumAsyncTask@226398877,progress=10,thread id=2983,thread name=pool-1-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@33452818,progress=10,thread id=2984,thread name=pool-2-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@38972131,progress=10,thread id=2985,thread name=pool-3-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@198581472,progress=10,thread id=2986,thread name=pool-4-thread-1,result=0
+            D/SumAsyncTask: doInBackground,SumAsyncTask@204913561,progress=10,thread id=2987,thread name=pool-5-thread-1,result=0
+         */
     }
 
     private void cancel() {
