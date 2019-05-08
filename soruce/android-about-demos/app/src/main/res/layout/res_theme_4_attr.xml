@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_theme_and_style" />
+        android:text="@string/page_theme_attr" />
 
 
     <LinearLayout
@@ -82,14 +82,14 @@
             <TextView
                 android:id="@+id/color3"
                 style="@style/tv.small"
-                android:text="@string/color_1"
+                android:text="@string/color_3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/color4"
                 style="@style/tv.small"
-                android:text="@string/color_2"
+                android:text="@string/color_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

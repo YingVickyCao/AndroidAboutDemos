@@ -22,22 +22,35 @@ public class TestAttrInThemeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_theme_4_attr, container, false);
 
-        colorInIntegerArray(view);
-        loadAttrFromStyle(view);
+        setTextColor(view);
+        useStyle(view);
         return view;
     }
 
-    private void colorInIntegerArray(View view) {
+    private int getAttr() {
+        TypedValue typedValue = new TypedValue();
+        getContext().getTheme().resolveAttribute(R.attr.ColorsIntegerArray, typedValue, true);
+        return typedValue.resourceId;
+    }
+
+    private void useStyle(View view) {
+        TextView result = view.findViewById(R.id.loadAttrFromStyle);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            result.setTextAppearance(R.style.GreenText_Large);
+        } else {
+            result.setTextAppearance(getActivity(), R.style.GreenText_Large);
+        }
+    }
+
+    private void setTextColor(View view) {
         TextView color1 = view.findViewById(R.id.color1);
         TextView color2 = view.findViewById(R.id.color2);
         getIntArrayColors(R.array.colors_integer_array, color1, color2);
 
-        TypedValue typedValue = new TypedValue();
-        getActivity().getTheme().resolveAttribute(R.attr.ColorsIntegerArray, typedValue, true);
-        int resourceId = typedValue.resourceId;
         TextView color3 = view.findViewById(R.id.color3);
         TextView color4 = view.findViewById(R.id.color4);
-        getIntArrayColors(resourceId, color3, color4);
+        getIntArrayColors(getAttr(), color3, color4);
     }
 
     private void getIntArrayColors(@ArrayRes int id, TextView color1, TextView color2) {
@@ -46,16 +59,7 @@ public class TestAttrInThemeFragment extends BaseFragment {
          */
         int[] ints = getResources().getIntArray(id);
         color1.setBackgroundColor(ints[0]);
+
         color2.setBackgroundColor(ints[1]);
-    }
-
-    private void loadAttrFromStyle(View view) {
-        TextView result = view.findViewById(R.id.loadAttrFromStyle);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            result.setTextAppearance(R.style.GreenText_Large);
-        } else {
-            result.setTextAppearance(getActivity(), R.style.GreenText_Large);
-        }
     }
 }

@@ -22,6 +22,8 @@
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_switch_color_in_theme">Switch Color in Theme</string>
     <string name="page_theme_and_style">Theme and Style</string>
+    <string name="page_theme_attr">Theme - Attr</string>
+    <string name="page_theme_DeclareStyleable">Theme - DeclareStyleable</string>
     <string name="page_LevelListDrawable">Level List Drawable</string>
     <string name="page_bitmap_4_screen_density_and_drawable_memory">Bitmap - Screen density and drawable memory</string>
     <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
@@ -283,5 +285,7 @@
     <string name="event_handler_base_on_callback">基于回调的事件处理</string>
     <string name="print_configuration">Print Configuration</string>
     <string name="switch_configuration">switch configuration</string>
+    <string name="color_3">Color 3</string>
+    <string name="color_4">Color 4</string>
 
 </resources>
