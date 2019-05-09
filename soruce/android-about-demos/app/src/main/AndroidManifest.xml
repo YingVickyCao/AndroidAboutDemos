@@ -159,9 +159,11 @@
         <activity android:name=".resource.adapter_screen.DipTestActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
+        <!--android:configChanges="screenSize|orientation"-->
         <activity
             android:name=".resource.adapter_screen.TestConfigurationActivity"
-            android:configChanges="screenSize|orientation"/>
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
         <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageAActivity" />
         <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageBActivity" />
         <activity

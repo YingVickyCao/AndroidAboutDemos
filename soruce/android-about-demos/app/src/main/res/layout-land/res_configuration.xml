@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_Configuration" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/printConfiguration"
+            style="@style/btn.small.red"
+            android:text="@string/print_configuration" />
+
+        <Button
+            android:id="@+id/switchConfiguration"
+            style="@style/btn.small.red"
+            android:text="@string/switch_configuration" />
+
+        <Button
+            android:id="@+id/disableRotate"
+            style="@style/btn.small.red"
+            android:text="Disable rotate" />
+    </LinearLayout>
+
+</RelativeLayout>
