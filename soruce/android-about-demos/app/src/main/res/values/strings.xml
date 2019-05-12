@@ -7,6 +7,8 @@
     <string name="page_activity">Activity</string>
     <string name="page_activity_save_and_restore_state">Saving and restoring transient UI state</string>
     <string name="page_activity_ExpandableListActivity">ExpandableListActivity</string>
+    <string name="page_activity_LauncherActivity">LauncherActivity</string>
+    <string name="page_activity_start_and_finish">Start Activity and Finish Activity</string>
 
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
@@ -290,5 +292,6 @@
     <string name="color_3">Color 3</string>
     <string name="color_4">Color 4</string>
     <string name="no_data">No data</string>
+    <string name="close">Close</string>
 
 </resources>
