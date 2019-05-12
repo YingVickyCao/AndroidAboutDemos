@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="activity_book_list" type="layout">@layout/activity_book_single_pane</item>
+</resources>

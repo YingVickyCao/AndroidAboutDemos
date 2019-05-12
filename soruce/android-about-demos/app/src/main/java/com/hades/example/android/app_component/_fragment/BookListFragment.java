@@ -43,4 +43,8 @@ public class BookListFragment extends ListFragment {
         super.onListItemClick(listView, view, position, id);
         mCallbacks.onItemSelected(BookContent.BOOK_ITEMS.get(position).id);
     }
+
+    void setActivateOnItemClick(boolean activateOnItemClick) {
+        getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
+    }
 }
