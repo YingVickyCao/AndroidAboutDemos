@@ -11,9 +11,7 @@ public class Prefs2Fragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.display_prefs);
-        // 获取传入该Fragment的参数
         String website = getArguments().getString("website");
-        Toast.makeText(getActivity()
-                , "网站域名是：" + website, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "网站域名是：" + website, Toast.LENGTH_LONG).show();
     }
 }

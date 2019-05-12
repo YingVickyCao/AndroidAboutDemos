@@ -61,6 +61,8 @@
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
         <activity android:name=".app_component._activity._children.TestExpandableListActivity" />
 
+        <activity android:name=".app_component._fragment.TestFragmentActivity" />
+
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"
             android:authorities=".app_component.cp.dict.DictContentProvider"

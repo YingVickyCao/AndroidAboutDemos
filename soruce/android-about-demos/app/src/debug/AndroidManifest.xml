@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".app_component._activity._launch_mode.D">
+        <activity android:name=".app_component._fragment.TestFragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
