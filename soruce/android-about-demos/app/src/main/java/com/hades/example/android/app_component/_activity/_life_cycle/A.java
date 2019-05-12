@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity._life_cycle;
+package com.hades.example.android.app_component._activity._life_cycle;
 
 import android.content.Intent;
 import android.content.res.Configuration;

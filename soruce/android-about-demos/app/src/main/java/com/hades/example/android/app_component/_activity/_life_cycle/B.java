@@ -1,17 +1,19 @@
-package com.hades.example.android.app_component.activity._life_cycle;
+package com.hades.example.android.app_component._activity._life_cycle;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.hades.example.android.R;
 
 
-public class FloatB extends Activity {
-    private static final String TAG = FloatB.class.getSimpleName();
+public class B extends AppCompatActivity {
+    private static final String TAG = B.class.getSimpleName();
+    private Thread counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +21,13 @@ public class FloatB extends Activity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
 
-        setContentView(R.layout.activity_lifecycle_float_b_layout);
+        setContentView(R.layout.activity_lifecycle_b_layout);
         findViewById(R.id.openB).setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(FloatB.this, C.class);
+                intent.setClass(B.this, C.class);
                 intent.putExtra("time", System.currentTimeMillis());
                 startActivity(intent);
             }
@@ -50,6 +52,7 @@ public class FloatB extends Activity {
         // TODO Auto-generated method stub
         super.onResume();
         Log.d(TAG, "onResume");
+        //testIfThreadStillRunningOnDestroy();
     }
 
     @Override
@@ -80,5 +83,22 @@ public class FloatB extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy: ");
+    }
+
+    private void testIfThreadStillRunningOnDestroy() {
+        counter = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 1000; i++) {
+                    Log.d(TAG, "run: i=" + i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        counter.start();
     }
 }

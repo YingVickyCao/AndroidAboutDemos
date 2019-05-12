@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity._children;
+package com.hades.example.android.app_component._activity._children;
 
 import android.app.LauncherActivity;
 import android.content.Intent;

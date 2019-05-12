@@ -1,34 +1,41 @@
-package com.hades.example.android.app_component.activity._life_cycle;
+package com.hades.example.android.app_component._activity._life_cycle;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.hades.example.android.R;
 
-public class C extends AppCompatActivity {
-    private static final String TAG = "C";
+
+public class FloatB extends Activity {
+    private static final String TAG = FloatB.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lifecycle_c_layout);
+        Log.d(TAG, "onCreate: ");
+
+        setContentView(R.layout.activity_lifecycle_float_b_layout);
         findViewById(R.id.openB).setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(C.this, A.class);
+                intent.setClass(FloatB.this, C.class);
                 intent.putExtra("time", System.currentTimeMillis());
                 startActivity(intent);
             }
         });
-        Log.d(TAG, "onCreate");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
     }
 
     @Override
@@ -55,5 +62,23 @@ public class C extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(TAG, "onRestoreInstanceState");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
 }

@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity;
+package com.hades.example.android.app_component._activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

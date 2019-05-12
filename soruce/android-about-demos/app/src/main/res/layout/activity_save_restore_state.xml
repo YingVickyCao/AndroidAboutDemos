@@ -13,7 +13,7 @@
         android:layout_centerInParent="true"
         android:background="@android:color/holo_red_dark" />
 
-    <com.hades.example.android.app_component.activity.MyTextView
+    <com.hades.example.android.app_component._activity.MyTextView
         android:id="@+id/customTextView"
         android:layout_width="match_parent"
         android:layout_height="100dp"

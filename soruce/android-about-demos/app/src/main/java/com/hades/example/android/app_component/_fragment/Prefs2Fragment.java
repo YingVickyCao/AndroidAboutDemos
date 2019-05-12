@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity._fragment;
+package com.hades.example.android.app_component._fragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;

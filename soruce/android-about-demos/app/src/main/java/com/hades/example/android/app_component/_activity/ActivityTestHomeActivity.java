@@ -1,11 +1,11 @@
-package com.hades.example.android.app_component.activity;
+package com.hades.example.android.app_component._activity;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component.activity._life_cycle.A;
+import com.hades.example.android.app_component._activity._life_cycle.A;
 import com.hades.example.android.resource.adapter_screen.TestSaveAndRestoreStateActivity;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 

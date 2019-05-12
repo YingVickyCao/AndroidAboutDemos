@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity._launch_modes;
+package com.hades.example.android.app_component._activity._launch_modes;
 
 import android.app.Activity;
 import android.content.Intent;
