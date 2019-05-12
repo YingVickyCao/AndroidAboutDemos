@@ -18,7 +18,8 @@ public class BookDetailActivity extends AppCompatActivity {
 
             BookDetailFragment fragment = new BookDetailFragment();
             fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction().add(R.id.book_detail_container, fragment).commit();
+//            getSupportFragmentManager().beginTransaction().add(R.id.book_detail_container, fragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.book_detail_container, fragment).addToBackStack(BookDetailFragment.class.getSimpleName()).commit();
         }
     }
 }

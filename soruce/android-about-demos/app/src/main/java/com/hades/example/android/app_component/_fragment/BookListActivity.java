@@ -34,7 +34,8 @@ public class BookListActivity extends AppCompatActivity implements BookListFragm
                 arguments.putInt(BookDetailFragment.ITEM_ID, id);
                 fragment.setArguments(arguments);
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.book_detail_container, fragment).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.book_detail_container, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.book_detail_container, fragment).addToBackStack(BookDetailFragment.class.getSimpleName()).commit();
             } else {
                 if (fragment instanceof BookDetailFragment) {
                     ((BookDetailFragment) fragment).setBook(BookContent.ITEM_MAP.get(id));
