@@ -12,6 +12,7 @@
         android:id="@+id/book_list"
         android:name="com.hades.example.android.app_component._fragment.BookListFragment"
         android:layout_width="0dp"
+        android:tag="com.hades.example.android.app_component._fragment.BookListFragment"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
