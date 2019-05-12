@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.activity._sate;
+package com.hades.example.android.resource.adapter_screen;
 
 import android.app.Activity;
 import android.os.Bundle;

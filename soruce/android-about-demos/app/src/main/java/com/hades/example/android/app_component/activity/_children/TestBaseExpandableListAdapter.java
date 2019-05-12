@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.hades.example.android.R;
 
 public class TestBaseExpandableListAdapter extends BaseExpandableListAdapter {
-    Context mContext;
+    private Context mContext;
 
-    int[] groupLogos = new int[]{
+    private int[] groupLogos = new int[]{
             R.drawable.ic_dashboard_black_24dp,
             R.drawable.ic_notifications_black_24dp,
             R.drawable.ic_home_black_24dp
@@ -30,7 +30,7 @@ public class TestBaseExpandableListAdapter extends BaseExpandableListAdapter {
             {"Dog", "Cat"}
     };
 
-    public TestBaseExpandableListAdapter(Context context) {
+    TestBaseExpandableListAdapter(Context context) {
         mContext = context;
     }
 
