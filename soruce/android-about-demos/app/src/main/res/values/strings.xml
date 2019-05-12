@@ -9,6 +9,7 @@
     <string name="page_activity_ExpandableListActivity">ExpandableListActivity</string>
     <string name="page_activity_LauncherActivity">LauncherActivity</string>
     <string name="page_activity_start_and_finish">Start Activity and Finish Activity</string>
+    <string name="page_activity_LaunchMode">LaunchMode</string>
 
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
@@ -296,5 +297,7 @@
     <string name="close">Close</string>
     <string name="return_result">Return result</string>
     <string name="jump_then_finish">Jump, then Finish</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
 
 </resources>

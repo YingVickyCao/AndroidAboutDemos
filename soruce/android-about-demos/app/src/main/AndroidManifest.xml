@@ -38,6 +38,10 @@
         <activity android:name=".app_component._activity.TestActivityActivity" />
         <activity android:name=".app_component._activity._start_close.AActivity" />
         <activity android:name=".app_component._activity._start_close.BActivity" />
+        <activity
+            android:name=".app_component._activity._launch_mode.D"
+            android:launchMode="singleTask" />
+        <activity android:name=".app_component._activity._launch_mode.E" />
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component._activity._life_cycle.A"
@@ -52,8 +56,6 @@
 
         <activity android:name=".app_component._activity._life_cycle.C" />
         <activity android:name=".app_component._activity.GetViewSizeInOncreateActivity" />
-        <activity android:name=".app_component._activity._launch_modes.DActivity" />
-        <activity android:name=".app_component._activity._launch_modes.EActivity" />
 
         <activity android:name=".app_component._activity._children.TestLauncherActivity" />
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
