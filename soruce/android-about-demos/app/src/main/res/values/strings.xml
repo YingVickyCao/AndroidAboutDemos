@@ -256,6 +256,7 @@
     <!-- Formatting strings,end -->
     <string name="a">A</string>
     <string name="b">B</string>
+    <string name="b_for_result">B for result</string>
     <string name="center">Center</string>
     <string name="color_1">Color 1</string>
     <string name="color_2">Color 2</string>
@@ -293,5 +294,7 @@
     <string name="color_4">Color 4</string>
     <string name="no_data">No data</string>
     <string name="close">Close</string>
+    <string name="return_result">Return result</string>
+    <string name="jump_then_finish">Jump, then Finish</string>
 
 </resources>

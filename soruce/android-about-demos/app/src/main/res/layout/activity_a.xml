@@ -14,10 +14,21 @@
         android:text="@string/a"
         android:textColor="@android:color/holo_green_dark" />
 
-    <Button
-        android:id="@+id/pageB"
-        style="@style/btn.small"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/b" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/pageB"
+            style="@style/btn.small"
+            android:text="@string/b" />
+
+        <Button
+            android:id="@+id/pageBForResult"
+            style="@style/btn.small"
+            android:text="@string/b_for_result" />
+    </LinearLayout>
 </RelativeLayout>
