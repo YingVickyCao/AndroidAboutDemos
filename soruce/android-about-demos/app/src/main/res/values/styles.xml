@@ -79,8 +79,18 @@
         <item name="android:textColor">@android:color/holo_green_dark</item>
     </style>
 
+    <style name="OrangeText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/holo_orange_dark</item>
+    </style>
+
     <style name="GreenText.Large">
         <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="GreenText.Child" parent="RedText" />
+
+    <style name="GreenText.Child2" parent="OrangeText">
+        <item name="android:textColor">@android:color/holo_blue_bright</item>
     </style>
 
     <style name="ConstrainLayoutStyle">

@@ -47,10 +47,15 @@
         <activity
             android:name=".app_component.activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
+
         <activity android:name=".app_component.activity._life_cycle.C" />
         <activity android:name=".app_component.activity.GetViewSizeInOncreateActivity" />
         <activity android:name=".app_component.activity._launch_modes.DActivity" />
         <activity android:name=".app_component.activity._launch_modes.EActivity" />
+
+        <activity android:name=".app_component.activity._children.TestLauncherActivity" />
+        <activity android:name=".app_component.activity._children.TestPreferenceActivity" />
+        <activity android:name=".app_component.activity._children.TestExpandableListActivity" />
 
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"

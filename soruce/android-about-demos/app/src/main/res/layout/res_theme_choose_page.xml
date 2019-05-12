@@ -23,21 +23,35 @@
                 style="@style/GreenText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@string/green_text"
+                android:text="@string/text"
                 android:textAllCaps="false" />
 
             <Button
                 style="@style/GreenText2"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@string/green_text"
+                android:text="@string/text"
                 android:textAllCaps="false" />
 
             <Button
                 style="@style/GreenText.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@string/green_text"
+                android:text="@string/text"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/GreenText.Child"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/text"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/GreenText.Child2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/text"
                 android:textAllCaps="false" />
         </LinearLayout>
 

@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".resource.adapter_screen.TestConfigurationActivity">
+        <activity android:name=".app_component.activity._children.TestLauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
