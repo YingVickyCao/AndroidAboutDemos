@@ -57,6 +57,9 @@
 
         <item name="ColorsIntegerArray">@array/colors_integer_array</item>
         <!-- Custom View, end -->
+
+        <!-- layout color -->
+        <!--<item name="android:windowBackground">@android:color/holo_blue_bright</item>-->
     </style>
 
     <style name="AppTheme.FullScreen">

@@ -4,7 +4,7 @@
 
     <color name="message_list_item_background_unread">#ff274172</color>
 
-    <color name="grid_state_pressed">#1Affffff</color>
+    <color name="grid_state_pressed">#80FFFFFF</color>
     <color name="grid_state_focused">#80000000</color>
 
     <color name="btn_default_normal_holo_light">#E91E63</color>

@@ -41,6 +41,8 @@
         <activity
             android:name=".app_component._activity._launch_mode.D"
             android:launchMode="singleTask" />
+        <activity android:name=".app_component._intent_and_intent_filter._component.FirstActivity" />
+        <activity android:name=".app_component._intent_and_intent_filter._component.SecondActivity" />
         <activity android:name=".app_component._activity._launch_mode.E" />
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
