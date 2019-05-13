@@ -3,11 +3,14 @@ package com.hades.example.android.app_component._intent_and_intent_filter._compo
 import android.app.Activity;
 import android.content.ComponentName;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
 
 public class SecondActivity extends Activity {
+    private static final String TAG = SecondActivity.class.getSimpleName();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +21,8 @@ public class SecondActivity extends Activity {
             return;
         }
         TextView show = findViewById(R.id.show);
-        show.setText("PackageName：" + comp.getPackageName() + "\nClassName：" + comp.getClassName());
+        String str = "PackageName：" + comp.getPackageName() + "\nClassName：" + comp.getClassName();
+        Log.d(TAG, "onCreate: " + str);
+        show.setText(str);
     }
 }
