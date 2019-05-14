@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_Intent_and_Intent_Filter_action_and_category" />
+
+    <TextView
+        android:id="@+id/page"
+        style="@style/tv.small"
+        android:layout_centerInParent="true"
+        android:background="@android:color/holo_red_light"
+        android:minWidth="@dimen/size_45"
+        android:minHeight="@dimen/size_45"
+        android:text="B" />
+
+    <TextView
+        android:id="@+id/show"
+        style="@style/tv"
+        android:layout_alignParentBottom="true"
+        android:gravity="start" />
+</RelativeLayout>
