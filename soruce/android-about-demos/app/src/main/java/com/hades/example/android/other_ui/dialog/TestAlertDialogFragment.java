@@ -1,6 +1,7 @@
 package com.hades.example.android.other_ui.dialog;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -35,11 +36,12 @@ public class TestAlertDialogFragment extends BaseFragment {
         view.findViewById(R.id.multiChoice).setOnClickListener(this::multiChoice);
         view.findViewById(R.id.customList).setOnClickListener(this::customList);
         view.findViewById(R.id.customView).setOnClickListener(this::customView);
+        view.findViewById(R.id.customView_style).setOnClickListener(v -> customView_style());
         return view;
     }
 
     public void simple(View source) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext(), R.style.CustomAlertDialogStyle)
+        AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext(), R.style.AlertDialogStyle)
                 .setTitle("简单对话框")
 //                .setCustomTitle()
                 .setIcon(R.drawable.tools)
@@ -161,6 +163,33 @@ public class TestAlertDialogFragment extends BaseFragment {
                 .show();
     }
 
+    private void customView_style() {
+        View customView = LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_alertdialog_4_shadow_color, null);
+
+//        new AlertDialog.Builder(getUsedContext(), R.style.CustomAlertDialogStyle2)
+        Dialog dialog =
+                new AlertDialog.Builder(getUsedContext(), R.style.AlertDialogStyle)
+                        .setIcon(R.drawable.tools)
+                        .setTitle("自定义View对话框")
+                        // 设置对话框显示的View对象
+                        .setView(customView)
+//                .setPositiveButton("登录", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // 此处可执行登录处理
+//                    }
+//                })
+//                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // 取消登录，不做任何事情
+//                    }
+//                })
+                        // 创建并显示对话框
+                        .create();
+        dialog.show();
+    }
+
     private AlertDialog.Builder setPositiveButton(AlertDialog.Builder builder) {
         return builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
@@ -183,5 +212,4 @@ public class TestAlertDialogFragment extends BaseFragment {
     private Context getUsedContext() {
         return getActivity();
     }
-
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark">
+
+    <LinearLayout
+        android:id="@+id/dialogRoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:minWidth="200dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:minHeight="@dimen/size_45"
+            android:text="@string/a" />
+
+        <TextView
+            style="@style/tv"
+            android:minHeight="@dimen/size_45"
+            android:text="@string/b" />
+
+        <TextView
+            style="@style/tv"
+            android:minHeight="@dimen/size_45"
+            android:text="@string/c" />
+    </LinearLayout>
+
+</RelativeLayout>
