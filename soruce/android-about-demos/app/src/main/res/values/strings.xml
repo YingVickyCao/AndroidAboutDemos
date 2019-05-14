@@ -11,6 +11,7 @@
     <string name="page_activity_start_and_finish">Start Activity and Finish Activity</string>
     <string name="page_activity_LaunchMode">LaunchMode</string>
     <string name="page_Intent_and_Intent_Filter_Component">Intent and Intent-Filter - Component:\nUse Component start application 组件</string>
+    <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
 
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
@@ -263,6 +264,9 @@
     <!-- Formatting strings,end -->
     <string name="a">A</string>
     <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
     <string name="b_for_result">B for result</string>
     <string name="center">Center</string>
     <string name="color_1">Color 1</string>
@@ -303,7 +307,5 @@
     <string name="close">Close</string>
     <string name="return_result">Return result</string>
     <string name="jump_then_finish">Jump, then Finish</string>
-    <string name="d">D</string>
-    <string name="e">E</string>
 
 </resources>

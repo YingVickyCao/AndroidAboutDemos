@@ -11,11 +11,13 @@
     <color name="dark_m_0">#171A1C</color>
     <color name="dark_m_0_opacity_80">#cc171a1c</color>
 
+
     <color name="light_bg_0">#fff</color>
     <color name="light_m_0">#abb4ba</color>
     <color name="light_m_0_opacity_30">#4Dabb4ba</color>
     <color name="light_m_1">#ff0000</color>
     <color name="light_m_1_opacity_30">#4Dff0000</color>
+    <color name="light_shadow">#26FF0000</color>
 
     <integer-array name="colors_integer_array">
         <item>0xFFFF0000</item>
