@@ -29,6 +29,7 @@ public class A extends AppCompatActivity {
         findViewById(R.id.action1_categoryDefault).setOnClickListener(v -> action1_categoryDefault());
         findViewById(R.id.action1_category3).setOnClickListener(v -> action1_category3());
         findViewById(R.id.action1_category2).setOnClickListener(v -> action1_category2());
+        findViewById(R.id.action3_categoryDefault).setOnClickListener(v -> action3_categoryDefault());
     }
 
     private void action0() {
@@ -174,6 +175,21 @@ public class A extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction(B.ACTION_1);
         intent.addCategory(B.CATEGORY_2);
+
+        startActivity(intent);
+    }
+
+    /*
+        FIXED_ERROR:
+        android.content.ActivityNotFoundException: No Activity found to handle Intent {
+            act=com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.ACTION_3
+            cat=[android.intent.category.DEFAULT]
+        }
+     */
+    private void action3_categoryDefault(){
+        Intent intent = new Intent();
+        intent.setAction(C.ACTION_3);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
 
         startActivity(intent);
     }

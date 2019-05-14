@@ -84,6 +84,11 @@
                 android:id="@+id/action1_category2"
                 style="@style/btn.small"
                 android:text="Action1 , Category2" />
+
+            <Button
+                android:id="@+id/action3_categoryDefault"
+                style="@style/btn.small"
+                android:text="Action3 , Category Default" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
