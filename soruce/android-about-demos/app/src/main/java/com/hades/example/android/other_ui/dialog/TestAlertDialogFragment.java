@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
-public class AlertDialogFragment extends BaseFragment {
+public class TestAlertDialogFragment extends BaseFragment {
 
     TextView mShow;
     String[] items = new String[]{"A", "B", "C", "D"};
@@ -29,7 +29,8 @@ public class AlertDialogFragment extends BaseFragment {
         mShow = view.findViewById(R.id.tableContentList);
 
         view.findViewById(R.id.simple).setOnClickListener(this::simple);
-        view.findViewById(R.id.simpleList).setOnClickListener(this::simpleList);
+        view.findViewById(R.id.simple_with_style).setOnClickListener(v -> simple_with_style());
+        view.findViewById(R.id.simpleList).setOnClickListener(source -> simpleList());
         view.findViewById(R.id.singleChoice).setOnClickListener(this::singleChoice);
         view.findViewById(R.id.multiChoice).setOnClickListener(this::multiChoice);
         view.findViewById(R.id.customList).setOnClickListener(this::customList);
@@ -38,10 +39,12 @@ public class AlertDialogFragment extends BaseFragment {
     }
 
     public void simple(View source) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
+        AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext(), R.style.CustomAlertDialogStyle)
                 .setTitle("简单对话框")
 //                .setCustomTitle()
                 .setIcon(R.drawable.tools)
+                .setNeutralButton("Neutral", null)
+                .setPositiveButton("Confirm", (dialog, which) -> mShow.setText("Clicked Confirm btn"))
                 .setMessage("对话框的测试内容\n第二行内容");
         setPositiveButton(builder);
         setNegativeButton(builder)
@@ -49,7 +52,21 @@ public class AlertDialogFragment extends BaseFragment {
                 .show();
     }
 
-    public void simpleList(View source) {
+    private void simple_with_style() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
+                .setTitle("简单对话框")
+//                .setCustomTitle()
+                .setIcon(R.drawable.tools)
+                .setNeutralButton("Neutral", null)
+                .setPositiveButton("Confirm", (dialog, which) -> mShow.setText("Clicked Confirm btn"))
+                .setMessage("对话框的测试内容\n第二行内容");
+        setPositiveButton(builder);
+        setNegativeButton(builder)
+                .create()
+                .show();
+    }
+
+    public void simpleList() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
                 .setTitle("简单列表对话框")
                 .setIcon(R.drawable.tools)

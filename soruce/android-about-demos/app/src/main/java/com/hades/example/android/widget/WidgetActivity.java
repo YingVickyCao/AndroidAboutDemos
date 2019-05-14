@@ -8,12 +8,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.other_ui.TestPopupWindowFragment;
-import com.hades.example.android.other_ui.dialog.AlertDialogFragment;
-import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
-import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
-import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
-import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
+import com.hades.example.android.resource._style_theme.TestThemeActivity;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
@@ -31,7 +26,6 @@ import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
-import com.hades.example.android.resource._style_theme.TestThemeActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
@@ -88,12 +82,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(v -> testDatePickerAndTimePicker());
         findViewById(R.id.testNumberPicker).setOnClickListener(v -> testNumberPicker());
         findViewById(R.id.testSearchView).setOnClickListener(v -> testSearchView());
-        findViewById(R.id.testAlertDialog).setOnClickListener(v -> testAlertDialog());
-        findViewById(R.id.testDialogStyleActivity).setOnClickListener(v -> testDialogStyleActivity());
-        findViewById(R.id.testProgressDialog).setOnClickListener(v -> testProgressDialog());
-        findViewById(R.id.testDatePickerDialog).setOnClickListener(v -> testDatePickerDialog());
-        findViewById(R.id.testTimePickerDialog).setOnClickListener(v -> testTimePickerDialog());
-        findViewById(R.id.testPopupWindow).setOnClickListener(v -> testPopupWindow());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
@@ -222,30 +210,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void testSearchView() {
         showFragment(SearchViewFragment.newInstance());
-    }
-
-    private void testAlertDialog() {
-        showFragment(new AlertDialogFragment());
-    }
-
-    private void testDialogStyleActivity() {
-        showActivity(DialogStyleActivity.class);
-    }
-
-    private void testProgressDialog() {
-        showFragment(new ProgressDialogFragment());
-    }
-
-    private void testDatePickerDialog() {
-        showFragment(new DateTimePickerDialogFragment());
-    }
-
-    private void testTimePickerDialog() {
-        showFragment(new TimePickerDialogFragment());
-    }
-
-    private void testPopupWindow() {
-        showFragment(new TestPopupWindowFragment());
     }
 
     private void pageSpinner() {

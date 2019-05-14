@@ -23,7 +23,7 @@
             <Button
                 android:id="@+id/pageNotification"
                 style="@style/btn.small"
-                android:text="@string/test_Notification" />
+                android:text="@string/page_Notification" />
 
             <Button
                 android:id="@+id/pageToast"
@@ -39,6 +39,31 @@
                 android:id="@+id/pagePopupWindow"
                 style="@style/btn.small"
                 android:text="@string/page_PopupWindow" />
+
+            <Button
+                android:id="@+id/pageAlertDialog"
+                style="@style/btn.small"
+                android:text="@string/page_AlertDialog" />
+
+            <Button
+                android:id="@+id/pageDialogStyleActivity"
+                style="@style/btn.small"
+                android:text="@string/page_dialog_style_activity" />
+
+            <Button
+                android:id="@+id/pageProgressDialog"
+                style="@style/btn.small"
+                android:text="@string/page_ProgressDialog" />
+
+            <Button
+                android:id="@+id/pageDatePickerDialog"
+                style="@style/btn.small"
+                android:text="@string/page_DatePickerDialog" />
+
+            <Button
+                android:id="@+id/pageTimePickerDialog"
+                style="@style/btn.small"
+                android:text="@string/page_TimePickerDialog" />
         </LinearLayout>
     </ScrollView>
 

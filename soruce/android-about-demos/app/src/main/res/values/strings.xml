@@ -80,6 +80,11 @@
     <string name="page_BottomNavigationView">BottomNavigationView</string>
     <string name="page_ViewPager_PagerTitleStrip">ViewPager +PagerTitleStrip = Swipe Page Tab</string>
     <string name="page_PopupWindow">PopupWindow</string>
+    <string name="page_AlertDialog">AlertDialog</string>
+    <string name="page_dialog_style_activity">Dialog style activity</string>
+    <string name="page_ProgressDialog">ProgressDialog</string>
+    <string name="page_DatePickerDialog">DatePickerDialog</string>
+    <string name="page_TimePickerDialog">TimePickerDialog</string>
 
     <string name="page_Android_Event_handler">Android事件处理</string>
     <string name="page_Configuration">Configuration</string>

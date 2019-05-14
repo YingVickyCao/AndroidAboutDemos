@@ -171,36 +171,6 @@
                 android:text="@string/test_SearchView" />
 
             <Button
-                android:id="@+id/testAlertDialog"
-                style="@style/btn.small"
-                android:text="@string/test_AlertDialog" />
-
-            <Button
-                android:id="@+id/testDialogStyleActivity"
-                style="@style/btn.small"
-                android:text="@string/test_dialog_style_activity" />
-
-            <Button
-                android:id="@+id/testProgressDialog"
-                style="@style/btn.small"
-                android:text="@string/test_ProgressDialog" />
-
-            <Button
-                android:id="@+id/testDatePickerDialog"
-                style="@style/btn.small"
-                android:text="@string/test_DatePickerDialog" />
-
-            <Button
-                android:id="@+id/testTimePickerDialog"
-                style="@style/btn.small"
-                android:text="@string/test_TimePickerDialog" />
-
-            <Button
-                android:id="@+id/testPopupWindow"
-                style="@style/btn.small"
-                android:text="@string/test_PopupWindow" />
-
-            <Button
                 android:id="@+id/pageSpinner"
                 style="@style/btn.small"
                 android:text="@string/page_spinner" />

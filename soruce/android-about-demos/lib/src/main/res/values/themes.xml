@@ -60,6 +60,8 @@
 
         <!-- layout color -->
         <!--<item name="android:windowBackground">@android:color/holo_blue_bright</item>-->
+
+        <!--<item name="android:windowContentOverlay">@android:color/holo_blue_bright</item>-->
     </style>
 
     <style name="AppTheme.FullScreen">
@@ -97,4 +99,69 @@
         <item name="color2">@android:color/holo_blue_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
+
+    <style name="CustomAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+        <!-- ?attr/colorBackgroundFloating =  @android:color/white
+            colorBackgroundCacheHint，not work
+         -->
+        <!--<item name="android:colorBackground">?attr/colorBackgroundFloating</item>-->
+        <!--<item name="android:colorBackground">@android:color/holo_blue_bright</item>-->
+
+        <!-- colorBackgroundCacheHint not work -->
+        <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
+        <item name="android:colorBackgroundCacheHint">@android:color/holo_blue_bright</item>
+
+        <!-- 类似于foreground，设置后，dialog content 被盖住 -->
+        <item name="android:windowFrame">@null</item>
+        <!--<item name="android:windowFrame">@android:color/holo_blue_bright</item>-->
+
+        <item name="android:windowTitleStyle">@style/RtlOverlay.DialogWindowTitle.AppCompat</item>
+        <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
+
+        <!-- false:big view.
+             true: small view. == content
+             -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- true:  允许dialog背后的背景变暗
+             false: 不允许dialog背后的背景变暗 =>Depressed：没有层次感
+         -->
+        <item name="android:backgroundDimEnabled">true</item>"
+
+        <!--This Drawable is overlaid over the foreground of the Window's content area, usually to place a shadow below the title.
+            对Dialog 不起作用，对AppCompatActivity的 titlebar 起作用
+            当AppCompatActivity时，titlebar下方会有一条很细的蓝色分割线
+        -->
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="listPreferredItemPaddingLeft">24dip</item>
+        <item name="listPreferredItemPaddingRight">24dip</item>
+
+        <item name="android:listDivider">@null</item>
+
+        <item name="android:buttonBarStyle">@style/Widget.AppCompat.ButtonBar.AlertDialog</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
+        <!--buttons color-->
+        <item name="colorAccent">@android:color/holo_purple</item>
+
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@android:color/holo_red_light</item>
+
+        <!--dialog background-->
+        <!--<item name="android:windowBackground">@drawable/abc_dialog_material_background</item>-->
+        <item name="android:windowBackground">@drawable/background_dialog</item>
+
+        <!-- != android:windowBackground
+            设置后。dialog content 的所有view 均设置 background。因此，一般不设置次属性
+        -->
+        <!--<item name="android:background">@drawable/background_dialog</item>-->
+    </style>
 </resources>

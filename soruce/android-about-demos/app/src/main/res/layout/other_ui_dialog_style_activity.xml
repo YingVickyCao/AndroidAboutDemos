@@ -9,5 +9,5 @@
         android:background="@android:color/holo_green_dark"
         android:layout_height="200dp"
         android:gravity="center"
-        android:text="@string/test_dialog_style_activity" />
+        android:text="@string/page_dialog_style_activity" />
 </LinearLayout>
