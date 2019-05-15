@@ -12,7 +12,8 @@
     <string name="page_activity_LaunchMode">LaunchMode</string>
     <string name="page_Intent_and_Intent_Filter_Component">Intent and Intent-Filter - Component:\nUse Component start application 组件</string>
     <string name="page_Intent_and_Intent_Filter_action_and_category">Intent and Intent-Filter - action and category</string>
-    <string name="page_Intent_and_Intent_Filter_system_action">Intent and Intent-Filter - system action</string>
+    <string name="page_intent_Filter_system_action">Intent-Filter - system action</string>
+    <string name="page_intent_Filter_data_and_type">Intent-Filter - Data, and Type</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
 
     <string name="page_data_storage">Data Storage</string>
@@ -186,6 +187,7 @@
     <string name="send">Send</string>
     <string name="sendImplicitBroadcast">Sending an implicit Broadcast</string>
     <string name="sendExplicitBroadcast">Sending an Explicit Broadcast</string>
+
     <string name="play">音频播放音乐</string>
     <string name="up">增大音量</string>
     <string name="down">降低音量</string>
@@ -195,6 +197,7 @@
     <string name="read">Read</string>
     <string name="write">Write</string>
     <string name="sum">Sum</string>
+
     <string name="read_internal_storage">Read Internal Storage</string>
     <string name="write_Internal_storage">Write Internal Storage</string>
     <string name="read_sd_card">Read SD card</string>
@@ -264,15 +267,21 @@
     <string name="styling_with_spannables">Hello World</string>
     <string name="title">Best practices for <annotation font="title_emphasis">text</annotation> on Android</string>
     <!-- Formatting strings,end -->
+
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>
     <string name="d">D</string>
     <string name="e">E</string>
+
     <string name="b_for_result">B for result</string>
     <string name="center">Center</string>
+
     <string name="color_1">Color 1</string>
     <string name="color_2">Color 2</string>
+    <string name="color_3">Color 3</string>
+    <string name="color_4">Color 4</string>
+
     <string name="use_color_in_integer_array">Use color in integer-array</string>
     <string name="get_attr">Get simple attr</string>
     <string name="get_attr_from_style">Get attr from style</string>
@@ -295,20 +304,33 @@
     <string name="event_handler_base_on_listener">基于监听的事件处理</string>
     <string name="event_handler_base_on_listener_4_PlaneView">基于监听的事件处理 - PlaneView</string>
     <string name="event_handler_base_on_listener_types">基于监听的事件处理 - 事件处理器有5种形式</string>
+
     <string name="listener_type_inner_class">内部类 作为事件监听器</string>
     <string name="listener_type_outer_class">外部类 作为事件监听器</string>
     <string name="listener_type_activity_itself">Activity 本身作为事件监听器类 </string>
     <string name="listener_type_4_anonymous_inner_class">匿名内部类 作为事件监听器</string>
     <string name="listener_type_4_xml">xml onClick 属性 作为事件监听器</string>
     <string name="event_handler_base_on_callback">基于回调的事件处理</string>
+
     <string name="print_configuration">Print Configuration</string>
     <string name="switch_configuration">switch configuration</string>
-    <string name="color_3">Color 3</string>
-    <string name="color_4">Color 4</string>
+
     <string name="no_data">No data</string>
     <string name="close">Close</string>
     <string name="return_result">Return result</string>
     <string name="jump_then_finish">Jump, then Finish</string>
     <string name="back_to_system_home">Back to system Home</string>
+
+    <string name="scheme_1">mock</string>
+    <string name="scheme_2">actual</string>
+    <string name="host_1">com.hades</string>
+    <string name="port_1">1000</string>
+    <string name="path_1">/path1</string>
+    <string name="path_2">/path2</string>
+    <string name="action_1">action1</string>
+    <string name="action_2">action2</string>
+    <string name="mime_type_1">mp3</string>
+    <string name="mime_type_2">mp4</string>
+    <string name="mime_type_3">mp5</string>
 
 </resources>

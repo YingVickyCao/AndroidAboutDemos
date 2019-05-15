@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui.dialog;
+package com.hades.example.android.other_ui._dialog;
 
 import android.app.ProgressDialog;
 import android.content.Context;

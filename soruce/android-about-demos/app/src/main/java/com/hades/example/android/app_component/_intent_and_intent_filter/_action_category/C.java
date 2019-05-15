@@ -20,7 +20,7 @@ public class C extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.intent_action_and_category_b);
+        setContentView(R.layout.intent_filter__action_and_category_b);
 
         TextView page = findViewById(R.id.page);
         page.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));

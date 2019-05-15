@@ -6,7 +6,6 @@
     <!-- 授予读联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 授予写联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 添加访问手机位置的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 添加访问手机状态的权限 -->
@@ -38,13 +37,17 @@
         <activity android:name=".QAActivity" />
         <activity android:name=".app_component.TestAppComponentActivity" />
         <activity android:name=".app_component._activity.TestActivityActivity" />
+
         <activity android:name=".app_component._activity._start_close.AActivity" />
         <activity android:name=".app_component._activity._start_close.BActivity" />
+
         <activity
             android:name=".app_component._activity._launch_mode.D"
             android:launchMode="singleTask" />
+
         <activity android:name=".app_component._intent_and_intent_filter._component.FirstActivity" />
         <activity android:name=".app_component._intent_and_intent_filter._component.SecondActivity" />
+
         <activity android:name=".app_component._activity._launch_mode.E" />
         <activity android:name=".app_component._intent_and_intent_filter._action_category.A" />
         <activity android:name=".app_component._intent_and_intent_filter._action_category.B">
@@ -57,14 +60,107 @@
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.B.CATEGORY_2" />
             </intent-filter>
         </activity>
-
         <activity android:name=".app_component._intent_and_intent_filter._action_category.C">
             <intent-filter>
                 <action android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.ACTION_3" />
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.CATEGORY_3" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity"/>
+        <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity" />
+
+        <activity android:name=".app_component._intent_and_intent_filter._data.A" />
+        <activity android:name=".app_component._intent_and_intent_filter._data.B1" />
+        <activity android:name=".app_component._intent_and_intent_filter._data.B2">
+            <intent-filter>
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B3">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B4">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:port="@string/port_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B5">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:path="@string/path_1"
+                    android:port="@string/port_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B6">
+            <intent-filter>
+                <data android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B7">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B8">
+            <intent-filter>
+                <action android:name="action1" />
+                <data android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B9">
+            <intent-filter>
+                <action android:name="action2" />
+                <data android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B10">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:path="@string/path_2"
+                    android:port="@string/port_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B11">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:mimeType="@string/mime_type_1"
+                    android:port="@string/port_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B12">
+            <intent-filter>
+                <data
+                    android:host="@string/host_1"
+                    android:mimeType="@string/mime_type_2"
+                    android:port="@string/port_1"
+                    android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B13">
+            <intent-filter>
+                <data android:mimeType="@string/mime_type_1" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._data.B14">
+            <intent-filter>
+                <action android:name="action2" />
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
@@ -176,7 +272,7 @@
             android:name=".other_ui._navigation.TestBottomNavigationActivity"
             android:label="@string/bottom_navigation" />
         <activity
-            android:name=".other_ui.dialog.DialogStyleActivity"
+            android:name=".other_ui._dialog.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.Dialog" />
 
         <!-- START_EVENT_HANDLER -->

@@ -9,11 +9,11 @@ import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
 import com.hades.example.android.other_ui._toast.TestToastFragment;
-import com.hades.example.android.other_ui.dialog.TestAlertDialogFragment;
-import com.hades.example.android.other_ui.dialog.DateTimePickerDialogFragment;
-import com.hades.example.android.other_ui.dialog.DialogStyleActivity;
-import com.hades.example.android.other_ui.dialog.ProgressDialogFragment;
-import com.hades.example.android.other_ui.dialog.TimePickerDialogFragment;
+import com.hades.example.android.other_ui._dialog.TestAlertDialogFragment;
+import com.hades.example.android.other_ui._dialog.DateTimePickerDialogFragment;
+import com.hades.example.android.other_ui._dialog.DialogStyleActivity;
+import com.hades.example.android.other_ui._dialog.ProgressDialogFragment;
+import com.hades.example.android.other_ui._dialog.TimePickerDialogFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
     @Override

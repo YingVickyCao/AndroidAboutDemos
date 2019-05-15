@@ -16,7 +16,7 @@ public class A extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.intent_action_and_category_a);
+        setContentView(R.layout.intent_filter_action_and_category_a);
 
         findViewById(R.id.action0).setOnClickListener(v -> action0());
         findViewById(R.id.action1).setOnClickListener(v -> action1());

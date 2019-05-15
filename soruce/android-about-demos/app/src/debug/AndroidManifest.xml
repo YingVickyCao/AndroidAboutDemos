@@ -6,9 +6,9 @@
     <application tools:ignore="GoogleAppIndexingWarning">
         <!--<activity android:name=".app_component._intent_and_intent_filter._component.FirstActivity">-->
         <!--<activity android:name=".app_component.TestAppComponentActivity">-->
-        <!--<activity android:name=".other_ui.OtherUIActivity">-->
+        <activity android:name=".other_ui.OtherUIActivity">
         <!--<activity android:name=".app_component._intent_and_intent_filter._action_category.A">-->
-        <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity">
+        <!--<activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
