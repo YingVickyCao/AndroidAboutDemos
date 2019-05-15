@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_Intent_and_Intent_Filter_system_action" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topic"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/contactName"
+            style="@style/tv" />
+
+        <TextView
+            android:id="@+id/contactPhone"
+            style="@style/tv" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/actionGetContent"
+                style="@style/btn.small"
+                android:text="Intent.ACTION_GET_CONTENT" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

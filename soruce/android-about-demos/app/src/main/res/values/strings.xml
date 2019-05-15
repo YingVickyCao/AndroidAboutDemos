@@ -12,6 +12,7 @@
     <string name="page_activity_LaunchMode">LaunchMode</string>
     <string name="page_Intent_and_Intent_Filter_Component">Intent and Intent-Filter - Component:\nUse Component start application 组件</string>
     <string name="page_Intent_and_Intent_Filter_action_and_category">Intent and Intent-Filter - action and category</string>
+    <string name="page_Intent_and_Intent_Filter_system_action">Intent and Intent-Filter - system action</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
 
     <string name="page_data_storage">Data Storage</string>

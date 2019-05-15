@@ -6,6 +6,7 @@
     <!-- 授予读联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 授予写联系人ContentProvider的权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 添加访问手机位置的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 添加访问手机状态的权限 -->
@@ -17,6 +18,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="false"
@@ -62,6 +64,7 @@
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.CATEGORY_3" />
             </intent-filter>
         </activity>
+        <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity"/>
 
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
