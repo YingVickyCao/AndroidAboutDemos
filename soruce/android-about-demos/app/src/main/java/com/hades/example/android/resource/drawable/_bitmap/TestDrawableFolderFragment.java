@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.bitmap;
+package com.hades.example.android.resource.drawable._bitmap;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

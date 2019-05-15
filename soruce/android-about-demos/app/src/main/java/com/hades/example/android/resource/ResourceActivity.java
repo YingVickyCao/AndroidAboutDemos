@@ -13,10 +13,10 @@ import com.hades.example.android.resource._color_state_list.TestColorStateListFr
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
-import com.hades.example.android.resource.drawable.bitmap.TestBitmapMemoryAndScreenDensityFragment;
-import com.hades.example.android.resource.drawable.bitmap.TestDecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable.bitmap.TestDrawableFolderFragment;
-import com.hades.example.android.resource.drawable.bitmap.three_level_cache.ImageGridActivity;
+import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
+import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
+import com.hades.example.android.resource.drawable._bitmap.TestDrawableFolderFragment;
+import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;

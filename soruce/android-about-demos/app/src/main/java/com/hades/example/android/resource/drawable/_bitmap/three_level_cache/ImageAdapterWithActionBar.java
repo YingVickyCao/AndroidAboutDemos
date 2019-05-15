@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.bitmap.three_level_cache;
+package com.hades.example.android.resource.drawable._bitmap.three_level_cache;
 
 import android.content.Context;
 import android.util.Log;

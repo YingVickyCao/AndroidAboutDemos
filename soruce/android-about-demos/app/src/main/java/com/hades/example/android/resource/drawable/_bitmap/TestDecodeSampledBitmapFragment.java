@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.bitmap;
+package com.hades.example.android.resource.drawable._bitmap;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
