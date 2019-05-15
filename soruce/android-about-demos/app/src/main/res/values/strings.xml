@@ -329,8 +329,8 @@
     <string name="path_2">/path2</string>
     <string name="action_1">action1</string>
     <string name="action_2">action2</string>
-    <string name="mime_type_1">mp3</string>
-    <string name="mime_type_2">mp4</string>
-    <string name="mime_type_3">mp5</string>
+    <string name="mime_type_1">abc/xyz1</string>
+    <string name="mime_type_2">abc/xyz2</string>
+    <string name="mime_type_3">abc/xyz3</string>
 
 </resources>
