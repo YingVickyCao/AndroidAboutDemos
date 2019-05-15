@@ -28,14 +28,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
     //RxPermissions (required RxJava2)
-    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissions2_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjava2_version"
+    implementation "com.google.android.material:material:$material_version"
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$androidTestRunner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore_version"
 }
