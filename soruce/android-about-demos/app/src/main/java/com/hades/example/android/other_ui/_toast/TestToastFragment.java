@@ -13,28 +13,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
 
 /*
   https://www.jianshu.com/p/ca8d7dd6172e
  */
-public class TestToastFragment extends BaseFragment {
-    public static TestToastFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        TestToastFragment fragment = new TestToastFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class TestToastFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_toast, container, false);
-        view.findViewById(R.id.showNormalToast).setOnClickListener(v -> showNormalToast());
+        view.findViewById(R.id.showNormalToast).setOnClickListener(v -> toast());
         view.findViewById(R.id.androidToast).setOnClickListener(v -> androidToast());
         view.findViewById(R.id.showCustomToast).setOnClickListener(v -> showCustomToast());
         view.findViewById(R.id.devCustom).setOnClickListener(v -> devCustom());
@@ -46,16 +38,15 @@ public class TestToastFragment extends BaseFragment {
         return getActivity();
     }
 
-    private void showNormalToast() {
+    private void toast() {
         Toast.makeText(getUsedContext(), "简单的提示信息", Toast.LENGTH_SHORT).show();
     }
 
     private void androidToast() {
         Toast toast = new Toast(getUsedContext());
-        toast.setGravity(Gravity.CENTER, 0, 0);
-
-        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_android, null));
-        toast.setDuration(Toast.LENGTH_LONG);
+//        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.transient_no1tification_v1, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
 

@@ -2,20 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/toast_frame"
+    android:background="@drawable/toast_frame_v2"
     android:orientation="vertical">
+
+    <!--android:id="@+id/message"-->
+
+    <!-- View is more smaller
+        android:id="@android:id/message"
+        android:background="@drawable/toast_frame_v2"
+    -->
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
+        android:fontFamily="sans-serif"
         android:gravity="center"
-        android:shadowColor="#BB000000"
         android:shadowRadius="2.75"
         android:text="简单的提示信息"
-        android:textColor="#fff"
-        android:textSize="16sp" />
-
+        android:textColor="#de000000"
+        android:textSize="14sp" />
 </LinearLayout>

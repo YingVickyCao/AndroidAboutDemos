@@ -36,7 +36,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageAlertDialog();
+        pageToast();
     }
 
     private void pageNotification() {
@@ -44,7 +44,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
     }
 
     private void pageToast() {
-        showFragment(TestToastFragment.newInstance(), TestToastFragment.class.getSimpleName());
+        showFragment(new TestToastFragment());
     }
 
     private void pageActionBar() {
