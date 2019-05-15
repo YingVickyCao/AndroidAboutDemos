@@ -309,5 +309,6 @@
     <string name="close">Close</string>
     <string name="return_result">Return result</string>
     <string name="jump_then_finish">Jump, then Finish</string>
+    <string name="back_to_system_home">Back to system Home</string>
 
 </resources>

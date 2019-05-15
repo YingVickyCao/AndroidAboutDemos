@@ -29,7 +29,7 @@ public class SystemActionActivity extends PermissionActivity {
         phoneNum = findViewById(R.id.contactPhone);
 
         findViewById(R.id.actionGetContent).setOnClickListener(v -> actionGetContent());
-
+        findViewById(R.id.backToSystemHome).setOnClickListener(v -> backToSystemHome());
     }
 
     @Override
@@ -39,7 +39,8 @@ public class SystemActionActivity extends PermissionActivity {
 
     private void actionGetContent() {
 //         <uses-permission android:name="android.permission.READ_CONTACTS" />
-        Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_PICK);
         intent.setType(ContactsContract.Contacts.CONTENT_TYPE);//vnd.android.cursor.dir/contact
         startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
     }
@@ -89,6 +90,11 @@ public class SystemActionActivity extends PermissionActivity {
             cursor.close();
         }).start();
     }
+
+    private void backToSystemHome() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+    }
 }
-
-

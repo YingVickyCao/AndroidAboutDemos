@@ -44,6 +44,11 @@
                 style="@style/btn.small"
                 android:text="Intent.ACTION_GET_CONTENT" />
 
+            <Button
+                android:id="@+id/backToSystemHome"
+                style="@style/btn.small"
+                android:text="@string/back_to_system_home" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
