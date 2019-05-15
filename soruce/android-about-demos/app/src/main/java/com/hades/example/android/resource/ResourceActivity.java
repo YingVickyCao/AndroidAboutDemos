@@ -12,10 +12,11 @@ import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
+import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable._bitmap.TestDrawableFolderFragment;
+import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
@@ -53,6 +54,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageCheckVectorRenderingTime).setOnClickListener(v -> pageMeasureVectorRenderingTime());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+        findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
 
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
@@ -120,12 +122,17 @@ public class ResourceActivity extends PermissionActivity {
     private void pageMeasureVectorRenderingTime() {
         showFragment(new MeasureVectorDrawableFragment());
     }
+
     private void pageLoadBitmapPo() {
         showFragment(new TestDecodeSampledBitmapFragment());
     }
 
     private void pageBitmapThreeLevelCache() {
         showActivity(ImageGridActivity.class);
+    }
+
+    private void pageBitmap() {
+        showFragment(new TestBitmapFragment());
     }
 
     private void pageShapeDrawable() {

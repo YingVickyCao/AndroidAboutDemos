@@ -26,7 +26,7 @@ public class TestDecodeSampledBitmapFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_decode_bitmap, container, false);
+        View view = inflater.inflate(R.layout.res_bitmap_decode, container, false);
         mImageView = view.findViewById(R.id.imageView);
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         view.findViewById(R.id.setImageResource).setOnClickListener(v -> setImageResource());
