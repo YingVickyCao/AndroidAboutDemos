@@ -69,96 +69,126 @@
         <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity" />
 
         <activity android:name=".app_component._intent_and_intent_filter._data.A" />
-        <activity android:name=".app_component._intent_and_intent_filter._data.B1" />
-        <activity android:name=".app_component._intent_and_intent_filter._data.B2">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B1"
+            android:label="B1">
             <intent-filter>
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B3">
+
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B2"
+            android:label="B2">
             <intent-filter>
-                <data
-                    android:host="@string/host_1"
-                    android:scheme="@string/scheme_1" />
+                <action android:name="action1" />
+                <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B4">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B3"
+            android:label="B3">
             <intent-filter>
+                <category android:name="category1" />
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B4"
+            android:label="B4">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B5"
+            android:label="B5">
+            <intent-filter>
+                <action android:name="action1" />
+                <category android:name="category_1" />
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B6"
+            android:label="B6">
+            <intent-filter>
+                <action android:name="action1" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="@string/scheme_1" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B7"
+            android:label="B7">
+            <intent-filter>
+                <action android:name="action2" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B8"
+            android:label="B8">
+            <intent-filter>
+                <action android:name="action2" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="@string/host_1"
+                    android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B9"
+            android:label="B9">
+            <intent-filter>
+                <action android:name="action2" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="@string/host_1"
+                    android:scheme="@string/scheme_2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B10"
+            android:label="B10">
+            <intent-filter>
+                <action android:name="action2" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <data
                     android:host="@string/host_1"
                     android:port="@string/port_1"
-                    android:scheme="@string/scheme_1" />
+                    android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B5">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B11"
+            android:label="B11">
             <intent-filter>
+                <action android:name="action2" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <data
                     android:host="@string/host_1"
                     android:path="@string/path_1"
                     android:port="@string/port_1"
-                    android:scheme="@string/scheme_1" />
+                    android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B6">
-            <intent-filter>
-                <data android:scheme="@string/scheme_2" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B7">
-            <intent-filter>
-                <data
-                    android:host="@string/host_1"
-                    android:scheme="@string/scheme_1" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B8">
-            <intent-filter>
-                <action android:name="action1" />
-                <data android:scheme="@string/scheme_2" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B9">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._data.B12"
+            android:label="B12">
             <intent-filter>
                 <action android:name="action2" />
-                <data android:scheme="@string/scheme_2" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B10">
-            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
                 <data
                     android:host="@string/host_1"
                     android:path="@string/path_2"
                     android:port="@string/port_1"
-                    android:scheme="@string/scheme_1" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B11">
-            <intent-filter>
-                <data
-                    android:host="@string/host_1"
-                    android:mimeType="@string/mime_type_1"
-                    android:port="@string/port_1"
-                    android:scheme="@string/scheme_1" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B12">
-            <intent-filter>
-                <data
-                    android:host="@string/host_1"
-                    android:mimeType="@string/mime_type_2"
-                    android:port="@string/port_1"
-                    android:scheme="@string/scheme_1" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B13">
-            <intent-filter>
-                <data android:mimeType="@string/mime_type_1" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._data.B14">
-            <intent-filter>
-                <action android:name="action2" />
-                <data android:scheme="@string/scheme_1" />
+                    android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
 
