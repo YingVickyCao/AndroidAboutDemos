@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui;
+package com.hades.example.android.other_ui._popup_window;
 
 import android.os.Bundle;
 import android.view.Gravity;
