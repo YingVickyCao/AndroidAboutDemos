@@ -97,6 +97,7 @@ public class A extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // ERROR:android.content.ActivityNotFoundException: No Activity found to handle Intent { dat=scheme3://com.hades/path1 }
     private void case7() {
         Intent intent = new Intent();
         Uri uri = Uri.parse("scheme3://com.hades/path1");

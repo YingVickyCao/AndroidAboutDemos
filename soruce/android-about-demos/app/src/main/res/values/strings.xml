@@ -321,6 +321,7 @@
     <string name="jump_then_finish">Jump, then Finish</string>
     <string name="back_to_system_home">Back to system Home</string>
 
+    <!-- Intent-Filter - data and type, start -->
     <string name="scheme_1">scheme1</string>
     <string name="scheme_2">scheme2</string>
     <string name="scheme_3">scheme3</string>
@@ -335,5 +336,6 @@
     <string name="category_2">category2</string>
     <string name="mime_type_1">a/b</string>
     <string name="mime_type_2">a/c</string>
+    <!-- Intent-Filter - data and type, end -->
 
 </resources>
