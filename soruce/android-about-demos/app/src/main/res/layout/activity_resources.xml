@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_widget" />
+        android:text="@string/page_resource" />
 
     <ScrollView
         android:id="@+id/scrollView"

@@ -69,9 +69,13 @@
 
     <style name="GreenText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/holo_green_light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/size_50</item>
+        <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
-    <style name="RedText" parent="TextAppearance.AppCompat">
+    <!--<style name="RedText" parent="TextAppearance.AppCompat">-->
+    <style name="RedText">
         <item name="android:textColor">@android:color/holo_red_light</item>
     </style>
 
@@ -79,7 +83,8 @@
         <item name="android:textColor">@android:color/holo_green_dark</item>
     </style>
 
-    <style name="OrangeText" parent="@android:style/TextAppearance">
+    <!--<style name="OrangeText" parent="@android:style/TextAppearance">-->
+    <style name="OrangeText">
         <item name="android:textColor">@android:color/holo_orange_dark</item>
     </style>
 
@@ -91,6 +96,11 @@
 
     <style name="GreenText.Child2" parent="OrangeText">
         <item name="android:textColor">@android:color/holo_blue_bright</item>
+
+        <!-- GreenText layout_width ,layout_height and textSize is missing  -->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/size_50</item>
+        <item name="android:textSize">@dimen/size_50</item>
     </style>
 
     <style name="ConstrainLayoutStyle">
