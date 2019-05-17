@@ -6,216 +6,233 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_switch_color_in_theme" />
+        android:text="@string/page_theme_choose" />
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/topic"
-        android:orientation="vertical">
+        android:layout_below="@+id/topic">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                style="@style/GreenText"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/text"
-                android:textAllCaps="false" />
-
-            <Button
-                style="@style/GreenText2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/text"
-                android:textAllCaps="false" />
-
-            <Button
-                style="@style/GreenText.Large"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/text"
-                android:textAllCaps="false" />
-
-            <Button
-                style="@style/GreenText.Child"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/text"
-                android:textAllCaps="false" />
-
-            <Button
-                style="@style/GreenText.Child2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/text"
-                android:textAllCaps="false" />
-        </LinearLayout>
-
-        <View style="@style/div" />
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/seekBg"
-            android:progressDrawable="@drawable/res_theme_seekbar_progress"
-            android:thumb="@drawable/res_theme_seekbar_thumb" />
-
-        <View style="@style/div" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?attr/pageRootBg"
-                android:backgroundTint="?attr/pageRootBg"
-                android:gravity="center" />
+                android:id="@+id/id"
+                style="@style/tv"
+                android:text="@string/a" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
+            <include
+                layout="@layout/res_theme_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/GreenText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/text"
+                    android:textAllCaps="false" />
+
+                <Button
+                    style="@style/GreenText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/text"
+                    android:textAllCaps="false" />
+
+                <Button
+                    style="@style/GreenText.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/text"
+                    android:textAllCaps="false" />
+
+                <Button
+                    style="@style/GreenText.Child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/text"
+                    android:textAllCaps="false" />
+
+                <Button
+                    style="@style/GreenText.Child2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/text"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <View style="@style/div" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/seekBg"
+                android:progressDrawable="@drawable/res_theme_seekbar_progress"
+                android:thumb="@drawable/res_theme_seekbar_thumb" />
+
+            <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:text="A"
-                android:textSize="40sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/color1"
+                    style="@style/btn.small"
+                    android:text="@string/color_1" />
+
+                <Button
+                    android:id="@+id/toggleEnable"
+                    style="@style/btn.small"
+                    android:text="Toggle Enable" />
+
+                <Button
+                    android:id="@+id/color2"
+                    style="@style/btn.small"
+                    android:text="@string/color_2" />
+            </LinearLayout>
+
+            <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- @Deprecated  -->
+                <Button
+                    style="@style/btn.small"
+                    android:text="@string/selector_color"
+                    android:textColor="@drawable/color_v1_2_in_drawable" />
+
+                <!-- @Deprecated  -->
+                <Button
+                    style="@style/btn.small"
+                    android:text="@string/selector_color"
+                    android:textColor="@drawable/color_v1_2_in_drawable" />
+
+                <!-- @Recommend -->
+                <Button
+                    style="@style/btn.small"
+                    android:text="@string/selector_color"
+                    android:textColor="@color/color_v1_2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--
+                FIXED_ERROR:
+                Caused by: android.content.res.Resources$NotFoundException: File res/color/color_v1_2.xml from drawable resource ID #0x7f060036
+                Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #3: <item> tag requires a 'drawable' attribute or child tag defining a drawable -->
+                <!--<Button-->
+                <!--style="@style/btn.small"-->
+                <!--android:background="@color/color_v1_2"-->
+                <!--android:text="@string/selector_color" />-->
+
+                <!-- @Deprecated  -->
+                <Button
+                    style="@style/btn.small"
+                    android:backgroundTint="@color/color_v1_2"
+                    android:text="@string/selector_color" />
+
+                <!--
+                   FIXED_ERROR:Caused by: android.content.res.Resources$NotFoundException: File res/drawable/color_v1_2_in_drawable.xml from drawable resource ID #0x7f080067
+                   android:background => android:backgroundTint
+                   /
+                   drawable - android:drawable -> drawable - <color attr >
+                   -->
+                <!--<Button-->
+                <!--style="@style/btn.small"-->
+                <!--android:background="@drawable/color_v1_2_in_drawable"-->
+                <!--android:text="@string/selector_use_color_in_drawable_dir" />-->
+
+                <!-- @Deprecated  -->
+                <Button
+                    style="@style/btn.small"
+                    android:backgroundTint="@drawable/color_v1_2_in_drawable"
+                    android:text="@string/selector_color" />
+
+                <!-- @Recommend -->
+                <Button
+                    style="@style/btn.small"
+                    android:background="@drawable/color_v2_in_drawable"
+                    android:text="@string/selector_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- FIXED_ERROR: Caused by: android.content.res.Resources$NotFoundException: File res/drawable/drawable_v2_1_1.xml from drawable resource ID #0x7f0800a5 -->
+                <!--<Button-->
+                <!--style="@style/btn.small"-->
+                <!--android:background="@drawable/drawable_v2_1"-->
+                <!--android:text="@string/selector_drawable" />-->
+
+                <!-- @Deprecated -->
+                <!-- No error, but backgroundTint not working -->
+                <Button
+                    style="@style/btn.small"
+                    android:backgroundTint="@drawable/drawable_v2_1"
+                    android:text="@string/selector_drawable" />
+
+                <!-- @Recommend -->
+                <Button
+                    style="@style/btn.small"
+                    android:background="@drawable/drawable_v2_2"
+                    android:text="@string/selector_drawable" />
+
+            </LinearLayout>
+
+            <View style="@style/div" />
 
             <Button
-                android:id="@+id/color1"
                 style="@style/btn.small"
-                android:text="Color One" />
+                android:drawableEnd="@drawable/drawable_vector_4_vd"
+                android:text="Use attr for VectorDrawable" />
 
             <Button
-                android:id="@+id/toggleEnable"
+                android:id="@+id/pageThemeAndStyle"
                 style="@style/btn.small"
-                android:text="Toggle Enable" />
+                android:text="@string/page_theme_and_style" />
 
             <Button
-                android:id="@+id/color2"
+                android:id="@+id/pageDeclareStyleable"
                 style="@style/btn.small"
-                android:text="Color Two" />
+                android:text="@string/page_theme_DeclareStyleable" />
+
         </LinearLayout>
+    </ScrollView>
 
-        <View style="@style/div" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <!-- @Deprecated  -->
-            <Button
-                style="@style/btn.small"
-                android:text="@string/selector_color"
-                android:textColor="@drawable/color_v1_2_in_drawable" />
-
-            <!-- @Deprecated  -->
-            <Button
-                style="@style/btn.small"
-                android:text="@string/selector_color"
-                android:textColor="@drawable/color_v1_2_in_drawable" />
-
-            <!-- @Recommend -->
-            <Button
-                style="@style/btn.small"
-                android:text="@string/selector_color"
-                android:textColor="@color/color_v1_2" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!--
-            FIXED_ERROR:
-            Caused by: android.content.res.Resources$NotFoundException: File res/color/color_v1_2.xml from drawable resource ID #0x7f060036
-            Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #3: <item> tag requires a 'drawable' attribute or child tag defining a drawable -->
-            <!--<Button-->
-            <!--style="@style/btn.small"-->
-            <!--android:background="@color/color_v1_2"-->
-            <!--android:text="@string/selector_color" />-->
-
-            <!-- @Deprecated  -->
-            <Button
-                style="@style/btn.small"
-                android:backgroundTint="@color/color_v1_2"
-                android:text="@string/selector_color" />
-
-            <!--
-               FIXED_ERROR:Caused by: android.content.res.Resources$NotFoundException: File res/drawable/color_v1_2_in_drawable.xml from drawable resource ID #0x7f080067
-               android:background => android:backgroundTint
-               /
-               drawable - android:drawable -> drawable - <color attr >
-               -->
-            <!--<Button-->
-            <!--style="@style/btn.small"-->
-            <!--android:background="@drawable/color_v1_2_in_drawable"-->
-            <!--android:text="@string/selector_use_color_in_drawable_dir" />-->
-
-            <!-- @Deprecated  -->
-            <Button
-                style="@style/btn.small"
-                android:backgroundTint="@drawable/color_v1_2_in_drawable"
-                android:text="@string/selector_color" />
-
-            <!-- @Recommend -->
-            <Button
-                style="@style/btn.small"
-                android:background="@drawable/color_v2_in_drawable"
-                android:text="@string/selector_color" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- FIXED_ERROR: Caused by: android.content.res.Resources$NotFoundException: File res/drawable/drawable_v2_1_1.xml from drawable resource ID #0x7f0800a5 -->
-            <!--<Button-->
-            <!--style="@style/btn.small"-->
-            <!--android:background="@drawable/drawable_v2_1"-->
-            <!--android:text="@string/selector_drawable" />-->
-
-            <!-- @Deprecated -->
-            <!-- No error, but backgroundTint not working -->
-            <Button
-                style="@style/btn.small"
-                android:backgroundTint="@drawable/drawable_v2_1"
-                android:text="@string/selector_drawable" />
-
-            <!-- @Recommend -->
-            <Button
-                style="@style/btn.small"
-                android:background="@drawable/drawable_v2_2"
-                android:text="@string/selector_drawable" />
-
-        </LinearLayout>
-
-        <View style="@style/div" />
-
-        <Button
-            style="@style/btn.small"
-            android:drawableEnd="@drawable/drawable_vector_4_vd"
-            android:text="Use attr for VectorDrawable" />
-
-    </LinearLayout>
-
-    <include
-        layout="@layout/res_theme_btns"
+    <FrameLayout
+        android:id="@+id/fragmentRoot"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="match_parent" />
 </RelativeLayout>

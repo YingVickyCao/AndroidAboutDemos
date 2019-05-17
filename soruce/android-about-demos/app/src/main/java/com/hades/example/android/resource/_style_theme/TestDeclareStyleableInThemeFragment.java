@@ -16,8 +16,8 @@ public class TestDeclareStyleableInThemeFragment extends ThemeBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_theme_4_declare_styleable, container, false);
-        view.findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
-        view.findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
+//        view.findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
+//        view.findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
 
         LinearLayout MyViewContainer = view.findViewById(R.id.MyViewContainer);
         MyView myView = new MyView(getActivity(), null, R.attr.MyViewStyle);

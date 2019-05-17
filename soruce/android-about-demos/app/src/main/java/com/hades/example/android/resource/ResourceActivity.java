@@ -10,21 +10,20 @@ import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
-import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
+import com.hades.example.android.resource._style_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
+import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
+import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
-import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
+import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.MaterialFragment;
-import com.hades.example.android.resource._style_theme.TestAttrInThemeFragment;
-import com.hades.example.android.resource._style_theme.apply_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.xml.ParseXMLFragment;
 
 /**
@@ -42,8 +41,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
-        findViewById(R.id.pageSwitchColorInTheme).setOnClickListener(v -> pageSwitchColorInTheme());
-        findViewById(R.id.pageThemeAndStyle).setOnClickListener(v -> pageThemeAndStyle());
+        findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
@@ -68,7 +66,6 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageThemeAndStyle();
     }
 
     private void pageColor() {
@@ -83,12 +80,8 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new MaterialFragment());
     }
 
-    private void pageSwitchColorInTheme() {
+    private void pageThemeChoose() {
         showActivity(ThemeChoosePageAActivity.class);
-    }
-
-    private void pageThemeAndStyle() {
-        showFragment(new TestAttrInThemeFragment());
     }
 
     private void pageInternationalization() {

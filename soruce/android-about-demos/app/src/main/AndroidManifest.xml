@@ -258,7 +258,6 @@
         <activity android:name=".widget.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
-        <activity android:name=".resource._style_theme.TestThemeActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <!-- END_WIDGET -->
@@ -296,8 +295,8 @@
             android:name=".resource.adapter_screen.TestConfigurationActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageAActivity" />
-        <activity android:name=".resource._style_theme.apply_theme.ThemeChoosePageBActivity" />
+        <activity android:name=".resource._style_theme.ThemeChoosePageAActivity" />
+        <activity android:name=".resource._style_theme.ThemeChoosePageBActivity" />
         <activity
             android:name=".resource.drawable._bitmap.three_level_cache.ImageGridActivity"
             android:label="@string/app_name" />

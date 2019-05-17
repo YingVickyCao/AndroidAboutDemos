@@ -1,4 +1,4 @@
-package com.hades.example.android.resource._style_theme.apply_theme;
+package com.hades.example.android.resource._style_theme;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -12,7 +12,6 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
-    private static final String TAG = ThemeChoosePageAActivity.class.getSimpleName();
 
     TextView textView;
 
@@ -21,6 +20,8 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         super.onCreate(savedInstanceState);
         setTheme();
         setContentView(R.layout.res_theme_choose_page);
+
+        initViews();
 
         textView = findViewById(R.id.textView);
 
@@ -31,6 +32,9 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         findViewById(R.id.color1).setOnClickListener(v -> colorOne());
         findViewById(R.id.color2).setOnClickListener(v -> colorTwo());
         findViewById(R.id.toggleEnable).setOnClickListener(v -> toggleEnable());
+        findViewById(R.id.pageThemeAndStyle).setOnClickListener(v -> pageThemeAndStyle());
+        findViewById(R.id.pageDeclareStyleable).setOnClickListener(v -> pageDeclareStyleable());
+
     }
 
     private void colorOne() {
@@ -49,5 +53,13 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     private void jumpB() {
         startActivity(new Intent(this, ThemeChoosePageBActivity.class));
+    }
+
+    private void pageThemeAndStyle() {
+        showFragment(new TestAttrInThemeFragment());
+    }
+
+    private void pageDeclareStyleable() {
+        showFragment(new TestDeclareStyleableInThemeFragment());
     }
 }
