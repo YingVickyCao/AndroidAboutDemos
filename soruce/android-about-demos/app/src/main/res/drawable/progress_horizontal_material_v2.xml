@@ -8,32 +8,34 @@
             android:tint="#ff0000">
             <corners android:radius="0dp" />
             <size android:height="4dp" />
-            <solid android:color="@color/white_disabled_material_app" />
+            <solid android:color="#ff0000" />
         </shape>
     </item>
+
     <item
         android:id="@android:id/secondaryProgress"
         android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%">
             <shape
                 android:shape="rectangle"
-                android:tint="#ff008577">
+                android:tint="#00ff00">
                 <corners android:radius="0dp" />
                 <size android:height="4dp" />
-                <solid android:color="@color/white_disabled_material_app" />
+                <solid android:color="#00ff00" />
             </shape>
         </scale>
     </item>
+
     <item
         android:id="@android:id/progress"
         android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%">
             <shape
                 android:shape="rectangle"
-                android:tint="#ff008577">
+                android:tint="#ff00ff">
                 <corners android:radius="0dp" />
                 <size android:height="4dp" />
-                <solid android:color="@android:color/white" />
+                <solid android:color="#ff00ff" />
             </shape>
         </scale>
     </item>
