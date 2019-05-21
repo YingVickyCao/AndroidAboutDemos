@@ -17,9 +17,10 @@
     <!--<color name="light_m_0_opacity_30">#4DFF0000</color>-->
 
     <color name="progressBackground">#ff0000</color>
-    <color name="progressBackground2">#ffff00</color>
     <color name="secondaryProgress">#00ff00</color>
-    <color name="secondaryProgress2">#ff00ff</color>
     <color name="progress">#0000ff</color>
+
+    <color name="progressBackground2">#ffff00</color>
+    <color name="secondaryProgress2">#ff00ff</color>
     <color name="progress2">#00ffff</color>
 </resources>
