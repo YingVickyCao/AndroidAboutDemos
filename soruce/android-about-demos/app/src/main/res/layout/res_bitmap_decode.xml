@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_decode_sampled_bitmap" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/size_100"
+        android:layout_marginTop="@dimen/size_topic"
+        android:background="@android:color/holo_orange_light" />
+
+    <LinearLayout
+        android:id="@+id/btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/clear"
+            style="@style/btn.small"
+            android:text="clear" />
+
+        <Button
+            android:id="@+id/setImageResource"
+            style="@style/btn.small"
+            android:text=" from SetImageResource" />
+
+        <Button
+            android:id="@+id/decodeFile"
+            style="@style/btn.small"
+            android:text="Decode bitmap from file" />
+
+        <Button
+            android:id="@+id/decodeResource"
+            style="@style/btn.small"
+            android:text="Decode bitmap from decodeResource" />
+
+        <Button
+            android:id="@+id/decodeResourceWithSampled"
+            style="@style/btn.small"
+            android:text="Decode sampled bitmap from decodeResource" />
+    </LinearLayout>
+
+</RelativeLayout>

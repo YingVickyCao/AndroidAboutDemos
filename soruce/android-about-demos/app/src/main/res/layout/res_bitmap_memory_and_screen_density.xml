@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_bitmap_4_screen_density_and_drawable_memory" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/dot_image" />
+
+    <Button
+        android:id="@+id/getScreenDensity"
+        style="@style/btn.small"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Text screen density" />
+
+    <Button
+        android:id="@+id/checkDrawableMemory"
+        style="@style/btn.small"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="check Drawable Memory" />
+
+</RelativeLayout>

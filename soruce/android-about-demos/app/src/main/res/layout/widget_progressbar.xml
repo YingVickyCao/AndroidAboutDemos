@@ -150,7 +150,7 @@
                 android:text="Tint" />
 
             <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -158,9 +158,10 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
-                android:progressTint="@android:color/holo_orange_dark"
+                android:progressBackgroundTint="#ff0000"
+                android:progressTint="#0000ff"
                 android:secondaryProgress="60"
-                android:secondaryProgressTint="@android:color/holo_blue_light" />
+                android:secondaryProgressTint="#00ff00" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyleLarge"
@@ -177,13 +178,27 @@
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:max="100"
+                android:progress="20"
+                android:progressDrawable="@drawable/progress_horizontal_v2"
+                android:secondaryProgress="60" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
                 android:max="100"
                 android:progress="20"
-                android:progressDrawable="@drawable/progress_horizontal_material"
-                android:secondaryProgress="60" />
+                android:progressBackgroundTint="@color/progressBackground2"
+                android:progressDrawable="@drawable/progress_horizontal_v2"
+                android:progressTint="@color/progress2"
+                android:secondaryProgress="60"
+                android:secondaryProgressTint="@color/secondaryProgress2" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
@@ -196,7 +211,6 @@
                 android:progress="20"
                 android:progressDrawable="@drawable/progress_horizontal_material"
                 android:secondaryProgress="60" />
-
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"

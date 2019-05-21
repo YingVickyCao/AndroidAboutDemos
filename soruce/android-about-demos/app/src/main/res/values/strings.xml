@@ -29,14 +29,15 @@
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
-    <string name="page_switch_color_in_theme">Switch Color in Theme</string>
+    <string name="page_theme_choose">Theme Choose</string>
     <string name="page_theme_and_style">Theme and Style</string>
     <string name="page_theme_attr">Theme - Attr</string>
-    <string name="page_theme_DeclareStyleable">Theme - DeclareStyleable</string>
+    <string name="page_theme_DeclareStyleable">Theme - DeclareStyleable for Custom View</string>
     <string name="page_LevelListDrawable">Level List Drawable</string>
     <string name="page_bitmap_4_screen_density_and_drawable_memory">Bitmap - Screen density and drawable memory</string>
     <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
+    <string name="page_bitmap">Bitmap</string>
     <string name="page_drawable_vectorDrawable">VectorDrawable</string>
 
     <string name="page_widget">Widget</string>

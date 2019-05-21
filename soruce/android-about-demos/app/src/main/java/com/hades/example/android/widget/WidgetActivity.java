@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.resource._style_theme.TestThemeActivity;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
@@ -64,7 +63,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
-        findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
@@ -146,10 +144,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void pageCustomView4CascadeLayout() {
         showActivity(CascadeLayoutActivity.class);
-    }
-
-    private void pageCustomVew() {
-        showActivity(TestThemeActivity.class);
     }
 
     private void pageRatingBar() {

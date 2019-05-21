@@ -8,6 +8,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
+import com.hades.example.android.other_ui._popup_window.TestPopupWindowFragment;
 import com.hades.example.android.other_ui._toast.TestToastFragment;
 import com.hades.example.android.other_ui._dialog.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.DateTimePickerDialogFragment;
@@ -36,7 +37,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageToast();
+        pagePopupWindow();
     }
 
     private void pageNotification() {

@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_widget" />
+        android:text="@string/page_resource" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -37,14 +37,9 @@
                 android:text="@string/page_ColorStateList" />
 
             <Button
-                android:id="@+id/pageSwitchColorInTheme"
+                android:id="@+id/pageThemeChoose"
                 style="@style/btn.small"
-                android:text="@string/page_switch_color_in_theme" />
-
-            <Button
-                android:id="@+id/pageThemeAndStyle"
-                style="@style/btn.small"
-                android:text="@string/page_theme_and_style" />
+                android:text="@string/page_theme_choose" />
 
             <Button
                 android:id="@+id/pageInternationalization"
@@ -104,6 +99,11 @@
                 android:id="@+id/pageMemoryCacheBitmap"
                 style="@style/btn.small"
                 android:text="@string/page_bitmap_three_level_cache" />
+
+            <Button
+                android:id="@+id/pageBitmap"
+                style="@style/btn.small"
+                android:text="@string/page_bitmap" />
 
             <Button
                 android:id="@+id/pageShapeDrawable"

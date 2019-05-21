@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="test_color">#00789FAD</color>
+    <color name="test_color">#DE789FAD</color>
 
     <color name="message_list_item_background_unread">#ff274172</color>
 
@@ -15,4 +15,12 @@
     <color name="s_0">#26000000</color>
     <!--<color name="light_m_0">#FF0000</color>-->
     <!--<color name="light_m_0_opacity_30">#4DFF0000</color>-->
+
+    <color name="progressBackground">#ff0000</color>
+    <color name="secondaryProgress">#00ff00</color>
+    <color name="progress">#0000ff</color>
+
+    <color name="progressBackground2">#ffff00</color>
+    <color name="secondaryProgress2">#ff00ff</color>
+    <color name="progress2">#00ffff</color>
 </resources>

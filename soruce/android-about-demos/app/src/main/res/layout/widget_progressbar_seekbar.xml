@@ -120,7 +120,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular" />
@@ -135,7 +135,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular" />
@@ -161,7 +161,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular" />
@@ -177,7 +177,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular" />
@@ -201,7 +201,7 @@
                     android:minHeight="3dp"
                     android:mirrorForRtl="true"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status" />
@@ -215,7 +215,7 @@
                     android:minHeight="3dp"
                     android:mirrorForRtl="true"
                     android:progress="40"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status_v2" />
@@ -244,7 +244,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="0"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular"
@@ -261,7 +261,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:progress="0"
-                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:progressDrawable="@drawable/progress_horizontal_v2"
                     android:secondaryProgress="60"
                     android:splitTrack="true"
                     android:thumb="@drawable/drawable_shape_4_circular"
