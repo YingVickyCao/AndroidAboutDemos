@@ -56,8 +56,9 @@
 
         <TextView style="@style/div" />
 
-        <TextView style="@style/tv"
-            android:text="Below is WebView:"/>
+        <TextView
+            style="@style/tv"
+            android:text="Below is WebView:" />
 
         <WebView
             android:id="@+id/webView"

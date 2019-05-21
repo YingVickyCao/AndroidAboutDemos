@@ -1,6 +1,7 @@
 package com.hades.example.android.app_component._intent_and_intent_filter._data;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,14 @@ public abstract class BBase extends AppCompatActivity {
         intent = findViewById(R.id.intent);
 
         page.setText(getPageName());
+        /*
+         Intent {
+         act=action2
+         cat=[android.intent.category.DEFAULT]
+         dat=scheme2:/com.hades:1000/path2
+         cmp=com.hades.example.android/.app_component._intent_and_intent_filter._data.B7 }
+         */
+        Log.d(getPageName(), "onCreate: intent:\n" + getIntent().toString());
         intent.setText(getIntent().toString());
     }
 

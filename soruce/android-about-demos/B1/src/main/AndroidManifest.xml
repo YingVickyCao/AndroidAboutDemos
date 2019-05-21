@@ -53,6 +53,25 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.hades.example.android.b1.app_component.Intent_and_intent_filter.SecondActivity"
+            android:launchMode="singleInstance"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="3g2win"
+                    android:path="/macthDetail"
+                    android:port="9999"
+                    android:scheme="zymobi" />
+
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

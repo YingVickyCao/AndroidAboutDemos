@@ -5,9 +5,10 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.a1.R;
 
@@ -34,6 +35,7 @@ public class TestAccessRemoteActivity extends AppCompatActivity {
         }
         WebView webView = findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/web/web_open_app.html");
+//        webView.loadUrl("file:///android_asset/web/web_open_app2.html");
 
         findViewById(R.id.test1).setOnClickListener(v -> test1());
         findViewById(R.id.test2).setOnClickListener(v -> test2());
