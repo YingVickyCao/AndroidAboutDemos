@@ -322,16 +322,21 @@
     <string name="jump_then_finish">Jump, then Finish</string>
     <string name="back_to_system_home">Back to system Home</string>
 
-    <string name="scheme_1">mock</string>
-    <string name="scheme_2">actual</string>
+    <!-- Intent-Filter - data and type, start -->
+    <string name="scheme_1">scheme1</string>
+    <string name="scheme_2">scheme2</string>
+    <string name="scheme_3">scheme3</string>
     <string name="host_1">com.hades</string>
     <string name="port_1">1000</string>
     <string name="path_1">/path1</string>
     <string name="path_2">/path2</string>
     <string name="action_1">action1</string>
     <string name="action_2">action2</string>
-    <string name="mime_type_1">abc/xyz1</string>
-    <string name="mime_type_2">abc/xyz2</string>
-    <string name="mime_type_3">abc/xyz3</string>
+    <string name="action_3">action3</string>
+    <string name="category_1">category1</string>
+    <string name="category_2">category2</string>
+    <string name="mime_type_1">a/b</string>
+    <string name="mime_type_2">a/c</string>
+    <!-- Intent-Filter - data and type, end -->
 
 </resources>

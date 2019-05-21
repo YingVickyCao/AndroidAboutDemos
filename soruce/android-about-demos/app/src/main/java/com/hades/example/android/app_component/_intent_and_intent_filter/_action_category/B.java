@@ -23,7 +23,7 @@ public class B extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.intent_filter__action_and_category_b);
+        setContentView(R.layout.intent_filter_action_and_category_b);
 
         TextView show = findViewById(R.id.show);
         Intent intent = getIntent();

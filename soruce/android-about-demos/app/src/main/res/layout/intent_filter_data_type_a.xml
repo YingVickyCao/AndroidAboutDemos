@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_intent_Filter_data_and_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/page"
+        style="@style/tv"
+        android:text="A"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/case1"
+                style="@style/btn.small"
+                android:text="case1:scheme1:" />
+
+            <Button
+                android:id="@+id/case2"
+                style="@style/btn.small"
+                android:text="case2:scheme2" />
+
+            <Button
+                android:id="@+id/case3"
+                style="@style/btn.small"
+                android:text="case3:scheme2://com.hades,action1" />
+
+            <Button
+                android:id="@+id/case4"
+                style="@style/btn.small"
+                android:text="case4:scheme2://com.hades,action2" />
+
+            <Button
+                android:id="@+id/case5"
+                style="@style/btn.small"
+                android:text="case5:scheme2:/com.hades,action2" />
+
+            <Button
+                android:id="@+id/case6"
+                style="@style/btn.small"
+                android:text="case6:scheme2:/com.hades:1000/path2,action2" />
+
+            <Button
+                android:id="@+id/case7"
+                style="@style/btn.small"
+                android:text="case7:1 type, 2 data" />
+
+            <Button
+                android:id="@+id/case8"
+                style="@style/btn.small"
+                android:text="case8:1 data, 2 type" />
+
+            <Button
+                android:id="@+id/case9"
+                style="@style/btn.small"
+                android:text="case9:(data, type)" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
