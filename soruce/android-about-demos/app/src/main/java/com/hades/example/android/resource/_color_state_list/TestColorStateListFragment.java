@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,9 +19,12 @@ public class TestColorStateListFragment extends BaseFragment {
     private ViewGroup mll2;
     private TextView mDownload1;
     private TextView mDownload2;
+    private Button btn1;
+    private Button btn2;
 
     private int color_red_1 = 0x00FF0000;
     private int color_red_2 = 0xFF0000;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_color_state_list, container, false);
@@ -45,6 +49,14 @@ public class TestColorStateListFragment extends BaseFragment {
         view.findViewById(R.id.reset2).setOnClickListener(v -> reset2());
 
         mll2.setSelected(true);
+
+        btn1 = view.findViewById(R.id.btn1);
+        btn2 = view.findViewById(R.id.btn2);
+        view.findViewById(R.id.enableTrue).setOnClickListener(v -> enableTrue(btn1));
+        view.findViewById(R.id.enableFalse).setOnClickListener(v -> enableFalse(btn1));
+        view.findViewById(R.id.enableTrue2).setOnClickListener(v -> enableTrue(btn2));
+        view.findViewById(R.id.enableFalse2).setOnClickListener(v -> enableFalse(btn2));
+
         return view;
     }
 
@@ -93,5 +105,15 @@ public class TestColorStateListFragment extends BaseFragment {
         mDownload2.setEnabled(false);
 
         mDownload2.setText(R.string.downloaded);
+    }
+
+    private void enableTrue(Button btn) {
+        btn.setEnabled(true);
+        btn.setClickable(true);
+    }
+
+    private void enableFalse(Button btn) {
+        btn.setEnabled(false);
+        btn.setClickable(false);
     }
 }
