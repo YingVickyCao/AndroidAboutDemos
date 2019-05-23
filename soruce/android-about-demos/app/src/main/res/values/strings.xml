@@ -240,12 +240,13 @@
     <string name="default_seekbar">Default SeekBar</string>
     <string name="use_btn_to_avoid_check_edit_input_date_layout">避免在 EditText 中验证日期</string>
     <string name="format_html">Format HTML</string>
-    <string name="switch_textview_text_and_bg_color">Switch TextView text and bg color</string>
+    <string name="selector_state_selected">TextColor and background - selector stated_selected</string>
+    <string name="selector_state_pressed">TextColor and background - selector stated_pressed</string>
+    <string name="selector_state_enabled">TextColor and background - selector state_enabled</string>
     <string name="switch_text_color_1">Switch text color 1</string>
     <string name="switch_text_color_2">Switch text color 2</string>
     <string name="switch_text_color_3">Switch text color 3</string>
     <string name="switch_text_color_4">Switch text color 4</string>
-    <string name="textview_change_text_and_bg_color_with_click_status_action">TextView change text and bg color with click status action</string>
     <string name="click_this_textview">Click this TextView</string>
     <string name="download">Download</string>
     <string name="downloaded">Downloaded</string>

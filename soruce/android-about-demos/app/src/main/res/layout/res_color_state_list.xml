@@ -26,19 +26,19 @@
             android:orientation="vertical">
 
             <include
-                layout="@layout/res_color_state_list_4_selector_with_selected"
+                layout="@layout/res_color_state_list_4_selector_4_state_selected"
                 android:visibility="gone" />
 
             <View style="@style/div.big" />
 
             <include
-                layout="@layout/res_color_state_list_4_selector_with_pressed"
+                layout="@layout/res_color_state_list_4_selector_4_state_pressed"
                 android:visibility="visible" />
 
-            <View style="@style/div" />
+            <View style="@style/div.big" />
 
             <include
-                layout="@layout/res_color_state_list_4_selector_with_enable"
+                layout="@layout/res_color_state_list_4_selector_4_state_enabled"
                 android:visibility="gone" />
         </LinearLayout>
     </ScrollView>

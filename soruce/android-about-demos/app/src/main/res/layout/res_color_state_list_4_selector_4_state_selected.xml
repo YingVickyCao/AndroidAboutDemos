@@ -8,7 +8,7 @@
     <TextView
         style="@style/tv"
         android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/switch_textview_text_and_bg_color" />
+        android:text="@string/selector_state_selected" />
 
     <TextView
         android:id="@+id/switchedTextColor"

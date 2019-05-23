@@ -8,7 +8,7 @@
     <TextView
         style="@style/tv"
         android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/textview_change_text_and_bg_color_with_click_status_action" />
+        android:text="@string/selector_state_pressed" />
     <!--
         Must Add android:clickable="true".
         Or it does not work.
@@ -31,7 +31,7 @@
     -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="80dp"
         android:background="@drawable/drawable_selector_4_text_view_v2_1"
         android:clickable="true"
         android:focusable="true"
