@@ -7,9 +7,9 @@
         <!--<activity android:name=".app_component._intent_and_intent_filter._component.FirstActivity">-->
         <!--<activity android:name=".app_component.TestAppComponentActivity">-->
         <!--<activity android:name=".other_ui.OtherUIActivity">-->
-        <!--<activity android:name=".resource.ResourceActivity">-->
+        <activity android:name=".resource.ResourceActivity">
         <!--<activity android:name=".widget.WidgetActivity">-->
-        <activity android:name=".app_component._intent_and_intent_filter._data.A">
+        <!--<activity android:name=".app_component._intent_and_intent_filter._data.A">-->
             <!--<activity android:name=".app_component._intent_and_intent_filter._action_category.A">-->
             <!--<activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity">-->
             <intent-filter>

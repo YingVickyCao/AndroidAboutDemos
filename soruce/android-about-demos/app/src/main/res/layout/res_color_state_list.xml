@@ -25,114 +25,148 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/tv"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/switch_textview_text_and_bg_color" />
-
-            <TextView
-                android:id="@+id/switchedTextColor"
-                style="@style/tv"
-                android:layout_height="@dimen/size_45"
-                android:background="@drawable/drawable_selector_4_text_view_v1_1"
-                android:text="TextView 1"
-                android:textColor="@color/textview_text_color_selector_v1" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/switchTextViewTextColor11"
-                    style="@style/btn.small"
-                    android:text="@string/switch_text_color_1" />
-
-                <Button
-                    android:id="@+id/switchTextViewTextColor12"
-                    style="@style/btn.small"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/switch_text_color_2" />
-            </RelativeLayout>
-
-            <View style="@style/div" />
-
-            <!--
-                    Whether  Add android:clickable="true" or not,
-                   it both works.
-                 -->
             <LinearLayout
-                android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/drawable_selector_4_text_view_v1_1"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <TextView
-                    style="@style/tv.small"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size_45"
+                    style="@style/tv"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:duplicateParentState="true"
+                    android:text="@string/switch_textview_text_and_bg_color" />
+
+                <TextView
+                    android:id="@+id/switchedTextColor"
+                    style="@style/tv"
+                    android:layout_height="@dimen/size_45"
+                    android:background="@drawable/drawable_selector_4_text_view_v1_1"
                     android:text="TextView 1"
                     android:textColor="@color/textview_text_color_selector_v1" />
 
-                <TextView
-                    style="@style/tv.small"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size_45"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_selector_4_text_view_v1_2"
-                    android:duplicateParentState="true"
-                    android:text="TextView 2"
-                    android:textColor="@color/textview_text_color_selector_v1" />
-            </LinearLayout>
-
-            <!-- Whether  Add android:clickable="true" or not,it both works. -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/switchTextViewTextColor21"
-                    style="@style/btn.small"
-                    android:text="@string/switch_text_color_1" />
-
-                <Button
-                    android:id="@+id/switchTextViewTextColor22"
-                    style="@style/btn.small"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/switch_text_color_2" />
-            </RelativeLayout>
-
-            <View style="@style/div" />
-
-            <!-- When text = download, can be clicked, and changes color with state_pressed.
-             After clicked, text = download, can not be clicked
-             Background switch: ok
-             TextColor switch: not work
-             -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
                 <RelativeLayout
-                    android:id="@+id/ll2"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor11"
+                        style="@style/btn.small"
+                        android:text="Selected = true" />
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor12"
+                        style="@style/btn.small"
+                        android:layout_alignParentEnd="true"
+                        android:text="Selected = false" />
+                </RelativeLayout>
+
+                <View style="@style/div" />
+
+                <!--
+                        Whether  Add android:clickable="true" or not,
+                       it both works.
+                     -->
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_selector_4_text_view_v1_3_1"
-                    android:orientation="horizontal">
+                    android:background="@drawable/drawable_selector_4_text_view_v1_1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/download"
+                        style="@style/tv.small"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_45"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_weight="1"
+                        android:duplicateParentState="true"
+                        android:text="TextView"
+                        android:textColor="@color/textview_text_color_selector_v1" />
+
+                    <Button
+                        style="@style/tv.small"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_45"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_selector_4_text_view_v1_2"
+                        android:duplicateParentState="true"
+                        android:text="Button"
+                        android:textColor="@color/textview_text_color_selector_v1" />
+                </LinearLayout>
+
+                <!-- Whether  Add android:clickable="true" or not,it both works. -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor21"
+                        style="@style/btn.small"
+                        android:text="Selected = true" />
+
+                    <Button
+                        android:id="@+id/switchTextViewTextColor22"
+                        style="@style/btn.small"
+                        android:layout_alignParentEnd="true"
+                        android:text="Selected = false" />
+                </RelativeLayout>
+
+                <View style="@style/div" />
+
+                <!-- When text = download, can be clicked, and changes color with state_pressed.
+                 After clicked, text = download, can not be clicked
+                 Background switch: ok
+                 TextColor switch: not work
+                 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:id="@+id/ll2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_selector_4_text_view_v1_3_1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/download"
+                            style="@style/tv.small"
+                            android:layout_width="100dp"
+                            android:layout_height="@dimen/size_45"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:layout_marginEnd="@dimen/margin_small"
+                            android:background="@drawable/drawable_selector_4_text_view_v1_3_2"
+                            android:duplicateParentState="true"
+                            android:text="@string/download"
+                            android:textColor="@color/textview_text_color_selector_v1_3" />
+
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/reset"
+                        style="@style/btn.small"
+                        android:text="Reset" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/download2"
                         style="@style/tv.small"
                         android:layout_width="100dp"
                         android:layout_height="@dimen/size_45"
@@ -141,102 +175,255 @@
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginEnd="@dimen/margin_small"
                         android:background="@drawable/drawable_selector_4_text_view_v1_3_2"
-                        android:duplicateParentState="true"
                         android:text="@string/download"
                         android:textColor="@color/textview_text_color_selector_v1_3" />
 
+                    <Button
+                        android:id="@+id/reset2"
+                        style="@style/btn.small"
+                        android:layout_alignParentEnd="true"
+                        android:text="Reset" />
                 </RelativeLayout>
 
-                <Button
-                    android:id="@+id/reset"
-                    style="@style/btn.small"
-                    android:text="Reset" />
             </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/download2"
-                    style="@style/tv.small"
-                    android:layout_width="100dp"
-                    android:layout_height="@dimen/size_45"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:background="@drawable/drawable_selector_4_text_view_v1_3_2"
-                    android:text="@string/download"
-                    android:textColor="@color/textview_text_color_selector_v1_3" />
-
-                <Button
-                    android:id="@+id/reset2"
-                    style="@style/btn.small"
-                    android:layout_alignParentEnd="true"
-                    android:text="Reset" />
-            </RelativeLayout>
 
             <View style="@style/div.big" />
 
-            <TextView
-                style="@style/tv"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/textview_change_text_and_bg_color_with_click_status_action" />
-            <!--
-                Must Add android:clickable="true".
-                Or it does not work.
-            -->
-            <TextView
-                android:id="@+id/switchedBgColor"
-                style="@style/tv"
-                android:layout_height="@dimen/size_45"
-                android:background="@drawable/drawable_selector_4_text_view_v2_1"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="TextView 1"
-                android:textColor="@color/textview_text_color_selector_v2" />
-
-            <View style="@style/div" />
-
-            <!--
-                Must Add android:clickable="true".
-                Or it does not work.
-            -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/drawable_selector_4_text_view_v2_1"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <TextView
                     style="@style/tv"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size_45"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:duplicateParentState="true"
+                    android:text="@string/textview_change_text_and_bg_color_with_click_status_action" />
+                <!--
+                    Must Add android:clickable="true".
+                    Or it does not work.
+                -->
+                <TextView
+                    android:id="@+id/switchedBgColor"
+                    style="@style/tv"
+                    android:layout_height="@dimen/size_45"
+                    android:background="@drawable/drawable_selector_4_text_view_v2_1"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:text="TextView 1"
                     android:textColor="@color/textview_text_color_selector_v2" />
 
-                <TextView
-                    style="@style/tv"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size_45"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_selector_4_text_view_v2_2"
-                    android:duplicateParentState="true"
-                    android:text="TextView 2"
-                    android:textColor="@color/textview_text_color_selector_v2" />
+                <View style="@style/div" />
+
+                <!--
+                    Must Add android:clickable="true".
+                    Or it does not work.
+                -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/drawable_selector_4_text_view_v2_1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/tv"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_45"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_weight="1"
+                        android:duplicateParentState="true"
+                        android:text="TextView 1"
+                        android:textColor="@color/textview_text_color_selector_v2" />
+
+                    <TextView
+                        style="@style/tv"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_45"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_selector_4_text_view_v2_2"
+                        android:duplicateParentState="true"
+                        android:text="TextView 2"
+                        android:textColor="@color/textview_text_color_selector_v2" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="Enable in TextView and Button:default,true,false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:enabled="true"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:enabled="false"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color_enable" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:enabled="true"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color_enable" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:enabled="false"
+                        android:text="@string/textview"
+                        android:textColor="@color/textview_color_enable" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        style="@style/btn.small"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:enabled="true"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:enabled="false"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        style="@style/btn.small"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color_enable" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:enabled="true"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color_enable" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:enabled="false"
+                        android:text="@string/page_Button"
+                        android:textColor="@color/textview_color_enable" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="Enable in TextView and Button:default,true,false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg"
+                        android:text="@string/textview" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg"
+                        android:enabled="true"
+                        android:text="@string/textview" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg"
+                        android:enabled="false"
+                        android:text="@string/textview" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg_enable"
+                        android:text="@string/textview" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg_enable"
+                        android:enabled="true"
+                        android:text="@string/textview" />
+
+                    <TextView
+                        style="@style/tv.small"
+                        android:background="@drawable/textview_bg_enable"
+                        android:enabled="false"
+                        android:text="@string/textview" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        style="@style/btn.small"
+                        android:background="@drawable/textview_bg"
+                        android:text="@string/page_Button" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:background="@drawable/textview_bg"
+                        android:enabled="true"
+                        android:text="@string/page_Button" />
+
+                    <Button
+                        style="@style/btn.small"
+                        android:background="@drawable/textview_bg"
+                        android:enabled="false"
+                        android:text="@string/page_Button" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
