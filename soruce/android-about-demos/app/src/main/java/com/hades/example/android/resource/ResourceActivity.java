@@ -35,6 +35,7 @@ public class ResourceActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_resources);
         initViews();
 

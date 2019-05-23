@@ -1,5 +1,6 @@
 package com.hades.example.android.resource._color_state_list;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,9 @@ public class TestColorStateListFragment extends BaseFragment {
 
     private int color_red_1 = 0x00FF0000;
     private int color_red_2 = 0xFF0000;
+
+    public TestColorStateListFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +61,19 @@ public class TestColorStateListFragment extends BaseFragment {
         view.findViewById(R.id.enableTrue2).setOnClickListener(v -> enableTrue(btn2));
         view.findViewById(R.id.enableFalse2).setOnClickListener(v -> enableFalse(btn2));
 
+        TextView tv1 = view.findViewById(R.id.tv1);
+        tv1.setTextColor(getResources().getColor(R.color.textview_color_enable)); // work
+
+        TextView tv2 = view.findViewById(R.id.tv2);
+//        tv2.setTextColor(getResources().getColor(R.color.textview_color_enable_v2)); // not work
+
+//        tv2.setTextColor(AppCompatResources.getColorStateList(getActivity(), R.color.textview_color_enable_v2)); // work
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            tv2.setTextColor(getResources().getColorStateList(R.color.textview_color_enable_v2, getActivity().getTheme())); // work
+        } else {
+            tv2.setTextColor(getResources().getColorStateList(R.color.textview_color_enable_v2)); // not work
+        }
         return view;
     }
 

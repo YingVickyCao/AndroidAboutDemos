@@ -33,13 +33,23 @@
 
             <include
                 layout="@layout/res_color_state_list_4_selector_4_state_pressed"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <View style="@style/div.big" />
 
             <include
                 layout="@layout/res_color_state_list_4_selector_4_state_enabled"
                 android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv1"
+                style="@style/tv"
+                android:text="Source set selector for Text Color" />
+
+            <TextView
+                android:id="@+id/tv2"
+                style="@style/tv"
+                android:text="Source set selector for Text Color" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

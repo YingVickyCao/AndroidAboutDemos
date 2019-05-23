@@ -14,7 +14,6 @@
         Or it does not work.
     -->
     <TextView
-        android:id="@+id/switchedBgColor"
         style="@style/tv"
         android:layout_height="@dimen/size_45"
         android:background="@drawable/drawable_selector_4_text_view_v2_1"
