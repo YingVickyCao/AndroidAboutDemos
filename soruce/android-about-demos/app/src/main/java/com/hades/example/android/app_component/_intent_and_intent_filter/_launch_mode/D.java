@@ -1,16 +1,16 @@
-package com.hades.example.android.app_component._activity._launch_mode;
+package com.hades.example.android.app_component._intent_and_intent_filter._launch_mode;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 
-public class D extends Activity {
+public class D extends AppCompatActivity {
     private static final String TAG = D.class.getSimpleName();
     public static int num = 0;
     private final String NAME_D = "D";
@@ -21,7 +21,7 @@ public class D extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch_mode);
+        setContentView(getLayoutId());
 
         findViewById(R.id.openD).setOnClickListener(v -> openD());
         findViewById(R.id.openE).setOnClickListener(v -> openE());
@@ -37,6 +37,10 @@ public class D extends Activity {
         taskId.setText(String.valueOf(getTaskId()));
 
         Log.e(getTag(), "onCreate:" + getOnCreatePrint());
+    }
+
+    protected int getLayoutId() {
+        return R.layout.activity_launch_mode;
     }
 
     @Override
@@ -73,11 +77,11 @@ public class D extends Activity {
         return NAME_D;
     }
 
-    private void openD() {
+    protected void openD() {
         startActivity(new Intent(this, D.class));
     }
 
-    private void openE() {
+    protected void openE() {
         startActivity(new Intent(this, E.class));
     }
 
