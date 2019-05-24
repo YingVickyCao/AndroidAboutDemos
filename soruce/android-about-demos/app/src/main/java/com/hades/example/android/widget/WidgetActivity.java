@@ -25,6 +25,7 @@ import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
+import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
@@ -49,6 +50,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
         initViews();
 
+        findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
         findViewById(R.id.pageLinearLayout4LayoutGravityAndGravity).setOnClickListener(v -> pageLinearLayout4LayoutGravityAndGravity());
@@ -62,7 +65,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
-        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
         findViewById(R.id.pageSeekBar).setOnClickListener(v -> pageSeekBar());
         findViewById(R.id.pageProgressbar).setOnClickListener(v -> pageProgressbar());
@@ -87,7 +89,15 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     @Override
     protected void showCurrentTest() {
-        pageProgressbar();
+        pageCustomVew();
+    }
+
+    private void pageCustomVew() {
+        showFragment(new TestCustomViewFragment());
+    }
+
+    private void pageCustomView4CascadeLayout() {
+        showActivity(CascadeLayoutActivity.class);
     }
 
     private void pageConstraintLayout() {
@@ -140,10 +150,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     private void pageImageViewScaleType() {
         showFragment(new TestImageViewScaleTypeFragment());
-    }
-
-    private void pageCustomView4CascadeLayout() {
-        showActivity(CascadeLayoutActivity.class);
     }
 
     private void pageRatingBar() {

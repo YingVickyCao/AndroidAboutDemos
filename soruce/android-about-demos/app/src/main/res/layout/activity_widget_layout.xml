@@ -21,6 +21,11 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/page_CustomVew"
+                style="@style/btn.small"
+                android:text="@string/page_CustomView" />
+
+            <Button
                 android:id="@+id/page_CustomVew4CascadeLayout"
                 style="@style/btn.small"
                 android:text="@string/page_CustomView4CascadeLayout" />

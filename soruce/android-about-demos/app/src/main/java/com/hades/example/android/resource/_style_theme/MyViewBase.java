@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.resource._style_theme;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

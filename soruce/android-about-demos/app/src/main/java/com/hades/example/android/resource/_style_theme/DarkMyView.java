@@ -9,7 +9,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.widget.custom_view.MyViewBase;
 
 @SuppressLint("AppCompatCustomView")
 public class DarkMyView extends MyViewBase {
