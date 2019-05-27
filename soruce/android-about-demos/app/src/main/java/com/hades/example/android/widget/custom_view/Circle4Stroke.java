@@ -9,10 +9,10 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
-public class Circle2 extends View {
+public class Circle4Stroke extends View {
     Paint paint;
 
-    public Circle2(Context context, AttributeSet set) {
+    public Circle4Stroke(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
     }
@@ -25,7 +25,7 @@ public class Circle2 extends View {
 
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.FILL);
+        paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
 //        paint.setStrokeWidth(10);
 

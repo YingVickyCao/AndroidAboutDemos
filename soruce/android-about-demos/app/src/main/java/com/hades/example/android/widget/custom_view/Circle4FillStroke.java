@@ -9,10 +9,10 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
-public class Circle3 extends View {
+public class Circle4FillStroke extends View {
     Paint paint;
 
-    public Circle3(Context context, AttributeSet set) {
+    public Circle4FillStroke(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
     }
