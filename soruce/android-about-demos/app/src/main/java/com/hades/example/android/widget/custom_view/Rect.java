@@ -28,13 +28,15 @@ public class Rect extends View {
 
         canvas.drawColor(Color.BLACK);
 
-        // 去锯齿
         paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(getResources().getDimension(R.dimen.size_2));
 
-        // 绘制矩形
-        canvas.drawRect(0, 0, 100, 100, paint);
+        int left = (int) getResources().getDimension(R.dimen.size_50);
+        int top = (int) getResources().getDimension(R.dimen.size_25);
+        int right = (int) getResources().getDimension(R.dimen.size_150);
+        int bottom = (int) getResources().getDimension(R.dimen.size_75);
+        canvas.drawRect(left, top, right, bottom, paint);
     }
 }

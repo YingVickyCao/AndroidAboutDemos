@@ -29,7 +29,7 @@ public class CircleWithShader extends View {
         Shader mShader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
         paint.setShader(mShader);
         //设置阴影
-        paint.setShadowLayer(25, 20, 20, Color.GRAY);
+//        paint.setShadowLayer(25, 20, 20, Color.GRAY);
 
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.GREEN);

@@ -56,6 +56,20 @@
             <com.hades.example.android.widget.custom_view.CircleWithShader
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_200" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Square" />
+            <com.hades.example.android.widget.custom_view.Square
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_100" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Rect" />
+            <com.hades.example.android.widget.custom_view.Rect
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_100" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
