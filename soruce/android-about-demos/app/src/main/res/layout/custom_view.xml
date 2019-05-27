@@ -70,6 +70,13 @@
             <com.hades.example.android.widget.custom_view.Rect
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_100" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Rect with border" />
+            <com.hades.example.android.widget.custom_view.RectWithBorder
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_100" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
