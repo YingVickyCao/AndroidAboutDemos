@@ -9,4 +9,6 @@
     <dimen name="constrain_layout_height">80dp</dimen>
     <dimen name="constrain_layout_height2">160dp</dimen>
 
+    <dimen name="stroke_width">1dp</dimen>
+
 </resources>
