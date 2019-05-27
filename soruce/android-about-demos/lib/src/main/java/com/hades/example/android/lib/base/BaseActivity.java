@@ -8,6 +8,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,23 @@ public class BaseActivity extends AppCompatActivity {
         if (isNeedCheckPermission()) {
             requestPermission();
         }
+    }
+
+    protected void showActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.show();
+    }
+
+    protected void hideActionBar() {
+        showToast("Hide");
+        ActionBar actionBar = getSupportActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.hide();
     }
 
     protected void requestPermission() {

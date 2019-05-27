@@ -22,27 +22,11 @@ public class TestActionBarActivity extends NoNeedPermissionActivity {
         setContentView(R.layout.other_ui_action_bar);
 
         textView = findViewById(R.id.changedTextViewByMenu);
-        findViewById(R.id.show).setOnClickListener(v -> show());
-        findViewById(R.id.hide).setOnClickListener(v -> hide());
+        findViewById(R.id.show).setOnClickListener(v -> showActionBar());
+        findViewById(R.id.hide).setOnClickListener(v -> hideActionBar());
         enableAppIconClick();
     }
 
-    private void show() {
-        ActionBar actionBar = getSupportActionBar();
-        if (null == actionBar) {
-            return;
-        }
-        actionBar.show();
-    }
-
-    private void hide() {
-        showToast("Hide");
-        ActionBar actionBar = getSupportActionBar();
-        if (null == actionBar) {
-            return;
-        }
-        actionBar.hide();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

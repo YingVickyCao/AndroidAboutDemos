@@ -6,9 +6,53 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView" />
+        android:text="@string/page_CustomView"
+        android:visibility="gone" />
 
     <com.hades.example.android.widget.custom_view.MyView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#00ff00"
+        android:visibility="visible" />
+
+    <TextView
+        style="@style/tv"
+        android:text="Circle - STROKE" />
+
+
+    <com.hades.example.android.widget.custom_view.Circle
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200" />
+
+    <TextView
+        style="@style/tv"
+        android:text="Circle - FILL" />
+
+    <com.hades.example.android.widget.custom_view.Circle2
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200" />
+
+    <TextView
+        style="@style/tv"
+        android:text="Circle - FILL_AND_STROKE" />
+
+    <com.hades.example.android.widget.custom_view.Circle3
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200" />
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="#00ff00"-->
+    <!--android:orientation="vertical">-->
+
+    <!---->
+    <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
 </LinearLayout>

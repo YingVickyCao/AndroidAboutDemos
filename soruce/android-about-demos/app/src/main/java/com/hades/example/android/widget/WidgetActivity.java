@@ -48,6 +48,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_layout);
 
+        hideActionBar();
+
         initViews();
 
         findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());

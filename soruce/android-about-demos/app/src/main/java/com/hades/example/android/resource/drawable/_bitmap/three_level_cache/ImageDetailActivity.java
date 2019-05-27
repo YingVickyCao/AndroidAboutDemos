@@ -115,7 +115,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
             // Start low profile mode and hide ActionBar
             mPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-//            actionBar.hide();
+//            actionBar.hideActionBar();
         }
 
         // Set the current item based on the extra passed in to this activity

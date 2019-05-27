@@ -11,11 +11,26 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.hades.example.android.R;
 
 public class MyView extends View {
     public MyView(Context context, AttributeSet set) {
         super(context, set);
+    }
+
+    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+
+    public MyView(Context context) {
+        super(context);
     }
 
     @Override
@@ -24,20 +39,23 @@ public class MyView extends View {
         super.onDraw(canvas);
         // 把整张画布绘制成白色
         canvas.drawColor(Color.WHITE);
+
         Paint paint = new Paint();
+
         // 去锯齿
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLUE);
+        paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
         int viewWidth = this.getWidth();
-        // 绘制圆形
+
+//        // 绘制圆形
         canvas.drawCircle(viewWidth / 10 + 10, viewWidth / 10 + 10, viewWidth / 10, paint);
-
-        // 绘制正方形
+//
+//        // 绘制正方形
         canvas.drawRect(10, viewWidth / 5 + 20, viewWidth / 5 + 10, viewWidth * 2 / 5 + 20, paint);
-
-        // 绘制矩形
+//
+//        // 绘制矩形
         canvas.drawRect(10, viewWidth * 2 / 5 + 30, viewWidth / 5 + 10, viewWidth / 2 + 30, paint);
         RectF re1 = new RectF(10, viewWidth / 2 + 40, 10 + viewWidth / 5, viewWidth * 3 / 5 + 40);
 
@@ -67,21 +85,18 @@ public class MyView extends View {
         // ----------设置填充风格后绘制----------
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.RED);
+
+
         // 绘制圆形
-        canvas.drawCircle(viewWidth * 3 / 10 + 20, viewWidth / 10 + 10
-                , viewWidth / 10, paint);
+        canvas.drawCircle(viewWidth * 3 / 10 + 20, viewWidth / 10 + 10, viewWidth / 10, paint);
         // 绘制正方形
-        canvas.drawRect(viewWidth / 5 + 20, viewWidth / 5 + 20
-                , viewWidth * 2 / 5 + 20, viewWidth * 2 / 5 + 20, paint);
+        canvas.drawRect(viewWidth / 5 + 20, viewWidth / 5 + 20, viewWidth * 2 / 5 + 20, viewWidth * 2 / 5 + 20, paint);
         // 绘制矩形
-        canvas.drawRect(viewWidth / 5 + 20, viewWidth * 2 / 5 + 30
-                , viewWidth * 2 / 5 + 20, viewWidth / 2 + 30, paint);
-        RectF re2 = new RectF(viewWidth / 5 + 20, viewWidth / 2 + 40
-                , 20 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 40);
+        canvas.drawRect(viewWidth / 5 + 20, viewWidth * 2 / 5 + 30, viewWidth * 2 / 5 + 20, viewWidth / 2 + 30, paint);
+        RectF re2 = new RectF(viewWidth / 5 + 20, viewWidth / 2 + 40, 20 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 40);
         // 绘制圆角矩形
         canvas.drawRoundRect(re2, 15, 15, paint);
-        RectF re21 = new RectF(20 + viewWidth / 5, viewWidth * 3 / 5 + 50
-                , 20 + viewWidth * 2 / 5, viewWidth * 7 / 10 + 50);
+        RectF re21 = new RectF(20 + viewWidth / 5, viewWidth * 3 / 5 + 50, 20 + viewWidth * 2 / 5, viewWidth * 7 / 10 + 50);
         // 绘制椭圆
         canvas.drawOval(re21, paint);
         // 定义一个Path对象，封闭成一个三角形
@@ -104,9 +119,7 @@ public class MyView extends View {
         canvas.drawPath(path4, paint);
         // ----------设置渐变器后绘制----------
         // 为Paint设置渐变器
-        Shader mShader = new LinearGradient(0, 0, 40, 60
-                , new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}
-                , null, Shader.TileMode.REPEAT);
+        Shader mShader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
         paint.setShader(mShader);
         //设置阴影
         paint.setShadowLayer(25, 20, 20, Color.GRAY);
@@ -114,17 +127,13 @@ public class MyView extends View {
         canvas.drawCircle(viewWidth / 2 + 30, viewWidth / 10 + 10
                 , viewWidth / 10, paint);
         // 绘制正方形
-        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth / 5 + 20
-                , viewWidth * 3 / 5 + 30, viewWidth * 2 / 5 + 20, paint);
+        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth / 5 + 20, viewWidth * 3 / 5 + 30, viewWidth * 2 / 5 + 20, paint);
         // 绘制矩形
-        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth * 2 / 5 + 30
-                , viewWidth * 3 / 5 + 30, viewWidth / 2 + 30, paint);
-        RectF re3 = new RectF(viewWidth * 2 / 5 + 30, viewWidth / 2 + 40
-                , 30 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 40);
+        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth * 2 / 5 + 30, viewWidth * 3 / 5 + 30, viewWidth / 2 + 30, paint);
+        RectF re3 = new RectF(viewWidth * 2 / 5 + 30, viewWidth / 2 + 40, 30 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 40);
         // 绘制圆角矩形
         canvas.drawRoundRect(re3, 15, 15, paint);
-        RectF re31 = new RectF(30 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 50
-                , 30 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 50);
+        RectF re31 = new RectF(30 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 50, 30 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 50);
         // 绘制椭圆
         canvas.drawOval(re31, paint);
         // 定义一个Path对象，封闭成一个三角形
@@ -145,23 +154,18 @@ public class MyView extends View {
         path6.close();
         // 根据Path进行绘制，绘制五角形
         canvas.drawPath(path6, paint);
+
+
         // ----------设置字符大小后绘制----------
         paint.setTextSize(48);
         paint.setShader(null);
         // 绘制7个字符串
-        canvas.drawText(getResources().getString(R.string.circle)
-                , 60 + viewWidth * 3 / 5, viewWidth / 10 + 10, paint);
-        canvas.drawText(getResources().getString(R.string.square)
-                , 60 + viewWidth * 3 / 5, viewWidth * 3 / 10 + 20, paint);
-        canvas.drawText(getResources().getString(R.string.rect)
-                , 60 + viewWidth * 3 / 5, viewWidth * 1 / 2 + 20, paint);
-        canvas.drawText(getResources().getString(R.string.round_rect)
-                , 60 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.oval)
-                , 60 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.triangle)
-                , 60 + viewWidth * 3 / 5, viewWidth * 9 / 10 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.pentagon)
-                , 60 + viewWidth * 3 / 5, viewWidth * 11 / 10 + 30, paint);
+        canvas.drawText(getResources().getString(R.string.circle), 60 + viewWidth * 3 / 5, viewWidth / 10 + 10, paint);
+        canvas.drawText(getResources().getString(R.string.square), 60 + viewWidth * 3 / 5, viewWidth * 3 / 10 + 20, paint);
+        canvas.drawText(getResources().getString(R.string.rect), 60 + viewWidth * 3 / 5, viewWidth * 1 / 2 + 20, paint);
+        canvas.drawText(getResources().getString(R.string.round_rect), 60 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 30, paint);
+        canvas.drawText(getResources().getString(R.string.oval), 60 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 30, paint);
+        canvas.drawText(getResources().getString(R.string.triangle), 60 + viewWidth * 3 / 5, viewWidth * 9 / 10 + 30, paint);
+        canvas.drawText(getResources().getString(R.string.pentagon), 60 + viewWidth * 3 / 5, viewWidth * 11 / 10 + 30, paint);
     }
 }
