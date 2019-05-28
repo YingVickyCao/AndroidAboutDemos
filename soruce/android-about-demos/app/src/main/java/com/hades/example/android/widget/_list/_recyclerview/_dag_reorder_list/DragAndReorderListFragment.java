@@ -32,6 +32,7 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     private RecyclerView rv;
     private ItemTouchHelperAdapter adapter;
     private List<Message> list;
+    private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper;
 
     @Nullable
@@ -60,6 +61,11 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     }
 
     private void initData() {
+        list = new ArrayList<>();
+        for (int i = 0; i < NUM; i++) {
+            list.add(new Message(String.valueOf(i + 1), (i + 1), false));
+        }
+
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
             list.add(new Message(String.valueOf(i + 1), (i + 1), false));
