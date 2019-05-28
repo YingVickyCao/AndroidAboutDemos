@@ -1,8 +1,7 @@
 package com.example.android.widget.list.dag_reorder_list2;
 
-import android.util.Log;
+import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,13 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Collections;
 import java.util.List;
 
-public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemViewHolder> implements IItemTouchHelperAdapter {
+import static com.example.android.widget.list.dag_reorder_list2.Item.TYPE_CHILD;
+import static com.example.android.widget.list.dag_reorder_list2.Item.TYPE_GROUP;
+
+public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemVH> implements IItemTouchHelperAdapter {
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
-    List<Message> list;
     private StartDragListener mStartDragListener;
 
-    public ItemTouchHelperAdapter(List<Message> list) {
+    public List<Item> list;
+
+    public ItemTouchHelperAdapter(List<Item> list) {
         this.list = list;
     }
 
@@ -29,33 +32,69 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     @Override
-    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2, parent, false);
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view, parent, false);
-        return new ItemViewHolder(view);
+    public ItemVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        ItemVH itemVH = null;
+        switch (viewType) {
+            case TYPE_GROUP:
+                view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+                itemVH = new GroupVH(view);
+                break;
+
+            case TYPE_CHILD:
+                view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+                itemVH = new ChildVH(view);
+                break;
+        }
+
+        return itemVH;
     }
 
-    @Override
-    public void onBindViewHolder(final ItemViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder: position=" + position);
-        Message bean = list.get(position);
-        holder.info.setText(bean.getInfo());
-        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
+//    @Override
+//    public void onBindViewHolder(final ItemViewHolder holder, int position) {
+//        Log.d(TAG, "onBindViewHolder: position=" + position);
+//        Message bean = list.get(position);
+//        holder.info.setText(bean.getInfo());
+//        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
+//
+//        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
+//        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
+//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                if (null != mStartDragListener) {
+//                    mStartDragListener.startDrag(holder);
+//                }
+//            }
+//            return false;
+//        });
+//    }
 
-        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (null != mStartDragListener) {
-                    mStartDragListener.startDrag(holder);
-                }
-            }
-            return false;
-        });
+    @Override
+    public void onBindViewHolder(ItemVH holder, int position) {
+        Item item = list.get(position);
+        switch (getItemViewType(position)) {
+            case TYPE_GROUP:
+                Group g = (Group) item;
+                GroupVH groupVH = (GroupVH) holder;
+                groupVH.text1.setText(g.title);
+                break;
+
+            case TYPE_CHILD:
+                Child c = (Child) item;
+                ChildVH childVH = (ChildVH) holder;
+                childVH.text1.setText(c.groupName);
+                childVH.text2.setText(c.position + "");
+                break;
+        }
     }
 
     private void updateCheckStatus(final Message bean) {
         bean.setChecked(!bean.isChecked());
         notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return list.get(position).getType();
     }
 
     @Override
@@ -100,5 +139,46 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         public void onItemClear() {
             root.setSelected(false);
         }
+    }
+
+    public class GroupVH extends ItemVH {
+        public TextView text1;
+
+        public GroupVH(View itemView) {
+            super(itemView);
+            text1 = itemView.findViewById(android.R.id.text1);
+            text1.setBackgroundColor(Color.RED);
+        }
+
+        @Override
+        public int getType() {
+            return TYPE_GROUP;
+        }
+    }
+
+    public class ChildVH extends ItemVH {
+        public TextView text1;
+        public TextView text2;
+
+        public ChildVH(View itemView) {
+            super(itemView);
+            text1 = itemView.findViewById(android.R.id.text1);
+            text2 = itemView.findViewById(android.R.id.text2);
+            text1.setTextColor(Color.LTGRAY);
+            text2.setTextColor(Color.BLUE);
+        }
+
+        @Override
+        public int getType() {
+            return TYPE_CHILD;
+        }
+    }
+
+    public abstract class ItemVH extends RecyclerView.ViewHolder {
+        public ItemVH(View itemView) {
+            super(itemView);
+        }
+
+        public abstract int getType();
     }
 }
