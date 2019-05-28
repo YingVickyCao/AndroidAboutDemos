@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- FIXED_ERROR:Caused by: android.content.res.Resources$NotFoundException: File res/drawable/drawable_selector_4_drag_reorder_item_view.xml from drawable resource ID #0x7f08007a-->
+    <!--<item android:drawable="?attr/itemViewHighlightBg" android:state_pressed="true" />-->
+    <!--<item android:drawable="?attr/itemViewHighlightBg" android:state_selected="true" />-->
+    <!--<item android:drawable="?attr/itemViewDefaultBg" />-->
+
+    <item android:drawable="@color/item_view_highlight_bg" android:state_pressed="true" />
+    <item android:drawable="@color/item_view_highlight_bg" android:state_selected="true" />
+    <item android:drawable="@color/item_view_default_bg" />
+</selector>
