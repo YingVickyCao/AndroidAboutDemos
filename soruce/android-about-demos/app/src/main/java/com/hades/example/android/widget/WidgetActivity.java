@@ -91,7 +91,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     @Override
     protected void showCurrentTest() {
-        pageRecyclerView4DragReorderList();
+        pageCustomVew();
     }
 
     private void pageCustomVew() {

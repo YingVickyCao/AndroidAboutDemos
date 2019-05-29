@@ -28,7 +28,6 @@ public class MyView extends View {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-
     public MyView(Context context) {
         super(context);
     }
@@ -154,7 +153,6 @@ public class MyView extends View {
         path6.close();
         // 根据Path进行绘制，绘制五角形
         canvas.drawPath(path6, paint);
-
 
         // ----------设置字符大小后绘制----------
         paint.setTextSize(48);
