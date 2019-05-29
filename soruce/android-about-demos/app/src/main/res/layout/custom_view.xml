@@ -9,13 +9,6 @@
         android:text="@string/page_CustomView"
         android:visibility="visible" />
 
-    <com.hades.example.android.widget.custom_view.MyView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#00ff00"
-        android:visibility="gone" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -115,16 +108,6 @@
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_100"
                 android:visibility="gone" />
-
-            <TextView
-                style="@style/tv"
-                android:text="Path - Triangle"
-                android:visibility="gone" />
-
-            <com.hades.example.android.widget.custom_view.Triangle
-                android:layout_width="@dimen/size_200"
-                android:layout_height="@dimen/size_100"
-                android:visibility="visible" />
 
             <TextView
                 style="@style/tv"
