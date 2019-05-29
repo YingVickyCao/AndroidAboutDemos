@@ -116,19 +116,22 @@
                 android:layout_height="@dimen/size_100"
                 android:visibility="gone" />
 
-            <View style="@style/div" />
-
             <TextView
                 style="@style/tv"
-                android:text="Path"
-                android:visibility="visible" />
-
-            <TextView
-                style="@style/tv"
-                android:text="Triangle"
-                android:visibility="visible" />
+                android:text="Path - Triangle"
+                android:visibility="gone" />
 
             <com.hades.example.android.widget.custom_view.Triangle
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_100"
+                android:visibility="visible" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Line"
+                android:visibility="visible" />
+
+            <com.hades.example.android.widget.custom_view.Line
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_100"
                 android:visibility="visible" />
