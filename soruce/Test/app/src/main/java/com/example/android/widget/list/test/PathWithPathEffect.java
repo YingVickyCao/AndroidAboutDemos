@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.path;
+package com.example.android.widget.list.test;
 
 import android.content.Context;
 import android.graphics.Canvas;
