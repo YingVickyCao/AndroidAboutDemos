@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +23,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     List<Message> list;
     private StartDragListener mStartDragListener;
 
+    private int groupResId;
+
     public ItemTouchHelperAdapter(List<Message> list) {
         this.list = list;
     }
@@ -32,9 +33,14 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         this.mStartDragListener = startDragListener;
     }
 
+    public void setGroupResId(int resId) {
+        groupResId = resId;
+    }
+
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2, parent, false);
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(groupResId, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -43,7 +49,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Message bean = list.get(position);
         Log.d(TAG, "onBindViewHolder: position=" + position + ",isCollapse=" + bean.isCollapse());
         holder.info.setText(bean.getInfo());
-        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
+//        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
 //        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
         holder.drag.setOnClickListener(v -> updateCheckStatus(bean));
@@ -121,7 +127,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         private View root;
         private TextView info;
         private Button drag;
-        private ImageView check;
+        //        private ImageView check;
         private ViewGroup childContainer;
         private ViewGroup groupContainer;
 
@@ -130,7 +136,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             root = itemView.findViewById(R.id.root);
             info = itemView.findViewById(R.id.phone);
             drag = itemView.findViewById(R.id.drag);
-            check = itemView.findViewById(R.id.check);
+//            check = itemView.findViewById(R.id.check);
             childContainer = itemView.findViewById(R.id.childContainer);
             groupContainer = itemView.findViewById(R.id.groupContainer);
         }

@@ -55,6 +55,9 @@ public class DragAndReorderListFragment extends Fragment {
         adapter1 = new ItemTouchHelperAdapter(list1);
         adapter2 = new ItemTouchHelperAdapter(list2);
 
+        adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
+        adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
+
         adapter1.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
