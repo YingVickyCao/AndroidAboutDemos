@@ -24,45 +24,99 @@ import java.util.List;
  * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
  */
-public class DragAndReorderListFragment extends Fragment implements StartDragListener {
+public class DragAndReorderListFragment extends Fragment {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
     private final static int NUM = 5;
 
-    private RecyclerView rv;
-    private ItemTouchHelperAdapter adapter;
-    private List<Message> list;
-    private ItemTouchHelper mItemTouchHelper;
+    private RecyclerView lv1;
+
+    private RecyclerView lv2;
+    private ItemTouchHelperAdapter adapter1;
+    private ItemTouchHelperAdapter adapter2;
+    private List<Message> list1;
+    private List<Message> list2;
+    private ItemTouchHelper mItemTouchHelper1;
+    private ItemTouchHelper mItemTouchHelper2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list_v2, container, false);
-        initData();
+        initList1Data();
+        initList2Data();
 
-        rv = view.findViewById(R.id.rv);
-        rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        adapter = new ItemTouchHelperAdapter(list);
-        adapter.setStartDragListener(this);
-        rv.setAdapter(adapter);
+        lv1 = view.findViewById(R.id.lv1);
+        lv2 = view.findViewById(R.id.lv2);
 
-        mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
-        mItemTouchHelper.attachToRecyclerView(rv);
+        lv1.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        lv2.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        adapter1 = new ItemTouchHelperAdapter(list1);
+        adapter2 = new ItemTouchHelperAdapter(list2);
+
+        adapter1.setStartDragListener(new StartDragListener() {
+            @Override
+            public void startDrag(RecyclerView.ViewHolder viewHolder) {
+                updateList1CollapseStatus(true);
+                adapter1.notifyDataSetChanged();
+                mItemTouchHelper1.startDrag(viewHolder);
+            }
+
+            @Override
+            public void startSwipe(RecyclerView.ViewHolder viewHolder) {
+                mItemTouchHelper1.startSwipe(viewHolder);
+            }
+        });
+
+        adapter2.setStartDragListener(new StartDragListener() {
+            @Override
+            public void startDrag(RecyclerView.ViewHolder viewHolder) {
+                updateList2CollapseStatus(true);
+                adapter2.notifyDataSetChanged();
+                mItemTouchHelper1.startDrag(viewHolder);
+            }
+
+            @Override
+            public void startSwipe(RecyclerView.ViewHolder viewHolder) {
+                mItemTouchHelper2.startSwipe(viewHolder);
+            }
+        });
+
+        lv1.setAdapter(adapter1);
+        lv2.setAdapter(adapter2);
+
+        mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1));
+        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2));
+
+        mItemTouchHelper1.attachToRecyclerView(lv1);
+        mItemTouchHelper2.attachToRecyclerView(lv2);
         return view;
     }
 
-    private void initData() {
-        list = new ArrayList<>();
+    private void initList1Data() {
+        list1 = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
             List<Child> childList = new ArrayList<>();
             for (int j = 0; j < i; j++) {
-                childList.add(new Child("Child " + String.valueOf(i + 1) + "_" + (j + 1)));
+                childList.add(new Child("Group 1 -  Child " + (i + 1) + "_" + (j + 1)));
             }
-            list.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
+            list1.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
         }
     }
 
-    private void updateCollapseStatus(boolean isCollapse) {
+    private void initList2Data() {
+        list2 = new ArrayList<>();
+        for (int i = 0; i < NUM; i++) {
+            List<Child> childList = new ArrayList<>();
+            for (int j = 0; j < i; j++) {
+                childList.add(new Child("Group 2 - Child " + (i + 1) + "_" + (j + 1)));
+            }
+            list2.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
+        }
+    }
+
+    private void updateCollapseStatus(List<Message> list, boolean isCollapse) {
         if (null == list) {
             return;
         }
@@ -75,15 +129,11 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
         }
     }
 
-    @Override
-    public void startDrag(RecyclerView.ViewHolder viewHolder) {
-        updateCollapseStatus(true);
-        adapter.notifyDataSetChanged();
-        mItemTouchHelper.startDrag(viewHolder);
+    private void updateList1CollapseStatus(boolean isCollapse) {
+        updateCollapseStatus(list1, isCollapse);
     }
 
-    @Override
-    public void startSwipe(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startSwipe(viewHolder);
+    private void updateList2CollapseStatus(boolean isCollapse) {
+        updateCollapseStatus(list2, isCollapse);
     }
 }
