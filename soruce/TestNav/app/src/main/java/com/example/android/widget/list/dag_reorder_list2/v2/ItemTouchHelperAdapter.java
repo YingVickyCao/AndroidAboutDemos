@@ -3,7 +3,6 @@ package com.example.android.widget.list.dag_reorder_list2.v2;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,38 +38,50 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder: position=" + position);
         Message bean = list.get(position);
+        Log.d(TAG, "onBindViewHolder: position=" + position + ",isCollapse=" + bean.isCollapse());
         holder.info.setText(bean.getInfo());
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
         holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (null != mStartDragListener) {
-                    mStartDragListener.startDrag(holder);
-                }
-            }
-            return false;
+        holder.drag.setOnClickListener(v -> updateCheckStatus(bean));
+
+        holder.drag.setOnLongClickListener(v -> {
+            startDrag(holder);
+            return true;
+        });
+        holder.root.setOnLongClickListener(v -> {
+            startDrag(holder);
+            return true;
         });
 
-        List<Child> children = bean.getChildren();
-
-        if (children.size() >= 1) {
-            holder.group.setVisibility(View.VISIBLE);
-        } else {
+        if (bean.isCollapse()) {
             holder.group.setVisibility(View.GONE);
-        }
+        } else {
+            List<Child> children = bean.getChildren();
+            if (children.size() >= 1) {
+                holder.group.setVisibility(View.VISIBLE);
+            } else {
+                holder.group.setVisibility(View.GONE);
+            }
 
-        for (int i = 0; i < children.size(); i++) {
-            TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
-            textView.setBackgroundColor(Color.WHITE);
-            textView.setText(String.valueOf(children.get(i).childText));
-            holder.group.addView(textView);
+            if (holder.group.getChildCount() < children.size()) {
+                for (int i = 0; i < children.size(); i++) {
+                    TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
+                    textView.setBackgroundColor(Color.WHITE);
+                    textView.setText(String.valueOf(children.get(i).childText));
+                    holder.group.addView(textView);
+                }
+            }
         }
     }
 
+    private void startDrag(ItemViewHolder holder) {
+        mStartDragListener.startDrag(holder);
+    }
+
     private void updateCheckStatus(final Message bean) {
+        bean.setCollapse(!bean.isCollapse());
         bean.setChecked(!bean.isChecked());
         notifyDataSetChanged();
     }

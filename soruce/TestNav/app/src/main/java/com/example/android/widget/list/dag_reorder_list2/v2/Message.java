@@ -7,6 +7,7 @@ public class Message {
     private int id;
     private boolean isChecked;
     private List<Child> children;
+    private boolean isCollapse;
 
     public Message(String info, int id, boolean isChecked, List<Child> items) {
         this.info = info;
@@ -33,5 +34,13 @@ public class Message {
 
     public List<Child> getChildren() {
         return children;
+    }
+
+    public void setCollapse(boolean collapse) {
+        isCollapse = collapse;
+    }
+
+    public boolean isCollapse() {
+        return isCollapse;
     }
 }

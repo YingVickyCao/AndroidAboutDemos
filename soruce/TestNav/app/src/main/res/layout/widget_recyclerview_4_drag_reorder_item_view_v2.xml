@@ -21,32 +21,30 @@
             android:background="@android:color/transparent"
             android:src="@drawable/drawable_level_list_1_1" />
 
-        <!--android:background="@drawable/ic_launcher_round"-->
-
         <TextView
             android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#000000" />
+            android:text="123"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/drag"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/drawable_selector_4_drag_reorder_item_view_v2"
+            android:background="@drawable/ic_drag"
             android:duplicateParentState="true"
-            android:gravity="center"
-            android:text="Drag" />
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/group"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" />
 
     <View
         android:id="@+id/div"

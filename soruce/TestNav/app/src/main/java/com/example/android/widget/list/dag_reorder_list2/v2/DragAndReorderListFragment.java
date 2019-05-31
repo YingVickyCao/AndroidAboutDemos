@@ -32,7 +32,6 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
     private RecyclerView rv;
     private ItemTouchHelperAdapter adapter;
     private List<Message> list;
-    private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper;
 
     @Nullable
@@ -46,14 +45,6 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
-
-        // ERROR: not work
-//        DividerItemDecoration itemDecoration = new DividerItemDecoration(rv.getContext(), LinearLayoutManager.VERTICAL);
-//        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.drawable_shape_4_divider_vertical));
-//        rv.addItemDecoration(itemDecoration);
-
-        // Worked.But when drag, div can swipe together with dragged item.
-//        rv.addItemDecoration(new SimpleDividerItemDecoration(rv.getContext(), R.drawable.drawable_shape_4_divider_vertical));
 
         mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
         mItemTouchHelper.attachToRecyclerView(rv);
@@ -71,8 +62,23 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
         }
     }
 
+    private void updateCollapseStatus(boolean isCollapse) {
+        if (null == list) {
+            return;
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            Message message = list.get(i);
+            if (null != message) {
+                message.setCollapse(isCollapse);
+            }
+        }
+    }
+
     @Override
     public void startDrag(RecyclerView.ViewHolder viewHolder) {
+        updateCollapseStatus(true);
+        adapter.notifyDataSetChanged();
         mItemTouchHelper.startDrag(viewHolder);
     }
 

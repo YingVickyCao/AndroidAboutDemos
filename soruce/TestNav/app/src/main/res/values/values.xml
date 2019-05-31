@@ -2,8 +2,8 @@
 <resources>
     <dimen name="group_height">45dp</dimen>
     <dimen name="size_5">5dp</dimen>
-    <color name="item_view_highlight_bg">@android:color/holo_green_dark</color>
-    <color name="item_view_default_bg">@android:color/holo_orange_light</color>
+    <color name="item_view_highlight_bg">@android:color/holo_red_dark</color>
+    <color name="item_view_default_bg">#ff7a75</color>
 
     <dimen name="size_topic">50dp</dimen>
 </resources>
