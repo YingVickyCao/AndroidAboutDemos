@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@drawable/drawable_selector_4_drag_reorder_item_view"
     android:orientation="vertical">
 
     <!-- QA: android:foreground / android:background - show bg when click item view -->
@@ -9,11 +10,8 @@
     <!-- After add root.setOnClickListener , selector: when click, has bg.  -->
 
     <LinearLayout
-        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/drawable_selector_4_drag_reorder_item_view"
         android:orientation="horizontal">
 
         <ImageView
@@ -42,4 +40,18 @@
             android:gravity="center"
             android:text="Drag" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/group"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/div"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/holo_blue_bright"
+        android:visibility="visible" />
 </LinearLayout>

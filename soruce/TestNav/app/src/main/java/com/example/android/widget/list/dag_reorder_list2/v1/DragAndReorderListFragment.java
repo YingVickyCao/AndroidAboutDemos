@@ -1,5 +1,6 @@
-package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
+package com.example.android.widget.list.dag_reorder_list2.v1;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.example.android.widget.list.dag_reorder_list2.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
  */
-public class DragAndReorderListFragment extends BaseFragment implements StartDragListener {
+public class DragAndReorderListFragment extends Fragment implements StartDragListener {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
     private final static int NUM = 5;
@@ -32,8 +32,11 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     private RecyclerView rv;
     private ItemTouchHelperAdapter adapter;
     private List<Message> list;
-    private List<Message> list2;
+    private List<String> group;
+    private List<Item> mItems;
     private ItemTouchHelper mItemTouchHelper;
+
+    private String[] groupNames = {"A", "B", "C", "D", "E", "F", "G"};
 
     @Nullable
     @Override
@@ -43,7 +46,7 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
 
         rv = view.findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        adapter = new ItemTouchHelperAdapter(list);
+        adapter = new ItemTouchHelperAdapter(mItems);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
 
@@ -55,8 +58,8 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
         // Worked.But when drag, div can swipe together with dragged item.
 //        rv.addItemDecoration(new SimpleDividerItemDecoration(rv.getContext(), R.drawable.drawable_shape_4_divider_vertical));
 
-        mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
-        mItemTouchHelper.attachToRecyclerView(rv);
+//        mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter));
+//        mItemTouchHelper.attachToRecyclerView(rv);
         return view;
     }
 
@@ -64,6 +67,28 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
             list.add(new Message(String.valueOf(i + 1), (i + 1), false));
+        }
+
+        group = new ArrayList<>();
+        for (int i = 0; i < NUM; i++) {
+            list.add(new Message(String.valueOf(i + 1), (i + 1), false));
+        }
+
+        mItems = new ArrayList<>();
+        for (int i = 0; i < groupNames.length; i++) {
+            Group group = new Group();
+            group.position = i;
+            group.title = groupNames[i];
+            mItems.add(group);
+
+            int count = (int) (Math.random() * 10) % 4 + 1;
+            for (int j = 0; j < count; j++) {
+                Child child = new Child();
+                child.position = j;
+                child.groupPos = i;
+                child.groupName = group.title;
+                mItems.add(child);
+            }
         }
     }
 

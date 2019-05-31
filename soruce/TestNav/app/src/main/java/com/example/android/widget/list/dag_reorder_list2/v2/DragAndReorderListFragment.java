@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
+package com.example.android.widget.list.dag_reorder_list2.v2;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.example.android.widget.list.dag_reorder_list2.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  * <p>
  * https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-6a6f0c422efd
  */
-public class DragAndReorderListFragment extends BaseFragment implements StartDragListener {
+public class DragAndReorderListFragment extends Fragment implements StartDragListener {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
     private final static int NUM = 5;
@@ -63,7 +63,11 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     private void initData() {
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
-            list.add(new Message(String.valueOf(i + 1), (i + 1), false));
+            List<Child> childList = new ArrayList<>();
+            for (int j = 0; j < i + 1; j++) {
+                childList.add(new Child("Child " + String.valueOf(i + 1) + "_" + (j + 1)));
+            }
+            list.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
         }
     }
 

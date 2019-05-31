@@ -4,12 +4,10 @@
     android:background="#F4F4F3"
     android:orientation="vertical">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_topic"
         android:background="@color/item_view_default_bg" />
 
 </FrameLayout>
