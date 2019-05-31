@@ -1,9 +1,15 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
+import android.graphics.Canvas;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
+    private static final String TAG = SimpleItemTouchHelperCallback.class.getSimpleName();
+
     private ItemTouchHelperAdapter mAdapter;
 
     SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
@@ -47,19 +53,45 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private int getDragDirectionsFlags(RecyclerView.ViewHolder viewHolder) {
         int dragFlags;
         if (isFirst(viewHolder)) {
+            Log.d(TAG, "getDragDirectionsFlags: first");
             dragFlags = dragFlags4First();
         } else if (isLast(viewHolder)) {
             dragFlags = dragFlags4Last();
+            Log.d(TAG, "getDragDirectionsFlags: last");
         } else {
             dragFlags = dragFlags4Middle();
+            Log.d(TAG, "getDragDirectionsFlags: middle");
         }
         return dragFlags;
+    }
+
+    @Override
+    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        Log.d(TAG, "onChildDraw: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
+    }
+
+    @Override
+    public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        Log.d(TAG, "onChildDrawOver: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
     }
 
     // |
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        Log.d(TAG, "onMove: origin=" + viewHolder.getAdapterPosition() + ",target pos=" + target.getAdapterPosition());
         return mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+    }
+
+    @Override
+    public boolean canDropOver(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder current, @NonNull RecyclerView.ViewHolder target) {
+        return super.canDropOver(recyclerView, current, target);
+    }
+
+    @Override
+    public int getBoundingBoxMargin() {
+        return super.getBoundingBoxMargin();
     }
 
     // ---
@@ -76,12 +108,13 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return true;
+        return false;
     }
 
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         super.onSelectedChanged(viewHolder, actionState);
+        Log.d(TAG, "onSelectedChanged: actionState=" + actionState);
 
         if (viewHolder instanceof IItemTouchHelperViewHolder) {
             ((IItemTouchHelperViewHolder) viewHolder).onItemSelected();
