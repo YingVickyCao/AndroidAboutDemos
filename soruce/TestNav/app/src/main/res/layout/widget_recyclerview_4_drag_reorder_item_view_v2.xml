@@ -10,6 +10,7 @@
     <!-- After add root.setOnClickListener , selector: when click, has bg.  -->
 
     <LinearLayout
+        android:id="@+id/groupContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -40,7 +41,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/group"
+        android:id="@+id/childContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

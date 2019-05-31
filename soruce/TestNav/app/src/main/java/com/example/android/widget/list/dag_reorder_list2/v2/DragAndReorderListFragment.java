@@ -37,7 +37,7 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list, container, false);
+        View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list_v2, container, false);
         initData();
 
         rv = view.findViewById(R.id.rv);
@@ -55,7 +55,7 @@ public class DragAndReorderListFragment extends Fragment implements StartDragLis
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
             List<Child> childList = new ArrayList<>();
-            for (int j = 0; j < i + 1; j++) {
+            for (int j = 0; j < i; j++) {
                 childList.add(new Child("Child " + String.valueOf(i + 1) + "_" + (j + 1)));
             }
             list.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));

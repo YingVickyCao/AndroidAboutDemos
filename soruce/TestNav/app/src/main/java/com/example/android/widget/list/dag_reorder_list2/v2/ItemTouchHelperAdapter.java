@@ -1,5 +1,6 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +45,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.info.setText(bean.getInfo());
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
-        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
+//        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
         holder.drag.setOnClickListener(v -> updateCheckStatus(bean));
 
         holder.drag.setOnLongClickListener(v -> {
@@ -56,24 +58,35 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         });
 
         if (bean.isCollapse()) {
-            holder.group.setVisibility(View.GONE);
+            holder.childContainer.setVisibility(View.GONE);
         } else {
             List<Child> children = bean.getChildren();
             if (children.size() >= 1) {
-                holder.group.setVisibility(View.VISIBLE);
+                holder.childContainer.setVisibility(View.VISIBLE);
             } else {
-                holder.group.setVisibility(View.GONE);
+                holder.childContainer.setVisibility(View.GONE);
             }
 
-            if (holder.group.getChildCount() < children.size()) {
+            if (holder.childContainer.getChildCount() < children.size()) {
                 for (int i = 0; i < children.size(); i++) {
                     TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
                     textView.setBackgroundColor(Color.WHITE);
-                    textView.setText(String.valueOf(children.get(i).childText));
-                    holder.group.addView(textView);
+                    String childText = String.valueOf(children.get(i).childText);
+                    textView.setText(childText);
+                    textView.setOnClickListener(v -> openPage(v.getContext(), childText));
+                    holder.childContainer.addView(textView);
                 }
             }
         }
+        if (holder.childContainer.getChildCount() > 0) {
+            holder.groupContainer.setOnClickListener(v -> updateCheckStatus(bean));
+        } else {
+            holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
+        }
+    }
+
+    private void openPage(Context context, String text) {
+        Toast.makeText(context, "Open " + text, Toast.LENGTH_SHORT).show();
     }
 
     private void startDrag(ItemViewHolder holder) {
@@ -109,7 +122,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         private TextView info;
         private Button drag;
         private ImageView check;
-        private ViewGroup group;
+        private ViewGroup childContainer;
+        private ViewGroup groupContainer;
 
         ItemViewHolder(View itemView) {
             super(itemView);
@@ -117,7 +131,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             info = itemView.findViewById(R.id.phone);
             drag = itemView.findViewById(R.id.drag);
             check = itemView.findViewById(R.id.check);
-            group = itemView.findViewById(R.id.group);
+            childContainer = itemView.findViewById(R.id.childContainer);
+            groupContainer = itemView.findViewById(R.id.groupContainer);
         }
 
         // QA: onItemSelected - show item view bg when drag dragBtn
