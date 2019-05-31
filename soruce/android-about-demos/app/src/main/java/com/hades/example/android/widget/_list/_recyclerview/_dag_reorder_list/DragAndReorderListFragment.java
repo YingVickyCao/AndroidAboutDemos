@@ -27,7 +27,7 @@ import java.util.List;
 public class DragAndReorderListFragment extends BaseFragment implements StartDragListener {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
-    private final static int NUM = 5;
+    private final static int NUM = 50;
 
     private RecyclerView rv;
     private ItemTouchHelperAdapter adapter;
