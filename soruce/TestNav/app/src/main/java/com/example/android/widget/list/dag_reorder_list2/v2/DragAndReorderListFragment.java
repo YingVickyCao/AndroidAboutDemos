@@ -35,6 +35,7 @@ public class DragAndReorderListFragment extends Fragment {
     private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
+    private TextView mCurrentPageView;
 
     private OpenedPage mOpenedPage = new OpenedPage();
 
@@ -53,6 +54,7 @@ public class DragAndReorderListFragment extends Fragment {
 
         loadingContainer = view.findViewById(R.id.loadingContainer);
 
+        mCurrentPageView = view.findViewById(R.id.currentPage);
         RecyclerView lv1 = view.findViewById(R.id.lv1);
         RecyclerView lv2 = view.findViewById(R.id.lv2);
 
@@ -98,8 +100,11 @@ public class DragAndReorderListFragment extends Fragment {
 
             @Override
             public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
-                Toast.makeText(getContext(), "Open " + (isGroup ? title : childTitle), Toast.LENGTH_SHORT).show();
+                String openedCurrentPage = "Open " + (isGroup ? title : childTitle);
+                Toast.makeText(getContext(), openedCurrentPage, Toast.LENGTH_SHORT).show();
+
                 mOpenedPage.updateOpenedPage(title, childTitle, "Group1", isGroup);
+                mCurrentPageView.setText(openedCurrentPage);
             }
         };
 
@@ -149,10 +154,9 @@ public class DragAndReorderListFragment extends Fragment {
         mItemTouchHelper1.attachToRecyclerView(lv1);
         mItemTouchHelper2.attachToRecyclerView(lv2);
 
-        TextView desc = view.findViewById(R.id.desc);
-        desc.setFocusable(true);
-        desc.setFocusableInTouchMode(true);
-        desc.requestFocus();
+        mCurrentPageView.setFocusable(true);
+        mCurrentPageView.setFocusableInTouchMode(true);
+        mCurrentPageView.requestFocus();
         return view;
     }
 
