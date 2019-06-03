@@ -23,18 +23,18 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
     List<Message> mList;
-    private StartDragListener mStartDragListener;
+    private IDragView mDragView;
     private int mGroupResId;
     private Activity mContext;
     private List<Integer> mExpandPositionList = new ArrayList<>();
 
-    public ItemTouchHelperAdapter(List<Message> mList, Activity context) {
-        this.mList = mList;
-        this.mContext = context;
+    public ItemTouchHelperAdapter(List<Message> list, Activity context) {
+        mList = list;
+        mContext = context;
     }
 
-    public void setStartDragListener(StartDragListener startDragListener) {
-        this.mStartDragListener = startDragListener;
+    public void setDragView(IDragView dragView) {
+        mDragView = dragView;
     }
 
     public void setGroupResId(int resId) {
@@ -55,16 +55,16 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Message bean = mList.get(position);
         holder.groupTitle.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
-            if (null != mStartDragListener) {
-                mStartDragListener.showLoading();
+            if (null != mDragView) {
+                mDragView.showLoading();
             }
             new Thread(() -> {
                 if (isHasExpand()) {
                     collapse();
                 } else {
                     mExpandPositionList.clear();
-                    if (null != mStartDragListener) {
-                        mStartDragListener.startDrag(holder);
+                    if (null != mDragView) {
+                        mDragView.startDrag(holder);
                     }
                 }
             }).start();
@@ -125,8 +125,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     // PO: 2019-06-03
     private void toggleExpand(View view, final Message bean, int position) {
         Log.d(TAG, "toggleExpand:start" + mExpandPositionList.toString());
-        if (null != mStartDragListener) {
-            mStartDragListener.showLoading();
+        if (null != mDragView) {
+            mDragView.showLoading();
         }
 
         new Thread(() -> {
@@ -145,8 +145,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             mContext.runOnUiThread(() -> {
                 view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
             });
-            if (null != mStartDragListener) {
-                mStartDragListener.hideLoading();
+            if (null != mDragView) {
+                mDragView.hideLoading();
             }
 
         }).start();
@@ -174,8 +174,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             notifyDataSetChanged();
         });
 
-        if (null != mStartDragListener) {
-            mStartDragListener.hideLoading();
+        if (null != mDragView) {
+            mDragView.hideLoading();
         }
         Log.d(TAG, "collapse:end" + mExpandPositionList.toString());
     }

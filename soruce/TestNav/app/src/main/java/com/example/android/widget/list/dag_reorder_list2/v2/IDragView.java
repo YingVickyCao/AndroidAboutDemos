@@ -2,7 +2,7 @@ package com.example.android.widget.list.dag_reorder_list2.v2;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public interface StartDragListener {
+public interface IDragView {
     void startDrag(RecyclerView.ViewHolder viewHolder);
 
     void endDrag();

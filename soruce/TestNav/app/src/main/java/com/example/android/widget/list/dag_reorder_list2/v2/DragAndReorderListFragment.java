@@ -37,14 +37,10 @@ public class DragAndReorderListFragment extends Fragment {
 
     private View loadingContainer;
 
-    private ItemTouchHelperAdapter adapter1;
-    private ItemTouchHelperAdapter adapter2;
     private List<Message> list1;
     private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
-    private StartDragListener mStartDragListener1;
-    private StartDragListener mStartDragListener2;
 
     @Nullable
     @Override
@@ -67,13 +63,13 @@ public class DragAndReorderListFragment extends Fragment {
         lv1.setHasFixedSize(true);// PO
         lv2.setHasFixedSize(true);// PO
 
-        adapter1 = new ItemTouchHelperAdapter(list1, getActivity());
-        adapter2 = new ItemTouchHelperAdapter(list2, getActivity());
+        ItemTouchHelperAdapter adapter1 = new ItemTouchHelperAdapter(list1, getActivity());
+        ItemTouchHelperAdapter adapter2 = new ItemTouchHelperAdapter(list2, getActivity());
 
         adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
         adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
 
-        mStartDragListener1 = new StartDragListener() {
+        IDragView startDragListener1 = new IDragView() {
 
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
@@ -101,7 +97,7 @@ public class DragAndReorderListFragment extends Fragment {
             }
         };
 
-        mStartDragListener2 = new StartDragListener() {
+        IDragView startDragListener2 = new IDragView() {
 
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
@@ -129,14 +125,14 @@ public class DragAndReorderListFragment extends Fragment {
             }
         };
 
-        adapter1.setStartDragListener(mStartDragListener1);
-        adapter2.setStartDragListener(mStartDragListener2);
+        adapter1.setDragView(startDragListener1);
+        adapter2.setDragView(startDragListener2);
 
         lv1.setAdapter(adapter1);
         lv2.setAdapter(adapter2);
 
-        mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, mStartDragListener1));
-        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, mStartDragListener2));
+        mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, startDragListener1));
+        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2));
 
         mItemTouchHelper1.attachToRecyclerView(lv1);
         mItemTouchHelper2.attachToRecyclerView(lv2);

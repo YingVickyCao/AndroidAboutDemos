@@ -1,26 +1,27 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static android.content.ContentValues.TAG;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
-    private ItemTouchHelperAdapter mAdapter;
-    private StartDragListener mStartDragListener;
+    private static final String TAG = SimpleItemTouchHelperCallback.class.getSimpleName();
 
-    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter, StartDragListener startDragListener) {
+    private ItemTouchHelperAdapter mAdapter;
+    private IDragView mStartDragListener;
+
+    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter, IDragView startDragListener) {
         mAdapter = adapter;
         mStartDragListener = startDragListener;
     }
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+//        Log.d(TAG, "getMovementFlags: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId()); // getMovementFlags: thread name=Thread-8,thread id=1847
         return makeMovementFlags(getDragDirectionsFlags(viewHolder), swipeFlags());
 //        return makeFlag(ACTION_STATE_DRAG, getDragDirectionsFlags(viewHolder));
     }
@@ -67,6 +68,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+//        Log.d(TAG, "onChildDraw: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId()); // onChildDraw: thread name=main,thread id=2
         if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
             View itemView = viewHolder.itemView;
             if (itemView.getTop() == 0 && viewHolder.getAdapterPosition() == 0) {
@@ -81,12 +83,14 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     // |
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//        Log.d(TAG, "onMove: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId()); // onMove: thread name=main,thread id=2
         return mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
     }
 
     // ---
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+//        Log.d(TAG, "onSwiped: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId());
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 
@@ -104,7 +108,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         super.onSelectedChanged(viewHolder, actionState);
-        Log.d(TAG, "onSelectedChanged: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",actionState=" + actionState);
+//        Log.d(TAG, "onSelectedChanged: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",actionState=" + actionState);// onSelectedChanged: thread name=main,thread id=2,actionState=0
 
         if (ItemTouchHelper.ACTION_STATE_DRAG == actionState) {
             if (viewHolder instanceof IItemTouchHelperViewHolder) {
@@ -112,19 +116,20 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
             }
         }
 
+        if (ItemTouchHelper.ACTION_STATE_IDLE == actionState) {
+            if (null != mStartDragListener) {
+                mStartDragListener.endDrag();
+            }
+        }
     }
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
-        Log.d(TAG, "clearView: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + "position=" + viewHolder.getAdapterPosition());
+//        Log.d(TAG, "clearView: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + "position=" + viewHolder.getAdapterPosition()); // clearView: thread name=main,thread id=2position=15
 
         if (viewHolder instanceof IItemTouchHelperViewHolder) {
             ((IItemTouchHelperViewHolder) viewHolder).onItemClear();
-        }
-
-        if (null != mStartDragListener) {
-            mStartDragListener.hideLoading();
         }
     }
 }
