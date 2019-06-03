@@ -88,8 +88,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         mStartDragListener.startDrag(holder);
     }
 
+    // PO: 2019-06-03
     private void updateExpand(View view, final Message bean) {
         bean.setExpand(!bean.isExpand());
+//        notifyDataSetChanged();
         view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
     }
 

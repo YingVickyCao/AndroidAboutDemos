@@ -98,30 +98,28 @@ public class DragAndReorderListFragment extends Fragment {
     }
 
     private void initList1Data() {
-        list1 = new ArrayList<>();
-        for (int i = 0; i < NUM; i++) {
-            List<Child> childList = new ArrayList<>();
-            for (int j = 0; j < i; j++) {
-                childList.add(new Child("Group 1 -  Child " + (i + 1) + "_" + (j + 1)));
-            }
-            list1.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
-        }
+        list1 = initListData("Group 1 - Child ", 20);
     }
 
     private void initList2Data() {
-        list2 = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        list2 = initListData("Group 2 - Child ", 50);
+    }
+
+    private List<Message> initListData(String childPre, int num) {
+        List<Message> list = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
             List<Child> childList = new ArrayList<>();
             for (int j = 0; j < i; j++) {
-                childList.add(new Child("Group 2 - Child " + (i + 1) + "_" + (j + 1)));
-                if (j>=4){
+                childList.add(new Child(childPre + (i + 1) + "_" + (j + 1)));
+                if (j >= 4) {
                     break;
                 }
             }
             Message message = new Message(String.valueOf(i + 1), (i + 1), false, childList);
             message.setExpand(false);
-            list2.add(message);
+            list.add(message);
         }
+        return list;
     }
 
     private void updateCollapseStatus(List<Message> list) {
