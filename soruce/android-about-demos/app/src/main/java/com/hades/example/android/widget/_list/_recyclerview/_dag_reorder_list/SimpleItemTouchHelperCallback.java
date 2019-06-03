@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
@@ -101,11 +102,13 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 //        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         Log.d(TAG, "onChildDraw: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
 
-        Bitmap icon;
-        if (p == null) {
-            p = new Paint();
-        }
+
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+
+            Bitmap icon;
+            if (p == null) {
+                p = new Paint();
+            }
 
             View itemView = viewHolder.itemView;
             float height = (float) itemView.getBottom() - (float) itemView.getTop();
@@ -142,27 +145,52 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
 
+
         if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
             View itemView = viewHolder.itemView;
 //            Log.d(TAG, "onChildDraw: left=" + itemView.getLeft() + ",top=" + (float) itemView.getTop() + ",right=" + itemView.getRight() + ",bottom=" + (float) itemView.getBottom());
-            Log.d(TAG, "onChildDraw: top=" + itemView.getTop() + ",bottom=" + (float) itemView.getBottom()+ ",height=" + recyclerView.getHeight());
+            Log.d(TAG, "onChildDraw: top=" + itemView.getTop() + ",bottom=" + (float) itemView.getBottom() + ",height=" + recyclerView.getHeight());
 
             if (itemView.getTop() == 0 && viewHolder.getAdapterPosition() == 0) {
                 // If Drag (bottom -> top) to  fist , stop drop continue
+                Log.d(TAG, "onChildDraw: top");
 //            } else if (itemView.getBottom() == recyclerView.getHeight() && viewHolder.getAdapterPosition() == (recyclerView.getChildCount() - 1)) {
             } else if (itemView.getBottom() == recyclerView.getHeight()) {
                 // If Drag (top -> bottom) to  last , stop drop continue
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                Log.d(TAG, "onChildDraw:findLastCompletelyVisibleItemPosition= " + layoutManager.findLastCompletelyVisibleItemPosition() + ",findLastVisibleItemPosition=" + layoutManager.findLastVisibleItemPosition());
+                Log.d(TAG, "onChildDraw: bottom");
+//                boolean notAllVisible = layoutManager.findLastVisibleItemPosition() < recyclerView.getChildCount() - 1;
             } else {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }
     }
 
-//    @Override
-//    public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-//        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-//        Log.d(TAG, "onChildDrawOver: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
-//    }
+    @Override
+    public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        Log.d(TAG, "onChildDrawOver: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
+
+        /*
+        if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
+            View itemView = viewHolder.itemView;
+//            Log.d(TAG, "onChildDraw: left=" + itemView.getLeft() + ",top=" + (float) itemView.getTop() + ",right=" + itemView.getRight() + ",bottom=" + (float) itemView.getBottom());
+            Log.d(TAG, "onChildDraw: top=" + itemView.getTop() + ",bottom=" + (float) itemView.getBottom() + ",height=" + recyclerView.getHeight());
+
+            if (itemView.getTop() == 0 && viewHolder.getAdapterPosition() == 0) {
+                // If Drag (bottom -> top) to  fist , stop drop continue
+                Log.d(TAG, "onChildDraw: top");
+//            } else if (itemView.getBottom() == recyclerView.getHeight() && viewHolder.getAdapterPosition() == (recyclerView.getChildCount() - 1)) {
+            } else if (itemView.getBottom() == recyclerView.getHeight()) {
+                // If Drag (top -> bottom) to  last , stop drop continue
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                Log.d(TAG, "onChildDraw:findLastCompletelyVisibleItemPosition= " + layoutManager.findLastCompletelyVisibleItemPosition() + ",findLastVisibleItemPosition=" + layoutManager.findLastVisibleItemPosition());
+                Log.d(TAG, "onChildDraw: bottom");
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        }*/
+    }
 
     // |
     @Override

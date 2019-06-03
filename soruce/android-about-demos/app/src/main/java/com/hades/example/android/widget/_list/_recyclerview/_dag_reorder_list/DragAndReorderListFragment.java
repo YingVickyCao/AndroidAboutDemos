@@ -42,7 +42,7 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
         initData();
 
         rv = view.findViewById(R.id.rv);
-        rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        rv.setLayoutManager(new CustomLinearLayoutManager(view.getContext()));
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
