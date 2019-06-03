@@ -61,8 +61,6 @@ public class DragAndReorderListFragment extends Fragment {
         adapter1.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                updateList1CollapseStatus();
-                adapter1.notifyDataSetChanged();
                 mItemTouchHelper1.startDrag(viewHolder);
             }
 
@@ -75,8 +73,6 @@ public class DragAndReorderListFragment extends Fragment {
         adapter2.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                updateList2CollapseStatus();
-                adapter2.notifyDataSetChanged();
                 mItemTouchHelper1.startDrag(viewHolder);
             }
 
@@ -120,26 +116,5 @@ public class DragAndReorderListFragment extends Fragment {
             list.add(message);
         }
         return list;
-    }
-
-    private void updateCollapseStatus(List<Message> list) {
-        if (null == list) {
-            return;
-        }
-
-        for (int i = 0; i < list.size(); i++) {
-            Message message = list.get(i);
-            if (null != message) {
-                message.setExpand(false);
-            }
-        }
-    }
-
-    private void updateList1CollapseStatus() {
-        updateCollapseStatus(list1);
-    }
-
-    private void updateList2CollapseStatus() {
-        updateCollapseStatus(list2);
     }
 }

@@ -51,6 +51,6 @@
         android:id="@+id/div"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/holo_blue_bright"
+        android:background="@android:color/black"
         android:visibility="visible" />
 </LinearLayout>

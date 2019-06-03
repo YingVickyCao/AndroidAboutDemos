@@ -50,7 +50,13 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand());
         holder.info.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
-            startDrag(holder);
+            if (isHasExpand()) {
+                updateCollapseStatus(list);
+                notifyDataSetChanged();
+            } else {
+                startDrag(holder);
+            }
+
             return true;
         });
 
@@ -111,6 +117,32 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     public void onItemDismiss(int position) {
         list.remove(position);
         notifyItemRemoved(position);
+    }
+
+    private boolean isHasExpand() {
+        if (null == list || list.isEmpty()) {
+            return false;
+        }
+
+        for (Message item : list) {
+            if (null != item && item.isExpand()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void updateCollapseStatus(List<Message> list) {
+        if (null == list) {
+            return;
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            Message message = list.get(i);
+            if (null != message) {
+                message.setExpand(false);
+            }
+        }
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
