@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,6 +35,8 @@ public class DragAndReorderListFragment extends Fragment {
     private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
+
+    private OpenedPage mOpenedPage = new OpenedPage();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,10 +95,15 @@ public class DragAndReorderListFragment extends Fragment {
             public void showLoading() {
                 DragAndReorderListFragment.this.showLoading();
             }
+
+            @Override
+            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
+                Toast.makeText(getContext(), "Open " + (isGroup ? title : childTitle), Toast.LENGTH_SHORT).show();
+                mOpenedPage.updateOpenedPage(title, childTitle, "Group1", isGroup);
+            }
         };
 
         IDragView startDragListener2 = new IDragView() {
-
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
                 mItemTouchHelper2.startDrag(viewHolder);
@@ -120,6 +128,12 @@ public class DragAndReorderListFragment extends Fragment {
             @Override
             public void showLoading() {
                 DragAndReorderListFragment.this.showLoading();
+            }
+
+            @Override
+            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
+                Toast.makeText(getContext(), "Open " + bean.getTitle(), Toast.LENGTH_SHORT).show();
+                mOpenedPage.updateOpenedPage(title, childTitle, "Group2", isGroup);
             }
         };
 
@@ -166,18 +180,18 @@ public class DragAndReorderListFragment extends Fragment {
                     break;
                 }
             }
-            Message message = new Message(String.valueOf(i + 1), (i + 1), false, childList);
+            Message message = new Message(String.valueOf(i + 1), (i + 1), childList);
             message.setExpand(false);
             list.add(message);
         }
         return list;
     }
 
-    public void hideLoading() {
+    void hideLoading() {
         getActivity().runOnUiThread(() -> loadingContainer.setVisibility(View.GONE));
     }
 
-    public void showLoading() {
+    void showLoading() {
         getActivity().runOnUiThread(() -> loadingContainer.setVisibility(View.VISIBLE));
     }
 }

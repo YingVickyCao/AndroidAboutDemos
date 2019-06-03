@@ -1,7 +1,6 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +27,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private List<Integer> mExpandPositionList = new ArrayList<>();
     private boolean isOnDrag = false;
 
+    private String type;
+
     public ItemTouchHelperAdapter(List<Message> list, Activity context) {
         mList = list;
         mContext = context;
@@ -46,6 +46,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         isOnDrag = false;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
@@ -58,7 +62,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         Message bean = mList.get(position);
-        holder.groupTitle.setText(bean.getInfo());
+        holder.groupTitle.setText(bean.getTitle());
         holder.drag.setOnLongClickListener(v -> {
             if (isOnDrag) {
                 return true;
@@ -92,7 +96,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
                 textView.setBackgroundColor(Color.WHITE);
                 String childText = String.valueOf(children.get(i).childText);
                 textView.setText(childText);
-                textView.setOnClickListener(v -> openPage(v.getContext(), childText));
+                textView.setOnClickListener(v -> openPage(bean.getTitle(), childText, bean, false));
                 holder.childContainer.addView(textView);
             }
         }
@@ -100,7 +104,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         if (holder.childContainer.getChildCount() > 0) {
             holder.groupContainer.setOnClickListener(v -> toggleExpand(holder.childContainer, bean, position));
         } else {
-            holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
+            holder.groupContainer.setOnClickListener(v -> openPage(bean.getTitle(), null, bean, true));
         }
 
 //        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
@@ -109,8 +113,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
     }
 
-    private void openPage(Context context, String text) {
-        Toast.makeText(context, "Open " + text, Toast.LENGTH_SHORT).show();
+    private void openPage(String title, String childTitle, Message bean, boolean isGroup) {
+        if (null != mDragView) {
+            mDragView.openPage(bean, isGroup, title, childTitle);
+        }
     }
 
     @Override
@@ -184,9 +190,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             mExpandPositionList.clear();
         }
 
-        mContext.runOnUiThread(() -> {
-            notifyDataSetChanged();
-        });
+        mContext.runOnUiThread(this::notifyDataSetChanged);
 
         if (null != mDragView) {
             mDragView.hideLoading();
