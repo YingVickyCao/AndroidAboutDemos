@@ -47,48 +47,37 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         Message bean = list.get(position);
-        Log.d(TAG, "onBindViewHolder: position=" + position + ",isCollapse=" + bean.isCollapse());
+        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand());
         holder.info.setText(bean.getInfo());
-//        holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
-
-//        holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.drag.setOnClickListener(v -> updateCheckStatus(bean));
-
         holder.drag.setOnLongClickListener(v -> {
             startDrag(holder);
             return true;
         });
-        holder.root.setOnLongClickListener(v -> {
-            startDrag(holder);
-            return true;
-        });
 
-        if (bean.isCollapse()) {
-            holder.childContainer.setVisibility(View.GONE);
-        } else {
-            List<Child> children = bean.getChildren();
-            if (children.size() >= 1) {
-                holder.childContainer.setVisibility(View.VISIBLE);
-            } else {
-                holder.childContainer.setVisibility(View.GONE);
-            }
+        List<Child> children = bean.getChildren();
+        if (children == null || children.isEmpty() || children.size() != holder.childContainer.getChildCount()) {
+            holder.childContainer.removeAllViews();
+        }
 
-            if (holder.childContainer.getChildCount() < children.size()) {
-                for (int i = 0; i < children.size(); i++) {
-                    TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
-                    textView.setBackgroundColor(Color.WHITE);
-                    String childText = String.valueOf(children.get(i).childText);
-                    textView.setText(childText);
-                    textView.setOnClickListener(v -> openPage(v.getContext(), childText));
-                    holder.childContainer.addView(textView);
-                }
+        if (null != children && !children.isEmpty() && children.size() != holder.childContainer.getChildCount()) {
+            for (int i = 0; i < children.size(); i++) {
+                TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
+                textView.setBackgroundColor(Color.WHITE);
+                String childText = String.valueOf(children.get(i).childText);
+                textView.setText(childText);
+                textView.setOnClickListener(v -> openPage(v.getContext(), childText));
+                holder.childContainer.addView(textView);
             }
         }
+
         if (holder.childContainer.getChildCount() > 0) {
-            holder.groupContainer.setOnClickListener(v -> updateCheckStatus(bean));
+            holder.groupContainer.setOnClickListener(v -> updateExpand(bean));
         } else {
             holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
         }
+
+        boolean isExpand = holder.childContainer.getChildCount() > 0 && bean.isExpand();
+        holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
     }
 
     private void openPage(Context context, String text) {
@@ -99,9 +88,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         mStartDragListener.startDrag(holder);
     }
 
-    private void updateCheckStatus(final Message bean) {
-        bean.setCollapse(!bean.isCollapse());
-        bean.setChecked(!bean.isChecked());
+    private void updateExpand(final Message bean) {
+        bean.setExpand(!bean.isExpand());
         notifyDataSetChanged();
     }
 
@@ -127,7 +115,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         private View root;
         private TextView info;
         private Button drag;
-        //        private ImageView check;
         private ViewGroup childContainer;
         private ViewGroup groupContainer;
 
@@ -136,7 +123,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             root = itemView.findViewById(R.id.root);
             info = itemView.findViewById(R.id.phone);
             drag = itemView.findViewById(R.id.drag);
-//            check = itemView.findViewById(R.id.check);
             childContainer = itemView.findViewById(R.id.childContainer);
             groupContainer = itemView.findViewById(R.id.groupContainer);
         }

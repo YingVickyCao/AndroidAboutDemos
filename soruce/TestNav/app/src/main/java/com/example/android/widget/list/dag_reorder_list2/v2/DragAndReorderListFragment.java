@@ -61,7 +61,7 @@ public class DragAndReorderListFragment extends Fragment {
         adapter1.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                updateList1CollapseStatus(true);
+                updateList1CollapseStatus();
                 adapter1.notifyDataSetChanged();
                 mItemTouchHelper1.startDrag(viewHolder);
             }
@@ -75,7 +75,7 @@ public class DragAndReorderListFragment extends Fragment {
         adapter2.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                updateList2CollapseStatus(true);
+                updateList2CollapseStatus();
                 adapter2.notifyDataSetChanged();
                 mItemTouchHelper1.startDrag(viewHolder);
             }
@@ -110,16 +110,21 @@ public class DragAndReorderListFragment extends Fragment {
 
     private void initList2Data() {
         list2 = new ArrayList<>();
-        for (int i = 0; i < NUM; i++) {
+        for (int i = 0; i < 50; i++) {
             List<Child> childList = new ArrayList<>();
             for (int j = 0; j < i; j++) {
                 childList.add(new Child("Group 2 - Child " + (i + 1) + "_" + (j + 1)));
+                if (j>=4){
+                    break;
+                }
             }
-            list2.add(new Message(String.valueOf(i + 1), (i + 1), false, childList));
+            Message message = new Message(String.valueOf(i + 1), (i + 1), false, childList);
+            message.setExpand(false);
+            list2.add(message);
         }
     }
 
-    private void updateCollapseStatus(List<Message> list, boolean isCollapse) {
+    private void updateCollapseStatus(List<Message> list) {
         if (null == list) {
             return;
         }
@@ -127,16 +132,16 @@ public class DragAndReorderListFragment extends Fragment {
         for (int i = 0; i < list.size(); i++) {
             Message message = list.get(i);
             if (null != message) {
-                message.setCollapse(isCollapse);
+                message.setExpand(false);
             }
         }
     }
 
-    private void updateList1CollapseStatus(boolean isCollapse) {
-        updateCollapseStatus(list1, isCollapse);
+    private void updateList1CollapseStatus() {
+        updateCollapseStatus(list1);
     }
 
-    private void updateList2CollapseStatus(boolean isCollapse) {
-        updateCollapseStatus(list2, isCollapse);
+    private void updateList2CollapseStatus() {
+        updateCollapseStatus(list2);
     }
 }
