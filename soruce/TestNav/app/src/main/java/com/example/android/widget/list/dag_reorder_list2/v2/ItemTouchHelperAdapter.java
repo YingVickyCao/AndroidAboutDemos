@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.widget.list.dag_reorder_list2.R;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private StartDragListener mStartDragListener;
 
     private int groupResId;
+    List<Integer> expandPositionList = new ArrayList<>();
 
     public ItemTouchHelperAdapter(List<Message> list) {
         this.list = list;
@@ -52,9 +54,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.info.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
             if (isHasExpand()) {
-                updateCollapseStatus(list);
-                notifyDataSetChanged();
+                collapse();
             } else {
+                expandPositionList.clear();
                 startDrag(holder);
             }
             return true;
@@ -78,7 +80,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         }
 
         if (holder.childContainer.getChildCount() > 0) {
-            holder.groupContainer.setOnClickListener(v -> updateExpand(holder.childContainer, bean));
+            holder.groupContainer.setOnClickListener(v -> toggleExpand(holder.childContainer, bean, position));
         } else {
             holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
         }
@@ -95,13 +97,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     private void startDrag(ItemViewHolder holder) {
         mStartDragListener.startDrag(holder);
-    }
-
-    // PO: 2019-06-03
-    private void updateExpand(View view, final Message bean) {
-        bean.setExpand(!bean.isExpand());
-//        notifyDataSetChanged();
-        view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -122,30 +117,43 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         notifyItemRemoved(position);
     }
 
-    private boolean isHasExpand() {
-        if (null == list || list.isEmpty()) {
-            return false;
-        }
-
-        for (Message item : list) {
-            if (null != item && item.isExpand()) {
-                return true;
+    // PO: 2019-06-03
+    private void toggleExpand(View view, final Message bean, int position) {
+        Log.d(TAG, "toggleExpand:start" + expandPositionList.toString());
+        bean.setExpand(!bean.isExpand());
+//        notifyDataSetChanged();
+        if (bean.isExpand()) {
+            expandPositionList.add(position);
+        } else {
+            int index = expandPositionList.indexOf(position);
+            if (-1 != index && index <= (expandPositionList.size() - 1)) {
+                expandPositionList.remove(index);
             }
         }
-        return false;
+        Log.d(TAG, "toggleExpand:end" + expandPositionList.toString());
+
+        view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
     }
 
-    private void updateCollapseStatus(List<Message> list) {
-        if (null == list) {
-            return;
-        }
+    private boolean isHasExpand() {
+        return !expandPositionList.isEmpty();
+    }
 
-        for (int i = 0; i < list.size(); i++) {
-            Message message = list.get(i);
-            if (null != message) {
-                message.setExpand(false);
+    private void collapse() {
+        Log.d(TAG, "collapse:start" + expandPositionList.toString());
+        for (Integer pos : expandPositionList) {
+            if (null != pos && pos > 0 && list != null && pos <= (list.size() - 1)) {
+                Message message = list.get(pos);
+                if (null != message) {
+                    message.setExpand(false);
+                    notifyItemChanged(pos);
+                }
             }
         }
+        if (null != expandPositionList) {
+            expandPositionList.clear();
+        }
+        Log.d(TAG, "collapse:end" + expandPositionList.toString());
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
