@@ -159,7 +159,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
                 // If Drag (top -> bottom) to  last , stop drop continue
                 LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 Log.d(TAG, "onChildDraw:findLastCompletelyVisibleItemPosition= " + layoutManager.findLastCompletelyVisibleItemPosition() + ",findLastVisibleItemPosition=" + layoutManager.findLastVisibleItemPosition());
-                Log.d(TAG, "onChildDraw: bottom");
 //                boolean notAllVisible = layoutManager.findLastVisibleItemPosition() < recyclerView.getChildCount() - 1;
             } else {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
