@@ -25,7 +25,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     private boolean isLast(RecyclerView.ViewHolder viewHolder) {
-        return viewHolder.getAdapterPosition() == (mAdapter.list.size() - 1);
+        return viewHolder.getAdapterPosition() == (mAdapter.mList.size() - 1);
     }
 
     private int dragFlags4Last() {

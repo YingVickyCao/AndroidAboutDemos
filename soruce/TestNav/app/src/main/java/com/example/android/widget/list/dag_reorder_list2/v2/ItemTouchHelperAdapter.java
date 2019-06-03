@@ -1,5 +1,6 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
@@ -21,14 +22,15 @@ import java.util.List;
 public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemViewHolder> implements IItemTouchHelperAdapter {
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
-    List<Message> list;
+    List<Message> mList;
     private StartDragListener mStartDragListener;
+    private int mGroupResId;
+    private Activity mContext;
+    private List<Integer> mExpandPositionList = new ArrayList<>();
 
-    private int groupResId;
-    List<Integer> expandPositionList = new ArrayList<>();
-
-    public ItemTouchHelperAdapter(List<Message> list) {
-        this.list = list;
+    public ItemTouchHelperAdapter(List<Message> mList, Activity context) {
+        this.mList = mList;
+        this.mContext = context;
     }
 
     public void setStartDragListener(StartDragListener startDragListener) {
@@ -36,13 +38,13 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     public void setGroupResId(int resId) {
-        groupResId = resId;
+        mGroupResId = resId;
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
-        View view = LayoutInflater.from(parent.getContext()).inflate(groupResId, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(mGroupResId, parent, false);
         ItemViewHolder itemViewHolder = new ItemViewHolder(view);
         Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode());
         return itemViewHolder;
@@ -50,14 +52,19 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
-        Message bean = list.get(position);
+        Message bean = mList.get(position);
         holder.groupTitle.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
+            if (null != mStartDragListener) {
+                mStartDragListener.showLoading();
+            }
             if (isHasExpand()) {
-                collapse();
+                new Thread(() -> collapse()).start();
             } else {
-                expandPositionList.clear();
-                startDrag(holder);
+                new Thread(() -> {
+                    mExpandPositionList.clear();
+                    startDrag(holder);
+                }).start();
             }
             return true;
         });
@@ -101,59 +108,77 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mList.size();
     }
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(list, fromPosition, toPosition);
+        Collections.swap(mList, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return true;
     }
 
     @Override
     public void onItemDismiss(int position) {
-        list.remove(position);
+        mList.remove(position);
         notifyItemRemoved(position);
     }
 
     // PO: 2019-06-03
     private void toggleExpand(View view, final Message bean, int position) {
-        Log.d(TAG, "toggleExpand:start" + expandPositionList.toString());
-        bean.setExpand(!bean.isExpand());
-//        notifyDataSetChanged();
-        if (bean.isExpand()) {
-            expandPositionList.add(position);
-        } else {
-            int index = expandPositionList.indexOf(position);
-            if (-1 != index && index <= (expandPositionList.size() - 1)) {
-                expandPositionList.remove(index);
-            }
+        Log.d(TAG, "toggleExpand:start" + mExpandPositionList.toString());
+        if (null != mStartDragListener) {
+            mStartDragListener.showLoading();
         }
-        Log.d(TAG, "toggleExpand:end" + expandPositionList.toString());
 
-        view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
+        new Thread(() -> {
+            bean.setExpand(!bean.isExpand());
+//        notifyDataSetChanged();
+            if (bean.isExpand()) {
+                mExpandPositionList.add(position);
+            } else {
+                int index = mExpandPositionList.indexOf(position);
+                if (-1 != index && index <= (mExpandPositionList.size() - 1)) {
+                    mExpandPositionList.remove(index);
+                }
+            }
+            Log.d(TAG, "toggleExpand:end" + mExpandPositionList.toString());
+
+            mContext.runOnUiThread(() -> {
+                view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
+                if (null != mStartDragListener) {
+                    mStartDragListener.hideLoading();
+                }
+            });
+
+        }).start();
     }
 
     private boolean isHasExpand() {
-        return !expandPositionList.isEmpty();
+        return !mExpandPositionList.isEmpty();
     }
 
     private void collapse() {
-        Log.d(TAG, "collapse:start" + expandPositionList.toString());
-        for (Integer pos : expandPositionList) {
-            if (null != pos && pos > 0 && list != null && pos <= (list.size() - 1)) {
-                Message message = list.get(pos);
+        Log.d(TAG, "collapse:start" + mExpandPositionList.toString());
+        for (Integer pos : mExpandPositionList) {
+            if (null != pos && pos > 0 && mList != null && pos <= (mList.size() - 1)) {
+                Message message = mList.get(pos);
                 if (null != message) {
                     message.setExpand(false);
                 }
             }
         }
-        if (null != expandPositionList) {
-            expandPositionList.clear();
+        if (null != mExpandPositionList) {
+            mExpandPositionList.clear();
         }
-        notifyDataSetChanged();
-        Log.d(TAG, "collapse:end" + expandPositionList.toString());
+
+        mContext.runOnUiThread(() -> {
+            notifyDataSetChanged();
+            if (null != mStartDragListener) {
+                mStartDragListener.hideLoading();
+            }
+        });
+        Log.d(TAG, "collapse:end" + mExpandPositionList.toString());
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {

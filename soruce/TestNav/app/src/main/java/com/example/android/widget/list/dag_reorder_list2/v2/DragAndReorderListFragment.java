@@ -35,6 +35,8 @@ public class DragAndReorderListFragment extends Fragment {
     private RecyclerView lv1;
     private RecyclerView lv2;
 
+    private View loadingContainer;
+
     private ItemTouchHelperAdapter adapter1;
     private ItemTouchHelperAdapter adapter2;
     private List<Message> list1;
@@ -55,19 +57,26 @@ public class DragAndReorderListFragment extends Fragment {
         lv1 = view.findViewById(R.id.lv1);
         lv2 = view.findViewById(R.id.lv2);
 
-        lv1.setLayoutManager(getLinearLayoutManager());
-        lv1.setHasFixedSize(true);// PO
+        loadingContainer = view.findViewById(R.id.loadingContainer);
 
-        lv2.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        lv1.setLayoutManager(getLinearLayoutManager());
+        lv2.setLayoutManager(getLinearLayoutManager());
+
+        lv1.setHasFixedSize(true);// PO
         lv2.setHasFixedSize(true);// PO
 
-        adapter1 = new ItemTouchHelperAdapter(list1);
-        adapter2 = new ItemTouchHelperAdapter(list2);
+        adapter1 = new ItemTouchHelperAdapter(list1, getActivity());
+        adapter2 = new ItemTouchHelperAdapter(list2, getActivity());
 
         adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
         adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
 
         adapter1.setStartDragListener(new StartDragListener() {
+            @Override
+            public boolean OnLongClickDragListener() {
+                return true;
+            }
+
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
                 mItemTouchHelper1.startDrag(viewHolder);
@@ -77,9 +86,24 @@ public class DragAndReorderListFragment extends Fragment {
             public void startSwipe(RecyclerView.ViewHolder viewHolder) {
                 mItemTouchHelper1.startSwipe(viewHolder);
             }
+
+            @Override
+            public void hideLoading() {
+                DragAndReorderListFragment.this.hideLoading();
+            }
+
+            @Override
+            public void showLoading() {
+                DragAndReorderListFragment.this.showLoading();
+            }
         });
 
         adapter2.setStartDragListener(new StartDragListener() {
+            @Override
+            public boolean OnLongClickDragListener() {
+                return true;
+            }
+
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
                 mItemTouchHelper2.startDrag(viewHolder);
@@ -88,6 +112,16 @@ public class DragAndReorderListFragment extends Fragment {
             @Override
             public void startSwipe(RecyclerView.ViewHolder viewHolder) {
                 mItemTouchHelper2.startSwipe(viewHolder);
+            }
+
+            @Override
+            public void hideLoading() {
+                DragAndReorderListFragment.this.hideLoading();
+            }
+
+            @Override
+            public void showLoading() {
+                DragAndReorderListFragment.this.showLoading();
             }
         });
 
@@ -135,5 +169,23 @@ public class DragAndReorderListFragment extends Fragment {
             list.add(message);
         }
         return list;
+    }
+
+    public void hideLoading() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                loadingContainer.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    public void showLoading() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                loadingContainer.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
