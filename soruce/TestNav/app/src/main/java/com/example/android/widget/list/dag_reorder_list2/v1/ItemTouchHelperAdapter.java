@@ -126,7 +126,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         ItemViewHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.root);
-            info = itemView.findViewById(R.id.phone);
+            info = itemView.findViewById(R.id.groupTitle);
             drag = itemView.findViewById(R.id.drag);
             check = itemView.findViewById(R.id.check);
         }

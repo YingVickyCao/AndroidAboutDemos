@@ -51,7 +51,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         Message bean = list.get(position);
-        holder.info.setText(bean.getInfo());
+        holder.groupTitle.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
             if (isHasExpand()) {
                 collapse();
@@ -158,7 +158,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
         private View root;
-        private TextView info;
+        private TextView groupTitle;
         private Button drag;
         private ViewGroup childContainer;
         private ViewGroup groupContainer;
@@ -166,7 +166,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         ItemViewHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.root);
-            info = itemView.findViewById(R.id.phone);
+            groupTitle = itemView.findViewById(R.id.groupTitle);
             drag = itemView.findViewById(R.id.drag);
             childContainer = itemView.findViewById(R.id.childContainer);
             groupContainer = itemView.findViewById(R.id.groupContainer);

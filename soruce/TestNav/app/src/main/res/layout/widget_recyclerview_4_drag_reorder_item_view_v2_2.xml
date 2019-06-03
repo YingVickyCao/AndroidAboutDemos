@@ -23,7 +23,7 @@
             android:src="@drawable/ic_dashboard_black_24dp" />
 
         <TextView
-            android:id="@+id/phone"
+            android:id="@+id/groupTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
