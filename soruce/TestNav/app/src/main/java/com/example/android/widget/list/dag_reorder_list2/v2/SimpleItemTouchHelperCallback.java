@@ -1,17 +1,22 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static android.content.ContentValues.TAG;
+
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private ItemTouchHelperAdapter mAdapter;
+    private StartDragListener mStartDragListener;
 
-    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter, StartDragListener startDragListener) {
         mAdapter = adapter;
+        mStartDragListener = startDragListener;
     }
 
     @Override
@@ -99,18 +104,27 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         super.onSelectedChanged(viewHolder, actionState);
+        Log.d(TAG, "onSelectedChanged: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",actionState=" + actionState);
 
-        if (viewHolder instanceof IItemTouchHelperViewHolder) {
-            ((IItemTouchHelperViewHolder) viewHolder).onItemSelected();
+        if (ItemTouchHelper.ACTION_STATE_DRAG == actionState) {
+            if (viewHolder instanceof IItemTouchHelperViewHolder) {
+                ((IItemTouchHelperViewHolder) viewHolder).onItemSelected();
+            }
         }
+
     }
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
+        Log.d(TAG, "clearView: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + "position=" + viewHolder.getAdapterPosition());
 
         if (viewHolder instanceof IItemTouchHelperViewHolder) {
             ((IItemTouchHelperViewHolder) viewHolder).onItemClear();
+        }
+
+        if (null != mStartDragListener) {
+            mStartDragListener.hideLoading();
         }
     }
 }

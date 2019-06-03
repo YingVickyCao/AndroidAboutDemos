@@ -46,7 +46,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(mGroupResId, parent, false);
         ItemViewHolder itemViewHolder = new ItemViewHolder(view);
-        Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode());
+//        Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode());
         return itemViewHolder;
     }
 
@@ -58,19 +58,21 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             if (null != mStartDragListener) {
                 mStartDragListener.showLoading();
             }
-            if (isHasExpand()) {
-                new Thread(() -> collapse()).start();
-            } else {
-                new Thread(() -> {
+            new Thread(() -> {
+                if (isHasExpand()) {
+                    collapse();
+                } else {
                     mExpandPositionList.clear();
-                    startDrag(holder);
-                }).start();
-            }
+                    if (null != mStartDragListener) {
+                        mStartDragListener.startDrag(holder);
+                    }
+                }
+            }).start();
             return true;
         });
 
         List<Child> children = bean.getChildren();
-        int preChildCount = holder.childContainer.getChildCount();
+//        int preChildCount = holder.childContainer.getChildCount();
         if (children == null || children.isEmpty() || children.size() != holder.childContainer.getChildCount()) {
             holder.childContainer.removeAllViews();
         }
@@ -92,7 +94,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
         }
 
-        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
+//        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
 
         boolean isExpand = holder.childContainer.getChildCount() > 0 && bean.isExpand();
         holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
@@ -100,10 +102,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     private void openPage(Context context, String text) {
         Toast.makeText(context, "Open " + text, Toast.LENGTH_SHORT).show();
-    }
-
-    private void startDrag(ItemViewHolder holder) {
-        mStartDragListener.startDrag(holder);
     }
 
     @Override
@@ -146,10 +144,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
             mContext.runOnUiThread(() -> {
                 view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
-                if (null != mStartDragListener) {
-                    mStartDragListener.hideLoading();
-                }
             });
+            if (null != mStartDragListener) {
+                mStartDragListener.hideLoading();
+            }
 
         }).start();
     }
@@ -174,10 +172,11 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
         mContext.runOnUiThread(() -> {
             notifyDataSetChanged();
-            if (null != mStartDragListener) {
-                mStartDragListener.hideLoading();
-            }
         });
+
+        if (null != mStartDragListener) {
+            mStartDragListener.hideLoading();
+        }
         Log.d(TAG, "collapse:end" + mExpandPositionList.toString());
     }
 
