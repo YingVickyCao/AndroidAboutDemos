@@ -41,13 +41,14 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(groupResId, parent, false);
-        return new ItemViewHolder(view);
+        ItemViewHolder itemViewHolder = new ItemViewHolder(view);
+        Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode());
+        return itemViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         Message bean = list.get(position);
-        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand());
         holder.info.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
             if (isHasExpand()) {
@@ -56,11 +57,11 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             } else {
                 startDrag(holder);
             }
-
             return true;
         });
 
         List<Child> children = bean.getChildren();
+        int preChildCount = holder.childContainer.getChildCount();
         if (children == null || children.isEmpty() || children.size() != holder.childContainer.getChildCount()) {
             holder.childContainer.removeAllViews();
         }
@@ -81,6 +82,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         } else {
             holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
         }
+
+        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
 
         boolean isExpand = holder.childContainer.getChildCount() > 0 && bean.isExpand();
         holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);

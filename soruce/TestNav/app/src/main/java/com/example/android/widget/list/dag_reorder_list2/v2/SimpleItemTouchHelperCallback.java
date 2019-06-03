@@ -1,5 +1,9 @@
 package com.example.android.widget.list.dag_reorder_list2.v2;
 
+import android.graphics.Canvas;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,6 +58,19 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
             dragFlags = dragFlags4Middle();
         }
         return dragFlags;
+    }
+
+    @Override
+    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
+            View itemView = viewHolder.itemView;
+            if (itemView.getTop() == 0 && viewHolder.getAdapterPosition() == 0) {
+                // If Drag (bottom -> top) to  fist , stop drop continue
+            } else if (itemView.getBottom() == recyclerView.getHeight()) {
+            } else {
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        }
     }
 
     // |

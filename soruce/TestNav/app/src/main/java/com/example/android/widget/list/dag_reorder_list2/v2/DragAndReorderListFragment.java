@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,9 +30,11 @@ public class DragAndReorderListFragment extends Fragment {
 
     private final static int NUM = 5;
 
-    private RecyclerView lv1;
+    private TextView desc;
 
+    private RecyclerView lv1;
     private RecyclerView lv2;
+
     private ItemTouchHelperAdapter adapter1;
     private ItemTouchHelperAdapter adapter2;
     private List<Message> list1;
@@ -46,11 +49,17 @@ public class DragAndReorderListFragment extends Fragment {
         initList1Data();
         initList2Data();
 
+
+        desc = view.findViewById(R.id.desc);
+
         lv1 = view.findViewById(R.id.lv1);
         lv2 = view.findViewById(R.id.lv2);
 
-        lv1.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        lv1.setLayoutManager(getLinearLayoutManager());
+        lv1.setHasFixedSize(true);// PO
+
         lv2.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        lv2.setHasFixedSize(true);// PO
 
         adapter1 = new ItemTouchHelperAdapter(list1);
         adapter2 = new ItemTouchHelperAdapter(list2);
@@ -73,7 +82,7 @@ public class DragAndReorderListFragment extends Fragment {
         adapter2.setStartDragListener(new StartDragListener() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                mItemTouchHelper1.startDrag(viewHolder);
+                mItemTouchHelper2.startDrag(viewHolder);
             }
 
             @Override
@@ -90,7 +99,17 @@ public class DragAndReorderListFragment extends Fragment {
 
         mItemTouchHelper1.attachToRecyclerView(lv1);
         mItemTouchHelper2.attachToRecyclerView(lv2);
+
+        desc.setFocusable(true);
+        desc.setFocusableInTouchMode(true);
+        desc.requestFocus();
         return view;
+    }
+
+    private LinearLayoutManager getLinearLayoutManager() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setSmoothScrollbarEnabled(true);
+        return linearLayoutManager;
     }
 
     private void initList1Data() {
