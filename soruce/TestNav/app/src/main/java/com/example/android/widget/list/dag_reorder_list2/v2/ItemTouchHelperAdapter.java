@@ -146,13 +146,13 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
                 Message message = list.get(pos);
                 if (null != message) {
                     message.setExpand(false);
-                    notifyItemChanged(pos);
                 }
             }
         }
         if (null != expandPositionList) {
             expandPositionList.clear();
         }
+        notifyDataSetChanged();
         Log.d(TAG, "collapse:end" + expandPositionList.toString());
     }
 

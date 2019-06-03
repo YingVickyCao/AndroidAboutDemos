@@ -15,12 +15,12 @@
         android:background="@drawable/drawable_selector_4_drag_reorder_item_view"
         android:orientation="horizontal">
 
-        <!--<ImageView-->
-            <!--android:id="@+id/check"-->
-            <!--android:layout_width="45dp"-->
-            <!--android:layout_height="45dp"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:src="@drawable/drawable_level_list_1_1" />-->
+        <ImageView
+            android:id="@+id/check"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_dashboard_black_24dp" />
 
         <TextView
             android:id="@+id/phone"
