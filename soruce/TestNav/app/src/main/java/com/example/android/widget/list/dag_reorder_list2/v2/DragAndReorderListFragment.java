@@ -28,13 +28,6 @@ import java.util.List;
 public class DragAndReorderListFragment extends Fragment {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
-    private final static int NUM = 5;
-
-    private TextView desc;
-
-    private RecyclerView lv1;
-    private RecyclerView lv2;
-
     private View loadingContainer;
 
     private List<Message> list1;
@@ -42,20 +35,23 @@ public class DragAndReorderListFragment extends Fragment {
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        initList1Data();
+        initList2Data();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list_v2, container, false);
-        initList1Data();
-        initList2Data();
-
-
-        desc = view.findViewById(R.id.desc);
-
-        lv1 = view.findViewById(R.id.lv1);
-        lv2 = view.findViewById(R.id.lv2);
 
         loadingContainer = view.findViewById(R.id.loadingContainer);
+
+        RecyclerView lv1 = view.findViewById(R.id.lv1);
+        RecyclerView lv2 = view.findViewById(R.id.lv2);
 
         lv1.setLayoutManager(getLinearLayoutManager());
         lv2.setLayoutManager(getLinearLayoutManager());
@@ -137,6 +133,7 @@ public class DragAndReorderListFragment extends Fragment {
         mItemTouchHelper1.attachToRecyclerView(lv1);
         mItemTouchHelper2.attachToRecyclerView(lv2);
 
+        TextView desc = view.findViewById(R.id.desc);
         desc.setFocusable(true);
         desc.setFocusableInTouchMode(true);
         desc.requestFocus();
