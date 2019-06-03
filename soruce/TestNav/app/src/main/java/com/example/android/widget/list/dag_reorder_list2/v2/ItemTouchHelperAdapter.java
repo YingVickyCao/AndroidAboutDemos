@@ -27,6 +27,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private int mGroupResId;
     private Activity mContext;
     private List<Integer> mExpandPositionList = new ArrayList<>();
+    private boolean isOnDrag = false;
 
     public ItemTouchHelperAdapter(List<Message> list, Activity context) {
         mList = list;
@@ -39,6 +40,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     public void setGroupResId(int resId) {
         mGroupResId = resId;
+    }
+
+    public void resetIsOnDragTag() {
+        isOnDrag = false;
     }
 
     @Override
@@ -55,6 +60,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Message bean = mList.get(position);
         holder.groupTitle.setText(bean.getInfo());
         holder.drag.setOnLongClickListener(v -> {
+            if (isOnDrag) {
+                return true;
+            }
             if (null != mDragView) {
                 mDragView.showLoading();
             }
@@ -62,6 +70,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
                 if (isHasExpand()) {
                     collapse();
                 } else {
+                    isOnDrag = true;
                     mExpandPositionList.clear();
                     if (null != mDragView) {
                         mDragView.startDrag(holder);
@@ -111,6 +120,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+//        Log.d(TAG, "onItemMove: " + "thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId()); // onItemMove: thread name=main,thread id=2
         Collections.swap(mList, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return true;
@@ -118,12 +128,16 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public void onItemDismiss(int position) {
+        Log.d(TAG, "onItemDismiss: " + "thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId());
         mList.remove(position);
         notifyItemRemoved(position);
     }
 
     // PO: 2019-06-03
     private void toggleExpand(View view, final Message bean, int position) {
+        if (isOnDrag) {
+            return;
+        }
         Log.d(TAG, "toggleExpand:start" + mExpandPositionList.toString());
         if (null != mDragView) {
             mDragView.showLoading();
@@ -180,7 +194,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Log.d(TAG, "collapse:end" + mExpandPositionList.toString());
     }
 
-    static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
+    static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemViewHolder {
         private View root;
         private TextView groupTitle;
         private Button drag;

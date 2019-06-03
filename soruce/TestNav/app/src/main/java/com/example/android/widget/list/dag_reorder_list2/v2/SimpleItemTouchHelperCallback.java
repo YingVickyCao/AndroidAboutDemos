@@ -111,8 +111,8 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 //        Log.d(TAG, "onSelectedChanged: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",actionState=" + actionState);// onSelectedChanged: thread name=main,thread id=2,actionState=0
 
         if (ItemTouchHelper.ACTION_STATE_DRAG == actionState) {
-            if (viewHolder instanceof IItemTouchHelperViewHolder) {
-                ((IItemTouchHelperViewHolder) viewHolder).onItemSelected();
+            if (viewHolder instanceof IItemViewHolder) {
+                ((IItemViewHolder) viewHolder).onItemSelected();
             }
         }
 
@@ -128,8 +128,8 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         super.clearView(recyclerView, viewHolder);
 //        Log.d(TAG, "clearView: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + "position=" + viewHolder.getAdapterPosition()); // clearView: thread name=main,thread id=2position=15
 
-        if (viewHolder instanceof IItemTouchHelperViewHolder) {
-            ((IItemTouchHelperViewHolder) viewHolder).onItemClear();
+        if (viewHolder instanceof IItemViewHolder) {
+            ((IItemViewHolder) viewHolder).onItemClear();
         }
     }
 }

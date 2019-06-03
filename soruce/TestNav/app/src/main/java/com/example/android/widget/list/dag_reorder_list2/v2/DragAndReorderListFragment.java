@@ -74,6 +74,7 @@ public class DragAndReorderListFragment extends Fragment {
 
             @Override
             public void endDrag() {
+                adapter1.resetIsOnDragTag();
                 hideLoading();
             }
 
@@ -102,6 +103,7 @@ public class DragAndReorderListFragment extends Fragment {
 
             @Override
             public void endDrag() {
+                adapter2.resetIsOnDragTag();
                 hideLoading();
             }
 
