@@ -71,7 +71,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         }
 
         if (holder.childContainer.getChildCount() > 0) {
-            holder.groupContainer.setOnClickListener(v -> updateExpand(bean));
+            holder.groupContainer.setOnClickListener(v -> updateExpand(holder.childContainer, bean));
         } else {
             holder.groupContainer.setOnClickListener(v -> openPage(v.getContext(), bean.getInfo()));
         }
@@ -88,9 +88,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         mStartDragListener.startDrag(holder);
     }
 
-    private void updateExpand(final Message bean) {
+    private void updateExpand(View view, final Message bean) {
         bean.setExpand(!bean.isExpand());
-        notifyDataSetChanged();
+        view.setVisibility(bean.isExpand() ? View.VISIBLE : View.GONE);
     }
 
     @Override
