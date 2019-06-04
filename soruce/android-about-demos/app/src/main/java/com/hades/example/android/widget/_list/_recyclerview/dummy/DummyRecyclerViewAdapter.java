@@ -64,14 +64,14 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView id;
-        final TextView title;
-        final View div;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public final TextView id;
+        public final TextView title;
+        public final View div;
 
-        DummyItem item;
+        public DummyItem item;
 
-        ViewHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
             div = view;
             id = view.findViewById(R.id.id);

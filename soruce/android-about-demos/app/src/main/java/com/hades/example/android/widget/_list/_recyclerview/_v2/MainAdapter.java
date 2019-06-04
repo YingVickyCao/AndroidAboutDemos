@@ -11,11 +11,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewAdapter;
 
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter {
-
     Context context;
     LoadMoreListener listener;
     public static final int TYPE_ITEM = 1;
@@ -30,17 +31,17 @@ public class MainAdapter extends RecyclerView.Adapter {
     public boolean isLoading = false;
 
     private int NUM_IN_ONE_PAGE = 5;//每一页和后台说定的条数
-    public List<PersonBean> list;
+    public List<DummyItem> list;
 
 
-    public MainAdapter(Context context, List<PersonBean> list, LoadMoreListener listener) {
+    public MainAdapter(Context context, List<DummyItem> list, LoadMoreListener listener) {
         this.context = context;
         this.list = list;
         this.listener = listener;
     }
 
     protected RecyclerView.ViewHolder setItemViewHolder(ViewGroup parent, int viewType) {
-        return new MainViewHolder(LayoutInflater.from(context).inflate(R.layout.widget_recyclerview_dummy_item, parent, false));
+        return new DummyRecyclerViewAdapter.ViewHolder(LayoutInflater.from(context).inflate(R.layout.widget_recyclerview_dummy_item, parent, false));
     }
 
     protected void LoadingMore() {
@@ -62,11 +63,9 @@ public class MainAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (TYPE_BOTTOM == getItemViewType(position)) {
-
             final ProgressBar progressBar = ((BottomViewHolder) holder).progressBar;
             final TextView bottomTextView = ((BottomViewHolder) holder).bottomTextView;
             final ImageView bottomIcon = ((BottomViewHolder) holder).bottomIcon;
-
 
             switch (loadState) {
                 case STATE_LOADING:
@@ -106,9 +105,9 @@ public class MainAdapter extends RecyclerView.Adapter {
         }
     }
 
-    protected void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((MainViewHolder) holder).nameText.setText(list.get(position).getName());
-        ((MainViewHolder) holder).typeText.setText(list.get(position).getEmail());
+    private void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((DummyRecyclerViewAdapter.ViewHolder) holder).id.setText(String.valueOf(list.get(position).getId()));
+        ((DummyRecyclerViewAdapter.ViewHolder) holder).title.setText(list.get(position).getColo2());
     }
 
     @Override
@@ -167,18 +166,6 @@ public class MainAdapter extends RecyclerView.Adapter {
 
     public interface LoadMoreListener {
         void loadMoreData();
-    }
-
-    static class MainViewHolder extends RecyclerView.ViewHolder {
-        TextView nameText;
-        TextView typeText;
-
-        public MainViewHolder(View itemView) {
-            super(itemView);
-
-            nameText = (TextView) itemView.findViewById(R.id.name);
-            typeText = (TextView) itemView.findViewById(R.id.type);
-        }
     }
 
     public class BottomViewHolder extends RecyclerView.ViewHolder {

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.mock.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Random;
 
 public class TestDivPageActivity extends AppCompatActivity implements MainAdapter.LoadMoreListener {
 
-    List<PersonBean> list = new ArrayList<>();
+    List<DummyItem> list = new ArrayList<>();
     RecyclerView recyclerView;
 
     MainAdapter adapter;
@@ -36,9 +37,9 @@ public class TestDivPageActivity extends AppCompatActivity implements MainAdapte
                     adapter.setLastedStatus();
                     break;
                 case 3:
-                    List<PersonBean> list = new ArrayList<>();
+                    List<DummyItem> list = new ArrayList<>();
                     for (int i = 0; i < 10; i++) {
-                        list.add(new PersonBean("Item" + i, "Content" + i));
+                        list.add(new DummyItem(i + 1, "Item" + i, i + 1));
                     }
                     adapter.addList(list);
                     break;
@@ -54,7 +55,7 @@ public class TestDivPageActivity extends AppCompatActivity implements MainAdapte
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
 
         for (int i = 0; i < 20; i++) {
-            list.add(new PersonBean("Item" + i, "Content" + i));
+            list.add(new DummyItem(i + 1, "Item" + i, i + 1));
         }
 
         adapter = new MainAdapter(this, list, this);
