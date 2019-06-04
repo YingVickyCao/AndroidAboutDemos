@@ -46,14 +46,14 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     public void onBindViewHolder(final ViewHolder holder, int position) {// Set data to view
         Log.d(TAG, "onBindViewHolder: position=" + position);
 
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(String.valueOf(mValues.get(position).id));
-        holder.mContentView.setText(String.valueOf(mValues.get(position).colo2));
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.item = mValues.get(position);
+        holder.id.setText(String.valueOf(mValues.get(position).id));
+        holder.title.setText(String.valueOf(mValues.get(position).colo2));
+        holder.div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    mListener.onItemClickListener(holder.mItem);
+                    mListener.onItemClickListener(holder.item);
                 }
             }
         });
@@ -65,22 +65,22 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView mIdView;
-        final TextView mContentView;
-        final View mView;
+        final TextView id;
+        final TextView title;
+        final View div;
 
-        DummyItem mItem;
+        DummyItem item;
 
         ViewHolder(View view) {
             super(view);
-            mView = view;
-            mIdView = view.findViewById(R.id.id);
-            mContentView = view.findViewById(R.id.title);
+            div = view;
+            id = view.findViewById(R.id.id);
+            title = view.findViewById(R.id.title);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + title.getText() + "'";
         }
     }
 }
