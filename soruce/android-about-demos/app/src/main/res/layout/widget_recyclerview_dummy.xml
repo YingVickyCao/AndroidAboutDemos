@@ -22,6 +22,9 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/subject"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:nestedScrollingEnabled="true" />
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
+        android:scrollbarThumbVertical="@drawable/drawable_shape_4_divider_vertical"
+        android:scrollbarFadeDuration="1"
+        android:layout_marginRight="16dp" />
 </RelativeLayout>
