@@ -16,10 +16,12 @@ import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFr
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
+import com.hades.example.android.widget._list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
+import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragment;
@@ -40,7 +42,7 @@ import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android.widget.webview.TestWebViewFragment;
 
-public class WidgetActivity extends NoNeedPermissionActivity implements DummyRecyclerViewFragment.OnListFragmentInteractionListener {
+public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {
     private static final String TAG = WidgetActivity.class.getSimpleName();
 
     @Override
@@ -91,7 +93,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements DummyRec
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        pageRecyclerView();
     }
 
     private void pageCustomVew() {

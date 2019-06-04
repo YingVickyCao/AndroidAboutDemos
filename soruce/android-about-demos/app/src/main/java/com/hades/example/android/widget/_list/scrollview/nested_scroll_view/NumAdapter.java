@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.scrollview.nested_scroll_view;
+package com.hades.example.android.widget._list.scrollview.nested_scroll_view;
 
 import android.view.LayoutInflater;
 import android.view.View;

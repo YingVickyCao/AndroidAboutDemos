@@ -1,4 +1,4 @@
-package com.hades.example.android.widget;
+package com.hades.example.android.widget._search_view;
 
 import android.content.Context;
 import android.os.Bundle;

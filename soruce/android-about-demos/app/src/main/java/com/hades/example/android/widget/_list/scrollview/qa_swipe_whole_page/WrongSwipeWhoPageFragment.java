@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.scrollview.qa_swipe_whole_page;
+package com.hades.example.android.widget._list.scrollview.qa_swipe_whole_page;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

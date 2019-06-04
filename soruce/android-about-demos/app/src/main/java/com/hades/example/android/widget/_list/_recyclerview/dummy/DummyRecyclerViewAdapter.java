@@ -4,19 +4,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link IItemClickAction}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecyclerViewAdapter.ViewHolder> {
@@ -24,9 +24,8 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     private int mViewHolderCount = 0;
 
     private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final IItemClickAction mListener;
 
-    public DummyRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -64,12 +63,12 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        final View mView;
+        final TextView mIdView;
+        final Button mContentView;
+        DummyItem mItem;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = view.findViewById(R.id.item_number);
