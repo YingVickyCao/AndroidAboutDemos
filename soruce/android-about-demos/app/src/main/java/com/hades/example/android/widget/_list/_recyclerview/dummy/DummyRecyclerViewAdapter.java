@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +23,14 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     private int mViewHolderCount = 0;
 
     private final List<DummyItem> mValues;
-    private final IItemClickAction mListener;
+    private IItemClickAction mListener;
 
     public DummyRecyclerViewAdapter(List<DummyItem> items, IItemClickAction listener) {
         mValues = items;
+        mListener = listener;
+    }
+
+    public void setListener(IItemClickAction listener) {
         mListener = listener;
     }
 
@@ -46,13 +49,11 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(String.valueOf(mValues.get(position).id));
         holder.mContentView.setText(String.valueOf(mValues.get(position).colo2));
-
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onItemClickListener(holder.mItem);
                 }
             }
         });
@@ -66,7 +67,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         final TextView mIdView;
-        final Button mContentView;
+        final TextView mContentView;
         DummyItem mItem;
 
         ViewHolder(View view) {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.SimpleDividerItemDecoration;
 
 /**
@@ -20,27 +22,21 @@ import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.Si
  * Activities containing this fragment MUST implement the {@link IItemClickAction}
  * interface.
  */
-public class DummyRecyclerViewFragment extends BaseFragment {
+public class DummyRecyclerViewFragment extends BaseFragment implements IItemClickAction {
 
-    private static final  int ARG_COLUMN_COUNT =1;
+    private static final int ARG_COLUMN_COUNT = 1;
 //    private static final  int ARG_COLUMN_COUNT =2;
-    private int mColumnCount = 1;
 
     private IItemClickAction mListener;
     private RecyclerView rv;
+    private DummyRecyclerViewAdapter mAdapter;
 
     public DummyRecyclerViewFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static DummyRecyclerViewFragment newInstance(int columnCount) {
         return new DummyRecyclerViewFragment();
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -57,26 +53,25 @@ public class DummyRecyclerViewFragment extends BaseFragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(context));
 //        rv.setLayoutManager(new GridLayoutManager(context, ARG_COLUMN_COUNT));
-
         rv.addItemDecoration(new SimpleDividerItemDecoration(getContext(), R.drawable.drawable_shape_4_divider_vertical));
-        rv.setAdapter(new DummyRecyclerViewAdapter(DummyContent.ITEMS(), mListener));
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof IItemClickAction) {
-            mListener = (IItemClickAction) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement IItemClickAction");
-        }
+        mAdapter = new DummyRecyclerViewAdapter(DummyContent.ITEMS(), this);
+        rv.setAdapter(mAdapter);
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onResume() {
+        super.onResume();
+        mAdapter.setListener(this);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mAdapter.setListener(null);
+    }
+
+    @Override
+    public void onItemClickListener(DummyItem item) {
+        Toast.makeText(getContext(), item.colo2, Toast.LENGTH_SHORT).show();
+    }
 }

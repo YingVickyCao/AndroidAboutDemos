@@ -229,8 +229,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     }
 
     @Override
-    public void onListFragmentInteraction(DummyItem item) {
-        Log.d(TAG, "onListFragmentInteraction: " + item.toString());
+    public void onItemClickListener(DummyItem item) {
+        Log.d(TAG, "onItemClickListener: " + item.toString());
 
     }
 }

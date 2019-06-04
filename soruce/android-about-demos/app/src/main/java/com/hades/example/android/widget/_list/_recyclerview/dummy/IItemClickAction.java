@@ -4,5 +4,5 @@ import com.hades.example.android.lib.mock.DummyItem;
 
 
 public interface IItemClickAction {
-    void onListFragmentInteraction(DummyItem item);
+    void onItemClickListener(DummyItem item);
 }
