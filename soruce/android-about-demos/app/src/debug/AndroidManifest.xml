@@ -6,7 +6,8 @@
     <application tools:ignore="GoogleAppIndexingWarning">
         <!--<activity android:name=".other_ui.OtherUIActivity">-->
         <!--<activity android:name=".resource.ResourceActivity">-->
-        <activity android:name=".widget.WidgetActivity">
+        <!--<activity android:name=".widget.WidgetActivity">-->
+        <activity android:name=".widget._list._recyclerview._v2.TestDivPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

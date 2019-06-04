@@ -35,7 +35,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {// Inflater item view.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_dummy_item, parent, false);
         mViewHolderCount++;
         Log.d(TAG, "ViewHolder: " + mViewHolderCount);
@@ -43,7 +43,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {// Set data to view
         Log.d(TAG, "onBindViewHolder: position=" + position);
 
         holder.mItem = mValues.get(position);
@@ -65,16 +65,17 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final View mView;
         final TextView mIdView;
         final TextView mContentView;
+        final View mView;
+
         DummyItem mItem;
 
         ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.item_number);
-            mContentView = view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.id);
+            mContentView = view.findViewById(R.id.title);
         }
 
         @Override

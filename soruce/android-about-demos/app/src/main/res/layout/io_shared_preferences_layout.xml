@@ -9,7 +9,7 @@
         android:text="@string/page_shared_preferences" />
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />

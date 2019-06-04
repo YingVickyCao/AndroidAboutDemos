@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
     <TextView
         android:id="@+id/subject"
         style="@style/topic"
         android:text="@string/test_recyclerView" />
 
-    <!-- QA: app:layoutManager 不起作用?
-    If RecyclerView = root view, it works. => Not need set by source.
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    -->
-    <!-- QA: tools:listitem 不起作用?
-    If RecyclerView = root view, it works.  => Not need set by source.
-     tools:listitem="@layout/widget_recyclerview_dummy_item"
-     -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/subject"
-        android:layout_marginLeft="16dp"
-        android:scrollbars="vertical"
-        android:fadeScrollbars="true"
-        android:scrollbarThumbVertical="@drawable/drawable_shape_4_divider_vertical"
-        android:scrollbarFadeDuration="1"
-        android:layout_marginRight="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/white"
+        android:fadeScrollbars="false"
+        android:paddingStart="@dimen/size_15"
+        android:paddingEnd="@dimen/size_15"
+        android:scrollbarFadeDuration="500"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarThumbVertical="@drawable/drawable_shape_4_divider_vertical_green"
+        android:scrollbars="vertical" />
+    <!--android:scrollIndicators=""-->
 </RelativeLayout>
