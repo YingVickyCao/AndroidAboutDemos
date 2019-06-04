@@ -26,6 +26,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
     private final List<DummyItem> mValues;
     private final IItemClickAction mListener;
 
+    public DummyRecyclerViewAdapter(List<DummyItem> items, IItemClickAction listener) {
         mValues = items;
         mListener = listener;
     }
