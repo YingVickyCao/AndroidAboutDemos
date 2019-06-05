@@ -23,7 +23,7 @@ public class DummyContent {
      */
     public static final List<DummyItem> ITEMS = new ArrayList<>();
     public static final Map<Integer, DummyItem> ITEM_MAP = new HashMap<Integer, DummyItem>();
-    private static final int COUNT = 50;
+    public static final int COUNT = 50;
 
     public static Map<Integer, DummyItem> ITEM_MAP() {
         if (ITEM_MAP.isEmpty()) {

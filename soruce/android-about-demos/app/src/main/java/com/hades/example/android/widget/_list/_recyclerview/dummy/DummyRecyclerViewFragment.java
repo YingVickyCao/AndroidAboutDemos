@@ -29,7 +29,6 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     private static final int ARG_COLUMN_COUNT = 1;
 //    private static final  int ARG_COLUMN_COUNT =2;
 
-    private IItemClickAction mListener;
     private RecyclerView rv;
     private DummyRecyclerViewAdapter mAdapter;
     private EditText mPositionView;
@@ -47,8 +46,12 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
         View view = inflater.inflate(R.layout.widget_recyclerview_dummy, container, false);
         rv = view.findViewById(R.id.list);
         view.findViewById(R.id.findItemView).setOnClickListener(v -> findItemView());
+        view.findViewById(R.id.scrollToPosition).setOnClickListener(v -> scrollToPosition());
+        view.findViewById(R.id.smoothScrollToPosition).setOnClickListener(v -> smoothScrollToPosition());
         mPositionView = view.findViewById(R.id.position);
+
         initList(view);
+
         return view;
     }
 
@@ -90,5 +93,13 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
             TextView title = childView.findViewById(R.id.title);
             Toast.makeText(getContext(), title.getText().toString(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void scrollToPosition() {
+        rv.scrollToPosition(DummyContent.COUNT - 2);
+    }
+
+    private void smoothScrollToPosition() {
+        rv.smoothScrollToPosition(DummyContent.COUNT - 2);
     }
 }
