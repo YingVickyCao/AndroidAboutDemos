@@ -13,7 +13,7 @@ public class DragAndReorderListActivity extends NoNeedPermissionActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme_Dark);
 
-        setContentView(R.layout.activity_only_fragemnt);
+        setContentView(R.layout.widget_recyclerview_4_drag_reorder_list_activity_v1);
 
         showFragment(new DragAndReorderListFragment());
     }

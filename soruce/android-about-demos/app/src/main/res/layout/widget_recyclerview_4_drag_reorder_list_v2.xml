@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.android.widget.list.dag_reorder_list2.v2.CustomNestedScrollView
+    <com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -49,7 +49,7 @@
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
-    </com.example.android.widget.list.dag_reorder_list2.v2.CustomNestedScrollView>
+    </com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.CustomNestedScrollView>
 
     <FrameLayout
         android:id="@+id/loadingContainer"

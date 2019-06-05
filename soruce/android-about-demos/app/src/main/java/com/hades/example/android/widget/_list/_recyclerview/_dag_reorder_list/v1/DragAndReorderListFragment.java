@@ -37,7 +37,7 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list, container, false);
+        View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list_v1, container, false);
         initData();
 
         rv = view.findViewById(R.id.rv);

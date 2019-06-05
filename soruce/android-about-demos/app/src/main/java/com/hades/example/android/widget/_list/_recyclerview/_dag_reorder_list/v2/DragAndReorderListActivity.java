@@ -13,6 +13,6 @@ public class DragAndReorderListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_only_fragemnt);
+        setContentView(R.layout.widget_recyclerview_4_drag_reorder_list_activity_v2);
     }
 }
