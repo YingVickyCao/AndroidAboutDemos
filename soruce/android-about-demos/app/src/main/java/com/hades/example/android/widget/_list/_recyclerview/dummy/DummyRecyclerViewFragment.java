@@ -119,7 +119,7 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
             Log.d(TAG, "findViewByPosition: LayoutManager.findViewByPosition(" + childPosition + ")= null");
         }
 
-    }~
+    }
 
     private void scrollToPosition() {
         rv.scrollToPosition(DummyContent.COUNT - 2);

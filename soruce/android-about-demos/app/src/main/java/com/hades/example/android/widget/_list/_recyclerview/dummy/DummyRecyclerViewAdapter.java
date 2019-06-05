@@ -18,7 +18,7 @@ import java.util.List;
  * specified {@link IItemClickAction}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecyclerViewAdapter.ViewHolder> {
+    public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = DummyRecyclerViewAdapter.class.getSimpleName();
     private int mViewHolderCount = 0;
 
@@ -32,7 +32,6 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
 
     public void setListener(IItemClickAction listener) {
         mListener = listener;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -56,7 +55,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
             }
         });
     }
-
+    
     @Override
     public int getItemCount() {
         return mValues.size();
