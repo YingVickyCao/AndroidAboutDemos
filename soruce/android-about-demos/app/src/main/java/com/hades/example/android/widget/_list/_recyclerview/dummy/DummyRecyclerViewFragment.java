@@ -16,7 +16,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.SimpleDividerItemDecoration;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.SimpleDividerItemDecoration;
 
 /**
  * A fragment representing a list of Items.

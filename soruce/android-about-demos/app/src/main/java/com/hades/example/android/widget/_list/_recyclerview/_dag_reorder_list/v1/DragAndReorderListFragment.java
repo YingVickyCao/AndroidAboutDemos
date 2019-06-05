@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
+package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;

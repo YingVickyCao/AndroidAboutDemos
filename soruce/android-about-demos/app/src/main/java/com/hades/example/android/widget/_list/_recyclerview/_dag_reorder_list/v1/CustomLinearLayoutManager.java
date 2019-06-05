@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
+package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -14,7 +14,7 @@ import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFrag
 import com.hades.example.android.widget._layout._linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
 import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.DragAndReorderListActivity;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
