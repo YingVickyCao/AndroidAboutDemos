@@ -152,8 +152,8 @@ public class DragAndReorderListFragment extends Fragment {
         mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, startDragListener1));
 //        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2));
 
-//        mItemTouchHelper1.attachToRecyclerView(lv1);
-//        mItemTouchHelper2.attachToRecyclerView(lv2);
+        mItemTouchHelper1.attachToRecyclerView(rv1);
+//        mItemTouchHelper2.attachToRecyclerView(rv2);
 
         mCurrentPageView.setFocusable(true);
         mCurrentPageView.setFocusableInTouchMode(true);

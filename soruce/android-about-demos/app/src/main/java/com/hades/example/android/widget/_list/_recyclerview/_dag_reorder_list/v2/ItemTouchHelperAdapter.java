@@ -132,7 +132,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
 //    @Override
 //    public long getItemId(int position) {
-//        return mList.get(position).getId();
+//        return (mList.get(position).getId())-1;
 //    }
 
     private void openPage(String title, String childTitle, Message bean, boolean isGroup) {
