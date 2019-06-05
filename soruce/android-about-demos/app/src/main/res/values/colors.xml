@@ -23,4 +23,10 @@
     <color name="progressBackground2">#ffff00</color>
     <color name="secondaryProgress2">#ff00ff</color>
     <color name="progress2">#00ffff</color>
+
+    <color name="item_view_highlight_bg">@android:color/holo_red_dark</color>
+    <color name="item_view_default_bg">#ff7a75</color>
+
+    <color name="item_view_highlight_bg_2">@android:color/holo_orange_dark</color>
+    <color name="item_view_default_bg_2">@android:color/holo_orange_light</color>
 </resources>
