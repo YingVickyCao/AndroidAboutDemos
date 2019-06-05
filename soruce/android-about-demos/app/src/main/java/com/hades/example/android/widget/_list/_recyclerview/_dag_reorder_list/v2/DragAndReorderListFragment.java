@@ -34,7 +34,7 @@ public class DragAndReorderListFragment extends Fragment {
     private List<Message> list1;
     private List<Message> list2;
     private ItemTouchHelper mItemTouchHelper1;
-    private ItemTouchHelper mItemTouchHelper2;
+//    private ItemTouchHelper mItemTouchHelper2;
     private TextView mCurrentPageView;
 
     private OpenedPage mOpenedPage = new OpenedPage();
@@ -44,7 +44,7 @@ public class DragAndReorderListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         initList1Data();
-        initList2Data();
+//        initList2Data();
     }
 
     @Nullable
@@ -55,20 +55,20 @@ public class DragAndReorderListFragment extends Fragment {
         loadingContainer = view.findViewById(R.id.loadingContainer);
 
         mCurrentPageView = view.findViewById(R.id.currentPage);
-        RecyclerView lv1 = view.findViewById(R.id.lv1);
-        RecyclerView lv2 = view.findViewById(R.id.lv2);
+        RecyclerView rv1 = view.findViewById(R.id.lv1);
+//        RecyclerView lv2 = view.findViewById(R.id.lv2);
 
-        lv1.setLayoutManager(getLinearLayoutManager());
-        lv2.setLayoutManager(getLinearLayoutManager());
+        rv1.setLayoutManager(getLinearLayoutManager());
+//        lv2.setLayoutManager(getLinearLayoutManager());
 
-        lv1.setHasFixedSize(true);// PO
-        lv2.setHasFixedSize(true);// PO
+        rv1.setHasFixedSize(true);// PO
+//        lv2.setHasFixedSize(true);// PO
 
         ItemTouchHelperAdapter adapter1 = new ItemTouchHelperAdapter(list1, getActivity());
-        ItemTouchHelperAdapter adapter2 = new ItemTouchHelperAdapter(list2, getActivity());
+//        ItemTouchHelperAdapter adapter2 = new ItemTouchHelperAdapter(list2, getActivity());
 
         adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
-        adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
+//        adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
 
         IDragView startDragListener1 = new IDragView() {
 
@@ -108,51 +108,52 @@ public class DragAndReorderListFragment extends Fragment {
             }
         };
 
-        IDragView startDragListener2 = new IDragView() {
-            @Override
-            public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                mItemTouchHelper2.startDrag(viewHolder);
-            }
-
-            @Override
-            public void endDrag() {
-                adapter2.resetIsOnDragTag();
-                hideLoading();
-            }
-
-            @Override
-            public void startSwipe(RecyclerView.ViewHolder viewHolder) {
-                mItemTouchHelper2.startSwipe(viewHolder);
-            }
-
-            @Override
-            public void hideLoading() {
-                DragAndReorderListFragment.this.hideLoading();
-            }
-
-            @Override
-            public void showLoading() {
-                DragAndReorderListFragment.this.showLoading();
-            }
-
-            @Override
-            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
-                Toast.makeText(getContext(), "Open " + bean.getTitle(), Toast.LENGTH_SHORT).show();
-                mOpenedPage.updateOpenedPage(title, childTitle, "Group2", isGroup);
-            }
-        };
+//        IDragView startDragListener2 = new IDragView() {
+//            @Override
+//            public void startDrag(RecyclerView.ViewHolder viewHolder) {
+//                mItemTouchHelper2.startDrag(viewHolder);
+//            }
+//
+//            @Override
+//            public void endDrag() {
+//                adapter2.resetIsOnDragTag();
+//                hideLoading();
+//            }
+//
+//            @Override
+//            public void startSwipe(RecyclerView.ViewHolder viewHolder) {
+//                mItemTouchHelper2.startSwipe(viewHolder);
+//            }
+//
+//            @Override
+//            public void hideLoading() {
+//                DragAndReorderListFragment.this.hideLoading();
+//            }
+//
+//            @Override
+//            public void showLoading() {
+//                DragAndReorderListFragment.this.showLoading();
+//            }
+//
+//            @Override
+//            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
+//                Toast.makeText(getContext(), "Open " + bean.getTitle(), Toast.LENGTH_SHORT).show();
+//                mOpenedPage.updateOpenedPage(title, childTitle, "Group2", isGroup);
+//            }
+//        };
 
         adapter1.setDragView(startDragListener1);
-        adapter2.setDragView(startDragListener2);
+//        adapter1.setHasStableIds(true);
+//        adapter2.setDragView(startDragListener2);
 
-        lv1.setAdapter(adapter1);
-        lv2.setAdapter(adapter2);
+        rv1.setAdapter(adapter1);
+//        lv2.setAdapter(adapter2);
 
         mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, startDragListener1));
-        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2));
+//        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2));
 
-        mItemTouchHelper1.attachToRecyclerView(lv1);
-        mItemTouchHelper2.attachToRecyclerView(lv2);
+//        mItemTouchHelper1.attachToRecyclerView(lv1);
+//        mItemTouchHelper2.attachToRecyclerView(lv2);
 
         mCurrentPageView.setFocusable(true);
         mCurrentPageView.setFocusableInTouchMode(true);
@@ -167,7 +168,8 @@ public class DragAndReorderListFragment extends Fragment {
     }
 
     private void initList1Data() {
-        list1 = initListData("Group 1 - Child ", 20);
+//        list1 = initListData("Group 1 - Child ", 20);
+        list1 = initListData("Group 1 - Child ", 50);
     }
 
     private void initList2Data() {

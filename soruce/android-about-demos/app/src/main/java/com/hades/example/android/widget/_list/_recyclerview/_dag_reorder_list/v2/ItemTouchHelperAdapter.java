@@ -29,6 +29,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     private String type;
 
+    private List<VHPositionHashCodeBean> mViewHolderPositionHashCodeList = new ArrayList<>();
+    private VHPositionHashCodeBean mCheckContain = new VHPositionHashCodeBean();
+
     public ItemTouchHelperAdapter(List<Message> list, Activity context) {
         mList = list;
         mContext = context;
@@ -55,12 +58,26 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(mGroupResId, parent, false);
         ItemViewHolder itemViewHolder = new ItemViewHolder(view);
-//        Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode());
+        mViewHolderPositionHashCodeList.add(new VHPositionHashCodeBean(0, itemViewHolder.hashCode()));
+        Log.d(TAG, "onCreateViewHolder: @ItemViewHolder=" + itemViewHolder.hashCode() + ",vh list=" + mViewHolderPositionHashCodeList.size());
         return itemViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
+//        mCheckContain.hashCode = holder.hashCode();
+//        if (mViewHolderPositionHashCodeList.contains(mCheckContain)) {
+//            int index = mViewHolderPositionHashCodeList.indexOf(mCheckContain);
+//            if (-1 != index) {
+//                VHPositionHashCodeBean bean = mViewHolderPositionHashCodeList.get(index);
+//                bean.position = position;
+//            }
+//        }
+
+        Log.d(TAG, "onBindViewHolder: position=" + position + ",@ItemViewHolder=" + holder.hashCode());
+
+//        Log.d(TAG, "onBindViewHolder: VH:\n" + mViewHolderPositionHashCodeList.toString());
+
         Message bean = mList.get(position);
         holder.groupTitle.setText(bean.getTitle());
         holder.drag.setOnLongClickListener(v -> {
@@ -112,6 +129,11 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         boolean isExpand = holder.childContainer.getChildCount() > 0 && bean.isExpand();
         holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
     }
+
+//    @Override
+//    public long getItemId(int position) {
+//        return mList.get(position).getId();
+//    }
 
     private void openPage(String title, String childTitle, Message bean, boolean isGroup) {
         if (null != mDragView) {
