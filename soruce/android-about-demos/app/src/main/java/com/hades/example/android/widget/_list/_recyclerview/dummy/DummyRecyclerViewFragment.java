@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +32,7 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     private IItemClickAction mListener;
     private RecyclerView rv;
     private DummyRecyclerViewAdapter mAdapter;
+    private EditText mPositionView;
 
     public DummyRecyclerViewFragment() {
     }
@@ -43,6 +46,8 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_recyclerview_dummy, container, false);
         rv = view.findViewById(R.id.list);
+        view.findViewById(R.id.findItemView).setOnClickListener(v -> findItemView());
+        mPositionView = view.findViewById(R.id.position);
         initList(view);
         return view;
     }
@@ -73,5 +78,17 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     @Override
     public void onItemClickListener(DummyItem item) {
         Toast.makeText(getContext(), item.colo2, Toast.LENGTH_SHORT).show();
+    }
+
+    private void findItemView() {
+        Integer childPosition = Integer.valueOf(mPositionView.getText().toString());
+        if (null == childPosition) {
+            return;
+        }
+        View childView = rv.getChildAt(childPosition);
+        if (childView instanceof ViewGroup && null != childView) {
+            TextView title = childView.findViewById(R.id.title);
+            Toast.makeText(getContext(), title.getText().toString(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

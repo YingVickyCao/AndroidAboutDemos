@@ -3,7 +3,6 @@ package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.DrawableRes;
@@ -28,13 +27,13 @@ public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        Log.d(TAG, "onDrawOver: ");
+//        Log.d(TAG, "onDrawOver: ");
         int left = parent.getPaddingLeft();
         int right = parent.getWidth() - parent.getPaddingRight();
 
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount - 1; i++) {// Last item has no divider=(i < childCount - 1)
-            Log.d(TAG, "onDrawOver: i=" + i);
+//            Log.d(TAG, "onDrawOver: i=" + i);
             View child = parent.getChildAt(i);
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             int top = child.getBottom() + params.bottomMargin;
