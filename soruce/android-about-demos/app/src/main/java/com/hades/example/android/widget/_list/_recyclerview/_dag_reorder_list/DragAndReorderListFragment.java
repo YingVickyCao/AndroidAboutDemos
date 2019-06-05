@@ -27,7 +27,7 @@ import java.util.List;
 public class DragAndReorderListFragment extends BaseFragment implements StartDragListener {
     private static final String TAG = DragAndReorderListFragment.class.getSimpleName();
 
-    private final static int NUM = 5;
+    private final static int NUM = 50;
 
     private RecyclerView rv;
     private ItemTouchHelperAdapter adapter;
@@ -42,7 +42,7 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
         initData();
 
         rv = view.findViewById(R.id.rv);
-        rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        rv.setLayoutManager(new CustomLinearLayoutManager(view.getContext()));
         adapter = new ItemTouchHelperAdapter(list);
         adapter.setStartDragListener(this);
         rv.setAdapter(adapter);
@@ -61,11 +61,6 @@ public class DragAndReorderListFragment extends BaseFragment implements StartDra
     }
 
     private void initData() {
-        list = new ArrayList<>();
-        for (int i = 0; i < NUM; i++) {
-            list.add(new Message(String.valueOf(i + 1), (i + 1), false));
-        }
-
         list = new ArrayList<>();
         for (int i = 0; i < NUM; i++) {
             list.add(new Message(String.valueOf(i + 1), (i + 1), false));

@@ -55,7 +55,7 @@ import java.util.List;
             }
         });
     }
-    
+
     @Override
     public int getItemCount() {
         return mValues.size();

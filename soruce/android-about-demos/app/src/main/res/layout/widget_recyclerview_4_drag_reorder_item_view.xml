@@ -21,8 +21,6 @@
             android:background="@android:color/transparent"
             android:src="@drawable/drawable_level_list_1_1" />
 
-        <!--android:background="@drawable/ic_launcher_round"-->
-
         <TextView
             android:id="@+id/phone"
             android:layout_width="wrap_content"
@@ -36,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/drawable_selector_4_drag_reorder_item_view_v2"
-            android:duplicateParentState="true"
             android:gravity="center"
             android:text="Drag" />
     </LinearLayout>

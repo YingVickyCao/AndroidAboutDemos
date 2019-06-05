@@ -2,7 +2,6 @@ package com.hades.example.android.widget._list._recyclerview._dag_reorder_list;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -45,13 +44,20 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         holder.check.setImageLevel(bean.isChecked() ? 1 : 0);
 
         holder.root.setOnClickListener(v -> updateCheckStatus(bean));
-        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (null != mStartDragListener) {
-                    mStartDragListener.startDrag(holder);
-                }
+//        holder.drag.setOnTouchListener((v, event) -> {//drag btn -> Drag row
+//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                if (null != mStartDragListener) {
+//                    mStartDragListener.startDrag(holder);
+//                }
+//            }
+//            return false;
+//        });
+
+        holder.drag.setOnLongClickListener(v -> {
+            if (null != mStartDragListener) {
+                mStartDragListener.startDrag(holder);
             }
-            return false;
+            return true;
         });
     }
 

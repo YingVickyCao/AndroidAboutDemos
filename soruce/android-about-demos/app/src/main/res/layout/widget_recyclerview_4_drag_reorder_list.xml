@@ -6,12 +6,14 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_recyclerView_4_drag_reorder_list" />
+        android:text="@string/page_recyclerView_4_drag_reorder_list"
+        android:visibility="invisible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_topic"
+        android:layout_marginBottom="@dimen/size_topic"
         android:background="@color/item_view_default_bg" />
 </FrameLayout>
