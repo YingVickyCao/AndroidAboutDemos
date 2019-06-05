@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._list._recyclerview._v2;
+package com.hades.example.android.widget._list._recyclerview.div_page;
 
 import android.os.Bundle;
 import android.os.Handler;
