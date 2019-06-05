@@ -32,6 +32,7 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
 
     public void setListener(IItemClickAction listener) {
         mListener = listener;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -49,12 +50,9 @@ public class DummyRecyclerViewAdapter extends RecyclerView.Adapter<DummyRecycler
         holder.item = mValues.get(position);
         holder.id.setText(String.valueOf(mValues.get(position).id));
         holder.title.setText(String.valueOf(mValues.get(position).colo2));
-        holder.div.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    mListener.onItemClickListener(holder.item);
-                }
+        holder.div.setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onItemClickListener(holder.item);
             }
         });
     }

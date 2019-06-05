@@ -19,10 +19,10 @@
             style="@style/btn.small"
             android:text="Find item view" />
 
-        <EditText
-            android:id="@+id/position"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/findViewByPosition"
+            style="@style/btn.small"
+            android:text="findView By Position" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +40,6 @@
             style="@style/btn.small"
             android:text="Smooth scroll to position" />
     </LinearLayout>
-
 
     <FrameLayout
         android:layout_width="match_parent"
