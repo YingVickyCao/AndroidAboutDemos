@@ -44,7 +44,7 @@ public class ToggleLinearLayout extends LinearLayout {
         applyStatus();
     }
 
-    private void applyStatus() {
-        setVisibility(getExpandStatus() ? VISIBLE : GONE);
+    public void applyStatus() {
+        setVisibility(getExpandStatus() && getChildCount() > 0 ? VISIBLE : GONE);
     }
 }

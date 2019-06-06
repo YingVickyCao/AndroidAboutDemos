@@ -92,17 +92,19 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
         if (null != children && !children.isEmpty() && children.size() != holder.childContainer.getChildCount()) {
             for (int i = 0; i < children.size(); i++) {
-                TextView textView = (TextView) LayoutInflater.from(holder.drag.getContext()).inflate(android.R.layout.simple_list_item_activated_1, null);
+                View child = LayoutInflater.from(holder.drag.getContext()).inflate(R.layout.simple_list_item_activated_1, null);
+                TextView textView = child.findViewById(R.id.text1);
                 textView.setBackgroundColor(Color.WHITE);
                 String childText = String.valueOf(children.get(i).childText);
                 textView.setText(childText);
                 textView.setOnClickListener(v -> openPage(bean.getTitle(), childText, bean, false));
-                holder.childContainer.addView(textView);
+                holder.childContainer.addView(child);
             }
         }
 
-        boolean isExpand = holder.childContainer.getChildCount() > 0;
-        holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
+//        boolean isExpand = holder.childContainer.getChildCount() > 0;
+//        holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
+        holder.childContainer.applyStatus();
     }
 
     private void resetPositionRegion() {
@@ -171,9 +173,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             mDragView.showLoading();
         }
         new Thread(() -> {
-            if (isHasExpand()) {
-                collapse();
-            } else {
+//            if (isHasExpand()) {
+//                collapse();
+//            } else
+            {
                 isOnDrag = true;
                 resetPositionRegion();
                 if (null != mDragView) {
@@ -189,8 +192,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     private void collapse() {
-//        mContext.runOnUiThread(() -> notifyItemRangeChanged(minPos, maxPos - minPos + 1));
-
+//        mContext.runOnUiThread(() -> notifyItemRangeChanged(minPos, maxPos - minPos + 1));(() -> notifyItemRangeChanged(minPos, maxPos - minPos + 1));
         mContext.runOnUiThread(this::notifyDataSetChanged);
         if (null != mDragView) {
             mDragView.hideLoading();
