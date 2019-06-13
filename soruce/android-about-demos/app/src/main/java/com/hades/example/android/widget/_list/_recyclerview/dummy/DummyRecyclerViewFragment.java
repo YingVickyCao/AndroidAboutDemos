@@ -61,13 +61,23 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
         Context context = view.getContext();
         // PO:RecyclerView.setHasFixedSize(true)
         rv.setHasFixedSize(true);
-        mLinearLayoutManager = new LinearLayoutManager(context);
+        forbidScrollVertically();
 //        mLinearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rv.setLayoutManager(mLinearLayoutManager);
 //        rv.setLayoutManager(new GridLayoutManager(context, ARG_COLUMN_COUNT));
         rv.addItemDecoration(new SimpleDividerItemDecoration(getContext(), R.drawable.drawable_shape_4_divider_vertical));
         mAdapter = new DummyRecyclerViewAdapter(DummyContent.ITEMS(), this);
         rv.setAdapter(mAdapter);
+    }
+
+    private void forbidScrollVertically() {
+        mLinearLayoutManager = new LinearLayoutManager(getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+//                return super.canScrollVertically();
+                return false;
+            }
+        };
     }
 
     @Override
