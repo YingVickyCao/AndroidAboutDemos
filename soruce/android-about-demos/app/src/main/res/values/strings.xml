@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">Android Demos</string>
+    <string name="app_name">List can not  drag</string>
 
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>
@@ -43,6 +43,7 @@
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
+    <string name="page_view_location">View location</string>
     <string name="page_CustomView4CascadeLayout">Custom View 4 CascadeLayout</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
@@ -61,6 +62,7 @@
     <string name="page_videoview_rotate_screen_tip">Video view rotate screen tip </string>
     <string name="page_imageView_scaleType">ImageView scaleType</string>
     <string name="page_recyclerView_4_drag_reorder_list">RecyclerView - drag and reorder list</string>
+    <string name="page_ListView">ListView</string>
     <string name="page_spinner">Spinner</string>
     <string name="page_TabLayout">TabLayout</string>
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>

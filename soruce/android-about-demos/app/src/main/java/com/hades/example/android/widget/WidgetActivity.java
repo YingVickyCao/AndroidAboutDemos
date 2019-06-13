@@ -14,6 +14,7 @@ import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFrag
 import com.hades.example.android.widget._layout._linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
 import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
+import com.hades.example.android.widget._list._listview.TestListViewFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.IItemClickAction;
@@ -28,6 +29,7 @@ import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragm
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
+import com.hades.example.android.widget.custom_view.TestViewLocationFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
@@ -54,7 +56,9 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
         initViews();
 
-        findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
+        findViewById(R.id.pageViewLocation).setOnClickListener(v -> pageViewLocation());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
@@ -93,7 +97,15 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageRecyclerView();
+        pageListView();
+    }
+
+    private void pageViewLocation() {
+        showFragment(new TestViewLocationFragment());
+    }
+
+    private void pageListView() {
+        showFragment(new TestListViewFragment());
     }
 
     private void pageCustomVew() {

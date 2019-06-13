@@ -4,35 +4,47 @@
     android:orientation="vertical">
 
     <com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.CustomNestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/currentPage"
+            <LinearLayout
+                android:id="@+id/group0"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:textColor="@android:color/holo_blue_bright"
-                android:gravity="center"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:gravity="center"
-                android:text="Group1"
-                android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/currentPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="Group1"
+                    android:textSize="30sp" />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                android:padding="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,11 +55,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv2"
-                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                android:visibility="visible" />
 
         </LinearLayout>
     </com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.CustomNestedScrollView>
