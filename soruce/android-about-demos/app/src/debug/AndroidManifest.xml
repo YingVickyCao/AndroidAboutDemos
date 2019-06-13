@@ -6,9 +6,8 @@
     <application tools:ignore="GoogleAppIndexingWarning">
         <!--<activity android:name=".other_ui.OtherUIActivity">-->
         <!--<activity android:name=".resource.ResourceActivity">-->
-        <!--<activity android:name=".widget.WidgetActivity">-->
-        <activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity">
-        <!--<activity android:name=".widget._list._recyclerview._v2.TestDivPageActivity">-->
+        <activity android:name=".widget.WidgetActivity">
+        <!--<activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

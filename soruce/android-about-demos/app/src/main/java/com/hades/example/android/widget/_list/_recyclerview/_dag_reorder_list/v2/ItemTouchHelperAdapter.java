@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -57,6 +58,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         return itemViewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         mCheckContain.hashCode = holder.hashCode();
@@ -75,6 +77,13 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Message bean = mList.get(position);
         holder.groupTitle.setText(bean.getTitle());
         holder.drag.setOnLongClickListener(v -> longClickDrag(holder));
+        holder.drag.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                printMotionEvent(event);
+                return false;
+            }
+        });
         onBindViewHolder4ChildContainer(holder, position, bean);
         if (holder.childContainer.getChildCount() > 0) {
             holder.groupContainer.setOnClickListener(v -> toggleExpand(holder.childContainer, bean, position));
@@ -82,6 +91,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             holder.groupContainer.setOnClickListener(v -> openPage(bean.getTitle(), null, bean, true));
         }
 //        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
+    }
+
+    private void printMotionEvent(MotionEvent event) {
+        Log.d(TAG, "printMotionEvent: event action=" + event.getAction() + ",rawX=" + event.getRawX() + ",rawY=" + event.getRawY());
     }
 
     private void onBindViewHolder4ChildContainer(final ItemViewHolder holder, int position, Message bean) {

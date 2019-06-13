@@ -1,13 +1,17 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,6 +40,8 @@ public class DragAndReorderListFragment extends Fragment {
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
     private TextView mCurrentPageView;
+    private NestedScrollView nestedScrollView;
+    private View group0;
 
     private OpenedPage mOpenedPage = new OpenedPage();
 
@@ -53,13 +59,25 @@ public class DragAndReorderListFragment extends Fragment {
         View view = inflater.inflate(R.layout.widget_recyclerview_4_drag_reorder_list_v2, container, false);
 
         loadingContainer = view.findViewById(R.id.loadingContainer);
+        nestedScrollView = view.findViewById(R.id.nestedScrollView);
+        group0 = view.findViewById(R.id.group0);
+        view.findViewById(R.id.ll).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                printMotionEvent(event);
+                return false;
+            }
+        });
 
         mCurrentPageView = view.findViewById(R.id.currentPage);
         RecyclerView rv1 = view.findViewById(R.id.lv1);
         RecyclerView rv2 = view.findViewById(R.id.lv2);
 
-        rv1.setLayoutManager(getLinearLayoutManager());
-        rv2.setLayoutManager(getLinearLayoutManager());
+        LinearLayoutManager layoutManager1 = getLinearLayoutManager();
+        LinearLayoutManager layoutManager2 = getLinearLayoutManager();
+
+        rv1.setLayoutManager(layoutManager1);
+        rv2.setLayoutManager(layoutManager2);
 
         rv1.setHasFixedSize(true);// PO
         rv2.setHasFixedSize(true);// PO
@@ -70,10 +88,40 @@ public class DragAndReorderListFragment extends Fragment {
         adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
         adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
 
+        // not work. not invoke
+//        rv1.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//
+//                switch (newState){
+//                    case RecyclerView.SCROLL_STATE_IDLE:
+//                        Log.d(TAG, "onScrollStateChanged: IDLE "+ layoutManager1.findFirstVisibleItemPosition());
+//                    break;
+//
+//                    case RecyclerView.SCROLL_STATE_DRAGGING:
+//                        Log.d(TAG, "onScrollStateChanged: DRAGGING "+ layoutManager1.findFirstVisibleItemPosition());
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//            }
+//        });
+
+
         IDragView startDragListener1 = new IDragView() {
 
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
+                final DisplayMetrics displayMetrics = new DisplayMetrics();
+//                getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//                final int height = displayMetrics.heightPixels;
+//                final int width = displayMetrics.widthPixels;
+//                Log.d(TAG, "startDrag: height=" + height); // 2042
+                Log.d(TAG, "startDrag: group0 height=" + group0.getMeasuredHeight());
                 mItemTouchHelper1.startDrag(viewHolder);
             }
 
@@ -151,16 +199,20 @@ public class DragAndReorderListFragment extends Fragment {
         rv1.setAdapter(adapter1);
         rv2.setAdapter(adapter2);
 
-        mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, startDragListener1));
-        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2));
+        mItemTouchHelper1 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter1, startDragListener1, rv1, nestedScrollView));
+        mItemTouchHelper2 = new ItemTouchHelper(new SimpleItemTouchHelperCallback(adapter2, startDragListener2, rv2, nestedScrollView));
 
         mItemTouchHelper1.attachToRecyclerView(rv1);
         mItemTouchHelper2.attachToRecyclerView(rv2);
 
-        mCurrentPageView.setFocusable(true);
-        mCurrentPageView.setFocusableInTouchMode(true);
-        mCurrentPageView.requestFocus();
+//        mCurrentPageView.setFocusable(true);
+//        mCurrentPageView.setFocusableInTouchMode(true);
+//        mCurrentPageView.requestFocus();
         return view;
+    }
+
+    private void printMotionEvent(MotionEvent event) {
+        Log.d(TAG, "printMotionEvent: event action=" + event.getAction() + ",rawX=" + event.getRawX() + ",rawY=" + event.getRawY());
     }
 
     private LinearLayoutManager getLinearLayoutManager() {
