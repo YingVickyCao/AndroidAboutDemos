@@ -61,12 +61,9 @@ public class DragAndReorderListFragment extends Fragment {
         loadingContainer = view.findViewById(R.id.loadingContainer);
         nestedScrollView = view.findViewById(R.id.nestedScrollView);
         group0 = view.findViewById(R.id.group0);
-        view.findViewById(R.id.ll).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                printMotionEvent(event);
-                return false;
-            }
+        view.findViewById(R.id.ll).setOnTouchListener((v, event) -> {
+            printMotionEvent(event);
+            return false;
         });
 
         mCurrentPageView = view.findViewById(R.id.currentPage);

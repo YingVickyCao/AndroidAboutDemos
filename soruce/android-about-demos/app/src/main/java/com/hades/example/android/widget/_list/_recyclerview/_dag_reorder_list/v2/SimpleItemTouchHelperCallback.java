@@ -79,6 +79,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return dragFlags;
     }
 
+
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {// onChildDraw: thread name=main,thread id=2
 //        Log.d(TAG, "onChildDraw: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId());
@@ -95,6 +96,11 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }
+    }
+
+    @Override
+    public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 
     @Override
