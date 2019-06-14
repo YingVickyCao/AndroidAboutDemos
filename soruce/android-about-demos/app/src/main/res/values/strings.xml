@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">List can not  drag</string>
+    <string name="app_name">Android Demos</string>
 
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>

@@ -12,6 +12,7 @@
 
     <LinearLayout
         android:id="@+id/ll"
+        android:background="@android:color/holo_orange_light"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -20,8 +21,10 @@
 
         <Button
             android:id="@+id/btn"
+            style="@style/btn"
             android:layout_width="@dimen/size_200"
-            android:layout_height="@dimen/size_200" />
+            android:layout_height="@dimen/size_200"
+            android:text="@string/page_Button" />
 
     </LinearLayout>
 </LinearLayout>
