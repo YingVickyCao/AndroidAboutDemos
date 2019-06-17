@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.screen_size;
+package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -32,6 +32,17 @@ public class TestViewLocationFragment extends Fragment {
         btn = view.findViewById(R.id.btn);
 
         btn.setOnClickListener(v -> printLocations());
+        root.setOnSystemUiVisibilityChangeListener(visibility -> {
+            if (((visibility & View.SYSTEM_UI_FLAG_LOW_PROFILE) == 0)
+                    || ((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0)
+                    || ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)) {
+                Log.d(TAG, "onSystemUiVisibilityChange: system bars are visible"); // system bars are visible
+            } else {
+                Log.d(TAG, "onSystemUiVisibilityChange: system bars are not visible");
+            }
+        });
+
+        Log.d(TAG, "onCreateView: "+(hasNavigationBar() ? "Has navigation bar":"Not hav navigation bar"));
         return view;
     }
 
@@ -44,7 +55,7 @@ public class TestViewLocationFragment extends Fragment {
     Override size: 1080x2280  修改分辨率
    */
     private void printScreenDensity() {
-        BaseScreenSizeTool sizeTool = new ScreenSizeToolHavingSoftNavigationBar();
+        ScreenSizeTool sizeTool = new ScreenSizeTool();
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         int height = displayMetrics.heightPixels;// 屏幕高度的像素 px
         Log.d(TAG, "printScreenDensity:height=" + height);//2042
@@ -53,23 +64,12 @@ public class TestViewLocationFragment extends Fragment {
         Log.d(TAG, "printScreenDensity: 虚拟按键高度=" + sizeTool.getNavigationBarHeight(getContext())); // 虚拟按键高度=126
 
         Log.d(TAG, "printScreenDensity: 屏幕真实高度=" + sizeTool.getRealHeight(getContext())); // 屏幕真实高度=2280
-        Log.d(TAG, "printScreenDensity: 屏幕高度： 底部有虚拟按键 =" + sizeTool.getScreenHeight(getContext())); // 屏幕高度： 底部有虚拟按键 =2154
-        Log.d(TAG, "printScreenDensity: 屏幕高度 ：When 底部有虚拟按键 底部没有虚拟按键=" + sizeTool.getScreenHeight(getContext())); // 屏幕高度 ：底部没有虚拟按键=2042
+        Log.d(TAG, "printScreenDensity: 屏幕高度：  =" + sizeTool.getScreenHeight(getContext())); // 屏幕高度： 底部有虚拟按键 =2154
         Log.d(TAG, "printScreenDensity: 标题栏高度=" + sizeTool.getAppBarHeight(getActivity())); // 标题栏高度=35
         Log.d(TAG, "printScreenDensity: 应用区域高度=" + sizeTool.getAppViewHeight(getActivity())); // 应用区域高度=2042
 
         Log.d(TAG, "printScreenDensity: view 显示的高度=" + sizeTool.getContentViewHeight(getActivity())); // view 显示的高度=1895
         Log.d(TAG, "printScreenDensity: view 显示的高度=" + root.getHeight());   // view 显示的高度=1895
-
-        root.setOnSystemUiVisibilityChangeListener(visibility -> {
-            if (((visibility & View.SYSTEM_UI_FLAG_LOW_PROFILE) == 0)
-                    || ((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0)
-                    || ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)) {
-                Log.d(TAG, "onSystemUiVisibilityChange: system bars are visible"); // system bars are visible
-            } else {
-                Log.d(TAG, "onSystemUiVisibilityChange: system bars are not visible");
-            }
-        });
     }
 
 
@@ -101,4 +101,8 @@ public class TestViewLocationFragment extends Fragment {
         return str;
     }
 
+    public boolean hasNavigationBar() {
+        int id = getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && getResources().getBoolean(id);
+    }
 }

@@ -29,7 +29,7 @@ import com.hades.example.android.widget._textview.TestHighlightDigitalClockFragm
 import com.hades.example.android.widget._textview.TestTextViewClickFragment;
 import com.hades.example.android.widget._textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
-import com.hades.example.android.widget.screen_size.TestViewLocationFragment;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;

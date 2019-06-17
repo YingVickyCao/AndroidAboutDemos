@@ -1,15 +1,91 @@
-package com.hades.example.android.widget.screen_size;
+package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Window;
+import android.view.WindowManager;
 
-public abstract class BaseScreenSizeTool {
-    private static final String TAG = BaseScreenSizeTool.class.getSimpleName();
+public class ScreenSizeTool {
+    private static final String TAG = ScreenSizeTool.class.getSimpleName();
+
+    /**
+     * 底部有虚拟按键
+     * 屏幕真实高度： 包括虚拟按键 + 状态栏
+     * 屏幕高度 = 屏幕真实高度- 虚拟导航栏
+     * <p>
+     * <p>
+     * 底部没有虚拟按键
+     * 屏幕真实高度： 包括状态栏，不包括虚拟按键
+     * 屏幕高度 = 屏幕真实高度
+     */
+    public int getRealHeight(Context context) {
+        if (hasNavigationBar(context)) {
+            return getRealHeight4HavingSoftNavigationBar(context);
+        } else {
+            return getRealHeight4NotHavingSoftNavigationBar(context);
+        }
+    }
+
+    public int getScreenHeight(Context context) {
+        if (hasNavigationBar(context)) {
+            return getScreenHeight4HavingSoftNavigationBar(context);
+        } else {
+            return getScreenHeight4NotHavingSoftNavigationBar(context);
+        }
+    }
+
+
+    private int getRealHeight4NotHavingSoftNavigationBar(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        return dm.heightPixels;
+    }
+
+    private int getScreenHeight4NotHavingSoftNavigationBar(Context context) {
+        return getRealHeight(context);
+    }
+
+    private int getRealHeight4HavingSoftNavigationBar(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        int screenHeight = 0;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) { // >=4.2
+            DisplayMetrics dm = new DisplayMetrics();
+            display.getRealMetrics(dm);
+            screenHeight = dm.heightPixels;
+
+            //或者也可以使用getRealSize方法
+//      Point size = new Point();
+//      display.getRealSize(size);
+//      screenHeight = size.y;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) { // >=4.0
+            try {
+                screenHeight = (Integer) Display.class.getMethod("getRawHeight").invoke(display);
+            } catch (Exception e) {
+                DisplayMetrics dm = new DisplayMetrics();
+                display.getMetrics(dm);
+                screenHeight = dm.heightPixels;
+            }
+        }
+        return screenHeight;
+    }
+
+    private int getScreenHeight4HavingSoftNavigationBar(Context context) {
+        return getRealHeight(context) - getNavigationBarHeight(context);
+    }
+
+    private boolean hasNavigationBar(Context context) {
+        int id = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && context.getResources().getBoolean(id);
+    }
 
     /**
      * 状态栏高度
@@ -30,20 +106,13 @@ public abstract class BaseScreenSizeTool {
         return rect.top;
     }
 
-    public abstract int getRealHeight(Context context);
-
-    /**
-     * 屏幕高度
-     */
-    public abstract int getScreenHeight(Context context);
-
     /**
      * 应用区的高度 = 屏幕的高度 - 状态栏高度
      * <p>
      * 不能在 onCreate 方法中使用。
      * 因为这种方法依赖于WMS（窗口管理服务的回调）。正是因为窗口回调机制，所以在Activity初始化时执行此方法得到的高度是0。
      * 这个方法推荐在回调方法onWindowFocusChanged()中执行，才能得到预期结果。
-     */
+     **/
 
     public int getAppViewHeight(Activity context) {
         // 方法1：
@@ -55,13 +124,12 @@ public abstract class BaseScreenSizeTool {
         // 方法2：
         DisplayMetrics dm = new DisplayMetrics();
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        Rect outRect1 = new Rect();
-        int appViewHeight = dm.heightPixels - outRect1.height(); //应用区域高度 =  屏幕高度 -状态栏高度
+        int appViewHeight = dm.heightPixels ;
 
         Log.d(TAG, "应用区高度:" + appViewHeight);
         return appViewHeight;
     }
+
 
     /**
      * 标题栏高度

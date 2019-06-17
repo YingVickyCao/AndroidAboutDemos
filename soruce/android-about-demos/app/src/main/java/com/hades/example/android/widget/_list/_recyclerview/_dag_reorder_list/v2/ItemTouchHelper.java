@@ -251,6 +251,9 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
 
     RecyclerView mRecyclerView;
 
+//    private float mRawY;
+//    private boolean mIsOutOfScreen;
+
     /**
      * When user drags a view to the edge, we start scrolling the LayoutManager as long as View
      * is partially out of bounds.
@@ -385,7 +388,8 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
                 case MotionEvent.ACTION_MOVE: {
                     // Find the index of the active pointer and fetch its position
                     if (activePointerIndex >= 0) {
-                        Log.d(TAG, "onTouchEvent: ACTION_MOVE,rawY="+ event.getRawY());
+//                        mRawY = event.getRawY();
+                        Log.d(TAG, "onTouchEvent: ACTION_MOVE,rawY=" + event.getRawY());
                         updateDxDy(event, mSelectedFlags, activePointerIndex);
                         moveIfNecessary(viewHolder);
                         mRecyclerView.removeCallbacks(mScrollRunnable);
@@ -765,6 +769,8 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
                 }
             }
         }
+
+//        mIsOutOfScreen = false;
         if (lm.canScrollVertically()) {
             int curY = (int) (mSelectedStartY + mDy);
             final int topDiff = curY - mTmpRect.top - mRecyclerView.getPaddingTop();
@@ -776,6 +782,22 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
                 if (bottomDiff > 0) {
                     scrollY = bottomDiff;
                 }
+
+                // not work
+//                float item_height = mRecyclerView.getContext().getResources().getDimension(com.hades.example.android.lib.R.dimen.size_46);
+//                if (mRawY > 0 && mRawY > 2154f) {
+//                    scrollY = (int) (mRawY - 2154f + item_height * 4);
+//                    Log.d(TAG, "scrollIfNecessary1: mRawY=" + mRawY + ",scrollY=" + scrollY);
+//                    mIsOutOfScreen = true;
+//                } else if (mRawY > 0 && (mRawY + item_height) > 2154f) {
+//                    scrollY = (int) (mRawY + item_height - 2154f + item_height * 4);
+//                    Log.d(TAG, "scrollIfNecessary2: mRawY + item_height=" + (mRawY + item_height) + ",scrollY=" + scrollY);
+//                    mIsOutOfScreen = true;
+//                } else {
+//                    mIsOutOfScreen = false;
+//                }
+//
+//                mCallback.setIsOutOfScreen(mIsOutOfScreen);
             }
         }
         if (scrollX != 0) {
@@ -784,15 +806,27 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
                     mRecyclerView.getWidth(), scrollDuration);
         }
         if (scrollY != 0) {
-            scrollY = mCallback.interpolateOutOfBoundsScroll(mRecyclerView,
-                    mSelected.itemView.getHeight(), scrollY,
-                    mRecyclerView.getHeight(), scrollDuration);
+//            if (mIsOutOfScreen) {
+//            } else
+                {
+                scrollY = mCallback.interpolateOutOfBoundsScroll(mRecyclerView,
+                        mSelected.itemView.getHeight(), scrollY,
+                        mRecyclerView.getHeight(), scrollDuration);
+            }
+
+            Log.d(TAG, "scrollIfNecessary3: scrollBy=" + scrollY);
         }
         if (scrollX != 0 || scrollY != 0) {
             if (mDragScrollStartTimeInMs == Long.MIN_VALUE) {
                 mDragScrollStartTimeInMs = now;
             }
-            mRecyclerView.scrollBy(scrollX, scrollY);
+            Log.d(TAG, "scrollIfNecessary4: scrollBy=" + scrollY);
+//            if (mIsOutOfScreen) {
+//            } else
+                {
+                mRecyclerView.scrollBy(scrollX, scrollY);
+            }
+
             return true;
         }
         mDragScrollStartTimeInMs = Long.MIN_VALUE;
@@ -863,13 +897,20 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
         final float threshold = mCallback.getMoveThreshold(viewHolder);
         final int x = (int) (mSelectedStartX + mDx);
         final int y = (int) (mSelectedStartY + mDy);
-        if (Math.abs(y - viewHolder.itemView.getTop()) < viewHolder.itemView.getHeight() * threshold
-                && Math.abs(x - viewHolder.itemView.getLeft())
-                < viewHolder.itemView.getWidth() * threshold) {
-            return;
+
+//        if (mIsOutOfScreen) {
+//
+//        } else
+            {
+            if (Math.abs(y - viewHolder.itemView.getTop()) < viewHolder.itemView.getHeight() * threshold
+                    && Math.abs(x - viewHolder.itemView.getLeft())
+                    < viewHolder.itemView.getWidth() * threshold) {
+                return;
+            }
         }
         List<ViewHolder> swapTargets = findSwapTargets(viewHolder);
         if (swapTargets.size() == 0) {
+            Log.d(TAG, "moveIfNecessary: swapTargets=0");
             return;
         }
         // may swap.
@@ -877,14 +918,19 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
         if (target == null) {
             mSwapTargets.clear();
             mDistances.clear();
+            Log.d(TAG, "moveIfNecessary: chooseDropTarget=null");
             return;
         }
         final int toPosition = target.getAdapterPosition();
         final int fromPosition = viewHolder.getAdapterPosition();
         if (mCallback.onMove(mRecyclerView, viewHolder, target)) {
+            Log.d(TAG, "moveIfNecessary: onMove," + ",fromPosition=" + fromPosition + ",toPosition=" + toPosition);
             // keep target visible
-            mCallback.onMoved(mRecyclerView, viewHolder, fromPosition,
-                    target, toPosition, x, y);
+
+            mCallback.onMoved(mRecyclerView, viewHolder, fromPosition, target, toPosition, x, y);
+//            if (mIsOutOfScreen) {
+//                mRecyclerView.scrollToPosition(toPosition);
+//            }
         }
     }
 
@@ -1072,7 +1118,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
      * through RecyclerView's ItemTouchListener mechanism. As long as no other ItemTouchListener
      * grabs previous events, this should work as expected.</li>
      * </ul>
-     *
+     * <p>
      * For example, if you would like to let your user to be able to drag an Item by touching one
      * of its descendants, you may implement it as follows:
      * <pre>
@@ -1121,7 +1167,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
      * through RecyclerView's ItemTouchListener mechanism. As long as no other ItemTouchListener
      * grabs previous events, this should work as expected.</li>
      * </ul>
-     *
+     * <p>
      * For example, if you would like to let your user to be able to swipe an Item by touching one
      * of its descendants, you may implement it as follows:
      * <pre>
@@ -1422,6 +1468,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
         private static final long DRAG_SCROLL_ACCELERATION_LIMIT_TIME_MS = 2000;
 
         private int mCachedMaxScrollSpeed = -1;
+        private boolean mIsOutOfScreen;
 
         /**
          * Returns the {@link ItemTouchUIUtil} that is used by the {@link Callback} class for
@@ -1853,6 +1900,11 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
                     }
                 }
             }
+
+
+            if (winner == null && mIsOutOfScreen && dropTargets != null && !dropTargets.isEmpty()) {
+                winner = dropTargets.get(0);
+            }
             return winner;
         }
 
@@ -1908,6 +1960,10 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
             return mCachedMaxScrollSpeed;
         }
 
+//        public void setIsOutOfScreen(boolean isOutOfScreen) {
+//            this.mIsOutOfScreen = isOutOfScreen;
+//        }
+
         /**
          * Called when {@link #onMove(RecyclerView, ViewHolder, ViewHolder)} returns true.
          * <p>
@@ -1920,7 +1976,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
          * This method is responsible to give necessary hint to the LayoutManager so that it will
          * keep the View in visible area. For example, for LinearLayoutManager, this is as simple
          * as calling {@link LinearLayoutManager#scrollToPositionWithOffset(int, int)}.
-         *
+         * <p>
          * Default implementation calls {@link RecyclerView#scrollToPosition(int)} if the View's
          * new position is likely to be out of bounds.
          * <p>
@@ -2303,7 +2359,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
         /**
          * Whether to execute code in response to the the invoking of
          * {@link ItemTouchHelperGestureListener#onLongPress(MotionEvent)}.
-         *
+         * <p>
          * It is necessary to control this here because
          * {@link GestureDetector.SimpleOnGestureListener} can only be set on a
          * {@link GestureDetector} in a GestureDetector's constructor, a GestureDetector will call
