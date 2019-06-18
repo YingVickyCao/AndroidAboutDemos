@@ -183,7 +183,7 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:max="100"
                 android:progress="20"
-                android:progressDrawable="@drawable/progress_horizontal_v2"
+                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
                 android:secondaryProgress="60" />
 
             <ProgressBar
@@ -195,7 +195,7 @@
                 android:max="100"
                 android:progress="20"
                 android:progressBackgroundTint="@color/progressBackground2"
-                android:progressDrawable="@drawable/progress_horizontal_v2"
+                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
                 android:progressTint="@color/progress2"
                 android:secondaryProgress="60"
                 android:secondaryProgressTint="@color/secondaryProgress2" />
@@ -209,7 +209,7 @@
                 android:backgroundTint="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
-                android:progressDrawable="@drawable/progress_horizontal_material"
+                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
                 android:secondaryProgress="60" />
 
             <ProgressBar
@@ -221,7 +221,7 @@
                 android:background="@android:color/holo_green_light"
                 android:max="100"
                 android:progress="20"
-                android:progressDrawable="@drawable/progress_horizontal_material"
+                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
                 android:secondaryProgress="60" />
 
             <ProgressBar
@@ -234,7 +234,7 @@
                 android:backgroundTint="@android:color/holo_red_light"
                 android:max="100"
                 android:progress="20"
-                android:progressDrawable="@drawable/progress_horizontal_material"
+                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
                 android:secondaryProgress="60" />
 
             <View style="@style/div" />

@@ -19,6 +19,7 @@ import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndSc
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
+import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.MeasureVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.VectorDrawableFragment;
@@ -39,10 +40,7 @@ public class ResourceActivity extends PermissionActivity {
         setContentView(R.layout.activity_resources);
         initViews();
 
-        findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
-        findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
-        findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
-        findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
+        findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());        findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
@@ -55,8 +53,12 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
 
+        findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
+        findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
+
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
+        findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
     }
 
@@ -67,8 +69,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageColorStateListResource();
-
+        pageLayerListDrawable();
     }
 
     private void pageColor() {
@@ -138,6 +139,11 @@ public class ResourceActivity extends PermissionActivity {
     private void pageLevelListDrawable() {
         showFragment(new TestLevelListDrawableFragment());
     }
+
+    private void pageLayerListDrawable() {
+        showFragment(new TestLayerDrawableFragment());
+    }
+
 
     private void pageDrawableFolder() {
         showFragment(new TestDrawableFolderFragment());

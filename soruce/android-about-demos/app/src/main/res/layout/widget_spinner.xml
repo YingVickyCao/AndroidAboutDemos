@@ -88,7 +88,7 @@
             android:id="@+id/spinnerWithCustomDropdown3"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_50"
-            android:background="@drawable/spinner_background_material"
+            android:background="@drawable/drawable_layerlist_4_spinner_background_material"
             android:dropDownWidth="100.0dp"
             android:dropDownVerticalOffset="@dimen/size_50"
             android:dropDownSelector="@drawable/list_choice_background_material"

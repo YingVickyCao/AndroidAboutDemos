@@ -22,7 +22,7 @@ public class TestLevelListDrawableFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_level_iist, container, false);
+        View view = inflater.inflate(R.layout.res_drawable_level_iist, container, false);
 
         textView1_1 = view.findViewById(R.id.textView1_1);
         textView1_2 = view.findViewById(R.id.textView1_2);

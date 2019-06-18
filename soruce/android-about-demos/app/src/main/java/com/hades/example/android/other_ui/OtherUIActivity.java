@@ -37,7 +37,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pagePopupWindow();
+        pageAlertDialog();
     }
 
     private void pageNotification() {

@@ -1,7 +1,6 @@
 <?xml version= "1.0" encoding ="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item android:bottom="1dp">-->
     <item>
         <shape android:shape="rectangle">
             <solid android:color="#2bc7a3" />
@@ -16,12 +15,7 @@
 
             <corners android:radius="1dp" />
 
-            <!-- Padding apply to containing View elements, not the shape -->
-            <!--<padding-->
-            <!--android:bottom="1dp"-->
-            <!--android:left="1dp"-->
-            <!--android:right="1dp"-->
-            <!--android:top="1dp" />-->
+           
         </shape>
     </item>
 </layer-list>
