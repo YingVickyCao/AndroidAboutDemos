@@ -52,6 +52,7 @@ public class FirstService extends Service {
         FIXED_ERROR: java.lang.SecurityException: Permission Denial: startForeground from pid=20342, uid=10228 requires android.permission.FOREGROUND_SERVICE
 
         Add normal permission:
+        targetSdkVersion >= 28
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
          */
         startForeground(1000, builder.build());
