@@ -48,6 +48,12 @@ public class FirstService extends Service {
             return;
         }
         Notification.Builder builder = new Notification.Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID).setSmallIcon(R.drawable.ic_launcher_round);
+        /*
+        FIXED_ERROR: java.lang.SecurityException: Permission Denial: startForeground from pid=20342, uid=10228 requires android.permission.FOREGROUND_SERVICE
+
+        Add normal permission:
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+         */
         startForeground(1000, builder.build());
     }
 

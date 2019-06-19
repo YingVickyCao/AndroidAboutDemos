@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="false"
@@ -220,8 +220,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app_component._intent_and_intent_filter._flag.D"/>
-        <activity android:name=".app_component._intent_and_intent_filter._flag.E"/>
+        <activity android:name=".app_component._intent_and_intent_filter._flag.D" />
+        <activity android:name=".app_component._intent_and_intent_filter._flag.E" />
 
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
@@ -318,7 +318,7 @@
         <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget._list.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
-        <activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity"/>
+        <activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity" />
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
