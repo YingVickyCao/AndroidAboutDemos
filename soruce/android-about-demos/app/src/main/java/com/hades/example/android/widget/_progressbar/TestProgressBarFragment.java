@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
+// progress_medium
 public class TestProgressBarFragment extends BaseFragment {
     ProgressBar mProgressBar;
 
