@@ -13,7 +13,7 @@ import com.hades.example.android.other_ui._toast.TestToastFragment;
 import com.hades.example.android.other_ui._dialog.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.DialogStyleActivity;
-import com.hades.example.android.other_ui._dialog.ProgressDialogFragment;
+import com.hades.example.android.other_ui._dialog.TestProgressDialogFragment;
 import com.hades.example.android.other_ui._dialog.TimePickerDialogFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
@@ -37,7 +37,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageAlertDialog();
+        pageProgressDialog();
     }
 
     private void pageNotification() {
@@ -65,7 +65,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
     }
 
     private void pageProgressDialog() {
-        showFragment(new ProgressDialogFragment());
+        showFragment(new TestProgressDialogFragment());
     }
 
     private void pageDatePickerDialog() {

@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
 
-public class ProgressDialogFragment extends BaseFragment {
+public class TestProgressDialogFragment extends Fragment {
 
     final static int MAX_PROGRESS = 100;
     final static int UPDATE_PROGRESS = 1;
@@ -50,12 +50,14 @@ public class ProgressDialogFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.other_ui_progressdialog, container, false);
-        view.findViewById(R.id.showCircleProgressDialog).setOnClickListener(this::showCircleProgressDialog);
-        view.findViewById(R.id.showIndeterminateBarProgressDialog).setOnClickListener(this::showIndeterminateBarProgressDialog);
-        view.findViewById(R.id.showBarProgressDialog).setOnClickListener(this::showBarProgressDialog);
 
+        view.findViewById(R.id.showCircleProgressDialog).setOnClickListener(this::showCircleProgressDialog);
         view.findViewById(R.id.showCircleProgressDialogWithBtns).setOnClickListener(this::showCircleProgressDialogWithBtns);
+
+        view.findViewById(R.id.showIndeterminateBarProgressDialog).setOnClickListener(this::showIndeterminateBarProgressDialog);
         view.findViewById(R.id.showIndeterminateBarProgressDialogWithBtns).setOnClickListener(this::showIndeterminateBarProgressDialogWithBtns);
+
+        view.findViewById(R.id.showBarProgressDialog).setOnClickListener(this::showBarProgressDialog);
         view.findViewById(R.id.showBarProgressDialogWithBtns).setOnClickListener(this::showBarProgressDialogWithBtns);
         return view;
     }
@@ -71,8 +73,8 @@ public class ProgressDialogFragment extends BaseFragment {
     private void showCircleProgressDialogWithBtns(View source) {
         ProgressDialog pd = new ProgressDialog(getUsedContext());
         pd.setIcon(R.drawable.tools);
-        pd.setTitle("任务正在执行中");
-        pd.setMessage("任务正在执行中，敬请等待...");
+//        pd.setTitle("Title");
+        pd.setMessage("Loading ... ");
         pd.setCancelable(false);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         // 是否模糊显示进度
@@ -105,23 +107,25 @@ public class ProgressDialogFragment extends BaseFragment {
     public void showIndeterminateBarProgressDialog(View source) {
         ProgressDialog pd = new ProgressDialog(getUsedContext());
         pd.setIcon(R.drawable.tools);
-        pd.setTitle("任务正在执行中");
-        pd.setMessage("任务正在执行中，敬请等待...");
-        pd.setCancelable(true);
+        pd.setTitle("Title");
+        pd.setMessage("Loading ... ");
+        pd.setCancelable(true);             // 设置是否可以通过点击Back键取消
+        pd.setCanceledOnTouchOutside(true); // 设置在点击Dialog外是否取消Dialog进度条
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        // 是否模糊显示进度
-        pd.setIndeterminate(true);
+        pd.setProgressPercentFormat(null);  // 不显示百分比
+        pd.setProgressNumberFormat(" ");    // 不显示数字
+        pd.setIndeterminate(true);          // 是否模糊显示进度
         pd.show();
     }
 
     public void showIndeterminateBarProgressDialogWithBtns(View source) {
         ProgressDialog pd = new ProgressDialog(getUsedContext());
         pd.setIcon(R.drawable.tools);
-        pd.setTitle("任务正在执行中");
-        pd.setMessage("任务正在执行中，敬请等待...");
+        pd.setTitle("Title");
+        pd.setMessage("Loading ... ");
         pd.setCancelable(true);
+        pd.setCanceledOnTouchOutside(true);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        // 是否模糊显示进度
         pd.setIndeterminate(true);
         pd.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
                 new DialogInterface.OnClickListener() {
@@ -153,11 +157,10 @@ public class ProgressDialogFragment extends BaseFragment {
         hasData = 0;
         mPD = new ProgressDialog(getUsedContext());
         mPD.setMax(MAX_PROGRESS);
-        mPD.setTitle("任务完成百分比");
+        mPD.setTitle("Title");
         mPD.setMessage("耗时任务的完成百分比");
         mPD.setCancelable(false);
         mPD.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        // 是否模糊显示进度
         mPD.setIndeterminate(false);
         mPD.show();
 
@@ -186,7 +189,7 @@ public class ProgressDialogFragment extends BaseFragment {
         hasData = 0;
         mPD = new ProgressDialog(getUsedContext());
         mPD.setMax(MAX_PROGRESS);
-        mPD.setTitle("任务完成百分比");
+        mPD.setTitle("Title");
         mPD.setMessage("耗时任务的完成百分比");
         mPD.setCancelable(false);
         mPD.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
