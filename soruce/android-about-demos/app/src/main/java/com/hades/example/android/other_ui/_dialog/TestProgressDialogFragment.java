@@ -15,6 +15,11 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
+/*
+    https://www.cnblogs.com/guop/p/5139937.html
+
+    ProgressDialog is Depressed.
+ */
 public class TestProgressDialogFragment extends Fragment {
 
     final static int MAX_PROGRESS = 100;
@@ -53,6 +58,8 @@ public class TestProgressDialogFragment extends Fragment {
 
         view.findViewById(R.id.showCircleProgressDialog).setOnClickListener(this::showCircleProgressDialog);
         view.findViewById(R.id.showCircleProgressDialogWithBtns).setOnClickListener(this::showCircleProgressDialogWithBtns);
+        view.findViewById(R.id.showCustomCircleProgressDialog).setOnClickListener(v -> showCustomCircleProgressDialog());
+        view.findViewById(R.id.showCustomCircleProgressDialog2).setOnClickListener(v -> showCustomCircleProgressDialog2());
 
         view.findViewById(R.id.showIndeterminateBarProgressDialog).setOnClickListener(this::showIndeterminateBarProgressDialog);
         view.findViewById(R.id.showIndeterminateBarProgressDialogWithBtns).setOnClickListener(this::showIndeterminateBarProgressDialogWithBtns);
@@ -102,6 +109,22 @@ public class TestProgressDialogFragment extends Fragment {
                     }
                 });
         pd.show();
+    }
+
+    private void showCustomCircleProgressDialog() {
+        final ProgressDialog dialog = new MyProgressDialog(getContext());
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+    }
+
+    private void showCustomCircleProgressDialog2() {
+        final MyProgressDialog2 dialog = new MyProgressDialog2(getContext());
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
     }
 
     public void showIndeterminateBarProgressDialog(View source) {
