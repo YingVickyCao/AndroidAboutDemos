@@ -31,8 +31,8 @@ public class MyProgressDialog2 extends ProgressDialog {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
+        super.onCreate(savedInstanceState);
 
         mView = LayoutInflater.from(getContext()).inflate(R.layout.my_progress_dialog, null);
         mMessageView = mView.findViewById(R.id.message);

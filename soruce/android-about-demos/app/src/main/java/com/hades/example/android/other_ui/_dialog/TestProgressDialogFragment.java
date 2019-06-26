@@ -112,6 +112,7 @@ public class TestProgressDialogFragment extends Fragment {
     }
 
     private void showCustomCircleProgressDialog() {
+//         MyProgressDialog 较高
         final ProgressDialog dialog = new MyProgressDialog(getContext());
         dialog.setMessage("Loading ...");
         dialog.setCancelable(true);
@@ -120,6 +121,7 @@ public class TestProgressDialogFragment extends Fragment {
     }
 
     private void showCustomCircleProgressDialog2() {
+        //         MyProgressDialog2 较矮
         final MyProgressDialog2 dialog = new MyProgressDialog2(getContext());
         dialog.setMessage("Loading ...");
         dialog.setCancelable(true);
