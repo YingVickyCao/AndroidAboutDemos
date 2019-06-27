@@ -1,5 +1,6 @@
 package com.hades.example.android.other_ui._dialog;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -50,10 +52,10 @@ public class MyProgressDialog extends ProgressDialog {
             ((ViewGroup) body).setBackgroundColor(getContext().getResources().getColor(android.R.color.holo_blue_light));
         }
 
-        /*
-        ViewParent root = message.getParent().getParent();
-        if (null != root && root instanceof FrameLayout) {
-            FrameLayout frameLayoutRoot = (FrameLayout) root;
+
+        ViewParent root = message.getParent();
+        if (root instanceof LinearLayout) {
+            LinearLayout frameLayoutRoot = (LinearLayout) root;
             int height = frameLayoutRoot.getLayoutParams().height;
             Log.d(TAG, "onCreate: height = " + height); // height = -1
 
@@ -63,14 +65,15 @@ public class MyProgressDialog extends ProgressDialog {
                     @Override
                     public void run() {
                         int height = frameLayoutRoot.getLayoutParams().height;
-                        Log.d(TAG, "onCreate: height2 = " + height); // height = -1
+                        int paddingLeft = frameLayout.getPaddingLeft();
+                        Log.d(TAG, "onCreate: height2 = " + height + ",paddingLeft=" + paddingLeft); // height = -1
                     }
                 });
             } else {
                 Log.d(TAG, "onCreate: Context is not Activity");
             }
 
-        }*/
+        }
     }
 
     @Override

@@ -23,6 +23,7 @@ public class MyProgressDialog2 extends ProgressDialog {
         super(context);
     }
 
+    // When set theme, width of dialog is shorter.
     public MyProgressDialog2(Context context, int theme) {
         super(context, theme);
         Log.d(TAG, "MyProgressDialog2: ");
@@ -32,7 +33,7 @@ public class MyProgressDialog2 extends ProgressDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
-        super.onCreate(savedInstanceState);
+//        super.onCreate(savedInstanceState); // In some device, invorked, first opened with dark flash.
 
         mView = LayoutInflater.from(getContext()).inflate(R.layout.my_progress_dialog, null);
         mMessageView = mView.findViewById(R.id.message);
