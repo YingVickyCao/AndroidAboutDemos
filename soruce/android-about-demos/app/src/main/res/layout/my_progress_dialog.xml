@@ -2,12 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_light">
+    android:background="@android:color/holo_green_dark"
+    android:minHeight="@dimen/size_80">
 
     <LinearLayout
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingStart="8dip"

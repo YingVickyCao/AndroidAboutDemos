@@ -17,9 +17,11 @@ import com.hades.example.android.R;
 
 public class MyProgressDialog extends ProgressDialog {
     private static final String TAG = MyProgressDialog.class.getSimpleName();
+    private Context mContext;
 
     public MyProgressDialog(Context context) {
         super(context);
+        mContext = context;
 
         Log.d(TAG, "Constructor ");
     }
@@ -44,9 +46,31 @@ public class MyProgressDialog extends ProgressDialog {
 
 //        ViewGroup body = frameLayout.findViewById(android.R.id.body); // can not find body
         ViewParent body = message.getParent();
-        if (body instanceof ViewGroup && null != body) {
+        if (body instanceof ViewGroup) {
             ((ViewGroup) body).setBackgroundColor(getContext().getResources().getColor(android.R.color.holo_blue_light));
         }
+
+        /*
+        ViewParent root = message.getParent().getParent();
+        if (null != root && root instanceof FrameLayout) {
+            FrameLayout frameLayoutRoot = (FrameLayout) root;
+            int height = frameLayoutRoot.getLayoutParams().height;
+            Log.d(TAG, "onCreate: height = " + height); // height = -1
+
+//            getContext() = ContextThemeWrapper  getContext() => mContext
+            if (mContext instanceof Activity) {
+                ((Activity) mContext).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int height = frameLayoutRoot.getLayoutParams().height;
+                        Log.d(TAG, "onCreate: height2 = " + height); // height = -1
+                    }
+                });
+            } else {
+                Log.d(TAG, "onCreate: Context is not Activity");
+            }
+
+        }*/
     }
 
     @Override

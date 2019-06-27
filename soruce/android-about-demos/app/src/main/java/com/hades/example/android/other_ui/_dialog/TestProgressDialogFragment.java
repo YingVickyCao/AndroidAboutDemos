@@ -113,7 +113,7 @@ public class TestProgressDialogFragment extends Fragment {
 
     private void showCustomCircleProgressDialog() {
 //         MyProgressDialog 较高
-        final ProgressDialog dialog = new MyProgressDialog(getContext());
+        final ProgressDialog dialog = new MyProgressDialog(getActivity());
         dialog.setMessage("Loading ...");
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
@@ -122,7 +122,7 @@ public class TestProgressDialogFragment extends Fragment {
 
     private void showCustomCircleProgressDialog2() {
         //         MyProgressDialog2 较矮
-        final MyProgressDialog2 dialog = new MyProgressDialog2(getContext());
+        final MyProgressDialog2 dialog = new MyProgressDialog2(getActivity());
         dialog.setMessage("Loading ...");
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
