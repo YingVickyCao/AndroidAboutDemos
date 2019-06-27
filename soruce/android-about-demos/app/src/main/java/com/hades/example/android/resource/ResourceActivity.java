@@ -13,6 +13,7 @@ import com.hades.example.android.resource._color_state_list.TestColorStateListFr
 import com.hades.example.android.resource._style_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
+import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
@@ -40,7 +41,9 @@ public class ResourceActivity extends PermissionActivity {
         setContentView(R.layout.activity_resources);
         initViews();
 
-        findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());        findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
+        findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
+        findViewById(R.id.pageDimension).setOnClickListener(v -> pageDimension());
+        findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
         findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
@@ -69,7 +72,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageLayerListDrawable();
+        pageDimension();
     }
 
     private void pageColor() {
@@ -82,6 +85,10 @@ public class ResourceActivity extends PermissionActivity {
 
     private void parseXml() {
         showFragment(new MaterialFragment());
+    }
+
+    private void pageDimension() {
+        showFragment(new TestDimensionFragment());
     }
 
     private void pageThemeChoose() {

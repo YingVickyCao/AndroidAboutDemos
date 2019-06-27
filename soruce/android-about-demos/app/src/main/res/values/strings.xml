@@ -24,6 +24,7 @@
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
 
     <string name="page_resource">Resource</string>
+    <string name="page_dimension">Dimension</string>
     <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>
@@ -353,4 +354,6 @@
     <string name="oval">椭圆形</string>
     <string name="triangle">三角形</string>
     <string name="pentagon">五角形</string>
+    <string name="px_dp"><![CDATA[px -> dp]]></string>
+    <string name="dp_px"><![CDATA[dp -> px]]></string>
 </resources>
