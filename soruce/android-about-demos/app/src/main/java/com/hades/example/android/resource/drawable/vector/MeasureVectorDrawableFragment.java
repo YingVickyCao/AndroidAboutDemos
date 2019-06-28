@@ -21,6 +21,7 @@ public class MeasureVectorDrawableFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_drawable_vector_measurement, container, false);
+
         mImageView = view.findViewById(R.id.imageView);
         checkRenderTime = view.findViewById(R.id.checkRenderTime);
 
@@ -38,6 +39,7 @@ public class MeasureVectorDrawableFragment extends BaseFragment {
             case R.id.vector_drawable_button:
                 vectorDrawableSelected();
                 break;
+
             case R.id.png_button:
                 pngSelected();
                 break;

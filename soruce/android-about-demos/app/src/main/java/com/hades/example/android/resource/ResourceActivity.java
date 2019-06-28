@@ -72,7 +72,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageDimension();
+        pageVectorDrawable();
     }
 
     private void pageColor() {

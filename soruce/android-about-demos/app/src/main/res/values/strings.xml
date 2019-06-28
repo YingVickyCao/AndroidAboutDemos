@@ -28,6 +28,7 @@
     <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>
+    <string name="page_VectorDrawable">VectorDrawable</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>

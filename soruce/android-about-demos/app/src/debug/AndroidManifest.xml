@@ -4,8 +4,8 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".other_ui.OtherUIActivity">
-        <!--<activity android:name=".resource.ResourceActivity">-->
+        <!--<activity android:name=".other_ui.OtherUIActivity">-->
+        <activity android:name=".resource.ResourceActivity">
             <!--<activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity">-->
             <!--<activity android:name=".widget.WidgetActivity">-->
             <!--<activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity">-->
