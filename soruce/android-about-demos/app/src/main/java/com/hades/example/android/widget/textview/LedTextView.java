@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._textview;
+package com.hades.example.android.widget.textview;
 
 import android.content.Context;
 import android.graphics.Typeface;
