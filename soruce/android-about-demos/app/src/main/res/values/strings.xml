@@ -28,16 +28,17 @@
     <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>
+    <string name="page_Drawable">Drawable</string>
     <string name="page_VectorDrawable">VectorDrawable</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
+    <string name="page_LevelListDrawable">LevelList Drawable</string>
+    <string name="page_LayerListDrawable">LayerList Drawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
     <string name="page_theme_and_style">Theme and Style</string>
     <string name="page_theme_attr">Theme - Attr</string>
     <string name="page_theme_DeclareStyleable">Theme - DeclareStyleable for Custom View</string>
-    <string name="page_LevelListDrawable">LevelList Drawable</string>
-    <string name="page_LayerListDrawable">LayerList Drawable</string>
     <string name="page_bitmap_4_screen_density_and_drawable_memory">Bitmap - Screen density and drawable memory</string>
     <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
@@ -358,7 +359,7 @@
     <string name="px_dp"><![CDATA[px -> dp]]></string>
     <string name="dp_px"><![CDATA[dp -> px]]></string>
     <string name="change_view_size_when_using_svg">Change View size when using SVG</string>
-    <string name="change_bitmap_render_color">Change Bitmap render color</string>
+    <string name="change_picture_render_color">Change picture render color</string>
     <string name="green">Green</string>
     <string name="red">Red</string>
 </resources>

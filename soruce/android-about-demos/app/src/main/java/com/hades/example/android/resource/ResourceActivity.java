@@ -15,6 +15,7 @@ import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
+import com.hades.example.android.resource.drawable.TestDrawableFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
@@ -49,6 +50,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
+        findViewById(R.id.pageDrawable).setOnClickListener(v -> pageDrawable());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
         findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
@@ -70,7 +72,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageVectorDrawable();
+        pageDrawable();
     }
 
     private void pageColor() {
@@ -115,6 +117,10 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageDrawableAndScreenDensity() {
         showFragment(new TestBitmapMemoryAndScreenDensityFragment());
+    }
+
+    private void pageDrawable() {
+        showFragment(new TestDrawableFragment());
     }
 
     private void pageVectorDrawable() {

@@ -102,44 +102,5 @@
             android:src="@drawable/drawable_vector_4_placeholder_svg" />
 
         <View style="@style/div" />
-
-        <TextView
-            style="@style/tv"
-            android:text="@string/change_bitmap_render_color" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/red"
-                style="@style/btn.small"
-                android:text="@string/red" />
-
-            <Button
-                android:id="@+id/clear"
-                style="@style/btn.small"
-                android:layout_centerInParent="true"
-                android:text="@string/clear" />
-
-            <Button
-                android:id="@+id/green"
-                style="@style/btn.small"
-                android:layout_alignParentEnd="true"
-                android:text="@string/green" />
-        </RelativeLayout>
-
-        <!--android:src="@drawable/drawable_vector_4_ic_adjust_48px"-->
-        <!--android:src="@drawable/ic_adjust_black_18dp"-->
-        <ImageView
-            android:id="@+id/tintImageView"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px" />
     </LinearLayout>
 </ScrollView>

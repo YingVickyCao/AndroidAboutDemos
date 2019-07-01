@@ -86,6 +86,11 @@
             <View style="@style/div" />
 
             <Button
+                android:id="@+id/pageDrawable"
+                style="@style/btn.small"
+                android:text="@string/page_Drawable" />
+
+            <Button
                 android:id="@+id/pageVectorDrawable"
                 style="@style/btn.small"
                 android:text="@string/page_drawable_vectorDrawable" />

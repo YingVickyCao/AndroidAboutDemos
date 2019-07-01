@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
@@ -21,7 +20,6 @@ public class TestVectorDrawableFragment extends BaseFragment {
 
     private ImageView mImageView;
     private MeasurableImageView mMeasurableImageView;
-    private ImageView mTintImageView;
     private TextView checkRenderTime;
 
 
@@ -34,17 +32,12 @@ public class TestVectorDrawableFragment extends BaseFragment {
         mMeasurableImageView = view.findViewById(R.id.measurableImageView);
         mMeasurableImageView.setViewRedrawnListener(milliseconds -> onDrawFinished(milliseconds));
         checkRenderTime = view.findViewById(R.id.checkRenderTime);
-        mTintImageView = view.findViewById(R.id.tintImageView);
 
         view.findViewById(R.id.startAnimation).setOnClickListener(v -> startAnimation());
         view.findViewById(R.id.stopAnimation).setOnClickListener(v -> stopAnimation());
 
         view.findViewById(R.id.vector_drawable_button).setOnClickListener(v -> vectorDrawableSelected());
         view.findViewById(R.id.png_button).setOnClickListener(v -> pngSelected());
-
-        view.findViewById(R.id.red).setOnClickListener(v -> red());
-        view.findViewById(R.id.clear).setOnClickListener(v -> clear());
-        view.findViewById(R.id.green).setOnClickListener(v -> green());
         return view;
     }
 
@@ -79,46 +72,4 @@ public class TestVectorDrawableFragment extends BaseFragment {
             Log.d(TAG, "onDrawFinished: VectorDrawable@" + vectorDrawable.hashCode()); //每次set，同一个svg，得到的VectorDrawable是不同实例
         }
     }
-
-    /**
-     * 不同 ImageView 使用同一张图片，如何改变图片颜色？
-     * Drawable.setColorFilter() > Drawable.setTint().
-     * SVG
-     * 前者，不影响其他ImageView。
-     * 后者，有时其他ImageView，一块变色
-     * PNG
-     * 前者，不影响其他ImageView。
-     * 后者，不影响其他ImageView。
-     */
-    private void red() {
-//        setColorFilter(android.R.color.holo_red_dark);
-        setTint(android.R.color.holo_red_dark);
-    }
-
-    private void clear() {
-//        clearFilter();
-        clearTint();
-    }
-
-    private void green() {
-//        setColorFilter(android.R.color.holo_green_dark);
-        setTint(android.R.color.holo_green_dark);
-    }
-
-    private void setColorFilter(int color) {
-        mTintImageView.setColorFilter(ContextCompat.getColor(getContext(), color));
-    }
-
-    private void setTint(int color) {
-        mTintImageView.getDrawable().setTint(getResources().getColor(color));
-    }
-
-    private void clearFilter() {
-        mTintImageView.setColorFilter(null);
-    }
-
-    private void clearTint() {
-        mTintImageView.getDrawable().setTintList(null);
-    }
-
 }
