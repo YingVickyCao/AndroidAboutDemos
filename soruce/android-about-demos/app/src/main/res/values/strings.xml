@@ -357,4 +357,8 @@
     <string name="pentagon">五角形</string>
     <string name="px_dp"><![CDATA[px -> dp]]></string>
     <string name="dp_px"><![CDATA[dp -> px]]></string>
+    <string name="change_view_size_when_using_svg">Change View size when using SVG</string>
+    <string name="change_bitmap_render_color">Change Bitmap render color</string>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
 </resources>
