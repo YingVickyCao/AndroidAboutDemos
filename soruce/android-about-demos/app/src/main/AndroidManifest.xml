@@ -350,8 +350,8 @@
             android:name=".resource.ResourceActivity"
             android:theme="@style/AppTheme.FullScreen" />
         <activity android:name=".resource.adapter_screen.DipTestActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity" />
-        <activity android:name=".resource.drawable.state_list.custom_selector_drawable.CustomSelectedStatusActivity2" />
+        <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity" />
+        <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity2" />
         <!--android:configChanges="screenSize|orientation"-->
         <activity
             android:name=".resource.adapter_screen.TestConfigurationActivity"

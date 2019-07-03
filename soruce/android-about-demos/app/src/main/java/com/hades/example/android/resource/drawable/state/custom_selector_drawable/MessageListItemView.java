@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.state_list.custom_selector_drawable;
+package com.hades.example.android.resource.drawable.state.custom_selector_drawable;
 
 
 import android.content.Context;

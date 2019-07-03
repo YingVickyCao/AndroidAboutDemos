@@ -29,6 +29,7 @@
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>
     <string name="page_Drawable">Drawable</string>
+    <string name="page_StateDrawable">StateDrawable</string>
     <string name="page_VectorDrawable">VectorDrawable</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_LevelListDrawable">LevelList Drawable</string>
@@ -362,4 +363,6 @@
     <string name="change_picture_render_color">Change picture render color</string>
     <string name="green">Green</string>
     <string name="red">Red</string>
+    <string name="select_imageview_1">Select ImageView 1</string>
+    <string name="select_imageview_2">Select ImageView 2</string>
 </resources>

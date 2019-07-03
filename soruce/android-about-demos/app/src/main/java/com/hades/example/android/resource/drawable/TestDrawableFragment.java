@@ -1,6 +1,8 @@
 package com.hades.example.android.resource.drawable;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,22 +45,26 @@ public class TestDrawableFragment extends Fragment {
      * 后者，不影响其他ImageView。
      */
     private void red() {
-//        setColorFilter(android.R.color.holo_red_dark);
-        setTint(android.R.color.holo_red_dark);
+        setColorFilter(android.R.color.holo_red_dark);
+//        setTint(android.R.color.holo_red_dark);
     }
 
     private void clear() {
-//        clearFilter();
-        clearTint();
+        clearFilter();
+//        clearTint();
     }
 
     private void green() {
-//        setColorFilter(android.R.color.holo_green_dark);
-        setTint(android.R.color.holo_green_dark);
+        setColorFilter(android.R.color.holo_green_dark);
+//        setTint(android.R.color.holo_green_dark);
     }
 
     private void setColorFilter(int color) {
-        mTintImageView.setColorFilter(ContextCompat.getColor(getContext(), color));
+//        mTintImageView.setColorFilter(ContextCompat.getColor(getContext(), color));
+        Log.d(TAG, "setColorFilter:before mutate @Drawable" + mTintImageView.getDrawable().hashCode());
+        mTintImageView.getDrawable().mutate();
+        Log.d(TAG, "setColorFilter:after  mutate @Drawable" + mTintImageView.getDrawable().hashCode());
+        mTintImageView.getDrawable().setColorFilter(ContextCompat.getColor(getContext(), color), PorterDuff.Mode.SRC_IN);
     }
 
     private void setTint(int color) {
