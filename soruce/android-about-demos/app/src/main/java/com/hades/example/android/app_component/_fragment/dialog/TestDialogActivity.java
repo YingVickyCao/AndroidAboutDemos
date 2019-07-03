@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
+import com.hades.example.android.app_component._fragment.dialog.bottomsheet.TestBottomSheetDialogFragment;
 import com.hades.example.android.lib.base.BaseActivity;
 
 public class TestDialogActivity extends BaseActivity {
@@ -17,6 +18,8 @@ public class TestDialogActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_dialog_fragment);
+
+        initViews();
 
         findViewById(R.id.btn1).setOnClickListener(v -> btn1());
         findViewById(R.id.btn2).setOnClickListener(v -> btn2());
@@ -27,7 +30,10 @@ public class TestDialogActivity extends BaseActivity {
         findViewById(R.id.btn7).setOnClickListener(v -> btn7());
         findViewById(R.id.btn8).setOnClickListener(v -> btn8());
         findViewById(R.id.btn9).setOnClickListener(v -> btn9());
+
         findViewById(R.id.pageAlertDialog).setOnClickListener(v -> pageAlertDialog());
+
+        findViewById(R.id.pageBottomSheetDialogFragment).setOnClickListener(v -> pageBottomSheetDialogFragment());
     }
 
     private void btn1() {
@@ -97,5 +103,11 @@ public class TestDialogActivity extends BaseActivity {
 
     public void doNegativeClick() {
         Toast.makeText(this, "doNegativeClick", Toast.LENGTH_SHORT).show();
+    }
+
+    private void pageBottomSheetDialogFragment() {
+        firstRemoveDialogFragment();
+        showFragment(new TestBottomSheetDialogFragment()); // embedded : added as content in a view hierarchy
+//        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
     }
 }
