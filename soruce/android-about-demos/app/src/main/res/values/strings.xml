@@ -96,6 +96,7 @@
     <string name="page_ViewPager_PagerTitleStrip">ViewPager +PagerTitleStrip = Swipe Page Tab</string>
     <string name="page_PopupWindow">PopupWindow</string>
     <string name="page_AlertDialog">AlertDialog</string>
+    <string name="page_AlertDialog_DialogFragment">AlertDialog -  DialogFragment</string>
     <string name="page_dialog_style_activity">Dialog style activity</string>
     <string name="page_ProgressDialog">ProgressDialog</string>
     <string name="page_DatePickerDialog">DatePickerDialog</string>
@@ -377,4 +378,10 @@
     <string name="_8">8</string>
     <string name="_9">9</string>
     <string name="basic_dialog">Basic Dialog</string>
+    <string name="a_traditional_single_choice_list">A traditional single-choice list</string>
+    <string name="a_persistent_single_choice_list_radio_buttons">A persistent single-choice list (radio buttons)</string>
+    <string name="a_persistent_multiple_choice_list_checkboxes">A persistent multiple-choice list (checkboxes)</string>
+    <string name="a_dialog">A Dialog</string>
+    <string name="an_embedded_fragment">an Embedded Fragment</string>
+    <string name="showing_a_dialog_or_as_an_embedded_fragment">Showing a Dialog or as an Embedded Fragment</string>
 </resources>

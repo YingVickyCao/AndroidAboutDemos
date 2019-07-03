@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component._fragment.dialog;
+package com.hades.example.android.other_ui._dialog.good.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ public class MyBaseDialogFragment extends DialogFragment {
      * Create a new instance of MyBaseDialogFragment, providing "num"
      * as an argument.
      */
-    static MyBaseDialogFragment newInstance(int num) {
+    public static MyBaseDialogFragment newInstance(int num) {
         MyBaseDialogFragment f = new MyBaseDialogFragment();
         Bundle args = new Bundle();
         args.putInt("num", num);

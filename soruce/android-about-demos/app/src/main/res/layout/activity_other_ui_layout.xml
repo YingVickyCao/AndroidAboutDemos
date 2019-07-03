@@ -41,14 +41,9 @@
                 android:text="@string/page_PopupWindow" />
 
             <Button
-                android:id="@+id/pageAlertDialog"
+                android:id="@+id/page_AlertDialog_DialogFragment"
                 style="@style/btn.small"
                 android:text="@string/page_AlertDialog" />
-
-            <Button
-                android:id="@+id/pageDialogStyleActivity"
-                style="@style/btn.small"
-                android:text="@string/page_dialog_style_activity" />
 
             <Button
                 android:id="@+id/pageProgressDialog"

@@ -245,7 +245,7 @@
         <activity android:name=".app_component._fragment.BookListActivity" />
         <activity android:name=".app_component._fragment.BookDetailActivity" />
 
-        <activity android:name=".app_component._fragment.dialog.TestDialogActivity" />
+        <activity android:name=".other_ui._dialog.TestDialogActivity" />
 
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"
@@ -334,9 +334,14 @@
         <activity
             android:name=".other_ui._navigation.TestBottomNavigationActivity"
             android:label="@string/bottom_navigation" />
+
+        <!--<activity-->
+        <!--android:name=".other_ui._dialog.DialogStyleActivity"-->
+        <!--android:theme="@android:style/Theme.Material.Dialog" />-->
+
         <activity
-            android:name=".other_ui._dialog.DialogStyleActivity"
-            android:theme="@android:style/Theme.Material.Dialog" />
+            android:name=".other_ui._dialog.good.activity.DialogStyleActivity"
+            android:theme="@android:style/Theme.Material.DialogWhenLarge" />
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />

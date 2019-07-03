@@ -22,61 +22,76 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/tv"
-                android:text="@string/basic_dialog" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <Button
-                android:id="@+id/btn1"
-                style="@style/btn.small"
-                android:text="@string/_1" />
+                <TextView
+                    style="@style/tv"
+                    android:text="@string/basic_dialog" />
 
-            <Button
-                android:id="@+id/btn2"
-                style="@style/btn.small"
-                android:text="@string/_2" />
+                <Button
+                    android:id="@+id/btn1"
+                    style="@style/btn.small"
+                    android:text="@string/_1" />
 
-            <Button
-                android:id="@+id/btn3"
-                style="@style/btn.small"
-                android:text="@string/_3" />
+                <Button
+                    android:id="@+id/btn2"
+                    style="@style/btn.small"
+                    android:text="@string/_2" />
 
-            <Button
-                android:id="@+id/btn4"
-                style="@style/btn.small"
-                android:text="@string/_4" />
+                <Button
+                    android:id="@+id/btn3"
+                    style="@style/btn.small"
+                    android:text="@string/_3" />
 
-            <Button
-                android:id="@+id/btn5"
-                style="@style/btn.small"
-                android:text="@string/_5" />
+                <Button
+                    android:id="@+id/btn4"
+                    style="@style/btn.small"
+                    android:text="@string/_4" />
 
-            <Button
-                android:id="@+id/btn6"
-                style="@style/btn.small"
-                android:text="@string/_6" />
+                <Button
+                    android:id="@+id/btn5"
+                    style="@style/btn.small"
+                    android:text="@string/_5" />
 
-            <Button
-                android:id="@+id/btn7"
-                style="@style/btn.small"
-                android:text="@string/_7" />
+                <Button
+                    android:id="@+id/btn6"
+                    style="@style/btn.small"
+                    android:text="@string/_6" />
 
-            <Button
-                android:id="@+id/btn8"
-                style="@style/btn.small"
-                android:text="@string/_8" />
+                <Button
+                    android:id="@+id/btn7"
+                    style="@style/btn.small"
+                    android:text="@string/_7" />
 
-            <Button
-                android:id="@+id/btn9"
-                style="@style/btn.small"
-                android:text="@string/_9" />
+                <Button
+                    android:id="@+id/btn8"
+                    style="@style/btn.small"
+                    android:text="@string/_8" />
+
+                <Button
+                    android:id="@+id/btn9"
+                    style="@style/btn.small"
+                    android:text="@string/_9" />
+            </LinearLayout>
 
             <View style="@style/div" />
 
             <Button
-                android:id="@+id/pageAlertDialog"
+                android:id="@+id/page_AlertDialog_DialogFragment"
                 style="@style/btn.small"
-                android:text="@string/page_AlertDialog" />
+                android:text="@string/page_AlertDialog_DialogFragment" />
+
+            <View style="@style/div" />
+
+            <Button
+                android:id="@+id/showedAsDialogOrEmbeddedFragment"
+                style="@style/btn.small"
+                android:text="@string/showing_a_dialog_or_as_an_embedded_fragment" />
 
             <View style="@style/div" />
 
@@ -84,6 +99,13 @@
                 android:id="@+id/pageBottomSheetDialogFragment"
                 style="@style/btn.small"
                 android:text="@string/page_BottomSheetDialogFragment" />
+
+            <View style="@style/div" />
+
+            <Button
+                android:id="@+id/pageDialogStyleActivity"
+                style="@style/btn.small"
+                android:text="@string/page_dialog_style_activity" />
         </LinearLayout>
     </ScrollView>
 

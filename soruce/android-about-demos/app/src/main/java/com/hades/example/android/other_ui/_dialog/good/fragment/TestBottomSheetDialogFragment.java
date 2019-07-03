@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component._fragment.dialog.bottomsheet;
+package com.hades.example.android.other_ui._dialog.good.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -15,14 +15,14 @@ import com.hades.example.android.R;
 
 public class TestBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new BottomSheetDialog(getContext(), R.style.CustomBottomSheetDialogFragmentStyle);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bottom_sheet_dialog_fragment, container, false);
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new BottomSheetDialog(getContext(), R.style.CustomBottomSheetDialogFragmentStyle);
     }
 }

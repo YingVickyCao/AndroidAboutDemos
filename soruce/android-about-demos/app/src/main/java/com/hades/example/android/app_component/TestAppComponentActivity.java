@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component._fragment.dialog.TestDialogActivity;
+import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;

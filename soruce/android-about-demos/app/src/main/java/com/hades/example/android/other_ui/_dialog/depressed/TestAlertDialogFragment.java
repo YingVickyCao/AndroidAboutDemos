@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui._dialog;
+package com.hades.example.android.other_ui._dialog.depressed;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -70,7 +70,7 @@ public class TestAlertDialogFragment extends BaseFragment {
 
     public void simpleList() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
-                .setTitle("简单列表对话框")
+                .setTitle("A traditional single-choice list")
                 .setIcon(R.drawable.tools)
                 .setItems(items, new DialogInterface.OnClickListener() {
                     @Override
@@ -87,7 +87,7 @@ public class TestAlertDialogFragment extends BaseFragment {
 
     public void singleChoice(View source) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
-                .setTitle("单选列表项对话框")
+                .setTitle("A persistent single-choice list (radio buttons)")
                 .setIcon(R.drawable.tools)
                 // 设置单选列表项，默认选中第二项（索引为1）
                 .setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
@@ -104,7 +104,7 @@ public class TestAlertDialogFragment extends BaseFragment {
 
     public void multiChoice(View source) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getUsedContext())
-                .setTitle("多选列表项对话框")
+                .setTitle("A persistent multiple-choice list (checkboxes)")
                 .setIcon(R.drawable.tools)
                 // 设置多选列表项，设置勾选第2项、第4项
                 .setMultiChoiceItems(items, new boolean[]{false, true, false, true}, new DialogInterface.OnMultiChoiceClickListener() {
@@ -140,7 +140,11 @@ public class TestAlertDialogFragment extends BaseFragment {
     }
 
     public void customView(View source) {
-        TableLayout customView = (TableLayout) LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_alertdialog_custom_view_login, null);
+        // Get the layout inflater
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+        // Pass null as the parent view because its going in the dialog layout
+        TableLayout customView = (TableLayout) inflater.inflate(R.layout.other_ui_alertdialog_custom_view_login, null);
         new AlertDialog.Builder(getUsedContext())
                 .setIcon(R.drawable.tools)
                 .setTitle("自定义View对话框")

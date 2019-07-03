@@ -7,14 +7,13 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
+import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
 import com.hades.example.android.other_ui._popup_window.TestPopupWindowFragment;
 import com.hades.example.android.other_ui._toast.TestToastFragment;
-import com.hades.example.android.other_ui._dialog.TestAlertDialogFragment;
-import com.hades.example.android.other_ui._dialog.DateTimePickerDialogFragment;
-import com.hades.example.android.other_ui._dialog.DialogStyleActivity;
-import com.hades.example.android.other_ui._dialog.TestProgressDialogFragment;
-import com.hades.example.android.other_ui._dialog.TimePickerDialogFragment;
 
 public class OtherUIActivity extends NoNeedPermissionActivity {
     @Override
@@ -28,8 +27,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageToast).setOnClickListener(v -> pageToast());
         findViewById(R.id.pageActionBar).setOnClickListener(v -> pageActionBar());
         findViewById(R.id.pagePopupWindow).setOnClickListener(v -> pagePopupWindow());
-        findViewById(R.id.pageAlertDialog).setOnClickListener(v -> pageAlertDialog());
-        findViewById(R.id.pageDialogStyleActivity).setOnClickListener(v -> pageDialogStyleActivity());
+        findViewById(R.id.page_AlertDialog_DialogFragment).setOnClickListener(v -> pageAlertDialog());
         findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
         findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
         findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
@@ -37,7 +35,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageProgressDialog();
+        pageAlertDialog();
     }
 
     private void pageNotification() {
@@ -58,10 +56,6 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     private void pageAlertDialog() {
         showFragment(new TestAlertDialogFragment());
-    }
-
-    private void pageDialogStyleActivity() {
-        showActivity(DialogStyleActivity.class);
     }
 
     private void pageProgressDialog() {
