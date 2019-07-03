@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.hades.example.android.R;
+import com.hades.example.android.app_component._fragment.dialog.TestDialogActivity;
 import com.hades.example.android.app_component._fragment.dialog.bottomsheet.TestBottomSheetDialogFragment;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
@@ -22,11 +23,12 @@ public class TestAppComponentActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageBondService).setOnClickListener(v -> pageBondService());
         findViewById(R.id.pageBondService2).setOnClickListener(v -> pageBondService2());
         findViewById(R.id.pageBottomSheetDialogFragment).setOnClickListener(v -> pageBottomSheetDialogFragment());
+        findViewById(R.id.pageDialogFragment).setOnClickListener(v -> pageDialogFragment());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageBottomSheetDialogFragment();
+        pageDialogFragment();
     }
 
     private void pageBondService() {
@@ -42,5 +44,9 @@ public class TestAppComponentActivity extends NoNeedPermissionActivity {
 
         BottomSheetDialogFragment fragment = new TestBottomSheetDialogFragment();
         fragment.show(getSupportFragmentManager(), TestBottomSheetDialogFragment.class.getSimpleName()); // show as bottom sheet
+    }
+
+    private void pageDialogFragment() {
+        showActivity(TestDialogActivity.class);
     }
 }

@@ -6,22 +6,18 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_BottomSheetDialogFragment" />
+        android:text="@string/page_Base_DialogFragment" />
 
     <TextView
+        android:id="@+id/tv"
         style="@style/tv"
         android:minHeight="@dimen/size_45"
         android:text="@string/a" />
 
-    <TextView
-        style="@style/tv"
-        android:minHeight="@dimen/size_45"
-        android:text="@string/b" />
-
-    <TextView
-        style="@style/tv"
-        android:minHeight="@dimen/size_45"
-        android:text="@string/c" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/size_45" />
 
     <Button
         android:id="@+id/btn"

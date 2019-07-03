@@ -16,6 +16,8 @@
     <string name="page_intent_Filter_data_and_type">Intent-Filter - Data, and Type</string>
     <string name="page_intent_Flag">Intent-Flag</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
+    <string name="page_DialogFragment">DialogFragment</string>
+    <string name="page_Base_DialogFragment">Base DialogFragment</string>
 
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
@@ -365,4 +367,14 @@
     <string name="red">Red</string>
     <string name="select_imageview_1">Select ImageView 1</string>
     <string name="select_imageview_2">Select ImageView 2</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="basic_dialog">Basic Dialog</string>
 </resources>
