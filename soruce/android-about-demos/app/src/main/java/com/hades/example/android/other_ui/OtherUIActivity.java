@@ -7,10 +7,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
-import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
-import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
-import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
-import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
+import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;
 import com.hades.example.android.other_ui._popup_window.TestPopupWindowFragment;
 import com.hades.example.android.other_ui._toast.TestToastFragment;
@@ -27,15 +24,12 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageToast).setOnClickListener(v -> pageToast());
         findViewById(R.id.pageActionBar).setOnClickListener(v -> pageActionBar());
         findViewById(R.id.pagePopupWindow).setOnClickListener(v -> pagePopupWindow());
-        findViewById(R.id.page_AlertDialog_DialogFragment).setOnClickListener(v -> pageAlertDialog());
-        findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
-        findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
-        findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
+        findViewById(R.id.pageDialog).setOnClickListener(v -> pageDialog());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageAlertDialog();
+        pageDialog();
     }
 
     private void pageNotification() {
@@ -54,19 +48,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
         showFragment(new TestPopupWindowFragment());
     }
 
-    private void pageAlertDialog() {
-        showFragment(new TestAlertDialogFragment());
-    }
-
-    private void pageProgressDialog() {
-        showFragment(new TestProgressDialogFragment());
-    }
-
-    private void pageDatePickerDialog() {
-        showFragment(new DateTimePickerDialogFragment());
-    }
-
-    private void pageTimePickerDialog() {
-        showFragment(new TimePickerDialogFragment());
+    private void pageDialog() {
+        showActivity(TestDialogActivity.class);
     }
 }

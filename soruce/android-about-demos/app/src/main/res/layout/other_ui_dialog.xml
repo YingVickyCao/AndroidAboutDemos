@@ -19,19 +19,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/tv"
-                    android:text="@string/basic_dialog" />
+                    android:text="@string/page_DialogFragment" />
+
+                <TextView
+                    style="@style/tv"
+                    android:text="@string/page_Base_DialogFragment" />
 
                 <Button
                     android:id="@+id/btn1"
@@ -77,28 +78,22 @@
                     android:id="@+id/btn9"
                     style="@style/btn.small"
                     android:text="@string/_9" />
+
+                <Button
+                    android:id="@+id/page_AlertDialog_DialogFragment"
+                    style="@style/btn.small"
+                    android:text="@string/page_AlertDialog_DialogFragment" />
+
+                <Button
+                    android:id="@+id/showedAsDialogOrEmbeddedFragment"
+                    style="@style/btn.small"
+                    android:text="@string/showing_a_dialog_or_as_an_embedded_fragment" />
+
+                <Button
+                    android:id="@+id/pageBottomSheetDialogFragment"
+                    style="@style/btn.small"
+                    android:text="@string/page_BottomSheetDialogFragment" />
             </LinearLayout>
-
-            <View style="@style/div" />
-
-            <Button
-                android:id="@+id/page_AlertDialog_DialogFragment"
-                style="@style/btn.small"
-                android:text="@string/page_AlertDialog_DialogFragment" />
-
-            <View style="@style/div" />
-
-            <Button
-                android:id="@+id/showedAsDialogOrEmbeddedFragment"
-                style="@style/btn.small"
-                android:text="@string/showing_a_dialog_or_as_an_embedded_fragment" />
-
-            <View style="@style/div" />
-
-            <Button
-                android:id="@+id/pageBottomSheetDialogFragment"
-                style="@style/btn.small"
-                android:text="@string/page_BottomSheetDialogFragment" />
 
             <View style="@style/div" />
 
@@ -106,6 +101,38 @@
                 android:id="@+id/pageDialogStyleActivity"
                 style="@style/btn.small"
                 android:text="@string/page_dialog_style_activity" />
+
+            <View style="@style/div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:text="Dialog(Depressed)" />
+
+                <Button
+                    android:id="@+id/page_AlertDialog"
+                    style="@style/btn.small"
+                    android:text="@string/page_AlertDialog" />
+
+                <Button
+                    android:id="@+id/pageProgressDialog"
+                    style="@style/btn.small"
+                    android:text="@string/page_ProgressDialog" />
+
+                <Button
+                    android:id="@+id/pageDatePickerDialog"
+                    style="@style/btn.small"
+                    android:text="@string/page_DatePickerDialog" />
+
+                <Button
+                    android:id="@+id/pageTimePickerDialog"
+                    style="@style/btn.small"
+                    android:text="@string/page_TimePickerDialog" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

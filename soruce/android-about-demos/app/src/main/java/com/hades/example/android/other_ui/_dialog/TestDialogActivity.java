@@ -11,6 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
+import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.activity.DialogStyleActivity;
 import com.hades.example.android.other_ui._dialog.good.fragment.CustomDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyAlertDialogFragment;
@@ -23,7 +27,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_dialog_fragment);
+        setContentView(R.layout.other_ui_dialog);
 
         mIsLargeLayout = getResources().getBoolean(R.bool.is_large_layout);
 
@@ -46,6 +50,11 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.pageBottomSheetDialogFragment).setOnClickListener(v -> pageBottomSheetDialogFragment());
 
         findViewById(R.id.pageDialogStyleActivity).setOnClickListener(v -> pageDialogStyleActivity());
+
+        findViewById(R.id.page_AlertDialog).setOnClickListener(v -> pageAlertDialog());
+        findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
+        findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
+        findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
     }
 
     private void firstRemoveDialogFragment() {
@@ -110,5 +119,21 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
     private void pageDialogStyleActivity() {
         showActivity(DialogStyleActivity.class);
+    }
+
+    private void pageAlertDialog() {
+        showFragment(new TestAlertDialogFragment());
+    }
+
+    private void pageProgressDialog() {
+        showFragment(new TestProgressDialogFragment());
+    }
+
+    private void pageDatePickerDialog() {
+        showFragment(new DateTimePickerDialogFragment());
+    }
+
+    private void pageTimePickerDialog() {
+        showFragment(new TimePickerDialogFragment());
     }
 }
