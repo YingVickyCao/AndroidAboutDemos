@@ -36,7 +36,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
          *
          */
         // 1)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
+//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
     }
 
     @Override
@@ -92,9 +92,9 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
         Dialog dialog = getDialog();
         if (null != dialog) {
             Log.d(TAG, "onStart: dialog != null"); // Show as a Dialog
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            dialog.getWindow().setLayout(width, height);                                        // 3)
+//            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+//            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+//            dialog.getWindow().setLayout(width, height);                                        // 3)
         } else {
             Log.d(TAG, "onStart: dialog = null"); // Show as an Embedded Fragment
         }
