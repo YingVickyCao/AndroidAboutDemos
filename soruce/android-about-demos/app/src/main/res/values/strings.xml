@@ -382,7 +382,7 @@
     <string name="a_traditional_single_choice_list">A traditional single-choice list</string>
     <string name="a_persistent_single_choice_list_radio_buttons">A persistent single-choice list (radio buttons)</string>
     <string name="a_persistent_multiple_choice_list_checkboxes">A persistent multiple-choice list (checkboxes)</string>
-    <string name="a_dialog">A Dialog</string>
-    <string name="an_embedded_fragment">an Embedded Fragment</string>
-    <string name="showing_a_dialog_or_as_an_embedded_fragment">Showing a Dialog or as an Embedded Fragment</string>
+    <string name="show_as_a_dialog_or_as_an_embedded_fragment">Show as  a Dialog or as an Embedded Fragment</string>
+    <string name="show_as_a_dialog">Show as a dialog</string>
+    <string name="show_as_an_embedded_fragment">Show as an embedded fragment</string>
 </resources>

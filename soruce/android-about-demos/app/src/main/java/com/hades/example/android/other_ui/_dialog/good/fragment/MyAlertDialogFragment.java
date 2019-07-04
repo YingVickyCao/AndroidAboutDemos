@@ -2,7 +2,9 @@ package com.hades.example.android.other_ui._dialog.good.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
@@ -10,6 +12,7 @@ import androidx.fragment.app.DialogFragment;
 import com.hades.example.android.R;
 
 public class MyAlertDialogFragment extends DialogFragment {
+    private static final String TAG = MyAlertDialogFragment.class.getSimpleName();
 
     /* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
@@ -43,7 +46,22 @@ public class MyAlertDialogFragment extends DialogFragment {
                 .Builder(getActivity())
                 .setMessage(getResources().getString(R.string.page_AlertDialog))
                 .setPositiveButton(R.string.ok, (dialog, whichButton) -> listener.onDialogPositiveClick(this))
-                .setNegativeButton(R.string.cancel, (dialog, whichButton) -> listener.onDialogNegativeClick(this))
+                .setNeutralButton(R.string.cancel, (dialog, which) -> {
+                    Log.d(TAG, "onClick: cancel()`");
+                    dialog.cancel();
+                })
                 .create();
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Log.d(TAG, "onDismiss: ");
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        super.onCancel(dialog);
+        Log.d(TAG, "onCancel: ");
     }
 }

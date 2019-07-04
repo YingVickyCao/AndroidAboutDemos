@@ -221,4 +221,16 @@
         <!-- background：content的默认背景色  -->
         <item name="android:background">@android:color/holo_orange_light</item>
     </style>
+
+    <style name="DialogFragmentShowAsFullDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@color/colorAccent</item>
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
 </resources>

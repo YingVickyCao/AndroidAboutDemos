@@ -16,7 +16,7 @@ import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragm
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.activity.DialogStyleActivity;
-import com.hades.example.android.other_ui._dialog.good.fragment.CustomDialogFragment;
+import com.hades.example.android.other_ui._dialog.good.fragment.ShowAsDialogOrEmbeddedDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyBaseDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.TestBottomSheetDialogFragment;
@@ -45,7 +45,9 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
         findViewById(R.id.page_AlertDialog_DialogFragment).setOnClickListener(v -> page_AlertDialog_DialogFragment());
 
-        findViewById(R.id.showedAsDialogOrEmbeddedFragment).setOnClickListener(v -> showedAsDialogOrEmbeddedFragment());
+//        findViewById(R.id.showAsDialogOrEmbeddedFragment).setOnClickListener(v -> showedAsDialogOrEmbeddedFragment());
+        findViewById(R.id.showAsDialog).setOnClickListener(v -> showdAsDialog());
+        findViewById(R.id.showAsEmbeddedFragment).setOnClickListener(v -> showAsEmbeddedFragment());
 
         findViewById(R.id.pageBottomSheetDialogFragment).setOnClickListener(v -> pageBottomSheetDialogFragment());
 
@@ -96,19 +98,19 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         firstRemoveDialogFragment();
         if (mIsLargeLayout) {
             // The device is using a large layout, so show the fragment as a dialog
-            showAsDialog();
+            showdAsDialog();
         } else {
             // The device is smaller, so show the fragment fullscreen
             showAsEmbeddedFragment();
         }
     }
 
-    private void showAsDialog() {
-        new CustomDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
+    private void showdAsDialog() {
+        new ShowAsDialogOrEmbeddedDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
     }
 
     private void showAsEmbeddedFragment() {
-        showFragment(new CustomDialogFragment(), "dialog");                     // embedded : added as content in a view hierarchy
+        showFragment(new ShowAsDialogOrEmbeddedDialogFragment(), "dialog");                     // embedded : added as content in a view hierarchy
     }
 
     private void pageBottomSheetDialogFragment() {
