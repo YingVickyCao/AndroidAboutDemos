@@ -10,6 +10,8 @@ android {
         }
     }
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
     defaultConfig {
         applicationId "com.hades.example.android"
         minSdkVersion 21
@@ -41,7 +43,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '28.0.3'
+
+    sourceSets {
+        main {
+            res.srcDirs += ['src/main/res-android']
+        }
+    }
 }
 
 dependencies {
