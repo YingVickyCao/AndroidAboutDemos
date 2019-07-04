@@ -2,13 +2,13 @@ package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v
 
 import java.util.List;
 
-public class Message {
+public class Group {
     private String title;
     private int id;
     private List<Child> children;
     private boolean isExpand;
 
-    public Message(String title, int id, List<Child> items) {
+    public Group(String title, int id, List<Child> items) {
         this.title = title;
         this.id = id;
         this.children = items;

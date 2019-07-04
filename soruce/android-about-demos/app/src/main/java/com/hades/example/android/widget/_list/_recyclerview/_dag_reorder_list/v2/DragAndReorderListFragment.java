@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,8 +35,8 @@ public class DragAndReorderListFragment extends Fragment {
 
     private View loadingContainer;
 
-    private List<Message> list1;
-    private List<Message> list2;
+    private List<Group> list1;
+    private List<Group> list2;
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
     private TextView mCurrentPageView;
@@ -143,7 +144,7 @@ public class DragAndReorderListFragment extends Fragment {
             }
 
             @Override
-            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
+            public void openPage(Group bean, boolean isGroup, String title, String childTitle) {
                 String openedCurrentPage = "Open " + (isGroup ? title : childTitle);
                 Toast.makeText(getContext(), openedCurrentPage, Toast.LENGTH_SHORT).show();
 
@@ -180,7 +181,7 @@ public class DragAndReorderListFragment extends Fragment {
             }
 
             @Override
-            public void openPage(Message bean, boolean isGroup, String title, String childTitle) {
+            public void openPage(Group bean, boolean isGroup, String title, String childTitle) {
                 Toast.makeText(getContext(), "Open " + bean.getTitle(), Toast.LENGTH_SHORT).show();
                 mOpenedPage.updateOpenedPage(title, childTitle, "Group2", isGroup);
             }
@@ -226,8 +227,8 @@ public class DragAndReorderListFragment extends Fragment {
         list2 = initListData("Group 2 - Child ", 50);
     }
 
-    private List<Message> initListData(String childPre, int num) {
-        List<Message> list = new ArrayList<>();
+    private List<Group> initListData(String childPre, int num) {
+        List<Group> list = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             List<Child> childList = new ArrayList<>();
             for (int j = 0; j < i; j++) {
@@ -236,7 +237,7 @@ public class DragAndReorderListFragment extends Fragment {
                     break;
                 }
             }
-            Message message = new Message(String.valueOf(i + 1), (i + 1), childList);
+            Group message = new Group(String.valueOf(i + 1), (i + 1), childList);
             message.setExpand(false);
             list.add(message);
         }

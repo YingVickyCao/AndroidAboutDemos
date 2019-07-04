@@ -34,6 +34,6 @@ public class VHPositionHashCodeBean {
     @NonNull
     @Override
     public String toString() {
-        return "pos " + position + " @ " + hashCode+"\n";
+        return "pos " + position + " @ " + hashCode + "\n";
     }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelperAdapter.ItemViewHolder> implements IItemTouchHelperAdapter {
     private static final String TAG = ItemTouchHelperAdapter.class.getSimpleName();
 
-    List<Message> mList;
+    List<Group> mList;
     private IDragView mDragView;
     private int mGroupResId;
     private Activity mContext;
@@ -31,7 +31,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private int minPos = 0;
     private int maxPos = 0;
 
-    public ItemTouchHelperAdapter(List<Message> list, Activity context) {
+    public ItemTouchHelperAdapter(List<Group> list, Activity context) {
         mList = list;
         mContext = context;
     }
@@ -74,7 +74,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
         Log.d(TAG, "onBindViewHolder: position=" + position + ",@ItemViewHolder=" + holder.hashCode() + ",vh list=" + mViewHolderPositionHashCodeList.size());
 
-        Message bean = mList.get(position);
+        Group bean = mList.get(position);
         holder.groupTitle.setText(bean.getTitle());
         holder.drag.setOnLongClickListener(v -> longClickDrag(holder));
         holder.drag.setOnTouchListener(new View.OnTouchListener() {
@@ -97,7 +97,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Log.d(TAG, "printMotionEvent: event action=" + event.getAction() + ",rawX=" + event.getRawX() + ",rawY=" + event.getRawY());
     }
 
-    private void onBindViewHolder4ChildContainer(final ItemViewHolder holder, int position, Message bean) {
+    private void onBindViewHolder4ChildContainer(final ItemViewHolder holder, int position, Group bean) {
         List<Child> children = bean.getChildren();
         if (children == null || children.isEmpty() || children.size() != holder.childContainer.getChildCount()) {
             holder.childContainer.removeAllViews();
@@ -130,7 +130,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         return (mList.get(position).getId()) - 1;
     }
 
-    private void openPage(String title, String childTitle, Message bean, boolean isGroup) {
+    private void openPage(String title, String childTitle, Group bean, boolean isGroup) {
         if (null != mDragView) {
             mDragView.openPage(bean, isGroup, title, childTitle);
         }
@@ -156,7 +156,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         notifyItemRemoved(position);
     }
 
-    private void toggleExpand(ToggleLinearLayout view, final Message bean, int position) {
+    private void toggleExpand(ToggleLinearLayout view, final Group bean, int position) {
         if (isOnDrag) {
             return;
         }

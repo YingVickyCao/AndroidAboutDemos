@@ -13,5 +13,5 @@ public interface IDragView {
 
     void showLoading();
 
-    void openPage(Message bean, boolean isGroup, String title, String childTitle);
+    void openPage(Group bean, boolean isGroup, String title, String childTitle);
 }

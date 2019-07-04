@@ -372,7 +372,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             doSendMessage();
 
-            // Send message permission has been granted, Message can be sent.
+            // Send message permission has been granted, Group can be sent.
             Log.i(TAG, "Send message permission has now been granted. Can simpleNotify message.");
             showPermissionAvailable4SendMessage();
 
