@@ -118,5 +118,19 @@
         <item name="android:layout_height">@dimen/constrain_layout_height2</item>
     </style>
 
-
+    <style name="DialogFragmentShowAsFullDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--
+            false: show system status bar
+            true: not show  system status bar
+        -->
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowBackground">@color/colorAccent</item>-->
+        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
+    </style>
 </resources>

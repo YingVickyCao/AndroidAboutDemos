@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,13 +26,15 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
         /**
          <pre>
          Show a Dialog:
-         1. Only 1) Show as a full screen - with status bar dialog.
-         2. Only 2) Show as a big  screen - with with status bar  dialog. Has padding to window
-         3. 1 + 2 = 1
+         1. When Only 1) Show as a small dialog.
+            <item name="android:windowFullscreen">false</item> // 2)
+            windowFullscreen = true,  show status bar with all kind of status.
+            windowFullscreen = false, show status bar with  blank.
+         2. When Only 3) Show as a big  screen dialog. Has padding to window
+         3. When 1) + 3 Show as a full screen dialog.
          </pre>
          *
          */
-
         // 1)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
     }
@@ -80,7 +81,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
         // title by default, but your custom layout might not need it. So here you can
         // remove the dialog title, but you must call the superclass to get the Dialog.
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);                                   // 2) Show as a Dialog
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);                                   // 2) Show as a Dialog
         return dialog;
     }
 
@@ -93,7 +94,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
             Log.d(TAG, "onStart: dialog != null"); // Show as a Dialog
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            dialog.getWindow().setLayout(width, height);
+            dialog.getWindow().setLayout(width, height);                                        // 3)
         } else {
             Log.d(TAG, "onStart: dialog = null"); // Show as an Embedded Fragment
         }
