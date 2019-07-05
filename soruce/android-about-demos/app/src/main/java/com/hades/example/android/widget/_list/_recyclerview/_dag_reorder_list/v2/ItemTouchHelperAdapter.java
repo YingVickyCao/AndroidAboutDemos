@@ -1,7 +1,6 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -149,7 +148,6 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
                 continue;
             }
             TextView textView = child.findViewById(R.id.text1);
-            textView.setBackgroundColor(Color.WHITE);
             String childText = String.valueOf(children.get(i).childText);
             textView.setText(childText);
             if (null != mOpenedPage && null != mOpenedPage.getChildTitle() && childText.equals(mOpenedPage.getChildTitle())) {
