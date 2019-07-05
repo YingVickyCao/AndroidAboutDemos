@@ -6,7 +6,6 @@ public class Group {
     private String title;
     private int id;
     private List<Child> children;
-    private boolean isExpand;
 
     public Group(String title, int id, List<Child> items) {
         this.title = title;
@@ -26,11 +25,4 @@ public class Group {
         return children;
     }
 
-    public void setExpand(boolean expand) {
-        isExpand = expand;
-    }
-
-    public boolean isExpand() {
-        return isExpand;
-    }
 }

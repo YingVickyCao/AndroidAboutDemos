@@ -17,10 +17,13 @@
 
         <ImageView
             android:id="@+id/check"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_dashboard_black_24dp" />
+            android:duplicateParentState="false"
+            android:src="@drawable/ic_dashboard_black_24dp"
+            android:tint="@color/drag_icon_status" />
 
         <TextView
             android:id="@+id/groupTitle"

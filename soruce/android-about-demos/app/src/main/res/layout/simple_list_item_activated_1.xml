@@ -8,7 +8,7 @@
         android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:paddingStart="16dp"
         android:gravity="center_horizontal"
+        android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 </FrameLayout>

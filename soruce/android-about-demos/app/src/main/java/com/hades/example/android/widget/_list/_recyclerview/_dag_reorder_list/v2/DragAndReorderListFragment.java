@@ -1,7 +1,6 @@
 package com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -85,6 +84,9 @@ public class DragAndReorderListFragment extends Fragment {
         adapter1.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_1);
         adapter2.setGroupResId(R.layout.widget_recyclerview_4_drag_reorder_item_view_v2_2);
 
+        adapter1.setOpenedPage(mOpenedPage);
+        adapter2.setOpenedPage(mOpenedPage);
+
         // not work. not invoke
 //        rv1.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
@@ -113,13 +115,8 @@ public class DragAndReorderListFragment extends Fragment {
 
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                final DisplayMetrics displayMetrics = new DisplayMetrics();
-//                getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//                final int height = displayMetrics.heightPixels;
-//                final int width = displayMetrics.widthPixels;
-//                Log.d(TAG, "startDrag: height=" + height); // 2042
                 Log.d(TAG, "startDrag: group0 height=" + group0.getMeasuredHeight());
-                mItemTouchHelper1.startDrag(viewHolder);
+                getActivity().runOnUiThread(() -> mItemTouchHelper1.startDrag(viewHolder));
             }
 
             @Override
@@ -150,13 +147,14 @@ public class DragAndReorderListFragment extends Fragment {
 
                 mOpenedPage.updateOpenedPage(title, childTitle, "Group1", isGroup);
                 mCurrentPageView.setText(openedCurrentPage);
+                adapter1.notifyDataSetChanged();
             }
         };
 
         IDragView startDragListener2 = new IDragView() {
             @Override
             public void startDrag(RecyclerView.ViewHolder viewHolder) {
-                mItemTouchHelper2.startDrag(viewHolder);
+                getActivity().runOnUiThread(() -> mItemTouchHelper2.startDrag(viewHolder));
             }
 
             @Override
@@ -184,6 +182,7 @@ public class DragAndReorderListFragment extends Fragment {
             public void openPage(Group bean, boolean isGroup, String title, String childTitle) {
                 Toast.makeText(getContext(), "Open " + bean.getTitle(), Toast.LENGTH_SHORT).show();
                 mOpenedPage.updateOpenedPage(title, childTitle, "Group2", isGroup);
+                adapter2.notifyDataSetChanged();
             }
         };
 
@@ -220,7 +219,7 @@ public class DragAndReorderListFragment extends Fragment {
 
     private void initList1Data() {
 //        list1 = initListData("Group 1 - Child ", 20);
-        list1 = initListData("Group 1 - Child ", 50);
+        list1 = initListData("Group 1 - Child ", 30);
     }
 
     private void initList2Data() {
@@ -238,7 +237,6 @@ public class DragAndReorderListFragment extends Fragment {
                 }
             }
             Group message = new Group(String.valueOf(i + 1), (i + 1), childList);
-            message.setExpand(false);
             list.add(message);
         }
         return list;

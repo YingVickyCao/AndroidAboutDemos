@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private VHPositionHashCodeBean mCheckContain = new VHPositionHashCodeBean();
     private int minPos = 0;
     private int maxPos = 0;
+    private OpenedPage mOpenedPage;
 
     public ItemTouchHelperAdapter(List<Group> list, Activity context) {
         mList = list;
@@ -46,6 +48,10 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     public void resetIsOnDragTag() {
         isOnDrag = false;
+    }
+
+    public void setOpenedPage(OpenedPage openedPage) {
+        mOpenedPage = openedPage;
     }
 
     @Override
@@ -75,6 +81,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         Log.d(TAG, "onBindViewHolder: position=" + position + ",@ItemViewHolder=" + holder.hashCode() + ",vh list=" + mViewHolderPositionHashCodeList.size());
 
         Group bean = mList.get(position);
+        boolean isSelected = null != mOpenedPage && null != mOpenedPage.getTitle() && mOpenedPage.getTitle().equals(bean.getTitle());
+        holder.check.setSelected(isSelected);
+        holder.check.setTag(isSelected);
         holder.groupTitle.setText(bean.getTitle());
         holder.drag.setOnLongClickListener(v -> longClickDrag(holder));
         holder.drag.setOnTouchListener(new View.OnTouchListener() {
@@ -90,7 +99,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         } else {
             holder.groupContainer.setOnClickListener(v -> openPage(bean.getTitle(), null, bean, true));
         }
-//        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
+        //        Log.d(TAG, "onBindViewHolder: position=" + position + ",isExpand=" + bean.isExpand() + ",@ItemViewHolder=" + holder.hashCode() + ",ChildCount=" + preChildCount + "->" + holder.childContainer.getChildCount());
     }
 
     private void printMotionEvent(MotionEvent event) {
@@ -99,24 +108,58 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     private void onBindViewHolder4ChildContainer(final ItemViewHolder holder, int position, Group bean) {
         List<Child> children = bean.getChildren();
-        if (children == null || children.isEmpty() || children.size() != holder.childContainer.getChildCount()) {
-            holder.childContainer.removeAllViews();
+        if (null == children || children.isEmpty()) {
+            holder.childContainer.setVisibility(View.GONE);
+            return;
         }
 
-        if (null != children && !children.isEmpty() && children.size() != holder.childContainer.getChildCount()) {
-            for (int i = 0; i < children.size(); i++) {
+        holder.childContainer.setVisibility(View.VISIBLE);
+        int dataChildCount = children.size();
+        int viewChildCount = holder.childContainer.getChildCount();
+
+        String compare = "";
+        if (viewChildCount < dataChildCount) {
+            compare = "<";
+        } else if (viewChildCount == dataChildCount) {
+            compare = "=";
+        } else {
+            compare = ">";
+        }
+
+        Log.d(TAG, "onBindViewHolder4ChildContainer: position=" + position + ",dataChildCount=" + dataChildCount + "  " + compare + "  " + "viewChildCount=" + viewChildCount);
+
+        if (viewChildCount < dataChildCount) {
+            for (int i = 0; i < dataChildCount - viewChildCount; i++) {
+                Log.d(TAG, "onBindViewHolder4ChildContainer: <  " + " add child " + (i + 1));
                 View child = LayoutInflater.from(holder.drag.getContext()).inflate(R.layout.simple_list_item_activated_1, null);
-                TextView textView = child.findViewById(R.id.text1);
-                textView.setBackgroundColor(Color.WHITE);
-                String childText = String.valueOf(children.get(i).childText);
-                textView.setText(childText);
-                textView.setOnClickListener(v -> openPage(bean.getTitle(), childText, bean, false));
                 holder.childContainer.addView(child);
             }
+
+        } else if (viewChildCount == dataChildCount) {
+
+        } else {
+            holder.groupContainer.removeViews(dataChildCount, viewChildCount - dataChildCount - 1);
         }
 
-//        boolean isExpand = holder.childContainer.getChildCount() > 0;
-//        holder.childContainer.setVisibility(isExpand ? View.VISIBLE : View.GONE);
+        Log.d(TAG, "onBindViewHolder4ChildContainer:dataChildCount=" + dataChildCount + ",viewChildCount=" + holder.childContainer.getChildCount());
+
+        for (int i = 0; i < dataChildCount; i++) {
+            View child = holder.childContainer.getChildAt(i);
+            if (child.getVisibility() == View.GONE) {
+                continue;
+            }
+            TextView textView = child.findViewById(R.id.text1);
+            textView.setBackgroundColor(Color.WHITE);
+            String childText = String.valueOf(children.get(i).childText);
+            textView.setText(childText);
+            if (null != mOpenedPage && null != mOpenedPage.getChildTitle() && childText.equals(mOpenedPage.getChildTitle())) {
+                textView.setTextColor(holder.drag.getContext().getResources().getColor(android.R.color.holo_blue_light));
+            } else {
+                textView.setTextColor(holder.drag.getContext().getResources().getColor(android.R.color.black));
+            }
+            Log.d(TAG, "onBindViewHolder4ChildContainer: childText=" + childText);
+            textView.setOnClickListener(v -> openPage(bean.getTitle(), childText, bean, false));
+        }
         holder.childContainer.applyStatus();
     }
 
@@ -216,6 +259,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         private View root;
         private TextView groupTitle;
         private Button drag;
+        private ImageView check;
         private ToggleLinearLayout childContainer;
         private ViewGroup groupContainer;
 
@@ -224,6 +268,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
             root = itemView.findViewById(R.id.root);
             groupTitle = itemView.findViewById(R.id.groupTitle);
             drag = itemView.findViewById(R.id.drag);
+            check = itemView.findViewById(R.id.check);
             childContainer = itemView.findViewById(R.id.childContainer);
             groupContainer = itemView.findViewById(R.id.groupContainer);
         }
@@ -232,11 +277,20 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         @Override
         public void onItemSelected() {
             root.setSelected(true);
+            updateCheck();
         }
 
         @Override
         public void onItemClear() {
             root.setSelected(false);
+            updateCheck();
+        }
+
+        private void updateCheck() {
+            if (null != check.getTag() && check.getTag() instanceof Boolean) {
+                boolean selected = (boolean) check.getTag();
+                check.setSelected(selected);
+            }
         }
     }
 }
