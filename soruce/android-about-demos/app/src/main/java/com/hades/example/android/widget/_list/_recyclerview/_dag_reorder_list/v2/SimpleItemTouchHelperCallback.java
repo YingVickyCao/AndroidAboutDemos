@@ -5,13 +5,9 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
@@ -19,14 +15,16 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private ItemTouchHelperAdapter mAdapter;
     private IDragView mStartDragListener;
-    private RecyclerView recyclerView;
-    private NestedScrollView mNestedScrollView;
 
-    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter, IDragView startDragListener, RecyclerView recyclerView, NestedScrollView nestedScrollView) {
+    public SimpleItemTouchHelperCallback() {
+    }
+
+    public void setAdapter(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
+    }
+
+    public void setStartDragListener(IDragView startDragListener) {
         mStartDragListener = startDragListener;
-        this.recyclerView = recyclerView;
-        mNestedScrollView = nestedScrollView;
     }
 
     @Override
@@ -98,16 +96,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         }
     }
 
-    @Override
-    public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-    }
-
-    @Override
-    public boolean canDropOver(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder current, @NonNull RecyclerView.ViewHolder target) {
-        return super.canDropOver(recyclerView, current, target);
-    }
-
     // |
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) { // onMove: thread name=main,thread id=2
@@ -133,61 +121,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return false;
     }
 
-    @Override
-    public RecyclerView.ViewHolder chooseDropTarget(@NonNull RecyclerView.ViewHolder selected, @NonNull List<RecyclerView.ViewHolder> dropTargets, int curX, int curY) {
-        if (null == selected) {
-            Log.d(TAG, "chooseDropTarget:  ,curY=" + curY);
-
-            RecyclerView.ViewHolder viewHolder = super.chooseDropTarget(selected, dropTargets, curX, curY);
-            return viewHolder;
-        } else {
-//            if (dropTargets.size() == 1) {
-//                RecyclerView.ViewHolder first = dropTargets.get(0);
-//                if (null != first && first.getAdapterPosition() + 1 < mAdapter.getItemCount() - 1) {
-//                    RecyclerView.ViewHolder second = recyclerView.findViewHolderForAdapterPosition(first.getAdapterPosition() + 1);
-//                    if (second != null) {
-//                        dropTargets.add(second);
-//                    }
-//                }
-//            }
-
-            List<Integer> dropTargetsPosition = new ArrayList<>();
-            for (int i = 0; i < dropTargets.size(); i++) {
-                dropTargetsPosition.add(dropTargets.get(i).getAdapterPosition());
-            }
-
-            RecyclerView.ViewHolder viewHolder = super.chooseDropTarget(selected, dropTargets, curX, curY);
-            if (null != viewHolder) {
-                Log.d(TAG, "chooseDropTarget: selected=" + selected.getAdapterPosition() + ",dropTargets=" + dropTargetsPosition.toString() + ",return =" + viewHolder.getAdapterPosition() + ",curY=" + curY
-                        + "\n,selected [bottom=" + selected.itemView.getBottom() + ",top=" + selected.itemView.getTop() + ",height=" + selected.itemView.getHeight() + ",y=" + selected.itemView.getY() + "]");
-            }
-
-            // not work
-//        if ((recyclerView.computeVerticalScrollExtent() + recyclerView.computeVerticalScrollOffset()) >= recyclerView.computeVerticalScrollRange()) {
-//            Log.d(TAG, "chooseDropTarget: recyclerView scroll to bottom");
-//        }
-
-            // not work
-//        boolean isCanScollTop = recyclerView.canScrollVertically(1);
-//        Log.d(TAG, "chooseDropTarget: " + (isCanScollTop ? "Can" : "Can not") + " scroll to top" + (isCanScollBottom ? ",Can" : "Can not") + " scroll to bottom");
-
-            // not work
-            int scrollY = mNestedScrollView.getScrollY();
-//        boolean isCanScollBottom = recyclerView.canScrollVertically(-1);
-            View onlyChild = mNestedScrollView.getChildAt(0);
-            if (onlyChild.getHeight() <= scrollY + mNestedScrollView.getHeight()) {
-                Log.d(TAG, "chooseDropTarget: recyclerView scroll to bottom");
-            }
-            return viewHolder;
-        }
-    }
-
-    @Override
-    public int interpolateOutOfBoundsScroll(@NonNull RecyclerView recyclerView, int viewSize, int viewSizeOutOfBounds, int totalSize, long msSinceStartScroll) {
-        int r = super.interpolateOutOfBoundsScroll(recyclerView, viewSize, viewSizeOutOfBounds, totalSize, msSinceStartScroll);
-        Log.d(TAG, "interpolateOutOfBoundsScroll: viewSize=" + viewSize + ",viewSizeOutOfBounds=" + viewSizeOutOfBounds + ",totalSize=" + totalSize + ",msSinceStartScroll=" + msSinceStartScroll + ",r=" + r);
-        return r;
-    }
 
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) { // onSelectedChanged: thread name=main,thread id=2,actionState=0
