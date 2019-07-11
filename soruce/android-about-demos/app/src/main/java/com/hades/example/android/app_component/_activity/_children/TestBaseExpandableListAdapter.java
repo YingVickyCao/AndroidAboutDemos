@@ -16,9 +16,9 @@ public class TestBaseExpandableListAdapter extends BaseExpandableListAdapter {
     private Context mContext;
 
     private int[] groupLogos = new int[]{
-            R.drawable.ic_dashboard_black_24dp,
-            R.drawable.ic_notifications_black_24dp,
-            R.drawable.ic_home_black_24dp
+            R.drawable.drawable_vector_dashboard,
+            R.drawable.drawable_vector_notifications,
+            R.drawable.drawable_vector_home
     };
     private String[] groupData = new String[]{
             "PC", "Phone", "Animal"

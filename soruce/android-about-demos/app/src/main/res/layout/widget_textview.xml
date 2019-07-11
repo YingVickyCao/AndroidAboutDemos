@@ -51,7 +51,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_adjust_black_18dp"
-                    app:srcCompat="@drawable/ic_home_black_24dp" />
+                    app:srcCompat="@drawable/drawable_vector_home" />
 
                 <!-- ( android:tint > android:src ) ✓ > app:srcCompat -->
                 <ImageView
@@ -59,7 +59,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/ic_adjust_black_18dp"
                     android:tint="@android:color/holo_orange_dark"
-                    app:srcCompat="@drawable/ic_home_black_24dp" />
+                    app:srcCompat="@drawable/drawable_vector_home" />
             </LinearLayout>
 
             <View style="@style/div" />

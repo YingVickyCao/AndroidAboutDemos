@@ -13,7 +13,7 @@
     <item
         android:width="24dp"
         android:height="24dp"
-        android:drawable="@drawable/ic_spinner_caret"
+        android:drawable="@drawable/drawable_vector_spinner_caret"
         android:end="12dp"
         android:gravity="end|center_vertical" />
 </layer-list>

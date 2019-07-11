@@ -20,7 +20,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_dashboard_black_24dp" />
+            android:src="@drawable/drawable_vector_dashboard" />
 
         <TextView
             android:id="@+id/groupTitle"
@@ -35,7 +35,7 @@
             android:id="@+id/drag"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_drag"
+            android:background="@drawable/drawable_vector_drag"
             android:duplicateParentState="true"
             android:gravity="center" />
     </LinearLayout>

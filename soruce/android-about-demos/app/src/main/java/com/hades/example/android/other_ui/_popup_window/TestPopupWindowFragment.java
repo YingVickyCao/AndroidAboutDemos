@@ -24,6 +24,8 @@ public class TestPopupWindowFragment extends BaseFragment {
 
     private Button showAtLocationView;
     private Button showAsDropDownView;
+    PopupWindow popup1;
+    PopupWindow popup2;
 
     @Nullable
     @Override
@@ -40,20 +42,36 @@ public class TestPopupWindowFragment extends BaseFragment {
     }
 
     private void showAtLocation(View v) {
-        final PopupWindow popup = getPopupWindow();
-//        popup.showAtLocation(showAtLocationView, Gravity.CENTER, 20, 20);        //将PopupWindow显示在指定位置
-        popup.showAtLocation(showAtLocationView, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);        //将PopupWindow显示在指定位置
+        popup1 = getPopupWindow();
+//        popup1.showAtLocation(showAtLocationView, Gravity.CENTER, 20, 20);        //将PopupWindow显示在指定位置
+        popup1.showAtLocation(showAtLocationView, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);        //将PopupWindow显示在指定位置
     }
 
     private void showAsDropDown() {
-        final PopupWindow popup = getPopupWindow();
-        popup.showAsDropDown(showAsDropDownView, 0, 0, Gravity.CENTER);
+        popup2 = getPopupWindow();
+        popup2.showAsDropDown(showAsDropDownView, -50, 0, Gravity.CENTER);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            popup.setOverlapAnchor(true); // 对齐方式从View anchor的左下角变成了左上角了.
+            popup2.setOverlapAnchor(true); // 对齐方式从View anchor的左下角变成了左上角了. No work on Android 9.0
+        }
+        popup2.setElevation(1); // Not work
+        popup2.setTouchable(true);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != popup1) {
+            popup1.dismiss();
+            popup1 = null;
+        }
+
+        if (null != popup2) {
+            popup2.dismiss();
+            popup2 = null;
         }
     }
 
-    PopupWindow getPopupWindow() {
+    private PopupWindow getPopupWindow() {
         // popupWindow弹窗外区域设置阴影 - 透明度
         // 在创建popupWindow时：显示阴影
         WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();

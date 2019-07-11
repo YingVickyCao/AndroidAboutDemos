@@ -13,10 +13,11 @@
         android:id="@+id/showAtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="弹出Popup窗口" />
+        android:text="show At Location" />
 
     <Button
         android:id="@+id/showAsDropDown"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="show As DropDown" />
 </LinearLayout>

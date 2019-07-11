@@ -41,7 +41,7 @@ public class TestBottomNavigationActivity extends AppCompatActivity {
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        int[] titles = {R.string.home, R.string.dashboard, R.string.notifications};
-//        int[] icons = {R.drawable.ic_home_black_24dp, R.drawable.ic_dashboard_black_24dp, R.drawable.ic_notifications_black_24dp};
+//        int[] icons = {R.drawable.drawable_vector_home, R.drawable.drawable_vector_dashboard, R.drawable.drawable_vector_notifications};
 //
 //        for (int i = 0; i < 3; i++) {
 //            int id = View.generateViewId();

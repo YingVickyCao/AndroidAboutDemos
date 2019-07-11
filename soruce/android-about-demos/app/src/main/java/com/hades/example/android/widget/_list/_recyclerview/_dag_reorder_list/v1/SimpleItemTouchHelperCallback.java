@@ -123,7 +123,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
                 float right = (float) itemView.getLeft() + 2 * width;
                 float bottom = (float) itemView.getBottom() - width;
 
-                icon = getBitmapFromVectorDrawable(recyclerView.getContext(), R.drawable.ic_add);
+                icon = getBitmapFromVectorDrawable(recyclerView.getContext(), R.drawable.drawable_vector_add);
                 RectF iconDest = new RectF(left, top, right, bottom);
 
                 c.drawBitmap(icon, null, iconDest, p);
@@ -131,7 +131,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
                 p.setColor(Color.parseColor("#D32F2F"));
                 RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
                 c.drawRect(background, p);
-                icon = getBitmapFromVectorDrawable(recyclerView.getContext(), R.drawable.ic_delete_black_24dp);
+                icon = getBitmapFromVectorDrawable(recyclerView.getContext(), R.drawable.drawable_vector_delete);
 
                 float left = (float) itemView.getRight() - 2 * width;
                 float top = (float) itemView.getTop() + width;

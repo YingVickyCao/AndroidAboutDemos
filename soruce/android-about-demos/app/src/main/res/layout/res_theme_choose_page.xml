@@ -75,8 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/seekBg"
-                android:progressDrawable="@drawable/res_theme_seekbar_progress"
-                android:thumb="@drawable/res_theme_seekbar_thumb" />
+                android:progressDrawable="@drawable/drawable_shape_seekbar_progress_4_theme"
+                android:thumb="@drawable/drawable_shape_seekbar_thumb_4_theme" />
 
             <View style="@style/div" />
 
