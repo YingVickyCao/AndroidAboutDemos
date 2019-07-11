@@ -26,7 +26,6 @@ import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
-import com.hades.example.android.widget.textview.TestTextViewClickFragment;
 import com.hades.example.android.widget.textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
@@ -69,7 +68,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
-        findViewById(R.id.pageTextView4ClickAction).setOnClickListener(v -> pageTextView4ClickAction());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
@@ -97,7 +95,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageViewLocation();
+        pageTextView();
     }
 
     private void pageViewLocation() {
@@ -150,10 +148,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageTextView() {
         showFragment(new TestTextViewFragment());
-    }
-
-    private void pageTextView4ClickAction() {
-        showFragment(new TestTextViewClickFragment());
     }
 
     private void pageButton() {

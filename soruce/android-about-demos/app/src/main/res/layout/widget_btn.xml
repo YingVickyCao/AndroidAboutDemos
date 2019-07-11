@@ -25,6 +25,8 @@
                 style="@style/btn"
                 android:text="@string/normal_button" />
 
+            <View style="@style/div" />
+
             <TextView
                 style="@style/tv"
                 android:layout_marginTop="@dimen/margin_tiny"
@@ -36,6 +38,26 @@
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/edit_text"
                 android:gravity="center_vertical" />
+
+            <View style="@style/div" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn1"
+                    style="@style/btn.small"
+                    android:text="Perform btn click" />
+
+                <Button
+                    android:id="@+id/btn2"
+                    style="@style/btn.small"
+                    android:layout_alignParentEnd="true"
+                    android:text="Btn 2"
+                    android:textColor="@color/btn_text_color_selector" />
+
+            </RelativeLayout>
 
             <View style="@style/div" />
 

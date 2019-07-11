@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class TestButtonActivity extends Activity {
         };
 
         findViewById(R.id.details_date).setOnClickListener(v -> showDialog(DATE_DIALOG_ID));
+        View btn2 = findViewById(R.id.btn2);
+        findViewById(R.id.btn1).setOnClickListener(v -> btn2.performClick());// btn2 not change color
     }
 
     // TODO: 21/03/2018 Use DialogFragment instead.

@@ -86,11 +86,6 @@
                 android:text="@string/page_TextView" />
 
             <Button
-                android:id="@+id/pageTextView4ClickAction"
-                style="@style/btn.small"
-                android:text="@string/page_TextView_4_click_action" />
-
-            <Button
                 android:id="@+id/pageButton"
                 style="@style/btn.small"
                 android:text="@string/page_Button" />

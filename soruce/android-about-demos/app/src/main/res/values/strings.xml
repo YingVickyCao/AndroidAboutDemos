@@ -60,7 +60,6 @@
     <string name="page_Button">Button</string>
     <string name="page_TextView">TextView</string>
     <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
-    <string name="page_TextView_4_click_action">TextView - Click Action</string>
     <string name="page_SeekBar">SeekBar</string>
     <string name="page_RatingBar">SeekBar</string>
     <string name="page_Progressbar">ProgressBar</string>
@@ -385,4 +384,5 @@
     <string name="show_as_a_dialog_or_as_an_embedded_fragment">Show as  a Dialog or as an Embedded Fragment</string>
     <string name="show_as_a_dialog">Show as a dialog</string>
     <string name="show_as_an_embedded_fragment">Show as an embedded fragment</string>
+    <string name="request_view_size">Request view size</string>
 </resources>
