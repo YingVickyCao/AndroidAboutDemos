@@ -43,11 +43,11 @@ public class TestTextViewFragment extends BaseFragment {
          *
          * Way1: ViewTreeObserver. OnPreDrawListener     // Many times
          *
-         * Way2: ViewTreeObserver. OnGlobalLayoutListener // Many times
+         * Way2: ViewTreeObserver. OnGlobalLayoutListener // Many times, Recommended
          *
          * Way3: View.Click
          *
-         * Way4: View.post()                              // One times
+         * Way4: View.post()                              // One times, Recommended
          *
          * Way5: View.OnLayoutChangeListener()            // Many times
          *

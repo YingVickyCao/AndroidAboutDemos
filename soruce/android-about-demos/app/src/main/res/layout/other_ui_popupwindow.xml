@@ -10,13 +10,13 @@
         android:text="@string/page_PopupWindow" />
 
     <Button
-        android:id="@+id/showPopupWindow"
+        android:id="@+id/showAtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="弹出Popup窗口" />
 
     <Button
-        android:id="@+id/showSpinner"
+        android:id="@+id/showAsDropDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

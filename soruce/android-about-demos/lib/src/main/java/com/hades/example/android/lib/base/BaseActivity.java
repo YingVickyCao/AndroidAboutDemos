@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,6 +114,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void showFragment(Fragment fragment) {
         hideBtns();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentRoot, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
+    protected void showFragment(Fragment fragment, @IdRes int containerViewId) {
+        hideBtns();
+        getSupportFragmentManager().beginTransaction().replace(containerViewId, fragment, fragment.getClass().getSimpleName()).commit();
     }
 
     protected void showFragment(Fragment fragment, String tag) {
