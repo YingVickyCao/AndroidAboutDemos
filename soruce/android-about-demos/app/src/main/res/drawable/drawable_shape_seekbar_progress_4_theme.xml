@@ -4,5 +4,4 @@
     <stroke
         android:width="5dp"
         android:color="?attr/seekProgressDrawableColor" />
-
 </shape>
