@@ -1,6 +1,7 @@
 package com.hades.example.android.resource.anim;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.R;
 
 public class TestTweenAnimationFragment extends Fragment {
+    private static final String TAG = TestTweenAnimationFragment.class.getSimpleName();
+
     private ImageView image;
 
     @Nullable
@@ -45,32 +48,33 @@ public class TestTweenAnimationFragment extends Fragment {
      * https://www.cnblogs.com/sishuiliuyun/p/3167581.html
      */
     private void alpha() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_alpha);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_alpha); // AlphaAnimation
         // 设置动画结束后保留结束状态
         anim.setFillAfter(false);
+        Log.d(TAG, "alpha: ");
         image.startAnimation(anim);
     }
 
     private void scale() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_scale);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_scale); // ScaleAnimation
         anim.setFillAfter(false);
         image.startAnimation(anim);
     }
 
     private void translate() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_translate);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_translate); // TranslateAnimation
         anim.setFillAfter(false);
         image.startAnimation(anim);
     }
 
     private void rotate() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_rotate);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_rotate); // RotateAnimation
         anim.setFillAfter(false);
         image.startAnimation(anim);
     }
 
     private void combineAnim() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_set);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_set); // AnimationSet
         anim.setFillAfter(false);
         image.startAnimation(anim);
     }
