@@ -13,6 +13,7 @@ import com.hades.example.android.resource._color_state_list.TestColorStateListFr
 import com.hades.example.android.resource._style_theme.ThemeChoosePageAActivity;
 import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
+import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFragment;
@@ -69,6 +70,9 @@ public class ResourceActivity extends PermissionActivity {
 
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
+
+        findViewById(R.id.pageTweenAnimation).setOnClickListener(v -> pageTweenAnimation());
+
     }
 
     @Override
@@ -78,7 +82,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageClipDrawable();
+        pageTweenAnimation();
     }
 
     private void pageColor() {
@@ -165,8 +169,11 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestLayerDrawableFragment());
     }
 
-
     private void pageDrawableFolder() {
         showFragment(new TestDrawableFolderFragment());
+    }
+
+    private void pageTweenAnimation() {
+        showFragment(new TestTweenAnimationFragment());
     }
 }

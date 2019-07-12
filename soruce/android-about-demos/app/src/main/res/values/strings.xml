@@ -37,6 +37,7 @@
     <string name="page_LevelListDrawable">LevelList Drawable</string>
     <string name="page_LayerListDrawable">LayerList Drawable</string>
     <string name="page_ClipDrawable">Clip Drawable</string>
+    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
@@ -47,7 +48,8 @@
     <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
     <string name="page_bitmap">Bitmap</string>
-    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
+    <string name="page_Tween_Animation">Tween animation</string>
+
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
