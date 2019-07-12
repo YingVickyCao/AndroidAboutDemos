@@ -36,6 +36,7 @@
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_LevelListDrawable">LevelList Drawable</string>
     <string name="page_LayerListDrawable">LayerList Drawable</string>
+    <string name="page_ClipDrawable">Clip Drawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>

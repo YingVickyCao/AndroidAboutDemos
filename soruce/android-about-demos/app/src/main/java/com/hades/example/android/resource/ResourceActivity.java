@@ -21,6 +21,7 @@ import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndSc
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
+import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
 import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
@@ -53,19 +54,21 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
 
         findViewById(R.id.pageDrawable).setOnClickListener(v -> pageDrawable());
-        findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
-        findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
-        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
-        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
-        findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
-
-        findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
-        findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
-
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
         findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
+        findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
+        findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
+        findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
+
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
+
+        findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
+        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
+        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+
+        findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
+        findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
     }
 
     @Override
@@ -75,7 +78,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageShapeDrawable();
+        pageClipDrawable();
     }
 
     private void pageColor() {
@@ -132,6 +135,10 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageVectorDrawable() {
         showFragment(new TestVectorDrawableFragment());
+    }
+
+    private void pageClipDrawable() {
+        showFragment(new TestClipDrawableFragment());
     }
 
     private void pageLoadBitmapPo() {

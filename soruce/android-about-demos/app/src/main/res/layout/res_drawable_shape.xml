@@ -55,61 +55,79 @@
 
             <View style="@style/div" />
 
-            <TextView
-                style="@style/tv"
-                android:text="Shape = Rect" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_rect_1" />
+                <TextView
+                    style="@style/tv"
+                    android:text="Shape = Rect" />
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_rect_2" />
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_rect_1" />
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_rect_3_1" />
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_rect_2" />
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_rect_3_2" />
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_rect_3_1" />
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_rect_3_3" />
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_rect_3_2" />
 
-            <TextView
-                style="@style/tv"
-                android:text="Shape = Oval" />
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_rect_3_3" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_oval_1" />
+            <View style="@style/div" />
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_oval_2" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <TextView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_50"
-                android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/drawable_shape_4_oval_3" />
+                <TextView
+                    style="@style/tv"
+                    android:text="Shape = Oval" />
+
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_oval_1" />
+
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_oval_2" />
+
+                <TextView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_50"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/drawable_shape_4_oval_3" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -135,6 +135,11 @@
                 style="@style/btn.small"
                 android:text="@string/page_DrawableFolder" />
 
+            <Button
+                android:id="@+id/pageClipDrawable"
+                style="@style/btn.small"
+                android:text="@string/page_ClipDrawable" />
+
         </LinearLayout>
     </ScrollView>
 
