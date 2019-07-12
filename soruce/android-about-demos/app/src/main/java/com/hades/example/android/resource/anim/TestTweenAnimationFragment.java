@@ -70,7 +70,7 @@ public class TestTweenAnimationFragment extends Fragment {
     }
 
     private void combineAnim() {
-        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_rotate);
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_set);
         anim.setFillAfter(false);
         image.startAnimation(anim);
     }
