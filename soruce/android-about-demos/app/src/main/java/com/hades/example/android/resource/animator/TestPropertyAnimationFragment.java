@@ -47,7 +47,9 @@ public class TestPropertyAnimationFragment extends Fragment {
         btn2.setOnClickListener(v -> Toast.makeText(getContext(), "Btn 2 clicked", Toast.LENGTH_SHORT).show());
         view.findViewById(R.id.xy_1_translation_xml).setOnClickListener(v -> xy_1_translation_xml());
         view.findViewById(R.id.xy_2_translation_AnimatorSet).setOnClickListener(v -> xy_2_translation_AnimatorSet());
-        view.findViewById(R.id.xy_2_translation_PropertyValuesHolder).setOnClickListener(v -> xy_2_translation_PropertyValuesHolder());
+        view.findViewById(R.id.xy_3_translation_PropertyValuesHolder).setOnClickListener(v -> xy_2_translation_PropertyValuesHolder());
+        view.findViewById(R.id.moveOver).setOnClickListener(v -> moveOver());
+        view.findViewById(R.id.moveBack).setOnClickListener(v -> moveBack());
 
         return view;
     }
@@ -99,7 +101,8 @@ public class TestPropertyAnimationFragment extends Fragment {
         AnimatorSet set = new AnimatorSet(); // 相对于父容器， X、Y轴 先后移动
 //        set.playSequentially(animatorX, animatorY);                                            // play x, play y
 //        set.play(animator3).before(animator2).after(animator1).with(animator4);
-        set.play(animatorY).after(animatorX);                                                   // play x, play y
+//        set.play(animatorY).after(animatorX);                                                   // play x, play y
+        set.playTogether(animatorX,animatorY);                                                    // play (x,y)
         setAnimatorListener(set);
 //        set.setDuration(500);
 //        set.setInterpolator(new BounceInterpolator());
@@ -110,6 +113,14 @@ public class TestPropertyAnimationFragment extends Fragment {
         PropertyValuesHolder holder1 = PropertyValuesHolder.ofFloat("translationX", 0f, 500f);
         PropertyValuesHolder holder2 = PropertyValuesHolder.ofFloat("translationY", 0f, 200f);
         ObjectAnimator.ofPropertyValuesHolder(btn2, holder1, holder2).setDuration(5000).start(); // play (x,y)
+    }
+
+    private void moveOver() {
+        btn2.animate().x(500f).y(200f); // // play (x,y)
+    }
+
+    private void moveBack(){
+        btn2.animate().x(0).y(0); // 按钮放回到它在容器中原来的位置 (0, 0)
     }
 
     private void setAnimatorListener(Animator animator) {
