@@ -15,6 +15,7 @@ import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.anim.TestFrameAnimationFragment;
 import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
+import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFragment;
@@ -74,6 +75,7 @@ public class ResourceActivity extends PermissionActivity {
 
         findViewById(R.id.pageTweenAnimation).setOnClickListener(v -> pageTweenAnimation());
         findViewById(R.id.pageFrameAnimation).setOnClickListener(v -> pageFrameAnimation());
+        findViewById(R.id.pagePropertyAnimation).setOnClickListener(v -> pagePropertyAnimation());
     }
 
     @Override
@@ -83,7 +85,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageFrameAnimation();
+        pagePropertyAnimation();
     }
 
     private void pageColor() {
@@ -180,5 +182,9 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageFrameAnimation() {
         showFragment(new TestFrameAnimationFragment());
+    }
+
+    private void pagePropertyAnimation() {
+        showFragment(new TestPropertyAnimationFragment());
     }
 }

@@ -50,6 +50,7 @@
     <string name="page_bitmap">Bitmap</string>
     <string name="page_Tween_Animation">Tween animation</string>
     <string name="page_Frame_Animation">Frame animation</string>
+    <string name="page_Property_Animation">Property animation</string>
 
 
     <string name="page_widget">Widget</string>

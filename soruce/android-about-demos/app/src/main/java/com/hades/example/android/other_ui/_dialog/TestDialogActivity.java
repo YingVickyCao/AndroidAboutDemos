@@ -35,7 +35,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
         findViewById(R.id.btn1).setOnClickListener(v -> showMyBaseDialogFragment(1));
         findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(2));
-        findViewById(R.id.btn3).setOnClickListener(v -> showMyBaseDialogFragment(3));
+        findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(3));
         findViewById(R.id.btn4).setOnClickListener(v -> showMyBaseDialogFragment(4));
         findViewById(R.id.btn5).setOnClickListener(v -> showMyBaseDialogFragment(5));
         findViewById(R.id.btn6).setOnClickListener(v -> showMyBaseDialogFragment(6));
