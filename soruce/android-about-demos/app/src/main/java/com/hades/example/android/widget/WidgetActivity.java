@@ -25,6 +25,7 @@ import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
+import com.hades.example.android.widget.imageview.TestImageViewFragment;
 import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget.textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
@@ -69,6 +70,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
+        findViewById(R.id.pageImageView).setOnClickListener(v -> pageImageView());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
         findViewById(R.id.pageRatingBar).setOnClickListener(v -> pageRatingBar());
@@ -152,6 +154,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageButton() {
         showActivity(TestButtonActivity.class);
+    }
+
+    private void pageImageView() {
+        showFragment(new TestImageViewFragment());
     }
 
     private void pageKenBurnsImage() {

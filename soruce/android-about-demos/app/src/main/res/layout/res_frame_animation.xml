@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_Frame_Animation" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/startAnimation"
+            style="@style/btn.small"
+            android:layout_alignParentStart="true"
+            android:text="@string/start_animation" />
+
+        <Button
+            android:id="@+id/stopAnimation"
+            style="@style/btn.small"
+            android:layout_alignParentEnd="true"
+            android:text="@string/stop_animation" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View style="@style/div" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:alpha="0.2"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:padding="@dimen/size_30"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/ic_launcher"
+                android:padding="@dimen/size_30"
+                android:src="@drawable/ic_launcher" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:alpha="0.2"
+                android:background="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/ic_launcher"
+                android:padding="@dimen/size_30" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
