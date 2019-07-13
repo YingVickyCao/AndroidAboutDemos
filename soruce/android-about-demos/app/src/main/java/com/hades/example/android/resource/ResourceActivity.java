@@ -30,8 +30,8 @@ import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragme
 import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
-import com.hades.example.android.resource.material.MaterialFragment;
-import com.hades.example.android.resource.xml.ParseXMLFragment;
+import com.hades.example.android.resource.material.TestMaterialFragment;
+import com.hades.example.android.resource.xml.TestXMLFragment;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
@@ -46,12 +46,12 @@ public class ResourceActivity extends PermissionActivity {
         setContentView(R.layout.activity_resources);
         initViews();
 
-        findViewById(R.id.parseMaterial).setOnClickListener(v -> parseXml());
+        findViewById(R.id.pageMaterial).setOnClickListener(v -> pageMaterial());
         findViewById(R.id.pageDimension).setOnClickListener(v -> pageDimension());
         findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
-        findViewById(R.id.pageParseXML).setOnClickListener(v -> pageParseXML());
+        findViewById(R.id.pageXML).setOnClickListener(v -> pageXML());
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
@@ -85,7 +85,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pagePropertyAnimation();
+        pageMaterial();
     }
 
     private void pageColor() {
@@ -96,8 +96,8 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestColorStateListFragment());
     }
 
-    private void parseXml() {
-        showFragment(new MaterialFragment());
+    private void pageMaterial() {
+        showFragment(new TestMaterialFragment());
     }
 
     private void pageDimension() {
@@ -116,8 +116,8 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestStringIntegerArrayFragment());
     }
 
-    private void pageParseXML() {
-        showFragment(new ParseXMLFragment());
+    private void pageXML() {
+        showFragment(new TestXMLFragment());
     }
 
     private void pageScreenOrientation() {

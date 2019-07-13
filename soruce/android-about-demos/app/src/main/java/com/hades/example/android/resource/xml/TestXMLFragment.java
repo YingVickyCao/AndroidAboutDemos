@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class ParseXMLFragment extends BaseFragment {
+public class TestXMLFragment extends Fragment {
     private TextView mXmlContent;
 
     @Nullable

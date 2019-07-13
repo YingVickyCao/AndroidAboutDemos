@@ -27,6 +27,8 @@
 
     <string name="page_resource">Resource</string>
     <string name="page_dimension">Dimension</string>
+    <string name="page_XML">XML</string>
+    <string name="page_material">原始资源</string>
     <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>

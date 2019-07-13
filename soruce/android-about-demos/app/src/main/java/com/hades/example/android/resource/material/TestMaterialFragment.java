@@ -19,7 +19,7 @@ import com.hades.example.android.lib.base.BaseFragment;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MaterialFragment extends BaseFragment {
+public class TestMaterialFragment extends BaseFragment {
     MediaPlayer mediaPlayer1 = null;
     MediaPlayer mediaPlayer2 = null;
     private ImageView mImageView;
@@ -57,7 +57,6 @@ public class MaterialFragment extends BaseFragment {
     }
 
     private void playAsserts() {
-        // TODO: 03/07/2018 没有声音
         mediaPlayer2.start();
     }
 
