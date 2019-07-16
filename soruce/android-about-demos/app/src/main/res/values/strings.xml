@@ -61,6 +61,7 @@
     <string name="page_CustomView4CascadeLayout">Custom View 4 CascadeLayout</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
+    <string name="page_LinearLayout_CanNotChangeColor">LinearLayout can not change color</string>
     <string name="page_linearLayout_LayoutGravityAndGravity">LinearLayout - LayoutGravity And Gravity</string>
     <string name="page_ViewGroup">ViewGroup</string>
     <string name="page_FrameLayout">FrameLayout</string>

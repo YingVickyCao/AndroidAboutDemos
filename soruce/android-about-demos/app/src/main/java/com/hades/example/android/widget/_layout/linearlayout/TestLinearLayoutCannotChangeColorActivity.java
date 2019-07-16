@@ -1,5 +1,6 @@
-package com.hades.example.android.widget._layout._linearlayout;
+package com.hades.example.android.widget._layout.linearlayout;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,32 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
 
-public class TestLinearLayoutFragment extends BaseFragment {
-    private View mView;
+public class TestLinearLayoutCannotChangeColorActivity extends Activity {
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.widget_layout_linearlayout_4_weight, container, false);
-//        View view = inflater.inflate(R.layout.widget_layout_linearlayout_4_divider, container, false);
-        View view = inflater.inflate(R.layout.widget_layout_linearlayout_4_add_view, container, false);
-        addView(view);
-        view.findViewById(R.id.btn1).setOnClickListener(v -> btn1());
-        view.findViewById(R.id.btn2).setOnClickListener(v -> btn2());
-        view.findViewById(R.id.btn3).setOnClickListener(v -> btn3());
-        mView = view;
-        return view;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.widget_layout_linearlayout_4_can_not_change_color);
+
+        addView(null);
+
+        findViewById(R.id.btn1).setOnClickListener(v -> btn1());
+        findViewById(R.id.btn2).setOnClickListener(v -> btn2());
+        findViewById(R.id.btn3).setOnClickListener(v -> btn3());
     }
 
-    /**
-     * <selector>
-     * Text Color
-     * Bg color
-     *
-     * View.setSelected
-     */
     private void btn1() {
         btn(0);
     }
@@ -50,7 +41,7 @@ public class TestLinearLayoutFragment extends BaseFragment {
     }
 
     private void btn(int index) {
-        LinearLayout ll = mView.findViewById(R.id.linearLayoutContainer);
+        LinearLayout ll = findViewById(R.id.linearLayoutContainer);
         if (null == ll) {
             return;
         }
@@ -63,13 +54,12 @@ public class TestLinearLayoutFragment extends BaseFragment {
         text2.setSelected(!text2.isSelected());
     }
 
-    // widget_layout_linearlayout_4_add_view
     private void addView(View view) {
-        LinearLayout ll = view.findViewById(R.id.linearLayoutContainer);
+
+        LinearLayout ll = findViewById(R.id.linearLayoutContainer);
         if (null == ll) {
             return;
         }
-
         int count = 3;
         int[] icon = new int[]{R.drawable.wait_icon, R.drawable.info_icon, R.drawable.logo};
         String[] textStr1 = new String[]{"A", "B", "C"};
@@ -81,7 +71,7 @@ public class TestLinearLayoutFragment extends BaseFragment {
 
 
         for (int i = 0; i < count; i++) {
-            LinearLayout item = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.widget_layout_linearlayout_4_add_view_item, null);
+            LinearLayout item = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.widget_layout_linearlayout_4_can_not_change_color_4_item, null);
             item.setOnClickListener(v -> {
                 ImageView img = item.findViewById(R.id.img);
                 img.setSelected(!img.isSelected());
@@ -105,5 +95,4 @@ public class TestLinearLayoutFragment extends BaseFragment {
             ll.addView(item);
         }
     }
-
 }

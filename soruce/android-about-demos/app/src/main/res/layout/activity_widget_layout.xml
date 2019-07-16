@@ -51,6 +51,17 @@
                 android:text="@string/page_linearLayout" />
 
             <Button
+                android:id="@+id/pageLinearLayoutCanNotChangeColor"
+                style="@style/btn.small"
+                android:text="@string/page_LinearLayout_CanNotChangeColor" />
+
+            <Button
+                android:id="@+id/pageLinearLayoutCanNotChangeColor2"
+                style="@style/btn.small"
+                android:text="@string/page_LinearLayout_CanNotChangeColor" />
+
+
+            <Button
                 android:id="@+id/pageLinearLayout4LayoutGravityAndGravity"
                 style="@style/btn.small"
                 android:text="@string/page_linearLayout" />

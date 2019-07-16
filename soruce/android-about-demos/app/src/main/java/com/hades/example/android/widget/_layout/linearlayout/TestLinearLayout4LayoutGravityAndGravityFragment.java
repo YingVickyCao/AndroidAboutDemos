@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._layout._linearlayout;
+package com.hades.example.android.widget._layout.linearlayout;
 
 import android.os.Bundle;
 import android.view.Gravity;

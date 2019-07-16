@@ -7,6 +7,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <!-- android:duplicateParentState="true" 不能添加，否则不能改变 bg 和 text color -->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_100">
@@ -18,23 +20,25 @@
             android:layout_height="@dimen/size_50"
             android:text="1" />
 
+        <!-- android:duplicateParentState="true" -->
         <ImageView
             android:id="@+id/img"
             android:layout_width="@dimen/size_50"
             android:layout_height="@dimen/size_50"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size_50"
+            android:background="@null"
             android:src="@drawable/ic_launcher"
-            android:tint="@color/textview_color_enable" />
+            android:tint="@color/textview_color_enable_v2" />
 
     </FrameLayout>
-
+    <!-- android:duplicateParentState="true" -->
     <TextView
         android:id="@+id/text2"
         style="@style/tv.small"
         android:layout_height="@dimen/size_50"
         android:layout_marginTop="@dimen/size_100"
         android:text="2"
-        android:tint="@color/textview_color_enable" />
+        android:textColor="@color/textview_color_enable_v2" />
 
 </LinearLayout>

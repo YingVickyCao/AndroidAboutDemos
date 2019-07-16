@@ -11,11 +11,14 @@ import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
-import com.hades.example.android.widget._layout._linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
-import com.hades.example.android.widget._layout._linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
+import com.hades.example.android.widget._layout.linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
+import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutCannotChangeColor2Fragment;
+import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutCannotChangeColorFragment;
+import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutFragment;
 import com.hades.example.android.widget._list._listview.TestListViewFragment;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
+import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget._list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
@@ -25,18 +28,17 @@ import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
-import com.hades.example.android.widget.imageview.TestImageViewFragment;
-import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
-import com.hades.example.android.widget.textview.TestTextViewFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
+import com.hades.example.android.widget.imageview.TestImageViewFragment;
 import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
+import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
+import com.hades.example.android.widget.textview.TestTextViewFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
@@ -50,6 +52,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_widget_layout);
 
 //        hideActionBar();
@@ -62,6 +65,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
+        findViewById(R.id.pageLinearLayoutCanNotChangeColor).setOnClickListener(v -> pageLinearLayoutCanNotChangeColor());
+        findViewById(R.id.pageLinearLayoutCanNotChangeColor2).setOnClickListener(v -> pageLinearLayoutCanNotChangeColor2());
         findViewById(R.id.pageLinearLayout4LayoutGravityAndGravity).setOnClickListener(v -> pageLinearLayout4LayoutGravityAndGravity());
         findViewById(R.id.pageViewGroup).setOnClickListener(v -> pageViewGroup());
         findViewById(R.id.pageFrameLayout).setOnClickListener(v -> pageFrameLayout());
@@ -97,7 +102,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageLinearLayout();
+        pageLinearLayoutCanNotChangeColor2();
     }
 
     private void pageViewLocation() {
@@ -122,6 +127,14 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageLinearLayout() {
         showFragment(new TestLinearLayoutFragment());
+    }
+
+    private void pageLinearLayoutCanNotChangeColor() {
+        showFragment(new TestLinearLayoutCannotChangeColorFragment());
+    }
+
+    private void pageLinearLayoutCanNotChangeColor2() {
+        showFragment(new TestLinearLayoutCannotChangeColor2Fragment());
     }
 
     private void pageLinearLayout4LayoutGravityAndGravity() {
