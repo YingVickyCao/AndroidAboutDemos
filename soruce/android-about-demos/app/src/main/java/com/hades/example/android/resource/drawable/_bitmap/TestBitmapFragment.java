@@ -27,11 +27,11 @@ public class TestBitmapFragment extends Fragment {
 
     private ImageView image;
     private ImageView img0;
-    private ImageView img1;
-    private ImageView img2;
-    private ImageView img3;
-    private ImageView img4;
-    private ImageView img5;
+    private ImageView img1_1;
+    private ImageView img1_2;
+    private ImageView img1_3;
+    private ImageView img1_4;
+    private ImageView img1_5;
 
     @Nullable
     @Override
@@ -48,16 +48,16 @@ public class TestBitmapFragment extends Fragment {
         view.findViewById(R.id.next).setOnClickListener(sources -> next());
 
         img0 = view.findViewById(R.id.img0);
-        img1 = view.findViewById(R.id.img1);
-        img2 = view.findViewById(R.id.img2);
-        img3 = view.findViewById(R.id.img3);
-        img4 = view.findViewById(R.id.img4);
-        img5 = view.findViewById(R.id.img5);
-//        img1();
-//        img2();
-//        img3();
-        img4();
-        img5();
+        img1_1 = view.findViewById(R.id.img1_1);
+        img1_2 = view.findViewById(R.id.img1_2);
+        img1_3 = view.findViewById(R.id.img1_3);
+        img1_4 = view.findViewById(R.id.img1_4);
+        img1_5 = view.findViewById(R.id.img1_5);
+//        img1_1();
+//        img1_2();
+//        img1_3();
+        img1_4();
+        img1_5();
         return view;
     }
 
@@ -96,14 +96,14 @@ public class TestBitmapFragment extends Fragment {
     private void img1() {
         if (img0.getDrawable() instanceof BitmapDrawable) {
             Bitmap bitmap = Bitmap.createBitmap(((BitmapDrawable) img0.getDrawable()).getBitmap());
-            img1.setImageBitmap(bitmap);
+            img1_1.setImageBitmap(bitmap);
         }
     }
 
     private void img2() {
         if (img0.getDrawable() instanceof BitmapDrawable) {
             Bitmap bitmap = Bitmap.createBitmap(((BitmapDrawable) img0.getDrawable()).getBitmap(), 50, 50, getResources().getDimensionPixelSize(R.dimen.size_100), getResources().getDimensionPixelSize(R.dimen.size_50));
-            img2.setImageBitmap(bitmap);
+            img1_2.setImageBitmap(bitmap);
 
         }
     }
@@ -113,22 +113,22 @@ public class TestBitmapFragment extends Fragment {
             Matrix matrix = new Matrix();
             matrix.setScale(1, 2);
             Bitmap bitmap = Bitmap.createBitmap(((BitmapDrawable) img0.getDrawable()).getBitmap(), 50, 50, getResources().getDimensionPixelSize(R.dimen.size_100), getResources().getDimensionPixelSize(R.dimen.size_50), matrix, true);
-            img3.setImageBitmap(bitmap);
+            img1_3.setImageBitmap(bitmap);
 
         }
     }
 
-    private void img4() {
+    private void img1_4() {
         Bitmap bitmap = Bitmap.createBitmap(100, 200, Bitmap.Config.ARGB_8888);
-        img4.setImageBitmap(bitmap);
+        img1_4.setImageBitmap(bitmap);
     }
 
-    private void img5() {
+    private void img1_5() {
         if (img0.getDrawable() instanceof BitmapDrawable) {
             Matrix matrix = new Matrix();
             matrix.setScale(1, 2);
             Bitmap bitmap = Bitmap.createScaledBitmap(((BitmapDrawable) img0.getDrawable()).getBitmap(), 1, 1, true);
-            img5.setImageBitmap(bitmap);
+            img1_5.setImageBitmap(bitmap);
 
         }
     }

@@ -43,10 +43,10 @@
 
             <!-- Bitmap -->
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/img0"
@@ -56,35 +56,75 @@
                     android:src="@drawable/photo7" />
 
                 <ImageView
-                    android:id="@+id/img1"
+                    android:id="@+id/img1_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:scaleType="fitCenter" />
 
                 <ImageView
-                    android:id="@+id/img2"
+                    android:id="@+id/img1_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:scaleType="fitCenter" />
 
                 <ImageView
-                    android:id="@+id/img3"
+                    android:id="@+id/img1_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:scaleType="fitCenter" />
 
                 <ImageView
-                    android:id="@+id/img4"
+                    android:id="@+id/img1_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:scaleType="fitCenter" />
 
                 <ImageView
-                    android:id="@+id/img5"
+                    android:id="@+id/img1_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/img2_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/img2_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/img2_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/img2_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/img2_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
