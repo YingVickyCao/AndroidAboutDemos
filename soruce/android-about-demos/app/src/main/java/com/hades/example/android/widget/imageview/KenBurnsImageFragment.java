@@ -20,7 +20,7 @@ import java.util.Random;
 public class KenBurnsImageFragment extends BaseFragment implements Animator.AnimatorListener {
 
     private static final int ANIM_COUNT = 4;
-    private static final int[] PHOTOS = new int[]{R.drawable.photo1, R.drawable.photo2, R.drawable.photo3, R.drawable.photo4, R.drawable.photo5, R.drawable.photo6};
+    private static final int[] PHOTOS = new int[]{R.drawable.photo1, R.drawable.photo2, R.drawable.photo3, R.drawable.photo4, R.drawable.photo5, R.drawable.photo7};
     private FrameLayout mContainer;
     private ImageView mView;
     private Random mRandom = new Random();
