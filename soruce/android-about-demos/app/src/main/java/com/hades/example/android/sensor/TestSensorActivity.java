@@ -147,10 +147,9 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 //        registerListener_TYPE_MAGNETIC_FIELD();   // 磁场传感器
 //        registerListener_TYPE_GRAVITY();          // 重力传感器
 //        registerListener_TYPE_LINEAR_ACCELERATION(); // 线性加速度传感器
-//        registerListener_TYPE_AMBIENT_TEMPERATURE();// 温度传感器
-        registerListener_TYPE_LIGHT();              // 光传感器
-//        // 为系统的压力传感器注册监听器
-//        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE), SensorManager.SENSOR_DELAY_GAME);
+        registerListener_TYPE_AMBIENT_TEMPERATURE();// 温度传感器
+//        registerListener_TYPE_LIGHT();            // 光传感器
+        registerListener_TYPE_PRESSURE();           // 压力传感器
     }
 
     private void registerListener_TYPE_ACCELEROMETER() {
@@ -228,6 +227,10 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         boolean supported = !mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+    private void registerListener_TYPE_PRESSURE() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
     @Override
     protected void onPause() {
         // 程序暂停时取消注册传感器监听器
@@ -286,7 +289,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
             // 温度传感器
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
             case Sensor.TYPE_TEMPERATURE:
-                onSensorChanged_TYPE_LIGHT(event);
+                onSensorChanged_TYPE_AMBIENT_TEMPERATURE(event);
                 break;
 
             // 光传感器
@@ -296,10 +299,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
             // 压力传感器
             case Sensor.TYPE_PRESSURE:
-                sb = new StringBuilder();
-                sb.append("当前压力为：");
-                sb.append(values[0]);
-                etPressure.setText(sb.toString());
+                onSensorChanged_TYPE_PRESSURE(event);
                 break;
         }
     }
@@ -374,6 +374,12 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         float[] values = event.values;
         String sb = "当前光的强度为：" + values[0];
         etLight.setText(sb);
+    }
+
+    private void onSensorChanged_TYPE_PRESSURE(SensorEvent event) {
+        float[] values = event.values;
+        String sb = "当前压力为：" + values[0];
+        etPressure.setText(sb);
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
