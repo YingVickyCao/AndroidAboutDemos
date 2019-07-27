@@ -22,7 +22,7 @@ public class TestActionBarActivity extends NoNeedPermissionActivity {
         setContentView(R.layout.other_ui_action_bar);
 
         textView = findViewById(R.id.changedTextViewByMenu);
-        findViewById(R.id.show).setOnClickListener(v -> showActionBar());
+        findViewById(R.id.gradienterView).setOnClickListener(v -> showActionBar());
         findViewById(R.id.hide).setOnClickListener(v -> hideActionBar());
         enableAppIconClick();
     }

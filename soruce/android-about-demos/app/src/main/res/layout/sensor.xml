@@ -42,6 +42,12 @@
             android:scaleType="fitCenter"
             android:src="@drawable/compress" />
 
+        <com.hades.example.android.sensor.GradienterView
+            android:id="@+id/gradienterView"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
         <TextView
             style="@style/tv"
             android:text="@string/gyro" />

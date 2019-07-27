@@ -19,7 +19,7 @@
         android:text="B" />
 
     <TextView
-        android:id="@+id/show"
+        android:id="@+id/gradienterView"
         style="@style/tv"
         android:layout_alignParentBottom="true"
         android:gravity="start" />

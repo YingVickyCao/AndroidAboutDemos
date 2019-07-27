@@ -20,7 +20,7 @@ public class SecondActivity extends Activity {
         if (null == comp) {
             return;
         }
-        TextView show = findViewById(R.id.show);
+        TextView show = findViewById(R.id.gradienterView);
         String str = "PackageName：" + comp.getPackageName() + "\nClassName：" + comp.getClassName();
         Log.d(TAG, "onCreate: " + str);
         show.setText(str);

@@ -9,7 +9,7 @@
     android:showDividers="beginning">
 
     <ListView
-        android:id="@+id/show"
+        android:id="@+id/gradienterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

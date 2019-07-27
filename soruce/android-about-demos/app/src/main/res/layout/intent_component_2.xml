@@ -16,7 +16,7 @@
         android:textColor="@android:color/holo_blue_bright" />
 
     <TextView
-        android:id="@+id/show"
+        android:id="@+id/gradienterView"
         style="@style/tv"
         android:layout_alignParentBottom="true"
         android:gravity="start" />

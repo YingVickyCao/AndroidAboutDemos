@@ -25,7 +25,7 @@ public class C extends AppCompatActivity {
         TextView page = findViewById(R.id.page);
         page.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));
 
-        TextView show = findViewById(R.id.show);
+        TextView show = findViewById(R.id.gradienterView);
         Intent intent = getIntent();
         String str = "action：" + intent.getAction() + "\nCategories：" + intent.getCategories();
         Log.d(TAG, "onCreate: " + str);

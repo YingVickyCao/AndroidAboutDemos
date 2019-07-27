@@ -25,7 +25,7 @@ public class B extends AppCompatActivity {
 
         setContentView(R.layout.intent_filter_action_and_category_b);
 
-        TextView show = findViewById(R.id.show);
+        TextView show = findViewById(R.id.gradienterView);
         Intent intent = getIntent();
         String str = "action：" + intent.getAction() + "\nCategories：" + intent.getCategories();
         Log.d(TAG, "onCreate: " + str);

@@ -34,7 +34,9 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     TextView mOrientationTv2;
     // handle Sensor.TYPE_ORIENTATION depressed,end
     ImageView mCompressImage;
-    private float mCurrentDegree = 0;
+    private float mCurrentCompressDegree = 0;
+    GradienterView mGradienterView;
+    int GRADIENTER_VIEW_MAX_ANGLE = 30;
 
     TextView etGyro;
     TextView etMagnetic;
@@ -56,6 +58,8 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         mOrientationTv = findViewById(R.id.etOrientation);
         mOrientationTv = findViewById(R.id.etOrientation2);
         mCompressImage = findViewById(R.id.compressImage);
+        // 获取水平仪的主组件
+        mGradienterView = findViewById(R.id.gradienterView);
 
         etGyro = findViewById(R.id.etGyro);
         etMagnetic = findViewById(R.id.etMagnetic);
@@ -353,6 +357,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
                 "\n绕Y轴转过的角度：" + values[2];
         tv.setText(sb);
         updateCompress(values);
+        updateGradienter(values);
     }
 
     private void updateCompress(float[] values) {
@@ -360,20 +365,81 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         if (!isNeedUpdate(degree)) {
             return;
         }
-        RotateAnimation ra = new RotateAnimation(mCurrentDegree, -degree, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        RotateAnimation ra = new RotateAnimation(mCurrentCompressDegree, -degree, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         ra.setDuration(1000);
         mCompressImage.startAnimation(ra);
-        mCurrentDegree = -degree;
+        mCurrentCompressDegree = -degree;
+    }
+
+    private void updateGradienter(float[] values) {
+        // 获取与Y轴的夹角
+        float yAngle = values[1];
+        // 获取与Z轴的夹角
+        float zAngle = values[2];
+        // 气泡位于中间时（水平仪完全水平），气泡的X、Y坐标
+        int x = (mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2;
+        int y = (mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight()) / 2;
+
+        // 如果与Z轴的倾斜角还在最大角度之内
+        if (Math.abs(zAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
+            // 根据与Z轴的倾斜角度计算X坐标的变化值（倾斜角度越大，X坐标变化越大）
+            int deltaX = (int) ((mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2 * zAngle / GRADIENTER_VIEW_MAX_ANGLE);
+            x += deltaX;
+        }
+        // 如果与Z轴的倾斜角已经大于MAX_ANGLE，气泡应到最左边
+        else if (zAngle > GRADIENTER_VIEW_MAX_ANGLE) {
+            x = 0;
+        }
+        // 如果与Z轴的倾斜角已经小于负的MAX_ANGLE，气泡应到最右边
+        else {
+            x = mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth();
+        }
+
+        // 如果与Y轴的倾斜角还在最大角度之内
+        if (Math.abs(yAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
+            // 根据与Y轴的倾斜角度计算Y坐标的变化值（倾斜角度越大，Y坐标变化越大）
+            int deltaY = (int) ((mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight()) / 2 * yAngle / GRADIENTER_VIEW_MAX_ANGLE);
+            y += deltaY;
+        }
+        // 如果与Y轴的倾斜角已经大于MAX_ANGLE，气泡应到最下边
+        else if (yAngle > GRADIENTER_VIEW_MAX_ANGLE) {
+            y = mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight();
+        }
+        // 如果与Y轴的倾斜角已经小于负的MAX_ANGLE，气泡应到最右边
+        else {
+            y = 0;
+        }
+        // 如果计算出来的X、Y坐标还位于水平仪的仪表盘内，更新水平仪的气泡坐标
+        if (isContain(x, y)) {
+            mGradienterView.bubbleX = x;
+            mGradienterView.bubbleY = y;
+        }
+        // 通知系统重回MyView组件
+        mGradienterView.postInvalidate();
+    }
+
+    // 计算x、y点的气泡是否处于水平仪的仪表盘内
+    private boolean isContain(int x, int y) {
+        // 计算气泡的圆心坐标X、Y
+        int bubbleCx = x + mGradienterView.bubble.getWidth() / 2;
+        int bubbleCy = y + mGradienterView.bubble.getWidth() / 2;
+        // 计算水平仪仪表盘的圆心坐标X、Y
+        int backCx = mGradienterView.back.getWidth() / 2;
+        int backCy = mGradienterView.back.getWidth() / 2;
+        // 计算气泡的圆心与水平仪仪表盘的圆心之间的距离
+        double distance = Math.sqrt((bubbleCx - backCx) * (bubbleCx - backCx) + (bubbleCy - backCy) * (bubbleCy - backCy));
+        // 若两个圆心的距离小于它们的半径差，即可认为处于该点的气泡依然位于仪表盘内
+        return distance < (mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2;
     }
 
     private boolean isNeedUpdate(int degree) {
-        if (-mCurrentDegree == degree) {
+        if (-mCurrentCompressDegree == degree) {
             return false;
         }
         if (degree % 10 == 0) {
             return true;
         }
-        return Math.abs(-mCurrentDegree - degree) >= 10;
+        return Math.abs(-mCurrentCompressDegree - degree) >= 10;
     }
 
     private void onSensorChanged_TYPE_GYROSCOPE(SensorEvent event) {

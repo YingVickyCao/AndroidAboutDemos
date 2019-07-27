@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/show"
+            android:id="@+id/gradienterView"
             style="@style/btn.small"
             android:text="@string/show"
             app:layout_constraintBottom_toBottomOf="parent"
