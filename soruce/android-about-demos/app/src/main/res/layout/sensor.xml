@@ -31,6 +31,10 @@
             style="@style/tv" />
 
         <TextView
+            android:id="@+id/etOrientation2"
+            style="@style/tv" />
+
+        <TextView
             style="@style/tv"
             android:text="@string/gyro" />
 

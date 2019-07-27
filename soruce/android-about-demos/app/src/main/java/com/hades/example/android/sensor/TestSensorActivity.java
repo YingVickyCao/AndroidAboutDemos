@@ -16,8 +16,17 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
     // 定义Sensor管理器
     private SensorManager mSensorManager;
-    TextView accelerometer;
-    TextView etOrientation;
+
+    TextView mAccelerometerTv;
+    TextView mOrientationTv;
+    // handle Sensor.TYPE_ORIENTATION depressed,START
+    float[] r = new float[9];
+    float[] I = null;
+    float[] gravity = new float[3];
+    float[] geomagnetic = new float[3];
+    float[] values = new float[3];
+    // handle Sensor.TYPE_ORIENTATION depressed,end
+    TextView mOrientationTv2;
     TextView etGyro;
     TextView etMagnetic;
     TextView etGravity;
@@ -30,9 +39,11 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sensor);
+
         // 获取界面上的TextView组件
-        accelerometer = findViewById(R.id.accelerometer);
-        etOrientation = findViewById(R.id.etOrientation);
+        mAccelerometerTv = findViewById(R.id.accelerometer);
+        mOrientationTv = findViewById(R.id.etOrientation);
+        mOrientationTv = findViewById(R.id.etOrientation2);
         etGyro = findViewById(R.id.etGyro);
         etMagnetic = findViewById(R.id.etMagnetic);
         etGravity = findViewById(R.id.etGravity);
@@ -43,13 +54,16 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
         // 获取传感器管理服务
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);  // ①
+
+        calculateOrientation();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerListener_TYPE_ACCELEROMETER();
-//        registerListener_TYPE_ORIENTATION();
+//        registerListener_TYPE_ACCELEROMETER();
+        registerListener_TYPE_ORIENTATION();
+        registerListener_TYPE_ORIENTATION2();
 //        // 为系统的陀螺仪传感器注册监听器
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_GAME);
 //        // 为系统的磁场传感器注册监听器
@@ -67,7 +81,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     }
 
     private void registerListener_TYPE_ACCELEROMETER() {
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_UI); // ②
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL); // ②
     }
 
     private void registerListener_TYPE_ORIENTATION() {
@@ -75,12 +89,43 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
-    @Override
-    protected void onStop() {
-        // 程序退出时取消注册传感器监听器
-        mSensorManager.unregisterListener(this);
-        super.onStop();
+    // handle Sensor.TYPE_ORIENTATION depressed,START
+    private void registerListener_TYPE_ORIENTATION2() {
+        // 初始化加速度传感器
+        mSensorManager.registerListener(new MySensorEventListener(), mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+
+        // 初始化地磁场传感器
+        mSensorManager.registerListener(new MySensorEventListener(), mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
     }
+    class MySensorEventListener implements SensorEventListener {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                gravity = event.values;
+            }
+            if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                geomagnetic = event.values;
+            }
+            calculateOrientation();
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            // TODO Auto-generated method stub
+        }
+    }
+
+    // 计算方向
+    private void calculateOrientation() {
+        SensorManager.getRotationMatrix(r, I, gravity, geomagnetic);
+        SensorManager.getOrientation(r, values);
+        values[0] = (float) Math.toDegrees(values[0]);
+        values[1] = (float) Math.toDegrees(values[1]);
+        values[2] = (float) Math.toDegrees(values[2]);
+        values[2] = (-values[2]);
+        onSensorChanged4TYPE_ORIENTATION(values, mOrientationTv2);
+    }
+    // handle Sensor.TYPE_ORIENTATION depressed,END
 
     @Override
     protected void onPause() {
@@ -196,13 +241,17 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         sb.append(values[2]);
         sb.append(")");
         Log.d(TAG, "onSensorChanged_TYPE_ACCELEROMETER: " + sb.toString());
-        accelerometer.setText(sb.toString());
+        mAccelerometerTv.setText(sb.toString());
     }
 
     private void onSensorChanged4TYPE_ORIENTATION(SensorEvent event) {
         float[] values = event.values;
+        onSensorChanged4TYPE_ORIENTATION(values, mOrientationTv);
+    }
+
+    private void onSensorChanged4TYPE_ORIENTATION(float[] values, TextView tv) {
         // 获取触发event的传感器类型
-        StringBuilder sb = null;
+        StringBuilder sb;
         sb = new StringBuilder();
         sb.append("绕Z轴转过的角度：");
         sb.append(values[0]);
@@ -210,7 +259,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         sb.append(values[1]);
         sb.append("\n绕Y轴转过的角度：");
         sb.append(values[2]);
-        etOrientation.setText(sb.toString());
+        tv.setText(sb.toString());
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
