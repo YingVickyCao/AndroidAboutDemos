@@ -333,7 +333,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     public void onSensorChanged_TYPE_ACCELEROMETER(SensorEvent event) {
         float[] values = event.values;
         StringBuilder sb = new StringBuilder();
-        sb.append("(X,Y,Z)方向上的加速度=");
+        sb.append("(Z,X,Y)方向上的加速度=");
         sb.append("(");
         sb.append(values[0]);
         sb.append(",");
@@ -372,22 +372,20 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     }
 
     private void updateGradienter(float[] values) {
-        // 获取与Y轴的夹角
-        float yAngle = values[1];
-        // 获取与Z轴的夹角
-        float zAngle = values[2];
+        float XAngle = values[1];
+        float YAngle = values[2];
         // 气泡位于中间时（水平仪完全水平），气泡的X、Y坐标
         int x = (mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2;
         int y = (mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight()) / 2;
 
         // 如果与Z轴的倾斜角还在最大角度之内
-        if (Math.abs(zAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
-            // 根据与Z轴的倾斜角度计算X坐标的变化值（倾斜角度越大，X坐标变化越大）
-            int deltaX = (int) ((mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2 * zAngle / GRADIENTER_VIEW_MAX_ANGLE);
+        if (Math.abs(YAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
+            // 根据与Z轴的倾斜角度计算X坐标的变化值（倾斜角度越大，X坐标变化越大）`
+            int deltaX = (int) ((mGradienterView.back.getWidth() - mGradienterView.bubble.getWidth()) / 2 * YAngle / GRADIENTER_VIEW_MAX_ANGLE);
             x += deltaX;
         }
         // 如果与Z轴的倾斜角已经大于MAX_ANGLE，气泡应到最左边
-        else if (zAngle > GRADIENTER_VIEW_MAX_ANGLE) {
+        else if (YAngle > GRADIENTER_VIEW_MAX_ANGLE) {
             x = 0;
         }
         // 如果与Z轴的倾斜角已经小于负的MAX_ANGLE，气泡应到最右边
@@ -396,13 +394,13 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         }
 
         // 如果与Y轴的倾斜角还在最大角度之内
-        if (Math.abs(yAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
+        if (Math.abs(XAngle) <= GRADIENTER_VIEW_MAX_ANGLE) {
             // 根据与Y轴的倾斜角度计算Y坐标的变化值（倾斜角度越大，Y坐标变化越大）
-            int deltaY = (int) ((mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight()) / 2 * yAngle / GRADIENTER_VIEW_MAX_ANGLE);
+            int deltaY = (int) ((mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight()) / 2 * XAngle / GRADIENTER_VIEW_MAX_ANGLE);
             y += deltaY;
         }
         // 如果与Y轴的倾斜角已经大于MAX_ANGLE，气泡应到最下边
-        else if (yAngle > GRADIENTER_VIEW_MAX_ANGLE) {
+        else if (XAngle > GRADIENTER_VIEW_MAX_ANGLE) {
             y = mGradienterView.back.getHeight() - mGradienterView.bubble.getHeight();
         }
         // 如果与Y轴的倾斜角已经小于负的MAX_ANGLE，气泡应到最右边
