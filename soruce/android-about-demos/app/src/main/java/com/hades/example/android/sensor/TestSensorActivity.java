@@ -129,11 +129,11 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     }
 
     private void checkIfHaveOneSensor() {
-        Sensor sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+        Sensor sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if (null == sensor) {
-            Log.d(TAG, "listAllSensor: " + "No have sensor TYPE_GRAVITY");
+            Log.d(TAG, "listAllSensor: " + "No have sensor TYPE_AMBIENT_TEMPERATURE");
         } else {
-            Log.d(TAG, "listAllSensor: " + "have sensor TYPE_GRAVITY");
+            Log.d(TAG, "listAllSensor: " + "have sensor TYPE_AMBIENT_TEMPERATURE");
         }
     }
 
