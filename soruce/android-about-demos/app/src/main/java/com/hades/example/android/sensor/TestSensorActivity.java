@@ -63,9 +63,8 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 //        registerListener_TYPE_ORIENTATION();      // 方位传感器
 //        registerListener_TYPE_ORIENTATION2();     // 方位传感器
 //        registerListener_TYPE_GYROSCOPE();        // 螺仪传感器
-        registerListener_TYPE_MAGNETIC_FIELD();     // 磁场传感器
-//        // 为系统的重力传感器注册监听器
-//        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY), SensorManager.SENSOR_DELAY_GAME);
+//        registerListener_TYPE_MAGNETIC_FIELD();   // 磁场传感器
+        registerListener_TYPE_GRAVITY();            // 重力传感器
 //        // 为系统的线性加速度传感器注册监听器
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_GAME);
 //        // 为系统的温度传感器注册监听器
@@ -132,6 +131,11 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_GAME);
     }
 
+
+    private void registerListener_TYPE_GRAVITY() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY), SensorManager.SENSOR_DELAY_GAME);
+    }
+
     @Override
     protected void onPause() {
         // 程序暂停时取消注册传感器监听器
@@ -178,15 +182,9 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
             // 重力传感器
             case Sensor.TYPE_GRAVITY:
-                sb = new StringBuilder();
-                sb.append("X轴方向上的重力：");
-                sb.append(values[0]);
-                sb.append("\nY轴方向上的重力：");
-                sb.append(values[1]);
-                sb.append("\nZ方向上的重力：");
-                sb.append(values[2]);
-                etGravity.setText(sb.toString());
+                onSensorChanged_TYPE_GRAVITY(event);
                 break;
+
             // 线性加速度传感器
             case Sensor.TYPE_LINEAR_ACCELERATION:
                 sb = new StringBuilder();
@@ -279,6 +277,17 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         etMagnetic.setText(sb.toString());
     }
 
+    private void onSensorChanged_TYPE_GRAVITY(SensorEvent event) {
+        float[] values = event.values;
+        StringBuilder sb = new StringBuilder();
+        sb.append("X轴方向上的重力：");
+        sb.append(values[0]);
+        sb.append("\nY轴方向上的重力：");
+        sb.append(values[1]);
+        sb.append("\nZ方向上的重力：");
+        sb.append(values[2]);
+        etGravity.setText(sb.toString());
+    }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
         Log.d(TAG, "onAccuracyChanged: accuracy=" + accuracy);
