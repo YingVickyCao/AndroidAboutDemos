@@ -64,9 +64,9 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 //        registerListener_TYPE_ORIENTATION2();     // 方位传感器
 //        registerListener_TYPE_GYROSCOPE();        // 螺仪传感器
 //        registerListener_TYPE_MAGNETIC_FIELD();   // 磁场传感器
-        registerListener_TYPE_GRAVITY();            // 重力传感器
-//        // 为系统的线性加速度传感器注册监听器
-//        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_GAME);
+//        registerListener_TYPE_GRAVITY();            // 重力传感器
+        registerListener_TYPE_LINEAR_ACCELERATION(); // 为系统的线性加速度传感器注册监听器
+//        //
 //        // 为系统的温度传感器注册监听器
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE), SensorManager.SENSOR_DELAY_GAME);
 //        // 为系统的光传感器注册监听器
@@ -128,12 +128,16 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     }
 
     private void registerListener_TYPE_MAGNETIC_FIELD() {
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
 
     private void registerListener_TYPE_GRAVITY() {
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY), SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    private void registerListener_TYPE_LINEAR_ACCELERATION() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -187,15 +191,9 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
             // 线性加速度传感器
             case Sensor.TYPE_LINEAR_ACCELERATION:
-                sb = new StringBuilder();
-                sb.append("X轴方向上的线性加速度：");
-                sb.append(values[0]);
-                sb.append("\nY轴方向上的线性加速度：");
-                sb.append(values[1]);
-                sb.append("\nZ轴方向上的线性加速度：");
-                sb.append(values[2]);
-                etLinearAcc.setText(sb.toString());
+                onSensorChanged_TYPE_LINEAR_ACCELERATION(event);
                 break;
+
             // 温度传感器
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
                 sb = new StringBuilder();
@@ -242,51 +240,57 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
     private void onSensorChanged_TYPE_ORIENTATION(float[] values, TextView tv) {
         // 获取触发event的传感器类型
-        StringBuilder sb = new StringBuilder();
-        sb.append("绕Z轴转过的角度：");
-        sb.append(values[0]);
-        sb.append("\n绕X轴转过的角度：");
-        sb.append(values[1]);
-        sb.append("\n绕Y轴转过的角度：");
-        sb.append(values[2]);
-        tv.setText(sb.toString());
+        String sb = "绕Z轴转过的角度：" +
+                values[0] +
+                "\n绕X轴转过的角度：" +
+                values[1] +
+                "\n绕Y轴转过的角度：" +
+                values[2];
+        tv.setText(sb);
     }
 
     private void onSensorChanged_TYPE_GYROSCOPE(SensorEvent event) {
         float[] values = event.values;
-        StringBuilder sb = new StringBuilder();
-        sb.append("绕X轴旋转的角速度：");
-        sb.append(values[0]);
-        sb.append("\n绕Y轴旋转的角速度：");
-        sb.append(values[1]);
-        sb.append("\n绕Z轴旋转的角速度：");
-        sb.append(values[2]);
-        etGyro.setText(sb.toString());
+        String sb = "绕X轴旋转的角速度：" +
+                values[0] +
+                "\n绕Y轴旋转的角速度：" +
+                values[1] +
+                "\n绕Z轴旋转的角速度：" +
+                values[2];
+        etGyro.setText(sb);
     }
 
     private void onSensorChanged_TYPE_MAGNETIC_FIELD(SensorEvent event) {
         float[] values = event.values;
-        StringBuilder sb;
-        sb = new StringBuilder();
-        sb.append("X轴方向上的磁场强度：");
-        sb.append(values[0]);
-        sb.append("\nY轴方向上的磁场强度：");
-        sb.append(values[1]);
-        sb.append("\nZ轴方向上的磁场强度：");
-        sb.append(values[2]);
-        etMagnetic.setText(sb.toString());
+        String sb = "X轴方向上的磁场强度：" +
+                values[0] +
+                "\nY轴方向上的磁场强度：" +
+                values[1] +
+                "\nZ轴方向上的磁场强度：" +
+                values[2];
+        etMagnetic.setText(sb);
     }
 
     private void onSensorChanged_TYPE_GRAVITY(SensorEvent event) {
         float[] values = event.values;
-        StringBuilder sb = new StringBuilder();
-        sb.append("X轴方向上的重力：");
-        sb.append(values[0]);
-        sb.append("\nY轴方向上的重力：");
-        sb.append(values[1]);
-        sb.append("\nZ方向上的重力：");
-        sb.append(values[2]);
-        etGravity.setText(sb.toString());
+        String sb = "X轴方向上的重力：" +
+                values[0] +
+                "\nY轴方向上的重力：" +
+                values[1] +
+                "\nZ方向上的重力：" +
+                values[2];
+        etGravity.setText(sb);
+    }
+
+    private void onSensorChanged_TYPE_LINEAR_ACCELERATION(SensorEvent event) {
+        float[] values = event.values;
+        String sb = "X轴方向上的线性加速度：" +
+                values[0] +
+                "\nY轴方向上的线性加速度：" +
+                values[1] +
+                "\nZ轴方向上的线性加速度：" +
+                values[2];
+        etLinearAcc.setText(sb);
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
