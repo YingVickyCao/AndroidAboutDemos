@@ -36,6 +36,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     TextView etTemerature;
     TextView etLight;
     TextView etPressure;
+    TextView etHearRate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         etTemerature = findViewById(R.id.etTemerature);
         etLight = findViewById(R.id.etLight);
         etPressure = findViewById(R.id.etPressure);
+        etHearRate = findViewById(R.id.etHearRate);
 
         // 获取传感器管理服务
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -150,6 +152,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         registerListener_TYPE_AMBIENT_TEMPERATURE();// 温度传感器
 //        registerListener_TYPE_LIGHT();            // 光传感器
         registerListener_TYPE_PRESSURE();           // 压力传感器
+        registerListener_TYPE_HEART_RATE();    // 心率传感器
     }
 
     private void registerListener_TYPE_ACCELEROMETER() {
@@ -231,6 +234,10 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+    private void registerListener_TYPE_HEART_RATE() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
     @Override
     protected void onPause() {
         // 程序暂停时取消注册传感器监听器
@@ -301,7 +308,13 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
             case Sensor.TYPE_PRESSURE:
                 onSensorChanged_TYPE_PRESSURE(event);
                 break;
+
+            // 心率传感器
+            case Sensor.TYPE_HEART_RATE:
+                onSensorChanged_TYPE_HEART_RATE(event);
+                break;
         }
+
     }
 
     public void onSensorChanged_TYPE_ACCELEROMETER(SensorEvent event) {
@@ -380,6 +393,18 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         float[] values = event.values;
         String sb = "当前压力为：" + values[0];
         etPressure.setText(sb);
+    }
+
+    private boolean checkIfHeartRateValueIsValuable(int accuracy) {
+        return accuracy != SensorManager.SENSOR_STATUS_UNRELIABLE && accuracy != SensorManager.SENSOR_STATUS_NO_CONTACT;
+    }
+
+    private void onSensorChanged_TYPE_HEART_RATE(SensorEvent event) {
+        if (!checkIfHeartRateValueIsValuable(event.accuracy)) {
+            return;
+        }
+        String sb = "当前心率为：" + values[0];
+        etHearRate.setText(sb);
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {

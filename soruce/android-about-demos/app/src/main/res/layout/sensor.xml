@@ -89,5 +89,13 @@
         <TextView
             android:id="@+id/etPressure"
             style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/hear_rate" />
+
+        <TextView
+            android:id="@+id/etHearRate"
+            style="@style/tv" />
     </LinearLayout>
 </ScrollView>

@@ -396,12 +396,13 @@
     <string name="show_as_a_dialog">Show as a dialog</string>
     <string name="show_as_an_embedded_fragment">Show as an embedded fragment</string>
     <string name="request_view_size">Request view size</string>
-    <string name="orientation">方向传感器返回的值</string>
-    <string name="gyro">陀螺仪传感器返回的值</string>
-    <string name="magnetic">磁场传感器返回的值</string>
-    <string name="gravity">重力传感器返回的值</string>
-    <string name="linearAcc">线性加速度传感器返回的值</string>
-    <string name="temperature">温度传感器返回的值</string>
-    <string name="light">光传感器返回的值</string>
-    <string name="pressure">压力传感器返回的值</string>
+    <string name="orientation">方向传感器</string>
+    <string name="gyro">陀螺仪传感器</string>
+    <string name="magnetic">磁场传感器</string>
+    <string name="gravity">重力传感器</string>
+    <string name="linearAcc">线性加速度传感器</string>
+    <string name="temperature">温度传感器</string>
+    <string name="light">光传感器</string>
+    <string name="pressure">压力传感器</string>
+    <string name="hear_rate">心率传感器</string>
 </resources>
