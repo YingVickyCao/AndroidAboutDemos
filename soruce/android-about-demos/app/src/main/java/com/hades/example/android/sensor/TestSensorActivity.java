@@ -54,18 +54,15 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
         // 获取传感器管理服务
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);  // ①
-
-        calculateOrientation();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        registerListener_TYPE_ACCELEROMETER();
-        registerListener_TYPE_ORIENTATION();
-        registerListener_TYPE_ORIENTATION2();
-//        // 为系统的陀螺仪传感器注册监听器
-//        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_GAME);
+//        registerListener_TYPE_ACCELEROMETER();    // 加速度传感器
+//        registerListener_TYPE_ORIENTATION();      // 方位传感器
+//        registerListener_TYPE_ORIENTATION2();     // 方位传感器
+        registerListener_TYPE_GYROSCOPE();          // 螺仪传感器
 //        // 为系统的磁场传感器注册监听器
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_GAME);
 //        // 为系统的重力传感器注册监听器
@@ -97,6 +94,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         // 初始化地磁场传感器
         mSensorManager.registerListener(new MySensorEventListener(), mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
     }
+
     class MySensorEventListener implements SensorEventListener {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -123,9 +121,13 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         values[1] = (float) Math.toDegrees(values[1]);
         values[2] = (float) Math.toDegrees(values[2]);
         values[2] = (-values[2]);
-        onSensorChanged4TYPE_ORIENTATION(values, mOrientationTv2);
+        onSensorChanged_TYPE_ORIENTATION(values, mOrientationTv2);
     }
     // handle Sensor.TYPE_ORIENTATION depressed,END
+
+    private void registerListener_TYPE_GYROSCOPE() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
+    }
 
     @Override
     protected void onPause() {
@@ -144,10 +146,10 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         }
     }
 
+    // 获取触发event的传感器类型
     @Override
     public void onSensorChanged(SensorEvent event) {
         float[] values = event.values;
-        // 获取触发event的传感器类型
         int sensorType = event.sensor.getType();
         StringBuilder sb = null;
 
@@ -158,20 +160,14 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
                 // 方向传感器
             case Sensor.TYPE_ORIENTATION:
-                onSensorChanged4TYPE_ORIENTATION(event);
+                onSensorChanged_TYPE_ORIENTATION(event);
                 break;
 
             // 陀螺仪传感器
             case Sensor.TYPE_GYROSCOPE:
-                sb = new StringBuilder();
-                sb.append("绕X轴旋转的角速度：");
-                sb.append(values[0]);
-                sb.append("\n绕Y轴旋转的角速度：");
-                sb.append(values[1]);
-                sb.append("\n绕Z轴旋转的角速度：");
-                sb.append(values[2]);
-                etGyro.setText(sb.toString());
+                onSensorChanged_TYPE_GYROSCOPE(event);
                 break;
+
             // 磁场传感器
             case Sensor.TYPE_MAGNETIC_FIELD:
                 sb = new StringBuilder();
@@ -244,12 +240,12 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         mAccelerometerTv.setText(sb.toString());
     }
 
-    private void onSensorChanged4TYPE_ORIENTATION(SensorEvent event) {
+    private void onSensorChanged_TYPE_ORIENTATION(SensorEvent event) {
         float[] values = event.values;
-        onSensorChanged4TYPE_ORIENTATION(values, mOrientationTv);
+        onSensorChanged_TYPE_ORIENTATION(values, mOrientationTv);
     }
 
-    private void onSensorChanged4TYPE_ORIENTATION(float[] values, TextView tv) {
+    private void onSensorChanged_TYPE_ORIENTATION(float[] values, TextView tv) {
         // 获取触发event的传感器类型
         StringBuilder sb;
         sb = new StringBuilder();
@@ -260,6 +256,19 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         sb.append("\n绕Y轴转过的角度：");
         sb.append(values[2]);
         tv.setText(sb.toString());
+    }
+
+    private void onSensorChanged_TYPE_GYROSCOPE(SensorEvent event) {
+        float[] values = event.values;
+        StringBuilder sb;
+        sb = new StringBuilder();
+        sb.append("绕X轴旋转的角速度：");
+        sb.append(values[0]);
+        sb.append("\n绕Y轴旋转的角速度：");
+        sb.append(values[1]);
+        sb.append("\n绕Z轴旋转的角速度：");
+        sb.append(values[2]);
+        etGyro.setText(sb.toString());
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
