@@ -145,11 +145,10 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 //        registerListener_TYPE_ORIENTATION_4_depressed();     // 方位传感器
 //        registerListener_TYPE_GYROSCOPE();        // 螺仪传感器
 //        registerListener_TYPE_MAGNETIC_FIELD();   // 磁场传感器
-//        registerListener_TYPE_GRAVITY();           // 重力传感器
+//        registerListener_TYPE_GRAVITY();          // 重力传感器
 //        registerListener_TYPE_LINEAR_ACCELERATION(); // 线性加速度传感器
-        registerListener_TYPE_AMBIENT_TEMPERATURE();    // 温度传感器
-//        // 为系统的光传感器注册监听器
-//        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_GAME);
+//        registerListener_TYPE_AMBIENT_TEMPERATURE();// 温度传感器
+        registerListener_TYPE_LIGHT();              // 光传感器
 //        // 为系统的压力传感器注册监听器
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE), SensorManager.SENSOR_DELAY_GAME);
     }
@@ -221,8 +220,12 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
     private void registerListener_TYPE_AMBIENT_TEMPERATURE() {
 //        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE), SensorManager.SENSOR_DELAY_GAME);
-        boolean supported = !mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_TEMPERATURE), SensorManager.SENSOR_DELAY_GAME);
+        boolean supported = !mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_TEMPERATURE), SensorManager.SENSOR_DELAY_NORMAL);
         Log.d(TAG, "registerListener_TYPE_AMBIENT_TEMPERATURE: " + (supported ? "" : "Not") + "supported and successfully enabled");
+    }
+
+    private void registerListener_TYPE_LIGHT() {
+        boolean supported = !mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -283,16 +286,14 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
             // 温度传感器
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
             case Sensor.TYPE_TEMPERATURE:
-                onSensorChanged_TYPE_AMBIENT_TEMPERATURE(event);
+                onSensorChanged_TYPE_LIGHT(event);
                 break;
 
             // 光传感器
             case Sensor.TYPE_LIGHT:
-                sb = new StringBuilder();
-                sb.append("当前光的强度为：");
-                sb.append(values[0]);
-                etLight.setText(sb.toString());
+                onSensorChanged_TYPE_LIGHT(event);
                 break;
+
             // 压力传感器
             case Sensor.TYPE_PRESSURE:
                 sb = new StringBuilder();
@@ -367,6 +368,12 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         float[] values = event.values;
         String sb = "当前温度为：" + values[0];
         etTemerature.setText(sb);
+    }
+
+    private void onSensorChanged_TYPE_LIGHT(SensorEvent event) {
+        float[] values = event.values;
+        String sb = "当前光的强度为：" + values[0];
+        etLight.setText(sb);
     }
 
     public void onAccuracyChanged4Accelerometer(Sensor sensor, int accuracy) {
