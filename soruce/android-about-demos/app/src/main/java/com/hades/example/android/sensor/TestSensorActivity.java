@@ -7,6 +7,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
@@ -20,15 +23,19 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     private SensorManager mSensorManager;
 
     TextView mAccelerometerTv;
+
     TextView mOrientationTv;
     // handle Sensor.TYPE_ORIENTATION depressed,START
-    float[] r = new float[9];
-    float[] I = null;
-    float[] gravity = new float[3];
-    float[] geomagnetic = new float[3];
-    float[] values = new float[3];
-    // handle Sensor.TYPE_ORIENTATION depressed,end
+    float[] mR = new float[9];
+    float[] mI = null;
+    float[] mGravity = new float[3];
+    float[] mGeomagnetic = new float[3];
+    float[] mValues = new float[3];
     TextView mOrientationTv2;
+    // handle Sensor.TYPE_ORIENTATION depressed,end
+    ImageView mCompressImage;
+    private float mCurrentDegree = 0;
+
     TextView etGyro;
     TextView etMagnetic;
     TextView etGravity;
@@ -45,8 +52,11 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
         // 获取界面上的TextView组件
         mAccelerometerTv = findViewById(R.id.accelerometer);
+
         mOrientationTv = findViewById(R.id.etOrientation);
         mOrientationTv = findViewById(R.id.etOrientation2);
+        mCompressImage = findViewById(R.id.compressImage);
+
         etGyro = findViewById(R.id.etGyro);
         etMagnetic = findViewById(R.id.etMagnetic);
         etGravity = findViewById(R.id.etGravity);
@@ -77,7 +87,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
      * {Sensor name="TMD4910 Proximity Proximity Sensor Wakeup", vendor="TMD", version=384, type=65592, maxRange=9.0, resolution=9.0, power=0.1, minDelay=0}
      * {Sensor name="Game Rotation Vector  Non-wakeup", vendor="qualcomm", version=1, type=15, maxRange=1.0, resolution=0.01, power=0.515, minDelay=5000}
      * {Sensor name="LSM6DSO Accelerometer-Uncalibrated", vendor="STMicro", version=15932, type=35, maxRange=78.4532, resolution=0.0023928226, power=0.17, minDelay=2404}
-     * {Sensor name="gravity  Non-wakeup", vendor="qualcomm", version=1, type=9, maxRange=156.99008, resolution=0.1, power=0.515, minDelay=5000}
+     * {Sensor name="mGravity  Non-wakeup", vendor="qualcomm", version=1, type=9, maxRange=156.99008, resolution=0.1, power=0.515, minDelay=5000}
      * {Sensor name="Pocket mode  Wakeup", vendor="Samsung", version=1, type=65605, maxRange=1.0, resolution=0.1, power=0.001, minDelay=-1}
      * {Sensor name="smd  Wakeup", vendor="Samsung", version=1, type=17, maxRange=1.0, resolution=0.1, power=0.001, minDelay=-1}
      * {Sensor name="Proximity strm", vendor="TMD", version=384, type=65582, maxRange=1.0, resolution=1.0, power=0.1, minDelay=50000}
@@ -143,7 +153,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     protected void onResume() {
         super.onResume();
 //        registerListener_TYPE_ACCELEROMETER();    // 加速度传感器
-//        registerListener_TYPE_ORIENTATION();      // 方位传感器
+        registerListener_TYPE_ORIENTATION();      // 方位传感器
 //        registerListener_TYPE_ORIENTATION_4_depressed();     // 方位传感器
 //        registerListener_TYPE_GYROSCOPE();        // 螺仪传感器
 //        registerListener_TYPE_MAGNETIC_FIELD();   // 磁场传感器
@@ -177,10 +187,10 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                gravity = event.values;
+                mGravity = event.values;
             }
             if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-                geomagnetic = event.values;
+                mGeomagnetic = event.values;
             }
             calculateOrientation();
         }
@@ -193,13 +203,13 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
 
     // 计算方向
     private void calculateOrientation() {
-        SensorManager.getRotationMatrix(r, I, gravity, geomagnetic);
-        SensorManager.getOrientation(r, values);
-        values[0] = (float) Math.toDegrees(values[0]);
-        values[1] = (float) Math.toDegrees(values[1]);
-        values[2] = (float) Math.toDegrees(values[2]);
-        values[2] = (-values[2]);
-        onSensorChanged_TYPE_ORIENTATION(values, mOrientationTv2);
+        SensorManager.getRotationMatrix(mR, mI, mGravity, mGeomagnetic);
+        SensorManager.getOrientation(mR, mValues);
+        mValues[0] = (float) Math.toDegrees(mValues[0]);
+        mValues[1] = (float) Math.toDegrees(mValues[1]);
+        mValues[2] = (float) Math.toDegrees(mValues[2]);
+        mValues[2] = (-mValues[2]);
+        onSensorChanged_TYPE_ORIENTATION(mValues, mOrientationTv2);
     }
     // handle Sensor.TYPE_ORIENTATION depressed,END
 
@@ -314,7 +324,6 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
                 onSensorChanged_TYPE_HEART_RATE(event);
                 break;
         }
-
     }
 
     public void onSensorChanged_TYPE_ACCELEROMETER(SensorEvent event) {
@@ -343,6 +352,28 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
                 "\n绕X轴转过的角度：" + values[1] +
                 "\n绕Y轴转过的角度：" + values[2];
         tv.setText(sb);
+        updateCompress(values);
+    }
+
+    private void updateCompress(float[] values) {
+        int degree = (int) values[0];
+        if (!isNeedUpdate(degree)) {
+            return;
+        }
+        RotateAnimation ra = new RotateAnimation(mCurrentDegree, -degree, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        ra.setDuration(1000);
+        mCompressImage.startAnimation(ra);
+        mCurrentDegree = -degree;
+    }
+
+    private boolean isNeedUpdate(int degree) {
+        if (-mCurrentDegree == degree) {
+            return false;
+        }
+        if (degree % 10 == 0) {
+            return true;
+        }
+        return Math.abs(-mCurrentDegree - degree) >= 10;
     }
 
     private void onSensorChanged_TYPE_GYROSCOPE(SensorEvent event) {
@@ -403,7 +434,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
         if (!checkIfHeartRateValueIsValuable(event.accuracy)) {
             return;
         }
-        String sb = "当前心率为：" + values[0];
+        String sb = "当前心率为：" + mValues[0];
         etHearRate.setText(sb);
     }
 
