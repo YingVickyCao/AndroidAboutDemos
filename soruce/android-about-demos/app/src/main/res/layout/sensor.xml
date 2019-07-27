@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/topic"
+            android:text="@string/page_sensor" />
+
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/accelerometer" />
+
+        <TextView
+            android:id="@+id/accelerometer"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/orientation" />
+
+        <TextView
+            android:id="@+id/etOrientation"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/gyro" />
+
+        <TextView
+            android:id="@+id/etGyro"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/magnetic" />
+
+        <TextView
+            android:id="@+id/etMagnetic"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/gravity" />
+
+        <TextView
+            android:id="@+id/etGravity"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/linearAcc" />
+
+        <TextView
+            android:id="@+id/etLinearAcc"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/temperature" />
+
+        <TextView
+            android:id="@+id/etTemerature"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/light" />
+
+        <TextView
+            android:id="@+id/etLight"
+            style="@style/tv" />
+
+        <TextView
+            style="@style/tv"
+            android:text="@string/pressure" />
+
+        <TextView
+            android:id="@+id/etPressure"
+            style="@style/tv" />
+    </LinearLayout>
+</ScrollView>

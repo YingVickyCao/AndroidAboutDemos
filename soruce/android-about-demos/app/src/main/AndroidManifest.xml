@@ -382,6 +382,8 @@
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
+
+        <activity android:name=".sensor.TestSensorActivity" />
     </application>
 
 </manifest>

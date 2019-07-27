@@ -54,7 +54,6 @@
     <string name="page_Frame_Animation">Frame animation</string>
     <string name="page_Property_Animation">Property animation</string>
 
-
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
     <string name="page_view_location">View location</string>
@@ -114,6 +113,9 @@
     <string name="page_Android_Event_handler">Android事件处理</string>
     <string name="page_Configuration">Configuration</string>
     <string name="page_msg_handler">Handler消息处理机制</string>
+
+    <string name="accelerometer">加速度传感器</string>
+    <string name="page_sensor">传感器</string>
 
     <!-- ========================= -->
 
@@ -394,4 +396,12 @@
     <string name="show_as_a_dialog">Show as a dialog</string>
     <string name="show_as_an_embedded_fragment">Show as an embedded fragment</string>
     <string name="request_view_size">Request view size</string>
+    <string name="orientation">方向传感器返回的值</string>
+    <string name="gyro">陀螺仪传感器返回的值</string>
+    <string name="magnetic">磁场传感器返回的值</string>
+    <string name="gravity">重力传感器返回的值</string>
+    <string name="linearAcc">线性加速度传感器返回的值</string>
+    <string name="temperature">温度传感器返回的值</string>
+    <string name="light">光传感器返回的值</string>
+    <string name="pressure">压力传感器返回的值</string>
 </resources>
