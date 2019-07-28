@@ -113,6 +113,18 @@ public class TestGpsActivity extends RxPermissionsActivity {
     }
 
     @SuppressLint("MissingPermission")
+    private void proximityAlert() { // Test result: Not Produced
+        double longitude = 30;
+        double latitude = 50;
+        float radius = 5000; // 定义半径（5公里）
+
+        Intent intent = new Intent(PROXIMITY_ALERT_ACTION); // 定义Intent
+        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);  // 将Intent包装成PendingIntent
+
+        mLocationManager.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
+    }
+
+    @SuppressLint("MissingPermission")
     private void lastLocation() {
         /**
          * Samsung SM-G9730: no data
@@ -220,17 +232,5 @@ public class TestGpsActivity extends RxPermissionsActivity {
 
     private void stopLocationUpdates_4_GooglePlayServices() {
         mFusedLocationClient.removeLocationUpdates(mLocationCallback);
-    }
-
-    @SuppressLint("MissingPermission")
-    private void proximityAlert() {
-        double longitude = 30;
-        double latitude = 50;
-        float radius = 5000; // 定义半径（5公里）
-
-        Intent intent = new Intent(PROXIMITY_ALERT_ACTION); // 定义Intent
-        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);  // 将Intent包装成PendingIntent
-
-        mLocationManager.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
     }
 }
