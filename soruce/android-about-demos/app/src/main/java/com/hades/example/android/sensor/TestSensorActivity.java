@@ -16,6 +16,11 @@ import com.hades.example.android.R;
 
 import java.util.List;
 
+/**
+ * Samsung s10  = Samsung SM-G9730
+ * 加速度计 ,气压计 , 指纹识别器 ,陀螺仪 ,地磁传感器 ,霍尔传感器 ,心率传感器 ,RGB光线传感器 ,距离传感器
+ * https://www.samsung.com/cn/smartphones/galaxy-s10/specs/
+ */
 public class TestSensorActivity extends Activity implements SensorEventListener {
     private static final String TAG = TestSensorActivity.class.getSimpleName();
 
@@ -77,7 +82,7 @@ public class TestSensorActivity extends Activity implements SensorEventListener 
     }
 
     /**
-     * Samsung GM-G9730 = 52 sensors
+     * Samsung SM-G9730 = 52 sensors
      * <p>
      * {Sensor name="Rotation Vector  Non-wakeup", vendor="qualcomm", version=1, type=11, maxRange=1.0, resolution=0.01, power=1.415, minDelay=5000}
      * {Sensor name="AK09918 Magnetometer", vendor="akm", version=20034, type=2, maxRange=4912.0, resolution=0.15, power=1.1, minDelay=10000}
