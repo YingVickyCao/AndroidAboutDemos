@@ -23,10 +23,29 @@
                 android:text="@string/list_all_location_provider" />
 
             <TextView
-                android:id="@+id/providers"
+                android:id="@+id/allProviders"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="false" />
         </LinearLayout>
+
+        <View style="@style/div" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/tv"
+                android:text="@string/list_all_free_location_provider" />
+
+            <TextView
+                android:id="@+id/allFreeProviders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

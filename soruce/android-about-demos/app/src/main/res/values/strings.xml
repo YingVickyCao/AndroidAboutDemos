@@ -408,4 +408,5 @@
     <string name="pressure">压力传感器</string>
     <string name="hear_rate">心率传感器</string>
     <string name="list_all_location_provider">List all LocationProvider</string>
+    <string name="list_all_free_location_provider">List all free LocationProvider</string>
 </resources>

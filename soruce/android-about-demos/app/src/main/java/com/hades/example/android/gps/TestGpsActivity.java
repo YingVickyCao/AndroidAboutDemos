@@ -2,6 +2,7 @@ package com.hades.example.android.gps;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Criteria;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,12 +21,32 @@ public class TestGpsActivity extends Activity {
 
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
         listAllLocationProviders();
+        listAllFreeLocationProviders();
     }
 
     private void listAllLocationProviders() {
+        /**
+         * Samsung SM-G9730
+         * passive, gps, network
+         */
         List<String> providerNames = lm.getAllProviders();
 
-        TextView textView = findViewById(R.id.providers);
+        TextView textView = findViewById(R.id.allProviders);
+        textView.setText(providerNames.toString());
+    }
+
+    private void listAllFreeLocationProviders() {
+        Criteria cri = new Criteria();
+        cri.setCostAllowed(false);
+        cri.setAltitudeRequired(true);
+        cri.setBearingRequired(true);
+
+        /**
+         * Samsung SM-G9730: null
+         */
+        List<String> providerNames = lm.getProviders(cri, false);
+
+        TextView textView = findViewById(R.id.allFreeProviders);
         textView.setText(providerNames.toString());
     }
 }
