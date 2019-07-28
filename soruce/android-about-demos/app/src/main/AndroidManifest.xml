@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="false"
@@ -246,7 +247,6 @@
 
         <activity android:name=".app_component._fragment.BookListActivity" />
         <activity android:name=".app_component._fragment.BookDetailActivity" />
-        <activity android:name=".app_component._fragment.TestFragmentActivity" />
 
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"
