@@ -40,10 +40,10 @@
 
             <TextView
                 style="@style/tv"
-                android:text="@string/get_gps_location_info" />
+                android:text="@string/get_gps_last_location" />
 
             <TextView
-                android:id="@+id/locationInfo"
+                android:id="@+id/lastLocation"
                 style="@style/tv" />
         </LinearLayout>
     </ScrollView>

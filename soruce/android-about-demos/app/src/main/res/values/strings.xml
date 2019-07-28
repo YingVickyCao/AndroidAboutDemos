@@ -410,5 +410,5 @@
     <string name="list_all_location_provider">List all LocationProvider</string>
     <string name="list_all_free_location_provider">List all free LocationProvider</string>
 
-    <string name="get_gps_location_info">Get Gps Location info</string>
+    <string name="get_gps_last_location">Get Gps Last Location</string>
 </resources>

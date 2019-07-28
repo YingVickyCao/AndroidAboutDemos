@@ -11,9 +11,9 @@ public class ProximityAlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         boolean isEnter = intent.getBooleanExtra(LocationManager.KEY_PROXIMITY_ENTERING, false); // 获取是否为进入指定区域
         if (isEnter) {
-            Toast.makeText(context, "您已经进入疯狂软件教育中心", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Enter A", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(context, "您已经离开疯狂软件教育中心", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Out A", Toast.LENGTH_LONG).show();
         }
     }
 }

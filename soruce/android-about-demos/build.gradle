@@ -7,6 +7,7 @@ buildscript {
     ext.core_version = '1.0.2'
     ext.material_version = '1.0.0'
     ext.support_annotations_version = '1.0.0'
+    ext.gms_version = '17.0.0'
 
     ext.rxpermissions2_version = '0.9.4@aar'
     ext.rxjava2_version = '2.1.1'

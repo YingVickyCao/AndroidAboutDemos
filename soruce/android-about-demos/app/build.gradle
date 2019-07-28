@@ -32,8 +32,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             signingConfig signingConfigs.config
@@ -62,6 +63,8 @@ dependencies {
     implementation "androidx.core:core-ktx:$core_version"
 
     implementation "com.google.android.material:material:$material_version"
+
+    implementation "com.google.android.gms:play-services-location:$gms_version"
 
     implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissions2_version"
     //RxPermissions (required RxJava2)

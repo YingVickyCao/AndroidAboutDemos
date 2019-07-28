@@ -5,21 +5,41 @@ import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.RxPermissionsActivity;
 
 import java.util.List;
 
 public class TestGpsActivity extends RxPermissionsActivity {
-    LocationManager lm;
+    private static final String TAG = TestGpsActivity.class.getSimpleName();
 
+    LocationManager mLocationManager;
+
+    private LocationListener mLocationListener;
+
+    private ProximityAlertReceiver mProximityAlertReceiver = new ProximityAlertReceiver();
+    public final static String PROXIMITY_ALERT_ACTION = "PROXIMITY_ALERT_ACTION";
+
+    private FusedLocationProviderClient mFusedLocationClient;
+    private LocationCallback mLocationCallback;
+    private LocationRequest mLocationRequest;
+
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +47,20 @@ public class TestGpsActivity extends RxPermissionsActivity {
 
         initViews();
 
-        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this); // Google play store Location
 
         listAllLocationProviders();
         listAllFreeLocationProviders();
-        gpsLocationInfo();
+
         proximityAlert();
+
+        lastLocation();
+        lastLocation_4_GooglePlayServices();
+
+        initLocationUpdates();
+        initLocationUpdates_4_GooglePlayServices();
     }
 
     @Override
@@ -40,12 +68,30 @@ public class TestGpsActivity extends RxPermissionsActivity {
         checkPermission("Request permission for GPS", Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mProximityAlertReceiver, new IntentFilter(PROXIMITY_ALERT_ACTION));
+
+        startLocationUpdates();
+        startLocationUpdates_4_GooglePlayServices();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mProximityAlertReceiver);
+
+        stopLocationUpdates();
+        stopLocationUpdates_4_GooglePlayServices();
+    }
+
     private void listAllLocationProviders() {
         /**
          * Samsung SM-G9730
          * passive, gps, network
          */
-        List<String> providerNames = lm.getAllProviders();
+        List<String> providerNames = mLocationManager.getAllProviders();
 
         TextView textView = findViewById(R.id.allProviders);
         textView.setText(providerNames.toString());
@@ -60,55 +106,120 @@ public class TestGpsActivity extends RxPermissionsActivity {
         /**
          * Samsung SM-G9730: null
          */
-        List<String> providerNames = lm.getProviders(cri, false);
+        List<String> providerNames = mLocationManager.getProviders(cri, false);
 
         TextView textView = findViewById(R.id.allFreeProviders);
         textView.setText(providerNames.toString());
     }
 
     @SuppressLint("MissingPermission")
-    private void gpsLocationInfo() {
+    private void lastLocation() {
         /**
          * Samsung SM-G9730: no data
          * Android emulator send mock data
          */
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER); // Request Runtime permission Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+        Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER); // Request Runtime permission Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+        String info = parseLocation(location);
+        Log.d(TAG, "lastLocation: " + info);
         setLocationInfo(location);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 8, new LocationListener() {// Request Runtime permission Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-            @Override
-            public void onLocationChanged(Location location) {
-                setLocationInfo(location);
-            }
+    }
 
-            @Override
-            public void onProviderDisabled(String provider) {
-                setLocationInfo(null);
+    @SuppressLint("MissingPermission")
+    private void lastLocation_4_GooglePlayServices() {
+        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (null == location) {
+                return;
             }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-                setLocationInfo(lm.getLastKnownLocation(provider));
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-            }
+            String info = parseLocation(location);
+            Log.d(TAG, "lastLocation 4 GooglePlayServices: " + info);
         });
     }
 
-    public void setLocationInfo(Location newLocation) {
-        TextView textView = findViewById(R.id.locationInfo);
-        String info;
-        if (newLocation == null) {
-            info = "";
-        } else {
-            info = "经度：" + newLocation.getLongitude() + "\n" +
-                    "纬度：" + newLocation.getLatitude() + "\n" +
-                    "高度：" + newLocation.getAltitude() + "\n" +
-                    "速度：" + newLocation.getSpeed() + "\n" +
-                    "方向：" + newLocation.getBearing();
+    private void initLocationUpdates() {
+        if (null == mLocationListener) {
+            mLocationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    if (null == location) {
+                        return;
+                    }
+                    String info = parseLocation(location);
+                    Log.d(TAG, "onLocationChanged: " + info);
+                    setLocationInfo(location);
+                }
+
+                @Override
+                public void onProviderDisabled(String provider) {
+                    setLocationInfo(null);
+                }
+
+                @Override
+                public void onProviderEnabled(String provider) {
+                }
+
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
+            };
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void startLocationUpdates() {
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, mLocationListener);
+    }
+
+    private void stopLocationUpdates() {
+        mLocationManager.removeUpdates(mLocationListener);
+    }
+
+    public void setLocationInfo(Location newLocation) {
+        TextView textView = findViewById(R.id.lastLocation);
+        String info = parseLocation(newLocation);
         textView.setText(info);
+    }
+
+    public String parseLocation(Location newLocation) {
+        if (newLocation == null) {
+            return "";
+        }
+        return "经度：" + newLocation.getLongitude() + "," +
+                "纬度：" + newLocation.getLatitude() + "," +
+                "高度：" + newLocation.getAltitude() + "," +
+                "速度：" + newLocation.getSpeed() + "," +
+                "方向：" + newLocation.getBearing();
+    }
+
+    private void initLocationUpdates_4_GooglePlayServices() {
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    if (null == location) {
+                        continue;
+                    }
+                    String info = parseLocation(location);
+                    Log.d(TAG, "onLocationResult: " + info);
+                }
+            }
+        };
+
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(1000);          // 应用接收位置更新的速率（毫秒） => 1s
+        mLocationRequest.setFastestInterval(5000);   // 应用处理位置更新的最快速率（毫秒）=> 5s
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); // 设置请求的优先级
+    }
+
+    @SuppressLint("MissingPermission")
+    private void startLocationUpdates_4_GooglePlayServices() {
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.getMainLooper());
+    }
+
+    private void stopLocationUpdates_4_GooglePlayServices() {
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
     }
 
     @SuppressLint("MissingPermission")
@@ -117,9 +228,9 @@ public class TestGpsActivity extends RxPermissionsActivity {
         double latitude = 50;
         float radius = 5000; // 定义半径（5公里）
 
-        Intent intent = new Intent(this, ProximityAlertReceiver.class); // 定义Intent
+        Intent intent = new Intent(PROXIMITY_ALERT_ACTION); // 定义Intent
         PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);  // 将Intent包装成PendingIntent
 
-        lm.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
+        mLocationManager.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
     }
 }
