@@ -19,7 +19,7 @@ public class DummyContent {
     public static final ArrayList<String> ITEMS_STRING_3 = new ArrayList<>();
 
     /**
-     * A map of sample (dummy) items, by ID.
+     * A com.hades.example.android.map of sample (dummy) items, by ID.
      */
     public static final List<DummyItem> ITEMS = new ArrayList<>();
     public static final Map<Integer, DummyItem> ITEM_MAP = new HashMap<Integer, DummyItem>();

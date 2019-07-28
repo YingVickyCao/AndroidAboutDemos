@@ -7,8 +7,8 @@
         <!--<activity android:name=".other_ui.OtherUIActivity">-->
         <!--<activity android:name=".app_component._fragment.TestFragmentActivity">-->
         <!--<activity android:name=".resource.ResourceActivity">-->
-        <!--<activity android:name=".sensor.TestAccelerometerSensorActivity">-->
-        <activity android:name=".sensor.TestSensorActivity">
+        <!--<activity android:name=".sensor.TestSensorActivity">-->
+        <activity android:name=".gps.TestGpsActivity">
             <!--<activity android:name=".app_component.TestAppComponentActivity">-->
             <!--<activity android:name=".app_component.service.unbounservice.StartServiceTest1Activity">-->
             <!--<activity android:name=".widget.WidgetActivity">-->

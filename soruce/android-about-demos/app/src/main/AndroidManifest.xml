@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.BODY_SENSORS"/>
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
 
     <application
         android:allowBackup="false"
@@ -385,6 +385,8 @@
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
 
         <activity android:name=".sensor.TestSensorActivity" />
+
+        <activity android:name=".gps.TestGpsActivity" />
     </application>
 
 </manifest>
