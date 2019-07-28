@@ -2,7 +2,9 @@ package com.hades.example.android.gps;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -26,9 +28,11 @@ public class TestGpsActivity extends RxPermissionsActivity {
         initViews();
 
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
+
         listAllLocationProviders();
         listAllFreeLocationProviders();
         gpsLocationInfo();
+        proximityAlert();
     }
 
     @Override
@@ -105,5 +109,17 @@ public class TestGpsActivity extends RxPermissionsActivity {
                     "方向：" + newLocation.getBearing();
         }
         textView.setText(info);
+    }
+
+    @SuppressLint("MissingPermission")
+    private void proximityAlert() {
+        double longitude = 30;
+        double latitude = 50;
+        float radius = 5000; // 定义半径（5公里）
+
+        Intent intent = new Intent(this, ProximityAlertReceiver.class); // 定义Intent
+        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);  // 将Intent包装成PendingIntent
+
+        lm.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
     }
 }

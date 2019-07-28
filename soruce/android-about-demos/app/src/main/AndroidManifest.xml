@@ -387,6 +387,7 @@
         <activity android:name=".sensor.TestSensorActivity" />
 
         <activity android:name=".gps.TestGpsActivity" />
+        <receiver android:name=".gps.ProximityAlertReceiver"/>
     </application>
 
 </manifest>
