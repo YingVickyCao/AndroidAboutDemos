@@ -118,6 +118,10 @@
 
     <string name="page_GPS">GPS</string>
 
+    <string name="page_network">Network</string>
+    <string name="page_tcp_ip">TCP/IP</string>
+    <string name="page_client_socket">Client - Socket</string>
+
     <!-- ========================= -->
 
     <string name="runt_time_permission">Runtime Permission</string>

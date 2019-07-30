@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
         android:allowBackup="false"
@@ -388,6 +388,9 @@
         <activity android:name=".sensor.TestSensorActivity" />
 
         <activity android:name=".gps.TestGpsActivity" />
+
+        <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
+        <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
     </application>
 
 </manifest>
