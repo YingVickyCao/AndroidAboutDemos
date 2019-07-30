@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,13 +36,22 @@ public class DragAndReorderListFragment extends Fragment {
 
     private List<Group> list1;
     private List<Group> list2;
+
     private ItemTouchHelper mItemTouchHelper1;
     private ItemTouchHelper mItemTouchHelper2;
+
+    private ItemTouchHelperAdapter mAdapter1;
+    private ItemTouchHelperAdapter mAdapter2;
+
     private TextView mCurrentPageView;
     private NestedScrollView nestedScrollView;
     private View group0;
+    private Button mMoreOrLess;
 
     private OpenedPage mOpenedPage = new OpenedPage();
+
+    public static final int TYPE_1 = 1;
+    public static final int TYPE_2 = 2;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,22 +68,46 @@ public class DragAndReorderListFragment extends Fragment {
 
         loadingContainer = view.findViewById(R.id.loadingContainer);
         nestedScrollView = view.findViewById(R.id.nestedScrollView);
+
         group0 = view.findViewById(R.id.group0);
+        mMoreOrLess = view.findViewById(R.id.moreOrLess);
 
         mCurrentPageView = view.findViewById(R.id.currentPage);
         RecyclerView rv1 = view.findViewById(R.id.lv1);
         RecyclerView rv2 = view.findViewById(R.id.lv2);
 
+        view.findViewById(R.id.moreOrLess).setOnClickListener(v -> moreOrLess());
+
         SimpleItemTouchHelperCallback simpleItemTouchHelperCallback = new SimpleItemTouchHelperCallback();
         SimpleItemTouchHelperCallback simpleItemTouchHelperCallback2 = new SimpleItemTouchHelperCallback();
         mItemTouchHelper1 = new ItemTouchHelper(simpleItemTouchHelperCallback);
         mItemTouchHelper2 = new ItemTouchHelper(simpleItemTouchHelperCallback2);
-        setViews(rv1, list1, mItemTouchHelper1, simpleItemTouchHelperCallback);
-        setViews(rv2, list2, mItemTouchHelper2, simpleItemTouchHelperCallback2);
+
+        mAdapter1 = setViews(rv1, list1, mItemTouchHelper1, simpleItemTouchHelperCallback);
+        mAdapter1.setType(TYPE_1);
+        mAdapter1.setLimitMode(true);
+
+        mAdapter2 = setViews(rv2, list2, mItemTouchHelper2, simpleItemTouchHelperCallback2);
+        mAdapter2.setType(TYPE_2);
+
+        moreOrLess();
         return view;
     }
 
-    private void setViews(RecyclerView rv, List<Group> list1, ItemTouchHelper itemTouchHelper, SimpleItemTouchHelperCallback callback) {
+    private void moreOrLess() {
+        if (getString(R.string.more).equals(mMoreOrLess.getText().toString())) {
+            mMoreOrLess.setText(getString(R.string.less));
+            mAdapter1.setLimitMode(true);
+        } else {
+            mMoreOrLess.setText(getString(R.string.more));
+            mAdapter1.setLimitMode(false);
+        }
+
+        mAdapter1.notifyDataSetChanged();
+        mAdapter2.notifyDataSetChanged();
+    }
+
+    private ItemTouchHelperAdapter setViews(RecyclerView rv, List<Group> list1, ItemTouchHelper itemTouchHelper, SimpleItemTouchHelperCallback callback) {
         rv.setLayoutManager(getLinearLayoutManager());
         rv.setHasFixedSize(true);// PO
         ItemTouchHelperAdapter adapter = new ItemTouchHelperAdapter(list1, getActivity());
@@ -128,6 +162,7 @@ public class DragAndReorderListFragment extends Fragment {
         callback.setStartDragListener(dragListener);
 
         itemTouchHelper.attachToRecyclerView(rv);
+        return adapter;
     }
 
     private LinearLayoutManager getLinearLayoutManager() {
@@ -137,11 +172,11 @@ public class DragAndReorderListFragment extends Fragment {
     }
 
     private void initList1Data() {
-        list1 = initListData("Group 1 - Child ", 30);
+        list1 = initListData("Group 1 - Child ", 20);
     }
 
     private void initList2Data() {
-        list2 = initListData("Group 2 - Child ", 50);
+        list2 = initListData("Group 2 - Child ", 30);
     }
 
     private List<Group> initListData(String childPre, int num) {

@@ -31,6 +31,8 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     private int minPos = 0;
     private int maxPos = 0;
     private OpenedPage mOpenedPage;
+    private int type;
+    private boolean isLimitMode;
 
     public ItemTouchHelperAdapter(List<Group> list, Activity context) {
         mList = list;
@@ -51,6 +53,14 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     public void setOpenedPage(OpenedPage openedPage) {
         mOpenedPage = openedPage;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setLimitMode(boolean limitMode) {
+        isLimitMode = limitMode;
     }
 
     @Override
@@ -137,7 +147,12 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         } else if (viewChildCount == dataChildCount) {
 
         } else {
-            holder.groupContainer.removeViews(dataChildCount, viewChildCount - dataChildCount - 1);
+            try {
+                holder.groupContainer.removeViews(dataChildCount, viewChildCount - dataChildCount - 1);
+            }catch (IndexOutOfBoundsException ex){
+                Log.d(TAG, "onBindViewHolder4ChildContainer: IndexOutOfBoundsException");
+            }
+
         }
 
         Log.d(TAG, "onBindViewHolder4ChildContainer:dataChildCount=" + dataChildCount + ",viewChildCount=" + holder.childContainer.getChildCount());
@@ -179,7 +194,22 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        int size = mList.size();
+
+        if (DragAndReorderListFragment.TYPE_1 == type) {
+            if (!isLimitMode) {
+                return size;
+            } else {
+                if (size >= 3) {
+                    return 3;
+                } else {
+                    return size;
+                }
+            }
+
+        } else {
+            return size;
+        }
     }
 
     @Override

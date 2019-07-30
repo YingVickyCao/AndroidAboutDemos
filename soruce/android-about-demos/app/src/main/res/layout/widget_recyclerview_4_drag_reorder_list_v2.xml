@@ -29,12 +29,25 @@
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="20sp" />
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:gravity="center"
-                    android:text="Group1"
-                    android:textSize="30sp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="Group1"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:id="@+id/moreOrLess"
+                        style="@style/btn.small"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/more" />
+                </RelativeLayout>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
