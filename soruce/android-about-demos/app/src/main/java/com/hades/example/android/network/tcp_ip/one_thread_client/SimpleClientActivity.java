@@ -14,6 +14,9 @@ import java.net.Socket;
 public class SimpleClientActivity extends Activity {
     TextView info;
 
+    public final static String SERVER_ADDRESS = "192.168.9.114";
+    public final static int SERVER_PORT = 30000;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +27,7 @@ public class SimpleClientActivity extends Activity {
             @Override
             public void run() {
                 try {
-                    Socket socket = new Socket("192.168.8.114", 30000);                         // 建立连接到远程服务器的Socket
+                    Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);                                // 建立连接到远程服务器的Socket
                     BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 将Socket对应的输入流包装成BufferedReader
                     String line = br.readLine();
                     showReceivedInfoFromRemoteServer(line);
