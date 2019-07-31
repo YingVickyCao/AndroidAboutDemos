@@ -135,10 +135,9 @@
             set    : full screen
         -->
         <item name="android:windowBackground">@color/colorAccent</item>
-        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_up2</item>  <!-- 减速-->
+        <item name="android:windowExitAnimation">@anim/slide_out_down2</item> <!-- 加速-->
     </style>
-
 
     <style name="MyPopupWindowStyle" parent="Widget.AppCompat.PopupWindow">
         <item name="android:popupBackground">@android:color/holo_green_dark</item>
