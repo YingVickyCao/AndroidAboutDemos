@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,16 +28,16 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
          <pre>
          Show a Dialog:
          1. When Only 1) Show as a small dialog.
-            <item name="android:windowFullscreen">false</item> // 2)
-            windowFullscreen = true,  show status bar with all kind of status.
-            windowFullscreen = false, show status bar with  blank.
+         <item name="android:windowFullscreen">false</item> // 2)
+         windowFullscreen = true,  show status bar with all kind of status.
+         windowFullscreen = false, show status bar with  blank.
          2. When Only 3) Show as a big  screen dialog. Has padding to window
          3. When 1) + 3 Show as a full screen dialog.
          </pre>
          *
          */
         // 1)
-//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
     }
 
     @Override
@@ -92,9 +93,23 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
         Dialog dialog = getDialog();
         if (null != dialog) {
             Log.d(TAG, "onStart: dialog != null"); // Show as a Dialog
-//            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-//            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-//            dialog.getWindow().setLayout(width, height);                                        // 3)
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setLayout(width, height);                                        // 3)
+            dialog.setOnKeyListener((dialog1, keyCode, event) -> {
+                /**
+                 * https://stackoverflow.com/questions/7622031/dialogfragment-and-back-button
+                 * 通过判断各种事件，处理监听
+                 */
+                if (keyCode == KeyEvent.KEYCODE_BACK && KeyEvent.ACTION_DOWN == event.getAction()) {
+                    Log.d(TAG, "onKey: Back");
+                    dismiss();
+                    return true; // pretend we've processed it. 中断事件，不接受按键信息
+                } else {
+                    Log.d(TAG, "onKey: Others");
+                    return false; // pass on to be processed as normal 事件继续向下传递
+                }
+            });
         } else {
             Log.d(TAG, "onStart: dialog = null"); // Show as an Embedded Fragment
         }
@@ -152,4 +167,5 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
     private void clickBtn() {
         dismiss();
     }
+
 }
