@@ -37,6 +37,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
          *
          */
         // 1)
+        // style,设置两处：onCreate,onStart, 否则 动画太快，看不出效果 （Enter-加速，Exist-减速）
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);  // 1) work when Show as a Dialog
     }
 
@@ -95,7 +96,10 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
             Log.d(TAG, "onStart: dialog != null"); // Show as a Dialog
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            dialog.getWindow().setLayout(width, height);                                        // 3)
+            if (null != dialog.getWindow()) {
+                dialog.getWindow().setLayout(width, height);                                        // 3)
+                dialog.getWindow().setWindowAnimations(R.style.DialogFragmentShowAsFullDialog);
+            }
             dialog.setOnKeyListener((dialog1, keyCode, event) -> {
                 /**
                  * https://stackoverflow.com/questions/7622031/dialogfragment-and-back-button
