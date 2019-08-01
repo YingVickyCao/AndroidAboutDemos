@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
@@ -34,7 +35,11 @@ public class ClientThread implements Runnable {
     @SuppressLint("HandlerLeak")
     public void run() {
         try {
-            socket = new Socket(SimpleClientActivity.SERVER_ADDRESS, SimpleClientActivity.SERVER_PORT);
+//            socket = new Socket(SimpleClientActivity.SERVER_ADDRESS, SimpleClientActivity.SERVER_PORT);
+//            socket.setSoTimeout(10000); // 10s, 设置连接后，读写超时时间
+
+            socket = new Socket();
+            socket.connect(new InetSocketAddress(SimpleClientActivity.SERVER_ADDRESS, SimpleClientActivity.SERVER_PORT), 1000); // 10s,设置连接超时时间
 
             receive_server_2_memory = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             send_memory_2_server = socket.getOutputStream();
