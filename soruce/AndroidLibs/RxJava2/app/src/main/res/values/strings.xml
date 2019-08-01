@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RxJava2</string>
+
+    <string name="subscribeInThread">Subscribe in Thread</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="connect">CONNECT</string>
+    <string name="disconnect">DISCONNECT</string>
 </resources>
