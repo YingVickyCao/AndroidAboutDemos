@@ -45,7 +45,7 @@ public class TestMsgMain2ThreadFragment extends BaseFragment {
             /**
              * main
              */
-            LogHelper.printThreadInfo(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+            LogHelper.printThread(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
             String sum = (String) msg.obj;
             test.setText(sum);
         }
@@ -81,7 +81,7 @@ public class TestMsgMain2ThreadFragment extends BaseFragment {
              * thread:
              * receive message
              */
-            LogHelper.printThreadInfo(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            LogHelper.printThread(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();

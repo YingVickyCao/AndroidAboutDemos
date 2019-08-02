@@ -17,7 +17,7 @@ public class MyIntentService extends IntentService {
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        LogHelper.printThreadInfo(TAG, "onStartCommand,intent=" + intent + ",flags=" + flags + ",startId=" + startId);
+        LogHelper.printThread(TAG, "onStartCommand,intent=" + intent + ",flags=" + flags + ",startId=" + startId);
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -27,7 +27,7 @@ public class MyIntentService extends IntentService {
         /**
          * onHandleIntent,thread =29058,IntentService[MyIntentService]
          */
-        LogHelper.printThreadInfo(TAG, "onHandleIntent");
+        LogHelper.printThread(TAG, "onHandleIntent");
 
         // 该方法内可以执行任何耗时任务，比如下载文件等，此处只是让线程暂停50秒
 //        long endTime = System.currentTimeMillis() + 50 * 1000;

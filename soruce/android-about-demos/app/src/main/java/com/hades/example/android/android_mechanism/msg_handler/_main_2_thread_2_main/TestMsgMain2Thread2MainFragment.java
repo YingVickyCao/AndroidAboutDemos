@@ -52,7 +52,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
     }
 
     public void sum(View source) {
-        LogHelper.printThreadInfo(TAG, "sum()", String.valueOf(num));
+        LogHelper.printThread(TAG, "sum()", String.valueOf(num));
         /**
          * main -> thread
          */
@@ -82,7 +82,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
                      */
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
-                        LogHelper.printThreadInfo(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
+                        LogHelper.printThread(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
                         long sum = MockHeavyWork.sum(upper);
 
                         /**
@@ -102,7 +102,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                LogHelper.printThreadInfo(TAG, "updateResult()", String.valueOf(sum));
+                LogHelper.printThread(TAG, "updateResult()", String.valueOf(sum));
                 result.setText(String.valueOf(sum));
             }
         });

@@ -52,12 +52,12 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                  */
 
                 if (msg.what == HANDLER_MSG_KEY_1) {
-                    LogHelper.printThreadInfo(TAG, "uiHandler -> handleMessage()", String.valueOf(currentImageId));
+                    LogHelper.printThread(TAG, "uiHandler -> handleMessage()", String.valueOf(currentImageId));
                     show.setText(imageIds[currentImageId++ % imageIds.length]);
                 }
 
                 if (msg.what == HANDLER_MSG_KEY_3) {
-                    LogHelper.printThreadInfo(TAG, "uiHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+                    LogHelper.printThread(TAG, "uiHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
                     Toast.makeText(getActivity(), (String) msg.obj, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -72,7 +72,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                 /***
                  * 子线程中执行
                  */
-                LogHelper.printThreadInfo(TAG, "Timer -> run()", String.valueOf(currentImageId));
+                LogHelper.printThread(TAG, "Timer -> run()", String.valueOf(currentImageId));
 
                 /**
                  * Thread -> UI
@@ -120,7 +120,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
             public void run() {
                 Handler uiHandler;
                 long result = MockHeavyWork.sum(10);
-                LogHelper.printThreadInfo(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
+                LogHelper.printThread(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
 
                 uiHandler = new Handler(Looper.getMainLooper()) {
 
@@ -130,7 +130,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                         /**
                          * main
                          */
-                        LogHelper.printThreadInfo(TAG, "uiHandler", "what=" + msg.what + ",obj=" + msg.obj);
+                        LogHelper.printThread(TAG, "uiHandler", "what=" + msg.what + ",obj=" + msg.obj);
                         showToast(String.valueOf(msg.what));
                     }
                 };

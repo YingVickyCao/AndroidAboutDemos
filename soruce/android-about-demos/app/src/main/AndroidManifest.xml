@@ -389,6 +389,7 @@
 
         <activity android:name=".gps.TestGpsActivity" />
 
+        <activity android:name=".network.TestNetworkActivity"/>
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
     </application>

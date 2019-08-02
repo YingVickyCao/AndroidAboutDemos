@@ -88,7 +88,7 @@ public class HandlerThreadFragment4Refactor extends BaseFragment implements Hand
 
     @Override
     public boolean handleMessage(Message msg) {
-        LogHelper.printThreadInfo(TAG, "mUIHandler,handleMessage", "num=" + msg.arg1 + ",sum=" + msg.obj);
+        LogHelper.printThread(TAG, "mUIHandler,handleMessage", "num=" + msg.arg1 + ",sum=" + msg.obj);
         switch (msg.what) {
             case KEY_SUM:
                 showResult((String) msg.obj);

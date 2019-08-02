@@ -17,7 +17,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        LogHelper.printThreadInfo(TAG, "onStartCommand");
+        LogHelper.printThread(TAG, "onStartCommand");
         /**
          * onStartCommand,thread =2,main
          */

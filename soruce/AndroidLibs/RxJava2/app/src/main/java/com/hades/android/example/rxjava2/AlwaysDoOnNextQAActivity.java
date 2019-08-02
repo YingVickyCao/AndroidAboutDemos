@@ -29,23 +29,23 @@ import io.reactivex.subjects.BehaviorSubject;
  *
  *
  * 情况1：点击subscribe按钮 = 执行一个subscribe。
- * onSubscribe:
- * onNext: false
- * onNext: true
+ * checkConnection,onSubscribe:
+ * checkConnection,onNext: false
+ * checkConnection,onNext: true
  * Subscribe subject
- * onNext: true
+ * checkConnection,onNext: true
  * Subscribe subject
  *
  * 情况2：点击subscribe按钮多次 = 执行多个subscribe。
- * onSubscribe:
- * onSubscribe:
- * onNext: false
- * onNext: false
- * onNext: false
- * onNext: false
- * onNext: true
+ * checkConnection,onSubscribe:
+ * checkConnection,onSubscribe:
+ * checkConnection,onNext: false
+ * checkConnection,onNext: false
+ * checkConnection,onNext: false
+ * checkConnection,onNext: false
+ * checkConnection,onNext: true
  * Subscribe subject
- * onNext: true
+ * checkConnection,onNext: true
  * Subscribe subject
  *
  * 从 log 看出，每次只要connect状态变化了，就会执行 onNext 一次，这是错误的。而且多次 subscribe，状态就乱掉了。
@@ -93,16 +93,28 @@ public class AlwaysDoOnNextQAActivity extends AppCompatActivity implements View.
         checkConnection();
     }
 
+    private void connect() {
+        Log.d(TAG, "connect: ");
+        mIsConnect = true;
+        mIsConnectSubject.onNext(true);
+    }
+
+    private void disconnect() {
+        Log.d(TAG, "disconnect: ");
+        mIsConnect = false;
+        mIsConnectSubject.onNext(false);
+    }
+
     private void checkConnection() {
         getIsConnectSubject().subscribe(new Observer<Boolean>() {
             @Override
             public void onSubscribe(Disposable d) {
-                Log.d(TAG, "onSubscribe: ");
+                Log.d(TAG, "checkConnection, onSubscribe: ");
             }
 
             @Override
             public void onNext(Boolean isConnect) {
-                Log.d(TAG, "onNext: " + isConnect);
+                Log.d(TAG, "checkConnection , onNext: " + isConnect);
                 if (isConnect) {
                     subscribeSubject();
                 }
@@ -110,12 +122,12 @@ public class AlwaysDoOnNextQAActivity extends AppCompatActivity implements View.
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
+                Log.d(TAG, "checkConnection, onError: ");
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "onComplete: ");
+                Log.d(TAG, "checkConnection, onComplete: ");
             }
         });
     }
@@ -126,15 +138,5 @@ public class AlwaysDoOnNextQAActivity extends AppCompatActivity implements View.
 
     private BehaviorSubject<Boolean> getIsConnectSubject() {
         return mIsConnectSubject;
-    }
-
-    private void connect() {
-        mIsConnect = true;
-        mIsConnectSubject.onNext(true);
-    }
-
-    private void disconnect() {
-        mIsConnect = false;
-        mIsConnectSubject.onNext(false);
     }
 }

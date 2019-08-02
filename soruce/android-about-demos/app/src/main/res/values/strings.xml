@@ -119,8 +119,9 @@
     <string name="page_GPS">GPS</string>
 
     <string name="page_network">Network</string>
-    <string name="page_tcp_ip">TCP/IP</string>
-    <string name="page_client_socket">Client - Socket</string>
+    <string name="page_simple_client_socket">Client - Use Socket to implement TCP/IP</string>
+    <string name="page_multi_thread_client_socket">Multi thread Client - Use Socket to implement TCP/IP</string>
+    <string name="page_url">URL</string>
 
     <!-- ========================= -->
 
@@ -417,4 +418,5 @@
     <string name="get_gps_last_location">Get Gps Last Location</string>
     <string name="more">More</string>
     <string name="less">Less</string>
+    <string name="request">Request</string>
 </resources>

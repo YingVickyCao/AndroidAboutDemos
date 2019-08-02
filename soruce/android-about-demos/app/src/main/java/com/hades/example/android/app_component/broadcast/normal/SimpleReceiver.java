@@ -23,8 +23,8 @@ public class SimpleReceiver extends BroadcastReceiver {
         /**
          * SimpleReceiver: onReceive,[thread =2,main],hashCode()=77016919
          */
-        LogHelper.printThreadInfo(TAG, "onReceive", "------->");
-        LogHelper.printThreadInfo(TAG, "onReceive", "hashCode=" + String.valueOf(System.identityHashCode(this)));
+        LogHelper.printThread(TAG, "onReceive", "------->");
+        LogHelper.printThread(TAG, "onReceive", "hashCode=" + String.valueOf(System.identityHashCode(this)));
         if (null == intent || null == intent.getAction()) {
             return;
         }
@@ -42,7 +42,7 @@ public class SimpleReceiver extends BroadcastReceiver {
                 testGoAsync(intent);
                 break;
         }
-        LogHelper.printThreadInfo(TAG, "onReceive", "<-------");
+        LogHelper.printThread(TAG, "onReceive", "<-------");
     }
 
     /*
@@ -62,13 +62,13 @@ public class SimpleReceiver extends BroadcastReceiver {
     ...
      */
     private void doLongRunningWorkInMain() {
-        LogHelper.printThreadInfo(TAG, "doLongRunningWorkInMain", "------->");
+        LogHelper.printThread(TAG, "doLongRunningWorkInMain", "------->");
         int count = 0;
         for (; ; ) {
             count++;
             try {
                 Thread.sleep(1000);
-                LogHelper.printThreadInfo(TAG, "doLongRunningWorkInMain", "count=" + count);
+                LogHelper.printThread(TAG, "doLongRunningWorkInMain", "count=" + count);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -87,7 +87,7 @@ public class SimpleReceiver extends BroadcastReceiver {
     ...
      */
     private void startLongRunningBackgroundThreads() {
-        LogHelper.printThreadInfo(TAG, "startLongRunningBackgroundThreads", "------->");
+        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "------->");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -96,18 +96,18 @@ public class SimpleReceiver extends BroadcastReceiver {
                     count++;
                     try {
                         Thread.sleep(1000);
-                        LogHelper.printThreadInfo(TAG, "startLongRunningBackgroundThreads", "count=" + count);
+                        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "count=" + count);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }).start();
-        LogHelper.printThreadInfo(TAG, "startLongRunningBackgroundThreads", "<-------");
+        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "<-------");
     }
 
     private void testGoAsync(final Intent intent) {
-        LogHelper.printThreadInfo(TAG, "testGoAsync", "------->");
+        LogHelper.printThread(TAG, "testGoAsync", "------->");
         final PendingResult pendingResult = goAsync();
         AsyncTask<String, Integer, String> asyncTask = new AsyncTask<String, Integer, String>() {
             @Override
@@ -117,7 +117,7 @@ public class SimpleReceiver extends BroadcastReceiver {
                     count++;
                     try {
                         Thread.sleep(1000);
-                        LogHelper.printThreadInfo(TAG, "testGoAsync", "count=" + count);
+                        LogHelper.printThread(TAG, "testGoAsync", "count=" + count);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -128,6 +128,6 @@ public class SimpleReceiver extends BroadcastReceiver {
             }
         };
         asyncTask.execute();
-        LogHelper.printThreadInfo(TAG, "testGoAsync", "<-------");
+        LogHelper.printThread(TAG, "testGoAsync", "<-------");
     }
 }

@@ -7,7 +7,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_client_socket" />
+        android:text="@string/page_simple_client_socket" />
 
     <TextView
         android:id="@+id/tip"
