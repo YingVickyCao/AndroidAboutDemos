@@ -37,6 +37,12 @@ public class Fragment1 extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState: " + hashCode());
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: " + hashCode());

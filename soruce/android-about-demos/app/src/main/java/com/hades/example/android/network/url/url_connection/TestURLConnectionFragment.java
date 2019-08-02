@@ -40,12 +40,33 @@ public class TestURLConnectionFragment extends Fragment {
         return view;
     }
 
+    /*
+        Android 9.0 SM-G9730
+
+         1) nodeJs 不支持https，only support http
+         2) Set app use clear text Traffic(明文)
+         https://blog.csdn.net/gengkui9897/article/details/82863966
+
+        D/NetworkSecurityConfig: Using Network Security Config from resource network_security_config debugBuild: true
+        I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+        I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+        D/TcpOptimizer: TcpOptimizer-ON
+        I/System.out: null--->[HTTP/1.1 200 OK]
+        I/System.out: Connection--->[keep-alive]
+        I/System.out: Content-Type--->[text/plain]
+        I/System.out: Date--->[Fri, 02 Aug 2019 12:07:57 GMT]
+        I/System.out: Transfer-Encoding--->[chunked]
+        I/System.out: X-Android-Received-Millis--->[1564747681806]
+        I/System.out: X-Android-Response-Source--->[NETWORK 200]
+        I/System.out: X-Android-Selected-Protocol--->[http/1.1]
+        I/System.out: X-Android-Sent-Millis--->[1564747681797]
+     */
     private void get() {
         new Thread() {
             @Override
             public void run() {
                 // [Get]http://localhost:8888/getSum?num1=5&num2=15
-                response = GetPostUtil.sendGet("https://192.168.8.104:8888/getSum", "num1=5&num2=15");
+                response = GetPostUtil.sendGet("http://192.168.8.104:7000/getSum", "num1=5&num2=15");
                 // 发送消息通知UI线程更新UI组件
                 handler.sendEmptyMessage(Constant.KEY_RECEIVE);
             }
@@ -56,9 +77,8 @@ public class TestURLConnectionFragment extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                response = GetPostUtil.sendPost(
-                        "http://192.168.8.104:8888/abc/login.jsp"
-                        , "name=crazyit.org&pass=leegang");
+                // http://localhost:7777/login
+                response = GetPostUtil.sendPost("http://192.168.8.104:7777/login", "name=ga&pwd=2"); // {"msg":"sucess","name":"ga","status":1}
             }
         }.start();
         // 发送消息通知UI线程更新UI组件

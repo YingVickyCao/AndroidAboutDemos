@@ -13,8 +13,9 @@
         <!--<activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity">-->
         <!--<activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity">-->
         <!--<activity android:name=".other_ui._dialog.TestDialogActivity">-->
-        <activity android:name=".network.TestNetworkActivity">
-        <intent-filter>
+        <!--<activity android:name=".app_component._fragment.TestFragmentActivity">-->
+            <activity android:name=".network.TestNetworkActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

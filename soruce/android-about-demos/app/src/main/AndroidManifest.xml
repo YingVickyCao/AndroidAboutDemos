@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+    <!--android:usesCleartextTraffic="true"-->
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -29,6 +30,7 @@
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
         <!-- <activity android:namAActivityvity"> -->
         <!-- <intent-filter> -->
@@ -389,7 +391,7 @@
 
         <activity android:name=".gps.TestGpsActivity" />
 
-        <activity android:name=".network.TestNetworkActivity"/>
+        <activity android:name=".network.TestNetworkActivity" />
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
     </application>
