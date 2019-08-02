@@ -23,7 +23,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate: ");
+        Log.d(TAG, "onCreate: " + "@" + hashCode());
         /**
          <pre>
          Show a Dialog:
@@ -66,7 +66,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout to use as dialog or embedded fragment
-        Log.d(TAG, "onCreateView: ");
+        Log.d(TAG, "onCreateView: " + "@" + hashCode());
         View view = inflater.inflate(R.layout.fragment_bottom_sheet_dialog_fragment, container, false);
         view.findViewById(R.id.btn).setOnClickListener(v -> clickBtn());
         return view;
@@ -140,7 +140,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.d(TAG, "onDestroyView: ");
+        Log.d(TAG, "onDestroyView: " + "@" + hashCode());
     }
 
     @Override
@@ -165,7 +165,7 @@ public class ShowAsDialogOrEmbeddedDialogFragment extends DialogFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onDestroy: ");
+        Log.d(TAG, "onDestroy: " + "@" + hashCode());
     }
 
     private void clickBtn() {
