@@ -28,11 +28,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.hades.example.android.Constant.KEY_RECEIVE;
 
 public class TestURLFragment extends Fragment {
     private static final String TAG = TestURLFragment.class.getSimpleName();
-
-    final static int KEY_RECEIVE_IMG = 0x123;
 
     ImageView show;
     Bitmap bitmap; // 代表从网络下载得到的图片
@@ -41,7 +40,7 @@ public class TestURLFragment extends Fragment {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == KEY_RECEIVE_IMG) {
+            if (msg.what == KEY_RECEIVE) {
                 // 使用ImageView显示该图片
                 show.setImageBitmap(bitmap);
             }
@@ -64,7 +63,7 @@ public class TestURLFragment extends Fragment {
                 doRequestImg();
             }
         }.start();
-
+        
         /***
          *
          * <pre>
@@ -124,7 +123,7 @@ public class TestURLFragment extends Fragment {
             // 打开该URL对应的资源的输入流
             InputStream is = url.openStream();
             bitmap = BitmapFactory.decodeStream(is); // URL resource -> View
-            handler.sendEmptyMessage(KEY_RECEIVE_IMG);
+            handler.sendEmptyMessage(KEY_RECEIVE);
             is.close();
 
 

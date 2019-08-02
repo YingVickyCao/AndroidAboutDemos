@@ -9,6 +9,7 @@ import com.hades.example.android.lib.base.BaseActivity;
 import com.hades.example.android.network.tcp_ip.multi_thread_client.MultiThreadClientActivity;
 import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientActivity;
 import com.hades.example.android.network.url.TestURLFragment;
+import com.hades.example.android.network.url.url_connection.TestURLConnectionFragment;
 
 public class TestNetworkActivity extends BaseActivity {
     @Override
@@ -22,11 +23,12 @@ public class TestNetworkActivity extends BaseActivity {
         findViewById(R.id.pageSimpleSocketClient).setOnClickListener(v -> pageSimpleSocketClient());
         findViewById(R.id.pageMultiThreadSocketClient).setOnClickListener(v -> pageMultiThreadSocketClient());
         findViewById(R.id.pageURL).setOnClickListener(v -> pageURL());
+        findViewById(R.id.pageURLConnection).setOnClickListener(v -> pageURLConnection());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageURL();
+        pageURLConnection();
     }
 
     private void pageSimpleSocketClient() {
@@ -39,5 +41,9 @@ public class TestNetworkActivity extends BaseActivity {
 
     private void pageURL() {
         showFragment(new TestURLFragment());
+    }
+
+    private void pageURLConnection() {
+        showFragment(new TestURLConnectionFragment());
     }
 }

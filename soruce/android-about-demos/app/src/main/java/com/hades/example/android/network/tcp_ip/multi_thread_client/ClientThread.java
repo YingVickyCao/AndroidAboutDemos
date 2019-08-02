@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.hades.example.android.Constant;
 import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientActivity;
 
 import java.io.BufferedReader;
@@ -53,7 +54,7 @@ public class ClientThread implements Runnable {
                             // 每当读到来自服务器的数据之后，发送消息通知程序界面显示该数据
                             Log.d(TAG, "receive,run,thread[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]"); // thread[4427,Thread-9]
                             Message msg = new Message();
-                            msg.what = MultiThreadClientActivity.KEY_RECEIVE;
+                            msg.what = Constant.KEY_RECEIVE;
                             msg.obj = content;
                             ui_handler.sendMessage(msg);
                         }
@@ -69,7 +70,7 @@ public class ClientThread implements Runnable {
             send_Handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    if (msg.what == MultiThreadClientActivity.KEY_SEND) {// 接收到UI线程中用户输入的数据
+                    if (msg.what == Constant.KEY_SEND) {// 接收到UI线程中用户输入的数据
                         Log.d(TAG, "send,handleMessage,thread[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]"); //thread[4423,Thread-8]
                         // 将用户在文本框内输入的内容写入网络
                         try {

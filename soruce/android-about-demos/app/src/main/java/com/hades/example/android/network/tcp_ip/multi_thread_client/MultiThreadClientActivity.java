@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hades.example.android.Constant;
 import com.hades.example.android.R;
 
 public class MultiThreadClientActivity extends Activity {
@@ -19,8 +20,6 @@ public class MultiThreadClientActivity extends Activity {
 
     Handler handler;
     ClientThread clientThread;
-    public final static int KEY_SEND = 0x345;
-    public final static int KEY_RECEIVE = 0x123;
 
     @SuppressLint("HandlerLeak")
     @Override
@@ -36,7 +35,7 @@ public class MultiThreadClientActivity extends Activity {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (msg.what == KEY_RECEIVE) {
+                if (msg.what == Constant.KEY_RECEIVE) {
                     Log.d(TAG, "receive,handleMessage,thread[ " + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]"); // thread[2,main]
                     show.append("\n" + msg.obj.toString());
                 }
@@ -53,7 +52,7 @@ public class MultiThreadClientActivity extends Activity {
         try {
             // 当用户按下发送按钮后，将用户输入的数据封装成Message, 然后发送给子线程的Handler
             Message msg = new Message();
-            msg.what = KEY_SEND;
+            msg.what = Constant.KEY_SEND;
             msg.obj = input.getText().toString();
 
             clientThread.send_Handler.sendMessage(msg);

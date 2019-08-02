@@ -122,6 +122,7 @@
     <string name="page_simple_client_socket">Client - Use Socket to implement TCP/IP</string>
     <string name="page_multi_thread_client_socket">Multi thread Client - Use Socket to implement TCP/IP</string>
     <string name="page_url">URL</string>
+    <string name="page_URLConnection">URLConnection</string>
 
     <!-- ========================= -->
 
