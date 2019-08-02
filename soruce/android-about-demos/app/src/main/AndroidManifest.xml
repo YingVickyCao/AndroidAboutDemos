@@ -246,8 +246,8 @@
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
         <activity android:name=".app_component._activity._children.TestExpandableListActivity" />
 
-        <activity android:name=".app_component._fragment.BookListActivity" />
-        <activity android:name=".app_component._fragment.BookDetailActivity" />
+        <activity android:name=".app_component._fragment.book.BookListActivity" />
+        <activity android:name=".app_component._fragment.book.BookDetailActivity" />
 
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"

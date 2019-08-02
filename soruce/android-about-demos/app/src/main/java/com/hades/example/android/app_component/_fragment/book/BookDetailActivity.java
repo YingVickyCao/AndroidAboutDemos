@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component._fragment;
+package com.hades.example.android.app_component._fragment.book;
 
 import android.os.Bundle;
 
