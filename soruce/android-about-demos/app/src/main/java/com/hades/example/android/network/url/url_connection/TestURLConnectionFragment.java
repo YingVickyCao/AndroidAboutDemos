@@ -73,16 +73,40 @@ public class TestURLConnectionFragment extends Fragment {
         }.start();
     }
 
+    /*
+        I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+        I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+        D/TcpOptimizer: TcpOptimizer-ON
+        I/System.out: ContentEncoding:--->null
+        I/System.out: ContentLength:--->-1
+        I/System.out: ContentType:--->application/json; charset=utf8
+        I/System.out: Date:--->1564750256000
+        I/System.out: Expiration:--->0
+        I/System.out: LastModified:--->0
+        I/System.out: DoInput:--->true
+        I/System.out: DoOutput:--->true
+        I/System.out: URL:--->http://192.168.8.104:7777/login
+        I/System.out: Permission:--->java.net.SocketPermission@ceed424
+        I/System.out: null--->[HTTP/1.1 200 OK]
+        I/System.out: Connection--->[keep-alive]
+        I/System.out: Content-Type--->[application/json; charset=utf8]
+        I/System.out: Date--->[Fri, 02 Aug 2019 12:50:56 GMT]
+        I/System.out: Transfer-Encoding--->[chunked]
+        I/System.out: X-Android-Received-Millis--->[1564750261422]
+        I/System.out: X-Android-Response-Source--->[NETWORK 200]
+        I/System.out: X-Android-Selected-Protocol--->[http/1.1]
+        I/System.out: X-Android-Sent-Millis--->[1564750261412]
+     */
     private void post() {
         new Thread() {
             @Override
             public void run() {
                 // http://localhost:7777/login
                 response = GetPostUtil.sendPost("http://192.168.8.104:7777/login", "name=ga&pwd=2"); // {"msg":"sucess","name":"ga","status":1}
+                // 发送消息通知UI线程更新UI组件
+                handler.sendEmptyMessage(Constant.KEY_RECEIVE);
             }
         }.start();
-        // 发送消息通知UI线程更新UI组件
-        handler.sendEmptyMessage(Constant.KEY_RECEIVE);
     }
 }
 

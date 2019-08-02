@@ -84,14 +84,25 @@ public class GetPostUtil {
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
             // 发送POST请求必须设置如下两行
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
+            conn.setDoOutput(true); // URLConnection.getOutputStream().write()；从服务器端获得字节输出流, 服务器 -> app
+            conn.setDoInput(true);  // URLConnection.getInputStream().read();   总是使用conn.getInputStream()获取服务端的响应，因此默认值是true
             // 获取URLConnection对象对应的输出流
             out = new PrintWriter(conn.getOutputStream());
             // 发送请求参数
             out.print(params);  // ②
             // flush输出流的缓冲
             out.flush();
+
+            print("ContentEncoding:--->" + conn.getContentEncoding());//返回 content-encoding 头字段的值
+            print("ContentLength:--->" + conn.getContentLength());//返回 content-length 头字段的值
+            print("ContentType:--->" + conn.getContentType());//返回 content-type 头字段的值
+            print("Date:--->" + conn.getDate());//返回 date 头字段的值
+            print("Expiration:--->" + conn.getExpiration());//返回 expires 头字段的值
+            print("LastModified:--->" + conn.getLastModified());//返回 last-modified 头字段的值
+            print("DoInput:--->" + conn.getDoInput());//返回此 URLConnection 的 doInput 标志的值
+            print("DoOutput:--->" + conn.getDoOutput());//返回此 URLConnection 的 doOutput 标志的值
+            print("URL:--->" + conn.getURL());//返回此 URLConnection 的 URL 字段的值
+            print("Permission:--->" + conn.getPermission());//返回一个权限对象，其代表建立此对象表示的连接所需的权限
 
             // 获取所有响应头字段
             Map<String, List<String>> map = conn.getHeaderFields();
@@ -125,5 +136,9 @@ public class GetPostUtil {
             }
         }
         return result;
+    }
+
+    public static void print(String str) {
+        System.out.println(str);
     }
 }
