@@ -86,10 +86,13 @@ public class GetPostUtil {
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true); // URLConnection.getOutputStream().write()；从服务器端获得字节输出流, 服务器 -> app
             conn.setDoInput(true);  // URLConnection.getInputStream().read();   总是使用conn.getInputStream()获取服务端的响应，因此默认值是true
+
             // 获取URLConnection对象对应的输出流
-            out = new PrintWriter(conn.getOutputStream());
+            out = new PrintWriter(conn.getOutputStream()); // 先获取OutputStream，再向网络中输出请求参数params
             // 发送请求参数
             out.print(params);  // ②
+
+
             // flush输出流的缓冲
             out.flush();
 
