@@ -1,4 +1,4 @@
-package com.hades.example.android.network.url;
+package com.hades.example.android.network.url.url;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;

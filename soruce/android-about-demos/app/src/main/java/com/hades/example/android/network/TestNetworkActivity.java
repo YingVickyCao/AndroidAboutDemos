@@ -8,7 +8,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseActivity;
 import com.hades.example.android.network.tcp_ip.multi_thread_client.MultiThreadClientActivity;
 import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientActivity;
-import com.hades.example.android.network.url.TestURLFragment;
+import com.hades.example.android.network.url.url.TestURLFragment;
 import com.hades.example.android.network.url.url_connection.TestURLConnectionFragment;
 
 public class TestNetworkActivity extends BaseActivity {
