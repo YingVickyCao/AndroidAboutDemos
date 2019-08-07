@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.hades.example.android.Constant.SHARED_PREFERENCES_FILE_NAME;
 
 public class TestSharedPreferencesFragment extends BaseFragment {
     private static final String TAG = TestSharedPreferencesFragment.class.getSimpleName();
@@ -41,7 +42,7 @@ public class TestSharedPreferencesFragment extends BaseFragment {
 
     private void read() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
 
         // 读取字符串数据
         String time = preferences.getString("time", null);
@@ -53,7 +54,7 @@ public class TestSharedPreferencesFragment extends BaseFragment {
 
     private void write_PO_before() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
@@ -69,7 +70,7 @@ public class TestSharedPreferencesFragment extends BaseFragment {
 
     private void write() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences("PO", MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
 
         SharedPreferences.Editor editor = preferences.edit();
         Log.d(TAG, "write,Editor hashCode=" + editor.hashCode());

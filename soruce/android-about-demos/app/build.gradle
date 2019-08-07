@@ -73,6 +73,8 @@ dependencies {
 
     implementation "com.nineoldandroids:library:$nineoldandroids_version"
 
+    implementation "com.google.code.gson:gson:$gson_version"
+
 //    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
     testImplementation 'junit:junit:4.12'

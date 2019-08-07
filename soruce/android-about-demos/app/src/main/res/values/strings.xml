@@ -124,6 +124,10 @@
     <string name="page_multi_thread_client_socket">Multi thread Client - Use Socket to implement TCP/IP</string>
     <string name="page_url">URL</string>
     <string name="page_URLConnection">URLConnection</string>
+    <string name="page_HttpURLConnection">HttpURLConnection</string>
+
+    <string name="page_manager_phone_desktop">Manager phone desktop</string>
+    <string name="page_set_static_wallpaper">Set static wallpaper</string>
 
     <!-- ========================= -->
 
@@ -220,8 +224,8 @@
     <string name="sendExplicitBroadcast">Sending an Explicit Broadcast</string>
 
     <string name="play">音频播放音乐</string>
-    <string name="up">增大音量</string>
-    <string name="down">降低音量</string>
+    <string name="up_volumn">增大音量</string>
+    <string name="down_volume">降低音量</string>
     <string name="normal">静音</string>
     <string name="mute">正常</string>
     <string name="click">click</string>
@@ -421,4 +425,5 @@
     <string name="more">More</string>
     <string name="less">Less</string>
     <string name="request">Request</string>
+    <string name="set">Set</string>
 </resources>
