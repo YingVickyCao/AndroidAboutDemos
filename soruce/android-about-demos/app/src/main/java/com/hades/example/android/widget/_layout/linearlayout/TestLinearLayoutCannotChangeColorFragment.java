@@ -68,7 +68,7 @@ public class TestLinearLayoutCannotChangeColorFragment extends BaseFragment {
         }
 
         int count = 3;
-        int[] icon = new int[]{R.drawable.wait_icon, R.drawable.info_icon, R.drawable.logo};
+        int[] icon = new int[]{R.drawable.wait_icon, R.drawable.info_icon, R.drawable.ic_launcher};
         String[] textStr1 = new String[]{"A", "B", "C"};
         String[] textStr2 = new String[]{"1", "2", "3"};
 
