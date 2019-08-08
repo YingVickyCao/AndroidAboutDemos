@@ -27,7 +27,7 @@ public class RemoteViewsService4List extends RemoteViewsService {
 
         @Override
         public void onCreate() {
-            items = new int[]{R.drawable.digital_num_02, R.drawable.digital_num_03, R.drawable.digital_num_04};
+            items = new int[]{android.R.color.holo_red_dark, android.R.color.holo_green_dark, android.R.color.holo_orange_dark};
         }
 
         @Override
