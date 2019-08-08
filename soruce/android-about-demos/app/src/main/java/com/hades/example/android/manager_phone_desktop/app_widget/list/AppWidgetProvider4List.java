@@ -23,10 +23,10 @@ public class AppWidgetProvider4List extends AppWidgetProvider {
         Intent intent = new Intent(context, RemoteViewsService4List.class);
 
         // 使用intent更新rv中的stack_view组件（StackView）
-        rv.setRemoteAdapter(R.id.stack_view, intent);  // ①
+        rv.setRemoteAdapter(R.id.list_view, intent);  // ①
 
         // 设置当StackWidgetService提供的列表项为空时，直接显示empty_view组件
-        rv.setEmptyView(R.id.stack_view, R.id.empty_view);
+        rv.setEmptyView(R.id.list_view, R.id.empty_view);
         // 创建启动StackWidgetProvider组件（作为BroadcastReceiver）的Intent
 
         Intent toastIntent = new Intent(context, AppWidgetProvider4List.class);
@@ -36,7 +36,7 @@ public class AppWidgetProvider4List extends AppWidgetProvider {
         PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // 将PendingIntent与stack_view进行关联
-        rv.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);
+        rv.setPendingIntentTemplate(R.id.list_view, toastPendingIntent);
         // 使用AppWidgetManager通过RemteViews更新AppWidgetProvider
         appWidgetManager.updateAppWidget(new ComponentName(context, AppWidgetProvider4List.class), rv); // ②
         super.onUpdate(context, appWidgetManager, appWidgetIds);

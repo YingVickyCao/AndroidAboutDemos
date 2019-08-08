@@ -427,4 +427,5 @@
     <string name="set">Set</string>
     <string name="no_item">No item</string>
     <string name="digital_clock">Digital clock</string>
+    <string name="basic_app_widget">Basic app widget</string>
 </resources>

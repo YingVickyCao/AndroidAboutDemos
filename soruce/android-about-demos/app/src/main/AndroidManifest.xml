@@ -413,41 +413,38 @@
 
         <receiver
             android:name=".manager_phone_desktop.app_widget.base.AppWidgetProvider4Base"
-            android:label="@string/app_name">
+            android:label="@string/basic_app_widget">
             <intent-filter>
+                <!-- action specifies that the AppWidgetProvider accepts the ACTION_APPWIDGET_UPDATE broadcast -->
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_4_base" />
+                android:resource="@xml/appwidget_provider_info_4_base" />
         </receiver>
         <receiver
             android:name=".manager_phone_desktop.app_widget.clock.AppWidgetProvider4LedClock"
             android:icon="@drawable/digital_clock"
             android:label="@string/digital_clock">
-            <!-- 将该BroadcastReceiver当成桌面控件 -->
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <!-- 指定桌面控件的meta-data -->
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_4_clock" />
+                android:resource="@xml/appwidget_provider_info_4_clock" />
         </receiver>
-        <!-- 配置AppWidgetProvider，即配置桌面控件 -->
-        <receiver android:name=".manager_phone_desktop.app_widget.list.AppWidgetProvider4List">
-            <!-- 通过该intent-filter指定该Receiver作为桌面控件 -->
+        <receiver
+            android:name=".manager_phone_desktop.app_widget.list.AppWidgetProvider4List"
+            android:icon="@android:color/holo_red_dark"
+            android:label="@string/page_ListView">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <!-- 为桌面控件指定meta-data -->
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_list" />
+                android:resource="@xml/appwidget_provider_info_4_list" />
         </receiver>
-        <!-- 配置RemoteViewsService
-        必须指定权限为android.permission.BIND_REMOTEVIEWS
-         -->
+
         <service
             android:name=".manager_phone_desktop.app_widget.list.RemoteViewsService4List"
             android:exported="false"
