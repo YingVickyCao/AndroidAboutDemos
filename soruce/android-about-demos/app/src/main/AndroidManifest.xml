@@ -423,7 +423,8 @@
         </receiver>
         <receiver
             android:name=".manager_phone_desktop.app_widget.clock.AppWidgetProvider4LedClock"
-            android:label="@string/app_name">
+            android:icon="@drawable/digital_clock"
+            android:label="@string/digital_clock">
             <!-- 将该BroadcastReceiver当成桌面控件 -->
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -434,7 +435,7 @@
                 android:resource="@xml/appwidget_provider_4_clock" />
         </receiver>
         <!-- 配置AppWidgetProvider，即配置桌面控件 -->
-        <receiver android:name=".manager_phone_desktop.app_widget.list.StackWidgetProvider">
+        <receiver android:name=".manager_phone_desktop.app_widget.list.AppWidgetProvider4List">
             <!-- 通过该intent-filter指定该Receiver作为桌面控件 -->
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -448,7 +449,7 @@
         必须指定权限为android.permission.BIND_REMOTEVIEWS
          -->
         <service
-            android:name=".manager_phone_desktop.app_widget.list.StackWidgetService"
+            android:name=".manager_phone_desktop.app_widget.list.RemoteViewsService4List"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>

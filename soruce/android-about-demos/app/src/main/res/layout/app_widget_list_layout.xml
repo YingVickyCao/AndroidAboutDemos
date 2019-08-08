@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:layout_margin="8dp">
-	<StackView
-		android:id="@+id/stack_view"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:gravity="center"
-		android:loopViews="true" />
-	<TextView
-		android:id="@+id/empty_view"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:gravity="center"
-		android:background="#ff0f"
-		android:textColor="#ffffff"
-		android:textStyle="bold"
-		android:text="@string/no_item"
-		android:textSize="20sp" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
+
+    <!-- TODO: android:loopViews="true" -->
+    <ListView
+        android:id="@+id/stack_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:loopViews="true" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff0f"
+        android:gravity="center"
+        android:text="@string/no_item"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 </FrameLayout>
