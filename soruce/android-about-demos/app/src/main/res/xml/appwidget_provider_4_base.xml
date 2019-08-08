@@ -5,6 +5,7 @@
 	initialLayout：初始时显示的布局 -->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialLayout="@layout/app_widget_base"
-    android:minWidth="150dip"
-    android:minHeight="70dip"
+    android:minWidth="150dp"
+
+    android:minHeight="70dp"
     android:updatePeriodMillis="1000" />

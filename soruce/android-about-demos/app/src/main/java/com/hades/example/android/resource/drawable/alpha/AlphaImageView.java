@@ -32,7 +32,7 @@ public class AlphaImageView extends ImageView {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == Constant.KEY_RECEIVE) {
+            if (msg.what == Constant.KEY_UPDATE_UI) {
                 // 每次增加curAlpha的值
                 curAlpha += alphaDelta;
                 if (curAlpha > 255) curAlpha = 255;
@@ -75,7 +75,7 @@ public class AlphaImageView extends ImageView {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.what = Constant.KEY_RECEIVE;
+                msg.what = Constant.KEY_UPDATE_UI;
                 if (curAlpha >= 255) {
                     timer.cancel();
                 } else {

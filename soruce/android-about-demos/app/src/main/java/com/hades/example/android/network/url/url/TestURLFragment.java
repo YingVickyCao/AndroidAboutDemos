@@ -28,7 +28,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.hades.example.android.Constant.KEY_RECEIVE;
+import static com.hades.example.android.Constant.KEY_UPDATE_UI;
 
 public class TestURLFragment extends Fragment {
     private static final String TAG = TestURLFragment.class.getSimpleName();
@@ -40,7 +40,7 @@ public class TestURLFragment extends Fragment {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == KEY_RECEIVE) {
+            if (msg.what == KEY_UPDATE_UI) {
                 // 使用ImageView显示该图片
                 show.setImageBitmap(bitmap);
             }
@@ -123,7 +123,7 @@ public class TestURLFragment extends Fragment {
             // 打开该URL对应的资源的输入流
             InputStream is = url.openStream();
             bitmap = BitmapFactory.decodeStream(is); // URL resource -> View
-            handler.sendEmptyMessage(KEY_RECEIVE);
+            handler.sendEmptyMessage(KEY_UPDATE_UI);
             is.close();
 
 

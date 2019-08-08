@@ -121,7 +121,7 @@ public class MultiThreadDownFragment extends Fragment {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (msg.what == Constant.KEY_RECEIVE) {
+                if (msg.what == Constant.KEY_UPDATE_UI) {
                     bar.setProgress(mDownStatus);
                     percent.setText(mDownStatus + "%");
                 }
@@ -159,7 +159,7 @@ public class MultiThreadDownFragment extends Fragment {
                     @Override
                     public void run() {
                         mDownStatus = downUtil.getDownloadProgress();
-                        handler.sendEmptyMessage(Constant.KEY_RECEIVE);
+                        handler.sendEmptyMessage(Constant.KEY_UPDATE_UI);
                         if (mDownStatus >= 100) {
                             timer.cancel();
                         }

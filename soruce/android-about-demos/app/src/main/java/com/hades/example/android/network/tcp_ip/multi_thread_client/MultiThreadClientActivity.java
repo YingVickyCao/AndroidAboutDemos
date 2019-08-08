@@ -35,7 +35,7 @@ public class MultiThreadClientActivity extends Activity {
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (msg.what == Constant.KEY_RECEIVE) {
+                if (msg.what == Constant.KEY_UPDATE_UI) {
                     Log.d(TAG, "receive,handleMessage,thread[ " + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]"); // thread[2,main]
                     show.append("\n" + msg.obj.toString());
                 }

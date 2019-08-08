@@ -22,7 +22,7 @@ public class TestURLConnectionFragment extends Fragment {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == Constant.KEY_RECEIVE) {
+            if (msg.what == Constant.KEY_UPDATE_UI) {
                 // 设置show组件显示服务器响应
                 show.setText(response);
             }
@@ -68,7 +68,7 @@ public class TestURLConnectionFragment extends Fragment {
                 // [Get]http://localhost:8888/getSum?num1=5&num2=15
                 response = GetPostUtil.sendGet("http://192.168.8.104:7000/getSum", "num1=5&num2=15");
                 // 发送消息通知UI线程更新UI组件
-                handler.sendEmptyMessage(Constant.KEY_RECEIVE);
+                handler.sendEmptyMessage(Constant.KEY_UPDATE_UI);
             }
         }.start();
     }
@@ -104,7 +104,7 @@ public class TestURLConnectionFragment extends Fragment {
                 // http://localhost:7777/login
                 response = GetPostUtil.sendPost("http://192.168.8.104:7777/login", "name=ga&pwd=2"); // {"msg":"sucess","name":"ga","status":1}
                 // 发送消息通知UI线程更新UI组件
-                handler.sendEmptyMessage(Constant.KEY_RECEIVE);
+                handler.sendEmptyMessage(Constant.KEY_UPDATE_UI);
             }
         }.start();
     }

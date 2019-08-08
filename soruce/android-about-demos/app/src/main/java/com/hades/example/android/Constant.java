@@ -6,7 +6,9 @@ import java.io.File;
 
 public class Constant {
     public final static int KEY_SEND = 0x345;
-    public final static int KEY_RECEIVE = 0x123;
+    public final static int KEY_UPDATE_UI = 0x123;
+
+    public final static int PERIOD_1_MINUTE = 1000;
 
     public final static String SHARED_PREFERENCES_FILE_NAME = "sf";
     public final static String SHARED_PREFERENCES_KEY_DOWNLOAD = "DOWNLOAD";

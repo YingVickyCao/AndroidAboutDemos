@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
     android:orientation="horizontal">
-    <!-- 定义8个ImageView来显示液晶数字 -->
-    <ImageView
-        android:id="@+id/img01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/img02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/digital_view_h_1"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_02" />
+
+    <ImageView
+        android:id="@+id/digital_view_h_2"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_02" />
 
     <ImageView
         android:id="@+id/img03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
         android:src="@drawable/su00" />
 
     <ImageView
-        android:id="@+id/img04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/digital_view_m_1"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_05" />
 
     <ImageView
-        android:id="@+id/img05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/digital_view_m_2"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_06" />
 
     <ImageView
         android:id="@+id/img06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
         android:src="@drawable/su00" />
 
     <ImageView
-        android:id="@+id/img07"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/digital_view_s_1"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_01" />
 
     <ImageView
-        android:id="@+id/img08"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/digital_view_s_2"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/digital_num_09" />
 </LinearLayout>
