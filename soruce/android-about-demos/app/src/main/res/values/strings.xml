@@ -420,10 +420,10 @@
     <string name="hear_rate">心率传感器</string>
     <string name="list_all_location_provider">List all LocationProvider</string>
     <string name="list_all_free_location_provider">List all free LocationProvider</string>
-
     <string name="get_gps_last_location">Get Gps Last Location</string>
     <string name="more">More</string>
     <string name="less">Less</string>
     <string name="request">Request</string>
     <string name="set">Set</string>
+    <string name="no_item">No item</string>
 </resources>

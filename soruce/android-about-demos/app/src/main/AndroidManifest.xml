@@ -410,6 +410,46 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/livewallpaper" />
         </service>
+
+        <receiver
+            android:name=".manager_phone_desktop.app_widget.base.DesktopApp"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_4_base" />
+        </receiver>
+        <receiver
+            android:name=".manager_phone_desktop.app_widget.clock.LedClock"
+            android:label="@string/app_name">
+            <!-- 将该BroadcastReceiver当成桌面控件 -->
+            <intent-filter>
+            </intent-filter>
+            <!-- 指定桌面控件的meta-data -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_4_clock" />
+        </receiver>
+        <!-- 配置AppWidgetProvider，即配置桌面控件 -->
+        <receiver android:name=".manager_phone_desktop.app_widget.list.StackWidgetProvider">
+            <!-- 通过该intent-filter指定该Receiver作为桌面控件 -->
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <!-- 为桌面控件指定meta-data -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_list" />
+        </receiver>
+        <!-- 配置RemoteViewsService
+        必须指定权限为android.permission.BIND_REMOTEVIEWS
+         -->
+        <service
+            android:name=".manager_phone_desktop.app_widget.list.StackWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>
