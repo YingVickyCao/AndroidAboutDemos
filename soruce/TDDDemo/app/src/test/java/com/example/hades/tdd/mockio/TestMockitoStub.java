@@ -67,6 +67,40 @@ public class TestMockitoStub {
     }
 
     @Test
+    public void mockVoid() {
+        Person person = mock(Person.class);
+        Mockito.doAnswer(new Answer<Object>() {
+            public Object answer(InvocationOnMock invocation) {
+                Object[] args = invocation.getArguments();
+                return "called with arguments: " + args;
+            }
+        }).when(person).print("A"); // void print(String s)
+    }
+
+    @Test
+    public void mockVoid2() {
+        Person person = mock(Person.class);
+        Mockito.doAnswer(new Answer<Object>() {
+            public Object answer(InvocationOnMock invocation) {
+                Object[] args = invocation.getArguments();
+                return "called with arguments: " + args;
+            }
+        }).when(person).print(); // void print()
+    }
+
+    @Test
+    public void mockVoid3() {
+        Person person = mock(Person.class);
+        Mockito.doAnswer(new Answer<Object>() {
+            public Object answer(InvocationOnMock invocation) {
+                Object[] args = invocation.getArguments();
+                return "called with arguments: " + args;
+            }
+        }).when(person).print(anyString()); // void print(String s)
+        person.eat2("A");
+    }
+
+    @Test
     public void testThenCallRealMethod() throws Exception {
         Person person = mock(Person.class);
         System.out.println(person.eat("Noodles"));

@@ -32,9 +32,19 @@ public class Person {
         System.out.println(toString());
     }
 
+    public void print(String s) {
+        System.out.println(s);
+    }
+
     public String eat(String food) {
         return name + " is eating " + food;
 //        return getName() + " is eating " + food;
+    }
+
+    public String eat2(String food) {
+        String s = name + " is eating " + food;
+        print(s);
+        return s;
     }
 
     @Override
