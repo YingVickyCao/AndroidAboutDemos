@@ -66,8 +66,24 @@ public class TestMockitoStub {
         System.out.println(person.eat("Price"));
     }
 
+    /*
+       1.Mock 方法有返回值
+       对象= mock (类名.class);
+       when (对象.方法 (参数)).thenReturn (方法的返回值);
+
+
+       2. Mock 方法没有返回值
+       类名 对象 = Mockito.mock(类名.class);
+        Mockito.doAnswer(new Answer<Object>() {
+            public Object answer(InvocationOnMock invocation) {
+                Object[] args = invocation.getArguments();
+                return "called with arguments: " + args;
+            }
+        }).when(对象).方法名();
+     */
+
     @Test
-    public void mockVoid() {
+    public void mockVoidReturn() {
         Person person = mock(Person.class);
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
@@ -78,7 +94,7 @@ public class TestMockitoStub {
     }
 
     @Test
-    public void mockVoid2() {
+    public void mockVoidReturn2() {
         Person person = mock(Person.class);
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
@@ -89,7 +105,7 @@ public class TestMockitoStub {
     }
 
     @Test
-    public void mockVoid3() {
+    public void mockVoidReturn3() {
         Person person = mock(Person.class);
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
