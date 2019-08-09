@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -19,26 +20,40 @@ public class AppWidgetProvider4List extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.app_widget_list_layout);
-        Intent intent = new Intent(context, RemoteViewsService4List.class);
+        // update each of the app widgets with the remote adapter
+        for (int i = 0; i < appWidgetIds.length; ++i) {
+            // Set up the intent that starts the RemoteViewsService, which wil provide the views for this collection.
+            Intent intent = new Intent(context, RemoteViewsService4List.class);
+            // Add the app widget ID to the intent extras.
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
 
-        // 使用intent更新rv中的stack_view组件（StackView）
-        rv.setRemoteAdapter(R.id.list_view, intent);  // ①
+            // Instantiate the RemoteViews object for the app widget layout.
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.app_widget_list_layout);
+            // Set up the RemoteViews object to use a RemoteViews adapter.This adapter connects to a RemoteViewsService through the specified intent. This is how you populate the data.
+            rv.setRemoteAdapter(R.id.list_view, intent);
+            // The empty view is displayed when the collection has no items.It should be in the same layout used to instantiate the RemoteViews object above.
+            rv.setEmptyView(R.id.list_view, R.id.empty_view);
 
-        // 设置当StackWidgetService提供的列表项为空时，直接显示empty_view组件
-        rv.setEmptyView(R.id.list_view, R.id.empty_view);
-        // 创建启动StackWidgetProvider组件（作为BroadcastReceiver）的Intent
 
-        Intent toastIntent = new Intent(context, AppWidgetProvider4List.class);
-        // 为该Intent设置Action属性
-        toastIntent.setAction(AppWidgetProvider4List.TOAST_ACTION);
-        // 将Intent包装成PendingIntent
-        PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            //
+            // Do additional processing specific to this app widget...
+            //
 
-        // 将PendingIntent与stack_view进行关联
-        rv.setPendingIntentTemplate(R.id.list_view, toastPendingIntent);
-        // 使用AppWidgetManager通过RemteViews更新AppWidgetProvider
-        appWidgetManager.updateAppWidget(new ComponentName(context, AppWidgetProvider4List.class), rv); // ②
+            // 创建启动StackWidgetProvider组件（作为BroadcastReceiver）的Intent
+
+            Intent toastIntent = new Intent(context, AppWidgetProvider4List.class);
+            // 为该Intent设置Action属性
+            toastIntent.setAction(AppWidgetProvider4List.TOAST_ACTION);
+            // 将Intent包装成PendingIntent
+            PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            // 将PendingIntent与stack_view进行关联
+            rv.setPendingIntentTemplate(R.id.list_view, toastPendingIntent);
+            // 使用AppWidgetManager通过RemteViews更新AppWidgetProvider
+
+            appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
+            appWidgetManager.updateAppWidget(new ComponentName(context, AppWidgetProvider4List.class), rv); // ②
+        }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 

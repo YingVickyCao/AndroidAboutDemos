@@ -2,9 +2,12 @@
 	minWidth：桌面控件的最小宽度。
 	minWidth：桌面控件的最小高度。
 	updatePeriodMillis：更新频率
-	initialLayout：初始时显示的布局 -->
+	initialLayout：初始时显示的布局
+	previewImage: 选择app widget时显示
+	-->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialLayout="@layout/app_widget_base"
-    android:minWidth="150dp"
-    android:minHeight="70dp"
+    android:minWidth="130dp"
+    android:minHeight="150dp"
+    android:previewImage="@drawable/app_widget_preview_img_4_base"
     android:updatePeriodMillis="1000" />

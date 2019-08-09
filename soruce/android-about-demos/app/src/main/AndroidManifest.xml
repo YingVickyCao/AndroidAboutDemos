@@ -413,6 +413,7 @@
 
         <receiver
             android:name=".manager_phone_desktop.app_widget.base.AppWidgetProvider4Base"
+            android:icon="@drawable/ic_launcher"
             android:label="@string/basic_app_widget">
             <intent-filter>
                 <!-- action specifies that the AppWidgetProvider accepts the ACTION_APPWIDGET_UPDATE broadcast -->

@@ -31,21 +31,22 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
     private static final String TAG = AppWidgetProvider4Base.class.getSimpleName();
 
     @Override
-    public void onReceive(Context context, Intent intent) { // [thread =2,main]
-        super.onReceive(context, intent);
-        Log.d(TAG, "onReceive: " + LogHelper.getThreadInfo());
-    }
-
-    @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) { // [thread =2,main].
         Log.d(TAG, "onUpdate: " + LogHelper.getThreadInfo());
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_base);
-        remoteViews.setImageViewResource(R.id.img, R.drawable.ic_launcher_round);
+        remoteViews.setImageViewResource(R.id.img, R.drawable.app_widget_preview_img_4_base);
 
         // Notify remote desktop app, update AppWidgetProvider4Base view.
         ComponentName componentName = new ComponentName(context, AppWidgetProvider4Base.class);  // 将AppWidgetProvider子类实例包装成ComponentName对象
         appWidgetManager.updateAppWidget(componentName, remoteViews);  // 调用AppWidgetManager将remoteViews添加到ComponentName中
+    }
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) { // [thread =2,main]
+        super.onReceive(context, intent);
+        Log.d(TAG, "onReceive: " + LogHelper.getThreadInfo());
     }
 
     @Override
