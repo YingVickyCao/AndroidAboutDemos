@@ -3,17 +3,14 @@ package com.example.hades.tdd.mockio;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
-import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.after;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atMost;
@@ -45,10 +42,6 @@ public class TestMockitoStub {
 
         person.setName("C");// nothing will be set.
         System.out.println(person.getName()); // Not "C", is "B"
-
-        when(person.getIntegers()).thenReturn(null);
-        when(person.getSize()).thenCallRealMethod();
-        System.out.println(person.getSize());
     }
 
     /**
@@ -82,28 +75,24 @@ public class TestMockitoStub {
         System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
 
 //        -----
-//        final List<Integer> list = new ArrayList<Integer>();
-//        list.add(1);
-//        when(person.getIntegers()).thenAnswer(new Answer<List<Integer>>() {
-//            @Override
-//            public List<Integer> answer(InvocationOnMock invocation) throws Throwable {
-//                return list;
-//            }
-//        });
-//        when(person.getSize()).thenCallRealMethod();
-//        System.out.println(person.getSize());
-
-        final List<Integer> list2 = new ArrayList<Integer>();
-        list2.add(1);
-        when(person.getIntegers2()).thenAnswer(new Answer<List<Integer>>() {
+        when(person.getNum()).thenAnswer(new Answer<Integer>() {
             @Override
-            public List<Integer> answer(InvocationOnMock invocation) throws Throwable {
-                return list2;
+            public Integer answer(InvocationOnMock invocation) throws Throwable {
+                return 1;
             }
         });
-        when(person.getSize2()).thenCallRealMethod();
-        Assert.assertEquals(Integer.valueOf(1), person.getSize2());
-        System.out.println(person.getSize2());
+        when(person.getSize()).thenCallRealMethod();
+        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
+//
+
+        when(person.getNum()).thenAnswer(new Answer<Integer>() {
+            @Override
+            public Integer answer(InvocationOnMock invocation) throws Throwable {
+                return null;
+            }
+        });
+        when(person.getSize()).thenCallRealMethod();
+        Assert.assertNull(person.getSize()); // NullPointerException
 //        ------
     }
 
@@ -167,7 +156,7 @@ public class TestMockitoStub {
     }
 
     @Test
-    public void test_henCallRealMethod() throws Exception {
+    public void test_thenCallRealMethod() throws Exception {
         /*
         Mock for Person, hashCode: 1336996537
         null
@@ -197,6 +186,21 @@ public class TestMockitoStub {
         A a = person.check(null, false);
         System.out.println(a);
         Assert.assertNotNull(a);
+//        --
+
+        /**
+         * thenReturn vs thenAnswer?
+         * thenReturn: 执行方法体.  b.getNum()中，b=null => 不执行方法体。 NullPointerException。 b!=null => 执行方法体。 NullPointerException
+         * thenAnswer: 执行方法体. b.getNum()中，b=null => 执行方法体。 NullPointerException。 b!=null => 不执行方法体。
+         */
+
+        when(person.getNum()).thenReturn(null);
+        when(person.getSize()).thenCallRealMethod();
+        System.out.println(person.getSize()); // null
+
+        when(person.getNum()).thenReturn(5);
+        when(person.getSize()).thenCallRealMethod();// NullPointerException
+        System.out.println(person.getSize());
     }
 
     @Test

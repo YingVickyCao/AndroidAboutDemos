@@ -8,4 +8,8 @@ public class B {
     public List<Integer> getIntegers() {
         return integers;
     }
+
+    public Integer getNum() {
+        return 2;
+    }
 }

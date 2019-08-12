@@ -62,6 +62,7 @@ public class Person {
 
     // Mock Android code
     public A findA(int pos) {
+        System.out.println("findA");
         return new A();
     }
 
@@ -77,28 +78,18 @@ public class Person {
     }
 
     public Integer getSize() {
-        List<Integer> list = getIntegers();
-        if (null == list) {
+        Integer num = getNum();
+        if (null == num) {
             return null;
         }
-        return list.size();
+        return num;
     }
 
-    public Integer getSize2() {
-        List<Integer> list = getIntegers2();
-        if (null == list) {
-            return null;
-        }
-        return list.size();
+    public Integer getNum() {
+        return b.getNum();
+//        return getB().getIntegers(); // getB() = b
     }
 
-    public List<Integer> getIntegers() {
-        return getB().getIntegers();
-    }
-
-    public List<Integer> getIntegers2() {
-        return b.getIntegers();
-    }
 
     public B getB() {
         return b;
