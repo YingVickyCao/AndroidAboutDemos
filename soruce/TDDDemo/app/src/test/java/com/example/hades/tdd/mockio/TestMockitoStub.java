@@ -57,6 +57,7 @@ public class TestMockitoStub {
 //        when(person.getSize()).thenCallRealMethod();
 //        Assert.assertNull(person.getSize()); // null
 
+        // 前面的mocked值影响了该测试。若打开上面的mock，则NullPointerException
         when(person.getNum()).thenReturn(1);
         when(person.getSize()).thenCallRealMethod();
         Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
