@@ -37,6 +37,7 @@ public class TestMockitoStub {
 //        ---
 //        when(person.getName()).thenReturn("A");
 //        System.out.println(person.getName()); // A
+        // mock后一直存在，因此，为了避免mocked值影响以后mock，应该使用单独函数/{+mock1_n}测试每一种情况。
 //        System.out.println(person.getName()); // A
 
 //        ---
