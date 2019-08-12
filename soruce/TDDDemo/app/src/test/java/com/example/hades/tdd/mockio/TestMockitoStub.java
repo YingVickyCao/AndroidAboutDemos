@@ -31,17 +31,35 @@ public class TestMockitoStub {
          * 若使用类方法原本返回的值，使用thenCallRealMethod或者doCallRealMethod
          */
         Person person = mock(Person.class);
-        System.out.println(person.getName());  // null
 
-        when(person.getName()).thenReturn("A");
-        System.out.println(person.getName()); // A
-        System.out.println(person.getName()); // A
+//        System.out.println(person.getName());  // null
 
-        when(person.getName()).thenReturn("B");
-        System.out.println(person.getName());//B
+//        ---
+//        when(person.getName()).thenReturn("A");
+//        System.out.println(person.getName()); // A
+//        System.out.println(person.getName()); // A
 
-        person.setName("C");// nothing will be set.
-        System.out.println(person.getName()); // Not "C", is "B"
+//        ---
+//        when(person.getName()).thenReturn("B");
+//        System.out.println(person.getName());//B
+
+//        ---
+//        person.setName("C");// nothing will be set.
+//        System.out.println(person.getName()); // Not "C", is "B"
+
+//        ----
+        /**
+         * thenReturn and thenAnswer?
+         * 不执行方法体，直接返回person.getNum()的值。因此，b=null也没有关系
+         */
+//        when(person.getNum()).thenReturn(null);
+//        when(person.getSize()).thenCallRealMethod();
+//        Assert.assertNull(person.getSize()); // null
+
+        when(person.getNum()).thenReturn(1);
+        when(person.getSize()).thenCallRealMethod();
+        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
+//        ------
     }
 
     /**
@@ -63,27 +81,26 @@ public class TestMockitoStub {
     @Test
     public void test_thenAnswer() throws Exception {
         Person person = mock(Person.class);
-        when(person.eat(anyString())).thenAnswer(new Answer<String>() {
-            @Override
-            public String answer(InvocationOnMock invocation) throws Throwable {
-                Object[] args = invocation.getArguments();
-                return args[0].toString() + " is delicious";
-            }
-        });
 
-        System.out.println(person.eat("Price")); // Price is delicious
-        System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
+//        when(person.eat(anyString())).thenAnswer(new Answer<String>() {
+//            @Override
+//            public String answer(InvocationOnMock invocation) throws Throwable {
+//                Object[] args = invocation.getArguments();
+//                return args[0].toString() + " is delicious";
+//            }
+//        });
+//        System.out.println(person.eat("Price")); // Price is delicious
+//        System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
 
 //        -----
-        when(person.getNum()).thenAnswer(new Answer<Integer>() {
-            @Override
-            public Integer answer(InvocationOnMock invocation) throws Throwable {
-                return null;
-            }
-        });
-        when(person.getSize()).thenCallRealMethod();
-        Assert.assertNull(person.getSize()); // NullPointerException
-
+//        when(person.getNum()).thenAnswer(new Answer<Integer>() {
+//            @Override
+//            public Integer answer(InvocationOnMock invocation) throws Throwable {
+//                return null;
+//            }
+//        });
+//        when(person.getSize()).thenCallRealMethod();
+//        Assert.assertNull(person.getSize()); // null
 
         when(person.getNum()).thenAnswer(new Answer<Integer>() {
             @Override
@@ -92,9 +109,7 @@ public class TestMockitoStub {
             }
         });
         when(person.getSize()).thenCallRealMethod();
-        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
-
-
+        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // NullPointerException
 //        ------
     }
 
@@ -178,31 +193,17 @@ public class TestMockitoStub {
     public void test2_thenCallRealMethod() throws Exception {
         Person person = mock(Person.class);
 
-        when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
-        when(person.eat(anyString())).thenCallRealMethod();
-        System.out.println(person.eat("Noodles"));
+//        when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
+//        when(person.eat(anyString())).thenCallRealMethod();
+//        System.out.println(person.eat("Noodles"));
 
-        when(person.findA(0)).thenReturn(new A());
-//        when(person.check(null, false)).thenReturn(new A());
-        when(person.check(null, false)).thenCallRealMethod();
-        A a = person.check(null, false);
-        System.out.println(a);
-        Assert.assertNotNull(a);
-//        --
-
-        /**
-         * thenReturn vs thenAnswer?
-         * thenReturn: 执行方法体.  b.getNum()中，b=null => 不执行方法体。 NullPointerException。 b!=null => 执行方法体。 NullPointerException
-         * thenAnswer: 执行方法体. b.getNum()中，b=null => 执行方法体。 NullPointerException。 b!=null => 不执行方法体。
-         */
-
-        when(person.getNum()).thenReturn(null);
-        when(person.getSize()).thenCallRealMethod();
-        System.out.println(person.getSize()); // null
-
-        when(person.getNum()).thenReturn(5);
-        when(person.getSize()).thenCallRealMethod();// NullPointerException
-        System.out.println(person.getSize());
+//        ---
+//        when(person.findA(0)).thenReturn(new A());
+////        when(person.check(null, false)).thenReturn(new A());
+//        when(person.check(null, false)).thenCallRealMethod();
+//        A a = person.check(null, false);
+//        System.out.println(a);
+//        Assert.assertNotNull(a);
     }
 
     @Test
