@@ -3,9 +3,12 @@ package com.example.hades.tdd.mockio;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
+
+import java.util.ArrayList;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -134,7 +137,8 @@ public class TestMockitoStub {
     // doNothing = 希望某个方法不做任何事情。在void返回方法或者方法中使用，或者与正在执行的单元测试无关。
     @Test
     public void test3_doNothing() {
-
+        Person person = mock(Person.class);
+        Mockito.doNothing().when(person).updateRequestActionAndApproval(new ArrayList<Integer>());
     }
 
     @Test

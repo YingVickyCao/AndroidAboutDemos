@@ -2,6 +2,8 @@ package com.example.hades.tdd.mockio;
 
 import android.util.Log;
 
+import java.util.List;
+
 public class Person {
     private static final String TAG = Person.class.getSimpleName();
     String name;
@@ -68,6 +70,12 @@ public class Person {
         }
         return null;
     }
+
+    public void updateRequestActionAndApproval(final List<Integer> integers){
+
+    }
+
+
 
     @Override
     public String toString() {
