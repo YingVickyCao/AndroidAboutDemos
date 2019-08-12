@@ -78,21 +78,23 @@ public class TestMockitoStub {
         when(person.getNum()).thenAnswer(new Answer<Integer>() {
             @Override
             public Integer answer(InvocationOnMock invocation) throws Throwable {
-                return 1;
-            }
-        });
-        when(person.getSize()).thenCallRealMethod();
-        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
-//
-
-        when(person.getNum()).thenAnswer(new Answer<Integer>() {
-            @Override
-            public Integer answer(InvocationOnMock invocation) throws Throwable {
                 return null;
             }
         });
         when(person.getSize()).thenCallRealMethod();
         Assert.assertNull(person.getSize()); // NullPointerException
+
+
+        when(person.getNum()).thenAnswer(new Answer<Integer>() {
+            @Override
+            public Integer answer(InvocationOnMock invocation) throws Throwable {
+                return 1;
+            }
+        });
+        when(person.getSize()).thenCallRealMethod();
+        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
+
+
 //        ------
     }
 
