@@ -9,6 +9,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -44,6 +45,10 @@ public class TestMockitoStub {
 
         person.setName("C");// nothing will be set.
         System.out.println(person.getName()); // Not "C", is "B"
+
+        when(person.getIntegers()).thenReturn(null);
+        when(person.getSize()).thenCallRealMethod();
+        System.out.println(person.getSize());
     }
 
     /**
@@ -75,6 +80,31 @@ public class TestMockitoStub {
 
         System.out.println(person.eat("Price")); // Price is delicious
         System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
+
+//        -----
+//        final List<Integer> list = new ArrayList<Integer>();
+//        list.add(1);
+//        when(person.getIntegers()).thenAnswer(new Answer<List<Integer>>() {
+//            @Override
+//            public List<Integer> answer(InvocationOnMock invocation) throws Throwable {
+//                return list;
+//            }
+//        });
+//        when(person.getSize()).thenCallRealMethod();
+//        System.out.println(person.getSize());
+
+        final List<Integer> list2 = new ArrayList<Integer>();
+        list2.add(1);
+        when(person.getIntegers2()).thenAnswer(new Answer<List<Integer>>() {
+            @Override
+            public List<Integer> answer(InvocationOnMock invocation) throws Throwable {
+                return list2;
+            }
+        });
+        when(person.getSize2()).thenCallRealMethod();
+        Assert.assertEquals(Integer.valueOf(1), person.getSize2());
+        System.out.println(person.getSize2());
+//        ------
     }
 
     /*
@@ -106,6 +136,15 @@ public class TestMockitoStub {
         }).when(person).print("A");
         person.print("A");
         // mock前后并没有影响
+
+        Mockito.doAnswer(new Answer<Object>() {
+            public Object answer(InvocationOnMock invocation) {
+                Object[] args = invocation.getArguments();
+                return "called with arguments: " + args;
+            }
+        }).when(person).setName("A");
+        person.setName("A");
+        System.out.println(person.getName()); // null
     }
 
     @Test
@@ -118,20 +157,6 @@ public class TestMockitoStub {
             }
         }).when(person).print(); // void print()
         person.print();
-    }
-
-
-    @Test
-    public void test3_doAnswer_mockVoid() {
-        Person person = mock(Person.class);
-        person.print("A");
-        Mockito.doAnswer(new Answer<Object>() {
-            public Object answer(InvocationOnMock invocation) {
-                Object[] args = invocation.getArguments();
-                return "called with arguments: " + args;
-            }
-        }).when(person).print(anyString()); // void print(String s)
-        person.eat2("A");
     }
 
     // doNothing = 希望某个方法不做任何事情。在void返回方法或者方法中使用，或者与正在执行的单元测试无关。

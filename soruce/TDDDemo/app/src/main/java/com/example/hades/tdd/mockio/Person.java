@@ -8,6 +8,7 @@ public class Person {
     private static final String TAG = Person.class.getSimpleName();
     String name;
     int id;
+    B b;
 
     public Person() {
     }
@@ -71,11 +72,37 @@ public class Person {
         return null;
     }
 
-    public void updateRequestActionAndApproval(final List<Integer> integers){
+    void updateRequestActionAndApproval(final List<Integer> integers) {
 
     }
 
+    public Integer getSize() {
+        List<Integer> list = getIntegers();
+        if (null == list) {
+            return null;
+        }
+        return list.size();
+    }
 
+    public Integer getSize2() {
+        List<Integer> list = getIntegers2();
+        if (null == list) {
+            return null;
+        }
+        return list.size();
+    }
+
+    public List<Integer> getIntegers() {
+        return getB().getIntegers();
+    }
+
+    public List<Integer> getIntegers2() {
+        return b.getIntegers();
+    }
+
+    public B getB() {
+        return b;
+    }
 
     @Override
     public String toString() {
