@@ -37,7 +37,9 @@ public class TestMockitoStub {
 //        ---
 //        when(person.getName()).thenReturn("A");
 //        System.out.println(person.getName()); // A
-        // mock后一直存在，因此，为了避免mocked值影响以后mock，应该使用单独函数/{+mock1_n}测试每一种情况。
+        /**
+         * mock后一直存在，因此，为了避免mocked值影响以后mock，应该使用单独函数/{+mock n}测试每一种情况。
+         */
 //        System.out.println(person.getName()); // A
 
 //        ---
@@ -53,14 +55,22 @@ public class TestMockitoStub {
          * thenReturn and thenAnswer?
          * 不执行方法体，直接返回person.getNum()的值。因此，b=null也没有关系
          */
-//        when(person.getNum()).thenReturn(null);
-//        when(person.getSize()).thenCallRealMethod();
-//        Assert.assertNull(person.getSize()); // null
+        {
+            Person person2 = mock(Person.class);
+            when(person2.getNum()).thenReturn(null);
+            when(person2.getSize()).thenCallRealMethod();
+            Assert.assertNull(person2.getSize()); // null
+        }
+        {
 
-        // 前面的mocked值影响了该测试。若打开上面的mock，则NullPointerException
-        when(person.getNum()).thenReturn(1);
-        when(person.getSize()).thenCallRealMethod();
-        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // 1
+            Person person2 = mock(Person.class);
+            /**
+             * 前面的mocked值影响了该测试。若打开上面的mock，则NullPointerException. =>{+mock n}
+             */
+            when(person2.getNum()).thenReturn(1);
+            when(person2.getSize()).thenCallRealMethod();
+            Assert.assertEquals(Integer.valueOf(1), person2.getSize()); // 1
+        }
 //        ------
     }
 
