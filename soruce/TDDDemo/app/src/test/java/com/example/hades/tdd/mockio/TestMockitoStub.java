@@ -1,5 +1,6 @@
 package com.example.hades.tdd.mockio;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mockito;
@@ -8,6 +9,7 @@ import org.mockito.stubbing.Answer;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.after;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atMost;
@@ -18,16 +20,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class TestMockitoStub {
-
-    /***
-     null
-     A
-     A
-     B
-     B
+    /**
+     * doReturn: 希望方法返回返回值
      */
     @Test
-    public void testThenReturn() throws Exception {
+    public void test_thenReturn() throws Exception {
+        /**
+         * 使用Mockito或者PowerMockito，mock出来的类，如果不使用thenReturn设置返回值，只能返回0或者null；
+         * 若使用类方法原本返回的值，使用thenCallRealMethod或者doCallRealMethod
+         */
         Person person = mock(Person.class);
         System.out.println(person.getName());  // null
 
@@ -42,18 +43,25 @@ public class TestMockitoStub {
         System.out.println(person.getName()); // Not "C", is "B"
     }
 
+    /**
+     * doReturn: 希望方法抛出异常
+     */
     @Test
-    public void testThenThrow() throws Exception {
+    public void test_thenThrow() throws Exception {
         Person person = mock(Person.class);
         System.out.println(person.getId());
         when(person.getId()).thenThrow(new NullPointerException("Invalid id"));
         System.out.println(person.getId());// ERROR: java.lang.NullPointerException: Invalid id
     }
 
+    /**
+     * Answer=智能打桩:根据输入而不是固定数据给出返回值。
+     * thenAnswer：非空方法打桩
+     * doAnswer: 空方法打桩
+     **/
     @Test
-    public void testThenAnswer() throws Exception {
+    public void test_thenAnswer() throws Exception {
         Person person = mock(Person.class);
-//        person.print();// debug 发现，big 没有实际运行print()，而是被拦截了。
         when(person.eat(anyString())).thenAnswer(new Answer<String>() {
             @Override
             public String answer(InvocationOnMock invocation) throws Throwable {
@@ -62,8 +70,8 @@ public class TestMockitoStub {
             }
         });
 
-        System.out.println(new Person("A", 1001).eat("Price"));
-        System.out.println(person.eat("Price"));
+        System.out.println(person.eat("Price")); // Price is delicious
+        System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
     }
 
     /*
@@ -83,18 +91,22 @@ public class TestMockitoStub {
      */
 
     @Test
-    public void mockVoidReturn() {
+    public void test_doAnswer_mockVoid() {
         Person person = mock(Person.class);
+        person.print();// debug 发现，big 没有实际运行print()，而是被拦截了。
+
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
                 Object[] args = invocation.getArguments();
                 return "called with arguments: " + args;
             }
-        }).when(person).print("A"); // void print(String s)
+        }).when(person).print("A");
+        person.print("A");
+        // mock前后并没有影响
     }
 
     @Test
-    public void mockVoidReturn2() {
+    public void test2_doAnswer_mockVoid() {
         Person person = mock(Person.class);
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
@@ -102,11 +114,14 @@ public class TestMockitoStub {
                 return "called with arguments: " + args;
             }
         }).when(person).print(); // void print()
+        person.print();
     }
 
+
     @Test
-    public void mockVoidReturn3() {
+    public void test3_doAnswer_mockVoid() {
         Person person = mock(Person.class);
+        person.print("A");
         Mockito.doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
                 Object[] args = invocation.getArguments();
@@ -116,16 +131,71 @@ public class TestMockitoStub {
         person.eat2("A");
     }
 
+    // doNothing = 希望某个方法不做任何事情。在void返回方法或者方法中使用，或者与正在执行的单元测试无关。
     @Test
-    public void testThenCallRealMethod() throws Exception {
+    public void test3_doNothing() {
+
+    }
+
+    @Test
+    public void test_henCallRealMethod() throws Exception {
+        /*
+        Mock for Person, hashCode: 1336996537
+        null
+        Name
+        Mock for Person, hashCode: 1336996537
+         */
         Person person = mock(Person.class);
-        System.out.println(person.eat("Noodles"));
+        System.out.println(person);
+        System.out.println(person.getName2());
+
+        when(person.getName2()).thenCallRealMethod();
+        System.out.println(person.getName2());
+        System.out.println(person);
+    }
+
+    @Test
+    public void test2_thenCallRealMethod() throws Exception {
+        Person person = mock(Person.class);
 
         when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
         when(person.eat(anyString())).thenCallRealMethod();
         System.out.println(person.eat("Noodles"));
 
-        System.out.println(new Person("A", 1001).eat("Noodles"));
+        when(person.findA(0)).thenReturn(new A());
+//        when(person.check(null, false)).thenReturn(new A());
+        when(person.check(null, false)).thenCallRealMethod();
+        A a = person.check(null, false);
+        System.out.println(a);
+        Assert.assertNotNull(a);
+    }
+
+    @Test
+    public void test_doCallRealMethod() throws Exception {
+        /*
+        Mock for Person, hashCode: 1336996537
+        null
+        Name
+        Mock for Person, hashCode: 1336996537
+         */
+        Person person = mock(Person.class);
+        System.out.println(person);
+        System.out.println(person.getName2());
+
+        doCallRealMethod().when(person).getName2();
+        System.out.println(person.getName2());
+        System.out.println(person);
+    }
+
+    @Test
+    public void test2_doCallRealMethod() throws Exception {
+        Person person = mock(Person.class);
+        person.setName("A");
+        System.out.println(person.getName());
+
+        doCallRealMethod().when(person).setName("A");
+        person.setName("A");
+        System.out.println(person.getName());
     }
 
     @Test
@@ -133,6 +203,13 @@ public class TestMockitoStub {
         Person person = mock(Person.class);
         Mockito.doReturn(11).when(person).getId();
         System.out.println(person.getId());
+
+        /**
+         * ERROR:org.mockito.exceptions.misusing.CannotStubVoidMethodWithReturnValue:
+         'setName' is a *void method* and it *cannot* be stubbed with a *return value*!
+         */
+//        Mockito.doReturn("A").when(person).setName("A");
+//        System.out.println(person.getName());
 
         /**
          * ERROR:org.mockito.exceptions.misusing.WrongTypeOfReturnValue:
@@ -153,30 +230,6 @@ public class TestMockitoStub {
         System.out.println(person.getId());
     }
 
-    @Test
-    public void testDoCallRealMethod() throws Exception {
-        Person person = mock(Person.class);
-        person.setName("A");
-        System.out.println(person.getName());
-
-
-        /**
-         * ERROR:org.mockito.exceptions.misusing.CannotStubVoidMethodWithReturnValue:
-         'setName' is a *void method* and it *cannot* be stubbed with a *return value*!
-         */
-//        Mockito.doReturn("A").when(person).setName("A");
-//        System.out.println(person.getName());
-
-        doCallRealMethod().when(person).setName("A");
-        person.setName("A");
-        System.out.println(person.getName());
-
-//        when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
-//        when(person.eat(anyString())).thenCallRealMethod();
-//        System.out.println(person.eat("Noodles"));
-//
-//        System.out.println(new Person("A", 1001).eat("Noodles"));
-    }
 
     @Test
     public void testVerify() throws Exception {

@@ -1,6 +1,9 @@
 package com.example.hades.tdd.mockio;
 
+import android.util.Log;
+
 public class Person {
+    private static final String TAG = Person.class.getSimpleName();
     String name;
     int id;
 
@@ -16,6 +19,11 @@ public class Person {
         return name;
     }
 
+    public String getName2() {
+        return "Name";
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -29,22 +37,36 @@ public class Person {
     }
 
     public void print() {
-        System.out.println(toString());
+//        System.out.println(toString());
+        Log.d(TAG, "print()");
     }
 
     public void print(String s) {
-        System.out.println(s);
+//        System.out.println(s);
+        Log.d(TAG, "print(),s=" + s);
     }
 
     public String eat(String food) {
-        return name + " is eating " + food;
-//        return getName() + " is eating " + food;
+//        return name + " is eating " + food;
+        return getName() + " is eating " + food;
     }
 
     public String eat2(String food) {
         String s = name + " is eating " + food;
         print(s);
         return s;
+    }
+
+    // Mock Android code
+    public A findA(int pos) {
+        return new A();
+    }
+
+    public A check(String s, boolean flag) {
+        if (null == s || s.isEmpty() || flag) {
+            return findA(0);
+        }
+        return null;
     }
 
     @Override
