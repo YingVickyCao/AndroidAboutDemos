@@ -5,12 +5,15 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.LogHelper;
+
+import static com.hades.example.android.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity.PREFS_KEY_COLOR;
 
 /*
     // Add
@@ -57,23 +60,40 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) { // [thread =2,main]
         super.onReceive(context, intent);
         Log.d(TAG, "onReceive: " + LogHelper.getThreadInfo());
+
+        // If ake several seconds ->service. or ANR
     }
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         Log.d(TAG, "updateAppWidget: appWidgetId=" + appWidgetId);
-        int color = TestAppWidgetConfigureActivity.load(context, appWidgetId);
+        String color = TestAppWidgetConfigureActivity.load(context, appWidgetId);
+        Log.d(TAG, "updateAppWidget: color=" + color);
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_base);
         remoteViews.setTextColor(R.id.btn, context.getResources().getColor(android.R.color.black));
-        remoteViews.setInt(R.id.btn, "setBackgroundColor", color);
+        remoteViews.setInt(R.id.btn, "setBackgroundColor", convertColor(color));
 
-        launchActivityAfterClickBtn(context, remoteViews);
+        launchActivityAfterClickBtn(context, remoteViews, appWidgetId, color);
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);  // 调用AppWidgetManager将remoteViews添加到ComponentName中
     }
 
-    static private void launchActivityAfterClickBtn(Context context, RemoteViews remoteViews) {
+    public static int convertColor(String color) {
+        if ("RED".equals(color)) {
+            return Color.RED;
+        } else if ("GREEN".equals(color)) {
+            return Color.GREEN;
+        } else if ("BLUE".equals(color)) {
+            return Color.BLUE;
+        }
+        return Color.GRAY;
+    }
+
+    static private void launchActivityAfterClickBtn(Context context, RemoteViews remoteViews, int appWidgetId, String color) {
         // Create an Intent to launch Activity
+        Log.d(TAG, "launchActivityAfterClickBtn:color=" + color);
         Intent intent = new Intent(context, LaunchedAfterClickAppWidgetBtnActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        intent.putExtra(PREFS_KEY_COLOR, color);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.btn, pendingIntent);
     }
 

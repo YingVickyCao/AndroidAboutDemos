@@ -9,6 +9,7 @@
         android:text="@string/page_app_widget" />
 
     <TextView
+        android:id="@+id/info"
         style="@style/tv"
         android:layout_gravity="center"
         android:text="@string/this_activity_is_launched_after_click_app_widget_btn" />

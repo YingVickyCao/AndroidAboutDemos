@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +16,7 @@ public class TestAppWidgetConfigureActivity extends Activity {
     int mAppWidgetId;
 
     private static final String PREFS_NAME = "com.hades.example.android.manager_phone_desktop._app_widget.base.COLOR";
-    private static final String PREFS_KEY_COLOR = "COLOR";
+    public static final String PREFS_KEY_COLOR = "COLOR";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -32,13 +31,13 @@ public class TestAppWidgetConfigureActivity extends Activity {
 
 
         // Bind the action for the save button.
-        findViewById(R.id.red).setTag(Color.RED);
+        findViewById(R.id.red).setTag("RED");
         findViewById(R.id.red).setOnClickListener(this::setConfig);
 
-        findViewById(R.id.green).setTag(Color.GREEN);
+        findViewById(R.id.green).setTag("GREEN");
         findViewById(R.id.green).setOnClickListener(this::setConfig);
 
-        findViewById(R.id.blue).setTag(Color.BLUE);
+        findViewById(R.id.blue).setTag("BLUE");
         findViewById(R.id.blue).setOnClickListener(this::setConfig);
 
 
@@ -58,7 +57,7 @@ public class TestAppWidgetConfigureActivity extends Activity {
     }
 
     private void setConfig(View view) {
-        save(this, mAppWidgetId, (Integer) view.getTag());
+        save(this, mAppWidgetId, (String) view.getTag());
 //        updateAppWidget4Configuration();
         setResult();
     }
@@ -76,14 +75,14 @@ public class TestAppWidgetConfigureActivity extends Activity {
         finish();
     }
 
-    static void save(Context context, int appWidgetId, int text) {
+    static void save(Context context, int appWidgetId, String color) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
-        prefs.putInt(PREFS_KEY_COLOR + appWidgetId, text);
+        prefs.putString(PREFS_KEY_COLOR + appWidgetId, color);
         prefs.commit();
     }
 
-    static int load(Context context, int appWidgetId) {
+    static String load(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
-        return prefs.getInt(PREFS_KEY_COLOR + appWidgetId, Color.RED);
+        return prefs.getString(PREFS_KEY_COLOR + appWidgetId, "GRAY");
     }
 }
