@@ -28,50 +28,60 @@ public class TestMockitoStub {
     public void test_thenReturn() throws Exception {
         /**
          * 使用Mockito或者PowerMockito，mock出来的类，如果不使用thenReturn设置返回值，只能返回0或者null；
-         * 若使用类方法原本返回的值，使用thenCallRealMethod或者doCallRealMethod
-         */
-        Person person = mock(Person.class);
-
-//        System.out.println(person.getName());  // null
-
-//        ---
-//        when(person.getName()).thenReturn("A");
-//        System.out.println(person.getName()); // A
-        /**
-         * mock后一直存在，因此，为了避免mocked值影响以后mock，应该使用单独函数/{+mock n}测试每一种情况。
-         */
-//        System.out.println(person.getName()); // A
-
-//        ---
-//        when(person.getName()).thenReturn("B");
-//        System.out.println(person.getName());//B
-
-//        ---
-//        person.setName("C");// nothing will be set.
-//        System.out.println(person.getName()); // Not "C", is "B"
-
-//        ----
-        /**
-         * thenReturn and thenAnswer?
-         * 不执行方法体，直接返回person.getNum()的值。因此，b=null也没有关系
+         * 使用thenCallRealMethod或者doCallRealMethod，调用真实api。
+         * thenCallRealMethod 与doCallRealMethod 用处相同，但语法不同。
          */
         {
-            Person person2 = mock(Person.class);
-            when(person2.getNum()).thenReturn(null);
-            when(person2.getSize()).thenCallRealMethod();
-            Assert.assertNull(person2.getSize()); // null
+            Person person = mock(Person.class);
+            Assert.assertNull(person.getName());
+        }
+
+        {
+            Person person = mock(Person.class);
+            when(person.getName()).thenReturn("A");
+            Assert.assertEquals("A", person.getName()); // A
+            Assert.assertEquals("A", person.getName()); // A
+            /**
+             * mock后一直存在，因此，为了避免mocked值影响以后mock，应该使用单独函数/{mock n}测试每一种情况。
+             */
         }
         {
+            Person person = mock(Person.class);
+            when(person.getName()).thenReturn("A");
+            Assert.assertEquals("A", person.getName()); // A
+            when(person.getName()).thenReturn("B");
+        }
+        {
+            Person person = mock(Person.class);
+            person.setName("C");// nothing will be set.
+            Assert.assertNull(person.getName());
+        }
 
-            Person person2 = mock(Person.class);
+        {
             /**
-             * 前面的mocked值影响了该测试。若打开上面的mock，则NullPointerException. =>{+mock n}
+             * thenReturn and thenAnswer?
+             * 不执行方法体，直接返回person.getNum()的值。因此，b=null也没有关系
              */
-            when(person2.getNum()).thenReturn(1);
-            when(person2.getSize()).thenCallRealMethod();
+            Person mock = mock(Person.class);
+            when(mock.getNum()).thenReturn(null);
+            Assert.assertNull(mock.getName()); // null
+        }
+
+        {
+
+            Person mock = mock(Person.class);
+            when(mock.getNum()).thenReturn(1);
+            /**
+             * mock出来的类，如果不使用thenReturn设置返回值，只能返回0或者null；
+             * when(mock.getNum()).thenReturn(1) ：  对mock.getSize()的return结果没有影响，仅仅影响mock.getNum()的执行，使其 not NullPointerException。
+             */
+            Assert.assertEquals(Integer.valueOf(0), mock.getSize()); // 0
+        }
+        {
+            Person person2 = mock(Person.class);
+            when(person2.getSize()).thenReturn(1);
             Assert.assertEquals(Integer.valueOf(1), person2.getSize()); // 1
         }
-//        ------
     }
 
     /**
@@ -79,10 +89,13 @@ public class TestMockitoStub {
      */
     @Test
     public void test_thenThrow() throws Exception {
-        Person person = mock(Person.class);
-        System.out.println(person.getId());
-        when(person.getId()).thenThrow(new NullPointerException("Invalid id"));
-        System.out.println(person.getId());// ERROR: java.lang.NullPointerException: Invalid id
+        try {
+            Person person = mock(Person.class);
+            when(person.getId()).thenThrow(new NullPointerException("Invalid id"));
+            person.getId();// ERROR: java.lang.NullPointerException: Invalid id
+        } catch (NullPointerException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -92,37 +105,18 @@ public class TestMockitoStub {
      **/
     @Test
     public void test_thenAnswer() throws Exception {
-        Person person = mock(Person.class);
-
-//        when(person.eat(anyString())).thenAnswer(new Answer<String>() {
-//            @Override
-//            public String answer(InvocationOnMock invocation) throws Throwable {
-//                Object[] args = invocation.getArguments();
-//                return args[0].toString() + " is delicious";
-//            }
-//        });
-//        System.out.println(person.eat("Price")); // Price is delicious
-//        System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
-
-//        -----
-//        when(person.getNum()).thenAnswer(new Answer<Integer>() {
-//            @Override
-//            public Integer answer(InvocationOnMock invocation) throws Throwable {
-//                return null;
-//            }
-//        });
-//        when(person.getSize()).thenCallRealMethod();
-//        Assert.assertNull(person.getSize()); // null
-
-        when(person.getNum()).thenAnswer(new Answer<Integer>() {
-            @Override
-            public Integer answer(InvocationOnMock invocation) throws Throwable {
-                return 1;
-            }
-        });
-        when(person.getSize()).thenCallRealMethod();
-        Assert.assertEquals(Integer.valueOf(1), person.getSize()); // NullPointerException
-//        ------
+        {
+            Person person = mock(Person.class);
+            when(person.eat(anyString())).thenAnswer(new Answer<String>() {
+                @Override
+                public String answer(InvocationOnMock invocation) throws Throwable {
+                    Object[] args = invocation.getArguments();
+                    return args[0].toString() + " is delicious";
+                }
+            });
+            System.out.println(person.eat("Price")); // Price is delicious
+            System.out.println(new Person("A", 1001).eat("Apple")); // A is eating Apple
+        }
     }
 
     /*
@@ -179,60 +173,72 @@ public class TestMockitoStub {
 
     // doNothing = 希望某个方法不做任何事情。在void返回方法或者方法中使用，或者与正在执行的单元测试无关。
     @Test
-    public void test3_doNothing() {
+    public void doNothing() {
         Person person = mock(Person.class);
-        Mockito.doNothing().when(person).updateRequestActionAndApproval(new ArrayList<Integer>());
+        Mockito.doNothing().when(person).requestData(new ArrayList<Integer>());
     }
 
     @Test
-    public void test_thenCallRealMethod() throws Exception {
-        /*
-        Mock for Person, hashCode: 1336996537
-        null
-        Name
-        Mock for Person, hashCode: 1336996537
-         */
-        Person person = mock(Person.class);
-        System.out.println(person);
-        System.out.println(person.getName2());
+    public void thenCallRealMethod() throws Exception {
+        {
+            Person person = mock(Person.class);
+            Assert.assertNotNull(person);
+            Assert.assertNull(person.getName2());
+        }
 
-        when(person.getName2()).thenCallRealMethod();
-        System.out.println(person.getName2());
-        System.out.println(person);
-    }
+        {
+            Person person = mock(Person.class);
+            Assert.assertNotNull(person);
+            when(person.getName2()).thenCallRealMethod();
+            Assert.assertEquals("Name", person.getName2());
+        }
 
-    @Test
-    public void test2_thenCallRealMethod() throws Exception {
-        Person person = mock(Person.class);
+        {
+            Person person = mock(Person.class);
+            when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
+            when(person.eat(anyString())).thenCallRealMethod();
+            System.out.println(person.eat("Noodles")); // A is eating Noodles
+        }
 
-//        when(person.getName()).thenReturn("A"); // In eat, When "name" -> null. When  "getName" -> "A"
-//        when(person.eat(anyString())).thenCallRealMethod();
-//        System.out.println(person.eat("Noodles"));
+        {
+            Person mock = mock(Person.class);
+            /**
+             * doCallRealMethod/thenCallRealMethod:调用真实api。
+             * 相当：在调用person2.getSize()时，将 getNum()直接替换成1.
+             */
+            when(mock.getNum()).thenReturn(1);
+            when(mock.getSize()).thenCallRealMethod();
+            Assert.assertEquals(Integer.valueOf(1), mock.getSize()); // 1
+        }
 
-//        ---
-//        when(person.findA(0)).thenReturn(new A());
-////        when(person.check(null, false)).thenReturn(new A());
-//        when(person.check(null, false)).thenCallRealMethod();
-//        A a = person.check(null, false);
-//        System.out.println(a);
-//        Assert.assertNotNull(a);
+        {
+            Person mock = mock(Person.class);
+            when(mock.findA(0)).thenReturn(new A());
+            when(mock.getA()).thenCallRealMethod();
+            Assert.assertNotNull(mock.getA()); // Not null
+        }
+
+        {
+            Person mock = mock(Person.class);
+            when(mock.findA(5)).thenReturn(new A());
+            when(mock.getA()).thenCallRealMethod();
+            Assert.assertNull(mock.getA()); // null
+        }
     }
 
     @Test
     public void test_doCallRealMethod() throws Exception {
-        /*
-        Mock for Person, hashCode: 1336996537
-        null
-        Name
-        Mock for Person, hashCode: 1336996537
-         */
-        Person person = mock(Person.class);
-        System.out.println(person);
-        System.out.println(person.getName2());
-
-        doCallRealMethod().when(person).getName2();
-        System.out.println(person.getName2());
-        System.out.println(person);
+        {
+            Person person = mock(Person.class);
+            Assert.assertNotNull(person);
+            Assert.assertNull(person.getName2());
+        }
+        {
+            Person person = mock(Person.class);
+            doCallRealMethod().when(person).getName2();
+            Assert.assertNotNull(person);
+            Assert.assertEquals("Name", person.getName2());
+        }
     }
 
     @Test
@@ -270,14 +276,14 @@ public class TestMockitoStub {
 
     @Test
     public void testDoThrow() throws Exception {
-        Person person = mock(Person.class);
-        Mockito.doThrow(new RuntimeException("Invalid id ")).when(person).setId(1000000);
-        person.setId(9);
-        System.out.println(person.getId());
-        person.setId(1000000); // ERROR:java.lang.RuntimeException: Invalid id
-        System.out.println(person.getId());
+        try {
+            Person person = mock(Person.class);
+            Mockito.doThrow(new RuntimeException("Invalid id ")).when(person).setId(1000000);
+            person.setId(1000000); // ERROR:java.lang.RuntimeException: Invalid id
+        } catch (RuntimeException ex) {
+            System.out.println(ex);
+        }
     }
-
 
     @Test
     public void testVerify() throws Exception {

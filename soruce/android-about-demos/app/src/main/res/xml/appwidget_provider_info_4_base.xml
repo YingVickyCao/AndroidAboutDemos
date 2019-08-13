@@ -5,7 +5,9 @@
 	initialLayout：初始时显示的布局
 	previewImage: 选择app widget时显示
 	-->
+
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="com.hades.example.android.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity"
     android:initialLayout="@layout/app_widget_base"
     android:minWidth="130dp"
     android:minHeight="150dp"

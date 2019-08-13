@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop.app_widget.list;
+package com.hades.example.android.manager_phone_desktop._app_widget.list;
 
 import android.content.Context;
 import android.content.Intent;

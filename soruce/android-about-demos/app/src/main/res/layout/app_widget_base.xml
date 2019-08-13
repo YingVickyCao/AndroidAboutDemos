@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+    <Button
         android:id="@+id/img"
         android:layout_width="@dimen/size_100"
         android:layout_height="@dimen/size_100"
         android:gravity="center"
-        android:src="@drawable/app_widget_preview_img_4_base" />
+        android:text="Widget" />
 </LinearLayout>

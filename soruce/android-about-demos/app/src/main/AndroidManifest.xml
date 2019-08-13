@@ -412,7 +412,7 @@
         </service>
 
         <receiver
-            android:name=".manager_phone_desktop.app_widget.base.AppWidgetProvider4Base"
+            android:name=".manager_phone_desktop._app_widget.base.AppWidgetProvider4Base"
             android:icon="@drawable/ic_launcher"
             android:label="@string/basic_app_widget">
             <intent-filter>
@@ -423,8 +423,14 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info_4_base" />
         </receiver>
+        <activity android:name=".manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
         <receiver
-            android:name=".manager_phone_desktop.app_widget.clock.AppWidgetProvider4LedClock"
+            android:name=".manager_phone_desktop._app_widget.clock.AppWidgetProvider4LedClock"
             android:icon="@drawable/digital_clock"
             android:label="@string/digital_clock">
             <intent-filter>
@@ -435,7 +441,7 @@
                 android:resource="@xml/appwidget_provider_info_4_clock" />
         </receiver>
         <receiver
-            android:name=".manager_phone_desktop.app_widget.list.AppWidgetProvider4List"
+            android:name=".manager_phone_desktop._app_widget.list.AppWidgetProvider4List"
             android:icon="@android:color/holo_red_dark"
             android:label="@string/page_ListView">
             <intent-filter>
@@ -447,7 +453,7 @@
         </receiver>
 
         <service
-            android:name=".manager_phone_desktop.app_widget.list.RemoteViewsService4List"
+            android:name=".manager_phone_desktop._app_widget.list.RemoteViewsService4List"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>

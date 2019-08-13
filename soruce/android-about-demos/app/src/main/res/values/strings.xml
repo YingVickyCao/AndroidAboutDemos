@@ -389,6 +389,7 @@
     <string name="change_picture_render_color">Change picture render color</string>
     <string name="green">Green</string>
     <string name="red">Red</string>
+    <string name="blue">Blue</string>
     <string name="select_imageview_1">Select ImageView 1</string>
     <string name="select_imageview_2">Select ImageView 2</string>
     <string name="_1">1</string>

@@ -54,27 +54,15 @@ public class Person {
         return getName() + " is eating " + food;
     }
 
-    public String eat2(String food) {
-        String s = name + " is eating " + food;
-        print(s);
-        return s;
+    void requestData(final List<Integer> integers) {
     }
 
-    // Mock Android code
-    public A findA(int pos) {
-        System.out.println("findA");
+    A getA() {
+        return findA(0);
+    }
+
+    A findA(int pos) {
         return new A();
-    }
-
-    public A check(String s, boolean flag) {
-        if (null == s || s.isEmpty() || flag) {
-            return findA(0);
-        }
-        return null;
-    }
-
-    void updateRequestActionAndApproval(final List<Integer> integers) {
-
     }
 
     public Integer getSize() {
@@ -86,6 +74,9 @@ public class Person {
     }
 
     public Integer getNum() {
+        // Mock Android code
+//        System.out.println("getNum," + b.getNum());
+//        Log.d(TAG, "getNum" + b.getNum());
         return b.getNum();
 //        return getB().getIntegers(); // getB() = b
     }
