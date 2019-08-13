@@ -68,11 +68,13 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
         Log.d(TAG, "updateAppWidget: appWidgetId=" + appWidgetId);
         String color = TestAppWidgetConfigureActivity.load(context, appWidgetId);
         Log.d(TAG, "updateAppWidget: color=" + color);
+
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_base);
         remoteViews.setTextColor(R.id.btn, context.getResources().getColor(android.R.color.black));
         remoteViews.setInt(R.id.btn, "setBackgroundColor", convertColor(color));
 
-        launchActivityAfterClickBtn(context, remoteViews, appWidgetId, color);
+        addClick4LaunchActivity(context, remoteViews, appWidgetId, color);
+
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);  // 调用AppWidgetManager将remoteViews添加到ComponentName中
     }
 
@@ -87,9 +89,9 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
         return Color.GRAY;
     }
 
-    static private void launchActivityAfterClickBtn(Context context, RemoteViews remoteViews, int appWidgetId, String color) {
+    static private void addClick4LaunchActivity(Context context, RemoteViews remoteViews, int appWidgetId, String color) {
         // Create an Intent to launch Activity
-        Log.d(TAG, "launchActivityAfterClickBtn:color=" + color);
+        Log.d(TAG, "addClick4LaunchActivity:color=" + color);
         Intent intent = new Intent(context, LaunchedAfterClickAppWidgetBtnActivity.class);
         intent.putExtra(PREFS_KEY_COLOR, color);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
