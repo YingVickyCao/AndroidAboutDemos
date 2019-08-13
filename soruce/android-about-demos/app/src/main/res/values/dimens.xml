@@ -11,4 +11,5 @@
 
     <dimen name="stroke_width">1dp</dimen>
 
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

@@ -128,6 +128,7 @@
 
     <string name="page_manager_phone_desktop">Manager phone desktop</string>
     <string name="page_set_static_wallpaper">Set static wallpaper</string>
+    <string name="page_app_widget">App widget</string>
 
     <!-- ========================= -->
 
@@ -429,4 +430,5 @@
     <string name="no_item">No item</string>
     <string name="digital_clock">Digital clock</string>
     <string name="basic_app_widget">Basic app widget</string>
+    <string name="this_activity_is_launched_after_click_app_widget_btn">This activity is launched after click app widget btn</string>
 </resources>

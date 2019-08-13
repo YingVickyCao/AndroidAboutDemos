@@ -423,11 +423,13 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info_4_base" />
         </receiver>
+
         <activity android:name=".manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
+        <activity android:name=".manager_phone_desktop._app_widget.base.LaunchedAfterClickAppWidgetBtnActivity" />
 
         <receiver
             android:name=".manager_phone_desktop._app_widget.clock.AppWidgetProvider4LedClock"

@@ -5,11 +5,14 @@
 	initialLayout：初始时显示的布局
 	previewImage: 选择app widget时显示
 	-->
-
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:configure="com.hades.example.android.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity"
     android:initialLayout="@layout/app_widget_base"
-    android:minWidth="130dp"
-    android:minHeight="150dp"
-    android:previewImage="@drawable/app_widget_preview_img_4_base"
-    android:updatePeriodMillis="1000" />
+    android:minWidth="100dp"
+    android:minHeight="100dp"
+    android:minResizeWidth="@dimen/size_30"
+    android:minResizeHeight="@dimen/size_30"
+    android:previewImage="@drawable/home"
+    android:resizeMode="vertical|horizontal"
+    android:updatePeriodMillis="1000"
+    android:widgetCategory="home_screen" />

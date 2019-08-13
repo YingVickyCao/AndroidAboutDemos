@@ -1,5 +1,6 @@
 package com.hades.example.android.manager_phone_desktop._app_widget.base;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
@@ -62,12 +63,18 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
         Log.d(TAG, "updateAppWidget: appWidgetId=" + appWidgetId);
         int color = TestAppWidgetConfigureActivity.load(context, appWidgetId);
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_base);
-        remoteViews.setTextColor(R.id.img, color);
+        remoteViews.setTextColor(R.id.btn, context.getResources().getColor(android.R.color.black));
+        remoteViews.setInt(R.id.btn, "setBackgroundColor", color);
 
-        // Notify remote desktop app, update AppWidgetProvider4Base view.
-//            ComponentName componentName = new ComponentName(context, AppWidgetProvider4Base.class);  // 将AppWidgetProvider子类实例包装成ComponentName对象
-//            appWidgetManager.updateAppWidget(componentName, remoteViews);  // 调用AppWidgetManager将remoteViews添加到ComponentName中
+        launchActivityAfterClickBtn(context, remoteViews);
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);  // 调用AppWidgetManager将remoteViews添加到ComponentName中
+    }
+
+    static private void launchActivityAfterClickBtn(Context context, RemoteViews remoteViews) {
+        // Create an Intent to launch Activity
+        Intent intent = new Intent(context, LaunchedAfterClickAppWidgetBtnActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.btn, pendingIntent);
     }
 
     @Override
