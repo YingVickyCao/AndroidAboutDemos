@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class ExampleAppWidgetProvider4Collections extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        Log.d(TAG, "onUpdate: ");
         // update each of the app widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; ++i) {
 
