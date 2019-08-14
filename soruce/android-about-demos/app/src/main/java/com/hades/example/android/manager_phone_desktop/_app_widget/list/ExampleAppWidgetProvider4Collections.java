@@ -27,8 +27,6 @@ public class ExampleAppWidgetProvider4Collections extends AppWidgetProvider {
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_list_layout);
             setRemoteAdapter(context, remoteViews, appWidgetIds[i]);
-            // The empty view is displayed when the collection has no items.It should be in the same layout used to instantiate the RemoteViews object above.
-            remoteViews.setEmptyView(R.id.list_view, R.id.empty_view);
             addClick4Toast(context, remoteViews, appWidgetIds[i]);
             appWidgetManager.updateAppWidget(appWidgetIds[i], remoteViews);
         }
@@ -44,6 +42,9 @@ public class ExampleAppWidgetProvider4Collections extends AppWidgetProvider {
 
         // Set up the RemoteViews object to use a RemoteViews adapter.This adapter connects to a RemoteViewsService through the specified intent. This is how you populate the data.
         remoteViews.setRemoteAdapter(R.id.list_view, intent);
+
+        // The empty view is displayed when the collection has no items.It should be in the same layout used to instantiate the RemoteViews object above.
+        remoteViews.setEmptyView(R.id.list_view, R.id.empty_view);
     }
 
     private void addClick4Toast(Context context, RemoteViews remoteViews, int appWidgetId) {
