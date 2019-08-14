@@ -23,8 +23,6 @@ public class ExampleAppWidgetProvider4Collections extends AppWidgetProvider {
         Log.d(TAG, "onUpdate: ");
         // update each of the app widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; ++i) {
-
-
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.app_widget_list_layout);
             setRemoteAdapter(context, remoteViews, appWidgetIds[i]);
             addClick4Toast(context, remoteViews, appWidgetIds[i]);

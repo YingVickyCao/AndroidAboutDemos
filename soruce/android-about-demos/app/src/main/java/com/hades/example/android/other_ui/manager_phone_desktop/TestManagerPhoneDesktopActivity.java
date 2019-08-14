@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseActivity;
-import com.hades.example.android.other_ui.manager_phone_desktop.static_wallpaper.TestStaticWallpaperFragment;
+import com.hades.example.android.other_ui.manager_phone_desktop.wallpaper.static_wallpaper.TestStaticWallpaperFragment;
 
 public class TestManagerPhoneDesktopActivity extends BaseActivity {
     @Override
