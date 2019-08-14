@@ -348,6 +348,53 @@
         <activity
             android:name=".other_ui._dialog.good.activity.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.DialogWhenLarge" />
+        <receiver
+            android:name=".other_ui.manager_phone_desktop._app_widget.base.AppWidgetProvider4Base"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/basic_app_widget">
+            <intent-filter>
+                <!-- action specifies that the AppWidgetProvider accepts the ACTION_APPWIDGET_UPDATE broadcast -->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info_4_base" />
+        </receiver>
+
+        <activity android:name=".other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".other_ui.manager_phone_desktop._app_widget.base.LaunchedAfterClickAppWidgetBtnActivity" />
+
+        <receiver
+            android:name=".other_ui.manager_phone_desktop._app_widget.clock.AppWidgetProvider4LedClock"
+            android:icon="@drawable/digital_clock"
+            android:label="@string/digital_clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info_4_clock" />
+        </receiver>
+        <receiver
+            android:name=".other_ui.manager_phone_desktop._app_widget.list.ExampleAppWidgetProvider4Collections"
+            android:icon="@android:color/holo_red_dark"
+            android:label="@string/page_ListView">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info_4_list" />
+        </receiver>
+
+        <service
+            android:name=".other_ui.manager_phone_desktop._app_widget.list.ExampleRemoteViewsService4Collections"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />
@@ -396,10 +443,10 @@
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
 
-        <activity android:name=".manager_phone_desktop.TestManagerPhoneDesktopActivity" />
+        <activity android:name=".other_ui.manager_phone_desktop.TestManagerPhoneDesktopActivity" />
         <!-- 配置动态壁纸Service -->
         <service
-            android:name=".manager_phone_desktop.live_wallpaper.LiveWallpaper"
+            android:name=".other_ui.manager_phone_desktop.live_wallpaper.LiveWallpaper"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
@@ -411,53 +458,7 @@
                 android:resource="@xml/livewallpaper" />
         </service>
 
-        <receiver
-            android:name=".manager_phone_desktop._app_widget.base.AppWidgetProvider4Base"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/basic_app_widget">
-            <intent-filter>
-                <!-- action specifies that the AppWidgetProvider accepts the ACTION_APPWIDGET_UPDATE broadcast -->
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_info_4_base" />
-        </receiver>
 
-        <activity android:name=".manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".manager_phone_desktop._app_widget.base.LaunchedAfterClickAppWidgetBtnActivity" />
-
-        <receiver
-            android:name=".manager_phone_desktop._app_widget.clock.AppWidgetProvider4LedClock"
-            android:icon="@drawable/digital_clock"
-            android:label="@string/digital_clock">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_info_4_clock" />
-        </receiver>
-        <receiver
-            android:name=".manager_phone_desktop._app_widget.list.ExampleAppWidgetProvider4Collections"
-            android:icon="@android:color/holo_red_dark"
-            android:label="@string/page_ListView">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_info_4_list" />
-        </receiver>
-
-        <service
-            android:name=".manager_phone_desktop._app_widget.list.ExampleRemoteViewsService4Collections"
-            android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

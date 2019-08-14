@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop;
+package com.hades.example.android.other_ui.manager_phone_desktop;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseActivity;
-import com.hades.example.android.manager_phone_desktop.static_wallpaper.TestStaticWallpaperFragment;
+import com.hades.example.android.other_ui.manager_phone_desktop.static_wallpaper.TestStaticWallpaperFragment;
 
 public class TestManagerPhoneDesktopActivity extends BaseActivity {
     @Override

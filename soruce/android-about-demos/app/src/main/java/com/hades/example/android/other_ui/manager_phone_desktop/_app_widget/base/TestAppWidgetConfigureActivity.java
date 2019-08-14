@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop._app_widget.base;
+package com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -15,7 +15,7 @@ public class TestAppWidgetConfigureActivity extends Activity {
     private static final String TAG = TestAppWidgetConfigureActivity.class.getSimpleName();
     int mAppWidgetId;
 
-    private static final String PREFS_NAME = "com.hades.example.android.manager_phone_desktop._app_widget.base.COLOR";
+    private static final String PREFS_NAME = "com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base.COLOR";
     public static final String PREFS_KEY_COLOR = "COLOR";
 
     @Override

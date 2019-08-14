@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop.static_wallpaper;
+package com.hades.example.android.other_ui.manager_phone_desktop.static_wallpaper;
 
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;

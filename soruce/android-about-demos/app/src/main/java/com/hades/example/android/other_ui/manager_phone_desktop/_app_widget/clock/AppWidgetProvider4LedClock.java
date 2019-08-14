@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop._app_widget.clock;
+package com.hades.example.android.other_ui.manager_phone_desktop._app_widget.clock;
 
 import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;

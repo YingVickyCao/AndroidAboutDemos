@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop.live_wallpaper;
+package com.hades.example.android.other_ui.manager_phone_desktop.live_wallpaper;
 
 import android.content.Context;
 import android.graphics.Bitmap;

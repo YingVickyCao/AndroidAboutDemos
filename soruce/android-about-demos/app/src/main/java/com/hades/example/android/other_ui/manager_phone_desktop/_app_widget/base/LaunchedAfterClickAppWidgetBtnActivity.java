@@ -1,4 +1,4 @@
-package com.hades.example.android.manager_phone_desktop._app_widget.base;
+package com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
-import static com.hades.example.android.manager_phone_desktop._app_widget.base.AppWidgetProvider4Base.convertColor;
-import static com.hades.example.android.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity.PREFS_KEY_COLOR;
+import static com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base.AppWidgetProvider4Base.convertColor;
+import static com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity.PREFS_KEY_COLOR;
 
 public class LaunchedAfterClickAppWidgetBtnActivity extends Activity {
     private static final String TAG = LaunchedAfterClickAppWidgetBtnActivity.class.getSimpleName();
