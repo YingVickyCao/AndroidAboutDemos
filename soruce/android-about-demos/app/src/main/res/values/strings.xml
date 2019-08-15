@@ -438,4 +438,5 @@
     <string name="toast_shortcut_short_label">shortcut short desc</string>
     <string name="toast_disabled_message">Toast disabled message</string>
     <string name="create_dynamic_shortcuts">Create dynamic shortcuts</string>
+    <string name="response_static_shortcuts_click_action">Response Static shortcuts click action</string>
 </resources>

@@ -5,12 +5,12 @@ import android.os.Bundle;
 
 import com.hades.example.android.R;
 
-public class StaticShortcutsResponseActivity extends Activity {
+public class StaticShortcutsActionResponseActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.static_shorts_layout);
+        setContentView(R.layout.static_shorts_action_response_layout);
     }
 }
 
