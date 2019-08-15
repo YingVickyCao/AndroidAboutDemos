@@ -15,7 +15,7 @@
         <!--<activity android:name=".other_ui._dialog.TestDialogActivity">-->
         <!--<activity android:name=".app_component._fragment.TestFragmentActivity">-->
         <!--<activity android:name=".network.TestNetworkActivity">-->
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.ComposeActivity">
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsResponseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
