@@ -410,7 +410,9 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/livewallpaper" />
         </service>
+
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AppShortCutsActivity" />
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AddDynamicShortcutsActivity" />
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />

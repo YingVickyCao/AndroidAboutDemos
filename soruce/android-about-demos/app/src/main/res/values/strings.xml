@@ -130,6 +130,7 @@
     <string name="page_set_static_wallpaper">Set static wallpaper</string>
     <string name="page_app_widget">App widget</string>
     <string name="page_static_shortcut">Static shortcuts</string>
+    <string name="page_dynamic_shortcut">dynamic shortcuts</string>
 
     <!-- ========================= -->
 
@@ -436,4 +437,5 @@
     <string name="toast_shortcut_long_label">shortcut long desc</string>
     <string name="toast_shortcut_short_label">shortcut short desc</string>
     <string name="toast_disabled_message">Toast disabled message</string>
+    <string name="create_dynamic_shortcuts">Create dynamic shortcuts</string>
 </resources>

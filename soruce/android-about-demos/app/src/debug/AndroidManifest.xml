@@ -15,16 +15,25 @@
         <!--<activity android:name=".other_ui._dialog.TestDialogActivity">-->
         <!--<activity android:name=".app_component._fragment.TestFragmentActivity">-->
         <!--<activity android:name=".network.TestNetworkActivity">-->
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsResponseActivity">
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AddDynamicShortcutsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/static_shortcuts" />
         </activity>
+
+
+        <!--<activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsResponseActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+
+        <!--<meta-data-->
+        <!--android:name="android.app.shortcuts"-->
+        <!--android:resource="@xml/static_shortcuts" />-->
+        <!--</activity>-->
     </application>
 </manifest>
