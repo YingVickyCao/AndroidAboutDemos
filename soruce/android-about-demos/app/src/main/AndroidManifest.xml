@@ -411,9 +411,9 @@
                 android:resource="@xml/livewallpaper" />
         </service>
 
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AppShortCutsActivity" />
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AddDynamicShortcutsActivity" />
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity" />
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity"/>
 
         <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />
