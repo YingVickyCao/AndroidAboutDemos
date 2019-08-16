@@ -411,7 +411,7 @@
                 android:resource="@xml/livewallpaper" />
         </service>
 
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.AddDynamicShortcutsActivity" />
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.dynamic.AddDynamicShortcutsActivity" />
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity" />
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity"/>
 

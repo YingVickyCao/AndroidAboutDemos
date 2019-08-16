@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui.manager_phone_desktop.shortcuts._static;
+package com.hades.example.android.other_ui.manager_phone_desktop.shortcuts.dynamic;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -36,10 +36,9 @@ public class AddPinndedShortcutsActivity extends PermissionActivity {
         }
 
         ShortcutManager shortcutManager = this.getSystemService(ShortcutManager.class);
+        //  Android >=26. But Support library APIs, Android >=7.1 (API level 25).
+        if (shortcutManager.isRequestPinShortcutSupported()) {
 
-        if (shortcutManager.isRequestPinShortcutSupported()) { //  Support library APIs, Android >=7.1 (API level 25). Android >=26
-            // Assumes there's already a shortcut with the ID "my-shortcut".
-            // The shortcut must be enabled.
             ShortcutInfo pinShortcutInfo = new ShortcutInfo.Builder(this, "my-pinned-shortcut")
                     .setShortLabel("Pinned ABC - Website")
                     .setLongLabel("Pinned - Open the website")
@@ -47,18 +46,13 @@ public class AddPinndedShortcutsActivity extends PermissionActivity {
                     .setIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.baidu.com")))
                     .build(); // id is stable
 
-            // Create the PendingIntent object only if your app needs to be notified
-            // that the user allowed the shortcut to be pinned. Note that, if the
-            // pinning operation fails, your app isn't notified. We assume here that the
-            // app has implemented a method called createShortcutResultIntent() that
-            // returns a broadcast intent.
+            // Create the PendingIntent object only if your app needs to be notified that the user allowed the shortcut to be pinned. Note that, if the pinning operation fails, your app isn't notified.
+            // We assume here that the app has implemented a method called createShortcutResultIntent() that returns a broadcast intent.
             Intent pinnedShortcutCallbackIntent = shortcutManager.createShortcutResultIntent(pinShortcutInfo);
 
-            // Configure the intent so that your app's broadcast receiver gets
-            // the callback successfully.For details, see PendingIntent.getBroadcast().
+            // Configure the intent so that your app's broadcast receiver gets the callback successfully.For details, see PendingIntent.getBroadcast().
             PendingIntent successCallback = PendingIntent.getBroadcast(this, 0, pinnedShortcutCallbackIntent, /* flags */ 0);
-
-            shortcutManager.requestPinShortcut(pinShortcutInfo, successCallback.getIntentSender()); // Android >=7.1 (API level 25). Android >=26
+            shortcutManager.requestPinShortcut(pinShortcutInfo, successCallback.getIntentSender());
         }
 
     }
