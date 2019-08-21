@@ -1,17 +1,18 @@
 package com.hades.android.example.rxjava2._subscribeOn_vs_observeOn;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import com.hades.android.example.rxjava2.LogHelper;
 import com.hades.android.example.rxjava2.R;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
+import io.reactivex.*;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import kotlin.Unit;
 
 public class TestCase1 extends Activity {
     private static final String TAG = TestCase1.class.getSimpleName();
@@ -22,6 +23,7 @@ public class TestCase1 extends Activity {
         setContentView(R.layout.activity_test_case_1);
 
         findViewById(R.id.subscribeOn_vs_observeOn).setOnClickListener(view -> test1_subscribeOn_vs_observeOn());
+        findViewById(R.id.test2_send_empty).setOnClickListener(view -> test2_send_empty());
     }
 
     /**
@@ -66,6 +68,7 @@ public class TestCase1 extends Activity {
      *
      * <pre/>
      */
+    // thread  (result ) ->  main
     private void test1_subscribeOn_vs_observeOn() {
         Observable.just(String.valueOf(30))
                 .map(new Function<String, Integer>() { // 操作1
@@ -152,5 +155,55 @@ public class TestCase1 extends Activity {
             i++;
             Log.d(TAG, "counter: i=" + i + "," + LogHelper.getThreadInfo());
         }
+    }
+
+    /**
+     * thread  (void ) ->  main
+     * <pre>
+     *  subscribe,onSubscribe: thread :main,2
+     *
+     *  subscribe: thread :RxCachedThreadScheduler-1,2258
+     *  accept:    thread :RxCachedThreadScheduler-1,2258
+     *
+     *  subscribe,onNext: thread :main,2
+     * <pre/>
+     */
+    private void test2_send_empty() {
+        Observable.create(new ObservableOnSubscribe<Unit>() {
+            @Override
+            public void subscribe(ObservableEmitter<Unit> emitter) throws Exception { // thread -1
+                Log.d(TAG, "subscribe: " + LogHelper.getThreadInfo());
+                emitter.onNext(Unit.INSTANCE);
+            }
+        }).subscribeOn(Schedulers.io())
+                .doOnNext(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception { // thread -1
+                        Log.d(TAG, "accept: " + LogHelper.getThreadInfo());
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Unit>() {
+                    @Override
+                    public void onSubscribe(Disposable d) { // main
+                        Log.d(TAG, "subscribe,onSubscribe: " + LogHelper.getThreadInfo());
+                    }
+
+                    @Override
+                    public void onNext(Unit unit) { // main
+                        Log.d(TAG, "subscribe,onNext: " + LogHelper.getThreadInfo());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "subscribe,onError: " + LogHelper.getThreadInfo());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "subscribe,onComplete: " + LogHelper.getThreadInfo());
+                    }
+                });
+
     }
 }
