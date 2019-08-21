@@ -4,7 +4,7 @@
           package="com.hades.android.example.rxjava2">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AlwaysDoOnNextQAActivity">
+        <activity android:name="._subscribeOn_vs_observeOn.TestCase1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
