@@ -78,4 +78,11 @@
         <item>strong</item>
     </string-array>
 
+    <string-array name="media_from">
+        <item>播放资源音频文件（res/raw）</item>
+        <item>播放原始资源音频文件(assert</item>
+        <item>播放外部存储上的音频文件</item>
+        <item>播放来自网络的音频文件</item>
+    </string-array>
+
 </resources>

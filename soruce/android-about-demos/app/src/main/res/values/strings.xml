@@ -132,6 +132,16 @@
     <string name="page_static_shortcut">Static shortcuts</string>
     <string name="page_dynamic_shortcut">dynamic shortcuts</string>
 
+    <string name="page_media">Media</string>
+    <string name="page_MediaPlayer_play_audio">MediaPlayer - Play Audio</string>
+    <string name="page_SoundPool_play_audio">SoundPool - Play audio</string>
+    <string name="page_MediaPlayer_SurfaceView_play_video">MediaPlayer + SurfaceView - Play Video</string>
+    <string name="page_VideoView_play_video">VideoView - Play Video</string>
+    <string name="page_Camera">Camera</string>
+    <string name="page_MediaRecorder_Record_audio">MediaRecorder - Record audio</string>
+    <string name="page_MediaRecorder_Record_video">MediaRecorder - Record video</string>
+    <string name="page_Screen_Capture">Screen Capture</string>
+
     <!-- ========================= -->
 
     <string name="runt_time_permission">Runtime Permission</string>

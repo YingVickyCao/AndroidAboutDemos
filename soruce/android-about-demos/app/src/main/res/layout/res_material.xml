@@ -4,20 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/topic"
-        android:text="@string/page_material" />
-
-    <Button
-        android:id="@+id/playRaw"
-        style="@style/btn.small"
-        android:text="play raw 原始资源" />
-
-    <Button
-        android:id="@+id/playAsserts"
-        style="@style/btn.small"
-        android:text="play asserts 原始资源" />
-
     <Button
         android:id="@+id/loadAssertsImg"
         style="@style/btn.small"
