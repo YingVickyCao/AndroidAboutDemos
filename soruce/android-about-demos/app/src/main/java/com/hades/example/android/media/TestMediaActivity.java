@@ -29,6 +29,6 @@ public class TestMediaActivity extends PermissionActivity {
     }
 
     private void pageMediaPlayerPlayAudio(){
-        showFragment(new TestMediaPlayerPlayAudioFragment());
+        showFragment(new TestMediaPlayer4AudioFragment());
     }
 }

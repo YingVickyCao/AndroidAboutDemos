@@ -17,20 +17,22 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.hades.example.android.lib.timer.ITimerView;
+import com.hades.example.android.lib.timer.TimerHandler;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
 import java.io.IOException;
 
-public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IMediaPlayer, IMediaPlayView {
-    private static final String TAG = TestMediaPlayerPlayAudioFragment.class.getName();
+public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMediaPlayer, ITimerView {
+    private static final String TAG = TestMediaPlayer4AudioFragment.class.getName();
 
     MediaPlayer mMediaPlayer = null;
     SeekBar mProgress;
     TextView mCurrentTime;
     TextView mEndTime;
 
-    private MediaPlayerHandler mHandler;
+    private TimerHandler mHandler;
     private MediaController mMediaController;
     private int mPosition4MediaFrom;
     private int mCurrentBufferPercentage;
@@ -91,7 +93,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     public void onResume() {
         super.onResume();
         if (null == mHandler) {
-            mHandler = new MediaPlayerHandler();
+            mHandler = new TimerHandler();
         }
     }
 
@@ -99,7 +101,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     public void onPause() {
         super.onPause();
         if (null != mHandler) {
-            mHandler.setIMediaPlayView(null);
+            mHandler.setITimerView(null);
         }
     }
 
@@ -214,13 +216,13 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateMediaPlayProgress();
+            mHandler.sendMessage4UpdateView();
         }
     }
 
     private void stopUpdateProgress() {
         if (null != mHandler) {
-            mHandler.setIMediaPlayView(null);
+            mHandler.setITimerView(null);
         }
     }
 
@@ -291,8 +293,8 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
 
         mMediaPlayer.start();
         if (null != mHandler) {
-            mHandler.setIMediaPlayView(this);
-            mHandler.sendMessage4UpdateMediaPlayProgress();
+            mHandler.setITimerView(this);
+            mHandler.sendMessage4UpdateView();
         }
         setEndTime(mMediaPlayer.getDuration());
     }
@@ -324,7 +326,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     }
 
     @Override
-    public void updateProgress() {
+    public void updateView() {
         /**
          * ERROR:
          *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
@@ -342,7 +344,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
                     // use long to avoid overflow
                     long pos = 100L * position / duration;
                     mProgress.setProgress((int) pos);
-                    Log.d(TAG, "updateProgress: ,[" + mMediaPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mMediaPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                    Log.d(TAG, "updateView: ,[" + mMediaPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mMediaPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
                 }
                 mProgress.setSecondaryProgress(mCurrentBufferPercentage);
             }

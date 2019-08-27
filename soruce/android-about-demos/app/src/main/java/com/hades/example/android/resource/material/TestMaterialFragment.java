@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.media.TestMediaPlayerPlayAudioFragment;
+import com.hades.example.android.media.TestMediaPlayer4AudioFragment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +20,7 @@ import java.io.InputStream;
 // Other Assert sample , see {}
 
 /**
- * {@link TestMediaPlayerPlayAudioFragment}
+ * {@link TestMediaPlayer4AudioFragment}
  */
 public class TestMaterialFragment extends BaseFragment {
     private ImageView mImageView;
