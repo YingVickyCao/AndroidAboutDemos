@@ -8,8 +8,12 @@ public class TimerHandler extends Handler {
     private ITimerView mITimerView;
     private static final int UPDATE_VIEW_EVERY_SECONDS = 1;
 
-    void setITimerView(ITimerView mITimerView) {
+    public void setITimerView(ITimerView mITimerView) {
         this.mITimerView = mITimerView;
+    }
+
+    public void clear(){
+        removeCallbacks(null);
     }
 
     @Override
@@ -30,7 +34,7 @@ public class TimerHandler extends Handler {
         }
     }
 
-    void sendMessage4UpdateView(){
+    public void sendMessage4UpdateView(){
         sendEmptyMessageDelayed(UPDATE_VIEW_EVERY_SECONDS, 1000);
     }
 }

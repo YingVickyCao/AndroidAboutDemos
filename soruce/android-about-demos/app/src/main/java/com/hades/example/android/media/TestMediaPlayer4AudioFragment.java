@@ -2,6 +2,8 @@ package com.hades.example.android.media;
 
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.TimedText;
 import android.net.Uri;
@@ -17,10 +19,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.timer.ITimerView;
-import com.hades.example.android.lib.timer.TimerHandler;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.lib.timer.ITimerView;
+import com.hades.example.android.lib.timer.TimerHandler;
 
 import java.io.IOException;
 
@@ -101,6 +103,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     public void onPause() {
         super.onPause();
         if (null != mHandler) {
+            mHandler.clear();
             mHandler.setITimerView(null);
         }
     }
@@ -146,6 +149,11 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         mMediaPlayer.setOnSeekCompleteListener(this);
         mMediaPlayer.setOnPreparedListener(this);
         mMediaPlayer.setOnTimedTextListener(this);
+        // Depressed
+//        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        AudioAttributes.Builder builder = new AudioAttributes.Builder();
+        builder.setLegacyStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.setAudioAttributes(builder.build());
     }
 
     private void loadResourceRaw() {
