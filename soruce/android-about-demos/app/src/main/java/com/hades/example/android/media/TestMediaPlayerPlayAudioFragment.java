@@ -296,7 +296,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         }
         setEndTime(mMediaPlayer.getDuration());
     }
-    
+
     @Override
     public boolean onInfo(MediaPlayer mp, int what, int extra) {
         Log.d(TAG, "onInfo: what=" + what + ",extra=" + extra);
@@ -316,6 +316,11 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     @Override
     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
         Log.d(TAG, "onVideoSizeChanged: width=" + width + ",height=" + height);
+    }
+
+    @Override
+    public void onBufferingUpdate(MediaPlayer mp, int percent) {
+        mCurrentBufferPercentage = percent;
     }
 
     @Override
@@ -340,7 +345,6 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
                     Log.d(TAG, "updateProgress: ,[" + mMediaPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mMediaPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
                 }
                 mProgress.setSecondaryProgress(mCurrentBufferPercentage);
-
             }
 
             if (mEndTime != null)
