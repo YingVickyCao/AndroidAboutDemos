@@ -102,7 +102,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageLinearLayoutCanNotChangeColor();
+        pageSeekBar();
     }
 
     private void pageViewLocation() {

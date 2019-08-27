@@ -33,6 +33,11 @@ public class FileUtil {
         return new File(Environment.getExternalStorageDirectory().getPath() + cacheDir);
     }
 
+    // /sdcard/name
+    public static String buildFileNameInSD(String name){
+        return Environment.getExternalStorageDirectory().getPath() + File.separator + name;
+    }
+
     /**
      * Check how much usable space is available at a given path.
      *

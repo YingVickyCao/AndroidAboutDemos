@@ -29,6 +29,16 @@
             android:orientation="vertical">
 
             <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="40"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginBottom="@dimen/size_20"
+                android:secondaryProgress="60" />
+
+            <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="100"

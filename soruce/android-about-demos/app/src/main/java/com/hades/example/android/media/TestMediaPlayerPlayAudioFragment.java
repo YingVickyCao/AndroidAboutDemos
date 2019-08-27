@@ -4,6 +4,7 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.media.TimedText;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,11 +28,13 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     MediaPlayer mMediaPlayer = null;
     SeekBar mProgress;
     TextView mCurrentTime;
-    TextView mTotalTime;
+    TextView mEndTime;
 
     private MediaPlayerHandler mHandler;
     private MediaController mMediaController;
     private int mPosition4MediaFrom;
+    private int mCurrentBufferPercentage;
+    private boolean mDragging = false;
 
     @Nullable
     @Override
@@ -40,7 +43,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
 
         mProgress = view.findViewById(R.id.playProgress);
         mCurrentTime = view.findViewById(R.id.currentTime);
-        mTotalTime = view.findViewById(R.id.totalTime);
+        mEndTime = view.findViewById(R.id.totalTime);
 
         ((Spinner) view.findViewById(R.id.mediaFrom)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -50,6 +53,26 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                mDragging = true;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.d(TAG, "onStopTrackingTouch: ");
+                mDragging = false;
+                if (seekBar.getProgress() > 0) {
+                    seekTo(seekBar.getProgress());
+                }
 
             }
         });
@@ -69,10 +92,6 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         super.onResume();
         if (null == mHandler) {
             mHandler = new MediaPlayerHandler();
-            mHandler.setIMediaPlayView(this);
-        }
-        if (null != mHandler) {
-            mHandler.setIMediaPlayView(this);
         }
     }
 
@@ -90,16 +109,6 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         mMediaController = null;
     }
 
-    private void loadResourceRaw() {
-        mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.mp3_2);
-        mMediaPlayer.setOnBufferingUpdateListener(this);
-        mMediaPlayer.setOnCompletionListener(this);
-        mMediaPlayer.setOnErrorListener(this);
-        mMediaPlayer.setOnInfoListener(this);
-        mMediaPlayer.setOnSeekCompleteListener(this);
-        mMediaPlayer.setOnPreparedListener(this);
-        mMediaPlayer.setOnTimedTextListener(this);
-    }
 
     void loadMediaSource() {
         switch (mPosition4MediaFrom) {
@@ -124,6 +133,39 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         }
     }
 
+    private void setMediaPlayerListener() {
+        if (null == mMediaPlayer) {
+            return;
+        }
+        mMediaPlayer.setOnBufferingUpdateListener(this);
+        mMediaPlayer.setOnCompletionListener(this);
+        mMediaPlayer.setOnErrorListener(this);
+        mMediaPlayer.setOnInfoListener(this);
+        mMediaPlayer.setOnSeekCompleteListener(this);
+        mMediaPlayer.setOnPreparedListener(this);
+        mMediaPlayer.setOnTimedTextListener(this);
+    }
+
+    private void loadResourceRaw() {
+        mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.mp3_2);
+        setMediaPlayerListener();
+    }
+
+    private void loadAsserts() {
+        try {
+            AssetFileDescriptor afd = assert2AssetFileDescriptor();
+            if (null != afd) {
+                mMediaPlayer = new MediaPlayer();
+                mMediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getStartOffset());
+                setMediaPlayerListener();
+                prepare();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private AssetFileDescriptor assert2AssetFileDescriptor() {
         if (null == getActivity()) {
             return null;
@@ -138,31 +180,40 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         return afd;
     }
 
-    private void loadAsserts() {
+    private void loadSD() {
+        mMediaPlayer = new MediaPlayer();
         try {
-            AssetFileDescriptor afd = assert2AssetFileDescriptor();
-            if (null != afd) {
-                mMediaPlayer = new MediaPlayer();
-                mMediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getStartOffset());
-                mMediaPlayer.prepare();
-            }
-
+//            mMediaPlayer.setDataSource(FileUtil.buildFileNameInSD(Constant.MP3_NAME));
+            mMediaPlayer.setDataSource("/sdcard/mp3.mp3");
+            setMediaPlayerListener();
+            prepare();
+            mMediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadSD() {
-
-    }
-
     private void loadNetwork() {
-
+        if (null == getActivity() || null == getActivity().getApplicationContext()) {
+            return;
+        }
+        mMediaPlayer = new MediaPlayer();
+        try {
+            mMediaPlayer.setDataSource(getActivity().getApplicationContext(), Uri.parse("https://yingvickycao.github.io/mp3/mp3.mp3"));
+            setMediaPlayerListener();
+            prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+            if (null != mMediaPlayer) {
+                mMediaPlayer.release();
+            }
+            mMediaPlayer = null;
+        }
     }
+
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.setIMediaPlayView(this);
             mHandler.sendMessage4UpdateMediaPlayProgress();
         }
     }
@@ -173,12 +224,19 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         }
     }
 
+    private void prepare() {
+        if (null == mMediaPlayer) {
+            return;
+        }
+        mMediaPlayer.prepareAsync();
+    }
+
     private void start() {
         loadMediaSource();
         if (null == mMediaPlayer) {
             return;
         }
-        mMediaPlayer.start();
+        setMediaPlayerListener();
         startUpdateProgress();
     }
 
@@ -198,7 +256,7 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
      * E/MediaPlayer: Error (-38,0)
      */
     private void stop() {
-        if (null == mMediaPlayer){
+        if (null == mMediaPlayer) {
             return;
         }
         stopUpdateProgress();
@@ -206,10 +264,16 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
         mMediaPlayer = null;
     }
 
+    private void seekTo(int seekToProgress) {
+        if (null == mMediaPlayer) {
+            return;
+        }
+        mMediaPlayer.seekTo(seekToProgress);
+    }
+
     @Override
     public void onCompletion(MediaPlayer mp) {
         Log.d(TAG, "onCompletion: ");
-
     }
 
     @Override
@@ -221,16 +285,18 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
     @Override
     public void onPrepared(MediaPlayer mp) {
         Log.d(TAG, "onPrepared: ");
+        if (null == mMediaPlayer) {
+            return;
+        }
+
+        mMediaPlayer.start();
         if (null != mHandler) {
+            mHandler.setIMediaPlayView(this);
             mHandler.sendMessage4UpdateMediaPlayProgress();
         }
+        setEndTime(mMediaPlayer.getDuration());
     }
-
-    @Override
-    public void onBufferingUpdate(MediaPlayer mp, int percent) {
-        Log.d(TAG, "onBufferingUpdate: percent+" + percent);
-    }
-
+    
     @Override
     public boolean onInfo(MediaPlayer mp, int what, int extra) {
         Log.d(TAG, "onInfo: what=" + what + ",extra=" + extra);
@@ -254,18 +320,43 @@ public class TestMediaPlayerPlayAudioFragment extends BaseFragment implements IM
 
     @Override
     public void updateProgress() {
-        int currentPosition = mMediaPlayer.getCurrentPosition();
-        int duration = mMediaPlayer.getDuration();
-        Log.d(TAG, "updateProgress: total=" + duration + ",current=" + currentPosition);
+        /**
+         * ERROR:
+         *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
+         *  E/MediaPlayerNative: error (-38, 0)
+         */
+        if (null == mMediaPlayer || mDragging || getActivity() == null) {
+            return;
+        }
 
+        getActivity().runOnUiThread(() -> {
+            int position = mMediaPlayer.getCurrentPosition();
+            int duration = mMediaPlayer.getDuration();
+            if (mProgress != null) {
+                if (duration > 0) {
+                    // use long to avoid overflow
+                    long pos = 100L * position / duration;
+                    mProgress.setProgress((int) pos);
+                    Log.d(TAG, "updateProgress: ,[" + mMediaPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mMediaPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                }
+                mProgress.setSecondaryProgress(mCurrentBufferPercentage);
+
+            }
+
+            if (mEndTime != null)
+                mEndTime.setText(mMediaController.stringForTime(duration));
+            if (mCurrentTime != null)
+                mCurrentTime.setText(mMediaController.stringForTime(position));
+        });
+    }
+
+    private void setEndTime(int duration) {
         if (null == getActivity()) {
             return;
         }
         getActivity().runOnUiThread(() -> {
-            mProgress.setProgress(currentPosition);
-            mProgress.setMax(duration);
-            mCurrentTime.setText(mMediaController.stringForTime(currentPosition));
-            mTotalTime.setText(mMediaController.stringForTime(duration));
+            mProgress.setMax(100);
+            mEndTime.setText(mMediaController.stringForTime(duration));
         });
     }
 }
