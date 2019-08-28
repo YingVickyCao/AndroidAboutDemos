@@ -313,12 +313,13 @@
     <!-- Formatting strings,start -->
     <string name="handle_special_characters">Handle special characters:&amp;</string>
     <string name="formatting_strings">Hello, %1$s! You have %2$d new messages.</string>
+    <string name="email_in_string">A email. abc@outlook.com .Press to send email.</string>
     <!-- u 没有生效 -->
     <string name="styling_with_html_markup"><![CDATA[Visit <a href=\"http://manning.com/\">Manning home page</a>]]> Welcome to <u>Android</u>!  Android </string>
     <string name="styling_with_spannables">Hello World</string>
     <string name="title">Best practices for <annotation font="title_emphasis">text</annotation> on Android</string>
     <!-- Formatting strings,end -->
-
+2
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>

@@ -33,6 +33,7 @@ public class TestStringIntegerArrayFragment extends BaseFragment {
     Button checkTypedArray;
 
     TextView mTv_stylingWithHtmlMarkup;
+    TextView mTv_colorEmail;
     TextView mTv_stylingWithSpannables;
     TextView mTv_formattingStrings;
     TextView mTv_stylingWithAnnotations;
@@ -47,6 +48,7 @@ public class TestStringIntegerArrayFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.res_string_integer_array, container, false);
 
         quantityStringsResult = view.findViewById(R.id.quantityStringsResult);
+        colorEmail(view);
 
         checkTypedArray = view.findViewById(R.id.checkTypedArray);
         checkTypedArray.setOnClickListener(v -> checkTypedArray());
@@ -72,6 +74,16 @@ public class TestStringIntegerArrayFragment extends BaseFragment {
         mTv_stylingWithHtmlMarkup.setText(Html.fromHtml(getString(R.string.styling_with_html_markup)));
         mTv_stylingWithHtmlMarkup.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
+    private void colorEmail(View view) {
+        mTv_colorEmail = view.findViewById(R.id.colorEmail);
+        mTv_colorEmail.setText(Html.fromHtml(getEmailWithColorLink()));
+    }
+
+    private String getEmailWithColorLink() {
+        return ">A email. <font color=" + "#ff0000" + ">" + "abc@outlook.com" + "</font>" + " .Press to send email.";
+    }
+//         <string name="email_in_string">A email. abc@outlook.com .Press to send email.</string>
 
     private void stylingWithSpannables(View view) {
         mTv_stylingWithSpannables = view.findViewById(R.id.styling_with_spannables);
