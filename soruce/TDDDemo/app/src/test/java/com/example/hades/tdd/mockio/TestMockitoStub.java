@@ -226,6 +226,10 @@ public class TestMockitoStub {
             Assert.assertNull(mock.getA()); // null
         }
 
+        mockMemberVariable();
+    }
+
+    private void mockMemberVariable() {
 
         {
             Person mock = mock(Person.class);
@@ -246,11 +250,23 @@ public class TestMockitoStub {
              * 2 通过反射
              * 3 name -> getName.(Recommend)
              */
-            Person mock = mock(Person.class);
-            when(mock.name).thenReturn("");
-            when(mock.isValidName()).thenCallRealMethod();
-            Assert.assertFalse(mock.isValidName()); // null
+//            Person mock = mock(Person.class);
+//            when(mock.name).thenReturn("");
+//            when(mock.isValidName()).thenCallRealMethod();
+//            Assert.assertFalse(mock.isValidName()); // null
+        }
 
+        {
+            Person mock = mock(Person.class);
+            when(mock.getName()).thenReturn("");
+            when(mock.isValidName2()).thenCallRealMethod();
+            Assert.assertFalse(mock.isValidName2());
+        }
+        {
+            Person mock = mock(Person.class);
+            when(mock.getName()).thenReturn("A");
+            when(mock.isValidName2()).thenCallRealMethod();
+            Assert.assertTrue(mock.isValidName2());
         }
     }
 

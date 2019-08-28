@@ -82,7 +82,11 @@ public class Person {
     }
 
     boolean isValidName() {
-        return null != name && name.isEmpty();
+        return null != name && !name.isEmpty();
+    }
+
+    boolean isValidName2() {
+        return null != getName() && !getName().isEmpty();
     }
 
     public B getB() {
