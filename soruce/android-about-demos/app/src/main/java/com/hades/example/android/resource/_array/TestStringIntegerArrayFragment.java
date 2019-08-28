@@ -34,6 +34,7 @@ public class TestStringIntegerArrayFragment extends BaseFragment {
 
     TextView mTv_stylingWithHtmlMarkup;
     TextView mTv_colorEmail;
+    TextView mTv_colorEmail3;
     TextView mTv_stylingWithSpannables;
     TextView mTv_formattingStrings;
     TextView mTv_stylingWithAnnotations;
@@ -76,8 +77,11 @@ public class TestStringIntegerArrayFragment extends BaseFragment {
     }
 
     private void colorEmail(View view) {
-        mTv_colorEmail = view.findViewById(R.id.colorEmail);
+        mTv_colorEmail = view.findViewById(R.id.colorEmail_use_string_with_html_font);
         mTv_colorEmail.setText(Html.fromHtml(getEmailWithColorLink()));
+
+        mTv_colorEmail3 = view.findViewById(R.id.colorEmail3);
+        mTv_colorEmail3.setText(Html.fromHtml(getResources().getString(R.string.email_in_string2)));
     }
 
     private String getEmailWithColorLink() {

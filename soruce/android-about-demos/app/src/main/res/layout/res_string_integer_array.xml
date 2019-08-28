@@ -46,22 +46,36 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:autoLink="email"
                     android:text="@string/email_in_string"
-                    android:textColorLink="@android:color/holo_blue_bright" />
+                    android:textColorLink="@android:color/holo_red_dark" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="@string/email_in_string"
-                    android:textColorLink="@android:color/holo_blue_bright" />
+                    android:textColorLink="@android:color/holo_red_dark" />
 
                 <!-- email color == html -->
                 <TextView
-                    android:id="@+id/colorEmail"
+                    android:id="@+id/colorEmail_use_string_with_html_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="@string/email_in_string" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/email_in_string2"
+                    android:textColorLink="@android:color/holo_green_dark" />
+
+                <TextView
+                    android:id="@+id/colorEmail3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textColorLink="@android:color/holo_green_dark" />
 
                 <TextView
                     android:id="@+id/styling_with_html_markup"
