@@ -55,7 +55,7 @@
                     android:text="@string/email_in_string"
                     android:textColorLink="@android:color/holo_red_dark" />
 
-                <!-- email color == html -->
+                <!-- email => html -->
                 <TextView
                     android:id="@+id/colorEmail_use_string_with_html_font"
                     android:layout_width="wrap_content"
@@ -63,6 +63,7 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="@string/email_in_string" />
 
+                <!-- Recommended -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
