@@ -81,6 +81,9 @@ public class Person {
 //        return getB().getIntegers(); // getB() = b
     }
 
+    boolean isValidName() {
+        return null != name && name.isEmpty();
+    }
 
     public B getB() {
         return b;

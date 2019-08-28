@@ -15,6 +15,7 @@ import static org.mockito.Mockito.after;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
@@ -223,6 +224,33 @@ public class TestMockitoStub {
             when(mock.findA(5)).thenReturn(new A());
             when(mock.getA()).thenCallRealMethod();
             Assert.assertNull(mock.getA()); // null
+        }
+
+
+        {
+            Person mock = mock(Person.class);
+            when(mock.name).thenReturn(null);
+            when(mock.isValidName()).thenCallRealMethod();
+            Assert.assertFalse(mock.isValidName()); // null
+        }
+
+        {
+            /**
+             * ERROR:org.mockito.exceptions.misusing.WrongTypeOfReturnValue:
+             * String cannot be returned by isValidName()
+             * isValidName() should return boolean
+             *
+             * 如何mock 成员变量？
+             * 1 通过继承
+             * https://blog.csdn.net/fenglibing/article/details/16842655?utm_source=blogxgwz8
+             * 2 通过反射
+             * 3 name -> getName.(Recommend)
+             */
+            Person mock = mock(Person.class);
+            when(mock.name).thenReturn("");
+            when(mock.isValidName()).thenCallRealMethod();
+            Assert.assertFalse(mock.isValidName()); // null
+
         }
     }
 
