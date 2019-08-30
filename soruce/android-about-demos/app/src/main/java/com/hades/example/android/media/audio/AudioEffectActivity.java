@@ -8,7 +8,7 @@ import android.media.audiofx.Equalizer;
 import android.media.audiofx.PresetReverb;
 import android.media.audiofx.Visualizer;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,11 +42,13 @@ public class AudioEffectActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.audio_effect_layout);
+
         // 设置控制音乐声音
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        setContentView(layout);
+//        layout = new LinearLayout(this);
+//        layout.setOrientation(LinearLayout.VERTICAL);
         // 创建MediaPlayer对象
         mPlayer = MediaPlayer.create(this, R.raw.mp3_2);
         // 初始化示波器
@@ -95,54 +97,23 @@ public class AudioEffectActivity extends Activity {
     private void setupEqualizer() {
         // 以MediaPlayer的AudioSessionId创建Equalizer
         // 相当于设置Equalizer负责控制该MediaPlayer
-
-
         mEqualizer = new Equalizer(0, mPlayer.getAudioSessionId());
-        // 启用均衡控制效果
-        mEqualizer.setEnabled(true);
-        TextView eqTitle = new TextView(this);
-        eqTitle.setText("均衡器：");
-        layout.addView(eqTitle);
+        mEqualizer.setEnabled(true); // 启用均衡控制效果
 
         // 获取均衡控制器支持最小值和最大值
         final short minEQLevel = mEqualizer.getBandLevelRange()[0];
-        short maxEQLevel = mEqualizer.getBandLevelRange()[1];
+        final short maxEQLevel = mEqualizer.getBandLevelRange()[1];
         // 获取均衡控制器支持的所有频率
         short brands = mEqualizer.getNumberOfBands();
         for (short i = 0; i < brands; i++) {
-
-            TextView eqTextView = new TextView(this);
-            // 创建一个TextView，用于显示频率
-            eqTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            eqTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-            // 设置该均衡控制器的频率
-            eqTextView.setText((mEqualizer.getCenterFreq(i) / 1000) + " Hz");
-            layout.addView(eqTextView);
-
-            // 创建一个水平排列组件的LinearLayout
-            LinearLayout tmpLayout = new LinearLayout(this);
-            tmpLayout.setOrientation(LinearLayout.HORIZONTAL);
-            // 创建显示均衡控制器最小值的TextView
-            TextView minDbTextView = new TextView(this);
-            minDbTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));            // 显示均衡控制器的最小值
-            // 显示均衡控制器的最小值
-            minDbTextView.setText((minEQLevel / 100) + " dB");
-
-            // 创建显示均衡控制器最大值的TextView
-            TextView maxDbTextView = new TextView(this);
-            maxDbTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            // 显示均衡控制器的最大值
-            maxDbTextView.setText((maxEQLevel / 100) + " dB");
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.weight = 1;
-            SeekBar bar = new SeekBar(this);
-            bar.setLayoutParams(layoutParams);
+            LinearLayout tmpLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.audio_effect_equalizer, null);
+            ((TextView) tmpLayout.findViewById(R.id.centerFreq)).setText(String.valueOf(mEqualizer.getCenterFreq(i) / 1000));
+            ((TextView) tmpLayout.findViewById(R.id.minOfBindLevel)).setText(String.valueOf(minEQLevel / 100));
+            ((TextView) tmpLayout.findViewById(R.id.maxOfBindLevel)).setText(String.valueOf(maxEQLevel / 100));
+            SeekBar bar = tmpLayout.findViewById(R.id.bandLevelProgress);
             bar.setMax(maxEQLevel - minEQLevel);
             bar.setProgress(mEqualizer.getBandLevel(i));
-
             final short brand = i;
-            // 为SeekBar的拖动事件设置事件监听器
             bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -158,12 +129,8 @@ public class AudioEffectActivity extends Activity {
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
-            // 使用水平排列组件的LinearLayout“盛装”三个组件
-            tmpLayout.addView(minDbTextView);
-            tmpLayout.addView(bar);
-            tmpLayout.addView(maxDbTextView);
-            // 将水平排列组件的LinearLayout添加到myLayout容器中
-            layout.addView(tmpLayout);
+            ViewGroup equalizerPart = findViewById(R.id.equalizerPart);
+            equalizerPart.addView(tmpLayout);
         }
     }
 
