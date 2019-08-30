@@ -95,16 +95,12 @@ public class AudioEffectActivity extends Activity {
 
     // 初始化均衡控制器的方法
     private void setupEqualizer() {
-        // 以MediaPlayer的AudioSessionId创建Equalizer
-        // 相当于设置Equalizer负责控制该MediaPlayer
-        mEqualizer = new Equalizer(0, mPlayer.getAudioSessionId());
+        mEqualizer = new Equalizer(0, mPlayer.getAudioSessionId()); // 以MediaPlayer的AudioSessionId创建Equalizer, 相当于设置Equalizer负责控制该MediaPlayer
         mEqualizer.setEnabled(true); // 启用均衡控制效果
 
-        // 获取均衡控制器支持最小值和最大值
-        final short minEQLevel = mEqualizer.getBandLevelRange()[0];
+        final short minEQLevel = mEqualizer.getBandLevelRange()[0]; // 获取均衡控制器支持最小值和最大值
         final short maxEQLevel = mEqualizer.getBandLevelRange()[1];
-        // 获取均衡控制器支持的所有频率
-        short brands = mEqualizer.getNumberOfBands();
+        short brands = mEqualizer.getNumberOfBands(); // 获取均衡控制器支持的所有频率
         for (short i = 0; i < brands; i++) {
             LinearLayout tmpLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.audio_effect_equalizer, null);
             ((TextView) tmpLayout.findViewById(R.id.centerFreq)).setText(String.valueOf(mEqualizer.getCenterFreq(i) / 1000));
