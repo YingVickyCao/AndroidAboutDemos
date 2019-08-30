@@ -63,7 +63,6 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="@string/email_in_string" />
 
-                <!-- Recommended -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,6 +70,7 @@
                     android:text="@string/email_in_string2"
                     android:textColorLink="@android:color/holo_green_dark" />
 
+                <!-- Recommended -->
                 <TextView
                     android:id="@+id/colorEmail3"
                     android:layout_width="wrap_content"
