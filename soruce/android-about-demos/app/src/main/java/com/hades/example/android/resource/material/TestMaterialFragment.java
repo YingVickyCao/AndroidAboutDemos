@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.media.TestMediaPlayer4AudioFragment;
+import com.hades.example.android.media.audio.TestMediaPlayer4AudioFragment;
 
 import java.io.IOException;
 import java.io.InputStream;

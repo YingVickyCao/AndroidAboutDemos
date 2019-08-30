@@ -10,7 +10,7 @@
         android:text="@string/page_CustomView"
         android:visibility="gone" />
 
-    <com.hades.example.android.widget.custom_view.Rect
+    <com.hades.example.android.widget.custom_view.RectView
         android:layout_width="200dp"
         android:layout_height="200dp" />
 

@@ -463,6 +463,7 @@
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
 
         <activity android:name=".media.TestMediaActivity" />
+        <activity android:name=".media.audio.AudioEffectActivity"/>
     </application>
 
 </manifest>

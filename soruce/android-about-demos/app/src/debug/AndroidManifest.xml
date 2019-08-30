@@ -5,10 +5,10 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
         <!--<activity android:name=".other_ui.OtherUIActivity">-->
-                <activity android:name=".resource.ResourceActivity">
+        <!--                <activity android:name=".resource.ResourceActivity">-->
         <!--<activity android:name=".sensor.TestSensorActivity">-->
         <!--<activity android:name=".gps.TestGpsActivity">-->
-<!--        <activity android:name=".widget.WidgetActivity">-->
+        <!--        <activity android:name=".widget.WidgetActivity">-->
         <!--<activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity">-->
         <!--<activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity">-->
         <!--<activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity">-->
@@ -16,7 +16,8 @@
         <!--<activity android:name=".app_component._fragment.TestFragmentActivity">-->
         <!--<activity android:name=".network.TestNetworkActivity">-->
         <!--        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity">-->
-<!--        <activity android:name=".media.TestMediaActivity">-->
+        <!--        <activity android:name=".media.TestMediaActivity">-->
+        <activity android:name=".media.audio.AudioEffectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

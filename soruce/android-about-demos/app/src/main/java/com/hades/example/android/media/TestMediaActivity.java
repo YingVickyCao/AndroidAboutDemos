@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.media.audio.TestMediaPlayer4AudioFragment;
 
 public class TestMediaActivity extends PermissionActivity {
     @Override

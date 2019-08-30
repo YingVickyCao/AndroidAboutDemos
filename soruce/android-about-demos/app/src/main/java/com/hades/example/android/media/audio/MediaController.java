@@ -1,4 +1,4 @@
-package com.hades.example.android.media;
+package com.hades.example.android.media.audio;
 
 import java.util.Formatter;
 import java.util.Locale;

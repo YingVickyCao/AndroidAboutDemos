@@ -2,15 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
-        style="@style/topic"
-        android:text="@string/page_CustomView"
-        android:visibility="gone" />
-
-    <com.hades.example.android.widget.custom_view.RectView
+        android:layout_gravity="center"
+        android:text="60 HZ"
+        style="@style/tv.small"/>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.hades.example.android.media;
+package com.hades.example.android.media.audio;
 
 import android.media.MediaPlayer;
 

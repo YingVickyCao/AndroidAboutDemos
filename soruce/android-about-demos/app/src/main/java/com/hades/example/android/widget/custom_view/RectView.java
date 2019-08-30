@@ -10,12 +10,12 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
-public class Rect extends View {
-    private static final String TAG = Rect.class.getSimpleName();
+public class RectView extends View {
+    private static final String TAG = RectView.class.getSimpleName();
 
     Paint paint;
 
-    public Rect(Context context, AttributeSet set) {
+    public RectView(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
     }
