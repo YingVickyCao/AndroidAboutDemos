@@ -133,6 +133,7 @@
     <string name="page_dynamic_shortcut">dynamic shortcuts</string>
 
     <string name="page_media">Media</string>
+    <string name="page_AudioEffect">AudioEffect</string>
     <string name="page_MediaPlayer_play_audio">MediaPlayer - Play Audio</string>
     <string name="page_SoundPool_play_audio">SoundPool - Play audio</string>
     <string name="page_MediaPlayer_SurfaceView_play_video">MediaPlayer + SurfaceView - Play Video</string>
@@ -451,4 +452,6 @@
     <string name="toast_disabled_message">Toast disabled message</string>
     <string name="create_dynamic_shortcuts">Create dynamic shortcuts</string>
     <string name="response_static_shortcuts_click_action">Response Static shortcuts click action</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
 </resources>

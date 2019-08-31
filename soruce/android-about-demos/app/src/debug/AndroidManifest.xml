@@ -17,7 +17,7 @@
         <!--<activity android:name=".network.TestNetworkActivity">-->
         <!--        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity">-->
         <!--        <activity android:name=".media.TestMediaActivity">-->
-        <activity android:name=".media.audio.AudioEffectActivity">
+        <activity android:name=".media.audio.TestAudioEffectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

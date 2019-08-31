@@ -23,6 +23,8 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
 
     <!--android:usesCleartextTraffic="true"-->
     <application
@@ -463,7 +465,7 @@
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
 
         <activity android:name=".media.TestMediaActivity" />
-        <activity android:name=".media.audio.AudioEffectActivity"/>
+        <activity android:name=".media.audio.TestAudioEffectActivity"/>
     </application>
 
 </manifest>
