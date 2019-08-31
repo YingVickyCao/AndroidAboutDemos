@@ -220,8 +220,6 @@
     <string name="phone">电话</string>
     <string name="email">Email</string>
     <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="end">End</string>
     <string name="start_animation">Start animation</string>
     <string name="stop_animation">Stop animation</string>
     <string name="jump">Jump</string>
@@ -237,12 +235,17 @@
     <string name="send">Send</string>
     <string name="sendImplicitBroadcast">Sending an implicit Broadcast</string>
     <string name="sendExplicitBroadcast">Sending an Explicit Broadcast</string>
-
-    <string name="play">音频播放音乐</string>
     <string name="up_volumn">增大音量</string>
     <string name="down_volume">降低音量</string>
     <string name="normal">静音</string>
     <string name="mute">正常</string>
+    <string name="end">End</string>
+    <string name="cancel">Cancel</string>
+    <string name="pause">Pause</string>
+    <string name="pause_resume">Pause/Resume</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
+    <string name="check">Check</string>
     <string name="click">click</string>
     <string name="read">Read</string>
     <string name="write">Write</string>
@@ -263,9 +266,6 @@
     <string name="big_str">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non metus et ligula dignissim imperdiet vitae nec diam. Fusce sit amet lorem quam, feugiat fermentum odio. Nam ante eros, luctus a laoreet a, placerat non lectus. Phasellus nec dui vel tellus imperdiet facilisis. In eu leo neque, at auctor lacus. Ut et sapien tellus, eget suscipit ante. Suspendisse nec arcu nisi, a hendrerit tortor. Pellentesque ullamcorper, lacus in congue feugiat, velit tellus congue turpis, et volutpat sapien nibh vitae ante. Mauris eget erat id elit rutrum tempor quis sed nibh. Donec tristique, leo eu placerat bibendum, ante turpis pellentesque nisl, non commodo nibh enim sit amet felis.</string>
     <string name="big_str2">Quisque ultrices est justo, non aliquet libero.
         Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit. Quisque ultrices est justo, non aliquet libero. Quisque vel enim eget tellus rhoncus condimentum sed non metus. Aenean et venenatis lorem. Sed ultricies felis eu ligula varius ac fermentum sapien consectetur. Integer nisl lorem, tincidunt elementum pharetra in, porttitor sed erat. Etiam ante risus, gravida sed ultricies vel, accumsan eu metus. Donec interdum, mi eget tincidunt adipiscing, purus lorem blandit elit, commodo venenatis turpis arcu vel nisi. Aliquam aliquam nisl non sem congue blandit.</string>
-    <string name="cancel">Cancel</string>
-    <string name="pause">Pause</string>
-    <string name="check">Check</string>
     <string name="msg">Hello , Android!</string>
     <string name="check_if_have_added_view">Check if have added view</string>
     <string name="set_position_center_in_parent_and_text_is_center">Set position is center in parent and text is center</string>
@@ -322,7 +322,7 @@
     <string name="styling_with_spannables">Hello World</string>
     <string name="title">Best practices for <annotation font="title_emphasis">text</annotation> on Android</string>
     <!-- Formatting strings,end -->
-2
+    2
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>

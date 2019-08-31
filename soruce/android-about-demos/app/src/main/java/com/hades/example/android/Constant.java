@@ -16,5 +16,7 @@ public class Constant {
     public final static String IMAGE_URL = "https://YingVickyCao.github.io/img/resources/house.jpg";
 
     public final static String MP3_NAME = "mp3_1.mp3";
+    public final static String MP3_NAME_2 = "https://yingvickycao.github.io/audio/mp3.mp3";
+
 
 }

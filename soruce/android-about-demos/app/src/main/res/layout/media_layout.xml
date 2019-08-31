@@ -32,9 +32,19 @@
                 android:text="@string/page_AudioEffect" />
 
             <Button
-                android:id="@+id/pageSoundPool4Audio"
+                android:id="@+id/pageSoundPoolPlayAudio"
                 style="@style/btn.small"
                 android:text="@string/page_SoundPool_play_audio" />
+
+            <Button
+                android:id="@+id/pageVideoViewPlayVideo"
+                style="@style/btn.small"
+                android:text="@string/page_VideoView_play_video" />
+
+            <Button
+                android:id="@+id/pageSurfaceViewPlayVideo"
+                style="@style/btn.small"
+                android:text="@string/page_MediaPlayer_SurfaceView_play_video" />
 
         </LinearLayout>
     </ScrollView>

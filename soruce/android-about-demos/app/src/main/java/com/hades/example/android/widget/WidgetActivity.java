@@ -27,6 +27,7 @@ import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
+import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget._switch.TestSwitchFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
@@ -40,7 +41,7 @@ import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
 import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget.textview.TestTextViewFragment;
-import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
+import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
@@ -72,7 +73,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageViewGroup).setOnClickListener(v -> pageViewGroup());
         findViewById(R.id.pageFrameLayout).setOnClickListener(v -> pageFrameLayout());
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
-        findViewById(R.id.pageVideoviewRotateScreenTip).setOnClickListener(v -> pageVideoviewRotateScreenTip());
+        findViewById(R.id.pageVideoView).setOnClickListener(v -> pageVideoView());
+        findViewById(R.id.pageSurfaceViewPlayVideo).setOnClickListener(v -> pageSurfaceViewPlayVideo());
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
@@ -155,8 +157,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         showFragment(new TestWebViewFragment());
     }
 
-    private void pageVideoviewRotateScreenTip() {
+    private void pageVideoView() {
         showActivity(VideoViewRotateScreenTipActivity.class);
+    }
+
+    private void pageSurfaceViewPlayVideo(){
+        showFragment(new TestSurfaceViewPlayVideoFragment());
     }
 
     private void pageHighlightDigitalClock() {

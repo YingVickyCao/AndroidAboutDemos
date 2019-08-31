@@ -10,6 +10,8 @@ import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.media.audio._audio_effect.TestAudioEffectActivity;
 import com.hades.example.android.media.audio._media_player.TestMediaPlayer4AudioFragment;
 import com.hades.example.android.media.audio._sound_pool.TestSoundPoolFragment;
+import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
+import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 
 public class TestMediaActivity extends PermissionActivity {
     @Override
@@ -20,7 +22,9 @@ public class TestMediaActivity extends PermissionActivity {
 
         findViewById(R.id.pageMediaPlayerPlayAudio).setOnClickListener(v -> pageMediaPlayerPlayAudio());
         findViewById(R.id.pageAudioEffect).setOnClickListener(v -> pageAudioEffect());
-        findViewById(R.id.pageSoundPool4Audio).setOnClickListener(v -> pageSoundPool4Audio());
+        findViewById(R.id.pageSoundPoolPlayAudio).setOnClickListener(v -> pageSoundPool4Audio());
+        findViewById(R.id.pageVideoViewPlayVideo).setOnClickListener(v -> pageVideoViewPlayVideo());
+        findViewById(R.id.pageSurfaceViewPlayVideo).setOnClickListener(v -> pageSurfaceViewPlayVideo());
     }
 
     @Override
@@ -30,7 +34,7 @@ public class TestMediaActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageSoundPool4Audio();
+        pageSurfaceViewPlayVideo();
     }
 
     private void pageMediaPlayerPlayAudio() {
@@ -43,5 +47,13 @@ public class TestMediaActivity extends PermissionActivity {
 
     private void pageSoundPool4Audio() {
         showFragment(new TestSoundPoolFragment());
+    }
+
+    private void pageVideoViewPlayVideo() {
+        showActivity(VideoViewRotateScreenTipActivity.class);
+    }
+
+    private void pageSurfaceViewPlayVideo() {
+        showFragment(new TestSurfaceViewPlayVideoFragment());
     }
 }

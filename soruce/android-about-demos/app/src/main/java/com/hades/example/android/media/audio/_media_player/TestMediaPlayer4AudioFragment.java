@@ -19,17 +19,19 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.hades.example.android.Constant;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.lib.timer.ITimerView;
 import com.hades.example.android.lib.timer.TimerHandler;
+import com.hades.example.android.lib.utils.FileUtil;
 
 import java.io.IOException;
 
 public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMediaPlayer, ITimerView {
     private static final String TAG = TestMediaPlayer4AudioFragment.class.getName();
 
-    MediaPlayer mMediaPlayer = null;
+    MediaPlayer mPlayer = null;
     SeekBar mProgress;
     TextView mCurrentTime;
     TextView mEndTime;
@@ -43,7 +45,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.media_mediaplayer_audio, container, false);
+        View view = inflater.inflate(R.layout.media_audio_mediaplayer, container, false);
 
         mProgress = view.findViewById(R.id.playProgress);
         mCurrentTime = view.findViewById(R.id.currentTime);
@@ -63,6 +65,16 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //  FIXED_ERROR:TBD: seekbar -> MediaPlayer.seekTo(int)没有效果,直接回调old position
+                if (!fromUser) {
+                    return;
+                }
+                long duration = mPlayer.getDuration();
+                long newposition = (duration * progress) / 100L;
+                seekTo((int) newposition);
+                if (mCurrentTime != null) {
+                    mCurrentTime.setText(mMediaController.stringForTime((int) newposition));
+                }
             }
 
             @Override
@@ -74,10 +86,6 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Log.d(TAG, "onStopTrackingTouch: ");
                 mDragging = false;
-                if (seekBar.getProgress() > 0) {
-                    seekTo(seekBar.getProgress());
-                }
-
             }
         });
 
@@ -139,25 +147,25 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     }
 
     private void setMediaPlayerListener() {
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
-        mMediaPlayer.setOnBufferingUpdateListener(this);
-        mMediaPlayer.setOnCompletionListener(this);
-        mMediaPlayer.setOnErrorListener(this);
-        mMediaPlayer.setOnInfoListener(this);
-        mMediaPlayer.setOnSeekCompleteListener(this);
-        mMediaPlayer.setOnPreparedListener(this);
-        mMediaPlayer.setOnTimedTextListener(this);
+        mPlayer.setOnBufferingUpdateListener(this);
+        mPlayer.setOnCompletionListener(this);
+        mPlayer.setOnErrorListener(this);
+        mPlayer.setOnInfoListener(this);
+        mPlayer.setOnSeekCompleteListener(this);
+        mPlayer.setOnPreparedListener(this);
+        mPlayer.setOnTimedTextListener(this);
         // Depressed
-//        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         AudioAttributes.Builder builder = new AudioAttributes.Builder();
         builder.setLegacyStreamType(AudioManager.STREAM_MUSIC);
-        mMediaPlayer.setAudioAttributes(builder.build());
+        mPlayer.setAudioAttributes(builder.build());
     }
 
     private void loadResourceRaw() {
-        mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.mp3_2);
+        mPlayer = MediaPlayer.create(getActivity(), R.raw.mp3_2);
         setMediaPlayerListener();
     }
 
@@ -165,8 +173,8 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         try {
             AssetFileDescriptor afd = assert2AssetFileDescriptor();
             if (null != afd) {
-                mMediaPlayer = new MediaPlayer();
-                mMediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getStartOffset());
+                mPlayer = new MediaPlayer();
+                mPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getStartOffset());
                 setMediaPlayerListener();
                 prepare();
             }
@@ -191,13 +199,13 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     }
 
     private void loadSD() {
-        mMediaPlayer = new MediaPlayer();
+        mPlayer = new MediaPlayer();
         try {
-//            mMediaPlayer.setDataSource(FileUtil.buildFileNameInSD(Constant.MP3_NAME));
-            mMediaPlayer.setDataSource("/sdcard/mp3_1.mp3");
+            mPlayer.setDataSource(FileUtil.buildFileNameInSD(Constant.MP3_NAME));
+//            mPlayer.setDataSource("/sdcard/mp3_1.mp3");
             setMediaPlayerListener();
             prepare();
-            mMediaPlayer.start();
+            mPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -207,17 +215,17 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         if (null == getActivity() || null == getActivity().getApplicationContext()) {
             return;
         }
-        mMediaPlayer = new MediaPlayer();
+        mPlayer = new MediaPlayer();
         try {
-            mMediaPlayer.setDataSource(getActivity().getApplicationContext(), Uri.parse("https://yingvickycao.github.io/mp3/mp3.mp3"));
+            mPlayer.setDataSource(getActivity().getApplicationContext(), Uri.parse(Constant.MP3_NAME_2));
             setMediaPlayerListener();
             prepare();
         } catch (IOException e) {
             e.printStackTrace();
-            if (null != mMediaPlayer) {
-                mMediaPlayer.release();
+            if (null != mPlayer) {
+                mPlayer.release();
             }
-            mMediaPlayer = null;
+            mPlayer = null;
         }
     }
 
@@ -235,15 +243,15 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     }
 
     private void prepare() {
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
-        mMediaPlayer.prepareAsync();
+        mPlayer.prepareAsync();
     }
 
     private void start() {
         loadMediaSource();
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
         setMediaPlayerListener();
@@ -251,10 +259,10 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     }
 
     private void pause() {
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
-        mMediaPlayer.pause();
+        mPlayer.pause();
         stopUpdateProgress();
     }
 
@@ -266,19 +274,19 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
      * E/MediaPlayer: Error (-38,0)
      */
     private void stop() {
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
         stopUpdateProgress();
-        mMediaPlayer.release();
-        mMediaPlayer = null;
+        mPlayer.release();
+        mPlayer = null;
     }
 
     private void seekTo(int seekToProgress) {
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
-        mMediaPlayer.seekTo(seekToProgress);
+        mPlayer.seekTo(seekToProgress);
     }
 
     @Override
@@ -295,16 +303,16 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     @Override
     public void onPrepared(MediaPlayer mp) {
         Log.d(TAG, "onPrepared: ");
-        if (null == mMediaPlayer) {
+        if (null == mPlayer) {
             return;
         }
 
-        mMediaPlayer.start();
+        mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
             mHandler.sendMessage4UpdateView();
         }
-        setEndTime(mMediaPlayer.getDuration());
+        setEndTime(mPlayer.getDuration());
     }
 
     @Override
@@ -340,19 +348,19 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
          *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
          *  E/MediaPlayerNative: error (-38, 0)
          */
-        if (null == mMediaPlayer || mDragging || getActivity() == null) {
+        if (null == mPlayer || mDragging || getActivity() == null) {
             return;
         }
 
         getActivity().runOnUiThread(() -> {
-            int position = mMediaPlayer.getCurrentPosition();
-            int duration = mMediaPlayer.getDuration();
+            int position = mPlayer.getCurrentPosition();
+            int duration = mPlayer.getDuration();
             if (mProgress != null) {
                 if (duration > 0) {
                     // use long to avoid overflow
                     long pos = 100L * position / duration;
                     mProgress.setProgress((int) pos);
-                    Log.d(TAG, "updateView: ,[" + mMediaPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mMediaPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                    Log.d(TAG, "updateView: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
                 }
                 mProgress.setSecondaryProgress(mCurrentBufferPercentage);
             }
