@@ -18,7 +18,7 @@ public class StartServiceTest1Activity extends Activity {
         setContentView(R.layout.service_start_service_test);
 
         findViewById(R.id.start).setOnClickListener(v -> start());
-        findViewById(R.id.stop).setOnClickListener(v -> stop());
+        findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
         findViewById(R.id.jump).setOnClickListener(v -> jump());
     }
 

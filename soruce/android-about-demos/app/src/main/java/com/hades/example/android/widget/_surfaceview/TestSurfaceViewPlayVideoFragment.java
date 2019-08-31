@@ -36,7 +36,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
 
         view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
         view.findViewById(R.id.pause).setOnClickListener(v -> onClickPause());
-        view.findViewById(R.id.stop).setOnClickListener(v -> onClickStop());
+        view.findViewById(R.id.stopRecord).setOnClickListener(v -> onClickStop());
         surfaceView = view.findViewById(R.id.surfaceView);
         mView = view;
         enableBtns(false);
@@ -99,7 +99,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
     private void enableBtns(boolean enabled) {
         mView.findViewById(R.id.play).setEnabled(enabled);
         mView.findViewById(R.id.pause).setEnabled(enabled);
-        mView.findViewById(R.id.stop).setEnabled(enabled);
+        mView.findViewById(R.id.stopRecord).setEnabled(enabled);
     }
 
     @Override

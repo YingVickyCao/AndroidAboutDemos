@@ -77,7 +77,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/stop"
+            android:id="@+id/stopRecord"
             style="@style/btn.small"
             android:text="@string/stop"
             app:layout_constraintEnd_toEndOf="parent"

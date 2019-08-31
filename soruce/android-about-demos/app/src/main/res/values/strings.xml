@@ -455,4 +455,5 @@
     <string name="response_static_shortcuts_click_action">Response Static shortcuts click action</string>
     <string name="off">Off</string>
     <string name="on">On</string>
+    <string name="record">Record</string>
 </resources>

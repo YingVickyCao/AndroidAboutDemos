@@ -51,7 +51,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
 //        findViewById(R.id.getServiceStatus).setOnClickListener(v -> getServiceStatus());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
-        findViewById(R.id.stop).setOnClickListener(v -> stopService());
+        findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
         findViewById(R.id.check).setOnClickListener(v -> check());
     }
 

@@ -19,7 +19,7 @@ public class StartServiceTest2Activity extends Activity {
 
         findViewById(R.id.subject).setVisibility(View.GONE);
         findViewById(R.id.start).setOnClickListener(v -> start());
-        findViewById(R.id.stop).setOnClickListener(v -> stop());
+        findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
         findViewById(R.id.jump).setVisibility(View.GONE);
     }
 

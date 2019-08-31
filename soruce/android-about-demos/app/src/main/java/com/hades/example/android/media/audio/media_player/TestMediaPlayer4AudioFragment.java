@@ -91,7 +91,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
 
         view.findViewById(R.id.start).setOnClickListener(v -> start());
         view.findViewById(R.id.pause).setOnClickListener(v -> pause());
-        view.findViewById(R.id.stop).setOnClickListener(v -> stop());
+        view.findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
 
         mMediaController = new MediaController();
 

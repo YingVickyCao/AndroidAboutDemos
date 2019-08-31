@@ -41,7 +41,7 @@ public class TestLocalBoundServiceActivity extends Activity {
         findViewById(R.id.unbind).setOnClickListener(v -> unbindService());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
-        findViewById(R.id.stop).setOnClickListener(v -> stopService());
+        findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
 
         findViewById(R.id.check).setOnClickListener(v -> getServiceStatus());
         findViewById(R.id.jump).setOnClickListener(v -> jump());

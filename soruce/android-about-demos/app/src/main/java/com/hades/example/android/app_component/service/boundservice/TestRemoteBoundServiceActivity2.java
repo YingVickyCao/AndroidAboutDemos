@@ -38,7 +38,7 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
 //        findViewById(R.id.getServiceStatus).setOnClickListener(v -> getServiceStatus());
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
-        findViewById(R.id.stop).setOnClickListener(v -> stopService());
+        findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
     }
 
     private Intent buildIntent() {
