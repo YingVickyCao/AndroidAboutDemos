@@ -1,4 +1,4 @@
-package com.hades.example.android.media.audio;
+package com.hades.example.android.media.audio.audio_effect;
 
 import android.Manifest;
 import android.media.AudioManager;
