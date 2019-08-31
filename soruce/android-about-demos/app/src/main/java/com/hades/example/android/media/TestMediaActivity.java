@@ -9,7 +9,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.media.audio._audio_effect.TestAudioEffectActivity;
 import com.hades.example.android.media.audio._media_player.TestMediaPlayer4AudioFragment;
-import com.hades.example.android.media.audio._sound_pool.TestSoundPoolActivity;
+import com.hades.example.android.media.audio._sound_pool.TestSoundPoolFragment;
 
 public class TestMediaActivity extends PermissionActivity {
     @Override
@@ -30,7 +30,7 @@ public class TestMediaActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageMediaPlayerPlayAudio();
+        pageSoundPool4Audio();
     }
 
     private void pageMediaPlayerPlayAudio() {
@@ -42,6 +42,6 @@ public class TestMediaActivity extends PermissionActivity {
     }
 
     private void pageSoundPool4Audio() {
-        showActivity(TestSoundPoolActivity.class);
+        showFragment(new TestSoundPoolFragment());
     }
 }

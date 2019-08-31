@@ -466,7 +466,6 @@
 
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio._audio_effect.TestAudioEffectActivity" />
-        <activity android:name=".media.audio._sound_pool.TestSoundPoolActivity" />
     </application>
 
 </manifest>

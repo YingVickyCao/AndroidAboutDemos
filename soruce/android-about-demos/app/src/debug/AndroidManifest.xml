@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".media.audio._sound_pool.TestSoundPoolActivity">
+        <activity android:name=".media.TestMediaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
