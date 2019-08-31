@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
-import com.hades.example.android.media.audio._audio_effect.TestAudioEffectActivity;
-import com.hades.example.android.media.audio._media_player.TestMediaPlayer4AudioFragment;
-import com.hades.example.android.media.audio._sound_pool.TestSoundPoolFragment;
+import com.hades.example.android.media.audio.audio_effect.TestAudioEffectActivity;
+import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
+import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;
 import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 

@@ -1,4 +1,4 @@
-package com.hades.example.android.media.audio._sound_pool;
+package com.hades.example.android.media.audio.sound_pool;
 
 import android.media.AudioAttributes;
 import android.media.SoundPool;

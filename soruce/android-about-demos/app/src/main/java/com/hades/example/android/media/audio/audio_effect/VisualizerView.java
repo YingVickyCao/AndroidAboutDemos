@@ -1,4 +1,4 @@
-package com.hades.example.android.media.audio._audio_effect;
+package com.hades.example.android.media.audio.audio_effect;
 
 import android.content.Context;
 import android.graphics.Canvas;
