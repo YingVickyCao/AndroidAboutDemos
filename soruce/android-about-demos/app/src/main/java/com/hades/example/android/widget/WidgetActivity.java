@@ -27,6 +27,7 @@ import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget._search_view.SearchViewFragment;
 import com.hades.example.android.widget._spinner.TestSpinnerFragment;
+import com.hades.example.android.widget._switch.TestSwitchFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
@@ -98,11 +99,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
+        findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageSeekBar();
+        pageSwitch();
     }
 
     private void pageViewLocation() {
@@ -251,6 +253,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageRadioButton() {
         showFragment(new TestRadioButtonFragment());
+    }
+
+    private void pageSwitch() {
+        showFragment(new TestSwitchFragment());
     }
 
     @Override

@@ -84,6 +84,7 @@
     <string name="page_webView">WebView</string>
     <string name="page_app_chooser">Show an app chooser</string>
     <string name="page_RadioButton">RadioButton</string>
+    <string name="page_Switch">Switch</string>
 
     <string name="page_qa_about_view">QA about view</string>
 

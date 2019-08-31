@@ -142,4 +142,19 @@
     <style name="MyPopupWindowStyle" parent="Widget.AppCompat.PopupWindow">
         <item name="android:popupBackground">@android:color/holo_green_dark</item>
     </style>
+
+    <style name="SwitchStyle" parent="Theme.AppCompat.Light">
+
+        <!--   Track + Thumb when pressed 4 check on -->
+        <item name="android:colorControlActivated">@color/green</item>
+        <!--        ERROR: Android resource linking failed-->
+        <!--        <item name="android:colorSwitchThumbNormal">@color/red</item>-->
+        <!--        <item name="colorSwitchThumbNormal">@color/red</item>-->
+
+        <!--   Outside Big Circle when pressed 4 check off -->
+        <item name="android:colorControlHighlight">@color/blue</item>
+        <!--   Track when check off -->
+        <item name="android:colorForeground">@color/red</item>
+        <item name="android:disabledAlpha">@dimen/alpha</item>
+    </style>
 </resources>
