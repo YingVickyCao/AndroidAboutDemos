@@ -15,6 +15,6 @@ public class Constant {
     public final static String IMAGE_PATH = FileUtil.buildFileNameInSD(Constant.IMAGE_FILE_NAME);
     public final static String IMAGE_URL = "https://YingVickyCao.github.io/img/resources/house.jpg";
 
-    public final static String MP3_NAME = "mp3.mp3";
+    public final static String MP3_NAME = "mp3_1.mp3";
 
 }

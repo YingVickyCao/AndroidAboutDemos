@@ -77,12 +77,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.hades.example.android.media.audio.audio_effect.VisualizerView
+                <com.hades.example.android.media.audio._audio_effect.VisualizerView
                     android:id="@+id/visualizerView"
                     android:layout_width="match_parent"
                     android:layout_height="120dp">
 
-                </com.hades.example.android.media.audio.audio_effect.VisualizerView>
+                </com.hades.example.android.media.audio._audio_effect.VisualizerView>
             </LinearLayout>
 
             <View style="@style/div" />

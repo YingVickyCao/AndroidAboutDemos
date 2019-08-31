@@ -7,8 +7,9 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
-import com.hades.example.android.media.audio.audio_effect.TestAudioEffectActivity;
-import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
+import com.hades.example.android.media.audio._audio_effect.TestAudioEffectActivity;
+import com.hades.example.android.media.audio._media_player.TestMediaPlayer4AudioFragment;
+import com.hades.example.android.media.audio._sound_pool.TestSoundPoolActivity;
 
 public class TestMediaActivity extends PermissionActivity {
     @Override
@@ -19,6 +20,7 @@ public class TestMediaActivity extends PermissionActivity {
 
         findViewById(R.id.pageMediaPlayerPlayAudio).setOnClickListener(v -> pageMediaPlayerPlayAudio());
         findViewById(R.id.pageAudioEffect).setOnClickListener(v -> pageAudioEffect());
+        findViewById(R.id.pageSoundPool4Audio).setOnClickListener(v -> pageSoundPool4Audio());
     }
 
     @Override
@@ -37,5 +39,9 @@ public class TestMediaActivity extends PermissionActivity {
 
     private void pageAudioEffect() {
         showActivity(TestAudioEffectActivity.class);
+    }
+
+    private void pageSoundPool4Audio() {
+        showActivity(TestSoundPoolActivity.class);
     }
 }
