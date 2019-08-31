@@ -4,24 +4,12 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".media.TestMediaActivity">
+        <activity android:name=".media.camera.TestCameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--<activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-
-        <!--<meta-data-->
-        <!--android:name="android.app.shortcuts"-->
-        <!--android:resource="@xml/static_shortcuts" />-->
-        <!--</activity>-->
     </application>
 </manifest>
