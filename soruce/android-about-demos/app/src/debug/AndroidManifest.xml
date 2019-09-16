@@ -4,7 +4,8 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".media.camera.TestCameraActivity">
+        <!--        <activity android:name=".media.camera.TestCameraActivity">-->
+        <activity android:name=".resource.ResourceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

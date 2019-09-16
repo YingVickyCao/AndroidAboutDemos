@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable;
+package com.hades.example.android.resource._style_theme;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.R;
 import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
 
-public class TestDrawableFragment extends Fragment {
+public class TestColorFilterFragment extends Fragment {
     private static final String TAG = TestVectorDrawableFragment.class.getSimpleName();
 
     private ImageView mTintImageView;
@@ -23,13 +23,14 @@ public class TestDrawableFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_drawable, container, false);
+        View view = inflater.inflate(R.layout.res_color_filter, container, false);
 
         mTintImageView = view.findViewById(R.id.tintImageView);
 
         view.findViewById(R.id.red).setOnClickListener(v -> red());
         view.findViewById(R.id.clear).setOnClickListener(v -> clear());
         view.findViewById(R.id.green).setOnClickListener(v -> green());
+
         return view;
     }
 
@@ -78,4 +79,5 @@ public class TestDrawableFragment extends Fragment {
     private void clearTint() {
         mTintImageView.getDrawable().setTintList(null);
     }
+
 }

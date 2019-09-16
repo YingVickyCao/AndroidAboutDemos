@@ -34,7 +34,8 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         findViewById(R.id.toggleEnable).setOnClickListener(v -> toggleEnable());
         findViewById(R.id.pageThemeAndStyle).setOnClickListener(v -> pageThemeAndStyle());
         findViewById(R.id.pageDeclareStyleable).setOnClickListener(v -> pageDeclareStyleable());
-
+        findViewById(R.id.pageColorFilter).setOnClickListener(v -> pageColorFilter());
+        findViewById(R.id.pageTint).setOnClickListener(v -> pageTint());
     }
 
     private void colorOne() {
@@ -61,5 +62,13 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     private void pageDeclareStyleable() {
         showFragment(new TestDeclareStyleableInThemeFragment());
+    }
+
+    private void pageColorFilter() {
+        showFragment(new TestColorFilterFragment());
+    }
+
+    private void pageTint() {
+        showFragment(new TestTintFragment());
     }
 }

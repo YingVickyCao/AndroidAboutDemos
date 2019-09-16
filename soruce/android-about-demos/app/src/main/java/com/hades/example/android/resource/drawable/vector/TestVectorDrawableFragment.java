@@ -22,7 +22,6 @@ public class TestVectorDrawableFragment extends BaseFragment {
     private MeasurableImageView mMeasurableImageView;
     private TextView checkRenderTime;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

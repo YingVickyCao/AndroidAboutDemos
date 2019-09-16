@@ -2,7 +2,6 @@ package com.hades.example.android.resource._style_theme;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.lib.utils.ThemeUtils;
 
 public class TestAttrInThemeFragment extends BaseFragment {
     private static final String TAG = TestAttrInThemeFragment.class.getSimpleName();
@@ -26,12 +26,6 @@ public class TestAttrInThemeFragment extends BaseFragment {
         useStyle(view);
 
         return view;
-    }
-
-    private int getAttr() {
-        TypedValue typedValue = new TypedValue();
-        getContext().getTheme().resolveAttribute(R.attr.ColorsIntegerArray, typedValue, true);
-        return typedValue.resourceId;
     }
 
     private void useStyle(View view) {
@@ -51,7 +45,7 @@ public class TestAttrInThemeFragment extends BaseFragment {
 
         TextView color3 = view.findViewById(R.id.color3);
         TextView color4 = view.findViewById(R.id.color4);
-        getTextColors(getAttr(), color3, color4);
+        getTextColors(ThemeUtils.getResourceIdByAttrId(getActivity(), R.attr.ColorsIntegerArray), color3, color4);
     }
 
     private void getTextColors(@ArrayRes int id, TextView color1, TextView color2) {

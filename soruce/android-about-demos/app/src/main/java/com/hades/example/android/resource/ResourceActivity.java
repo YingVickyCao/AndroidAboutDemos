@@ -18,7 +18,6 @@ import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
 import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
-import com.hades.example.android.resource.drawable.TestDrawableFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
@@ -56,7 +55,6 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
         findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
 
-        findViewById(R.id.pageDrawable).setOnClickListener(v -> pageDrawable());
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
         findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
@@ -85,7 +83,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageStringIntegerArray();
+        pageThemeChoose();
     }
 
     private void pageColor() {
@@ -130,10 +128,6 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageDrawableAndScreenDensity() {
         showFragment(new TestBitmapMemoryAndScreenDensityFragment());
-    }
-
-    private void pageDrawable() {
-        showFragment(new TestDrawableFragment());
     }
 
     private void pageStateDrawable() {

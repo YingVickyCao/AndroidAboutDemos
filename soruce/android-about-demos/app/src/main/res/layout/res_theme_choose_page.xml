@@ -212,11 +212,6 @@
             <View style="@style/div" />
 
             <Button
-                style="@style/btn.small"
-                android:drawableEnd="@drawable/drawable_vector_4_vd"
-                android:text="Use attr for VectorDrawable" />
-
-            <Button
                 android:id="@+id/pageThemeAndStyle"
                 style="@style/btn.small"
                 android:text="@string/page_theme_and_style" />
@@ -225,6 +220,16 @@
                 android:id="@+id/pageDeclareStyleable"
                 style="@style/btn.small"
                 android:text="@string/page_theme_DeclareStyleable" />
+
+            <Button
+                android:id="@+id/pageColorFilter"
+                style="@style/btn.small"
+                android:text="@string/page_theme_ColorFilter" />
+
+            <Button
+                android:id="@+id/pageTint"
+                style="@style/btn.small"
+                android:text="@string/page_theme_tint" />
 
         </LinearLayout>
     </ScrollView>

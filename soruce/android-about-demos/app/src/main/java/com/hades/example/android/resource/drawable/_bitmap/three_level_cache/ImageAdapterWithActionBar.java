@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.hades.example.android.lib.utils.ThemeUtils;
+
 class ImageAdapterWithActionBar extends BaseAdapter {
     private static final String TAG = ImageAdapterWithActionBar.class.getSimpleName();
 
@@ -33,10 +35,7 @@ class ImageAdapterWithActionBar extends BaseAdapter {
     }
 
     private void calculateActionBarHeight() {
-        TypedValue tv = new TypedValue();
-        if (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            mActionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());
-        }
+        mActionBarHeight = TypedValue.complexToDimensionPixelSize(ThemeUtils.getDataInValueIdByAttrId(mContext, android.R.attr.actionBarSize), mContext.getResources().getDisplayMetrics());
     }
 
     @Override

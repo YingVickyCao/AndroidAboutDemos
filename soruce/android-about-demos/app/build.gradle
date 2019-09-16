@@ -75,6 +75,9 @@ dependencies {
 
     implementation "com.google.code.gson:gson:$gson_version"
 
+    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
+
+
 //    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
     testImplementation 'junit:junit:4.12'
