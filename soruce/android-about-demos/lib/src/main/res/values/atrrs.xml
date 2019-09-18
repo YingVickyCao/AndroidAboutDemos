@@ -11,10 +11,4 @@
     <attr name="color4" format="reference" />
     <attr name="drawable1" format="reference" />
     <attr name="drawable2" format="reference" />
-
-    <!-- Custom View,start -->
-    <attr name="bg_0" format="reference" />
-    <attr name="m_0" format="reference" />
-    <attr name="m_0_with_opacity" format="reference" />
-    <!-- Custom View,end -->
 </resources>

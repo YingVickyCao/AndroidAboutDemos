@@ -85,4 +85,9 @@
         <item>播放来自网络的音频文件</item>
     </string-array>
 
+    <!-- Custom View,start -->
+    <attr name="bg_0" format="reference" />
+    <attr name="m_0" format="reference" />
+    <attr name="m_0_with_opacity" format="reference" />
+    <!-- Custom View,end -->
 </resources>
