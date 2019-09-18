@@ -191,11 +191,6 @@
         <item name="rvSize">@dimen/size_300_px</item>
     </style>
 
-    <style name="MyView">
-        <item name="bgColor">?attr/m_0_with_opacity</item>
-        <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
-    </style>
-
     <style name="MyView_Default">
         <item name="bgColor">@android:color/holo_red_light</item>
     </style>

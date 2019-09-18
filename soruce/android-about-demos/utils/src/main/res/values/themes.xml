@@ -68,4 +68,9 @@
         <item name="color2">@android:color/holo_blue_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
+
+    <style name="MyView">
+        <item name="bgColor">?attr/m_0_with_opacity</item>
+        <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
+    </style>
 </resources>

@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">lib</string>
-
-    <string name="ok">OK</string>
-    <string name="no_network_connection_toast">No network connection found</string>
-
-</resources>

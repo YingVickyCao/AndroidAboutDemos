@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="pageRootBg" format="color" />
+    <attr name="seekThumbColor" format="color" />
+    <attr name="seekProgressDrawableColor" format="color" />
+    <attr name="seekBg" format="color" />
+
+    <attr name="color1" format="reference" />
+    <attr name="color2" format="reference" />
+    <attr name="color3" format="reference" />
+    <attr name="color4" format="reference" />
+    <attr name="drawable1" format="reference" />
+    <attr name="drawable2" format="reference" />
+
+    <!-- Custom View,start -->
+    <attr name="bg_0" format="reference" />
+    <attr name="m_0" format="reference" />
+    <attr name="m_0_with_opacity" format="reference" />
+
+    <declare-styleable name="CustomViews">
+        <attr name="MyViewStyle" format="reference" />
+        <attr name="rectViewStyle" format="reference" />
+        <attr name="ColorsIntegerArray" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyView">
+        <attr name="bgColor" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RectView">
+        <attr name="rvText" format="reference" />
+        <attr name="rvSize" format="dimension" />
+    </declare-styleable>
+    <!-- Custom View,end -->
+</resources>
