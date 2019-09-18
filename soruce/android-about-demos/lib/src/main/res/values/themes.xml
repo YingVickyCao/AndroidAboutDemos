@@ -1,36 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Custom View, start -->
-    <style name="RectView_StyleInTheme">
-        <item name="rvText">@string/attribute_3_style_in_theme</item>
-        <item name="rvSize">@dimen/size_300</item>
-    </style>
-
-    <style name="RectView_DefaultStyle">
-        <item name="rvText">@string/attribute_4_default_style_in_custom_view</item>
-        <item name="rvSize">@dimen/size_300</item>
-    </style>
-
-    <style name="RectView_StyleInXml">
-        <item name="rvText">@string/attribute_2_style_in_xml</item>
-        <item name="rvSize">@dimen/size_300</item>
-    </style>
-
-    <style name="RectView_StyleNotUseTheme">
-        <item name="rvText">@string/attribute_6_not_use_theme</item>
-        <item name="rvSize">@dimen/size_300_px</item>
-    </style>
-
-    <style name="MyView">
-        <item name="bgColor">?attr/m_0_with_opacity</item>
-        <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
-    </style>
-
-    <style name="MyView_Default">
-        <item name="bgColor">@android:color/holo_red_light</item>
-    </style>
-    <!-- Custom View, end -->
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

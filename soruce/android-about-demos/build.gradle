@@ -36,7 +36,7 @@ allprojects {
         mavenLocal()
         mavenCentral()
         // 自定义本地仓库
-//        maven{url }
+//        maven{`url` }
 
         jcenter()
         google()
