@@ -1,4 +1,0 @@
-ext{
-    // Define dependencies way2:
-    constraintlayoutVersion = '1.1.3'
-}

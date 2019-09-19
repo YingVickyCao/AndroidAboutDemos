@@ -1,2 +1,0 @@
-// Use caculator2 to build AAR
-include ':app', ':calculator', ':calculator2aar', ':calculator3', ':calculator2'
