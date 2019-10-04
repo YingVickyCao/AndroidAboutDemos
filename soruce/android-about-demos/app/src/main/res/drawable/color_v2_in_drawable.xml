@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/color_v2_enable_in_drawable" android:state_pressed="true" />
-    <item android:drawable="@drawable/color_v2_enable_in_drawable" android:state_focused="true" />
-    <item android:drawable="@drawable/color_v2_disable_drawable" />
-</selector>

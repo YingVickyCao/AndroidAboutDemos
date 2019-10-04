@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">B</string>
-
-    <string name="bind">Bind</string>
-    <string name="unbind">unBind</string>
-    <string name="getServiceStatus">获取Service状态</string>
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-</resources>

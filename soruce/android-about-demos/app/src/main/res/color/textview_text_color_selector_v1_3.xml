@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@color/textview_text_color_selector_v1_3_state" android:state_enabled="true" />
-    <item android:color="@android:color/background_light" />
-</selector>

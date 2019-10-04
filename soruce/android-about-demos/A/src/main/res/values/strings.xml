@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">A</string>
-
-    <string name="page_cross_app_access">Cross app access</string>
-    <string name="page_custom_permission">Custom permission</string>
-</resources>
