@@ -2,10 +2,17 @@ package com.hades.android.example.rxjava2._subscribeOn_vs_observeOn;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
 import com.hades.android.example.rxjava2.LogHelper;
 import com.hades.android.example.rxjava2.R;
+
 import io.reactivex.*;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -13,17 +20,27 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import kotlin.Unit;
+import timber.log.Timber;
 
 public class TestCase1 extends Activity {
     private static final String TAG = TestCase1.class.getSimpleName();
 
+    TextView tip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: -->");
+
         setContentView(R.layout.activity_test_case_1);
 
         findViewById(R.id.subscribeOn_vs_observeOn).setOnClickListener(view -> test1_subscribeOn_vs_observeOn());
+//        findViewById(R.id.init).setOnClickListener(view -> init());
         findViewById(R.id.test2_send_empty).setOnClickListener(view -> test2_send_empty());
+
+        tip = findViewById(R.id.tip);
+        init();
+        Log.d(TAG, "onCreate: <--");
     }
 
     /**
@@ -191,7 +208,7 @@ public class TestCase1 extends Activity {
 
                     @Override
                     public void onNext(Unit unit) { // main
-                        Log.d(TAG, "subscribe,onNext: " + LogHelper.getThreadInfo());
+                        tip.setText("Load finish");
                     }
 
                     @Override
@@ -205,5 +222,72 @@ public class TestCase1 extends Activity {
                     }
                 });
 
+    }
+
+    private void init() {
+        Log.d(TAG, "init: -->");
+
+        /**
+
+         onCreate: -->
+         init: -->
+         init: <--
+         onCreate: <--
+         init,accept: thread name=RxCachedThreadScheduler-1,thread id=623
+         init,onError: thread name=main,thread id=2,e:Can't create handler inside thread Thread[RxCachedThreadScheduler-1,5,main] that has not called Looper.prepare()
+         */
+
+        Observable.create(new ObservableOnSubscribe<Unit>() {
+            @Override
+            public void subscribe(ObservableEmitter<Unit> emitter) throws Exception { // thread -1
+//                Log.d(TAG, "subscribe: " + LogHelper.getThreadInfo());
+                emitter.onNext(Unit.INSTANCE);
+            }
+        }).subscribeOn(Schedulers.io())
+                .doOnNext(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception { // thread -1
+                        Log.d(TAG, "init,accept: " + LogHelper.getThreadInfo());
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Mock:one Dialog is showd in RxJava2 thread
+                        showDialog();
+//                        throw new Exception("Exception throwed");
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new EndlessObserver<Unit>() {
+                    @Override
+                    public void onNext(Unit unit) { // main
+                        Log.d(TAG, "init,onNext: " + LogHelper.getThreadInfo());
+
+                        // Mock : UI is not inited
+                        tip.setText("Load finish");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) { // main
+                        Timber.e(e);
+                        // ERROR: subscribe,onError: thread name=main,thread id=2,e:Can't create handler inside thread Thread[RxCachedThreadScheduler-1,5,main] that has not called Looper.prepare()
+                        Log.e(TAG, "init,onError: " + LogHelper.getThreadInfo() + ",e:" + e.getMessage());
+                    }
+                });
+        Log.d(TAG, "init: <--");
+    }
+
+    private void showDialog() {
+        new AlertDialog
+                .Builder(this)
+                .setMessage("Dialog")
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> Toast.makeText(TestCase1.this, "Dialog", Toast.LENGTH_SHORT).show())
+                .setNeutralButton(android.R.string.cancel, (dialog, which) -> {
+                    Log.d(TAG, "onClick: cancel()`");
+                    dialog.cancel();
+                })
+                .create();
     }
 }
