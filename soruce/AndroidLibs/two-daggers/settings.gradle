@@ -1,1 +1,0 @@
-include ':application', ':two-daggers-compiler', ':two-daggers-library'
